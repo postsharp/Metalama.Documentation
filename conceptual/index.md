@@ -22,7 +22,7 @@ Caravela has the following principal features:
 | <xref:conceptual> | Conceptual and procedural documentation |
 | <xref:api> | API reference |
 
-The conceptual documentation is hosted on https://github.com/postsharp/Caravela. You can suggest improvements and corrections using the discussions board, and even submit a pull request.
+The conceptual documentation is hosted on https://github.com/postsharp/Caravela.Documentation. You can suggest improvements and corrections using the discussions board, and even submit a pull request.
 
 
 ## Getting started
@@ -34,7 +34,7 @@ The conceptual documentation is hosted on https://github.com/postsharp/Caravela.
 
 | Link                                                              | Description |
 |-------------------------------------------------------------------|------------------------
-| [Try Caravela](https://try.postsharp.net) | Try Caravela from your browser. Based on https://try.dot.net/. |
+| [Try Caravela](https://try.postsharp.net) | Try Caravela from your browser.|
 | [Caravela.Samples](https://github.com/postsharp/Caravela.Samples) | A dozen of open-source examples in a GitHub repo. |
 
 

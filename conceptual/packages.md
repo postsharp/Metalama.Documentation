@@ -28,6 +28,7 @@ graph TD
     Caravela.Framework -- contains --> analyzers((analyzers))
     Caravela.TestFramework -- inhibits --> Caravela.Framework
     Caravela.TestFramework -- references--> Caravela.Framework.Impl
+    Caravela.TestFramework -- references--> xUnit
     Caravela.Framework.Impl -- references--> Caravela.Framework.Contracts.DesignTime
 
     Caravela.Compiler -- contains --> compiler((full compiler))
@@ -59,9 +60,6 @@ graph TD
         class r runTime
 
     end
-
-
-
 
 ```
 

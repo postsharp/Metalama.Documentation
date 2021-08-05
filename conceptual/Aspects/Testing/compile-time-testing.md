@@ -50,6 +50,30 @@ Typically, the `csproj` project file of a compile-time test project would have t
 
 </Project>
 ```
+### Dependency graph
+
+The following diagram illustrates the typical dependencies between your projects and our packages.
+
+```mermaid
+graph TD
+    YourApp -- references --> YourAspectLibrary
+    YourAspectLibrary -- references --> Caravela.Framework
+    YourAspectLibrary.UnitTests -- references --> xUnit
+    YourAspectLibrary.UnitTests -- references --> YourAspectLibrary
+    YourAspectLibrary.AspectTests -- references --> YourAspectLibrary
+    YourAspectLibrary.AspectTests -- references --> Caravela.TestFramework
+    Caravela.Framework -- references --> Caravela.Framework.Redist
+    Caravela.TestFramework -- references --> xUnit
+    Caravela.TestFramework -- references --> Caravela.Framework
+    
+    classDef your fill:yellow;
+    classDef yourTest fill:lightyellow;
+    class YourApp your;
+    class YourAspectLibrary your;
+    class YourAspectLibrary.UnitTests yourTest;
+    class YourAspectLibrary.AspectTests yourTest;
+
+```
 
 ### Customizations performed by Caravela.TestFramework
 
