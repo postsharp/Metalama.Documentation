@@ -3,13 +3,13 @@ uid: overriding-fields-or-properties
 ---
 # Overriding Fields or Properties
 
-In <xref:overriding-methods,> you have learned how to wrap an existing method with additional, automatically-generated model. You can do the same with fields and properties thanks to the  <xref:Caravela.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class. 
+In <xref:overriding-methods>, you have learned how to wrap an existing method with additional, automatically-generated model. You can do the same with fields and properties thanks to the  <xref:Caravela.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class. 
 
 ## Creating an OverrideFieldOrPropertyAspect aspect
 
 1. Create a new class derived from the <xref:Caravela.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
 
-2. Implement the <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideProperty> property in plain C#:
+2. Implement the <xref:Caravela.Framework.Aspects.OverrideFieldOrPropertyAspect.OverrideProperty> property in plain C#:
    - To insert code or expressions that depend on the target method of the aspect (such as the method name or the parameter type), use the <xref:Caravela.Framework.Aspects.meta> API.
    - Where the original implementation must be invoked, call the <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed> method.
 

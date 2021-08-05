@@ -186,7 +186,7 @@ meta.This.OnPropertyChanged( meta.Property.Name );
 
 ### Generating calls to the call model
 
-When you have a <xref:Caravela.Framework.Code> representation of a declaration, you may want to access it from your generated run-time code. You can do this by using the `Invokers` property exposed by the <xref:Caravela.Framework.Code.IMethod,> <xref:Caravela.Framework.Code.IFieldOrProperty> or <xref:Caravela.Framework.Code.IEvent> interfaces.
+When you have a <xref:Caravela.Framework.Code> representation of a declaration, you may want to access it from your generated run-time code. You can do this by using the `Invokers` property exposed by the <xref:Caravela.Framework.Code.IMethod>, <xref:Caravela.Framework.Code.IFieldOrProperty> or <xref:Caravela.Framework.Code.IEvent> interfaces.
 
 For details, see the documentation of the <xref:Caravela.Framework.Code.Invokers> namespace.
 
