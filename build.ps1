@@ -25,7 +25,7 @@ if ( $Publish )
 
 function RemoveLockedFiles()
 {
-    if ( -not $NoKill ) {
+    if ( $Pack -and -not $NoKill ) {
         gcim win32_process | where { $_.Name -eq "iisexpress.exe" } | foreach { 
             Stop-Process -ID $_.ProcessId 
             Start-Sleep  -Seconds 1
@@ -66,8 +66,8 @@ function Restore()
 
 function Metadata()
 {
-
-    docfx\packages\docfx.console.2.58.0\tools\docfx.exe "docfx\docfx.json" metadata --property TargetFramework=netstandard2.0
+    
+    docfx\packages\docfx.console.2.58.0\tools\docfx.exe "docfx\docfx.json" metadata
 
     if ($LASTEXITCODE -ne 0 ) { exit }
 }

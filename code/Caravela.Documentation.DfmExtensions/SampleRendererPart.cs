@@ -113,7 +113,7 @@ namespace Caravela.Documentation.DfmExtensions
 
             var shortFileNameWithoutExtension = Path.GetFileNameWithoutExtension(source.FilePath);
             var targetPath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(referencingFile), source.FilePath));
-            var transformedPath = Path.ChangeExtension(targetPath, ".t.cs");
+            var programOutputPath = Path.ChangeExtension(targetPath, ".t.txt");
             var aspectPath = Path.ChangeExtension(targetPath, ".Aspect.cs");
 
             // Find the directories.
@@ -131,6 +131,7 @@ namespace Caravela.Documentation.DfmExtensions
                 Path.ChangeExtension(targetPathRelativeToProjectDir, ".cs.html")));
             var transformedHtmlPath = Path.GetFullPath(Path.Combine(projectDir, "obj", "html",
                 Path.ChangeExtension(targetPathRelativeToProjectDir, ".out.cs.html")));
+            
 
             const string gitBranch = "release/0.3";
             const string gitHubProjectPath = "https://github.com/postsharp/Caravela/blob/" + gitBranch;
@@ -160,39 +161,35 @@ namespace Caravela.Documentation.DfmExtensions
                 var tryPayloadHash = LZString.CompressToEncodedURIComponent(tryPayloadJson);
                 var tryUrl = tryBaseUrl + tryPayloadHash;
 
-                var template = @"
-<div class=""sample-links tabbed""><a class=""github"" href=""GIT_URL"">See on GitHub</a> | <a class=""try"" href=""TRY_URL"">Try Online</a></div>
-<div class=""tabGroup"">
-    <ul>
-        <li>
-            <a href=""#tabpanel_IDENTIFIER_aspect"">Aspect Code</a>
-        </li>
-        <li>
-            <a href=""#tabpanel_IDENTIFIER_target"">Target Code</a>
-        </li>
-        <li>
-            <a href=""#tabpanel_IDENTIFIER_transformed"">Transformed Code</a>
-        </li>
-    </ul>
-    <div id=""tabpanel_IDENTIFIER_aspect"">
-        ASPECT_CODE
-    </div>
-    <div id=""tabpanel_IDENTIFIER_target"">
-        TARGET_CODE
-    </div>
-    <div id=""tabpanel_IDENTIFIER_transformed"">
-        TRANSFORMED_CODE
-    </div>
-</div>
-";
+                var snippetId = Interlocked.Increment(ref nextId).ToString();
+                
+                
+                var tabHeaders = new StringBuilder();
+                var tabBodies = new StringBuilder();
 
-                return template
-                    .Replace("IDENTIFIER", Interlocked.Increment(ref nextId).ToString())
-                    .Replace("ASPECT_CODE", aspectHtml)
-                    .Replace("TARGET_CODE", targetHtml)
-                    .Replace("TRANSFORMED_CODE", transformedHtml)
-                    .Replace("GIT_URL", gitUrl)
-                    .Replace("TRY_URL", tryUrl);
+                void AppendTab(string tabId, string header, string content)
+                {
+                    tabHeaders.Append($"<li><a href=\"#tabpanel_{snippetId}_{tabId}\">{header}</a></li>");
+                    tabBodies.Append($"<div id=\"tabpanel_{snippetId}_{tabId}\">{content}</div>");
+                }
+                
+                AppendTab("aspect", "Aspect Code", aspectHtml);
+                AppendTab("target", "Target Code", targetHtml);
+                AppendTab("transformed", "Transformed Code", transformedHtml);
+
+                if (File.Exists(programOutputPath))
+                {
+                    AppendTab("output", "Program Output", "<pre class=\"program-output\">" + File.ReadAllText(programOutputPath) + "</pre>" );
+                }
+                
+                var totalContent =  $"<div class=\"sample-links tabbed\"><a class=\"github\" href=\"{gitUrl}\">See on GitHub</a> | <a class=\"try\" href=\"{tryUrl}\">Try Online</a></div><div class=\"tabGroup\"><ul>"
+                    + tabHeaders
+                    + "</ul>"
+                    + tabBodies
+                    + "</div>";
+
+                return totalContent;
+
             }
             else
             {

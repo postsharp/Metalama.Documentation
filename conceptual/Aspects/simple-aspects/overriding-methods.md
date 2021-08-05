@@ -47,3 +47,38 @@ If you want to invoke the method with a totally different set of arguments, you 
 
 > [!NOTE]
 > Invoking a method with `ref` or `out` parameters is not yet supported.
+
+## Overriding async and iterator methods
+
+By default, the <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideMethod> method is used as a template for all methods, including async and iterator methods. This behavior works great most of the time, but it has a few limitations:
+
+* You cannot use `await` or `yield` in the default template.
+* When you call `meta.Proceed()` in the default template, it causes the complete evaluation of the async method or iterator.
+
+> [!WARNING]
+> Applying the default <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideMethod> template to an iterator the stream to be _buffered_ into a `List<T>`. In case of long-running streams, this buffering may be undesirable. In this case, specific iterator templates must be specified (see below).
+
+### Example: the default template applied to all kinds of methods
+
+The following example demonstrates the behavior of the default template when applied to different kinds of methods. Note that the output of iterators methods is buffered. This is visible in the program output.
+
+[!include[Default template applied to all kinds of methods](../../../code/Caravela.Documentation.SampleCode.AspectFramework/OverrideMethodDefaultTemplateAllKinds.cs)]
+
+
+### Implementing a specific template
+
+When the default template is not sufficient to implement your aspect, you can implement different variants of the `OverrideMethod`. For each variant, instead of calling <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed>, you will call a variant of this method that has a relevant return type.
+
+| Template Method                 | Proceed Method                            | Description |
+|---|---|--|
+| <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideAsyncMethod> | <xref:Caravela.Framework.Aspects.meta.ProceedAsync> | Applies to all async methods, including async iterators, except if a more specific template is implemented.
+| <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideEnumerableMethod> | <xref:Caravela.Framework.Aspects.meta.ProceedEnumerable> | Applies to iterator methods returning an `IEnumerable<T>` or `IEnumerable`.
+| <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideEnumeratorMethod> | <xref:Caravela.Framework.Aspects.meta.ProceedEnumerator> | Applies to iterator methods returning an `IEnumerator<T>` or `IEnumerator`.
+| <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideAsyncEnumerableMethod> | <xref:Caravela.Framework.Aspects.meta.ProceedAsyncEnumerable> | Applies to async iterator methods returning an `IAsyncEnumerable<T>`.
+| <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideAsyncEnumeratorMethod> | <xref:Caravela.Framework.Aspects.meta.ProceedAsyncEnumerator> | Applies to async iterator methods returning an `IAsyncEnumerator<T>`.
+
+### Example: specific templates for all kinds of methods
+
+The following example derives from the previous one implements all specific template methods instead of just the default template methods. Note that now the output of iterators is no longer buffered, because this new version of the aspect supports iterator streaming.
+
+[!include[Specific templates for all kinds of methods](../../../code/Caravela.Documentation.SampleCode.AspectFramework/OverrideMethodSpecificTemplateAllKinds.cs)]

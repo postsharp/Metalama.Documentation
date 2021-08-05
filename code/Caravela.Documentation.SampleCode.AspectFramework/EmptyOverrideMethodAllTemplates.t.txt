@@ -1,0 +1,38 @@
+NormalMethod: start
+NormalMethod: returning 5.
+AsyncMethod: start
+  Task.Yield
+  Resuming
+AsyncMethod: returning 5.
+EnumerableMethod: start
+  Yielding 1
+  Yielding 2
+  Yielding 3
+EnumerableMethod: returning System.Collections.Generic.List`1[System.Int32].
+ Received 1 from EnumerableMethod
+ Received 2 from EnumerableMethod
+ Received 3 from EnumerableMethod
+EnumeratorMethod: start
+  Yielding 1
+  Yielding 2
+  Yielding 3
+EnumeratorMethod: returning System.Collections.Generic.List`1+Enumerator[System.Int32].
+ Received 1 from EnumeratorMethod
+ Received 2 from EnumeratorMethod
+ Received 3 from EnumeratorMethod
+AsyncEnumerableMethod: start
+  Yielding 1
+  Yielding 2
+  Yielding 3
+AsyncEnumerableMethod: returning Caravela.Framework.RunTime.AsyncEnumerableList`1[System.Int32].
+ Received 1 from AsyncEnumerableMethod
+ Received 2 from AsyncEnumerableMethod
+ Received 3 from AsyncEnumerableMethod
+AsyncEnumeratorMethod: start
+  Yielding 1
+  Yielding 2
+  Yielding 3
+AsyncEnumeratorMethod: returning Caravela.Framework.RunTime.AsyncEnumerableList`1+AsyncEnumerator[System.Int32].
+ Received 1 from AsyncEnumeratorMethod
+ Received 2 from AsyncEnumeratorMethod
+ Received 3 from AsyncEnumeratorMethod
