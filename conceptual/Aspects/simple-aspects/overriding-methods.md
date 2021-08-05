@@ -77,8 +77,16 @@ When the default template is not sufficient to implement your aspect, you can im
 | <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideAsyncEnumerableMethod> | <xref:Caravela.Framework.Aspects.meta.ProceedAsyncEnumerable> | Applies to async iterator methods returning an `IAsyncEnumerable<T>`.
 | <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideAsyncEnumeratorMethod> | <xref:Caravela.Framework.Aspects.meta.ProceedAsyncEnumerator> | Applies to async iterator methods returning an `IAsyncEnumerator<T>`.
 
+Note that there is no obligation to implement these methods as `async` methods or `yield`-based iterators.
+
 ### Example: specific templates for all kinds of methods
 
 The following example derives from the previous one implements all specific template methods instead of just the default template methods. Note that now the output of iterators is no longer buffered, because this new version of the aspect supports iterator streaming.
 
 [!include[Specific templates for all kinds of methods](../../../code/Caravela.Documentation.SampleCode.AspectFramework/OverrideMethodSpecificTemplateAllKinds.cs)]
+
+### Using specific templates for non-async awaitable or non-yield enumerable methods
+
+If you want to use the specific templates for methods that have the correct return type but are not implemented using `await` or `yield`, set the <xref:Caravela.Framework.Aspects.OverrideMethodAspect.UseAsyncTemplateForAnyAwaitable>
+or <xref:Caravela.Framework.Aspects.OverrideMethodAspect.UseEnumerableTemplateForAnyEnumerable> property of the <xref:Caravela.Framework.Aspects.OverrideMethodAspect> class to `true` in the aspect constructor.
+
