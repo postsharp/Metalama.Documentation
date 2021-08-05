@@ -3,16 +3,16 @@ uid: overriding-members
 ---
 # Overriding Members (Reloaded)
 
-In the section @simple-aspects, you have learned to override methods, properties, fields and events using a simple object-oriented API. In this section, you will learn how to achieve the same thing using the advising API. This will allow you to modify not only the method that is the immediate target of the aspect, but any method in the type being targeted.
+In the section <xref:simple-aspects,> you have learned to override methods, properties, fields and events using a simple object-oriented API. In this section, you will learn how to achieve the same thing using the advising API. This will allow you to modify not only the method that is the immediate target of the aspect, but any method in the type being targeted.
 
 > [!NOTE]
-> In this article, we will assume you have learned the techniques explained in @simple-aspects.
+> In this article, we will assume you have learned the techniques explained in <xref:simple-aspects.>
 
 ## Overriding methods
 
 To override one or more methods, your aspects needs to implement the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect(Caravela.Framework.Aspects.IAspectBuilder{%600})> method, then call the <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod(Caravela.Framework.Code.IMethod,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})> method exposed on `builder.AdviceFactory`.
 
-The _first argument_ of `OverrideMethod` is the @Caravela.Framework.Code.IMethod that you want to override. This method must be in the type being targeted by the current aspect instance.
+The _first argument_ of `OverrideMethod` is the <xref:Caravela.Framework.Code.IMethod> that you want to override. This method must be in the type being targeted by the current aspect instance.
 
 The _second argument_ of `OverrideMethod` is the name of the template method. This method must exist in the aspect class and, additionally:
 
@@ -28,7 +28,7 @@ The _second argument_ of `OverrideMethod` is the name of the template method. Th
 The following aspects wraps all instance methods with a `lock( this )` statement.
 
 > [!NOTE]
-> In a production-ready implementation, you should not lock `this` but a private field. You can introduce this field as described in @introducing-members. A product-ready implementation should also wrap properties.
+> In a production-ready implementation, you should not lock `this` but a private field. You can introduce this field as described in <xref:introducing-members.> A product-ready implementation should also wrap properties.
 
 [!include[Synchronized](../../../code/Caravela.Documentation.SampleCode.AspectFramework/Synchronized.cs)]
 
@@ -49,7 +49,7 @@ This approach is the simplest but it has a few limitations.
 
 Just like for methods, to override one or more fields or properties, your aspects needs to implement the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect(Caravela.Framework.Aspects.IAspectBuilder{%600})> method, then call the <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrProperty(Caravela.Framework.Code.IFieldOrProperty,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})> method exposed on `builder.AdviceFactory`.
 
-The _first argument_ of `OverrideFieldOrProperty` is the @Caravela.Framework.Code.IFieldOrProperty that you want to override. This field or property must be in the type being targeted by the current aspect instance.
+The _first argument_ of `OverrideFieldOrProperty` is the <xref:Caravela.Framework.Code.IFieldOrProperty> that you want to override. This field or property must be in the type being targeted by the current aspect instance.
 
 The _second argument_ of `OverrideFieldOrProperty` is the name of the template property. This property must exist in the aspect class and, additionally:
 
@@ -74,11 +74,11 @@ The property can have a setter, a getter, or both. If one accessor is not specif
 
 If you have only worked with methods so far, you may be already used to use the `meta.Proceed()` method in your template. This method also works a property template: when called from the getter, it returns the field or property value; when called from the setter, it sets the field or property to the value of the `value` parameter.
 
-If you need to get the property value from the setter, or if you need to set the property value to something else than the `value` parameter, you can do it by getting or setting the `meta.FieldOrProperty.Value` property.
+If you need to get the property value from the setter, or if you need to set the property value to something else than the `value` parameter, you can do it by getting or setting the `meta.Target.FieldOrProperty.Value` property.
 
 ### Example: string normalization
 
-This example illustrates a strongly-typed property template with a single accessor that uses the `meta.FieldOrProperty.Value` expression to access the underlying field or property.
+This example illustrates a strongly-typed property template with a single accessor that uses the `meta.Target.FieldOrProperty.Value` expression to access the underlying field or property.
 
 The following aspect can be applied to fields of properties of type `string`. It overrides the setter to trim and lower case the assigned value. 
 

@@ -3,7 +3,7 @@ uid: introducing-members
 ---
 # Introducing Members
 
-In @overriding-members, you have learned how to override the implementation of existing type members. In this article, you will learn how to add new members to an existing type.
+In <xref:overriding-members,> you have learned how to override the implementation of existing type members. In this article, you will learn how to add new members to an existing type.
 
 You can currently add the following kinds of members:
 
@@ -131,7 +131,7 @@ Most of the times, when you override a method, you will want to invoke the aspec
 > TODO. This currently does not work.
 
 - To invoke the base method or accessor with exactly the same arguments, call <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed()>.
-- To invoke the base method with different arguments, use <xref:Caravela.Framework.Code.Advised.IAdvisedMethod.Invoke(System.Object[])?text=meta.Method.Invoke>.
+- To invoke the base method with different arguments, use <xref:Caravela.Framework.Code.Advised.IAdvisedMethod.Invoke(System.Object[])?text=meta.Target.Method.Invoke>.
 - To call the base property getter or setter, use <xref:Caravela.Framework.Code.Advised.IHasRuntimeValue.Value?text=meta.Property.Value>.
 - To access the base event, use <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.Adder?text=meta.Event.Adder.Invoke()>, <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.Adder?text=meta.Event.Remover.Invoke()> or <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.Adder?text=meta.Event.Raiser.Invoke()>.
 

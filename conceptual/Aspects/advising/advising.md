@@ -4,10 +4,10 @@ uid: advising-code
 
 # Advising Code
 
-@overriding-members
+<xref:overriding-members>
 
-@introducing-members
+<xref:introducing-members>
 
-@implementing-interfaces
+<xref:implementing-interfaces>
 
-@sharing-state-with-advices
+<xref:sharing-state-with-advices>

@@ -3,7 +3,7 @@ uid: templates
 ---
 # Caravela Template Language
 
-The _Caravela Template Language_ is neither a subset nor a superset of C# but rather a specific way to compile C#. A template can contain _both_ run-time and compile-time code. Every expression or statement in a template is interpreted as having _either_ run-time scope _or_ compile-time scope. Compile-time expressions are initiated by calls to the @"Caravela.Framework.Aspects.meta" API.
+The _Caravela Template Language_ is neither a subset nor a superset of C# but rather a specific way to compile C#. A template can contain _both_ run-time and compile-time code. Every expression or statement in a template is interpreted as having _either_ run-time scope _or_ compile-time scope. Compile-time expressions are initiated by calls to the <xref:Caravela.Framework.Aspects.meta> API.
 
 ## Initial example
 
@@ -29,8 +29,8 @@ The entry point of the compile-time API is the <xref:Caravela.Framework.Aspects.
 The <xref:Caravela.Framework.Aspects.meta> exposes to the following members:
 
 - <xref:Caravela.Framework.Aspects.meta.Proceed> invokes the method or accessor being intercepted -- it can be the next aspect or the source implementation.
-- <xref:Caravela.Framework.Aspects.meta.Type>, <xref:Caravela.Framework.Aspects.meta.Method>, <xref:Caravela.Framework.Aspects.meta.Property>, <xref:Caravela.Framework.Aspects.meta.Property>, ... gives access to the member to which the template is applied.
-- <xref:Caravela.Framework.Aspects.meta.Parameters> gives access to the current method or accessor parameters.
+- <xref:Caravela.Framework.Aspects.meta.Target> gives access to the declaration to which the template is applied.
+- <xref:Caravela.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> gives access to the current method or accessor parameters.
 - <xref:Caravela.Framework.Aspects.meta.Diagnostics> allows your aspect to report or suppress diagnostics. See <xref:diagnostics> for details.
 - <xref:Caravela.Framework.Aspects.meta.This> represents the `this` instance. Together with <xref:Caravela.Framework.Aspects.meta.Base>, <xref:Caravela.Framework.Aspects.meta.ThisStatic> and <xref:Caravela.Framework.Aspects.meta.BaseStatic>, it allows your template to access members of the target class using dynamic code (see below).
 - <xref:Caravela.Framework.Aspects.meta.Tags> gives access to an arbitrary dictionary that has been passed to the advice factory method.
@@ -45,7 +45,7 @@ Examples:
 
 - In `var i = 0`, `i` is a run-time variable.
 - In `var i = meta.CompileTime(0)`, `i` is a compile-time variable.
-- In `var parameters = meta.Parameters`, `parameters` is compile-time variable.
+- In `var parameters = meta.Target.Parameters`, `parameters` is compile-time variable.
 
 > [!NOTE]
 > It is not allowed to assign a compile-time variable from a block whose execution depends on a run-time condition, including:
@@ -139,10 +139,10 @@ You can use `meta.RunTime( expression )` to convert the result of a compile-time
 - Enum values;
 - One-dimensional arrays;
 - Tuples;
-- Reflection objects: @"System.Type", @"System.Reflection.MethodInfo", @"System.Reflection.ConstructorInfo", @"System.Reflection.EventInfo", @"System.Reflection.PropertyInfo", @"System.Reflection.FieldInfo";
-- @"System.Guid";
+- Reflection objects: <xref:System.Type>, <xref:System.Reflection.MethodInfo>, <xref:System.Reflection.ConstructorInfo>, <xref:System.Reflection.EventInfo>, <xref:System.Reflection.PropertyInfo>, <xref:System.Reflection.FieldInfo>;
+- <xref:System.Guid>;
 - Generic collections: <xref:System.Collections.Generic.List%601> and <xref:System.Collections.Generic.Dictionary%602>;
-- @"System.DateTime" and @"System.TimeSpan".
+- <xref:System.DateTime> and <xref:System.TimeSpan>.
 
 It is not possible to build custom convertors at the moment.
 
@@ -159,11 +159,11 @@ In the case of writable properties, it is also possible to set the value.
 
 Dynamic values are a bit _magic_ because their compile-time value translates into _syntax_ that is injected in the transformed code.
 
-For instance, `meta.Parameters["p"].Value` refers to `p` parameter of the target method and compiles simply into the syntax `p`. It is possible to read this parameter and, if this is an `out` or `ref` parameter, it is also possible to write it.
+For instance, `meta.Target.Parameters["p"].Value` refers to `p` parameter of the target method and compiles simply into the syntax `p`. It is possible to read this parameter and, if this is an `out` or `ref` parameter, it is also possible to write it.
 
 ```cs
 // Translates into: Console.WriteLine( "p = " + p );
-Console.WriteLine( "p = " + meta.Parameters["p"].Value );
+Console.WriteLine( "p = " + meta.Target.Parameters["p"].Value );
 
 
 // Translates into: this.MyProperty = 5;
@@ -186,9 +186,9 @@ meta.This.OnPropertyChanged( meta.Property.Name );
 
 ### Generating calls to the call model
 
-When you have a @Caravela.Framework.Code representation of a declaration, you may want to access it from your generated run-time code. You can do this by using the `Invokers` property exposed by the @Caravela.Framework.Code.IMethod, @Caravela.Framework.Code.IFieldOrProperty or @Caravela.Framework.Code.IEvent interfaces.
+When you have a <xref:Caravela.Framework.Code> representation of a declaration, you may want to access it from your generated run-time code. You can do this by using the `Invokers` property exposed by the <xref:Caravela.Framework.Code.IMethod,> <xref:Caravela.Framework.Code.IFieldOrProperty> or <xref:Caravela.Framework.Code.IEvent> interfaces.
 
-For details, see the documentation of the @"Caravela.Framework.Code.Invokers" namespace.
+For details, see the documentation of the <xref:Caravela.Framework.Code.Invokers> namespace.
 
 ## Debugging templates
 

@@ -137,7 +137,7 @@ p.Update( x, y );
 Console.WriteLine( $"{p.X}, {p.Y}");
 ```
 
-For details about member introductions, see @introducing-members.
+For details about member introductions, see <xref:introducing-members.>
 
 ## Step 3. Run the test case
 
