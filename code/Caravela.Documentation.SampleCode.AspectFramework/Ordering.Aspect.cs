@@ -9,7 +9,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
     {
         public void BuildAspect(IAspectBuilder<INamedType> builder)
         {
-            foreach (var m in builder.TargetDeclaration.Methods)
+            foreach (var m in builder.Target.Methods)
             {
                 builder.AdviceFactory.OverrideMethod(m, nameof(Override));
             }
@@ -25,7 +25,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
         private dynamic? Override()
         {
             Console.WriteLine("Executing Aspect1. Methods present before applying Aspect1: "
-                + string.Join(", ", meta.Type.Methods.Select(m => m.Name).ToArray()));
+                + string.Join(", ", meta.Target.Type.Methods.Select(m => m.Name).ToArray()));
 
             return meta.Proceed();
         }
@@ -35,7 +35,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
     {
         public void BuildAspect(IAspectBuilder<INamedType> builder)
         {
-            foreach (var m in builder.TargetDeclaration.Methods)
+            foreach (var m in builder.Target.Methods)
             {
                 builder.AdviceFactory.OverrideMethod(m, nameof(Override));
             }
@@ -52,7 +52,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
         private dynamic? Override()
         {
             Console.WriteLine("Executing Aspect2. Methods present before applying Aspect2: "
-                + string.Join(", ", meta.Type.Methods.Select(m => m.Name).ToArray()));
+                + string.Join(", ", meta.Target.Type.Methods.Select(m => m.Name).ToArray()));
 
             return meta.Proceed();
         }

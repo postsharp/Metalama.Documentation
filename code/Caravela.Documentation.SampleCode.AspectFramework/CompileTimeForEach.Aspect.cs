@@ -9,7 +9,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.CompileTimeForEach
     {
         public override dynamic OverrideMethod()
         {
-            foreach (var p in meta.Parameters.Where(p => p.RefKind != RefKind.Out))
+            foreach (var p in meta.Target.Parameters.Where(p => p.RefKind != RefKind.Out))
             {
                 Console.WriteLine("p = " + p.Value);
             }

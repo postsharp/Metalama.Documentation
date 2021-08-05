@@ -10,15 +10,15 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
         public void BuildAspect( IAspectBuilder<INamedType> builder )
         {
             var typedMethod = builder.AdviceFactory.IntroduceMethod(
-                builder.TargetDeclaration, 
+                builder.Target, 
                 nameof(CloneImpl),
                 whenExists:OverrideStrategy.Override );
 
             typedMethod.Name = "Clone";
-            typedMethod.ReturnType = builder.TargetDeclaration;
+            typedMethod.ReturnType = builder.Target;
 
             builder.AdviceFactory.ImplementInterface(
-                builder.TargetDeclaration, 
+                builder.Target, 
                 typeof(ICloneable),
                 whenExists: OverrideStrategy.Ignore);
         }
@@ -27,23 +27,23 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
         public virtual dynamic CloneImpl()
         {
             // Define a local variable of the same type as the target type.
-            var clone = meta.Type.DefaultValue();
+            var clone = meta.Target.Type.DefaultValue();
 
-            // TODO: access to meta.Method.Invokers.Base does not work.
-            if ( meta.Method.Invokers.Base == null )
+            // TODO: access to meta.Target.Method.Invokers.Base does not work.
+            if ( meta.Target.Method.Invokers.Base == null )
             {
                 // Invoke base.MemberwiseClone().
-                clone = meta.Cast( meta.Type,  meta.Base.MemberwiseClone() );
+                clone = meta.Cast( meta.Target.Type,  meta.Base.MemberwiseClone() );
             }
             else
             {
                 // Invoke the base method.
-                clone = meta.Method.Invokers.Base.Invoke(meta.This);
+                clone = meta.Target.Method.Invokers.Base.Invoke(meta.This);
             }
 
             // Select clonable fields.
             var clonableFields =
-                meta.Type.FieldsAndProperties.Where(
+                meta.Target.Type.FieldsAndProperties.Where(
                     f => f.IsAutoPropertyOrField &&
                     (f.Type.Is(typeof(ICloneable)) || 
                     (f.Type is INamedType fieldNamedType && fieldNamedType.Aspects<DeepCloneAttribute>().Any())));

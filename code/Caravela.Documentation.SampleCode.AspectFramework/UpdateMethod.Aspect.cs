@@ -9,10 +9,10 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.UpdateMethod
     {
         public void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            var updateMethodBuilder = builder.AdviceFactory.IntroduceMethod(builder.TargetDeclaration, nameof(Update));
+            var updateMethodBuilder = builder.AdviceFactory.IntroduceMethod(builder.Target, nameof(Update));
 
             var fieldsAndProperties = 
-                builder.TargetDeclaration.FieldsAndProperties
+                builder.Target.FieldsAndProperties
                 .Where(f => f.Writeability == Writeability.All);
 
             foreach ( var field in fieldsAndProperties)
@@ -26,11 +26,11 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.UpdateMethod
         {
             var index = meta.CompileTime(0);
 
-            foreach ( var parameter in meta.Parameters )
+            foreach ( var parameter in meta.Target.Parameters )
             {
-                var field = meta.Type.FieldsAndProperties.OfName(parameter.Name).Single();
+                var field = meta.Target.Type.FieldsAndProperties.OfName(parameter.Name).Single();
 
-                field.Invokers.Final.SetValue(meta.This, meta.Parameters[index].Value);
+                field.Invokers.Final.SetValue(meta.This, meta.Target.Parameters[index].Value);
                 index++;
             }
         }

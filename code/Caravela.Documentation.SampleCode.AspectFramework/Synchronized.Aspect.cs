@@ -9,7 +9,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Synchronized
     {
         public void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            foreach ( var method in builder.TargetDeclaration.Methods.Where( m => !m.IsStatic))
+            foreach ( var method in builder.Target.Methods.Where( m => !m.IsStatic))
             {
                 builder.AdviceFactory.OverrideMethod(method, nameof(OverrideMethod));
             }

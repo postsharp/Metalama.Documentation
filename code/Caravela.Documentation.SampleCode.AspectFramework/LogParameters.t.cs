@@ -35,7 +35,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
                 goto __aspect_return_1;
             __aspect_return_1:
                 Console.WriteLine(string.Format("Caravela.Documentation.SampleCode.AspectFramework.LogParameters.TargetCode.IntMethod(a = {0})", arguments) + " succeeded");
-                return (int)result;
+                return result;
             }
             catch (Exception e)
             {

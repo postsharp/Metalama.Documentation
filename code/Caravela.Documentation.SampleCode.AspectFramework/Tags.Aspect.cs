@@ -9,9 +9,9 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Tags
         public void BuildAspect( IAspectBuilder<IMethod> builder )
         {
             builder.AdviceFactory.OverrideMethod(
-                builder.TargetDeclaration, 
+                builder.Target, 
                 nameof(OverrideMethod), 
-                tags: new() { ["ParameterCount"] = builder.TargetDeclaration.Parameters.Count });
+                tags: new() { ["ParameterCount"] = builder.Target.Parameters.Count });
         }
 
         [Template]

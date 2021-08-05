@@ -14,7 +14,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
             var formattingString = BuildFormattingString();
 
             // Write entry message.
-            var arguments = meta.Parameters.Values.ToArray();
+            var arguments = meta.Target.Parameters.Values.ToArray();
             Console.WriteLine(formattingString + " started", arguments);
 
             try
@@ -23,7 +23,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
                 dynamic result = meta.Proceed();
 
                 // Display the success message.
-                if (meta.Method.ReturnType.Is(typeof(void)))
+                if (meta.Target.Method.ReturnType.Is(typeof(void)))
                 {
                     Console.WriteLine(string.Format(formattingString, arguments) + " returned " + result);
                 }
@@ -45,13 +45,13 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
         private static string BuildFormattingString()
         {
             var stringBuilder = meta.CompileTime(new StringBuilder());
-            stringBuilder.Append(meta.Type.ToDisplayString());
+            stringBuilder.Append(meta.Target.Type.ToDisplayString());
             stringBuilder.Append('.');
-            stringBuilder.Append(meta.Method.Name);
+            stringBuilder.Append(meta.Target.Method.Name);
             stringBuilder.Append('(');
             var i = meta.CompileTime(0);
 
-            foreach (var p in meta.Parameters)
+            foreach (var p in meta.Target.Parameters)
             {
                 var comma = i > 0 ? ", " : "";
 

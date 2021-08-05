@@ -16,11 +16,11 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImportWithSett
                 {
                     // Call the service provider.
                     service =
-                         meta.Cast(meta.FieldOrProperty.Type,
-                            ServiceLocator.ServiceProvider.GetService(meta.Property.Type.ToType()));
+                         meta.Cast(meta.Target.FieldOrProperty.Type,
+                            ServiceLocator.ServiceProvider.GetService(meta.Target.Property.Type.ToType()));
 
                     // Set the field or property to the new value.
-                    meta.FieldOrProperty.Value = service;
+                    meta.Target.FieldOrProperty.Value = service;
                 }
 
                 return service;

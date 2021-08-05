@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Caravela.Compiler;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImportWithSetter
 {
@@ -14,11 +13,11 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImportWithSett
         {
             get
             {
-                var service = ___formatProvider__OriginalImpl;
+                var service = _formatProvider_Source;
                 if (service == null)
                 {
-                    service = (IFormatProvider)ServiceLocator.ServiceProvider.GetService(Type.GetTypeFromHandle(Intrinsics.GetRuntimeTypeHandle("T:System.IFormatProvider")));
-                    this.___formatProvider__OriginalImpl = service;
+                    service = (IFormatProvider)ServiceLocator.ServiceProvider.GetService(typeof(IFormatProvider));
+                    this._formatProvider_Source = service;
                 }
 
                 return service;
@@ -30,7 +29,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImportWithSett
             }
         }
 
-        private IFormatProvider ___formatProvider__OriginalImpl
+        private IFormatProvider _formatProvider_Source
         {
             get
             {

@@ -10,16 +10,16 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Normalize
         {
             get
             {
-                return this.__Property__OriginalImpl;
+                return this.Property_Source;
             }
 
             set
             {
-                this.__Property__OriginalImpl = value?.Trim().ToLowerInvariant();
+                this.Property_Source = value?.Trim().ToLowerInvariant();
             }
         }
 
-        private string __Property__OriginalImpl
+        private string Property_Source
         {
             get
             {

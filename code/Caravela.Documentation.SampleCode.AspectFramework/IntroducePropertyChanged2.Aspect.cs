@@ -10,11 +10,11 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.IntroducePropertyCha
         public void BuildAspect( IAspectBuilder<INamedType> builder )
         {
             var eventBuilder = builder.AdviceFactory.IntroduceEvent(
-                builder.TargetDeclaration,
+                builder.Target,
                 nameof(PropertyChanged));
 
             builder.AdviceFactory.IntroduceMethod(
-                builder.TargetDeclaration,
+                builder.Target,
                 nameof(OnPropertyChanged),
                 tags: new () {  ["event"] = eventBuilder });
         }

@@ -7,7 +7,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Testing
     {
         public override dynamic OverrideMethod()
         {
-            Console.WriteLine($"Entering {meta.Method.ToDisplayString()}");
+            Console.WriteLine($"Entering {meta.Target.Method.ToDisplayString()}");
 
             try
             {
@@ -15,7 +15,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Testing
             }
             finally
             {
-                Console.WriteLine($"Leaving {meta.Method.ToDisplayString()}");
+                Console.WriteLine($"Leaving {meta.Target.Method.ToDisplayString()}");
             }
         }
     }

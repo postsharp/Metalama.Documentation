@@ -1,5 +1,4 @@
 using System;
-using Caravela.Compiler;
 using Microsoft.Win32;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.RegistryStorage
@@ -14,15 +13,14 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.RegistryStorage
         {
             get
             {
-                var type = Type.GetTypeFromHandle(Intrinsics.GetRuntimeTypeHandle("T:System.Int32"));
                 var value = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\Animals", "Turtles", null);
                 if (value != null)
                 {
-                    return (int)Convert.ChangeType(value, type);
+                    return (int)Convert.ChangeType(value, typeof(int));
                 }
                 else
                 {
-                    return (int)0;
+                    return 0;
                 }
             }
 
@@ -41,15 +39,14 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.RegistryStorage
         {
             get
             {
-                var type = Type.GetTypeFromHandle(Intrinsics.GetRuntimeTypeHandle("T:System.Int32"));
                 var value = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\Animals", "Cats", null);
                 if (value != null)
                 {
-                    return (int)Convert.ChangeType(value, type);
+                    return (int)Convert.ChangeType(value, typeof(int));
                 }
                 else
                 {
-                    return (int)0;
+                    return 0;
                 }
             }
 

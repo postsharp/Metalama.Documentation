@@ -22,11 +22,11 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ImportService
         public override void BuildAspect(IAspectBuilder<IFieldOrProperty> builder)
         {
             // Get the field _serviceProvider and check its type.
-            var serviceProviderField = builder.TargetDeclaration.DeclaringType.Fields.OfName("_serviceProvider").SingleOrDefault();
+            var serviceProviderField = builder.Target.DeclaringType.Fields.OfName("_serviceProvider").SingleOrDefault();
 
             if (serviceProviderField == null)
             {
-                builder.Diagnostics.Report(_serviceProviderFieldMissing, builder.TargetDeclaration.DeclaringType);
+                builder.Diagnostics.Report(_serviceProviderFieldMissing, builder.Target.DeclaringType);
                 return;
             }
             else if (!serviceProviderField.Type.Is(typeof(IServiceProvider)))
@@ -44,7 +44,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ImportService
 
         public override dynamic OverrideProperty
         {
-            get => meta.This._serviceProvider.GetService(meta.FieldOrProperty.Type.ToType());
+            get => meta.This._serviceProvider.GetService(meta.Target.FieldOrProperty.Type.ToType());
 
             set => throw new NotSupportedException();
         }

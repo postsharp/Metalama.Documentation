@@ -13,11 +13,11 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ToString
         {
             var formattingString = meta.CompileTime(new StringBuilder());
             formattingString.Append("{ ");
-            formattingString.Append(meta.Type.Name );
+            formattingString.Append(meta.Target.Type.Name );
             formattingString.Append(" ");
 
             var i = meta.CompileTime(0);
-            var fields = meta.Type.FieldsAndProperties.Where( f => !f.IsStatic ).ToList();
+            var fields = meta.Target.Type.FieldsAndProperties.Where( f => !f.IsStatic ).ToList();
 
             var values = new object[fields.Count];
             foreach ( var field in fields)

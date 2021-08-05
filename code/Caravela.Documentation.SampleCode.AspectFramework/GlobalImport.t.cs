@@ -1,20 +1,16 @@
 using System;
 using System.Collections.Generic;
-using Caravela.Compiler;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImport
 {
     class TargetCode
     {
-
-
-        private IFormatProvider _formatProvider;
         [Import]
         IFormatProvider FormatProvider
         {
             get
             {
-                return (IFormatProvider)ServiceLocator.ServiceProvider.GetService(Type.GetTypeFromHandle(Intrinsics.GetRuntimeTypeHandle("T:System.IFormatProvider")));
+                return (IFormatProvider)ServiceLocator.ServiceProvider.GetService(typeof(IFormatProvider));
             }
         }
     }
