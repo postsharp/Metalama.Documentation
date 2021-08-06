@@ -34,8 +34,8 @@ The <xref:Caravela.Framework.Aspects.meta> exposes to the following members:
 - <xref:Caravela.Framework.Aspects.meta.Diagnostics> allows your aspect to report or suppress diagnostics. See <xref:diagnostics> for details.
 - <xref:Caravela.Framework.Aspects.meta.This> represents the `this` instance. Together with <xref:Caravela.Framework.Aspects.meta.Base>, <xref:Caravela.Framework.Aspects.meta.ThisStatic> and <xref:Caravela.Framework.Aspects.meta.BaseStatic>, it allows your template to access members of the target class using dynamic code (see below).
 - <xref:Caravela.Framework.Aspects.meta.Tags> gives access to an arbitrary dictionary that has been passed to the advice factory method.
-- <xref:Caravela.Framework.Aspects.meta.CompileTime%60%601(%60%600)> forces a coerces a neutral expression into a compile-time expression.
-- <xref:Caravela.Framework.Aspects.meta.RunTime%60%601(%60%600)> converts the result of a compile-time expression into a run-time value (see below).
+- <xref:Caravela.Framework.Aspects.meta.CompileTime*> forces a coerces a neutral expression into a compile-time expression.
+- <xref:Caravela.Framework.Aspects.meta.RunTime*> converts the result of a compile-time expression into a run-time value (see below).
 
 ### Compile-time local variables
 
@@ -141,7 +141,7 @@ You can use `meta.RunTime( expression )` to convert the result of a compile-time
 - Tuples;
 - Reflection objects: <xref:System.Type>, <xref:System.Reflection.MethodInfo>, <xref:System.Reflection.ConstructorInfo>, <xref:System.Reflection.EventInfo>, <xref:System.Reflection.PropertyInfo>, <xref:System.Reflection.FieldInfo>;
 - <xref:System.Guid>;
-- Generic collections: <xref:System.Collections.Generic.List%601> and <xref:System.Collections.Generic.Dictionary%602>;
+- Generic collections: <xref:System.Collections.Generic.List`1> and <xref:System.Collections.Generic.Dictionary`2>;
 - <xref:System.DateTime> and <xref:System.TimeSpan>.
 
 It is not possible to build custom convertors at the moment.

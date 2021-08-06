@@ -5,7 +5,7 @@ uid: aspect-framework-design
 
 ## Conceptual Class Diagram
 
-An aspect is, by definition, a class that implements the <xref:Caravela.Framework.Aspects.IAspect%601> generic interface. The generic parameter of this interface is the type of declarations to which that aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
+An aspect is, by definition, a class that implements the <xref:Caravela.Framework.Aspects.IAspect`1> generic interface. The generic parameter of this interface is the type of declarations to which that aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
 
 ```mermaid
 classDiagram
@@ -71,7 +71,7 @@ The only _declarative advice_ is the _member introduction_ advice and is marked 
 
 #### Imperative advices
 
-_Imperative advices_ are added by the implementation of the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect(Caravela.Framework.Aspects.IAspectBuilder{%600})> method thanks to the methods exposed by the <xref:Caravela.Framework.Aspects.IAspectLayerBuilder.AdviceFactory> property of the `builder` parameter. See <xref:Caravela.Framework.Aspects.IAdviceFactory> for a complete list of methods. In short:
+_Imperative advices_ are added by the implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method thanks to the methods exposed by the <xref:Caravela.Framework.Aspects.IAspectLayerBuilder.AdviceFactory> property of the `builder` parameter. See <xref:Caravela.Framework.Aspects.IAdviceFactory> for a complete list of methods. In short:
 
 - `OverrideMethod`, `OverrideFieldOrProperty`, `OverrideFieldOrPropertyAccessors`, `OverrideEvent`, `OverrideEventAccessors` allow you to replace the implementation of a type member. See <xref:overriding-members> for details.
 - `IntroduceMethod`, `IntroduceProperty`, `IntroduceField` and `IntroduceEvent` allows your aspect to introduce new members into the target type. See <xref:introducing-members> for details.
@@ -87,7 +87,7 @@ For details, see <xref:templates>.
 
 ### Disabling itself
 
-If an aspect instance decides that it cannot be applied to the target it has been applied to, its implementation of the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect(Caravela.Framework.Aspects.IAspectBuilder{%600})> method can call the <xref:Caravela.Framework.Aspects.IAspectBuilder.SkipAspect> method. The effect of this method is to prevent the aspect to provide any advice or child aspect and to set the <xref:Caravela.Framework.Aspects.IAspectInstance.IsSkipped> to `false`.
+If an aspect instance decides that it cannot be applied to the target it has been applied to, its implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method can call the <xref:Caravela.Framework.Aspects.IAspectBuilder.SkipAspect> method. The effect of this method is to prevent the aspect to provide any advice or child aspect and to set the <xref:Caravela.Framework.Aspects.IAspectInstance.IsSkipped> to `false`.
 
 The aspect may or may not report a diagnostic before calling <xref:Caravela.Framework.Aspects.IAspectBuilder.SkipAspect>. Calling this method does not report any diagnostic.
 
@@ -109,10 +109,10 @@ This feature is not yet implemented.
 
 ### Defining the name and description of the aspect class in the IDE
 
-To define the appearance of the aspect in the IDE, implement the <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass(Caravela.Framework.Aspects.IAspectClassBuilder)> method and set the <xref:Caravela.Framework.Aspects.IAspectClassBuilder.DisplayName> and <xref:Caravela.Framework.Aspects.IAspectClassBuilder.Description> properties of the <xref:Caravela.Framework.Aspects.IAspectClassBuilder>.
+To define the appearance of the aspect in the IDE, implement the <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass*> method and set the <xref:Caravela.Framework.Aspects.IAspectClassBuilder.DisplayName> and <xref:Caravela.Framework.Aspects.IAspectClassBuilder.Description> properties of the <xref:Caravela.Framework.Aspects.IAspectClassBuilder>.
 
 > [!WARNING]
-> Do not reference instance class members in your implementation of  <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass(Caravela.Framework.Aspects.IAspectClassBuilder)>. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` -- that is, _without_ invoking the class constructor.
+> Do not reference instance class members in your implementation of  <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass*>. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` -- that is, _without_ invoking the class constructor.
 
 ### Using several layers of advices
 
@@ -154,7 +154,7 @@ Aspects cannot modify declarations of lower depth than the target of the aspect.
 
 2. Initialization of aspect classes.
     1. A prototype instance of each aspect class is created using `FormatterServices.GetUninitializedObject`.
-    2. All  <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass(Caravela.Framework.Aspects.IAspectClassBuilder)>  methods are executed. Aspect layers are discovered.
+    2. All  <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass*>  methods are executed. Aspect layers are discovered.
     3. Aspect ordering relationships are discovered in the current project and all referenced assemblies.
     4. Aspects layers are ordered.
 
@@ -166,7 +166,7 @@ For each aspect layer, by order of application (i.e., inverse order of execution
   - Aspect sources are evaluated for this aspect type.
   - By visiting depth:
     - Aspects are instantiated.
-    - <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect(Caravela.Framework.Aspects.IAspectBuilder{%600})> is invoked.
+    - <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> is invoked.
     - Advices are added to the next steps of the pipeline.
 
 - For all layers:

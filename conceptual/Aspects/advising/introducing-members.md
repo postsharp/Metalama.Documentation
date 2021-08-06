@@ -89,15 +89,15 @@ Implement the template in your aspect class and annotate it with the <xref:Carav
 
 ### Step 2. Invoke IAdviceFactory.Introduce*
 
-In your implementation of the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect(Caravela.Framework.Aspects.IAspectBuilder{%600})> method, call one of the following methods and store the return value in a variable.
+In your implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method, call one of the following methods and store the return value in a variable.
 
-- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceMethod(Caravela.Framework.Code.INamedType,System.String,Caravela.Framework.Aspects.IntroductionScope,Caravela.Framework.Aspects.OverrideStrategy,System.Collections.Generic.Dictionary{System.String,System.Object})> returning an <xref:Caravela.Framework.Code.Builders.IMethodBuilder>;
+- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceMethod*> returning an <xref:Caravela.Framework.Code.Builders.IMethodBuilder>;
 
-- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceProperty(Caravela.Framework.Code.INamedType,System.String,Caravela.Framework.Aspects.IntroductionScope,Caravela.Framework.Aspects.OverrideStrategy,System.Collections.Generic.Dictionary{System.String,System.Object})> returning an <xref:Caravela.Framework.Code.Builders.IPropertyBuilder>;
+- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceProperty*> returning an <xref:Caravela.Framework.Code.Builders.IPropertyBuilder>;
 
-- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceEvent(Caravela.Framework.Code.INamedType,System.String,Caravela.Framework.Aspects.IntroductionScope,Caravela.Framework.Aspects.OverrideStrategy,System.Collections.Generic.Dictionary{System.String,System.Object})> returning an <xref:Caravela.Framework.Code.Builders.IEventBuilder>;
+- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceEvent*> returning an <xref:Caravela.Framework.Code.Builders.IEventBuilder>;
 
-- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceField(Caravela.Framework.Code.INamedType,System.String,Caravela.Framework.Aspects.IntroductionScope,Caravela.Framework.Aspects.OverrideStrategy)> returning an <xref:Caravela.Framework.Code.Builders.IFieldBuilder>.
+- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceField*> returning an <xref:Caravela.Framework.Code.Builders.IFieldBuilder>.
 
 A call to these method creates a member that have the same characteristics of the template (name, signature, ...), taking into account the properties of the <xref:Caravela.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute. However, they return a _builder_ object that allows you to modify these characteristics.
 
@@ -130,10 +130,10 @@ Most of the times, when you override a method, you will want to invoke the aspec
 > [!NOTE] 
 > TODO. This currently does not work.
 
-- To invoke the base method or accessor with exactly the same arguments, call <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed()>.
+- To invoke the base method or accessor with exactly the same arguments, call <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed*>.
 - To invoke the base method with different arguments, use <xref:Caravela.Framework.Code.Advised.IAdvisedMethod.Invoke(System.Object[])?text=meta.Target.Method.Invoke>.
 - To call the base property getter or setter, use <xref:Caravela.Framework.Code.Advised.IHasRuntimeValue.Value?text=meta.Property.Value>.
-- To access the base event, use <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.AddMethod?text=meta.Event.AddMethod.Invoke()>, <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.RemoveMethod?text=meta.Event.RemoveMethod.Invoke()> or <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.RaiseMethod?text=meta.Event.RaiseMethod.Invoke()>.
+- To access the base event, use <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.AddMethod?text=meta.Event.AddMethod.Invoke*>.
 
 ### Example
 
