@@ -50,13 +50,106 @@ If you want to invoke the method with a totally different set of arguments, you 
 
 ## Overriding async and iterator methods
 
-By default, the <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideMethod> method is used as a template for all methods, including async and iterator methods. This behavior works great most of the time, but it has a few limitations:
+By default, the <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideMethod> method is used as a template for all methods, including async and iterator methods. 
 
-* You cannot use `await` or `yield` in the default template.
-* When you call `meta.Proceed()` in the default template, it causes the complete evaluation of the async method or iterator.
+To make the default template work naturally even for async and iterator methods, calls to `meta.Proceed()` and `return` statements are interpreted differently in each situation to respect the intent of normal (non-async, non-iterator) code. That is, the default behavior tries to respect the _decorator_ pattern.
 
 > [!WARNING]
 > Applying the default <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideMethod> template to an iterator the stream to be _buffered_ into a `List<T>`. In case of long-running streams, this buffering may be undesirable. In this case, specific iterator templates must be specified (see below).
+
+The following table lists the transformations applied to the `meta.Proceed()` expression and the `return` statement when a default template is applied to an async or iterator method:
+
+<table>
+   <tr>
+      <th>Target Method</th>
+      <th>
+        Transformation of `meta.Proceed()`
+      </th>
+      <th>
+         Transformation of `return result`
+      </th>
+   </tr>
+   <tr>
+      <td>
+         `async`
+      </td>
+      <td>
+         `await meta.Proceed()`
+      </td>
+
+      <td>
+         `return result`
+      </td>
+   </tr>
+    <tr>
+      <td>
+         `IEnumerable<T>` iterator
+      </td>
+      <td>
+        `RunTimeAspectHelper.Buffer( meta.Proceed() )`
+        returning a `List<T>`
+      </td>
+      <td>
+         `return result`
+      </td>
+   </tr>
+   <tr>
+      <td>
+         `IEnumerator<T>` iterator
+      </td>
+      <td>
+        `RunTimeAspectHelper.Buffer( meta.Proceed() )`
+        returning a `List<T>.Enumerator`
+      </td>
+      <td>
+         `return result`
+      </td>
+   </tr>
+    <tr>
+      <td>
+         `IAsyncEnumerable<T> async`
+      </td>
+      <td>
+         `await RunTimeAspectHelper.BufferAsync( meta.Proceed() )`
+        returning an <xref:Caravela.Framework.RunTime.AsyncEnumerableList`1>
+      </td>
+      <td>
+         ```
+         await foreach (var r in result)
+         {
+               yield return r;
+         }
+
+         yield break;
+         ```         
+      </td>
+   </tr>
+     <tr>
+      <td>
+         `IAsyncEnumerator<T> async`
+      </td>
+      <td>
+        `await RunTimeAspectHelper.BufferAsync( meta.Proceed() )`
+        returning an <xref:Caravela.Framework.RunTime.AsyncEnumerableList`1.AsyncEnumerator>
+      </td>
+      <td>
+         ```
+         await using ( result )
+         {
+               while (await result.MoveNextAsync())
+               {
+                  yield return result.Current;
+               }
+         }
+         yield break;
+         ``` 
+      </td>
+   </tr>
+   </table>
+
+
+As you can see, the buffering of iterators is performed by the <xref:Caravela.Framework.RunTime.RunTimeAspectHelper.Buffer*> and <xref:Caravela.Framework.RunTime.RunTimeAspectHelper.BufferAsync*> methods.
+
 
 ### Example: the default template applied to all kinds of methods
 
@@ -67,7 +160,12 @@ The following example demonstrates the behavior of the default template when app
 
 ### Implementing a specific template
 
-When the default template is not sufficient to implement your aspect, you can implement different variants of the `OverrideMethod`. For each variant, instead of calling <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed>, you will call a variant of this method that has a relevant return type.
+The default template works great most of the time even on async methods and iterators, but it has a few limitations:
+
+* You cannot use `await` or `yield` in the default template.
+* When you call `meta.Proceed()` in the default template, it causes the complete evaluation of the async method or iterator.
+
+To overcome these limitations, you can implement different variants of the `OverrideMethod`. For each variant, instead of calling <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed>, you will call a variant of this method that has a relevant return type.
 
 | Template Method                 | Proceed Method                            | Description |
 |---|---|--|
