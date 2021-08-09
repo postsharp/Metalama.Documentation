@@ -14,14 +14,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Normalize
         [Template]
         string OverrideProperty
         {
-            set
-            {
-
-                // Bug #28802: Expression-bodied setter templates are ignored.
-                // Bug #28803: Setting a value through meta.Target.FieldOrProperty.Value generates access to the current layer instead of the next one.
-
-                meta.Target.FieldOrProperty.Value = value?.Trim().ToLowerInvariant();
-            }
+            set => meta.Target.FieldOrProperty.Value = value?.Trim().ToLowerInvariant();
         }
     }
 }

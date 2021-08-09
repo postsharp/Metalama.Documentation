@@ -7,7 +7,7 @@ This article explains how to report a diagnostic (error, warning or information 
 
 ## Reporting a diagnostic
 
-TODO: When to report a diagnostic? Eligibility vs diagnostic.
+[comment]: # (TODO: When to report a diagnostic? Eligibility vs diagnostic.)
 
 To report a diagnostic:
 

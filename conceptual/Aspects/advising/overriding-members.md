@@ -10,14 +10,14 @@ In the section <xref:simple-aspects>, you have learned to override methods, prop
 
 ## Overriding methods
 
-To override one or more methods, your aspects needs to implement the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.AdviceFactory`.
+To override one or more methods, your aspects needs to implement the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod*?text=builder.AdviceFactory.OverrideMethod> method.
 
 The _first argument_ of `OverrideMethod` is the <xref:Caravela.Framework.Code.IMethod> that you want to override. This method must be in the type being targeted by the current aspect instance.
 
 The _second argument_ of `OverrideMethod` is the name of the template method. This method must exist in the aspect class and, additionally:
 
-* the template method must be annotated with the `[Template]` attribute,
-* the template method must have exactly the following signature:
+* The template method must be annotated with the `[Template]` attribute,
+* The template method must have a compatible return type and must have only parameters that exist in the target method with a compatible type. When the type is unknown, `dynamic` can be used. For instance, the following template method will match any method because it has no parameter (therefore will match any parameter list) and have the universal `dynamic` return type, which also matches `void`.
 
     ```cs
     dynamic? Template()
@@ -31,6 +31,10 @@ The following aspects wraps all instance methods with a `lock( this )` statement
 > In a production-ready implementation, you should not lock `this` but a private field. You can introduce this field as described in <xref:introducing-members>. A product-ready implementation should also wrap properties.
 
 [!include[Synchronized](../../../code/Caravela.Documentation.SampleCode.AspectFramework/Synchronized.cs)]
+
+### Specifying templates for async and iterator methods
+
+Instead of providing a single template method, you can provide several of them and let the framework choose which one is the most suitable. The principle of this feature is described in <xref:overriding-methods#async-iterator-specific-template>. Instead of passing a string to the second argument of `OverrideMethod`, you can pass a <xref:Caravela.Framework.Aspects.MethodTemplateSelector> and initialize it with many templates. See the reference documentation of <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod*?> and <xref:Caravela.Framework.Aspects.MethodTemplateSelector> for details.
 
 ## Overriding fields or properties
 
@@ -89,7 +93,6 @@ The following aspect can be applied to fields of properties of type `string`. It
 Advising fields or properties with the `OverrideFieldOrProperty` has the following limitations over the use of `OverrideFieldOrPropertyAccessors`:
 
 * You cannot choose a template for each accessor separately.
-* You cannot have an `async` or iterator getter template. (Not yet implemented in `OverrideFieldOrPropertyAccessors` anyway.)
 * You cannot have generic templates.  (Not yet implemented in `OverrideFieldOrPropertyAccessors` anyway.)
 
 To alleviate these limitations, you can use the method <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrPropertyAccessors*> and provide one or two method templates: a getter template and/or a setter template.
@@ -98,10 +101,16 @@ The templates must fulfill the following conditions:
 
 * Both templates must be annotated with the `[Template]` attribute.
 * The getter template must be of signature `T Getter()`, where `T` is either `dynamic` or a type compatible with the target field or property.
-* The setter template msst be of signature `void Setter(T value)`, where the name `value` of the first parameter is mandatory.
+* The setter template must be of signature `void Setter(T value)`, where the name `value` of the first parameter is mandatory.
 
 ## Overriding events
 
 Overriding events is possible using the <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideEventAccessors*> method. It follows the same principles than `OverridePropertyAccessors`.
 
 It is possible to override the `add` and `remove` semantics of an event, but not yet the invocation of an event. Therefore, it is of little use and we are skipping the example.
+
+
+> [!div class="see-also"]
+> <xref:overriding-methods>
+> <xref:overriding-fields-or-properties>
+> <xref:overriding-events>

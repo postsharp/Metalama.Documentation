@@ -120,24 +120,18 @@ When you want to introduce a member to a type, it may happen that the same membe
 - For declarative advices, set the <xref:Caravela.Framework.Aspects.TemplateAttribute.WhenExists> property of the custom attribute,
 - For programmatic advices, set the _whenExists_ optional parameter of the advice factory method.
 
-> [!NOTE] 
-> TODO. The implementation and documentation are not final. Another property and parameter should be defined to cope with the case when the member is inherited.
+[comment]: # (TODO: The implementation and documentation are not final. Another property and parameter should be defined to cope with the case when the member is inherited.)
 
 ### Accessing the overridden declaration
 
 Most of the times, when you override a method, you will want to invoke the aspect to invoke the base implementation. The same applies to properties and events. In plain C#, when you override a base-class member in a derived class, you call the member with the `base` prefix. A similar approach exists in Caravela.
-
-> [!NOTE] 
-> TODO. This currently does not work.
 
 - To invoke the base method or accessor with exactly the same arguments, call <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed*>.
 - To invoke the base method with different arguments, use <xref:Caravela.Framework.Code.Advised.IAdvisedMethod.Invoke(System.Object[])?text=meta.Target.Method.Invoke>.
 - To call the base property getter or setter, use <xref:Caravela.Framework.Code.Advised.IHasRuntimeValue.Value?text=meta.Property.Value>.
 - To access the base event, use <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.AddMethod?text=meta.Event.AddMethod.Invoke*>.
 
-### Example
-
-TODO: When it will work, Disposable example.
+[comment]: # (TODO: When it will work, Disposable example.)
 
 ## Referencing introduced members in template
 

@@ -30,7 +30,7 @@ Implementing an interface in a complete dynamic manner, when the interface itsel
 
 When you introduce an interface member to a type, your will often want to access it from templates. Unless the member is an explicit implementations, you have two options:
 
-(TODO: better code examples)
+[comment]: # (TODO: better code examples)
 
 
 ### Option 1. Access the aspect template member
@@ -46,7 +46,7 @@ this.Dispose();
 meta.This.Dispose();
 ```
 
-### Accessing explicit implementations
+## Accessing explicit implementations
 
 The following strategies are possible:
 

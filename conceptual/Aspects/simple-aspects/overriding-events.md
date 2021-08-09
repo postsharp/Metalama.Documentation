@@ -7,3 +7,5 @@ Overriding events works similarly than overriding properties. You have to create
 
 Since overriding `add` and `remove` without `raise` is of limited use, we are skipping the example for now.
 
+>[!div class="see-also"]
+> <xref:overriding-members>

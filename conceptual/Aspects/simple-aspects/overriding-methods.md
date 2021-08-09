@@ -50,9 +50,11 @@ If you want to invoke the method with a totally different set of arguments, you 
 
 ## Overriding async and iterator methods
 
+> [!div id="async-iterator-default-template" class="anchor"]
+
 By default, the <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideMethod> method is used as a template for all methods, including async and iterator methods. 
 
-To make the default template work naturally even for async and iterator methods, calls to `meta.Proceed()` and `return` statements are interpreted differently in each situation to respect the intent of normal (non-async, non-iterator) code. That is, the default behavior tries to respect the _decorator_ pattern.
+To make the default template work naturally even for async and iterator methods, calls to `meta.Proceed()` and `return` statements are interpreted differently in each situation in order to respect the intent of normal (non-async, non-iterator) code. That is, the default behavior tries to respect the _decorator_ pattern.
 
 > [!WARNING]
 > Applying the default <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideMethod> template to an iterator the stream to be _buffered_ into a `List<T>`. In case of long-running streams, this buffering may be undesirable. In this case, specific iterator templates must be specified (see below).
@@ -63,10 +65,10 @@ The following table lists the transformations applied to the `meta.Proceed()` ex
    <tr>
       <th>Target Method</th>
       <th>
-        Transformation of `meta.Proceed()`
+        Transformation of `"meta.Proceed()"`
       </th>
       <th>
-         Transformation of `return result`
+         Transformation of `"return result;"`
       </th>
    </tr>
    <tr>
@@ -157,8 +159,9 @@ The following example demonstrates the behavior of the default template when app
 
 [!include[Default template applied to all kinds of methods](../../../code/Caravela.Documentation.SampleCode.AspectFramework/OverrideMethodDefaultTemplateAllKinds.cs)]
 
-
 ### Implementing a specific template
+
+> [!div id="async-iterator-specific-template" class="anchor"]
 
 The default template works great most of the time even on async methods and iterators, but it has a few limitations:
 
@@ -188,3 +191,5 @@ The following example derives from the previous one implements all specific temp
 If you want to use the specific templates for methods that have the correct return type but are not implemented using `await` or `yield`, set the <xref:Caravela.Framework.Aspects.OverrideMethodAspect.UseAsyncTemplateForAnyAwaitable>
 or <xref:Caravela.Framework.Aspects.OverrideMethodAspect.UseEnumerableTemplateForAnyEnumerable> property of the <xref:Caravela.Framework.Aspects.OverrideMethodAspect> class to `true` in the aspect constructor.
 
+>[!div class="see-also"]
+> <xref:overriding-members>

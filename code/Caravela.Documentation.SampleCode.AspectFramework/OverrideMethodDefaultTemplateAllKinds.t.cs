@@ -108,17 +108,12 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.OverrideMethodDefaul
             Console.WriteLine($"AsyncEnumeratorMethod: start");
             var result = await AsyncEnumeratorMethod_Source().BufferAsync();
             Console.WriteLine($"AsyncEnumeratorMethod: returning {result}.");
-            var enumerator = result;
-            try
+            await using (result)
             {
-                while (await enumerator.MoveNextAsync())
+                while (await result.MoveNextAsync())
                 {
-                    yield return enumerator.Current;
+                    yield return result.Current;
                 }
-            }
-            finally
-            {
-                await enumerator.DisposeAsync();
             }
 
             yield break;

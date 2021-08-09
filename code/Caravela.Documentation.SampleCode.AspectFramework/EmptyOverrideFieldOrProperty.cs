@@ -8,7 +8,8 @@ namespace Caravela.Documentation.SampleCode.AspectFramework
 {
     class EmptyOverrideFieldOrPropertyExample
     {
-        // TODO: Add a field (bug #28910).
+        [EmptyOverrideFieldOrProperty]
+        public int Field;
 
         [EmptyOverrideFieldOrProperty]
         public string Property { get; set; }

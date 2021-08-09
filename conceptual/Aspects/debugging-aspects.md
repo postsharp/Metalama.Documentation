@@ -22,6 +22,5 @@ To debug compile-time logic:
     dotnet build -p:DebugCaravela=True
     ```
 
-## See Also
-
-<xref:debugging>
+> [!div class="see-also"]
+> <xref:debugging>

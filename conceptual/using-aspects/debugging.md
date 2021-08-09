@@ -12,6 +12,5 @@ When debugging code that uses Caravela, by default, the debugger only shows you 
 | `CaravelaEmitCompilerTransformedFiles` | Setting this property to `True` means that the transformed code will be written to disk, to the `obj/$Configuration/$Framework/transformed` directory (e.g. `obj/Debug/net5.0/transformed`). |
 | `CaravelaDebugTransformedCode`         | Setting this property to `True` means transformed code will be used when debugging and when producing errors and warnings.                                                                   |
 
-## See Also
-
-<xref:debugging-aspects>
+> [!div class="see-also"]
+> <xref:debugging-aspects>

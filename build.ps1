@@ -59,9 +59,17 @@ function Clean()
 function Restore()
 {
 
+    # Restore DocFx
     nuget restore "docfx\packages.config" -OutputDirectory "docfx\packages"
 
     if ($LASTEXITCODE -ne 0 ) { exit }
+
+
+    # Restore samples and DoxFX extensions
+    dotnet restore "code" --no-cache --force
+
+    if ($LASTEXITCODE -ne 0 ) { exit }
+
 }
 
 function Metadata()
@@ -81,10 +89,7 @@ function BuildExtensions()
 
 function RunTests()
 {
-    dotnet restore "code\Caravela.Documentation.SampleCode.sln"
-
-    if ($LASTEXITCODE -ne 0 ) { exit }
-
+    
     dotnet test "code\Caravela.Documentation.SampleCode.sln"
 
     # We tolerate failing tests for now.

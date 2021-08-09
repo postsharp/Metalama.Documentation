@@ -3,6 +3,10 @@ using System.Linq;
 using Caravela.Framework.Aspects;
 using Caravela.Framework.Code;
 
+using Caravela.Documentation.SampleCode.AspectFramework.Ordering;
+[assembly: AspectOrder(typeof(Aspect1), typeof(Aspect2))]
+
+
 namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
 {
     internal class Aspect1 : Attribute, IAspect<INamedType>
@@ -16,7 +20,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
         }
 
         [Introduce]
-        public void Method1()
+        public static void IntroducedMethod1()
         {
             Console.WriteLine("Method introduced by Aspect1.");
         }
@@ -24,7 +28,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
         [Template]
         private dynamic? Override()
         {
-            Console.WriteLine("Executing Aspect1. Methods present before applying Aspect1: "
+            Console.WriteLine($"Executing Aspect1 on {meta.Target.Method.Name}. Methods present before applying Aspect1: "
                 + string.Join(", ", meta.Target.Type.Methods.Select(m => m.Name).ToArray()));
 
             return meta.Proceed();
@@ -43,7 +47,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
 
 
         [Introduce]
-        public void Method2()
+        public static void IntroducedMethod2()
         {
             Console.WriteLine("Method introduced by Aspect2.");
         }
@@ -51,7 +55,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
         [Template]
         private dynamic? Override()
         {
-            Console.WriteLine("Executing Aspect2. Methods present before applying Aspect2: "
+            Console.WriteLine($"Executing Aspect2 on {meta.Target.Method.Name}. Methods present before applying Aspect2: "
                 + string.Join(", ", meta.Target.Type.Methods.Select(m => m.Name).ToArray()));
 
             return meta.Proceed();

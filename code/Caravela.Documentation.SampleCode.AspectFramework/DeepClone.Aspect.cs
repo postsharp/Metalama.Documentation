@@ -7,18 +7,18 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
 {
     class DeepCloneAttribute : Attribute, IAspect<INamedType>
     {
-        public void BuildAspect( IAspectBuilder<INamedType> builder )
+        public void BuildAspect(IAspectBuilder<INamedType> builder)
         {
             var typedMethod = builder.AdviceFactory.IntroduceMethod(
-                builder.Target, 
+                builder.Target,
                 nameof(CloneImpl),
-                whenExists:OverrideStrategy.Override );
+                whenExists: OverrideStrategy.Override);
 
             typedMethod.Name = "Clone";
             typedMethod.ReturnType = builder.Target;
 
             builder.AdviceFactory.ImplementInterface(
-                builder.Target, 
+                builder.Target,
                 typeof(ICloneable),
                 whenExists: OverrideStrategy.Ignore);
         }
@@ -26,40 +26,43 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
         [Template(IsVirtual = true)]
         public virtual dynamic CloneImpl()
         {
-            // Define a local variable of the same type as the target type.
-            var clone = meta.Target.Type.DefaultValue();
+            // This compile-time variable will receive the expression representing the base call.
+            // If we have a public Clone method, we will use it (this is the chaining pattern). Otherwise,
+            // we will call MemberwiseClone (this is the initialization of the pattern).
+            IExpression baseCall;
 
-            // TODO: access to meta.Target.Method.Invokers.Base does not work.
-            if ( meta.Target.Method.Invokers.Base == null )
+            if (meta.Target.Method.IsOverride)
             {
-                // Invoke base.MemberwiseClone().
-                clone = meta.Cast( meta.Target.Type,  meta.Base.MemberwiseClone() );
+                meta.DefineExpression(meta.Base.Clone(), out baseCall);
             }
             else
             {
-                // Invoke the base method.
-                clone = meta.Target.Method.Invokers.Base.Invoke(meta.This);
+                meta.DefineExpression(meta.Base.MemberwiseClone(), out baseCall);
             }
+
+            // Define a local variable of the same type as the target type.
+            var clone = meta.Cast(meta.Target.Type, baseCall);
 
             // Select clonable fields.
             var clonableFields =
                 meta.Target.Type.FieldsAndProperties.Where(
                     f => f.IsAutoPropertyOrField &&
-                    (f.Type.Is(typeof(ICloneable)) || 
+                    ((f.Type.Is(typeof(ICloneable)) && f.Type.SpecialType != SpecialType.String) ||
                     (f.Type is INamedType fieldNamedType && fieldNamedType.Aspects<DeepCloneAttribute>().Any())));
 
-            foreach ( var field in clonableFields )
+            foreach (var field in clonableFields)
             {
-                // Check if we have a public method 'Clone()'.
+                // Check if we have a public method 'Clone()' for the type of the field.
                 var fieldType = (INamedType)field.Type;
                 var cloneMethod = fieldType.Methods.OfExactSignature("Clone", 0, Array.Empty<IType>());
 
-                if ( (cloneMethod != null && cloneMethod.Accessibility == Accessibility.Public) || fieldType.Aspects<DeepCloneAttribute>().Any() )
+                if (cloneMethod is { Accessibility: Accessibility.Public } ||
+                     fieldType.Aspects<DeepCloneAttribute>().Any())
                 {
                     // If yes, call the method without a cast.
-                    field.Invokers.Base.SetValue( 
+                    field.Invokers.Base.SetValue(
                         clone,
-                        meta.Cast(fieldType, field.Invokers.Base.GetValue(meta.This).Clone()) );
+                        meta.Cast(fieldType, field.Invokers.Base.GetValue(meta.This).Clone()));
 
                 }
                 else
@@ -74,10 +77,8 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
             return clone;
         }
 
-        [InterfaceMember( IsExplicit = true)]
-        object Clone()
-        {
-            return meta.This.Clone();
-        }
+        [InterfaceMember(IsExplicit = true)]
+        object Clone() => meta.This.Clone();
+
     }
 }

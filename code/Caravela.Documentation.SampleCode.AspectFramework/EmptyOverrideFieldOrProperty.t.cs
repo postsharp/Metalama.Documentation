@@ -10,8 +10,23 @@ namespace Caravela.Documentation.SampleCode.AspectFramework
     {
 
 
+        private int _field;
+
+
+        public int Field
+        {
+            get
+            {
+                return this._field;
+            }
+
+            set
+            {
+                this._field = value;
+            }
+        }
+
         private string _property;
-        // TODO: Add a field (bug #28910).
 
         [EmptyOverrideFieldOrProperty]
         public string Property

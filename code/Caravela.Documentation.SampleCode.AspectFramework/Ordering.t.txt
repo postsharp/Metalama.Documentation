@@ -1,0 +1,11 @@
+Executing SourceMethod:
+Executing Aspect1 on SourceMethod. Methods present before applying Aspect1: SourceMethod, IntroducedMethod2
+Executing Aspect2 on SourceMethod. Methods present before applying Aspect2: SourceMethod
+Method defined in source code.
+---
+Executing IntroducedMethod1:
+Method introduced by Aspect1.
+---
+Executing IntroducedMethod2:
+Executing Aspect1 on IntroducedMethod2. Methods present before applying Aspect1: SourceMethod, IntroducedMethod2
+Method introduced by Aspect2.
