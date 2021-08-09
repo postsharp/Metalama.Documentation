@@ -149,7 +149,7 @@ You can use `meta.RunTime( expression )` to convert the result of a compile-time
 - Generic collections: <xref:System.Collections.Generic.List`1> and <xref:System.Collections.Generic.Dictionary`2>;
 - <xref:System.DateTime> and <xref:System.TimeSpan>.
 
-It is not possible to build custom convertors at the moment.
+It is not possible to build custom converters at the moment. However, you can generate an expression as a `string`, parse it, and use it in a run-time expression. See [Parsing C# code](#parsing) for details.
 
 #### Example
 
@@ -187,7 +187,7 @@ You can combine dynamic code and compile-time expressions:
 meta.This.OnPropertyChanged( meta.Property.Name );
 ```
 
-### Generating calls to the call model
+### Generating calls to the code model
 
 When you have a <xref:Caravela.Framework.Code> representation of a declaration, you may want to access it from your generated run-time code. You can do this by using the `Invokers` property exposed by the <xref:Caravela.Framework.Code.IMethod>, <xref:Caravela.Framework.Code.IFieldOrProperty> or <xref:Caravela.Framework.Code.IEvent> interfaces.
 
@@ -221,7 +221,7 @@ This will generate the following code:
 MyRunTimeMethod( new object[] { "a", DateTime.Now });
 ```
 
-### Generating interpolated string
+### Generating interpolated strings
 
 Instead of generating a string an an array separately and using `string.Format`, you can generate an interpolated string using the <xref:Caravela.Framework.Code.Syntax.InterpolatedStringBuilder> class.
 
@@ -229,6 +229,8 @@ The following example shows how an <xref:Caravela.Framework.Code.Syntax.Interpol
 
 [!include[ToString](../../code/Caravela.Documentation.SampleCode.AspectFramework/ToString.cs)]
  
+> [!div id="parsing" class="anchor"]
+
 ### Parsing C# code
 
 Sometimes it is easier to generate the run-time code as a simple text instead of using a complex meta API. If you want to use C# code represented as a `string` in your code, you can do it using the <xref:Caravela.Framework.Aspects.meta.ParseExpression*?text=meta.ParseExpression> method. This method returns an <xref:Caravela.Framework.Code.IExpression>, which is a compile-time object that you can use anywhere in compile-time code. The <xref:Caravela.Framework.Code.IExpression> interface exposes the run-time expression in the <xref:Caravela.Framework.Code.IExpression.Value> property.
@@ -249,7 +251,7 @@ MyRunTimeMethod((a + b)/c)
 >[!NOTE] 
 > The string expression is inserted _as is_ without any validation or transformation. Always specify the full namespace of any declaration used in a text expression.
 
-### Capturing run-time expressions into a compile-time object
+### Capturing run-time expressions into compile-time objects
 
 If you want to manipulate a run-time expression as a compile-time object, you can do it using the <xref:Caravela.Framework.Aspects.meta.DefineExpression*?text=meta.DefineExpression> method. This allows you to have expressions that depend on compile-time conditions and control flows. The <xref:Caravela.Framework.Aspects.meta.DefineExpression*> method returns an <xref:Caravela.Framework.Code.IExpression>, the same interface returned by <xref:Caravela.Framework.Aspects.meta.ParseExpression*>.  <xref:Caravela.Framework.Code.IExpression> is a compile-time object that you can use anywhere in compile-time code. It exposes the run-time expression in the <xref:Caravela.Framework.Code.IExpression.Value> property.
 
