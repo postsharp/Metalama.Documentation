@@ -111,7 +111,7 @@ function Pack()
        New-Item -ItemType Directory -Force -Path "docfx\output"
     }
 
-    Compress-Archive -Path _site\* -DestinationPath $outputZipPath -Force
+    Compress-Archive -Path "docfx\_site\*" -DestinationPath $outputZipPath -Force
 }
 
 function Prepare()

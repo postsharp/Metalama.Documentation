@@ -128,7 +128,7 @@ Most of the times, when you override a method, you will want to invoke the aspec
 
 - To invoke the base method or accessor with exactly the same arguments, call <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed*>.
 - To invoke the base method with different arguments, use <xref:Caravela.Framework.Code.Advised.IAdvisedMethod.Invoke(System.Object[])?text=meta.Target.Method.Invoke>.
-- To call the base property getter or setter, use <xref:Caravela.Framework.Code.Advised.IHasRuntimeValue.Value?text=meta.Property.Value>.
+- To call the base property getter or setter, use <xref:Caravela.Framework.Code.Advised.IExpression.Value?text=meta.Property.Value>.
 - To access the base event, use <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.AddMethod?text=meta.Event.AddMethod.Invoke*>.
 
 [comment]: # (TODO: When it will work, Disposable example.)
