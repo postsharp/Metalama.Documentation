@@ -1,0 +1,53 @@
+NormalMethod: start
+NormalMethod: returning 5.
+AsyncMethod: start
+  Task.Yield
+  Resuming
+AsyncMethod: returning 5.
+EnumerableMethod: start
+  Yielding 1
+EnumerableMethod: intercepted 1.
+ Received 1 from EnumerableMethod
+  Yielding 2
+EnumerableMethod: intercepted 2.
+ Received 2 from EnumerableMethod
+  Yielding 3
+EnumerableMethod: intercepted 3.
+ Received 3 from EnumerableMethod
+EnumerableMethod: completed.
+---
+EnumeratorMethod: start
+  Yielding 1
+EnumeratorMethod: intercepted 1.
+ Received 1 from EnumeratorMethod
+  Yielding 2
+EnumeratorMethod: intercepted 2.
+ Received 2 from EnumeratorMethod
+  Yielding 3
+EnumeratorMethod: intercepted 3.
+ Received 3 from EnumeratorMethod
+EnumeratorMethod: completed.
+---
+AsyncEnumerableMethod: start
+  Yielding 1
+AsyncEnumerableMethod: intercepted 1.
+ Received 1 from AsyncEnumerableMethod
+  Yielding 2
+AsyncEnumerableMethod: intercepted 2.
+ Received 2 from AsyncEnumerableMethod
+  Yielding 3
+AsyncEnumerableMethod: intercepted 3.
+ Received 3 from AsyncEnumerableMethod
+AsyncEnumerableMethod: completed.
+---
+AsyncEnumeratorMethod: start
+  Yielding 1
+AsyncEnumeratorMethod: intercepted 1.
+ Received 1 from AsyncEnumeratorMethod
+  Yielding 2
+AsyncEnumeratorMethod: intercepted 2.
+ Received 2 from AsyncEnumeratorMethod
+  Yielding 3
+AsyncEnumeratorMethod: intercepted 3.
+ Received 3 from AsyncEnumeratorMethod
+AsyncEnumeratorMethod: completed.

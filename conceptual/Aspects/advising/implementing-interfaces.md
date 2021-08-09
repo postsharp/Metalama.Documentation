@@ -7,7 +7,7 @@ Many aspects need modify the target type so it implements a new interface. This 
 
 ## Step 1. Call IAdviceFactory.ImplementInterface
 
-In your implementation of the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect(Caravela.Framework.Aspects.IAspectBuilder{%600})> method, call the <xref:Caravela.Framework.Aspects.IAdviceFactory.ImplementInterface(Caravela.Framework.Code.INamedType,System.Type,Caravela.Framework.Aspects.OverrideStrategy,System.Collections.Generic.Dictionary{System.String,System.Object})> method.
+In your implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method.
 
 ## Step 2. Add interface members to the aspect class
 
@@ -30,7 +30,7 @@ Implementing an interface in a complete dynamic manner, when the interface itsel
 
 When you introduce an interface member to a type, your will often want to access it from templates. Unless the member is an explicit implementations, you have two options:
 
-(TODO: better code examples)
+[comment]: # (TODO: better code examples)
 
 
 ### Option 1. Access the aspect template member
@@ -46,7 +46,7 @@ this.Dispose();
 meta.This.Dispose();
 ```
 
-### Accessing explicit implementations
+## Accessing explicit implementations
 
 The following strategies are possible:
 

@@ -20,10 +20,9 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
         AutomaticallyCloneable c;
 
 
-        public AutomaticallyCloneable Clone()
+        public virtual AutomaticallyCloneable Clone()
         {
-            var clone = (AutomaticallyCloneable?)null;
-            clone = (AutomaticallyCloneable)base.MemberwiseClone();
+            var clone = (AutomaticallyCloneable)MemberwiseClone();
             clone.b = (ManuallyCloneable)b.Clone();
             clone.c = c.Clone();
             return clone;
@@ -32,6 +31,19 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
         object ICloneable.Clone()
         {
             return Clone();
+        }
+    }
+
+    [DeepClone]
+    class DerivedCloneable : AutomaticallyCloneable
+    {
+        string d;
+
+
+        public override DerivedCloneable Clone()
+        {
+            var clone = (DerivedCloneable)base.Clone();
+            return clone;
         }
     }
 

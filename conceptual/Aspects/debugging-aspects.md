@@ -11,7 +11,7 @@ To debug compile-time logic:
 1. Inject breakpoints directly in your source code:
 
     - In a build-time method such as `BuildAspect`, call `System.Diagnostics.Debugger.Launch()`.
-    - In a template method, call @"Caravela.Framework.Aspects.meta.DebugBreak?text=meta.DebugBreak".
+    - In a template method, call <xref:Caravela.Framework.Aspects.meta.DebugBreak?text=meta.DebugBreak>.
 
 2. Attach the debugger to the process
 
@@ -22,6 +22,5 @@ To debug compile-time logic:
     dotnet build -p:DebugCaravela=True
     ```
 
-## See Also
-
-<xref:debugging>
+> [!div class="see-also"]
+> <xref:debugging>

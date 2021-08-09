@@ -10,12 +10,12 @@ This chapter is structured as follows: first we give a few tricks to get started
 
 | Section                       | Description                                                                                                                                            |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| @simple-aspects               | This section explains how to create simple aspects with a familiar object-oriented API and without much theory.                                        |
-| @aspect-framework-design      | This article gives the theory behind the Caravela aspect framework.                                                                                    |
-| @templates                    | This article explains how to create dynamic code templates.                                                                                            |
-| @diagnostics                  | This article explains how to report or suppress errors, warnings and information messages.                                                             |
-| @advising-code                | This section explains how to create aspects that perform advanced code modifications using the complete API.                                           |
+| <xref:simple-aspects>               | This section explains how to create simple aspects with a familiar object-oriented API and without much theory.                                        |
+| <xref:aspect-framework-design>      | This article gives the theory behind the Caravela aspect framework.                                                                                    |
+| <xref:templates>                    | This article explains how to create dynamic code templates.                                                                                            |
+| <xref:diagnostics>                  | This article explains how to report or suppress errors, warnings and information messages.                                                             |
+| <xref:advising-code>                | This section explains how to create aspects that perform advanced code modifications using the complete API.                                           |
 | <xref:ordering-aspects>       | This article describes how to order aspect classes so that the order of execution is correct when several aspects are applied to the same declaration. |
-| @testing                      | This section explains how to test aspects.                                                                                                             |
-| @debugging-aspects            | This article explains how to debug aspects.                                                                                                            |
+| <xref:testing>                      | This section explains how to test aspects.                                                                                                             |
+| <xref:debugging-aspects>            | This article explains how to debug aspects.                                                                                                            |
 | <xref:creating-live-template> | This article explains how to create a live templates, which modifies the source code in the editor.                                                    |

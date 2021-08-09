@@ -7,7 +7,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.SimpleLogging
         [SimpleLog]
         public void Method1()
         {
-            Console.WriteLine($"Entering Caravela.Documentation.SampleCode.AspectFramework.SimpleLogging.TargetCode.Method1()");
+            Console.WriteLine($"Entering TargetCode.Method1()");
             try
             {
                 Console.WriteLine("Hello, world.");
@@ -15,7 +15,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.SimpleLogging
             }
             finally
             {
-                Console.WriteLine($"Leaving Caravela.Documentation.SampleCode.AspectFramework.SimpleLogging.TargetCode.Method1()");
+                Console.WriteLine($"Leaving TargetCode.Method1()");
             }
         }
     }

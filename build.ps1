@@ -25,7 +25,7 @@ if ( $Publish )
 
 function RemoveLockedFiles()
 {
-    if ( -not $NoKill ) {
+    if ( $Pack -and -not $NoKill ) {
         gcim win32_process | where { $_.Name -eq "iisexpress.exe" } | foreach { 
             Stop-Process -ID $_.ProcessId 
             Start-Sleep  -Seconds 1
@@ -59,15 +59,23 @@ function Clean()
 function Restore()
 {
 
+    # Restore DocFx
     nuget restore "docfx\packages.config" -OutputDirectory "docfx\packages"
 
     if ($LASTEXITCODE -ne 0 ) { exit }
+
+
+    # Restore samples and DoxFX extensions
+    dotnet restore "code" --no-cache --force
+
+    if ($LASTEXITCODE -ne 0 ) { exit }
+
 }
 
 function Metadata()
 {
-
-    docfx\packages\docfx.console.2.58.0\tools\docfx.exe "docfx\docfx.json" metadata --property TargetFramework=netstandard2.0
+    
+    docfx\packages\docfx.console.2.58.0\tools\docfx.exe "docfx\docfx.json" metadata
 
     if ($LASTEXITCODE -ne 0 ) { exit }
 }
@@ -81,10 +89,7 @@ function BuildExtensions()
 
 function RunTests()
 {
-    dotnet restore "code\Caravela.Documentation.SampleCode.sln"
-
-    if ($LASTEXITCODE -ne 0 ) { exit }
-
+    
     dotnet test "code\Caravela.Documentation.SampleCode.sln"
 
     # We tolerate failing tests for now.
@@ -106,7 +111,7 @@ function Pack()
        New-Item -ItemType Directory -Force -Path "docfx\output"
     }
 
-    Compress-Archive -Path _site\* -DestinationPath $outputZipPath -Force
+    Compress-Archive -Path "docfx\_site\*" -DestinationPath $outputZipPath -Force
 }
 
 function Prepare()

@@ -2,6 +2,7 @@
 using System.Text;
 using Caravela.Framework.Aspects;
 using Caravela.Framework.Code;
+using Caravela.Framework.Code.Syntax;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
 {
@@ -11,11 +12,12 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
         public override dynamic OverrideMethod()
         {
             // Build a formatting string.
-            var formattingString = BuildFormattingString();
+            var methodName = BuildInterpolatedString();
 
             // Write entry message.
-            var arguments = meta.Target.Parameters.Values.ToArray();
-            Console.WriteLine(formattingString + " started", arguments);
+            var entryMessage = methodName.Clone();
+            entryMessage.AddText(" started.");
+            Console.WriteLine(entryMessage.ToInterpolatedString());
 
             try
             {
@@ -23,32 +25,40 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
                 dynamic result = meta.Proceed();
 
                 // Display the success message.
+                var successMessage = methodName.Clone();
                 if (meta.Target.Method.ReturnType.Is(typeof(void)))
                 {
-                    Console.WriteLine(string.Format(formattingString, arguments) + " returned " + result);
+                    successMessage.AddText(" succeeded.");
                 }
                 else
                 {
-                    Console.WriteLine(string.Format(formattingString, arguments) + " succeeded");
+                    successMessage.AddText(" returned ");
+                    successMessage.AddExpression(result);
+                    successMessage.AddText(".");
                 }
+
+                Console.WriteLine(successMessage.ToInterpolatedString() );
 
                 return result;
             }
             catch (Exception e)
             {
                 // Display the failure message.
-                Console.WriteLine(formattingString + " failed: " + e, arguments);
+                var failureMessage = methodName.Clone();
+                failureMessage.AddText(" failed: ");
+                failureMessage.AddExpression(e.Message);
+                Console.WriteLine(failureMessage.ToInterpolatedString());
                 throw;
             }
         }
 
-        private static string BuildFormattingString()
+        private static InterpolatedStringBuilder BuildInterpolatedString()
         {
-            var stringBuilder = meta.CompileTime(new StringBuilder());
-            stringBuilder.Append(meta.Target.Type.ToDisplayString());
-            stringBuilder.Append('.');
-            stringBuilder.Append(meta.Target.Method.Name);
-            stringBuilder.Append('(');
+            var stringBuilder = InterpolatedStringBuilder.Create();
+            stringBuilder.AddText(meta.Target.Type.ToDisplayString(CodeDisplayFormat.MinimallyQualified));
+            stringBuilder.AddText(".");
+            stringBuilder.AddText(meta.Target.Method.Name);
+            stringBuilder.AddText("(");
             var i = meta.CompileTime(0);
 
             foreach (var p in meta.Target.Parameters)
@@ -57,18 +67,20 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
 
                 if (p.IsOut())
                 {
-                    stringBuilder.Append($"{comma}{p.Name} = <out> ");
+                    stringBuilder.AddText($"{comma}{p.Name} = <out> ");
                 }
                 else
                 {
-                    stringBuilder.Append($"{comma}{p.Name} = {{{i}}}");
+                    stringBuilder.AddText($"{comma}{p.Name} = {{");
+                    stringBuilder.AddExpression(p.Value);
+                    stringBuilder.AddText("}");
                 }
 
                 i++;
             }
-            stringBuilder.Append(')');
+            stringBuilder.AddText(")");
 
-            return stringBuilder.ToString();
+            return stringBuilder;
         }
     }
 }

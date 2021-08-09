@@ -3,7 +3,7 @@ uid: introducing-members
 ---
 # Introducing Members
 
-In @overriding-members, you have learned how to override the implementation of existing type members. In this article, you will learn how to add new members to an existing type.
+In <xref:overriding-members>, you have learned how to override the implementation of existing type members. In this article, you will learn how to add new members to an existing type.
 
 You can currently add the following kinds of members:
 
@@ -89,15 +89,15 @@ Implement the template in your aspect class and annotate it with the <xref:Carav
 
 ### Step 2. Invoke IAdviceFactory.Introduce*
 
-In your implementation of the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect(Caravela.Framework.Aspects.IAspectBuilder{%600})> method, call one of the following methods and store the return value in a variable.
+In your implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method, call one of the following methods and store the return value in a variable.
 
-- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceMethod(Caravela.Framework.Code.INamedType,System.String,Caravela.Framework.Aspects.IntroductionScope,Caravela.Framework.Aspects.OverrideStrategy,System.Collections.Generic.Dictionary{System.String,System.Object})> returning an <xref:Caravela.Framework.Code.Builders.IMethodBuilder>;
+- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceMethod*> returning an <xref:Caravela.Framework.Code.Builders.IMethodBuilder>;
 
-- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceProperty(Caravela.Framework.Code.INamedType,System.String,Caravela.Framework.Aspects.IntroductionScope,Caravela.Framework.Aspects.OverrideStrategy,System.Collections.Generic.Dictionary{System.String,System.Object})> returning an <xref:Caravela.Framework.Code.Builders.IPropertyBuilder>;
+- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceProperty*> returning an <xref:Caravela.Framework.Code.Builders.IPropertyBuilder>;
 
-- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceEvent(Caravela.Framework.Code.INamedType,System.String,Caravela.Framework.Aspects.IntroductionScope,Caravela.Framework.Aspects.OverrideStrategy,System.Collections.Generic.Dictionary{System.String,System.Object})> returning an <xref:Caravela.Framework.Code.Builders.IEventBuilder>;
+- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceEvent*> returning an <xref:Caravela.Framework.Code.Builders.IEventBuilder>;
 
-- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceField(Caravela.Framework.Code.INamedType,Caravela.Framework.Aspects.IntroductionScope,Caravela.Framework.Aspects.OverrideStrategy,System.Collections.Generic.Dictionary{System.String,System.Object})> returning an <xref:Caravela.Framework.Code.Builders.IFieldBuilder>.
+- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceField*> returning an <xref:Caravela.Framework.Code.Builders.IFieldBuilder>.
 
 A call to these method creates a member that have the same characteristics of the template (name, signature, ...), taking into account the properties of the <xref:Caravela.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute. However, they return a _builder_ object that allows you to modify these characteristics.
 
@@ -120,24 +120,18 @@ When you want to introduce a member to a type, it may happen that the same membe
 - For declarative advices, set the <xref:Caravela.Framework.Aspects.TemplateAttribute.WhenExists> property of the custom attribute,
 - For programmatic advices, set the _whenExists_ optional parameter of the advice factory method.
 
-> [!NOTE] 
-> TODO. The implementation and documentation are not final. Another property and parameter should be defined to cope with the case when the member is inherited.
+[comment]: # (TODO: The implementation and documentation are not final. Another property and parameter should be defined to cope with the case when the member is inherited.)
 
 ### Accessing the overridden declaration
 
 Most of the times, when you override a method, you will want to invoke the aspect to invoke the base implementation. The same applies to properties and events. In plain C#, when you override a base-class member in a derived class, you call the member with the `base` prefix. A similar approach exists in Caravela.
 
-> [!NOTE] 
-> TODO. This currently does not work.
+- To invoke the base method or accessor with exactly the same arguments, call <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed*>.
+- To invoke the base method with different arguments, use <xref:Caravela.Framework.Code.Advised.IAdvisedMethod.Invoke(System.Object[])?text=meta.Target.Method.Invoke>.
+- To call the base property getter or setter, use <xref:Caravela.Framework.Code.Advised.IExpression.Value?text=meta.Property.Value>.
+- To access the base event, use <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.AddMethod?text=meta.Event.AddMethod.Invoke*>.
 
-- To invoke the base method or accessor with exactly the same arguments, call <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed()>.
-- To invoke the base method with different arguments, use <xref:Caravela.Framework.Code.Advised.IAdvisedMethod.Invoke(System.Object[])?text=meta.Method.Invoke>.
-- To call the base property getter or setter, use <xref:Caravela.Framework.Code.Advised.IHasRuntimeValue.Value?text=meta.Property.Value>.
-- To access the base event, use <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.Adder?text=meta.Event.Adder.Invoke()>, <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.Adder?text=meta.Event.Remover.Invoke()> or <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.Adder?text=meta.Event.Raiser.Invoke()>.
-
-### Example
-
-TODO: When it will work, Disposable example.
+[comment]: # (TODO: When it will work, Disposable example.)
 
 ## Referencing introduced members in template
 

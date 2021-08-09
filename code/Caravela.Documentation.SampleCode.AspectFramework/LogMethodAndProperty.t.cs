@@ -7,14 +7,14 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogMethodAndProperty
         [Log]
         public int Method(int a, int b)
         {
-            Console.WriteLine("Entering Caravela.Documentation.SampleCode.AspectFramework.LogMethodAndProperty.TargetCode.Method(int, int)");
+            Console.WriteLine("Entering TargetCode.Method(int, int)");
             try
             {
                 return a + b;
             }
             finally
             {
-                Console.WriteLine(" Leaving Caravela.Documentation.SampleCode.AspectFramework.LogMethodAndProperty.TargetCode.Method(int, int)");
+                Console.WriteLine(" Leaving TargetCode.Method(int, int)");
             }
         }
 
@@ -31,7 +31,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogMethodAndProperty
 
             set
             {
-                Console.WriteLine("Assigning Caravela.Documentation.SampleCode.AspectFramework.LogMethodAndProperty.TargetCode.Property.set");
+                Console.WriteLine("Assigning TargetCode.Property.set");
                 this._property = value;
             }
         }
@@ -49,7 +49,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogMethodAndProperty
 
             set
             {
-                Console.WriteLine("Assigning Caravela.Documentation.SampleCode.AspectFramework.LogMethodAndProperty.TargetCode.Field.set");
+                Console.WriteLine("Assigning TargetCode.Field.set");
                 this._field = value;
             }
         }

@@ -16,10 +16,10 @@ items:
           topicUid: overriding-fields-or-properties
         - name: Overriding Events
           topicUid: overriding-events
+      - name: Writing code templates
+        topicUid: templates
       - name: Design of Caravela Aspect Framework
         topicUid: aspect-framework-design
-      - name: Caravela Template Language
-        topicUid: templates
       - name: Reporting and Suppressing Diagnostics
         topicUid: diagnostics
       - name: Advising Code

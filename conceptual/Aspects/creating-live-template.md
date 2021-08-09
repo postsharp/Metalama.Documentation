@@ -19,4 +19,4 @@ Live templates are built with the Caravela aspect framework, but instead of bein
    - Diagnostics reported by the aspect will be ignored.
    - Aspect ordering and requirement will be ignored.
 
-2. Override the <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass(Caravela.Framework.Aspects.IAspectClassBuilder)> method and set the <xref:Caravela.Framework.Aspects.IAspectClassBuilder.IsLiveTemplate> property to `true`.
+2. Override the <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass*> method and set the <xref:Caravela.Framework.Aspects.IAspectClassBuilder.IsLiveTemplate> property to `true`.
