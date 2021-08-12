@@ -14,7 +14,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Normalize
         [Template]
         string OverrideProperty
         {
-            set => meta.Target.FieldOrProperty.Value = value?.Trim().ToLowerInvariant();
+            set => meta.Target.FieldOrProperty.Value = value?.Trim()?.ToLowerInvariant();
         }
     }
 }

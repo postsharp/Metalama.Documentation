@@ -7,7 +7,7 @@ uid: aspect-framework-design
 
 An aspect is, by definition, a class that implements the <xref:Caravela.Framework.Aspects.IAspect`1> generic interface. The generic parameter of this interface is the type of declarations to which that aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
 
-Aspects have different abilities listed in this article. The configure can use or configure these abilities in the following methods inherited from the <xref:Caravela.Framework.Aspects.IAspect`1> interface: 
+Aspects have different abilities listed in this article. The aspect author can use or configure these abilities in the following methods inherited from the <xref:Caravela.Framework.Aspects.IAspect`1> interface: 
 * <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass*> configures the aspect _type_, before any instance is created, thanks to a <xref:Caravela.Framework.Aspects.IAspectClassBuilder>;
 * <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> builds the aspect _instance_ applied on a specific _target declaration_, thanks to a <xref:Caravela.Framework.Aspects.IAspectBuilder`1>;
 
@@ -91,7 +91,7 @@ For details about this feature, see <xref:diagnostics>.
 
 ### Disabling itself
 
-If an aspect instance decides that it cannot be applied to the target it has been applied to, its implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method can call the <xref:Caravela.Framework.Aspects.IAspectBuilder.SkipAspect> method. The effect of this method is to prevent the aspect to provide any advice or child aspect and to set the <xref:Caravela.Framework.Aspects.IAspectInstance.IsSkipped> to `false`.
+If an aspect instance decides that it cannot be applied to the target it has been applied to, its implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method can call the <xref:Caravela.Framework.Aspects.IAspectBuilder.SkipAspect> method. The effect of this method is to prevent the aspect to provide any advice or child aspect and to set the <xref:Caravela.Framework.Aspects.IAspectInstance.IsSkipped> to `true`.
 
 The aspect may or may not report a diagnostic before calling <xref:Caravela.Framework.Aspects.IAspectBuilder.SkipAspect>. Calling this method does not report any diagnostic.
 
@@ -126,13 +126,13 @@ This feature is not yet implemented.
 
 ### Example: the OverrideMethodAspect class
 
-Now that you know more about the design of the aspect framework, you can look at the implementation of the <xref:Caravela.Framework.Aspects.OverrideMethodAspect> abstract class. You can see that all this class is doing is to provide define an abstract method `OverrideMethod` and to add an advice to the target method where the template is the `OverrideMethod`.
+Now that you know more about the design of the aspect framework, you can look at the implementation of the <xref:Caravela.Framework.Aspects.OverrideMethodAspect> abstract class. You can see that all this class does is providing an abstract method `OverrideMethod` and adding an advice to the target method where the template is the `OverrideMethod`.
 
 [!include[Main](../../code/Caravela.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs#aspect)]
 
 ### Example: an aspect targeting methods, fields and properties
 
-The following example shows a aspect that target methods, fields and properties with a single implementation class.
+The following example shows an aspect that targets methods, fields and properties with a single implementation class.
 
 [!include[Aspect Targeting Methods, Fields and Properties](../../code/Caravela.Documentation.SampleCode.AspectFramework/LogMethodAndProperty.cs)]
 
@@ -152,7 +152,7 @@ Aspects cannot modify declarations of lower depth than the target of the aspect.
 
 1. Generation of the compile-time compilation:
     1. Referenced compile-time projects are identified and loaded.
-    2. Compile-time code is identified in the current and a separate compile-time compilation is created.
+    2. Compile-time code is identified in the current compilation and a separate compile-time compilation is created.
         1. Templates are transformed into code generating Roslyn syntax trees.
         2. Expressions `nameof` and `typeof` are transformed to make them independent from run-time references.
 

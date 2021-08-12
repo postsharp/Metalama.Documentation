@@ -7,17 +7,17 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImportWithSett
     {
 
 
-        private IFormatProvider _formatProvider1;
+        private IFormatProvider _formatProvider;
         [Import]
-        IFormatProvider _formatProvider
+        IFormatProvider FormatProvider
         {
             get
             {
-                var service = _formatProvider_Source;
+                var service = FormatProvider_Source;
                 if (service == null)
                 {
                     service = (IFormatProvider)ServiceLocator.ServiceProvider.GetService(typeof(IFormatProvider));
-                    this._formatProvider_Source = service;
+                    this.FormatProvider_Source = service;
                 }
 
                 return service;
@@ -29,16 +29,16 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImportWithSett
             }
         }
 
-        private IFormatProvider _formatProvider_Source
+        private IFormatProvider FormatProvider_Source
         {
             get
             {
-                return this._formatProvider1;
+                return this._formatProvider;
             }
 
             set
             {
-                this._formatProvider1 = value;
+                this._formatProvider = value;
             }
         }
     }

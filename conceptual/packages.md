@@ -4,7 +4,7 @@ uid: packages
 
 # Packages and Components
 
-Caravela is composed of half a dozen of NuGet packages. It may sounds a lot, but some are used only for testing and will never make it to your public packages.
+Caravela is composed of half a dozen of NuGet packages. It may sound a lot, but some are used only for testing and will never make it to your public packages.
 
 
 ## Package list

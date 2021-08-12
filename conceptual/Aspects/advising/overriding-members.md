@@ -10,7 +10,7 @@ In the section <xref:simple-aspects>, you have learned to override methods, prop
 
 ## Overriding methods
 
-To override one or more methods, your aspects needs to implement the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod*?text=builder.AdviceFactory.OverrideMethod> method.
+To override one or more methods, your aspect needs to implement the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod*?text=builder.AdviceFactory.OverrideMethod> method.
 
 The _first argument_ of `OverrideMethod` is the <xref:Caravela.Framework.Code.IMethod> that you want to override. This method must be in the type being targeted by the current aspect instance.
 
@@ -51,7 +51,7 @@ There are two approaches to override a field or property: by providing a _proper
 
 This approach is the simplest but it has a few limitations.
 
-Just like for methods, to override one or more fields or properties, your aspects needs to implement the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.AdviceFactory`.
+Just like for methods, to override one or more fields or properties, your aspect needs to implement the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.AdviceFactory`.
 
 The _first argument_ of `OverrideFieldOrProperty` is the <xref:Caravela.Framework.Code.IFieldOrProperty> that you want to override. This field or property must be in the type being targeted by the current aspect instance.
 
@@ -62,7 +62,7 @@ The _second argument_ of `OverrideFieldOrProperty` is the name of the template p
 
 ### Example: registry-backed class
 
-The following aspects overrides properties so that they are written to and read from the Windows registry.
+The following aspect overrides properties so that they are written to and read from the Windows registry.
 
 [!include[Registry Storage](../../../code/Caravela.Documentation.SampleCode.AspectFramework/RegistryStorage.cs)]
 
@@ -76,7 +76,7 @@ The property can have a setter, a getter, or both. If one accessor is not specif
 
 ### Getting or setting the property value
 
-If you have only worked with methods so far, you may be already used to use the `meta.Proceed()` method in your template. This method also works a property template: when called from the getter, it returns the field or property value; when called from the setter, it sets the field or property to the value of the `value` parameter.
+If you have only worked with methods so far, you may be already used to use the `meta.Proceed()` method in your template. This method also works in a property template: when called from the getter, it returns the field or property value; when called from the setter, it sets the field or property to the value of the `value` parameter.
 
 If you need to get the property value from the setter, or if you need to set the property value to something else than the `value` parameter, you can do it by getting or setting the `meta.Target.FieldOrProperty.Value` property.
 

@@ -3,11 +3,11 @@ uid: implementing-interfaces
 ---
 # Implementing Interfaces
 
-Many aspects need modify the target type so it implements a new interface. This can be done only using the programmatic advising API.
+Many aspects need to modify the target type so it implements a new interface. This can be done only using the programmatic advising API.
 
 ## Step 1. Call IAdviceFactory.ImplementInterface
 
-In your implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method.
+In your implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method, call the <xref:Caravela.Framework.Aspects.IAdviceFactory.ImplementInterface> method.
 
 ## Step 2. Add interface members to the aspect class
 
@@ -19,7 +19,7 @@ The following rules apply to interface members:
 - The accessibility of introduced members have no importance.
 - The aspect framework will generate public members unless the <xref:Caravela.Framework.Aspects.InterfaceMemberAttribute.IsExplicit> property is set to `true`. In this case, an explicit implementation is generated.
 
-Implementing an interface in a complete dynamic manner, when the interface itself is not know by the aspect, is not yet supported.
+Implementing an interface in a complete dynamic manner, when the interface itself is not known by the aspect, is not yet supported.
 
 ## Example: deep cloning
 
@@ -28,7 +28,7 @@ Implementing an interface in a complete dynamic manner, when the interface itsel
 
 ## Referencing interface members in other templates
 
-When you introduce an interface member to a type, your will often want to access it from templates. Unless the member is an explicit implementations, you have two options:
+When you introduce an interface member to a type, your will often want to access it from templates. Unless the member is an explicit implementation, you have two options:
 
 [comment]: # (TODO: better code examples)
 
