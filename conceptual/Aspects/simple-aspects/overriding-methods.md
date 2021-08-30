@@ -11,7 +11,7 @@ You can achieve this thanks to the <xref:Caravela.Framework.Aspects.OverrideMeth
 
 1. Create a new class derived from the <xref:Caravela.Framework.Aspects.OverrideMethodAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
 
-2. Implement the <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideMethod> method in plain C#:
+2. Implement the <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideMethod> method in plain C#. This method will serve as a [template](../Templates.md) defining the way the aspect overrides the hand-written target method.
    - To insert code or expressions that depend on the target method of the aspect (such as the method name or the parameter type), use the <xref:Caravela.Framework.Aspects.meta> API.
    - Where the original implementation must be invoked, call the <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed> method.
 
@@ -57,7 +57,7 @@ By default, the <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideMe
 To make the default template work naturally even for async and iterator methods, calls to `meta.Proceed()` and `return` statements are interpreted differently in each situation in order to respect the intent of normal (non-async, non-iterator) code. That is, the default behavior tries to respect the _decorator_ pattern.
 
 > [!WARNING]
-> Applying the default <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideMethod> template to an iterator the stream to be _buffered_ into a `List<T>`. In case of long-running streams, this buffering may be undesirable. In this case, specific iterator templates must be specified (see below).
+> Applying the default <xref:Caravela.Framework.Aspects.OverrideMethodAspect.OverrideMethod> template to an iterator makes the stream to be _buffered_ into a `List<T>`. In case of long-running streams, this buffering may be undesirable. In this case, specific iterator templates must be specified (see below).
 
 The following table lists the transformations applied to the `meta.Proceed()` expression and the `return` statement when a default template is applied to an async or iterator method:
 

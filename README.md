@@ -21,16 +21,15 @@ dotnet test
 
 1. Clone the current repo in `c:\src\Caravela.Documentation`.
 2. Clone the `Caravela` repo in `c:\src\Caravela`.
-3. Do `cd c:\src\Caravela.Documentation\docfx`
-4. Do `.\build.ps1`
+3. From `c:\src\Caravela.Documentation`, do `.\build.ps1`.
 
 ## Incremental builds
 
-From `c:\src\Caravela.Documentation\docfx`, do `.\build.ps1 -Incremental`
+From `c:\src\Caravela.Documentation`, do `.\build.ps1 -Incremental`.
 
 ## Publishing the documentation
 
-1. From `c:\src\Caravela.Documentation\docfx`, do `.\build.ps1 -Pack`
+1. From `c:\src\Caravela.Documentation`, do `.\build.ps1 -Pack`.
 2. Upload `c:\src\Caravela.Documentation\docfx\output\Caravela.Documentation.zip` to `s3://doc.postsharp.net/Caravela.Documentation.zip`.
 3. Invalidate the cache of `https://doc.postsharp.net` using the API key.
 

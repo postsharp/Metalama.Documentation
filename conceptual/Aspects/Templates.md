@@ -3,7 +3,7 @@ uid: templates
 ---
 # Writing code templates
 
-The specificity of a tool like Caravela, compared to simple code generation APIs, is that Caravela is able to _modify existing_ code, not only generate new code. Instead of giving you access to the syntax tree, which is extremely complex and error-prone (and you can still do it anyway with <xref:sdk> if you feel brave), Caravela let you express code transformations in plain C# using a template language named _Caravela Template Language_.
+The specificity of a tool like Caravela, compared to simple code generation APIs, is that Caravela is able to _modify existing_ code, not only generate new code. Instead of giving you access to the syntax tree, which is extremely complex and error-prone (and you can still do it anyway with <xref:sdk> if you feel brave), Caravela lets you express code transformations in plain C# using a template language named _Caravela Template Language_.
 
 You can compare Caravela Template Language to Razor. Razor allows you to create dynamic web pages by mixing server-side C# code and client-side HTML. With Caravela Template Language, you have _compile-time_ and _run-time_ code and, basically, the compile-time code generates the run-time code. The difference with Razor is that in Caravela both the compile-time and run-time code are the same language: C#. Caravela interprets every expression or statement in a template as having _either_ run-time scope _or_ compile-time scope. Compile-time expressions are generally initiated by calls to the <xref:Caravela.Framework.Aspects.meta> API.
 
@@ -29,16 +29,16 @@ Compile-time statements are statements, such as `if`, `foreach` or `meta.DebugBr
 
 The entry point of the compile-time API is the <xref:Caravela.Framework.Aspects.meta> static class. The name of this class is intentionally lower case to convey the sentiment that it is something unusual and gives access to some kind of magic. The <xref:Caravela.Framework.Aspects.meta> class is the entry point to the meta model and the members of this class can be invoked only in the context of a template.
 
-The <xref:Caravela.Framework.Aspects.meta> exposes to the following members:
+The <xref:Caravela.Framework.Aspects.meta> exposes the following members:
 
-- <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed> invokes the method or accessor being intercepted &mdash; it can be the next aspect or the source implementation.
-- <xref:Caravela.Framework.Aspects.meta.Target?text=meta.Target> gives access to the declaration to which the template is applied.
-- <xref:Caravela.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> gives access to the current method or accessor parameters.
-- <xref:Caravela.Framework.Aspects.meta.Diagnostics?text=meta.Diagnostics> allows your aspect to report or suppress diagnostics. See <xref:diagnostics> for details.
-- <xref:Caravela.Framework.Aspects.meta.This?text=meta.This> represents the `this` instance. Together with <xref:Caravela.Framework.Aspects.meta.Base?text=meta.Base>, <xref:Caravela.Framework.Aspects.meta.ThisStatic?text=meta.ThisStatic> and <xref:Caravela.Framework.Aspects.meta.BaseStatic?text=meta.BaseStatic>, it allows your template to access members of the target class using dynamic code (see below).
-- <xref:Caravela.Framework.Aspects.meta.Tags?text=meta.Tags> gives access to an arbitrary dictionary that has been passed to the advice factory method.
-- <xref:Caravela.Framework.Aspects.meta.CompileTime*?text=meta.CompileTime> forces a coerces a neutral expression into a compile-time expression.
-- <xref:Caravela.Framework.Aspects.meta.RunTime*?text=meta.RunTime> converts the result of a compile-time expression into a run-time value (see below).
+- The <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed> method invokes the target method or accessor being intercepted, which can be either the next aspect applied on the same target or the target source implementation itself.
+- The <xref:Caravela.Framework.Aspects.meta.Target?text=meta.Target> property gives access to the declaration to which the template is applied.
+- The <xref:Caravela.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> property gives access to the current method or accessor parameters.
+- The <xref:Caravela.Framework.Aspects.meta.Diagnostics?text=meta.Diagnostics> property allows your aspect to report or suppress diagnostics. See <xref:diagnostics> for details.
+- The <xref:Caravela.Framework.Aspects.meta.This?text=meta.This> property represents the `this` instance. Together with <xref:Caravela.Framework.Aspects.meta.Base?text=meta.Base>, <xref:Caravela.Framework.Aspects.meta.ThisStatic?text=meta.ThisStatic>, and <xref:Caravela.Framework.Aspects.meta.BaseStatic?text=meta.BaseStatic> properties, it allows your template to access members of the target class using dynamic code (see below).
+- The <xref:Caravela.Framework.Aspects.meta.Tags?text=meta.Tags> property gives access to an arbitrary dictionary that has been passed to the advice factory method.
+-  The <xref:Caravela.Framework.Aspects.meta.CompileTime*?text=meta.CompileTime> method coerces a neutral expression into a compile-time expression.
+- <xref:Caravela.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method converts the result of a compile-time expression into a run-time value (see below).
 
 ### Compile-time local variables
 
@@ -58,7 +58,7 @@ Examples:
 
 ### Aspect members
 
-Aspect members are compile-time and can be accessed from templates. For instance, an aspect custom attribute and can define a property that can be assigned from user code. This property can be accessed from compile-time code.
+Aspect members are compile-time and can be accessed from templates. For instance, an aspect custom attribute can define a property that can be set when when the custom attribute is applied to a target declaration and then read from the aspect compile-time code.
 
 There are a few exceptions to this rule:
 
@@ -82,7 +82,7 @@ If the condition of an `if` statement is a compile-time expression, the `if` sta
 
 #### Example
 
-In the following example, the aspect prints a different string for static methods than for non-instance ones.
+In the following example, the aspect prints a different string for static methods than for instance ones.
 
 [!include[Compile-Time If](../../code/Caravela.Documentation.SampleCode.AspectFramework/CompileTimeIf.cs)]
 
@@ -132,9 +132,9 @@ dynamic? OverrideMethod()
 }
 ```
 
-All `dynamic` compile-time code are transformed into strongly-typed run-time code. When the template is expanded, `dynamic` variables are transformed into `var` variables. Therefore, all `dynamic` variables must be initialized.
+All `dynamic` compile-time code is transformed into strongly-typed run-time code. When the template is expanded, `dynamic` variables are transformed into `var` variables. Therefore, all `dynamic` variables must be initialized.
 
-It is not possible, in a template, to generate code that uses `dynamic` typing at run time.
+In a template, it is not possible to generate code that uses `dynamic` typing at run time.
 
 ### Converting compile-time values to run-time values
 
@@ -195,7 +195,7 @@ For details, see the documentation of the <xref:Caravela.Framework.Code.Invokers
 
 ### Generating run-time arrays
 
-A first way to generate run-time array is to declare a variable of array type and to use a statement to set each element, for instance:
+The first way to generate run-time array is to declare a variable of array type and to use a statement to set each element, for instance:
 
 ```cs
 var args = new object[2];
@@ -223,7 +223,7 @@ MyRunTimeMethod( new object[] { "a", DateTime.Now });
 
 ### Generating interpolated strings
 
-Instead of generating a string an an array separately and using `string.Format`, you can generate an interpolated string using the <xref:Caravela.Framework.Code.Syntax.InterpolatedStringBuilder> class.
+Instead of generating a string as an array separately and using `string.Format`, you can generate an interpolated string using the <xref:Caravela.Framework.Code.Syntax.InterpolatedStringBuilder> class.
 
 The following example shows how an <xref:Caravela.Framework.Code.Syntax.InterpolatedStringBuilder> can be used to automatically implement the `ToString` method.
 
@@ -253,7 +253,7 @@ MyRunTimeMethod((a + b)/c)
 
 ### Capturing run-time expressions into compile-time objects
 
-If you want to manipulate a run-time expression as a compile-time object, you can do it using the <xref:Caravela.Framework.Aspects.meta.DefineExpression*?text=meta.DefineExpression> method. This allows you to have expressions that depend on compile-time conditions and control flows. The <xref:Caravela.Framework.Aspects.meta.DefineExpression*> method returns an <xref:Caravela.Framework.Code.IExpression>, the same interface returned by <xref:Caravela.Framework.Aspects.meta.ParseExpression*>.  <xref:Caravela.Framework.Code.IExpression> is a compile-time object that you can use anywhere in compile-time code. It exposes the run-time expression in the <xref:Caravela.Framework.Code.IExpression.Value> property.
+If you want to manipulate a run-time expression as a compile-time object, you can do it using the <xref:Caravela.Framework.Aspects.meta.DefineExpression*?text=meta.DefineExpression> method. This allows you to have expressions that depend on compile-time conditions and control flows. The <xref:Caravela.Framework.Aspects.meta.DefineExpression*> method returns an <xref:Caravela.Framework.Code.IExpression>, the same interface returned by <xref:Caravela.Framework.Aspects.meta.ParseExpression*>. The <xref:Caravela.Framework.Code.IExpression> is a compile-time object that you can use anywhere in compile-time code. It exposes the run-time expression in the <xref:Caravela.Framework.Code.IExpression.Value> property.
 
 The following example is taken from the clone aspect. It declares a local variable named `clone`, but the expression assigned to the variable depends on whether the `Clone` method is an override.
 
@@ -275,7 +275,7 @@ var clone = meta.Cast(meta.Target.Type, baseCall);
 
 [comment]: # (TODO: Reference code snippets from the file by marked region)
 
-This templates generates either `var clone = (TargetType) base.Clone();` or `var clone = (TargetType) this.MemberwiseClone();`.
+This template generates either `var clone = (TargetType) base.Clone();` or `var clone = (TargetType) this.MemberwiseClone();`.
 
 
 ## Debugging templates
