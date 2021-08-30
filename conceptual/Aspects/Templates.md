@@ -31,13 +31,13 @@ The entry point of the compile-time API is the <xref:Caravela.Framework.Aspects.
 
 The <xref:Caravela.Framework.Aspects.meta> exposes the following members:
 
-- <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed> method invokes the target method or accessor being intercepted, which can be either the next aspect applied on the same target or the target source implementation itself.
-- <xref:Caravela.Framework.Aspects.meta.Target?text=meta.Target> property gives access to the declaration to which the template is applied.
-- <xref:Caravela.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> property gives access to the current method or accessor parameters.
-- <xref:Caravela.Framework.Aspects.meta.Diagnostics?text=meta.Diagnostics> property allows your aspect to report or suppress diagnostics. See <xref:diagnostics> for details.
-- <xref:Caravela.Framework.Aspects.meta.This?text=meta.This> property represents the `this` instance. Together with <xref:Caravela.Framework.Aspects.meta.Base?text=meta.Base>, <xref:Caravela.Framework.Aspects.meta.ThisStatic?text=meta.ThisStatic>, and <xref:Caravela.Framework.Aspects.meta.BaseStatic?text=meta.BaseStatic> properties, it allows your template to access members of the target class using dynamic code (see below).
-- <xref:Caravela.Framework.Aspects.meta.Tags?text=meta.Tags> property gives access to an arbitrary dictionary that has been passed to the advice factory method.
-- <xref:Caravela.Framework.Aspects.meta.CompileTime*?text=meta.CompileTime> method coerces a neutral expression into a compile-time expression.
+- The <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed> method invokes the target method or accessor being intercepted, which can be either the next aspect applied on the same target or the target source implementation itself.
+- The <xref:Caravela.Framework.Aspects.meta.Target?text=meta.Target> property gives access to the declaration to which the template is applied.
+- The <xref:Caravela.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> property gives access to the current method or accessor parameters.
+- The <xref:Caravela.Framework.Aspects.meta.Diagnostics?text=meta.Diagnostics> property allows your aspect to report or suppress diagnostics. See <xref:diagnostics> for details.
+- The <xref:Caravela.Framework.Aspects.meta.This?text=meta.This> property represents the `this` instance. Together with <xref:Caravela.Framework.Aspects.meta.Base?text=meta.Base>, <xref:Caravela.Framework.Aspects.meta.ThisStatic?text=meta.ThisStatic>, and <xref:Caravela.Framework.Aspects.meta.BaseStatic?text=meta.BaseStatic> properties, it allows your template to access members of the target class using dynamic code (see below).
+- The <xref:Caravela.Framework.Aspects.meta.Tags?text=meta.Tags> property gives access to an arbitrary dictionary that has been passed to the advice factory method.
+-  The <xref:Caravela.Framework.Aspects.meta.CompileTime*?text=meta.CompileTime> method coerces a neutral expression into a compile-time expression.
 - <xref:Caravela.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method converts the result of a compile-time expression into a run-time value (see below).
 
 ### Compile-time local variables
@@ -58,7 +58,7 @@ Examples:
 
 ### Aspect members
 
-Aspect members are compile-time and can be accessed from templates. For instance, an aspect custom attribute can define a property that can be set when when the custom attribute is applied to a target declaration and it can be accessed from the aspect's compile-time code.
+Aspect members are compile-time and can be accessed from templates. For instance, an aspect custom attribute can define a property that can be set when when the custom attribute is applied to a target declaration and then read from the aspect compile-time code.
 
 There are a few exceptions to this rule:
 

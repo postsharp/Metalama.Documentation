@@ -43,7 +43,7 @@ Caravela.Framework.Sdk is in preview, but it is mostly feature complete.
     }
     ```
 
-    where the `AspectWeaverContext` is defined as:
+    where the `AspectWeaverContext` class is defined as:
 
     ```c#
     public sealed class AspectWeaverContext
