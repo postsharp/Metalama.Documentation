@@ -6,7 +6,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImportWithSett
     class TargetCode
     {
         [Import]
-        IFormatProvider FormatProvider { get; set; }
+        IFormatProvider _formatProvider { get; set; }
     }
 
     class ServiceLocator : IServiceProvider

@@ -9,7 +9,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework
     class EmptyOverrideFieldOrPropertyExample
     {
         [EmptyOverrideFieldOrProperty]
-        public int _field;
+        public int Field;
 
         [EmptyOverrideFieldOrProperty]
         public string Property { get; set; }

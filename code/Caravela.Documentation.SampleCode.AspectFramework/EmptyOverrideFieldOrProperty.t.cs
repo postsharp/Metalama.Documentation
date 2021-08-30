@@ -10,19 +10,19 @@ namespace Caravela.Documentation.SampleCode.AspectFramework
     {
 
 
-        private int _field1;
+        private int _field;
 
 
-        public int _field
+        public int Field
         {
             get
             {
-                return this._field1;
+                return this._field;
             }
 
             set
             {
-                this._field1 = value;
+                this._field = value;
             }
         }
 

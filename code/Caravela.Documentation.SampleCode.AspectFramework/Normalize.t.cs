@@ -15,7 +15,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Normalize
 
             set
             {
-                this.Property_Source = value?.Trim()?.ToLowerInvariant();
+                this.Property_Source = value?.Trim().ToLowerInvariant();
             }
         }
 
