@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "docfx"
+		},
+		{
+			"path": "conceptual"
+		}
+	],
+	"settings": {
+		"markdownlint.config": {
+			"default": true,
+			"DOCSMD010" : false,
+			"MD033" : false,
+			"MD003": { "style": "atx" },
+			"MD007": { "indent": 4 },
+			
+			"no-hard-tabs": false
+		},
+		"cSpell.words": [
+			"Caravela",
+			"nameof",
+			"typeof"
+		]
+
+	}
+}

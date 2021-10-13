@@ -15,4 +15,4 @@ uid: api
 | <xref:Caravela.Framework.Impl.CodeModel>    | This namespaces allows you to build low-level aspects.                                                                     |
 | <xref:Caravela.Framework.Validation>  | This namespace is not yet implemented.                                                                                     |
 | <xref:Caravela.Framework.Eligibility> | This namespace is not yet implemented.                                                                                     |
-| <xref:Caravela.Framework.Policies>    | This namespace is not yet implemented.                                                                                     |
+| <xref:Caravela.Framework.Fabrics>    | This namespace is not yet implemented.                                                                                     |

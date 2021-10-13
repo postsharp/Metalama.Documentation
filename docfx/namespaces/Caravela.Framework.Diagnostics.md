@@ -11,8 +11,6 @@ You can then use report a diagnostic from your implementation of <xref:Caravela.
 by calling the <xref:Caravela.Framework.Diagnostics.IDiagnosticSink.Report*> method 
 exposed on the consuming <xref:Caravela.Framework.Aspects.IAspectLayerBuilder.Diagnostics> property of <xref:Caravela.Framework.Aspects.IAspectBuilder>.
 
-You can also report a diagnostic from a template using the <xref:Caravela.Framework.Aspects.meta.Diagnostics> property of the `meta` API.
-
 To suppress of diagnostic, you must first define it as a static field of type <xref:Caravela.Framework.Diagnostics.SuppressionDefinition> in your aspect class.
 You can then suppress a diagnostic from any declaration from an aspect using the 
 <xref:Caravela.Framework.Diagnostics.IDiagnosticSink.Suppress*>

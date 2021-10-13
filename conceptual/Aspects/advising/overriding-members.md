@@ -10,7 +10,7 @@ In the section <xref:simple-aspects>, you have learned to override methods, prop
 
 ## Overriding methods
 
-To override one or more methods, your aspect needs to implement the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod*?text=builder.AdviceFactory.OverrideMethod> method.
+To override one or more methods, your aspect needs to implement the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod*?text=builder.Advices.OverrideMethod> method.
 
 The _first argument_ of `OverrideMethod` is the <xref:Caravela.Framework.Code.IMethod> that you want to override. This method must be in the type being targeted by the current aspect instance.
 
@@ -51,7 +51,7 @@ There are two approaches to override a field or property: by providing a _proper
 
 This approach is the simplest but it has a few limitations.
 
-Just like for methods, to override one or more fields or properties, your aspect needs to implement the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.AdviceFactory`.
+Just like for methods, to override one or more fields or properties, your aspect needs to implement the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.Advices`.
 
 The _first argument_ of `OverrideFieldOrProperty` is the <xref:Caravela.Framework.Code.IFieldOrProperty> that you want to override. This field or property must be in the type being targeted by the current aspect instance.
 

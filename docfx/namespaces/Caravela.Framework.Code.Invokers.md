@@ -13,7 +13,7 @@ The invoker factory interface has two properties:
 -  <xref:Caravela.Framework.Code.Invokers.IInvokerFactory`1.Base> is equivalent to the `base` keyword in C#. It allows you to access the implementation
    prior to the current aspect layer.
 
--  <xref:Caravela.Framework.Code.Invokers.IInvokerFactory`1.FinalConditional> and <xref:Caravela.Framework.Code.Invokers.IInvokerFactory`1.BaseConditional> generate a `.?` null-conditional access instead of `.`.
+-  <xref:Caravela.Framework.Code.Invokers.IInvokerFactory`1.ConditionalFinal> and <xref:Caravela.Framework.Code.Invokers.IInvokerFactory`1.ConditionalBase> generate a `.?` null-conditional access instead of `.`.
 
 
 ## Class Diagram
@@ -23,9 +23,9 @@ classDiagram
 
 class IInvokerFactory~T~ {
    T? Base
-   T? BaseConditional
+   T? ConditionalBase
    T Final
-   T FinalConditional
+   T ConditionalBase
 }
 
 IInvokerFactory~T~ --> IInvoker: exposes

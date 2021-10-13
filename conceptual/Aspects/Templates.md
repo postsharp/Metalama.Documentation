@@ -34,7 +34,6 @@ The <xref:Caravela.Framework.Aspects.meta> static class exposes to the following
 - The <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed> method invokes the target method or accessor being intercepted, which can be either the next aspect applied on the same target or the target source implementation itself.
 - The <xref:Caravela.Framework.Aspects.meta.Target?text=meta.Target> property gives access to the declaration to which the template is applied.
 - The <xref:Caravela.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> property gives access to the current method or accessor parameters.
-- The <xref:Caravela.Framework.Aspects.meta.Diagnostics?text=meta.Diagnostics> property allows your aspect to report or suppress diagnostics. See <xref:diagnostics> for details.
 - The <xref:Caravela.Framework.Aspects.meta.This?text=meta.This> property represents the `this` instance. Together with <xref:Caravela.Framework.Aspects.meta.Base?text=meta.Base>, <xref:Caravela.Framework.Aspects.meta.ThisStatic?text=meta.ThisStatic>, and <xref:Caravela.Framework.Aspects.meta.BaseStatic?text=meta.BaseStatic> properties, it allows your template to access members of the target class using dynamic code (see below).
 - The <xref:Caravela.Framework.Aspects.meta.Tags?text=meta.Tags> property gives access to an arbitrary dictionary that has been passed to the advice factory method.
 -  The <xref:Caravela.Framework.Aspects.meta.CompileTime*?text=meta.CompileTime> method coerces a neutral expression into a compile-time expression.
@@ -201,7 +200,7 @@ args[1] = DateTime.Now;
 MyRunTimeMethod( args );
 ```
 
-If you want to generate an array as a single-line expression, you can use the <xref:Caravela.Framework.Code.Syntax.ArrayBuilder> class.
+If you want to generate an array as a single-line expression, you can use the <xref:Caravela.Framework.Code.SyntaxBuilders.ArrayBuilder> class.
 
 For instance:
 
@@ -209,7 +208,7 @@ For instance:
 var arrayBuilder = ArrayBuilder.Create();
 arrayBuilder.Add( "a" );
 arrayBuilder.Add( DateTime.Now );
-MyRunTimeMethod( arrayBuilder.ToArray() );
+MyRunTimeMethod( arrayBuilder.ToValue() );
 ```
 
 This will generate the following code:
@@ -220,9 +219,9 @@ MyRunTimeMethod( new object[] { "a", DateTime.Now });
 
 ### Generating interpolated strings
 
-Instead of generating a string as an array separately and using `string.Format`, you can generate an interpolated string using the <xref:Caravela.Framework.Code.Syntax.InterpolatedStringBuilder> class.
+Instead of generating a string as an array separately and using `string.Format`, you can generate an interpolated string using the <xref:Caravela.Framework.Code.SyntaxBuilders.InterpolatedStringBuilder> class.
 
-The following example shows how an <xref:Caravela.Framework.Code.Syntax.InterpolatedStringBuilder> can be used to automatically implement the `ToString` method.
+The following example shows how an <xref:Caravela.Framework.Code.SyntaxBuilders.InterpolatedStringBuilder> can be used to automatically implement the `ToString` method.
 
 [!include[ToString](../../code/Caravela.Documentation.SampleCode.AspectFramework/ToString.cs)]
  

@@ -1,5 +1,5 @@
 ---
-uid: Caravela.Framework.Code.Builders
+uid: Caravela.Framework.Code.DeclarationBuilders
 summary: *content
 ---
 This namespace contains the representation of the declarations introduced by advices like `IntroduceMethod` or

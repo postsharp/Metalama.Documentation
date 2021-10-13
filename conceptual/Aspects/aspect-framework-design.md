@@ -69,7 +69,7 @@ The only _declarative advice_ is the _member introduction_ advice and is marked 
 
 #### Imperative advices
 
-_Imperative advices_ are added by the implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method thanks to the methods exposed by the <xref:Caravela.Framework.Aspects.IAspectLayerBuilder.AdviceFactory> property of the `builder` parameter. See <xref:Caravela.Framework.Aspects.IAdviceFactory> for a complete list of methods. In short:
+_Imperative advices_ are added by the implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method thanks to the methods exposed by the <xref:Caravela.Framework.Aspects.IAspectLayerBuilder.Advices> property of the `builder` parameter. See <xref:Caravela.Framework.Aspects.IAdviceFactory> for a complete list of methods. In short:
 
 - <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod*>, <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrProperty*>, <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrPropertyAccessors*>,  <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideEventAccessors*> allow you to replace the implementation of a type member. See <xref:overriding-members> for details.
 - <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceMethod*>, <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceProperty*>, <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceField*> and <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceEvent*> allows your aspect to introduce new members into the target type. See <xref:introducing-members> for details.
