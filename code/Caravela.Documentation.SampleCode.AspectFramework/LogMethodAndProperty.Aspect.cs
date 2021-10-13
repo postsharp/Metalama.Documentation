@@ -4,16 +4,17 @@ using Caravela.Framework.Code;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.LogMethodAndProperty
 {
-    public class LogAttribute : Attribute, IAspect<IMethod>, IAspect<IFieldOrProperty>
+    [AttributeUsage( AttributeTargets.Method | AttributeTargets.Field | AttributeTargets.Property )]
+    public class LogAttribute : Aspect, IAspect<IMethod>, IAspect<IFieldOrProperty>
     {
         public void BuildAspect(IAspectBuilder<IMethod> builder)
         {
-            builder.AdviceFactory.OverrideMethod(builder.Target, nameof(this.OverrideMethod));
+            builder.Advices.OverrideMethod(builder.Target, nameof(this.OverrideMethod));
         }
 
         public void BuildAspect(IAspectBuilder<IFieldOrProperty> builder)
         {
-            builder.AdviceFactory.OverrideFieldOrProperty(builder.Target, nameof(this.OverrideProperty));
+            builder.Advices.OverrideFieldOrProperty(builder.Target, nameof(this.OverrideProperty));
         }
 
         [Template]

@@ -2,14 +2,14 @@
 using System.Text;
 using Caravela.Framework.Aspects;
 using Caravela.Framework.Code;
-using Caravela.Framework.Code.Syntax;
+using Caravela.Framework.Code.SyntaxBuilders;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
 {
     public class LogAttribute : OverrideMethodAspect
     {
 
-        public override dynamic OverrideMethod()
+        public override dynamic? OverrideMethod()
         {
             // Build a formatting string.
             var methodName = BuildInterpolatedString();
@@ -17,12 +17,12 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
             // Write entry message.
             var entryMessage = methodName.Clone();
             entryMessage.AddText(" started.");
-            Console.WriteLine(entryMessage.ToInterpolatedString());
+            Console.WriteLine(entryMessage.ToValue());
 
             try
             {
                 // Invoke the method.
-                dynamic result = meta.Proceed();
+                var result = meta.Proceed();
 
                 // Display the success message.
                 var successMessage = methodName.Clone();
@@ -37,7 +37,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
                     successMessage.AddText(".");
                 }
 
-                Console.WriteLine(successMessage.ToInterpolatedString() );
+                Console.WriteLine(successMessage.ToValue() );
 
                 return result;
             }
@@ -47,14 +47,14 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
                 var failureMessage = methodName.Clone();
                 failureMessage.AddText(" failed: ");
                 failureMessage.AddExpression(e.Message);
-                Console.WriteLine(failureMessage.ToInterpolatedString());
+                Console.WriteLine(failureMessage.ToValue());
                 throw;
             }
         }
 
         private static InterpolatedStringBuilder BuildInterpolatedString()
         {
-            var stringBuilder = InterpolatedStringBuilder.Create();
+            var stringBuilder = new InterpolatedStringBuilder();
             stringBuilder.AddText(meta.Target.Type.ToDisplayString(CodeDisplayFormat.MinimallyQualified));
             stringBuilder.AddText(".");
             stringBuilder.AddText(meta.Target.Method.Name);
@@ -65,7 +65,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
             {
                 var comma = i > 0 ? ", " : "";
 
-                if (p.IsOut())
+                if (p.RefKind == RefKind.Out)
                 {
                     stringBuilder.AddText($"{comma}{p.Name} = <out> ");
                 }

@@ -5,10 +5,10 @@ using Caravela.Framework.Code;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged1
 {
-    class IntroducePropertyChangedAspect : Attribute, IAspect<INamedType>
+    class IntroducePropertyChangedAspect : TypeAspect
     {
         [Introduce]
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         [Introduce]
         protected virtual void OnPropertyChanged( string propertyName )

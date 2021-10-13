@@ -3,6 +3,9 @@ using Caravela.TestFramework;
 using Xunit;
 using Xunit.Abstractions;
 
+#pragma warning disable IDE1006 // Naming Styles
+
+
 namespace Caravela.Documentation.SampleCode.CompileTimeTesting
 {
     public class _Runner : TestSuite

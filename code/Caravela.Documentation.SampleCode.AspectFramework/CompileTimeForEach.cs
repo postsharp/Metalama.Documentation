@@ -7,7 +7,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.CompileTimeForEach
         [CompileTimeForEach]
         private void Method(int a, string b)
         {
-            Console.WriteLine("Hello, world.");
+            Console.WriteLine($"Hello, world! a={a}, b='{b}'.");
         }
     }
 }

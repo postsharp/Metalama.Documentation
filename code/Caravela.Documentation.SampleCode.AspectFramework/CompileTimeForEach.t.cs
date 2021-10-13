@@ -9,7 +9,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.CompileTimeForEach
         {
             Console.WriteLine($"a = {a}");
             Console.WriteLine($"b = {b}");
-            Console.WriteLine("Hello, world.");
+            Console.WriteLine($"Hello, world! a={a}, b='{b}'.");
             return;
         }
     }

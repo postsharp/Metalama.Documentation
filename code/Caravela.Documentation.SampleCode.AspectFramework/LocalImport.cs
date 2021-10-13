@@ -11,7 +11,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ImportService
 
         public string Format(object? o)
         {
-            return ((ICustomFormatter)this.FormatProvider.GetFormat(typeof(ICustomFormatter)))
+            return ((ICustomFormatter)this.FormatProvider.GetFormat(typeof(ICustomFormatter))!)
                 .Format(null, o, this.FormatProvider);
         }
     }

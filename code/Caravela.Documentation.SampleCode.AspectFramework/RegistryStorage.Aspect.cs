@@ -6,7 +6,7 @@ using Microsoft.Win32;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.RegistryStorage
 {
-    class RegistryStorageAttribute : Attribute, IAspect<INamedType>
+    class RegistryStorageAttribute : TypeAspect
     {
         public string Key { get; }
 
@@ -15,17 +15,17 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.RegistryStorage
             this.Key = "HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\" + key;
         }
 
-        public void BuildAspect(IAspectBuilder<INamedType> builder )
+        public override void BuildAspect(IAspectBuilder<INamedType> builder )
         {
             foreach ( var property in builder.Target.FieldsAndProperties.Where( p=> p.IsAutoPropertyOrField))
             {
-                builder.AdviceFactory.OverrideFieldOrProperty( property, nameof(this.OverrideProperty));
+                builder.Advices.OverrideFieldOrProperty( property, nameof(this.OverrideProperty));
             }
             
         }
 
         [Template]
-        dynamic OverrideProperty
+        dynamic? OverrideProperty
         {
             get
             {

@@ -5,13 +5,13 @@ using Caravela.Framework.Code;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.Synchronized
 {
-    class SynchronizedAttribute : Attribute, IAspect<INamedType>
+    class SynchronizedAttribute : TypeAspect
     {
-        public void BuildAspect( IAspectBuilder<INamedType> builder )
+        public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
             foreach ( var method in builder.Target.Methods.Where( m => !m.IsStatic))
             {
-                builder.AdviceFactory.OverrideMethod(method, nameof(OverrideMethod));
+                builder.Advices.OverrideMethod(method, nameof(OverrideMethod));
             }
         }
 

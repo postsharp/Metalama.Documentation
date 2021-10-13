@@ -5,11 +5,11 @@ using Caravela.Framework.Code;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
 {
-    class DeepCloneAttribute : Attribute, IAspect<INamedType>
+    class DeepCloneAttribute : TypeAspect
     {
-        public void BuildAspect(IAspectBuilder<INamedType> builder)
+        public override void BuildAspect(IAspectBuilder<INamedType> builder)
         {
-            var typedMethod = builder.AdviceFactory.IntroduceMethod(
+            var typedMethod = builder.Advices.IntroduceMethod(
                 builder.Target,
                 nameof(CloneImpl),
                 whenExists: OverrideStrategy.Override);
@@ -17,7 +17,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
             typedMethod.Name = "Clone";
             typedMethod.ReturnType = builder.Target;
 
-            builder.AdviceFactory.ImplementInterface(
+            builder.Advices.ImplementInterface(
                 builder.Target,
                 typeof(ICloneable),
                 whenExists: OverrideStrategy.Ignore);
@@ -41,7 +41,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
             }
 
             // Define a local variable of the same type as the target type.
-            var clone = meta.Cast(meta.Target.Type, baseCall);
+            var clone = meta.Cast(meta.Target.Type, baseCall)!;
 
             // Select clonable fields.
             var clonableFields =
@@ -54,7 +54,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
             {
                 // Check if we have a public method 'Clone()' for the type of the field.
                 var fieldType = (INamedType)field.Type;
-                var cloneMethod = fieldType.Methods.OfExactSignature("Clone", 0, Array.Empty<IType>());
+                var cloneMethod = fieldType.Methods.OfExactSignature("Clone", Array.Empty<IType>());
 
                 if (cloneMethod is { Accessibility: Accessibility.Public } ||
                      fieldType.Aspects<DeepCloneAttribute>().Any())

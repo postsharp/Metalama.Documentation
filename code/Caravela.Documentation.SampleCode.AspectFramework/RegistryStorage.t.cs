@@ -20,7 +20,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.RegistryStorage
                 }
                 else
                 {
-                    return 0;
+                    return default;
                 }
             }
 
@@ -46,7 +46,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.RegistryStorage
                 }
                 else
                 {
-                    return 0;
+                    return default;
                 }
             }
 

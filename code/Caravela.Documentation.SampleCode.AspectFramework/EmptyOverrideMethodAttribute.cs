@@ -4,7 +4,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework
 {
     public class EmptyOverrideMethodAttribute : OverrideMethodAspect
     {
-        public override dynamic OverrideMethod()
+        public override dynamic? OverrideMethod()
         {
             return meta.Proceed();
         }

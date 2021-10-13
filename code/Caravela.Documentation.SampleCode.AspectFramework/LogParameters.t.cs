@@ -7,17 +7,17 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
         [Log]
         private void VoidMethod(int a, out int b)
         {
-            Console.WriteLine($"TargetCode.VoidMethod(a = {{a}}, b = <out> ) started.");
+            Console.WriteLine($"TargetCode.VoidMethod(a = {{{a}}}, b = <out> ) started.");
             try
             {
                 b = a;
                 object result = null;
-                Console.WriteLine($"TargetCode.VoidMethod(a = {{a}}, b = <out> ) succeeded.");
+                Console.WriteLine($"TargetCode.VoidMethod(a = {{{a}}}, b = <out> ) succeeded.");
                 return;
             }
             catch (Exception e)
             {
-                Console.WriteLine($"TargetCode.VoidMethod(a = {{a}}, b = <out> ) failed: {e.Message}");
+                Console.WriteLine($"TargetCode.VoidMethod(a = {{{a}}}, b = <out> ) failed: {e.Message}");
                 throw;
             }
         }
@@ -25,19 +25,19 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
         [Log]
         private int IntMethod(int a)
         {
-            Console.WriteLine($"TargetCode.IntMethod(a = {{a}}) started.");
+            Console.WriteLine($"TargetCode.IntMethod(a = {{{a}}}) started.");
             try
             {
                 int result;
                 result = a;
                 goto __aspect_return_1;
             __aspect_return_1:
-                Console.WriteLine($"TargetCode.IntMethod(a = {{a}}) returned {result}.");
+                Console.WriteLine($"TargetCode.IntMethod(a = {{{a}}}) returned {result}.");
                 return result;
             }
             catch (Exception e)
             {
-                Console.WriteLine($"TargetCode.IntMethod(a = {{a}}) failed: {e.Message}");
+                Console.WriteLine($"TargetCode.IntMethod(a = {{{a}}}) failed: {e.Message}");
                 throw;
             }
         }

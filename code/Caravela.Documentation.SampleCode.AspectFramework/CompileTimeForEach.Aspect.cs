@@ -7,7 +7,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.CompileTimeForEach
 {
     internal class CompileTimeForEachAttribute : OverrideMethodAspect
     {
-        public override dynamic OverrideMethod()
+        public override dynamic? OverrideMethod()
         {
             foreach (var p in meta.Target.Parameters.Where(p => p.RefKind != RefKind.Out))
             {

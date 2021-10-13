@@ -26,10 +26,10 @@ namespace Caravela.Documentation.SampleCode.AspectFramework
             }
         }
 
-        private string _property;
+        private string? _property;
 
         [EmptyOverrideFieldOrProperty]
-        public string Property
+        public string? Property
         {
             get
             {

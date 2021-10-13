@@ -5,9 +5,9 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.UpdateMethod
     [UpdateMethod]
     class CityHunter
     {
-        int x;
+        int _x;
 
-        public string Y { get; private set; }
+        public string? Y { get; private set; }
 
         public DateTime Z { get; }
     }

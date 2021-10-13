@@ -5,11 +5,11 @@ using Caravela.Framework.Code;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.UpdateMethod
 {
-    class UpdateMethodAttribute : Attribute, IAspect<INamedType>
+    class UpdateMethodAttribute : TypeAspect
     {
-        public void BuildAspect( IAspectBuilder<INamedType> builder )
+        public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            var updateMethodBuilder = builder.AdviceFactory.IntroduceMethod(builder.Target, nameof(Update));
+            var updateMethodBuilder = builder.Advices.IntroduceMethod(builder.Target, nameof(Update));
 
             var fieldsAndProperties = 
                 builder.Target.FieldsAndProperties

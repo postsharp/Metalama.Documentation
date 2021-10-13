@@ -8,7 +8,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Tags
         void Method(int a, int b)
         {
             Console.WriteLine($"This method has 2 parameters.");
-            Console.WriteLine("This is the method.");
+            Console.WriteLine($"Method({a}, {b})");
             return;
         }
     }

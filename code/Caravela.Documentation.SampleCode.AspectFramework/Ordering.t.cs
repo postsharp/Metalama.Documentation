@@ -18,16 +18,16 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
         }
 
 
+        public static void IntroducedMethod1()
+        {
+            Console.WriteLine("Method introduced by Aspect1.");
+        }
+
         public static void IntroducedMethod2()
         {
             Console.WriteLine("Executing Aspect1 on IntroducedMethod2. Methods present before applying Aspect1: SourceMethod, IntroducedMethod2");
             Console.WriteLine("Method introduced by Aspect2.");
             return;
-        }
-
-        public static void IntroducedMethod1()
-        {
-            Console.WriteLine("Method introduced by Aspect1.");
         }
 
     }

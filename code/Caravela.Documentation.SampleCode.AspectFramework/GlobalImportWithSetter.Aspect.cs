@@ -5,7 +5,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImportWithSett
 {
     internal class ImportAttribute : OverrideFieldOrPropertyAspect
     {
-        public override dynamic OverrideProperty
+        public override dynamic? OverrideProperty
         {
             get
             {
