@@ -29,7 +29,7 @@ Compile-time statements are statements, such as `if`, `foreach` or `meta.DebugBr
 
 The entry point of the compile-time API is the <xref:Caravela.Framework.Aspects.meta> static class. The name of this class is intentionally lower case to convey the sentiment that it is something unusual and gives access to some kind of magic. The <xref:Caravela.Framework.Aspects.meta> class is the entry point to the meta model and the members of this class can be invoked only in the context of a template.
 
-The <xref:Caravela.Framework.Aspects.meta> exposes to the following members:
+The <xref:Caravela.Framework.Aspects.meta> static class exposes to the following members:
 
 - <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed> invokes the method or accessor being intercepted &mdash; it can be the next aspect or the source implementation.
 - <xref:Caravela.Framework.Aspects.meta.Target?text=meta.Target> gives access to the declaration to which the template is applied.
@@ -51,10 +51,7 @@ Examples:
 - In `var parameters = meta.Target.Parameters`, `parameters` is compile-time variable.
 
 > [!NOTE]
-> It is not allowed to assign a compile-time variable from a block whose execution depends on a run-time condition, including:
->
-> - a run-time `if`, `else`, `for`, `foreach`, `while`;
-> - a `catch` or `finally`.
+> It is not allowed to assign a compile-time variable from a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, - a `catch` or `finally`.
 
 ### Aspect members
 
