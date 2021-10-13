@@ -125,11 +125,11 @@ namespace Caravela.Documentation.DfmExtensions
             var targetPathRelativeToProjectDir = GetRelativePath(projectDir, targetPath);
             var sourceDirectoryRelativeToGitDir = GetRelativePath(gitDirectory, Path.GetDirectoryName(targetPath));
 
-            var aspectHtmlPath = Path.GetFullPath(Path.Combine(projectDir, "obj", "html",
+            var aspectHtmlPath = Path.GetFullPath(Path.Combine(projectDir, "obj", "html", "net5.0",
                 Path.ChangeExtension(targetPathRelativeToProjectDir, ".Aspect.cs.html")));
-            var targetHtmlPath = Path.GetFullPath(Path.Combine(projectDir, "obj", "html",
+            var targetHtmlPath = Path.GetFullPath(Path.Combine(projectDir, "obj", "html", "net5.0",
                 Path.ChangeExtension(targetPathRelativeToProjectDir, ".cs.html")));
-            var transformedHtmlPath = Path.GetFullPath(Path.Combine(projectDir, "obj", "html",
+            var transformedHtmlPath = Path.GetFullPath(Path.Combine(projectDir, "obj", "html", "net5.0",
                 Path.ChangeExtension(targetPathRelativeToProjectDir, ".out.cs.html")));
             
 

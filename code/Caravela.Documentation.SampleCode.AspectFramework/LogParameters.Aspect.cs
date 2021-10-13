@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using Caravela.Framework.Aspects;
 using Caravela.Framework.Code;
 using Caravela.Framework.Code.SyntaxBuilders;
@@ -52,6 +51,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
             }
         }
 
+        [CompileTimeOnly]
         private static InterpolatedStringBuilder BuildInterpolatedString()
         {
             var stringBuilder = new InterpolatedStringBuilder();
