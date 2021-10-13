@@ -18,7 +18,7 @@ When a project uses two unrelated aspect libraries, or when a project defines it
 
 ### Order of application versus order of execution
 
-Caravela follows what we call the "matryoshka" model: your source code is the innermost dull, and aspects are added _around_ it. The fully compiled code, with all aspects, is like the fully assembled matryoshka. Executing a method is like disassembling the matryoshka: you start with the outermost shell, and you continue to the original implementation.
+Caravela follows what we call the "matryoshka" model: your source code is the innermost doll, and aspects are added _around_ it. The fully compiled code, with all aspects, is like the fully assembled matryoshka. Executing a method is like disassembling the matryoshka: you start with the outermost shell, and you continue to the original implementation.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Matryoshka_transparent.png" width="480px" style="padding: 40px" title="CC BY-SA 3.0 by Wikipedia user Fanghong.">
 

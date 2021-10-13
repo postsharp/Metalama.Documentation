@@ -2,7 +2,7 @@
 uid: Caravela.Framework.Code.Invokers
 summary: *content
 ---
-This namespace defines invokers, which are objects that generates syntax that invokes methods or accesses properties, fields or events.
+This namespace defines invokers, which are objects that generate syntax that invokes methods or accesses properties, fields or events.
 
 Where it makes sense, declarations expose an invoker factory (<xref:Caravela.Framework.Code.Invokers.IInvokerFactory`1>) on their `Invokers` property. 
 The invoker factory interface has two properties:

@@ -73,7 +73,7 @@ The easiest way to introduce a member from an aspect is to implement this member
 
 The following example shows an aspect that implements the `ToString` method. It will return a string including the value of all fields.
 
-Note tha this aspect will replace any hand-written implementation of `ToString`, which is not desirable. It can can only be avoided by introducing the method programmatically and conditionally (TODO 28807).
+Note that this aspect will replace any hand-written implementation of `ToString`, which is not desirable. It can can only be avoided by introducing the method programmatically and conditionally (TODO 28807).
 
 [!include[ToString](../../../code/Caravela.Documentation.SampleCode.AspectFramework/ToString.cs)]
 
@@ -99,7 +99,7 @@ In your implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAs
 
 - <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceField*> returning an <xref:Caravela.Framework.Code.Builders.IFieldBuilder>.
 
-A call to these method creates a member that have the same characteristics of the template (name, signature, ...), taking into account the properties of the <xref:Caravela.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute. However, they return a _builder_ object that allows you to modify these characteristics.
+A call to these method creates a member that has the same characteristics as the template (name, signature, ...), taking into account the properties of the <xref:Caravela.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute. However, they return a _builder_ object that allows you to modify these characteristics.
 
 ### Step 3. Adjust the name and signature using the builder
 
@@ -128,7 +128,7 @@ Most of the times, when you override a method, you will want to invoke the aspec
 
 - To invoke the base method or accessor with exactly the same arguments, call <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed*>.
 - To invoke the base method with different arguments, use <xref:Caravela.Framework.Code.Advised.IAdvisedMethod.Invoke(System.Object[])?text=meta.Target.Method.Invoke>.
-- To call the base property getter or setter, use <xref:Caravela.Framework.Code.Advised.IExpression.Value?text=meta.Property.Value>.
+- To call the base property getter or setter, use <xref:Caravela.Framework.Code.IExpression.Value?text=meta.Property.Value>.
 - To access the base event, use <xref:Caravela.Framework.Code.Advised.IAdvisedEvent.AddMethod?text=meta.Event.AddMethod.Invoke*>.
 
 [comment]: # (TODO: When it will work, Disposable example.)
@@ -147,7 +147,7 @@ When you introduce a member to a type, your will often want to access it from te
 
 ### Option 3. Use the invoker of the builder object
 
-If none of the approaches above offer you the required flexibility (typically because the name of the introduced member is dynamic), you use the invokers exposed on the builder object returned from the advice factory method.
+If none of the approaches above offer you the required flexibility (typically because the name of the introduced member is dynamic), use the invokers exposed on the builder object returned from the advice factory method.
 
 > [!NOTE]
 > Declarations introduced by an aspect or aspect layer are not visible in the `meta` code model exposed to in the same aspect or aspect layer. To reference builders, you have to reference them differently. For details, see <xref:sharing-state-with-advices>.
@@ -158,7 +158,7 @@ For details, see <xref:Caravela.Framework.Code.Invokers>
 
 ## Referencing introduced members from source code
 
-If you want the _source_ code (not your aspect code) to reference declarations introduced by your aspect, the _user_ of your aspects needs to make the target types `partial`. Without this keyword, the introduced declarations will not be visible at design time in syntax completion, and the IDE will report errors. Note that the _compiler_ will not complain because Caravela replaces the compiler, but the IDE will because it does not know about Caravela, and here Caravela, and therefore your aspect, has to follow the rules of the C# compiler. How inconvenient it may be, there is nothing you as an aspect author, or us as the authors of Caravela, can do.
+If you want the _source_ code (not your aspect code) to reference declarations introduced by your aspect, the _user_ of your aspect needs to make the target types `partial`. Without this keyword, the introduced declarations will not be visible at design time in syntax completion, and the IDE will report errors. Note that the _compiler_ will not complain because Caravela replaces the compiler, but the IDE will because it does not know about Caravela, and here Caravela, and therefore your aspect, has to follow the rules of the C# compiler. How inconvenient it may be, there is nothing you as an aspect author, or us as the authors of Caravela, can do.
 
 If the user does not add the `partial` keyword, Caravela will report a warning and offer a code fix.
 

@@ -125,7 +125,7 @@ The included file will behave just as an auxiliary file.
 
 Because Caravela is disabled at compile- and design-time for a test project, you will have difficulties referencing members that do not exist in your source code but have been introduced by an aspect. Since the IDE and the compiler do not know about Caravela, you will get errors complaining that these members do not exist.
 
-The solution is to add wrap the code accessing introduced members with a `#if CARAVELA` directive. Because the `CARAVELA` symbol is defined when the test framework is running, this code will be taken into account during these tests. However, because it is not defined at design- and compile-time, it this code will be ignored while editing and compiling.
+The solution is to wrap the code accessing introduced members with a `#if CARAVELA` directive. Because the `CARAVELA` symbol is defined when the test framework is running, this code will be taken into account during these tests. However, because it is not defined at design- and compile-time, it this code will be ignored while editing and compiling.
 
 For instance, if the `Planet.Update` method is introduced by an aspect:
 
@@ -156,7 +156,7 @@ For the example above, the test output is the following:
 
 Verify that the output code matches your expectations. If necessary, fix your aspect and run the test again. Repeat as many times as necessary.
 
-## Step 4. Copy to the test output to the expected output
+## Step 4. Copy the test output to the expected output
 
 Once you are satisfied with the test output, copy the expected code to `.t.cs` file. For instance, if your test file is named `MyTest.cs`, copy the test output to the file named `MyTest.t.cs`.
 
@@ -165,7 +165,7 @@ Once you are satisfied with the test output, copy the expected code to `.t.cs` f
 
 To accept the output of all tests:
 
-1. Commit or stages the changes in your repository, so you will be able to review and possibly rollback the consequence of the next steps.
+1. Commit or stage the changes in your repository, so you will be able to review and possibly rollback the consequences of the next steps.
 
 2. Run the following sequence of commands:
 
@@ -180,7 +180,7 @@ To accept the output of all tests:
     dotnet build -t:AcceptTestOutput
     ```
 
-3. Review modified each file in your repository using the diff tool.
+3. Review each modified file in your repository using the diff tool.
 
 ## Advanced features
 

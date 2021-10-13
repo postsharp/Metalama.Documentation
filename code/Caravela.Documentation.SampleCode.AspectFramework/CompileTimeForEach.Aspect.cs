@@ -11,7 +11,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.CompileTimeForEach
         {
             foreach (var p in meta.Target.Parameters.Where(p => p.RefKind != RefKind.Out))
             {
-                Console.WriteLine("p = " + p.Value);
+                Console.WriteLine($"{p.Name} = {p.Value}");
             }
 
             return meta.Proceed();

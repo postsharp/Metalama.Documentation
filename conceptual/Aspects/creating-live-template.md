@@ -17,6 +17,6 @@ Live templates are built with the Caravela aspect framework, but instead of bein
    - The aspect class does not need to be derived from `System.Attribute`.
    - The implementation should pay more attention to generate idiomatic C# code.
    - Diagnostics reported by the aspect will be ignored.
-   - Aspect ordering and requirement will be ignored.
+   - Aspect ordering and requirements will be ignored.
 
 2. Override the <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass*> method and set the <xref:Caravela.Framework.Aspects.IAspectClassBuilder.IsLiveTemplate> property to `true`.
