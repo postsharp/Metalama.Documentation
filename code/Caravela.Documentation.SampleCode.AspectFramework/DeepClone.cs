@@ -20,7 +20,6 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
         AutomaticallyCloneable? _c;
     }
 
-    [DeepClone]
     class DerivedCloneable : AutomaticallyCloneable
     {
         string? _d;

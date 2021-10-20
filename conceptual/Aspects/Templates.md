@@ -205,7 +205,7 @@ If you want to generate an array as a single-line expression, you can use the <x
 For instance:
 
 ```cs
-var arrayBuilder = ArrayBuilder.Create();
+var arrayBuilder = new ArrayBuilder();
 arrayBuilder.Add( "a" );
 arrayBuilder.Add( DateTime.Now );
 MyRunTimeMethod( arrayBuilder.ToValue() );
@@ -246,6 +246,10 @@ MyRunTimeMethod((a + b)/c)
 
 >[!NOTE] 
 > The string expression is inserted _as is_ without any validation or transformation. Always specify the full namespace of any declaration used in a text expression.
+
+>[!NOTE]
+> (TODO: document better) You can now use `ExpressionBuilder` (instead of the traditional `StringBuilder`) to build an expression. It offers convenient methods like `AppendLiteral`, `AppendTypeName` or `AppendExpression`. To add a statement to the generated code, use `StatementBuilder` to create the statement and then `meta.InsertStatement` from the template at the place where the statement should be inserted.
+
 
 ### Capturing run-time expressions into compile-time objects
 

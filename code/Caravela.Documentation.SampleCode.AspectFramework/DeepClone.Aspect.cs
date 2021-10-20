@@ -5,8 +5,13 @@ using Caravela.Framework.Code;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
 {
-    class DeepCloneAttribute : TypeAspect
+    public class DeepCloneAttribute : TypeAspect
     {
+        public override void BuildAspectClass(IAspectClassBuilder builder)
+        {
+            builder.IsInherited = true;
+        }
+
         public override void BuildAspect(IAspectBuilder<INamedType> builder)
         {
             var typedMethod = builder.Advices.IntroduceMethod(
