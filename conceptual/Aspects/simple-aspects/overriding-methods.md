@@ -43,7 +43,7 @@ The following code writes a message to the system console before and after the m
 
 When you call `meta.Proceed`, the aspect framework generates a call to the overridden method and passes the parameters it received. If the parameter value has been changed thanks to a statement like `meta.Target.Parameters["a"].Value = 5`, the modified value will be passed.
 
-If you want to invoke the method with a totally different set of arguments, you can do it using <xref:Caravela.Framework.Code.Advised.IAdvisedMethod.Invoke*?text=meta.Target.Method.Invoke>.
+If you want to invoke the method with a totally different set of arguments, you can do it using <xref:Caravela.Framework.Code.Advised.IAdvisedMethod.Invoke%2A?text=meta.Target.Method.Invoke>.
 
 > [!NOTE]
 > Invoking a method with `ref` or `out` parameters is not yet supported.
@@ -113,7 +113,7 @@ The following table lists the transformations applied to the `meta.Proceed()` ex
       </td>
       <td>
          `await RunTimeAspectHelper.BufferAsync( meta.Proceed() )`
-        returning an <xref:Caravela.Framework.RunTime.AsyncEnumerableList`1>
+        returning an <xref:Caravela.Framework.RunTime.AsyncEnumerableList%601>
       </td>
       <td>
          ```
@@ -132,7 +132,7 @@ The following table lists the transformations applied to the `meta.Proceed()` ex
       </td>
       <td>
         `await RunTimeAspectHelper.BufferAsync( meta.Proceed() )`
-        returning an <xref:Caravela.Framework.RunTime.AsyncEnumerableList`1.AsyncEnumerator>
+        returning an <xref:Caravela.Framework.RunTime.AsyncEnumerableList%601.AsyncEnumerator>
       </td>
       <td>
          ```
@@ -150,7 +150,7 @@ The following table lists the transformations applied to the `meta.Proceed()` ex
    </table>
 
 
-As you can see, the buffering of iterators is performed by the <xref:Caravela.Framework.RunTime.RunTimeAspectHelper.Buffer*> and <xref:Caravela.Framework.RunTime.RunTimeAspectHelper.BufferAsync*> methods.
+As you can see, the buffering of iterators is performed by the <xref:Caravela.Framework.RunTime.RunTimeAspectHelper.Buffer%2A> and <xref:Caravela.Framework.RunTime.RunTimeAspectHelper.BufferAsync%2A> methods.
 
 
 ### Example: the default template applied to all kinds of methods

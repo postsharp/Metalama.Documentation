@@ -4,16 +4,16 @@ summary: *content
 ---
 This namespace defines invokers, which are objects that generate syntax that invokes methods or accesses properties, fields or events.
 
-Where it makes sense, declarations expose an invoker factory (<xref:Caravela.Framework.Code.Invokers.IInvokerFactory`1>) on their `Invokers` property. 
+Where it makes sense, declarations expose an invoker factory (<xref:Caravela.Framework.Code.Invokers.IInvokerFactory%601>) on their `Invokers` property. 
 The invoker factory interface has two properties:
 
--  <xref:Caravela.Framework.Code.Invokers.IInvokerFactory`1.Final> is equivalent to the `this` keyword in C#. It allows you to access the last override
+-  <xref:Caravela.Framework.Code.Invokers.IInvokerFactory%601.Final> is equivalent to the `this` keyword in C#. It allows you to access the last override
    of the semantic.
 
--  <xref:Caravela.Framework.Code.Invokers.IInvokerFactory`1.Base> is equivalent to the `base` keyword in C#. It allows you to access the implementation
+-  <xref:Caravela.Framework.Code.Invokers.IInvokerFactory%601.Base> is equivalent to the `base` keyword in C#. It allows you to access the implementation
    prior to the current aspect layer.
 
--  <xref:Caravela.Framework.Code.Invokers.IInvokerFactory`1.ConditionalFinal> and <xref:Caravela.Framework.Code.Invokers.IInvokerFactory`1.ConditionalBase> generate a `.?` null-conditional access instead of `.`.
+-  <xref:Caravela.Framework.Code.Invokers.IInvokerFactory%601.ConditionalFinal> and <xref:Caravela.Framework.Code.Invokers.IInvokerFactory%601.ConditionalBase> generate a `.?` null-conditional access instead of `.`.
 
 
 ## Class Diagram

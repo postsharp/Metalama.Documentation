@@ -39,7 +39,6 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
         }
     }
 
-    [DeepClone]
     class DerivedCloneable : AutomaticallyCloneable
     {
         string? _d;

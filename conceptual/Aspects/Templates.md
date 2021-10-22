@@ -36,8 +36,8 @@ The <xref:Caravela.Framework.Aspects.meta> static class exposes to the following
 - The <xref:Caravela.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> property gives access to the current method or accessor parameters.
 - The <xref:Caravela.Framework.Aspects.meta.This?text=meta.This> property represents the `this` instance. Together with <xref:Caravela.Framework.Aspects.meta.Base?text=meta.Base>, <xref:Caravela.Framework.Aspects.meta.ThisStatic?text=meta.ThisStatic>, and <xref:Caravela.Framework.Aspects.meta.BaseStatic?text=meta.BaseStatic> properties, it allows your template to access members of the target class using dynamic code (see below).
 - The <xref:Caravela.Framework.Aspects.meta.Tags?text=meta.Tags> property gives access to an arbitrary dictionary that has been passed to the advice factory method.
--  The <xref:Caravela.Framework.Aspects.meta.CompileTime*?text=meta.CompileTime> method coerces a neutral expression into a compile-time expression.
-- <xref:Caravela.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method converts the result of a compile-time expression into a run-time value (see below).
+-  The <xref:Caravela.Framework.Aspects.meta.CompileTime%2A?text=meta.CompileTime> method coerces a neutral expression into a compile-time expression.
+- <xref:Caravela.Framework.Aspects.meta.RunTime%2A?text=meta.RunTime> method converts the result of a compile-time expression into a run-time value (see below).
 
 ### Compile-time local variables
 
@@ -142,7 +142,7 @@ You can use `meta.RunTime( expression )` to convert the result of a compile-time
 - Tuples;
 - Reflection objects: <xref:System.Type>, <xref:System.Reflection.MethodInfo>, <xref:System.Reflection.ConstructorInfo>, <xref:System.Reflection.EventInfo>, <xref:System.Reflection.PropertyInfo>, <xref:System.Reflection.FieldInfo>;
 - <xref:System.Guid>;
-- Generic collections: <xref:System.Collections.Generic.List`1> and <xref:System.Collections.Generic.Dictionary`2>;
+- Generic collections: <xref:System.Collections.Generic.List%601> and <xref:System.Collections.Generic.Dictionary%602>;
 - <xref:System.DateTime> and <xref:System.TimeSpan>.
 
 It is not possible to build custom converters at the moment. However, you can generate an expression as a `string`, parse it, and use it in a run-time expression. See [Parsing C# code](#parsing) for details.
@@ -229,7 +229,7 @@ The following example shows how an <xref:Caravela.Framework.Code.SyntaxBuilders.
 
 ### Parsing C# code
 
-Sometimes it is easier to generate the run-time code as a simple text instead of using a complex meta API. If you want to use C# code represented as a `string` in your code, you can do it using the <xref:Caravela.Framework.Aspects.meta.ParseExpression*?text=meta.ParseExpression> method. This method returns an <xref:Caravela.Framework.Code.IExpression>, which is a compile-time object that you can use anywhere in compile-time code. The <xref:Caravela.Framework.Code.IExpression> interface exposes the run-time expression in the <xref:Caravela.Framework.Code.IExpression.Value> property.
+Sometimes it is easier to generate the run-time code as a simple text instead of using a complex meta API. If you want to use C# code represented as a `string` in your code, you can do it using the <xref:Caravela.Framework.Aspects.meta.ParseExpression%2A?text=meta.ParseExpression> method. This method returns an <xref:Caravela.Framework.Code.IExpression>, which is a compile-time object that you can use anywhere in compile-time code. The <xref:Caravela.Framework.Code.IExpression> interface exposes the run-time expression in the <xref:Caravela.Framework.Code.IExpression.Value> property.
 
 For instance, consider the following template code:
 
@@ -253,7 +253,7 @@ MyRunTimeMethod((a + b)/c)
 
 ### Capturing run-time expressions into compile-time objects
 
-If you want to manipulate a run-time expression as a compile-time object, you can do it using the <xref:Caravela.Framework.Aspects.meta.DefineExpression*?text=meta.DefineExpression> method. This allows you to have expressions that depend on compile-time conditions and control flows. The <xref:Caravela.Framework.Aspects.meta.DefineExpression*> method returns an <xref:Caravela.Framework.Code.IExpression>, the same interface returned by <xref:Caravela.Framework.Aspects.meta.ParseExpression*>. The <xref:Caravela.Framework.Code.IExpression> is a compile-time object that you can use anywhere in compile-time code. It exposes the run-time expression in the <xref:Caravela.Framework.Code.IExpression.Value> property.
+If you want to manipulate a run-time expression as a compile-time object, you can do it using the <xref:Caravela.Framework.Aspects.meta.DefineExpression%2A?text=meta.DefineExpression> method. This allows you to have expressions that depend on compile-time conditions and control flows. The <xref:Caravela.Framework.Aspects.meta.DefineExpression%2A> method returns an <xref:Caravela.Framework.Code.IExpression>, the same interface returned by <xref:Caravela.Framework.Aspects.meta.ParseExpression%2A>. The <xref:Caravela.Framework.Code.IExpression> is a compile-time object that you can use anywhere in compile-time code. It exposes the run-time expression in the <xref:Caravela.Framework.Code.IExpression.Value> property.
 
 The following example is taken from the clone aspect. It declares a local variable named `clone`, but the expression assigned to the variable depends on whether the `Clone` method is an override.
 

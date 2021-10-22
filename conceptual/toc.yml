@@ -39,6 +39,8 @@ items:
         topicUid: child-aspects
       - name: Ordering Aspects
         topicUid: ordering-aspects
+      - name: Exposing Aspects
+        topicUid: exposing-configuration
       - name: Debugging Aspects
         topicUid: debugging-aspects
       - name: Testing Aspects

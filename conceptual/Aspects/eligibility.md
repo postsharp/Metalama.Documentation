@@ -15,13 +15,12 @@ By defining the eligibility, you ensure that:
 
 ## Defining eligibility
 
-To define the eligibility of your aspect, implement or override the <xref:Caravela.Framework.Eligibility.IEligible`1.BuildEligibility*> method of the aspect. Use the `builder` parameter, of type <xref:Caravela.Framework.Eligibility.IEligibilityBuilder`1>, to specify the requirements of your aspect. For instance, use <xref:Caravela.Framework.Eligibility.EligibilityExtensions.MustBeNonAbstract*?text=builder.MustBeNonAbstract()> to require a non-abstract method.
+To define the eligibility of your aspect, implement or override the <xref:Caravela.Framework.Eligibility.IEligible%601.BuildEligibility%2A> method of the aspect. Use the `builder` parameter, of type <xref:Caravela.Framework.Eligibility.IEligibilityBuilder%601>, to specify the requirements of your aspect. For instance, use <xref:Caravela.Framework.Eligibility.EligibilityExtensions.MustBeNonAbstract%2A?text=builder.MustBeNonAbstract()> to require a non-abstract method.
 
-A number of predefined eligibility conditions are implemented by the <xref:Caravela.Framework.Eligibility.EligibilityExtensions> static class. You add a custom eligibility condition by calling <xref:Caravela.Framework.Eligibility.EligibilityExtensions.MustSatisfy*> and providing your own lambda expression. This method also expects the user-readable string that should be included in the error message when the user attempts to add the aspect to an ineligible declaration.
+A number of predefined eligibility conditions are implemented by the <xref:Caravela.Framework.Eligibility.EligibilityExtensions> static class. You add a custom eligibility condition by calling <xref:Caravela.Framework.Eligibility.EligibilityExtensions.MustSatisfy%2A> and providing your own lambda expression. This method also expects the user-readable string that should be included in the error message when the user attempts to add the aspect to an ineligible declaration.
 
 >[!NOTE] 
-> Your implementation of <xref:Caravela.Framework.Eligibility.IEligible`1.BuildEligibility*> must not reference any instance member of the class. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` that is, _without invoking the class constructor_.
-
+> Your implementation of <xref:Caravela.Framework.Eligibility.IEligible%601.BuildEligibility%2A> must not reference any instance member of the class. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` that is, _without invoking the class constructor_.
 
 ### Example
 

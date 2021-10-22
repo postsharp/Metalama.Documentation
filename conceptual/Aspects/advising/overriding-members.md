@@ -10,7 +10,7 @@ In the section <xref:simple-aspects>, you have learned to override methods, prop
 
 ## Overriding methods
 
-To override one or more methods, your aspect needs to implement the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod*?text=builder.Advices.OverrideMethod> method.
+To override one or more methods, your aspect needs to implement the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> method and invoke <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod%2A?text=builder.Advices.OverrideMethod> method.
 
 The _first argument_ of `OverrideMethod` is the <xref:Caravela.Framework.Code.IMethod> that you want to override. This method must be in the type being targeted by the current aspect instance.
 
@@ -34,7 +34,7 @@ The following aspects wraps all instance methods with a `lock( this )` statement
 
 ### Specifying templates for async and iterator methods
 
-Instead of providing a single template method, you can provide several of them and let the framework choose which one is the most suitable. The principle of this feature is described in <xref:overriding-methods#async-iterator-specific-template>. Instead of passing a string to the second argument of `OverrideMethod`, you can pass a <xref:Caravela.Framework.Aspects.MethodTemplateSelector> and initialize it with many templates. See the reference documentation of <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod*?> and <xref:Caravela.Framework.Aspects.MethodTemplateSelector> for details.
+Instead of providing a single template method, you can provide several of them and let the framework choose which one is the most suitable. The principle of this feature is described in <xref:overriding-methods#async-iterator-specific-template>. Instead of passing a string to the second argument of `OverrideMethod`, you can pass a <xref:Caravela.Framework.Aspects.MethodTemplateSelector> and initialize it with many templates. See the reference documentation of <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod%2A?> and <xref:Caravela.Framework.Aspects.MethodTemplateSelector> for details.
 
 ## Overriding fields or properties
 
@@ -51,7 +51,7 @@ There are two approaches to override a field or property: by providing a _proper
 
 This approach is the simplest but it has a few limitations.
 
-Just like for methods, to override one or more fields or properties, your aspect needs to implement the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.Advices`.
+Just like for methods, to override one or more fields or properties, your aspect needs to implement the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> method exposed on `builder.Advices`.
 
 The _first argument_ of `OverrideFieldOrProperty` is the <xref:Caravela.Framework.Code.IFieldOrProperty> that you want to override. This field or property must be in the type being targeted by the current aspect instance.
 
@@ -95,7 +95,7 @@ Advising fields or properties with the `OverrideFieldOrProperty` has the followi
 * You cannot choose a template for each accessor separately.
 * You cannot have generic templates.  (Not yet implemented in `OverrideFieldOrPropertyAccessors` anyway.)
 
-To alleviate these limitations, you can use the method <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrPropertyAccessors*> and provide one or two method templates: a getter template and/or a setter template.
+To alleviate these limitations, you can use the method <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrPropertyAccessors%2A> and provide one or two method templates: a getter template and/or a setter template.
 
 The templates must fulfill the following conditions:
 
@@ -105,7 +105,7 @@ The templates must fulfill the following conditions:
 
 ## Overriding events
 
-Overriding events is possible using the <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideEventAccessors*> method. It follows the same principles than `OverridePropertyAccessors`.
+Overriding events is possible using the <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideEventAccessors%2A> method. It follows the same principles than `OverridePropertyAccessors`.
 
 It is possible to override the `add` and `remove` semantics of an event, but not yet the invocation of an event. Therefore, it is of little use and we are skipping the example.
 
