@@ -4,9 +4,9 @@ uid: eligibility
 
 # Defining the Eligibility of Aspects
 
-## Why to define eligibility?
+## Why define eligibility?
 
-Most of aspects are designed and implemented for specific kinds of target declarations. For instance, you may decide that your caching aspect will not support `void` methods or methods with an `out` or `ref` parameter. It is important, as the author of the aspect, to make sure that the user of your aspect applies it only to the declaration that you expect. Otherwise, at best, the aspect will cause build errors and confuse the user. At worse, the run-time behavior of your aspect will be incorrect.
+Most of the aspects are designed and implemented for specific kinds of target declarations. For instance, you may decide that your caching aspect will not support `void` methods or methods with an `out` or `ref` parameter. It is important, as the author of the aspect, to make sure that the user of your aspect applies it only to the declarations that you expect. Otherwise, at best, the aspect will cause build errors and confuse the user. At worse, the run-time behavior of your aspect will be incorrect.
 
 By defining the eligibility, you ensure that:
 
@@ -17,7 +17,7 @@ By defining the eligibility, you ensure that:
 
 To define the eligibility of your aspect, implement or override the <xref:Caravela.Framework.Eligibility.IEligible%601.BuildEligibility%2A> method of the aspect. Use the `builder` parameter, of type <xref:Caravela.Framework.Eligibility.IEligibilityBuilder%601>, to specify the requirements of your aspect. For instance, use <xref:Caravela.Framework.Eligibility.EligibilityExtensions.MustBeNonAbstract%2A?text=builder.MustBeNonAbstract()> to require a non-abstract method.
 
-A number of predefined eligibility conditions are implemented by the <xref:Caravela.Framework.Eligibility.EligibilityExtensions> static class. You add a custom eligibility condition by calling <xref:Caravela.Framework.Eligibility.EligibilityExtensions.MustSatisfy%2A> and providing your own lambda expression. This method also expects the user-readable string that should be included in the error message when the user attempts to add the aspect to an ineligible declaration.
+A number of predefined eligibility conditions are implemented by the <xref:Caravela.Framework.Eligibility.EligibilityExtensions> static class. You can add a custom eligibility condition by calling <xref:Caravela.Framework.Eligibility.EligibilityExtensions.MustSatisfy%2A> and providing your own lambda expression. This method also expects the user-readable string that should be included in the error message when the user attempts to add the aspect to an ineligible declaration.
 
 >[!NOTE] 
 > Your implementation of <xref:Caravela.Framework.Eligibility.IEligible%601.BuildEligibility%2A> must not reference any instance member of the class. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` that is, _without invoking the class constructor_.
