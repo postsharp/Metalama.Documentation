@@ -1,5 +1,5 @@
 <Project>
-	<Import Project="..\..\Caravela\CaravelaVersion.props" Condition="Exists('.local')"/>
+	<Import Project="..\..\Caravela\eng\CaravelaVersion.props" Condition="Exists('.local')"/>
 	<PropertyGroup>
 		<CaravelaVersion Condition="'$(CaravelaVersion)'==''">0.3.6-preview</CaravelaVersion>
 		
@@ -7,6 +7,12 @@
 			$(RestoreAdditionalProjectSources);
 			https://nuget.postsharp.net/nuget/caravela/
 		</RestoreAdditionalProjectSources>
+
+ 		<Nullable>enable</Nullable>
+		<DebugCaravela>False</DebugCaravela>
+
+
+
 
 	</PropertyGroup>
 </Project>

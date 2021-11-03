@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net472</TargetFramework>
         <OutDir>bin\$(Configuration)\plugins</OutDir>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
     
     <ItemGroup>

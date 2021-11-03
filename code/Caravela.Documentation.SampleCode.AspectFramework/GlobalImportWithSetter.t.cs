@@ -8,8 +8,9 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImportWithSett
 
 
         private IFormatProvider _formatProvider1;
-        [Import]
-        IFormatProvider _formatProvider
+
+
+        private IFormatProvider _formatProvider
         {
             get
             {
@@ -52,13 +53,13 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImportWithSett
         public static IServiceProvider ServiceProvider => _instance;
 
 
-        object IServiceProvider.GetService(Type serviceType)
+        object? IServiceProvider.GetService(Type serviceType)
         {
             this._services.TryGetValue(serviceType, out var value);
             return value;
         }
 
-        public static void AddService<T>(T service) => _instance._services[typeof(T)] = service;
+        public static void AddService<T>(T service) where T : class => _instance._services[typeof(T)] = service;
     }
 
 }

@@ -3,13 +3,14 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ToString
     [ToString]
     class TargetCode
     {
-        int x;
-        public string Y { get; set; }
+        int _x;
+
+        public string? Y { get; set; }
 
 
         public override string ToString()
         {
-            return $"{ TargetCode x={x}, Y={Y} }";
+            return $"{{ TargetCode _x={_x}, Y={Y} }";
         }
     }
 }

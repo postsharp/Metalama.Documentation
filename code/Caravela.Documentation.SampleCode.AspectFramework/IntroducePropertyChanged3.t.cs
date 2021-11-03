@@ -7,11 +7,11 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.IntroducePropertyCha
     {
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         protected void OnPropertyChanged(string propertyName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

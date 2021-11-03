@@ -16,16 +16,13 @@ To report a diagnostic:
 2. Define a `static` field of type <xref:Caravela.Framework.Diagnostics.DiagnosticDefinition> in your aspect class. <xref:Caravela.Framework.Diagnostics.DiagnosticDefinition> specifies the diagnostic id, the severity, and the message formatting string.
 
     - For a message without formatting parameters or with weakly-typed formatting parameters, use the non-generic <xref:Caravela.Framework.Diagnostics.DiagnosticDefinition> class.
-    - For a message with a single strongly-typed formatting parameter, use the generic <xref:Caravela.Framework.Diagnostics.DiagnosticDefinition`1> class, e.g. `DiagnosticDefinition<int>`.
-    - For a message with several strongly-typed formatting parameters, use the generic <xref:Caravela.Framework.Diagnostics.DiagnosticDefinition`1> with a tuple, e.g. `DiagnosticDefinition<(int,string)>` for a message with two formatting parameters expecting a value of type `int` and `string`.
+    - For a message with a single strongly-typed formatting parameter, use the generic <xref:Caravela.Framework.Diagnostics.DiagnosticDefinition%601> class, e.g. `DiagnosticDefinition<int>`.
+    - For a message with several strongly-typed formatting parameters, use the generic <xref:Caravela.Framework.Diagnostics.DiagnosticDefinition%601> with a tuple, e.g. `DiagnosticDefinition<(int,string)>` for a message with two formatting parameters expecting a value of type `int` and `string`.
 
     > [!WARNING]
     > The aspect framework relies on the fact that diagnostics are defined as static fields of aspect classes. You will not be able to report a diagnostic that has not been declared on an aspect class of the current project.
 
-3. To report a diagnostic, use the <xref:Caravela.Framework.Diagnostics.IDiagnosticSink.Report*> method of the <xref:Caravela.Framework.Diagnostics.IDiagnosticSink> interface.
- 
-    - from your implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method, use `builder.Diagnostics.Report(...)`.
-    - from a template, use `meta.Diagnostics.Report(...)`.
+3. To report a diagnostic, use the <xref:Caravela.Framework.Diagnostics.IDiagnosticSink.Report%2A?text=builder.Diagnostics.Report> method.
 
     The first parameter of the `Report` method is optional: it specifies the declaration to which the diagnostic relates. The aspect framework computes the file, line and column of the diagnostic based on this declaration. If you don't give a value for this parameter, the diagnostic will be reported for the target declaration of the aspect.
 
@@ -40,7 +37,7 @@ To suppress a diagnostic:
 
 2. Define a `static` field of type <xref:Caravela.Framework.Diagnostics.SuppressionDefinition> in your aspect class. <xref:Caravela.Framework.Diagnostics.SuppressionDefinition> specifies the identifier of the diagnostic to suppress.
 
-3. Call the <xref:Caravela.Framework.Diagnostics.IDiagnosticSink.Suppress*> method using `builder.Diagnostics.Suppress(...)` in the `BuildAspect` method or `meta.Diagnostics.Suppress(...)` in a template method.
+3. Call the <xref:Caravela.Framework.Diagnostics.IDiagnosticSink.Suppress%2A> method using `builder.Diagnostics.Suppress(...)` in the `BuildAspect` method.
 
 ## Example
 

@@ -7,7 +7,7 @@ Many aspects need to modify the target type so it implements a new interface. Th
 
 ## Step 1. Call IAdviceFactory.ImplementInterface
 
-In your implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method, call the <xref:Caravela.Framework.Aspects.IAdviceFactory.ImplementInterface*> method.
+In your implementation of the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> method, call the <xref:Caravela.Framework.Aspects.IAdviceFactory.ImplementInterface%2A> method.
 
 ## Step 2. Add interface members to the aspect class
 

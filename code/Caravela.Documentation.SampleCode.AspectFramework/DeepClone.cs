@@ -13,17 +13,16 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
     [DeepClone]
     class AutomaticallyCloneable
     {
-        int a;
+        int _a;
 
-        ManuallyCloneable b;
+        ManuallyCloneable? _b;
 
-        AutomaticallyCloneable c;
+        AutomaticallyCloneable? _c;
     }
 
-    [DeepClone]
     class DerivedCloneable : AutomaticallyCloneable
     {
-        string d;
+        string? _d;
     }
 
 }

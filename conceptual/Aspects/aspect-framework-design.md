@@ -5,11 +5,12 @@ uid: aspect-framework-design
 
 ## Overview
 
-An aspect is, by definition, a class that implements the <xref:Caravela.Framework.Aspects.IAspect`1> generic interface. The generic parameter of this interface is the type of declarations to which that aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
+An aspect is, by definition, a class that implements the <xref:Caravela.Framework.Aspects.IAspect%601> generic interface. The generic parameter of this interface is the type of declarations to which that aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
 
-Aspects have different abilities listed in this article. The aspect author can use or configure these abilities in the following methods inherited from the <xref:Caravela.Framework.Aspects.IAspect`1> interface: 
-* <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass*> configures the aspect _type_, before any instance is created, thanks to a <xref:Caravela.Framework.Aspects.IAspectClassBuilder>;
-* <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> builds the aspect _instance_ applied on a specific _target declaration_, thanks to a <xref:Caravela.Framework.Aspects.IAspectBuilder`1>;
+Aspects have different abilities listed in this article. The aspect author can use or configure these abilities in the following methods inherited from the <xref:Caravela.Framework.Aspects.IAspect%601> interface:
+
+* <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass%2A> configures the aspect _type_, before any instance is created, thanks to a <xref:Caravela.Framework.Aspects.IAspectClassBuilder>;
+* <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> builds the aspect _instance_ applied on a specific _target declaration_, thanks to a <xref:Caravela.Framework.Aspects.IAspectBuilder%601>;
 
 ```mermaid
 classDiagram
@@ -69,11 +70,11 @@ The only _declarative advice_ is the _member introduction_ advice and is marked 
 
 #### Imperative advices
 
-_Imperative advices_ are added by the implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method thanks to the methods exposed by the <xref:Caravela.Framework.Aspects.IAspectLayerBuilder.AdviceFactory> property of the `builder` parameter. See <xref:Caravela.Framework.Aspects.IAdviceFactory> for a complete list of methods. In short:
+_Imperative advices_ are added by the implementation of the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> method thanks to the methods exposed by the <xref:Caravela.Framework.Aspects.IAspectLayerBuilder.Advices> property of the `builder` parameter. See <xref:Caravela.Framework.Aspects.IAdviceFactory> for a complete list of methods. In short:
 
-- <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod*>, <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrProperty*>, <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrPropertyAccessors*>,  <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideEventAccessors*> allow you to replace the implementation of a type member. See <xref:overriding-members> for details.
-- <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceMethod*>, <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceProperty*>, <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceField*> and <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceEvent*> allows your aspect to introduce new members into the target type. See <xref:introducing-members> for details.
-- <xref:Caravela.Framework.Aspects.IAdviceFactory.ImplementInterface*> makes the target type implement an interface. See <xref:implementing-interfaces> for details.
+* <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod%2A>, <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrProperty%2A>, <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrPropertyAccessors%2A>,  <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideEventAccessors%2A> allow you to replace the implementation of a type member. See <xref:overriding-members> for details.
+* <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceMethod%2A>, <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceProperty%2A>, <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceField%2A> and <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceEvent%2A> allows your aspect to introduce new members into the target type. See <xref:introducing-members> for details.
+* <xref:Caravela.Framework.Aspects.IAdviceFactory.ImplementInterface%2A> makes the target type implement an interface. See <xref:implementing-interfaces> for details.
 
 #### Template methods
 
@@ -91,7 +92,7 @@ For details about this feature, see <xref:diagnostics>.
 
 ### Disabling itself
 
-If an aspect instance decides that it cannot be applied to the target it has been applied to, its implementation of the <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> method can call the <xref:Caravela.Framework.Aspects.IAspectBuilder.SkipAspect> method. The effect of this method is to prevent the aspect to provide any advice or child aspect and to set the <xref:Caravela.Framework.Aspects.IAspectInstance.IsSkipped> to `true`.
+If an aspect instance decides that it cannot be applied to the target it has been applied to, its implementation of the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> method can call the <xref:Caravela.Framework.Aspects.IAspectBuilder.SkipAspect> method. The effect of this method is to prevent the aspect from providing any advice or child aspect and to set the <xref:Caravela.Framework.Aspects.IAspectInstance.IsSkipped> to `true`.
 
 The aspect may or may not report a diagnostic before calling <xref:Caravela.Framework.Aspects.IAspectBuilder.SkipAspect>. Calling this method does not report any diagnostic.
 
@@ -113,10 +114,10 @@ This feature is not yet implemented.
 
 ### Defining the name and description of the aspect class in the IDE
 
-To define the appearance of the aspect in the IDE, implement the <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass*> method and set the <xref:Caravela.Framework.Aspects.IAspectClassBuilder.DisplayName> and <xref:Caravela.Framework.Aspects.IAspectClassBuilder.Description> properties of the <xref:Caravela.Framework.Aspects.IAspectClassBuilder>.
+To define the appearance of the aspect in the IDE, implement the <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass%2A> method and set the <xref:Caravela.Framework.Aspects.IAspectClassBuilder.DisplayName> and <xref:Caravela.Framework.Aspects.IAspectClassBuilder.Description> properties of the <xref:Caravela.Framework.Aspects.IAspectClassBuilder>.
 
 > [!WARNING]
-> Do not reference instance class members in your implementation of  <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass*>. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` -- that is, _without_ invoking the class constructor.
+> Do not reference instance class members in your implementation of  <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass%2A>. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` -- that is, _without_ invoking the class constructor.
 
 ### Using several layers of advices
 
@@ -158,7 +159,7 @@ Aspects cannot modify declarations of lower depth than the target of the aspect.
 
 2. Initialization of aspect classes.
     1. A prototype instance of each aspect class is created using `FormatterServices.GetUninitializedObject`.
-    2. All  <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass*>  methods are executed. Aspect layers are discovered.
+    2. All  <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass%2A>  methods are executed. Aspect layers are discovered.
     3. Aspect ordering relationships are discovered in the current project and all referenced assemblies.
     4. Aspects layers are ordered.
 
@@ -166,19 +167,19 @@ Aspects cannot modify declarations of lower depth than the target of the aspect.
 
 For each aspect layer, by order of application (i.e., inverse order of execution, see <xref:ordering-aspects>):
 
-- For the default aspect layer:
-  - Aspect sources are evaluated for this aspect type, resulting in a set of _target declarations_.
-  - Target declarations are visited in [breadth-first order](https://en.wikipedia.org/wiki/Breadth-first_search) of _depth level_, as defined above. For each target declaration:
-    - The aspect is instantiated.
-    - <xref:Caravela.Framework.Aspects.IAspect`1.BuildAspect*> is invoked.
-    - Advices are added to the next steps of the pipeline.
+* For the default aspect layer:
+  * Aspect sources are evaluated for this aspect type, resulting in a set of _target declarations_.
+  * Target declarations are visited in [breadth-first order](https://en.wikipedia.org/wiki/Breadth-first_search) of _depth level_, as defined above. For each target declaration:
+    * The aspect is instantiated.
+    * <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> is invoked.
+    * Advices are added to the next steps of the pipeline.
 
-- For all aspect layers, and for all target declarations visited in breadth-first order:
-  - Advices are executed. Advices can provide observable or non-observable transformations (or both), defined as follows:
-    - _observable transformations_ are transformations that affect _declarations_, i.e. they are visible from the code model or from the source code (for instance: introducing a method);
-    - _non-observable transformations_ are transformations that only affect the _implementation_ of declarations (for instance: overriding a method).
+* For all aspect layers, and for all target declarations visited in breadth-first order:
+  * Advices are executed. Advices can provide observable or non-observable transformations (or both), defined as follows:
+    * _observable transformations_ are transformations that affect _declarations_, i.e. they are visible from the code model or from the source code (for instance: introducing a method);
+    * _non-observable transformations_ are transformations that only affect the _implementation_ of declarations (for instance: overriding a method).
 
-- Before we execute the next aspect layer or the next visiting depth, a new code model version is created incrementally from the previous version, including any observable transformation added by an advice before.
+* Before we execute the next aspect layer or the next visiting depth, a new code model version is created incrementally from the previous version, including any observable transformation added by an advice before.
 
 ### Step 3. Transforming the compilation
 

@@ -16,12 +16,14 @@ items:
           topicUid: overriding-fields-or-properties
         - name: Overriding Events
           topicUid: overriding-events
-      - name: Writing code templates
+      - name: Writing Code Templates
         topicUid: templates
       - name: Design of Caravela Aspect Framework
         topicUid: aspect-framework-design
       - name: Reporting and Suppressing Diagnostics
         topicUid: diagnostics
+      - name: Defining the Eligibility of Aspects
+        topicUid: eligibility
       - name: Advising Code
         topicUid: advising-code
         items:
@@ -33,8 +35,12 @@ items:
           topicUid: implementing-interfaces
         - name: Sharing State With Advices
           topicUid: sharing-state-with-advices
+      - name: Adding Child Aspects
+        topicUid: child-aspects
       - name: Ordering Aspects
         topicUid: ordering-aspects
+      - name: Exposing Aspects
+        topicUid: exposing-configuration
       - name: Debugging Aspects
         topicUid: debugging-aspects
       - name: Testing Aspects

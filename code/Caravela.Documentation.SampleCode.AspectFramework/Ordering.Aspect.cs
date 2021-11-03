@@ -9,13 +9,13 @@ using Caravela.Documentation.SampleCode.AspectFramework.Ordering;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
 {
-    internal class Aspect1 : Attribute, IAspect<INamedType>
+    internal class Aspect1 : TypeAspect
     {
-        public void BuildAspect(IAspectBuilder<INamedType> builder)
+        public override void BuildAspect(IAspectBuilder<INamedType> builder)
         {
             foreach (var m in builder.Target.Methods)
             {
-                builder.AdviceFactory.OverrideMethod(m, nameof(Override));
+                builder.Advices.OverrideMethod(m, nameof(Override));
             }
         }
 
@@ -35,13 +35,13 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
         }
     }
 
-    internal class Aspect2 : Attribute, IAspect<INamedType>
+    internal class Aspect2 : TypeAspect
     {
-        public void BuildAspect(IAspectBuilder<INamedType> builder)
+        public override void BuildAspect(IAspectBuilder<INamedType> builder)
         {
             foreach (var m in builder.Target.Methods)
             {
-                builder.AdviceFactory.OverrideMethod(m, nameof(Override));
+                builder.Advices.OverrideMethod(m, nameof(Override));
             }
         }
 

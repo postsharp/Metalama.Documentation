@@ -49,9 +49,23 @@ This is like in mathematics: if we have `a < b` and `b < c`, then we have `a < c
 
 If you specify conflicting relationships, or import aspect library that define conflicting ordering, Caravela will emit a compilation error.
 
-## Example
+### Example
 
 The following code snippet shows two aspects that both add a method to the target type and display the list of methods that were defined on the target type before the aspect was applied. The order of execution is defined as `Aspect1 < Aspect2`. You can see from this example that the order of application of aspects is opposite. `Aspect2` is applied first and sees the source code, then `Aspect1` is applied and sees the method added by `Aspect1`. The modified method body of `SourceMethod` shows that the aspects are executed in this order: `Aspect1`, `Aspect2`, then the original method.
 
 [!include[Ordering](../../code/Caravela.Documentation.SampleCode.AspectFramework/Ordering.cs)]
 
+
+## Several instances of the same aspect type on the same declaration
+
+When there are several instances of the same aspect type on the same declaration, a single instance of the aspect, named the primary instance, gets applied to the target. The other instances are exposed on the <xref:Caravela.Framework.Aspects.IAspectInstance.SecondaryInstances?text=IAspectInstance.SecondaryInstances> property, which you can access from <xref:Caravela.Framework.Aspects.meta.AspectInstance?meta.AspectInstance> or <xref:Caravela.Framework.Aspects.IAspectLayerBuilder.AspectInstance?builder.AspectInstance>. It is the responsibility of the aspect implementation to decide what to do with the secondary aspect instances.
+
+The primary aspect instance is the instance that has been defined the "closest" to the target declaration. The sorting criteria are the following:
+    1. Aspects defined using a *custom attribute*.
+    2. Aspects added by another aspect (child aspects).
+    3. Aspects inherited from another declaration.
+    4. Aspects added by a fabric.
+
+Within these individual categories, the ordering is currently undefined, which means that the build may be nondeterministic if the aspect implementation relies on that ordering.
+
+> TODO: Example of handling secondary instances

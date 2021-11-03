@@ -5,7 +5,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.SimpleLogging
 {
     public class SimpleLogAttribute : OverrideMethodAspect
     {
-        public override dynamic OverrideMethod()
+        public override dynamic? OverrideMethod()
         {
             Console.WriteLine($"Entering {meta.Target.Method.ToDisplayString()}");
 

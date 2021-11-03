@@ -4,9 +4,9 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Normalize
     {
 
 
-        private string _property;
+        private string? _property;
         [Normalize]
-        public string Property
+        public string? Property
         {
             get
             {
@@ -19,7 +19,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Normalize
             }
         }
 
-        private string Property_Source
+        private string? Property_Source
         {
             get
             {

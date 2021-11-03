@@ -37,10 +37,10 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.LogMethodAndProperty
         }
 
 
-        private string _field;
+        private string? _field;
 
         [Log]
-        public string Field
+        public string? Field
         {
             get
             {

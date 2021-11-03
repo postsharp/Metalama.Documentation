@@ -12,6 +12,6 @@ namespace Caravela.Documentation.SampleCode.AspectFramework
         public int Field;
 
         [EmptyOverrideFieldOrProperty]
-        public string Property { get; set; }
+        public string? Property { get; set; }
     }
 }

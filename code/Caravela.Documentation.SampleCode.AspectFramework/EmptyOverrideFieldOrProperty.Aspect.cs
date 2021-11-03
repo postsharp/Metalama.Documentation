@@ -9,7 +9,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework
 {
     public class EmptyOverrideFieldOrPropertyAttribute : OverrideFieldOrPropertyAspect
     {
-        public override dynamic OverrideProperty
+        public override dynamic? OverrideProperty
         {
             get => meta.Proceed();
             set => meta.Proceed();

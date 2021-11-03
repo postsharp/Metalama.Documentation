@@ -4,11 +4,11 @@ using Caravela.Framework.Code;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.Tags
 {
-    class TagsAspect : Attribute, IAspect<IMethod>
+    class TagsAspect : MethodAspect
     {
-        public void BuildAspect( IAspectBuilder<IMethod> builder )
+        public override void BuildAspect( IAspectBuilder<IMethod> builder )
         {
-            builder.AdviceFactory.OverrideMethod(
+            builder.Advices.OverrideMethod(
                 builder.Target, 
                 nameof(OverrideMethod), 
                 tags: new() { ["ParameterCount"] = builder.Target.Parameters.Count });

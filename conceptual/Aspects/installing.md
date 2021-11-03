@@ -4,8 +4,8 @@ uid: installing
 
 # Adding Caravela to Your Project
 
-
 ## Installing the NuGet package
+
 Before you start developing aspects, you must add the `Caravela.Framework` package to your project:
 
 ```xml
@@ -17,8 +17,7 @@ Before you start developing aspects, you must add the `Caravela.Framework` packa
 For details of all NuGet packages and their dependencies, see <xref:packages>.
 
 >[!NOTE]
->Caravela requires a platform that supports .NET Standard 2.0.
-
+>Caravela requires a target framework that supports .NET Standard 2.0.
 
 ## Installing PostSharp "Caravela" Tools for Visual Studio
 

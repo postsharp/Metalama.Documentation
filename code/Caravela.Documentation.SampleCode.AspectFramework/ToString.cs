@@ -3,7 +3,8 @@
     [ToString]
     class TargetCode
     {
-        int x;
-        public string Y { get; set; }
+        int _x;
+
+        public string? Y { get; set; }
     }
 }

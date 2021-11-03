@@ -4,11 +4,11 @@ using Caravela.Framework.Code;
 
 namespace Caravela.Documentation.SampleCode.AspectFramework.Normalize
 {
-    class NormalizeAttribute : Attribute, IAspect<IFieldOrProperty>
+    class NormalizeAttribute : FieldOrPropertyAspect
     {
-        public void BuildAspect( IAspectBuilder<IFieldOrProperty> builder )
+        public override void BuildAspect( IAspectBuilder<IFieldOrProperty> builder )
         {
-            builder.AdviceFactory.OverrideFieldOrProperty(builder.Target, nameof(this.OverrideProperty));
+            builder.Advices.OverrideFieldOrProperty(builder.Target, nameof(this.OverrideProperty));
         }
 
         [Template]

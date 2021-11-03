@@ -7,7 +7,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Tags
         [TagsAspect]
         void Method(int a, int b)
         {
-            Console.WriteLine("This is the method.");
+            Console.WriteLine($"Method({a}, {b})");
         }
     }
 }

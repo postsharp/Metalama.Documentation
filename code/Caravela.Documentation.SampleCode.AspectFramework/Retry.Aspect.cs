@@ -8,7 +8,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.Retry
     {
         public int MaxAttempts { get; set; } = 5;
 
-        public override dynamic OverrideMethod()
+        public override dynamic? OverrideMethod()
         {
             for (var i = 0; ; i++)
             {

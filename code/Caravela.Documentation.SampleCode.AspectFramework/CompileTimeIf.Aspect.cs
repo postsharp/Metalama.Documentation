@@ -5,7 +5,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.CompileTimeIf
 {
     internal class CompileTimeIfAttribute : OverrideMethodAspect
     {
-        public override dynamic OverrideMethod()
+        public override dynamic? OverrideMethod()
         {
             if (meta.Target.Method.IsStatic)
             {

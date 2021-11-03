@@ -42,7 +42,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ImportService
             builder.Diagnostics.Suppress(serviceProviderField, _suppressFieldIsNeverUsed);
         }
 
-        public override dynamic OverrideProperty
+        public override dynamic? OverrideProperty
         {
             get => meta.This._serviceProvider.GetService(meta.Target.FieldOrProperty.Type.ToType());
 
