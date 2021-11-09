@@ -10,7 +10,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ToString
 
         public override string ToString()
         {
-            return $"{{ TargetCode _x={_x}, Y={Y} }";
+            return $"{{ TargetCode _x={_x}, Y={Y} }}";
         }
     }
 }

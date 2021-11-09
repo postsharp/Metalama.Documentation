@@ -4,7 +4,7 @@ uid: eligibility
 
 # Defining the Eligibility of Aspects
 
-## Why define eligibility?
+## Why to define eligibility?
 
 Most of the aspects are designed and implemented for specific kinds of target declarations. For instance, you may decide that your caching aspect will not support `void` methods or methods with an `out` or `ref` parameter. It is important, as the author of the aspect, to make sure that the user of your aspect applies it only to the declarations that you expect. Otherwise, at best, the aspect will cause build errors and confuse the user. At worse, the run-time behavior of your aspect will be incorrect.
 
@@ -24,7 +24,7 @@ A number of predefined eligibility conditions are implemented by the <xref:Carav
 
 ### Example
 
-> TODO
+[!include[Eligibility](../../code/Caravela.Documentation.SampleCode.AspectFramework/Eligibility.cs)]
 
 ## When to emit custom errors instead?
 
@@ -42,3 +42,8 @@ Adding a caching to a `void` method does not make sense and should be addressed 
 
 Adding a dependency injection aspect to an `int` or `string` field does not make sense and this condition should therefore be expressed using the eligibility API. However, the fact that your implementation of the aspect requires the field to be non-read-only is a contingency and should be reported as an error.
 
+### Example
+
+The following example revisits the previous one, but reports custom errors when the target class does not define a field `logger` of type `TextWriter`.
+
+[!include[Eligibility and Validation](../../code/Caravela.Documentation.SampleCode.AspectFramework/EligibilityAndValidation.cs)]

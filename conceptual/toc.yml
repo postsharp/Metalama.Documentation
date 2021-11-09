@@ -39,7 +39,7 @@ items:
         topicUid: child-aspects
       - name: Ordering Aspects
         topicUid: ordering-aspects
-      - name: Exposing Aspects
+      - name: Exposing Configuration
         topicUid: exposing-configuration
       - name: Debugging Aspects
         topicUid: debugging-aspects
@@ -59,6 +59,8 @@ items:
     items:
       - name: Applying Aspects to Code
         topicUid: applying-aspects
+      - name: Amending the Current Type
+        topicUid: type-fabrics
       - name: Debugging Code With Aspects
         topicUid: debugging
   - name: Using Live Templates
