@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Immutable;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using HtmlAgilityPack;
@@ -62,7 +65,7 @@ namespace Caravela.Documentation.DfmExtensions
         }
 
         private static bool TryParseToken(DfmIncludeBlockToken token,
-            out ( string FilePath, string Fragment, NameValueCollection Query ) parsed)
+            out ( string FilePath, string Fragment, NameValueCollection Query, string Id ) parsed)
         {
             var targetFileName = UriUtility.GetPath(token.Src);
             if (!targetFileName.EndsWith(".cs"))
@@ -82,7 +85,14 @@ namespace Caravela.Documentation.DfmExtensions
                     parameters.Add(nameValuePair[0], nameValuePair.Length > 1 ? nameValuePair[1] : null);
                 }
 
-            parsed = (targetFileName, UriUtility.GetFragment(token.Src), parameters);
+            var fragment = UriUtility.GetFragment(token.Src);
+            var id = "code-" + Path.GetFileNameWithoutExtension(targetFileName).ToLowerInvariant();
+            if (!string.IsNullOrEmpty(fragment))
+            {
+                id += "-" + fragment;
+            }
+            
+            parsed = (targetFileName, fragment, parameters, id);
 
             return true;
         }
@@ -108,6 +118,10 @@ namespace Caravela.Documentation.DfmExtensions
         {
             TryParseToken(token, out var source);
 
+            string CreateCodeBlock(string content) => $"<div id={source.Id} class=\"anchor\">{content}</div>";
+            
+            
+
             var referencingFile =
                 Path.GetFullPath(Path.Combine((string) context.Variables["BaseFolder"], token.SourceInfo.File));
 
@@ -131,10 +145,17 @@ namespace Caravela.Documentation.DfmExtensions
                 Path.ChangeExtension(targetPathRelativeToProjectDir, ".cs.html")));
             var transformedHtmlPath = Path.GetFullPath(Path.Combine(projectDir, "obj", "html", "net5.0",
                 Path.ChangeExtension(targetPathRelativeToProjectDir, ".out.cs.html")));
+
+            var currentFile = ((ImmutableStack<string>)context.Variables["FilePathStack"]).Peek();
+            const string prefix = "../conceptual/";
+            var currentFileId = currentFile.Substring(prefix.Length,
+                currentFile.Length - prefix.Length - ".md".Length);
+            
+            var permalink = "https://doc.postsharp.net/caravela/" + currentFileId + "#" + source.Id;
             
 
-            const string gitBranch = "release/0.3";
-            const string gitHubProjectPath = "https://github.com/postsharp/Caravela/blob/" + gitBranch;
+            const string gitBranch = "master";
+            const string gitHubProjectPath = "https://github.com/postsharp/Caravela.Documentation/blob/" + gitBranch;
             const string tryBaseUrl = "https://try.postsharp.net/#";
 
             if (File.Exists(aspectPath))
@@ -147,7 +168,7 @@ namespace Caravela.Documentation.DfmExtensions
 
                 string Html2Text(string html)
                 {
-                    HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                    HtmlDocument doc = new HtmlDocument();
                     doc.LoadHtml(html);
                     return HtmlEntity.DeEntitize(doc.DocumentNode.SelectSingleNode("//pre").InnerText);
                 }
@@ -182,13 +203,21 @@ namespace Caravela.Documentation.DfmExtensions
                     AppendTab("output", "Program Output", "<pre class=\"program-output\">" + File.ReadAllText(programOutputPath) + "</pre>" );
                 }
                 
-                var totalContent =  $"<div class=\"sample-links tabbed\"><a class=\"github\" href=\"{gitUrl}\">See on GitHub</a> | <a class=\"try\" href=\"{tryUrl}\">Try Online</a></div><div class=\"tabGroup\"><ul>"
-                    + tabHeaders
-                    + "</ul>"
-                    + tabBodies
-                    + "</div>";
+                var totalContent =
+                @$"
+<div class=""sample-links tabbed"">
+    <a class=""github"" href=""{gitUrl}"" target=""github"">See on GitHub</a> | 
+    <a class=""try"" href=""{tryUrl}"" target=""try"">Try Online</a> |
+    <a class=""permalink"" href=""{permalink}"" target=""doc"">Permalink</a>
+</div>
+<div class=""tabGroup"">
+    <ul>
+        {tabHeaders}
+    </ul>
+    {tabBodies}
+</div>";
 
-                return totalContent;
+                return  CreateCodeBlock(totalContent);
 
             }
             else
@@ -196,23 +225,28 @@ namespace Caravela.Documentation.DfmExtensions
                 var gitUrl = gitHubProjectPath + "/" + sourceDirectoryRelativeToGitDir + "/" +
                              shortFileNameWithoutExtension + ".cs";
 
-                var gitHubLink = @"<div class=""sample-links""><a class=""github"" href=""GIT_URL"">See on GitHub</a></div>"
-                    .Replace("GIT_URL", gitUrl);
+                var links = $@"
+<div class=""sample-links"">
+    <a class=""github"" href=""{gitUrl}"" target=""github"">See on GitHub</a>  |
+    <a class=""permalink"" href=""{permalink}"" target=""doc"">Permalink</a>
+</div>";
 
                 if (File.Exists(targetHtmlPath))
                 {
                     // Write the syntax-highlighted HTML instead.
 
                     var html = File.ReadAllText(targetHtmlPath);
-                    return gitHubLink + html;
+                    return CreateCodeBlock(links + html);
                 }
                 else
                 {
-                    return gitHubLink +
-                           @"<pre><code class=""lang-csharp"" name=""NAME"">TARGET_CODE</code></pre>"
-                               .Replace("TARGET_CODE", File.ReadAllText(targetPath))
-                               .Replace("GIT_URL", gitUrl)
-                               .Replace("NAME", token.Name);
+                    return
+                        CreateCodeBlock(
+                            links +
+                            $@"
+<pre>
+    <code class=""lang-csharp"" name=""{token.Name}"">{File.ReadAllText(targetPath)}</code>
+</pre>");
                 }
             }
         }
