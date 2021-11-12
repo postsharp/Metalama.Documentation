@@ -145,8 +145,6 @@ You can use `meta.RunTime( expression )` to convert the result of a compile-time
 - Generic collections: <xref:System.Collections.Generic.List%601> and <xref:System.Collections.Generic.Dictionary%602>;
 - <xref:System.DateTime> and <xref:System.TimeSpan>.
 
-It is not possible to build custom converters at the moment. However, you can generate an expression as a `string`, parse it, and use it in a run-time expression. See [Parsing C# code](#parsing) for details.
-
 #### Example
 
 [!include[Dynamic](../../code/Caravela.Documentation.SampleCode.AspectFramework/ConvertToRunTime.cs)]
@@ -248,7 +246,7 @@ MyRunTimeMethod((a + b)/c)
 > The string expression is inserted _as is_ without any validation or transformation. Always specify the full namespace of any declaration used in a text expression.
 
 >[!NOTE]
-> (TODO: document better) You can now use `ExpressionBuilder` (instead of the traditional `StringBuilder`) to build an expression. It offers convenient methods like `AppendLiteral`, `AppendTypeName` or `AppendExpression`. To add a statement to the generated code, use `StatementBuilder` to create the statement and then `meta.InsertStatement` from the template at the place where the statement should be inserted.
+> Instead of the traditional `StringBuilder`, you can use <xref:Caravela.Framework.Code.SyntaxBuilders.ExpressionBuilder> to build an expression. It offers convenient methods like `AppendLiteral`, `AppendTypeName` or `AppendExpression`. To add a statement to the generated code, use `StatementBuilder` to create the statement and then `meta.InsertStatement` from the template at the place where the statement should be inserted.
 
 
 ### Capturing run-time expressions into compile-time objects
@@ -277,7 +275,15 @@ var clone = meta.Cast(meta.Target.Type, baseCall);
 
 This template generates either `var clone = (TargetType) base.Clone();` or `var clone = (TargetType) this.MemberwiseClone();`.
 
+### Converting custom objects from compile-time to run-time values
+
+You can have classes that exist both at compile and run time. To allow Caravela to convert a compile-time value to a run-time value, your class must implement the <xref:Caravela.Framework.Code.SyntaxBuilders.IExpressionBuilder> interface. The <xref:Caravela.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression> method must generate a C# expression that, when evaluated, returns a value that is structurally equivalent to the current value. Note that your implementation of <xref:Caravela.Framework.Code.SyntaxBuilders.IExpressionBuilder> is _not_ a template, so you will have to use the <xref:Caravela.Framework.Code.SyntaxBuilders.ExpressionBuilder> class to generate your code.
+
+#### Example
+
+[!include[Custom Syntax Serializer](../../code/Caravela.Documentation.SampleCode.AspectFramework/CustomSyntaxSerializer.cs)]
+
 
 ## Debugging templates
 
-See <xref:debugging>.
+See <xref:debugging-aspects>.

@@ -58,7 +58,11 @@ We recommend the following approach to consume a configuration property:
     > The value of compiler-visible properties must not contain line breaks or semicolons. Otherwise, your aspect will receive an empty or incorrect value. 
 
 
-> TODO: Example of aspect consuming a property.
+### Example
+
+In the following example, the `Log` aspect reads the default category from the MSBuild project. It assumes the property has been exposed using the approach described above.
+
+[!include[Consuming Property](../../code/Caravela.Documentation.SampleCode.AspectFramework/ConsumingProperty.cs)]
 
 
 ## Exposing a configuration API
@@ -67,10 +71,12 @@ For more complex aspects, a set of properties may not be convenient enough. Inst
 
 To create a configuration API:
 
-1. Create a class that derives from <xref:Caravela.Framework.Project.ProjectData> and have a default constructor. 
-2. Optionally, implement the <xref:Caravela.Framework.Project.ProjectData.Initialize%2A> method, which receives the <xref:Caravela.Framework.Project.IProject>. 
-3. In your aspect code, call the <xref:Caravela.Framework.Project.IProject.Data()?text=IProject.Data&lt;T&gt;()> method, where `T` is your configuration class, to get the configuration object.
+1. Create a class that derives from <xref:Caravela.Framework.Project.ProjectExtension> and have a default constructor. 
+2. Optionally, implement the <xref:Caravela.Framework.Project.ProjectExtension.Initialize%2A> method, which receives the <xref:Caravela.Framework.Project.IProject>. 
+3. In your aspect code, call the <xref:Caravela.Framework.Project.IProject.Extension%2A?text=IProject.Extension&lt;T&gt;()> method, where `T` is your configuration class, to get the configuration object.
 4. Optionally, create an extension method to the <xref:Caravela.Framework.Project.IProject> method to expose your configuration API, so that it is more discoverable.
-5. To configure your aspect, users should implement a project fabric and access your configuration API using this extension method.
+5. To configure your aspect, users should implement a project fabric and access your configuration API using this extension method. The class must be annotated with `[CompileTimeOnly]`.
 
-> TODO: example
+### Example
+
+[!include[Consuming Property](../../code/Caravela.Documentation.SampleCode.AspectFramework/AspectConfiguration.cs)]
