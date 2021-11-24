@@ -26,12 +26,12 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ImportService
 
             if (serviceProviderField == null)
             {
-                builder.Diagnostics.Report(_serviceProviderFieldMissing, builder.Target.DeclaringType);
+                builder.Diagnostics.Report(builder.Target, _serviceProviderFieldMissing, builder.Target.DeclaringType);
                 return;
             }
             else if (!serviceProviderField.Type.Is(typeof(IServiceProvider)))
             {
-                builder.Diagnostics.Report(_serviceProviderFieldTypeMismatch, (serviceProviderField, serviceProviderField.Type));
+                builder.Diagnostics.Report(builder.Target, _serviceProviderFieldTypeMismatch, (serviceProviderField, serviceProviderField.Type));
                 return;
             }
 
