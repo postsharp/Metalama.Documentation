@@ -16,8 +16,8 @@ namespace Build
             {
                 ProductName = "Caravela.Documentation",
                 Solutions = ImmutableArray.Create<Solution>(
-                    new DotNetSolution( "code\\Caravela.Documentation.SampleCode.sln" ) { CanFormatCode = true, CanPack = false, BuildCommand = "test" },
-                    new DocFxSolution( "\"docfx\\docfx.json\"" ) ),
+                    new DotNetSolution( "code\\Caravela.Documentation.SampleCode.sln" ) { CanFormatCode = true, BuildMethod = BuildMethod.Test },
+                    new DocFxSolution( "docfx\\docfx.json" ) ),
                 Dependencies = ImmutableArray.Create( new ProductDependency( "Caravela" ) ),
                 AdditionalDirectoriesToClean = ImmutableArray.Create( "docfx\\obj", "docfx\\_site" )
             };

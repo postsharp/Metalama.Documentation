@@ -12,8 +12,8 @@ namespace Build
     {
         public DocFxSolution( string solutionPath ) : base( solutionPath )
         {
-            // Packing is done by the publishing script.
-            this.CanPack = false;
+            // Packing is done by the publish command.
+            this.BuildMethod = PostSharp.Engineering.BuildTools.Build.Model.BuildMethod.Build;
         }
 
         public override bool Build( BuildContext context, BuildOptions options )
@@ -40,9 +40,9 @@ namespace Build
                 context.RepoDirectory );
         }
 
-        public override bool Pack( BuildContext context, BuildOptions options ) => throw new NotSupportedException();
+        public override bool Pack( BuildContext context, BuildOptions options ) => throw new NotImplementedException();
 
-        public override bool Test( BuildContext context, TestOptions options ) => true;
+        public override bool Test( BuildContext context, BuildOptions options ) => throw new NotSupportedException();
 
         public override bool Restore( BuildContext context, BaseBuildSettings options )
         {
