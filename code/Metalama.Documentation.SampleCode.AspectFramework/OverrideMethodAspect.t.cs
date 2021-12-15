@@ -1,9 +1,9 @@
 using System;
-using Caravela.Framework.Aspects;
-using Caravela.Framework.Code;
-using Caravela.Framework.Eligibility;
+using Metalama.Framework.Aspects;
+using Metalama.Framework.Code;
+using Metalama.Framework.Eligibility;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.OverrideMethodAspect_
+namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodAspect_
 {
 #pragma warning disable CS0067
     // <aspect>

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using Caravela.Framework.Aspects;
-using Caravela.Framework.Code;
+using Metalama.Framework.Aspects;
+using Metalama.Framework.Code;
 using Microsoft.Win32;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.RegistryStorage
+namespace Metalama.Documentation.SampleCode.AspectFramework.RegistryStorage
 {
     class RegistryStorageAttribute : TypeAspect
     {

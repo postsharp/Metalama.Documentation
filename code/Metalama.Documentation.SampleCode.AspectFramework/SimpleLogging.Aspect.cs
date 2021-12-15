@@ -1,7 +1,7 @@
 ﻿using System;
-using Caravela.Framework.Aspects;
+using Metalama.Framework.Aspects;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.SimpleLogging
+namespace Metalama.Documentation.SampleCode.AspectFramework.SimpleLogging
 {
     public class SimpleLogAttribute : OverrideMethodAspect
     {

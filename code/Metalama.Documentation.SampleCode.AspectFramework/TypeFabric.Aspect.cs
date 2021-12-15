@@ -1,7 +1,7 @@
-﻿using Caravela.Framework.Aspects;
+﻿using Metalama.Framework.Aspects;
 using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.TypeFabric_
+namespace Metalama.Documentation.SampleCode.AspectFramework.TypeFabric_
 {
     // A trivial aspect to demonstrate the type fabric.
     public class LogAttribute : OverrideMethodAspect

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.CompileTimeForEach
+namespace Metalama.Documentation.SampleCode.AspectFramework.CompileTimeForEach
 {
     internal class TargetCode
     {

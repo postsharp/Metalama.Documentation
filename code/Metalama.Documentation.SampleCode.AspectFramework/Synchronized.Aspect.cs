@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Caravela.Framework.Aspects;
-using Caravela.Framework.Code;
+using Metalama.Framework.Aspects;
+using Metalama.Framework.Code;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.Synchronized
+namespace Metalama.Documentation.SampleCode.AspectFramework.Synchronized
 {
     class SynchronizedAttribute : TypeAspect
     {

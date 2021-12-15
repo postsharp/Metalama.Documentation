@@ -1,7 +1,7 @@
-﻿using Caravela.Framework.Fabrics;
+﻿using Metalama.Framework.Fabrics;
 using System.Linq;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.TypeFabric_
+namespace Metalama.Documentation.SampleCode.AspectFramework.TypeFabric_
 {
     internal class MyClass
     {

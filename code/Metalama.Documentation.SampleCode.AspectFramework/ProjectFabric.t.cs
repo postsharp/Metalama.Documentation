@@ -1,12 +1,12 @@
 using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_
+namespace Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_
 {
     class Class1
     {
         public void Method1()
         {
-            Console.WriteLine($"Executing Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class1.Method1().");
+            Console.WriteLine($"Executing Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class1.Method1().");
             try
             {
                 Console.WriteLine("Inside Class1.Method1");
@@ -14,12 +14,12 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_
             }
             finally
             {
-                Console.WriteLine($"Exiting Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class1.Method1().");
+                Console.WriteLine($"Exiting Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class1.Method1().");
             }
         }
         public void Method2()
         {
-            Console.WriteLine($"Executing Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class1.Method2().");
+            Console.WriteLine($"Executing Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class1.Method2().");
             try
             {
                 Console.WriteLine("Inside Class1.Method2");
@@ -27,7 +27,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_
             }
             finally
             {
-                Console.WriteLine($"Exiting Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class1.Method2().");
+                Console.WriteLine($"Exiting Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class1.Method2().");
             }
         }
     }
@@ -36,7 +36,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_
     {
         public void Method1()
         {
-            Console.WriteLine($"Executing Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class2.Method1().");
+            Console.WriteLine($"Executing Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class2.Method1().");
             try
             {
                 Console.WriteLine("Inside Class2.Method1");
@@ -44,12 +44,12 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_
             }
             finally
             {
-                Console.WriteLine($"Exiting Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class2.Method1().");
+                Console.WriteLine($"Exiting Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class2.Method1().");
             }
         }
         public void Method2()
         {
-            Console.WriteLine($"Executing Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class2.Method2().");
+            Console.WriteLine($"Executing Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class2.Method2().");
             try
             {
                 Console.WriteLine("Inside Class2.Method2");
@@ -57,7 +57,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_
             }
             finally
             {
-                Console.WriteLine($"Exiting Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class2.Method2().");
+                Console.WriteLine($"Exiting Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_.Class2.Method2().");
             }
         }
     }

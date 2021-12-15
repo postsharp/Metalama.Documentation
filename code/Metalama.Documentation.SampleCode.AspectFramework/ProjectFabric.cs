@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_
+namespace Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_
 {
     class Class1
     {

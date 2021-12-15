@@ -1,4 +1,4 @@
-﻿namespace Caravela.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged3
+﻿namespace Metalama.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged3
 {
     [IntroducePropertyChangedAspect]
     class TargetCode

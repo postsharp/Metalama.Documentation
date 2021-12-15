@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImport
+namespace Metalama.Documentation.SampleCode.AspectFramework.GlobalImport
 {
     class TargetCode
     {

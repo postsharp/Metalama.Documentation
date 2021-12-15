@@ -13,7 +13,7 @@ using Microsoft.DocAsCode.MarkdownLite;
 using Newtonsoft.Json;
 using PKT.LZStringCSharp;
 
-namespace Caravela.Documentation.DfmExtensions
+namespace Metalama.Documentation.DfmExtensions
 {
     public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRenderer, DfmIncludeBlockToken,
         MarkdownBlockContext>
@@ -155,7 +155,7 @@ namespace Caravela.Documentation.DfmExtensions
             
 
             const string gitBranch = "master";
-            const string gitHubProjectPath = "https://github.com/postsharp/Caravela.Documentation/blob/" + gitBranch;
+            const string gitHubProjectPath = "https://github.com/postsharp/Metalama.Documentation/blob/" + gitBranch;
             const string tryBaseUrl = "https://try.postsharp.net/#";
 
             if (File.Exists(aspectPath))

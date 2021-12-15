@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.Retry
+namespace Metalama.Documentation.SampleCode.AspectFramework.Retry
 {
     internal class TargetCode
     {

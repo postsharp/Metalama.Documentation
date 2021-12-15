@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Win32;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.RegistryStorage
+namespace Metalama.Documentation.SampleCode.AspectFramework.RegistryStorage
 {
     [RegistryStorage("Animals")]
     class Animals

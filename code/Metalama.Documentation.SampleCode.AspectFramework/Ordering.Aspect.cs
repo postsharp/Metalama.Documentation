@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
-using Caravela.Framework.Aspects;
-using Caravela.Framework.Code;
+using Metalama.Framework.Aspects;
+using Metalama.Framework.Code;
 
-using Caravela.Documentation.SampleCode.AspectFramework.Ordering;
+using Metalama.Documentation.SampleCode.AspectFramework.Ordering;
 [assembly: AspectOrder(typeof(Aspect1), typeof(Aspect2))]
 
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
+namespace Metalama.Documentation.SampleCode.AspectFramework.Ordering
 {
     internal class Aspect1 : TypeAspect
     {

@@ -1,8 +1,8 @@
-﻿using Caravela.Framework.Aspects;
-using Caravela.Framework.Project;
+﻿using Metalama.Framework.Aspects;
+using Metalama.Framework.Project;
 using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.AspectConfiguration
+namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
 {
     // Options for the [Log] aspects.
     public class LoggingOptions : ProjectExtension

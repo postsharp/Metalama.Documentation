@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Caravela.Framework.Aspects;
-using Caravela.Framework.Code;
+using Metalama.Framework.Aspects;
+using Metalama.Framework.Code;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.UpdateMethod
+namespace Metalama.Documentation.SampleCode.AspectFramework.UpdateMethod
 {
     class UpdateMethodAttribute : TypeAspect
     {

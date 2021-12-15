@@ -26,7 +26,7 @@ AsyncEnumerableMethod: start
   Yielding 1
   Yielding 2
   Yielding 3
-AsyncEnumerableMethod: returning Caravela.Framework.RunTime.AsyncEnumerableList`1[System.Int32].
+AsyncEnumerableMethod: returning Metalama.Framework.RunTime.AsyncEnumerableList`1[System.Int32].
  Received 1 from AsyncEnumerableMethod
  Received 2 from AsyncEnumerableMethod
  Received 3 from AsyncEnumerableMethod
@@ -35,7 +35,7 @@ AsyncEnumeratorMethod: start
   Yielding 1
   Yielding 2
   Yielding 3
-AsyncEnumeratorMethod: returning Caravela.Framework.RunTime.AsyncEnumerableList`1+AsyncEnumerator[System.Int32].
+AsyncEnumeratorMethod: returning Metalama.Framework.RunTime.AsyncEnumerableList`1+AsyncEnumerator[System.Int32].
  Received 1 from AsyncEnumeratorMethod
  Received 2 from AsyncEnumeratorMethod
  Received 3 from AsyncEnumeratorMethod

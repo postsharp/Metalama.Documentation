@@ -1,12 +1,12 @@
-using Caravela.Framework.Aspects;
-using Caravela.Framework.Fabrics;
+using Metalama.Framework.Aspects;
+using Metalama.Framework.Fabrics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.AdvisingTypeFabric
+namespace Metalama.Documentation.SampleCode.AspectFramework.AdvisingTypeFabric
 {
 #pragma warning disable CS0067
     internal class MyClass

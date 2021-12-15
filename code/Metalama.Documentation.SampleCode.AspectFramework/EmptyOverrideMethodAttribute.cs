@@ -1,6 +1,6 @@
-﻿using Caravela.Framework.Aspects;
+﻿using Metalama.Framework.Aspects;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework
+namespace Metalama.Documentation.SampleCode.AspectFramework
 {
     public class EmptyOverrideMethodAttribute : OverrideMethodAspect
     {

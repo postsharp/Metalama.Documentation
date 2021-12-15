@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.UpdateMethod
+namespace Metalama.Documentation.SampleCode.AspectFramework.UpdateMethod
 {
     [UpdateMethod]
     class CityHunter
@@ -17,7 +17,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.UpdateMethod
         static void Main()
         {
             CityHunter ch = new();
-#if CARAVELA
+#if METALAMA
             ch.Update(0, "1");
 #endif
         }

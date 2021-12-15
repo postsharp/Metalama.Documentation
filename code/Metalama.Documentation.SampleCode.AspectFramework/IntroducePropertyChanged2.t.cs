@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged2
+namespace Metalama.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged2
 {
     [IntroducePropertyChangedAspect]
     class TargetCode

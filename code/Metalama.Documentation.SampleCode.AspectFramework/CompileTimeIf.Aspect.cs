@@ -1,7 +1,7 @@
 ﻿using System;
-using Caravela.Framework.Aspects;
+using Metalama.Framework.Aspects;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.CompileTimeIf
+namespace Metalama.Documentation.SampleCode.AspectFramework.CompileTimeIf
 {
     internal class CompileTimeIfAttribute : OverrideMethodAspect
     {

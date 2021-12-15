@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.DeepClone
+namespace Metalama.Documentation.SampleCode.AspectFramework.DeepClone
 {
     class ManuallyCloneable : ICloneable
     {

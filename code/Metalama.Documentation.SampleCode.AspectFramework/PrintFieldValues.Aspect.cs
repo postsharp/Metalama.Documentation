@@ -1,7 +1,7 @@
 ﻿using System;
-using Caravela.Framework.Aspects;
+using Metalama.Framework.Aspects;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.PrintFieldValues
+namespace Metalama.Documentation.SampleCode.AspectFramework.PrintFieldValues
 {
     internal class PrintFieldValuesAttribute : OverrideMethodAspect
     {

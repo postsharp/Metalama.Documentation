@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Caravela.Framework.RunTime;
+using Metalama.Framework.RunTime;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.OverrideMethodDefaultTemplateAllKinds
+namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodDefaultTemplateAllKinds
 {
 
     public class Program

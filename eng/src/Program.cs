@@ -14,11 +14,11 @@ namespace Build
         {
             var product = new Product
             {
-                ProductName = "Caravela.Documentation",
+                ProductName = "Metalama.Documentation",
                 Solutions = ImmutableArray.Create<Solution>(
-                    new DotNetSolution( "code\\Caravela.Documentation.SampleCode.sln" ) { CanFormatCode = true, BuildMethod = BuildMethod.Test },
+                    new DotNetSolution( "code\\Metalama.Documentation.SampleCode.sln" ) { CanFormatCode = true, BuildMethod = BuildMethod.Test },
                     new DocFxSolution( "docfx\\docfx.json" ) ),
-                Dependencies = ImmutableArray.Create( new ProductDependency( "Caravela" ) ),
+                Dependencies = ImmutableArray.Create( new ProductDependency( "Metalama" ) ),
                 AdditionalDirectoriesToClean = ImmutableArray.Create( "docfx\\obj", "docfx\\_site" )
             };
 

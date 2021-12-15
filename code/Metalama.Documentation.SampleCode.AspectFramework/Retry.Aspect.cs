@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
-using Caravela.Framework.Aspects;
+using Metalama.Framework.Aspects;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.Retry
+namespace Metalama.Documentation.SampleCode.AspectFramework.Retry
 {
     internal class RetryAttribute : OverrideMethodAspect
     {

@@ -1,4 +1,4 @@
-﻿namespace Caravela.Documentation.SampleCode.AspectFramework.LogParameters
+﻿namespace Metalama.Documentation.SampleCode.AspectFramework.LogParameters
 {
     internal class TargetCode
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.Testing
+namespace Metalama.Documentation.SampleCode.AspectFramework.Testing
 {
     class SimpleLogTests
     {

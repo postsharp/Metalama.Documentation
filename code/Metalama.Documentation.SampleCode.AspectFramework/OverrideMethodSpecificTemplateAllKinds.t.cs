@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.OverrideMethodSpecificTemplateAllKinds
+namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodSpecificTemplateAllKinds
 {
 
     public class Program

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.ImportService
+namespace Metalama.Documentation.SampleCode.AspectFramework.ImportService
 {
     internal class TargetCode
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
-using Caravela.Framework.Aspects;
-using Caravela.Framework.Code;
+using Metalama.Framework.Aspects;
+using Metalama.Framework.Code;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged2
+namespace Metalama.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged2
 {
     class IntroducePropertyChangedAspect : TypeAspect
     {

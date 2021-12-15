@@ -1,16 +1,16 @@
-# Caravela.Framework
+# Metalama.Framework
 
-> You can try PostSharp "Caravela" in your browser, without installing anything, at <https://try.postsharp.net/>.
+> You can try Metalama in your browser, without installing anything, at <https://try.postsharp.net/>.
 
 ## Introduction
 
-Caravela.Framework is an [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) framework based on templates written in pure C#.
+Metalama.Framework is an [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) framework based on templates written in pure C#.
 
 These templates make it easy to write code that combines compile-time information (such as names and types of parameters of a method) and run-time information (such as parameter values) in a natural way, without having to learn another language or having to combine C# with some special templating language.
 
 ## Limitations
 
-Caravela.Framework is in a very early preview, which means it currently has severe limitations:
+Metalama.Framework is in a very early preview, which means it currently has severe limitations:
 
 - `OverrideMethod` is the only available aspect/advice;
 - many constructs of C# (including very common ones) are not supported in templates;
@@ -68,7 +68,7 @@ Notice that the compile-time `foreach` loop was unrolled, so that each parameter
 
 ## Aspects, advices and Initialize
 
-While abstract aspects like `OverrideMethodAspect` work well for simple needs, more customization is required in more complex cases. For example, consider the situation where you want to apply an aspect attribute to a type and have it affect all its methods. In Caravela, you can do this by directly implementing the `IAspect<T>` interface and putting this logic into the `Initialize` method. For example:
+While abstract aspects like `OverrideMethodAspect` work well for simple needs, more customization is required in more complex cases. For example, consider the situation where you want to apply an aspect attribute to a type and have it affect all its methods. In Metalama, you can do this by directly implementing the `IAspect<T>` interface and putting this logic into the `Initialize` method. For example:
 
 ```c#
 public class CountMethodsAspect : Attribute, IAspect<INamedType>
@@ -103,7 +103,7 @@ As you can see, the `Initialize` method can also be used for other purposes, lik
 
 ## Template context
 
-Inside a template method, extra operations are available through members of the `TemplateContext` class. These members are intended to be used directly, which requires adding `using static Caravela.Framework.Aspects.TemplateContext;` to the top of your files. To make these members look like special operations, they use the camelCase naming convention, violating .NET naming conventions, which require PascalCase.
+Inside a template method, extra operations are available through members of the `TemplateContext` class. These members are intended to be used directly, which requires adding `using static Metalama.Framework.Aspects.TemplateContext;` to the top of your files. To make these members look like special operations, they use the camelCase naming convention, violating .NET naming conventions, which require PascalCase.
 
 These members are:
 
@@ -113,4 +113,4 @@ These members are:
 
 ## Packaging an aspect
 
-There is nothing special about creating a NuGet package for a project that contains Caravela.Framework aspects, it works the same as creating a NuGet package for a regular .NET library.
+There is nothing special about creating a NuGet package for a project that contains Metalama.Framework aspects, it works the same as creating a NuGet package for a regular .NET library.

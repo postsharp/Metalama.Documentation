@@ -1,4 +1,4 @@
-﻿namespace Caravela.Documentation.SampleCode.AspectFramework.Normalize
+﻿namespace Metalama.Documentation.SampleCode.AspectFramework.Normalize
 {
     class TargetCode
     {

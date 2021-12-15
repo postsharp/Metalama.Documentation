@@ -1,4 +1,4 @@
-namespace Caravela.Documentation.SampleCode.AspectFramework.Synchronized
+namespace Metalama.Documentation.SampleCode.AspectFramework.Synchronized
 {
     [Synchronized]
     class SynchronizedClass

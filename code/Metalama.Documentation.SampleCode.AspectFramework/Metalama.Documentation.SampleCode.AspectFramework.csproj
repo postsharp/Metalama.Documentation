@@ -23,8 +23,8 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 
-		<PackageReference Include="Caravela.Framework" Version="$(CaravelaVersion)" />
-		<PackageReference Include="Caravela.TestFramework" Version="$(CaravelaVersion)" />
+		<PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)" />
+		<PackageReference Include="Metalama.TestFramework" Version="$(MetalamaVersion)" />
 	</ItemGroup>
 
 </Project>

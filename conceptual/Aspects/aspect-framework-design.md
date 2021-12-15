@@ -1,16 +1,16 @@
 ---
 uid: aspect-framework-design
 ---
-# Design of Caravela Aspect Framework
+# Design of Metalama Aspect Framework
 
 ## Overview
 
-An aspect is, by definition, a class that implements the <xref:Caravela.Framework.Aspects.IAspect%601> generic interface. The generic parameter of this interface is the type of declarations to which that aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
+An aspect is, by definition, a class that implements the <xref:Metalama.Framework.Aspects.IAspect%601> generic interface. The generic parameter of this interface is the type of declarations to which that aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
 
-Aspects have different abilities listed in this article. The aspect author can use or configure these abilities in the following methods inherited from the <xref:Caravela.Framework.Aspects.IAspect%601> interface:
+Aspects have different abilities listed in this article. The aspect author can use or configure these abilities in the following methods inherited from the <xref:Metalama.Framework.Aspects.IAspect%601> interface:
 
-* <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass%2A> configures the aspect _type_, before any instance is created, thanks to a <xref:Caravela.Framework.Aspects.IAspectClassBuilder>;
-* <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> builds the aspect _instance_ applied on a specific _target declaration_, thanks to a <xref:Caravela.Framework.Aspects.IAspectBuilder%601>;
+* <xref:Metalama.Framework.Aspects.IAspect.BuildAspectClass%2A> configures the aspect _type_, before any instance is created, thanks to a <xref:Metalama.Framework.Aspects.IAspectClassBuilder>;
+* <xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> builds the aspect _instance_ applied on a specific _target declaration_, thanks to a <xref:Metalama.Framework.Aspects.IAspectBuilder%601>;
 
 ```mermaid
 classDiagram
@@ -66,15 +66,15 @@ There are two kinds of advices: _declarative_ and _imperative_.
 
 #### Declarative advices
 
-The only _declarative advice_ is the _member introduction_ advice and is marked by the <xref:Caravela.Framework.Aspects.IntroduceAttribute> custom attribute. For each member of the aspect class annotated with `[Introduce]`, the aspect framework will attempt to introduce the member in the target class. For details, see <xref:introducing-members>.
+The only _declarative advice_ is the _member introduction_ advice and is marked by the <xref:Metalama.Framework.Aspects.IntroduceAttribute> custom attribute. For each member of the aspect class annotated with `[Introduce]`, the aspect framework will attempt to introduce the member in the target class. For details, see <xref:introducing-members>.
 
 #### Imperative advices
 
-_Imperative advices_ are added by the implementation of the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> method thanks to the methods exposed by the <xref:Caravela.Framework.Aspects.IAspectLayerBuilder.Advices> property of the `builder` parameter. See <xref:Caravela.Framework.Aspects.IAdviceFactory> for a complete list of methods. In short:
+_Imperative advices_ are added by the implementation of the <xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> method thanks to the methods exposed by the <xref:Metalama.Framework.Aspects.IAspectLayerBuilder.Advices> property of the `builder` parameter. See <xref:Metalama.Framework.Aspects.IAdviceFactory> for a complete list of methods. In short:
 
-* <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod%2A>, <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrProperty%2A>, <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrPropertyAccessors%2A>,  <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideEventAccessors%2A> allow you to replace the implementation of a type member. See <xref:overriding-members> for details.
-* <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceMethod%2A>, <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceProperty%2A>, <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceField%2A> and <xref:Caravela.Framework.Aspects.IAdviceFactory.IntroduceEvent%2A> allows your aspect to introduce new members into the target type. See <xref:introducing-members> for details.
-* <xref:Caravela.Framework.Aspects.IAdviceFactory.ImplementInterface%2A> makes the target type implement an interface. See <xref:implementing-interfaces> for details.
+* <xref:Metalama.Framework.Aspects.IAdviceFactory.OverrideMethod%2A>, <xref:Metalama.Framework.Aspects.IAdviceFactory.OverrideFieldOrProperty%2A>, <xref:Metalama.Framework.Aspects.IAdviceFactory.OverrideFieldOrPropertyAccessors%2A>,  <xref:Metalama.Framework.Aspects.IAdviceFactory.OverrideEventAccessors%2A> allow you to replace the implementation of a type member. See <xref:overriding-members> for details.
+* <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceMethod%2A>, <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceProperty%2A>, <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceField%2A> and <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceEvent%2A> allows your aspect to introduce new members into the target type. See <xref:introducing-members> for details.
+* <xref:Metalama.Framework.Aspects.IAdviceFactory.ImplementInterface%2A> makes the target type implement an interface. See <xref:implementing-interfaces> for details.
 
 #### Template methods
 
@@ -92,9 +92,9 @@ For details about this feature, see <xref:diagnostics>.
 
 ### Disabling itself
 
-If an aspect instance decides that it cannot be applied to the target it has been applied to, its implementation of the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> method can call the <xref:Caravela.Framework.Aspects.IAspectBuilder.SkipAspect> method. The effect of this method is to prevent the aspect from providing any advice or child aspect and to set the <xref:Caravela.Framework.Aspects.IAspectInstance.IsSkipped> to `true`.
+If an aspect instance decides that it cannot be applied to the target it has been applied to, its implementation of the <xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> method can call the <xref:Metalama.Framework.Aspects.IAspectBuilder.SkipAspect> method. The effect of this method is to prevent the aspect from providing any advice or child aspect and to set the <xref:Metalama.Framework.Aspects.IAspectInstance.IsSkipped> to `true`.
 
-The aspect may or may not report a diagnostic before calling <xref:Caravela.Framework.Aspects.IAspectBuilder.SkipAspect>. Calling this method does not report any diagnostic.
+The aspect may or may not report a diagnostic before calling <xref:Metalama.Framework.Aspects.IAspectBuilder.SkipAspect>. Calling this method does not report any diagnostic.
 
 ### Specifying on which declarations the aspect can be applied (eligibility)
 
@@ -114,10 +114,10 @@ This feature is not yet implemented.
 
 ### Defining the name and description of the aspect class in the IDE
 
-To define the appearance of the aspect in the IDE, implement the <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass%2A> method and set the <xref:Caravela.Framework.Aspects.IAspectClassBuilder.DisplayName> and <xref:Caravela.Framework.Aspects.IAspectClassBuilder.Description> properties of the <xref:Caravela.Framework.Aspects.IAspectClassBuilder>.
+To define the appearance of the aspect in the IDE, implement the <xref:Metalama.Framework.Aspects.IAspect.BuildAspectClass%2A> method and set the <xref:Metalama.Framework.Aspects.IAspectClassBuilder.DisplayName> and <xref:Metalama.Framework.Aspects.IAspectClassBuilder.Description> properties of the <xref:Metalama.Framework.Aspects.IAspectClassBuilder>.
 
 > [!WARNING]
-> Do not reference instance class members in your implementation of  <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass%2A>. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` -- that is, _without_ invoking the class constructor.
+> Do not reference instance class members in your implementation of  <xref:Metalama.Framework.Aspects.IAspect.BuildAspectClass%2A>. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` -- that is, _without_ invoking the class constructor.
 
 ### Using several layers of advices
 
@@ -127,19 +127,19 @@ This feature is not yet implemented.
 
 ### Example: the OverrideMethodAspect class
 
-Now that you know more about the design of the aspect framework, you can look at the implementation of the <xref:Caravela.Framework.Aspects.OverrideMethodAspect> abstract class. You can see that all this class does is providing an abstract method `OverrideMethod` and adding an advice to the target method where the template is the `OverrideMethod`.
+Now that you know more about the design of the aspect framework, you can look at the implementation of the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class. You can see that all this class does is providing an abstract method `OverrideMethod` and adding an advice to the target method where the template is the `OverrideMethod`.
 
-[!include[Main](../../code/Caravela.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs#aspect)]
+[!include[Main](../../code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs#aspect)]
 
 ### Example: an aspect targeting methods, fields and properties
 
 The following example shows an aspect that targets methods, fields and properties with a single implementation class.
 
-[!include[Aspect Targeting Methods, Fields and Properties](../../code/Caravela.Documentation.SampleCode.AspectFramework/LogMethodAndProperty.cs)]
+[!include[Aspect Targeting Methods, Fields and Properties](../../code/Metalama.Documentation.SampleCode.AspectFramework/LogMethodAndProperty.cs)]
 
 ## Code model versioning
 
-Each aspect, and even each aspect layer, potentially sees a different version of the <xref:Caravela.Framework.Code> code model. Therefore, if an aspect introduces a member into a type, the next aspects will see that new member in the code model, and will be able to advise it.
+Each aspect, and even each aspect layer, potentially sees a different version of the <xref:Metalama.Framework.Code> code model. Therefore, if an aspect introduces a member into a type, the next aspects will see that new member in the code model, and will be able to advise it.
 
 Every declaration in the compilation is assigned a _depth level_. Within the same aspect layer, declarations are processed by increasing order of depth, i.e. base classes are visited before derived classes, and types before their members, and so on.
 
@@ -147,7 +147,7 @@ An aspect, within one depth level, will see the modifications performed by the s
 
 Aspects cannot modify declarations of lower depth than the target of the aspect.
 
-## The Caravela Pipeline
+## The Metalama Pipeline
 
 ### Step 1. Initialization
 
@@ -159,7 +159,7 @@ Aspects cannot modify declarations of lower depth than the target of the aspect.
 
 2. Initialization of aspect classes.
     1. A prototype instance of each aspect class is created using `FormatterServices.GetUninitializedObject`.
-    2. All  <xref:Caravela.Framework.Aspects.IAspect.BuildAspectClass%2A>  methods are executed. Aspect layers are discovered.
+    2. All  <xref:Metalama.Framework.Aspects.IAspect.BuildAspectClass%2A>  methods are executed. Aspect layers are discovered.
     3. Aspect ordering relationships are discovered in the current project and all referenced assemblies.
     4. Aspects layers are ordered.
 
@@ -171,7 +171,7 @@ For each aspect layer, by order of application (i.e., inverse order of execution
   * Aspect sources are evaluated for this aspect type, resulting in a set of _target declarations_.
   * Target declarations are visited in [breadth-first order](https://en.wikipedia.org/wiki/Breadth-first_search) of _depth level_, as defined above. For each target declaration:
     * The aspect is instantiated.
-    * <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> is invoked.
+    * <xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> is invoked.
     * Advices are added to the next steps of the pipeline.
 
 * For all aspect layers, and for all target declarations visited in breadth-first order:

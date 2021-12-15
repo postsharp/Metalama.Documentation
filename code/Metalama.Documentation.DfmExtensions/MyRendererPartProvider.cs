@@ -2,7 +2,7 @@
 using System.Composition;
 using Microsoft.DocAsCode.Dfm;
 
-namespace Caravela.Documentation.DfmExtensions
+namespace Metalama.Documentation.DfmExtensions
 {
     [Export(typeof(IDfmCustomizedRendererPartProvider))]
     public class MyRendererPartProvider : IDfmCustomizedRendererPartProvider

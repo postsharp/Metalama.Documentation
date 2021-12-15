@@ -1,5 +1,5 @@
 ---
-uid: Caravela.Framework.Aspects
+uid: Metalama.Framework.Aspects
 summary: *content
 ---
 
@@ -9,7 +9,7 @@ For instance, adding logging to a method, or implementing `INotifyPropertyChange
 an algorithm and therefore implemented as an aspect.
 
 To create an aspect, create a class that derives from <xref:System.Attribute> and implement the 
-<xref:Caravela.Framework.Aspects.IAspect%601> interface.
+<xref:Metalama.Framework.Aspects.IAspect%601> interface.
 
 For more information, see <xref:aspects>.
 

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Caravela.Framework.Aspects;
+using Metalama.Framework.Aspects;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.OverrideMethodSpecificTemplateAllKinds
+namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodSpecificTemplateAllKinds
 {
     public class LogAttribute : OverrideMethodAspect
     {

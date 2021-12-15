@@ -1,9 +1,9 @@
-using Caravela.Framework.Aspects;
-using Caravela.Framework.Fabrics;
+using Metalama.Framework.Aspects;
+using Metalama.Framework.Fabrics;
 using System;
 using System.Linq;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.AspectConfiguration
+namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
 {
 #pragma warning disable CS0067
     // The project fabric configures the project at compile time.
@@ -19,7 +19,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.AspectConfiguration
     {
         public void SomeMethod()
         {
-            Console.WriteLine($"MyCategory: Executing Caravela.Documentation.SampleCode.AspectFramework.AspectConfiguration.SomeClass.SomeMethod().");
+            Console.WriteLine($"MyCategory: Executing Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration.SomeClass.SomeMethod().");
             return;
         }
     }

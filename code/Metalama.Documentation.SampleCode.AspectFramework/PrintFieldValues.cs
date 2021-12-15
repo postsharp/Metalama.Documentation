@@ -1,4 +1,4 @@
-﻿namespace Caravela.Documentation.SampleCode.AspectFramework.PrintFieldValues
+﻿namespace Metalama.Documentation.SampleCode.AspectFramework.PrintFieldValues
 {
     internal class TargetCode
     {

@@ -1,11 +1,11 @@
-﻿using Caravela.Framework.Aspects;
-using Caravela.Framework.Code;
-using Caravela.Framework.Diagnostics;
-using Caravela.Framework.Eligibility;
+﻿using Metalama.Framework.Aspects;
+using Metalama.Framework.Code;
+using Metalama.Framework.Diagnostics;
+using Metalama.Framework.Eligibility;
 using System.IO;
 using System.Linq;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.EligibilityAndValidation
+namespace Metalama.Documentation.SampleCode.AspectFramework.EligibilityAndValidation
 {
     internal class LogAttribute : OverrideMethodAspect
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Caravela.Framework.Fabrics;
-using Caravela.Framework.Aspects;
+using Metalama.Framework.Fabrics;
+using Metalama.Framework.Aspects;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.ProjectFabric_
+namespace Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_
 {
      internal class Fabric : ProjectFabric
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.Tags
+namespace Metalama.Documentation.SampleCode.AspectFramework.Tags
 {
     class TargetCode
     {

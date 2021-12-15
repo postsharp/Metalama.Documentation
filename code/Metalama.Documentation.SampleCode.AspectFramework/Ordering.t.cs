@@ -1,8 +1,8 @@
 using System;
-using Caravela.Framework.Aspects;
+using Metalama.Framework.Aspects;
 
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.Ordering
+namespace Metalama.Documentation.SampleCode.AspectFramework.Ordering
 {
     [Aspect1, Aspect2]
     internal class TargetCode

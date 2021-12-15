@@ -1,13 +1,13 @@
-# PostSharp "Caravela"
+# Metalama
 
-PostSharp "Caravela" is a meta-programming framework for C# based on Roslyn, Microsoft's managed compiler platform.
+Metalama is a meta-programming framework for C# based on Roslyn, Microsoft's managed compiler platform.
 
 > [!NOTE]
-> Caravela is currently in EARLY PREVIEW stage and is not intended for commercial use.
-> Any version of the Caravela preview will stop working 90 days after it has been built.
+> Metalama is currently in EARLY PREVIEW stage and is not intended for commercial use.
+> Any version of the Metalama preview will stop working 90 days after it has been built.
 > To continue using it, you will need to update to a newer preview.
 
-Caravela has the following principal features:
+Metalama has the following principal features:
 
 | Feature | Description |
 |---------|-------------|
@@ -22,7 +22,7 @@ Caravela has the following principal features:
 | <xref:conceptual> | Conceptual and procedural documentation |
 | <xref:api> | API reference |
 
-The conceptual documentation is hosted on https://github.com/postsharp/Caravela.Documentation. You can suggest improvements and corrections using the discussions board, and even submit a pull request.
+The conceptual documentation is hosted on https://github.com/postsharp/Metalama.Documentation. You can suggest improvements and corrections using the discussions board, and even submit a pull request.
 
 
 ## Getting started
@@ -34,16 +34,16 @@ The conceptual documentation is hosted on https://github.com/postsharp/Caravela.
 
 | Link                                                              | Description |
 |-------------------------------------------------------------------|------------------------
-| [Try Caravela](https://try.postsharp.net) | Try Caravela from your browser.|
-| [Caravela.Samples](https://github.com/postsharp/Caravela.Samples) | A dozen of open-source examples in a GitHub repo. |
+| [Try Metalama](https://try.postsharp.net) | Try Metalama from your browser.|
+| [Metalama.Samples](https://github.com/postsharp/Metalama.Samples) | A dozen of open-source examples in a GitHub repo. |
 
 
 ## Licensing
 
-PostSharp "Caravela" is currently released under the terms of the Evaluation License of PostSharp.
+Metalama is currently released under the terms of the Evaluation License of PostSharp.
 
 ## Feedback
 
-If you have any feedback regarding Caravela, please [open an issue](https://github.com/postsharp/Caravela/issues/new),
- [start a discussion](https://github.com/postsharp/Caravela/discussions/new), or contact us directly at hello@postsharp.net.
+If you have any feedback regarding Metalama, please [open an issue](https://github.com/postsharp/Metalama/issues/new),
+ [start a discussion](https://github.com/postsharp/Metalama/discussions/new), or contact us directly at hello@postsharp.net.
 

@@ -12,7 +12,7 @@ There are two complementary configuration mechanisms: MSBuild properties and con
 
 ## Consuming MSBuild properties
 
-The simplest way for an aspect to accept a configuration property is to read an MSBuild property using the <xref:Caravela.Framework.Project.IProject.TryGetProperty%2A?text=IProject.TryGetProperty> method. MSBuild properties are not visible to aspects by default: you have to instruct MSBuild to pass it to the compiler using the `CompilerVisibleProperty` item.
+The simplest way for an aspect to accept a configuration property is to read an MSBuild property using the <xref:Metalama.Framework.Project.IProject.TryGetProperty%2A?text=IProject.TryGetProperty> method. MSBuild properties are not visible to aspects by default: you have to instruct MSBuild to pass it to the compiler using the `CompilerVisibleProperty` item.
 
 We recommend the following approach to consume a configuration property:
 
@@ -62,7 +62,7 @@ We recommend the following approach to consume a configuration property:
 
 In the following example, the `Log` aspect reads the default category from the MSBuild project. It assumes the property has been exposed using the approach described above.
 
-[!include[Consuming Property](../../code/Caravela.Documentation.SampleCode.AspectFramework/ConsumingProperty.cs)]
+[!include[Consuming Property](../../code/Metalama.Documentation.SampleCode.AspectFramework/ConsumingProperty.cs)]
 
 
 ## Exposing a configuration API
@@ -71,12 +71,12 @@ For more complex aspects, a set of properties may not be convenient enough. Inst
 
 To create a configuration API:
 
-1. Create a class that derives from <xref:Caravela.Framework.Project.ProjectExtension> and have a default constructor. 
-2. Optionally, implement the <xref:Caravela.Framework.Project.ProjectExtension.Initialize%2A> method, which receives the <xref:Caravela.Framework.Project.IProject>. 
-3. In your aspect code, call the <xref:Caravela.Framework.Project.IProject.Extension%2A?text=IProject.Extension&lt;T&gt;()> method, where `T` is your configuration class, to get the configuration object.
-4. Optionally, create an extension method to the <xref:Caravela.Framework.Project.IProject> method to expose your configuration API, so that it is more discoverable.
+1. Create a class that derives from <xref:Metalama.Framework.Project.ProjectExtension> and have a default constructor. 
+2. Optionally, implement the <xref:Metalama.Framework.Project.ProjectExtension.Initialize%2A> method, which receives the <xref:Metalama.Framework.Project.IProject>. 
+3. In your aspect code, call the <xref:Metalama.Framework.Project.IProject.Extension%2A?text=IProject.Extension&lt;T&gt;()> method, where `T` is your configuration class, to get the configuration object.
+4. Optionally, create an extension method to the <xref:Metalama.Framework.Project.IProject> method to expose your configuration API, so that it is more discoverable.
 5. To configure your aspect, users should implement a project fabric and access your configuration API using this extension method. The class must be annotated with `[CompileTimeOnly]`.
 
 ### Example
 
-[!include[Consuming Property](../../code/Caravela.Documentation.SampleCode.AspectFramework/AspectConfiguration.cs)]
+[!include[Consuming Property](../../code/Metalama.Documentation.SampleCode.AspectFramework/AspectConfiguration.cs)]

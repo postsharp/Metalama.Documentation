@@ -1,5 +1,5 @@
 ---
-uid: Caravela.Framework
+uid: Metalama.Framework
 summary: *content
 ---
-This is the root namespace for the Caravela metaprogramming framework.
+This is the root namespace for the Metalama metaprogramming framework.

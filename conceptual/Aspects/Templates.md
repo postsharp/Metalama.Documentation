@@ -3,18 +3,18 @@ uid: templates
 ---
 # Writing code templates
 
-The specificity of a tool like Caravela, compared to simple code generation APIs, is that Caravela is able to _modify existing_ code, not only generate new code. Instead of giving you access to the syntax tree, which is extremely complex and error-prone (and you can still do it anyway with <xref:sdk> if you feel brave), Caravela lets you express code transformations in plain C# using a template language named _Caravela Template Language_.
+The specificity of a tool like Metalama, compared to simple code generation APIs, is that Metalama is able to _modify existing_ code, not only generate new code. Instead of giving you access to the syntax tree, which is extremely complex and error-prone (and you can still do it anyway with <xref:sdk> if you feel brave), Metalama lets you express code transformations in plain C# using a template language named _Metalama Template Language_.
 
-You can compare Caravela Template Language to Razor. Razor allows you to create dynamic web pages by mixing server-side C# code and client-side HTML. With Caravela Template Language, you have _compile-time_ and _run-time_ code and, basically, the compile-time code generates the run-time code. The difference with Razor is that in Caravela both the compile-time and run-time code are the same language: C#. Caravela interprets every expression or statement in a template as having _either_ run-time scope _or_ compile-time scope. Compile-time expressions are generally initiated by calls to the <xref:Caravela.Framework.Aspects.meta> API.
+You can compare Metalama Template Language to Razor. Razor allows you to create dynamic web pages by mixing server-side C# code and client-side HTML. With Metalama Template Language, you have _compile-time_ and _run-time_ code and, basically, the compile-time code generates the run-time code. The difference with Razor is that in Metalama both the compile-time and run-time code are the same language: C#. Metalama interprets every expression or statement in a template as having _either_ run-time scope _or_ compile-time scope. Compile-time expressions are generally initiated by calls to the <xref:Metalama.Framework.Aspects.meta> API.
 
 ## Initial example
 
-Before moving forward, let's illustrate this concept with an example. The next aspect writes text to the console before and after the execution of a method, but special care is taken for `out` parameters and `void` methods. This is achieved by a conditional compile-time logic which generates simple run-time code. Compile-time code is highlighted <span class="caravelaClassification_CompileTime">differently</span>, so you can see which part of the code executes at compile time and which executes at run time.
+Before moving forward, let's illustrate this concept with an example. The next aspect writes text to the console before and after the execution of a method, but special care is taken for `out` parameters and `void` methods. This is achieved by a conditional compile-time logic which generates simple run-time code. Compile-time code is highlighted <span class="metalamaClassification_CompileTime">differently</span>, so you can see which part of the code executes at compile time and which executes at run time.
 
 > [!NOTE]
-> To benefit from syntax highlighting in Visual Studio, install the [PostSharp "Caravela" Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.caravela).
+> To benefit from syntax highlighting in Visual Studio, install the [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama).
 
-[!include[Simple Logging](../../code/Caravela.Documentation.SampleCode.AspectFramework/LogParameters.cs)]
+[!include[Simple Logging](../../code/Metalama.Documentation.SampleCode.AspectFramework/LogParameters.cs)]
 
 ***
 
@@ -27,17 +27,17 @@ Compile-time statements are statements, such as `if`, `foreach` or `meta.DebugBr
 
 ### meta API
 
-The entry point of the compile-time API is the <xref:Caravela.Framework.Aspects.meta> static class. The name of this class is intentionally lower case to convey the sentiment that it is something unusual and gives access to some kind of magic. The <xref:Caravela.Framework.Aspects.meta> class is the entry point to the meta model and the members of this class can be invoked only in the context of a template.
+The entry point of the compile-time API is the <xref:Metalama.Framework.Aspects.meta> static class. The name of this class is intentionally lower case to convey the sentiment that it is something unusual and gives access to some kind of magic. The <xref:Metalama.Framework.Aspects.meta> class is the entry point to the meta model and the members of this class can be invoked only in the context of a template.
 
-The <xref:Caravela.Framework.Aspects.meta> static class exposes to the following members:
+The <xref:Metalama.Framework.Aspects.meta> static class exposes to the following members:
 
-- The <xref:Caravela.Framework.Aspects.meta.Proceed?text=meta.Proceed> method invokes the target method or accessor being intercepted, which can be either the next aspect applied on the same target or the target source implementation itself.
-- The <xref:Caravela.Framework.Aspects.meta.Target?text=meta.Target> property gives access to the declaration to which the template is applied.
-- The <xref:Caravela.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> property gives access to the current method or accessor parameters.
-- The <xref:Caravela.Framework.Aspects.meta.This?text=meta.This> property represents the `this` instance. Together with <xref:Caravela.Framework.Aspects.meta.Base?text=meta.Base>, <xref:Caravela.Framework.Aspects.meta.ThisStatic?text=meta.ThisStatic>, and <xref:Caravela.Framework.Aspects.meta.BaseStatic?text=meta.BaseStatic> properties, it allows your template to access members of the target class using dynamic code (see below).
-- The <xref:Caravela.Framework.Aspects.meta.Tags?text=meta.Tags> property gives access to an arbitrary dictionary that has been passed to the advice factory method.
--  The <xref:Caravela.Framework.Aspects.meta.CompileTime%2A?text=meta.CompileTime> method coerces a neutral expression into a compile-time expression.
-- <xref:Caravela.Framework.Aspects.meta.RunTime%2A?text=meta.RunTime> method converts the result of a compile-time expression into a run-time value (see below).
+- The <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed> method invokes the target method or accessor being intercepted, which can be either the next aspect applied on the same target or the target source implementation itself.
+- The <xref:Metalama.Framework.Aspects.meta.Target?text=meta.Target> property gives access to the declaration to which the template is applied.
+- The <xref:Metalama.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> property gives access to the current method or accessor parameters.
+- The <xref:Metalama.Framework.Aspects.meta.This?text=meta.This> property represents the `this` instance. Together with <xref:Metalama.Framework.Aspects.meta.Base?text=meta.Base>, <xref:Metalama.Framework.Aspects.meta.ThisStatic?text=meta.ThisStatic>, and <xref:Metalama.Framework.Aspects.meta.BaseStatic?text=meta.BaseStatic> properties, it allows your template to access members of the target class using dynamic code (see below).
+- The <xref:Metalama.Framework.Aspects.meta.Tags?text=meta.Tags> property gives access to an arbitrary dictionary that has been passed to the advice factory method.
+-  The <xref:Metalama.Framework.Aspects.meta.CompileTime%2A?text=meta.CompileTime> method coerces a neutral expression into a compile-time expression.
+- <xref:Metalama.Framework.Aspects.meta.RunTime%2A?text=meta.RunTime> method converts the result of a compile-time expression into a run-time value (see below).
 
 ### Compile-time local variables
 
@@ -66,7 +66,7 @@ There are a few exceptions to this rule:
 
 The following example shows a simple _Retry_ aspect. The maximum number of attempts can be configured by setting a property of the custom attribute. This property is compile-time.
 
-[!include[Retry](../../code/Caravela.Documentation.SampleCode.AspectFramework/Retry.cs)]
+[!include[Retry](../../code/Metalama.Documentation.SampleCode.AspectFramework/Retry.cs)]
 
 ### Compile-time if
 
@@ -80,7 +80,7 @@ If the condition of an `if` statement is a compile-time expression, the `if` sta
 
 In the following example, the aspect prints a different string for static methods than for instance ones.
 
-[!include[Compile-Time If](../../code/Caravela.Documentation.SampleCode.AspectFramework/CompileTimeIf.cs)]
+[!include[Compile-Time If](../../code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeIf.cs)]
 
 ### Compile-time foreach
 
@@ -93,7 +93,7 @@ If the expression of a `foreach` statement is a compile-time expression, the `fo
 
 The following aspect uses a `foreach` loop to print the value of each parameter of the method to which it is applied.
 
-[!include[Compile-Time If](../../code/Caravela.Documentation.SampleCode.AspectFramework/CompileTimeForEach.cs)]
+[!include[Compile-Time If](../../code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeForEach.cs)]
 
 ### No compile-time for, while and goto
 
@@ -147,7 +147,7 @@ You can use `meta.RunTime( expression )` to convert the result of a compile-time
 
 #### Example
 
-[!include[Dynamic](../../code/Caravela.Documentation.SampleCode.AspectFramework/ConvertToRunTime.cs)]
+[!include[Dynamic](../../code/Metalama.Documentation.SampleCode.AspectFramework/ConvertToRunTime.cs)]
 
 ### Dynamic code
 
@@ -183,9 +183,9 @@ meta.This.OnPropertyChanged( meta.Property.Name );
 
 ### Generating calls to the code model
 
-When you have a <xref:Caravela.Framework.Code> representation of a declaration, you may want to access it from your generated run-time code. You can do this by using the `Invokers` property exposed by the <xref:Caravela.Framework.Code.IMethod>, <xref:Caravela.Framework.Code.IFieldOrProperty> or <xref:Caravela.Framework.Code.IEvent> interfaces.
+When you have a <xref:Metalama.Framework.Code> representation of a declaration, you may want to access it from your generated run-time code. You can do this by using the `Invokers` property exposed by the <xref:Metalama.Framework.Code.IMethod>, <xref:Metalama.Framework.Code.IFieldOrProperty> or <xref:Metalama.Framework.Code.IEvent> interfaces.
 
-For details, see the documentation of the <xref:Caravela.Framework.Code.Invokers> namespace.
+For details, see the documentation of the <xref:Metalama.Framework.Code.Invokers> namespace.
 
 ### Generating run-time arrays
 
@@ -198,7 +198,7 @@ args[1] = DateTime.Now;
 MyRunTimeMethod( args );
 ```
 
-If you want to generate an array as a single-line expression, you can use the <xref:Caravela.Framework.Code.SyntaxBuilders.ArrayBuilder> class.
+If you want to generate an array as a single-line expression, you can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ArrayBuilder> class.
 
 For instance:
 
@@ -217,17 +217,17 @@ MyRunTimeMethod( new object[] { "a", DateTime.Now });
 
 ### Generating interpolated strings
 
-Instead of generating a string as an array separately and using `string.Format`, you can generate an interpolated string using the <xref:Caravela.Framework.Code.SyntaxBuilders.InterpolatedStringBuilder> class.
+Instead of generating a string as an array separately and using `string.Format`, you can generate an interpolated string using the <xref:Metalama.Framework.Code.SyntaxBuilders.InterpolatedStringBuilder> class.
 
-The following example shows how an <xref:Caravela.Framework.Code.SyntaxBuilders.InterpolatedStringBuilder> can be used to automatically implement the `ToString` method.
+The following example shows how an <xref:Metalama.Framework.Code.SyntaxBuilders.InterpolatedStringBuilder> can be used to automatically implement the `ToString` method.
 
-[!include[ToString](../../code/Caravela.Documentation.SampleCode.AspectFramework/ToString.cs)]
+[!include[ToString](../../code/Metalama.Documentation.SampleCode.AspectFramework/ToString.cs)]
  
 > [!div id="parsing" class="anchor"]
 
 ### Parsing C# code
 
-Sometimes it is easier to generate the run-time code as a simple text instead of using a complex meta API. If you want to use C# code represented as a `string` in your code, you can do it using the <xref:Caravela.Framework.Aspects.meta.ParseExpression%2A?text=meta.ParseExpression> method. This method returns an <xref:Caravela.Framework.Code.IExpression>, which is a compile-time object that you can use anywhere in compile-time code. The <xref:Caravela.Framework.Code.IExpression> interface exposes the run-time expression in the <xref:Caravela.Framework.Code.IExpression.Value> property.
+Sometimes it is easier to generate the run-time code as a simple text instead of using a complex meta API. If you want to use C# code represented as a `string` in your code, you can do it using the <xref:Metalama.Framework.Aspects.meta.ParseExpression%2A?text=meta.ParseExpression> method. This method returns an <xref:Metalama.Framework.Code.IExpression>, which is a compile-time object that you can use anywhere in compile-time code. The <xref:Metalama.Framework.Code.IExpression> interface exposes the run-time expression in the <xref:Metalama.Framework.Code.IExpression.Value> property.
 
 For instance, consider the following template code:
 
@@ -246,12 +246,12 @@ MyRunTimeMethod((a + b)/c)
 > The string expression is inserted _as is_ without any validation or transformation. Always specify the full namespace of any declaration used in a text expression.
 
 >[!NOTE]
-> Instead of the traditional `StringBuilder`, you can use <xref:Caravela.Framework.Code.SyntaxBuilders.ExpressionBuilder> to build an expression. It offers convenient methods like `AppendLiteral`, `AppendTypeName` or `AppendExpression`. To add a statement to the generated code, use `StatementBuilder` to create the statement and then `meta.InsertStatement` from the template at the place where the statement should be inserted.
+> Instead of the traditional `StringBuilder`, you can use <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> to build an expression. It offers convenient methods like `AppendLiteral`, `AppendTypeName` or `AppendExpression`. To add a statement to the generated code, use `StatementBuilder` to create the statement and then `meta.InsertStatement` from the template at the place where the statement should be inserted.
 
 
 ### Capturing run-time expressions into compile-time objects
 
-If you want to manipulate a run-time expression as a compile-time object, you can do it using the <xref:Caravela.Framework.Aspects.meta.DefineExpression%2A?text=meta.DefineExpression> method. This allows you to have expressions that depend on compile-time conditions and control flows. The <xref:Caravela.Framework.Aspects.meta.DefineExpression%2A> method returns an <xref:Caravela.Framework.Code.IExpression>, the same interface returned by <xref:Caravela.Framework.Aspects.meta.ParseExpression%2A>. The <xref:Caravela.Framework.Code.IExpression> is a compile-time object that you can use anywhere in compile-time code. It exposes the run-time expression in the <xref:Caravela.Framework.Code.IExpression.Value> property.
+If you want to manipulate a run-time expression as a compile-time object, you can do it using the <xref:Metalama.Framework.Aspects.meta.DefineExpression%2A?text=meta.DefineExpression> method. This allows you to have expressions that depend on compile-time conditions and control flows. The <xref:Metalama.Framework.Aspects.meta.DefineExpression%2A> method returns an <xref:Metalama.Framework.Code.IExpression>, the same interface returned by <xref:Metalama.Framework.Aspects.meta.ParseExpression%2A>. The <xref:Metalama.Framework.Code.IExpression> is a compile-time object that you can use anywhere in compile-time code. It exposes the run-time expression in the <xref:Metalama.Framework.Code.IExpression.Value> property.
 
 The following example is taken from the clone aspect. It declares a local variable named `clone`, but the expression assigned to the variable depends on whether the `Clone` method is an override.
 
@@ -277,11 +277,11 @@ This template generates either `var clone = (TargetType) base.Clone();` or `var 
 
 ### Converting custom objects from compile-time to run-time values
 
-You can have classes that exist both at compile and run time. To allow Caravela to convert a compile-time value to a run-time value, your class must implement the <xref:Caravela.Framework.Code.SyntaxBuilders.IExpressionBuilder> interface. The <xref:Caravela.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression> method must generate a C# expression that, when evaluated, returns a value that is structurally equivalent to the current value. Note that your implementation of <xref:Caravela.Framework.Code.SyntaxBuilders.IExpressionBuilder> is _not_ a template, so you will have to use the <xref:Caravela.Framework.Code.SyntaxBuilders.ExpressionBuilder> class to generate your code.
+You can have classes that exist both at compile and run time. To allow Metalama to convert a compile-time value to a run-time value, your class must implement the <xref:Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder> interface. The <xref:Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression> method must generate a C# expression that, when evaluated, returns a value that is structurally equivalent to the current value. Note that your implementation of <xref:Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder> is _not_ a template, so you will have to use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> class to generate your code.
 
 #### Example
 
-[!include[Custom Syntax Serializer](../../code/Caravela.Documentation.SampleCode.AspectFramework/CustomSyntaxSerializer.cs)]
+[!include[Custom Syntax Serializer](../../code/Metalama.Documentation.SampleCode.AspectFramework/CustomSyntaxSerializer.cs)]
 
 
 ## Debugging templates

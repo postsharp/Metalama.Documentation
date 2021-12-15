@@ -1,7 +1,7 @@
 ﻿using System;
-using Caravela.Framework.Aspects;
+using Metalama.Framework.Aspects;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.GlobalImportWithSetter
+namespace Metalama.Documentation.SampleCode.AspectFramework.GlobalImportWithSetter
 {
     internal class ImportAttribute : OverrideFieldOrPropertyAspect
     {

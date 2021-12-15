@@ -1,9 +1,9 @@
-﻿using Caravela.Framework.Aspects;
-using Caravela.Framework.Fabrics;
+﻿using Metalama.Framework.Aspects;
+using Metalama.Framework.Fabrics;
 using System;
 using System.Linq;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.AspectConfiguration
+namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
 {
     // The project fabric configures the project at compile time.
     public class Fabric : ProjectFabric

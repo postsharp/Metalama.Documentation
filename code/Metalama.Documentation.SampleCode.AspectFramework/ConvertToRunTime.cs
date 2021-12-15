@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.ConvertToRunTime
+namespace Metalama.Documentation.SampleCode.AspectFramework.ConvertToRunTime
 {
     internal class TargetCode
     {

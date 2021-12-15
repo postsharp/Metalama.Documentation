@@ -1,8 +1,8 @@
-using Caravela.Framework.Fabrics;
+using Metalama.Framework.Fabrics;
 using System;
 using System.Linq;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.TypeFabric_
+namespace Metalama.Documentation.SampleCode.AspectFramework.TypeFabric_
 {
 #pragma warning disable CS0067
     internal class MyClass
@@ -11,7 +11,7 @@ namespace Caravela.Documentation.SampleCode.AspectFramework.TypeFabric_
 
         public void Method2()
         {
-            Console.WriteLine($"Executing Caravela.Documentation.SampleCode.AspectFramework.TypeFabric_.MyClass.Method2().");
+            Console.WriteLine($"Executing Metalama.Documentation.SampleCode.AspectFramework.TypeFabric_.MyClass.Method2().");
             return;
         }
 #pragma warning disable CS0067

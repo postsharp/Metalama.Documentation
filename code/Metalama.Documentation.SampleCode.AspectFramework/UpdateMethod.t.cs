@@ -1,6 +1,6 @@
 using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.UpdateMethod
+namespace Metalama.Documentation.SampleCode.AspectFramework.UpdateMethod
 {
     [UpdateMethod]
     class CityHunter

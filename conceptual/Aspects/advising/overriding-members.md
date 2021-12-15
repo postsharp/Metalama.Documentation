@@ -10,9 +10,9 @@ In the section <xref:simple-aspects>, you have learned to override methods, prop
 
 ## Overriding methods
 
-To override one or more methods, your aspect needs to implement the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> method and invoke <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod%2A?text=builder.Advices.OverrideMethod> method.
+To override one or more methods, your aspect needs to implement the <xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> method and invoke <xref:Metalama.Framework.Aspects.IAdviceFactory.OverrideMethod%2A?text=builder.Advices.OverrideMethod> method.
 
-The _first argument_ of `OverrideMethod` is the <xref:Caravela.Framework.Code.IMethod> that you want to override. This method must be in the type being targeted by the current aspect instance.
+The _first argument_ of `OverrideMethod` is the <xref:Metalama.Framework.Code.IMethod> that you want to override. This method must be in the type being targeted by the current aspect instance.
 
 The _second argument_ of `OverrideMethod` is the name of the template method. This method must exist in the aspect class and, additionally:
 
@@ -30,11 +30,11 @@ The following aspects wraps all instance methods with a `lock( this )` statement
 > [!NOTE]
 > In a production-ready implementation, you should not lock `this` but a private field. You can introduce this field as described in <xref:introducing-members>. A product-ready implementation should also wrap properties.
 
-[!include[Synchronized](../../../code/Caravela.Documentation.SampleCode.AspectFramework/Synchronized.cs)]
+[!include[Synchronized](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Synchronized.cs)]
 
 ### Specifying templates for async and iterator methods
 
-Instead of providing a single template method, you can provide several of them and let the framework choose which one is the most suitable. The principle of this feature is described in <xref:overriding-methods#async-iterator-specific-template>. Instead of passing a string to the second argument of `OverrideMethod`, you can pass a <xref:Caravela.Framework.Aspects.MethodTemplateSelector> and initialize it with many templates. See the reference documentation of <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideMethod%2A?> and <xref:Caravela.Framework.Aspects.MethodTemplateSelector> for details.
+Instead of providing a single template method, you can provide several of them and let the framework choose which one is the most suitable. The principle of this feature is described in <xref:overriding-methods#async-iterator-specific-template>. Instead of passing a string to the second argument of `OverrideMethod`, you can pass a <xref:Metalama.Framework.Aspects.MethodTemplateSelector> and initialize it with many templates. See the reference documentation of <xref:Metalama.Framework.Aspects.IAdviceFactory.OverrideMethod%2A?> and <xref:Metalama.Framework.Aspects.MethodTemplateSelector> for details.
 
 ## Overriding fields or properties
 
@@ -51,9 +51,9 @@ There are two approaches to override a field or property: by providing a _proper
 
 This approach is the simplest but it has a few limitations.
 
-Just like for methods, to override one or more fields or properties, your aspect needs to implement the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> method exposed on `builder.Advices`.
+Just like for methods, to override one or more fields or properties, your aspect needs to implement the <xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> method exposed on `builder.Advices`.
 
-The _first argument_ of `OverrideFieldOrProperty` is the <xref:Caravela.Framework.Code.IFieldOrProperty> that you want to override. This field or property must be in the type being targeted by the current aspect instance.
+The _first argument_ of `OverrideFieldOrProperty` is the <xref:Metalama.Framework.Code.IFieldOrProperty> that you want to override. This field or property must be in the type being targeted by the current aspect instance.
 
 The _second argument_ of `OverrideFieldOrProperty` is the name of the template property. This property must exist in the aspect class and, additionally:
 
@@ -64,7 +64,7 @@ The _second argument_ of `OverrideFieldOrProperty` is the name of the template p
 
 The following aspect overrides properties so that they are written to and read from the Windows registry.
 
-[!include[Registry Storage](../../../code/Caravela.Documentation.SampleCode.AspectFramework/RegistryStorage.cs)]
+[!include[Registry Storage](../../../code/Metalama.Documentation.SampleCode.AspectFramework/RegistryStorage.cs)]
 
 ### Strongly-typed templates
 
@@ -86,7 +86,7 @@ This example illustrates a strongly-typed property template with a single access
 
 The following aspect can be applied to fields of properties of type `string`. It overrides the setter to trim and lower case the assigned value. 
 
-[!include[Normalize](../../../code/Caravela.Documentation.SampleCode.AspectFramework/Normalize.cs)]
+[!include[Normalize](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Normalize.cs)]
 
 ### Overriding with accessor templates
 
@@ -95,7 +95,7 @@ Advising fields or properties with the `OverrideFieldOrProperty` has the followi
 * You cannot choose a template for each accessor separately.
 * You cannot have generic templates.  (Not yet implemented in `OverrideFieldOrPropertyAccessors` anyway.)
 
-To alleviate these limitations, you can use the method <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideFieldOrPropertyAccessors%2A> and provide one or two method templates: a getter template and/or a setter template.
+To alleviate these limitations, you can use the method <xref:Metalama.Framework.Aspects.IAdviceFactory.OverrideFieldOrPropertyAccessors%2A> and provide one or two method templates: a getter template and/or a setter template.
 
 The templates must fulfill the following conditions:
 
@@ -105,7 +105,7 @@ The templates must fulfill the following conditions:
 
 ## Overriding events
 
-Overriding events is possible using the <xref:Caravela.Framework.Aspects.IAdviceFactory.OverrideEventAccessors%2A> method. It follows the same principles than `OverridePropertyAccessors`.
+Overriding events is possible using the <xref:Metalama.Framework.Aspects.IAdviceFactory.OverrideEventAccessors%2A> method. It follows the same principles than `OverridePropertyAccessors`.
 
 It is possible to override the `add` and `remove` semantics of an event, but not yet the invocation of an event. Therefore, it is of little use and we are skipping the example.
 

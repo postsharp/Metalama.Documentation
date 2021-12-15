@@ -1,4 +1,4 @@
-﻿namespace Caravela.Documentation.SampleCode.AspectFramework.ToString
+﻿namespace Metalama.Documentation.SampleCode.AspectFramework.ToString
 {
     [ToString]
     class TargetCode

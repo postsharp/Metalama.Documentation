@@ -1,6 +1,6 @@
 using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.LogMethodAndProperty
+namespace Metalama.Documentation.SampleCode.AspectFramework.LogMethodAndProperty
 {
     internal class TargetCode
     {

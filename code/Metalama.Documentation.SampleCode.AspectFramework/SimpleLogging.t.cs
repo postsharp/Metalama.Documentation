@@ -1,6 +1,6 @@
 using System;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.SimpleLogging
+namespace Metalama.Documentation.SampleCode.AspectFramework.SimpleLogging
 {
     internal class TargetCode
     {

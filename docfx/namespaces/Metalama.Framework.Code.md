@@ -1,5 +1,5 @@
 ---
-uid: Caravela.Framework.Code
+uid: Metalama.Framework.Code
 summary: *content
 ---
 This namespace contains the representation of the source code or the transformed code.

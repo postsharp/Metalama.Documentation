@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
-using Caravela.TestFramework;
+using Metalama.TestFramework;
 using Xunit;
 using Xunit.Abstractions;
 
 #pragma warning disable IDE1006 // Naming Styles
 
 
-namespace Caravela.Documentation.SampleCode.CompileTimeTesting
+namespace Metalama.Documentation.SampleCode.CompileTimeTesting
 {
     public class _Runner : TestSuite
     {

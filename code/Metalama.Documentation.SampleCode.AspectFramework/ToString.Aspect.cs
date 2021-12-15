@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using Caravela.Framework.Aspects;
-using Caravela.Framework.Code;
-using Caravela.Framework.Code.SyntaxBuilders;
+using Metalama.Framework.Aspects;
+using Metalama.Framework.Code;
+using Metalama.Framework.Code.SyntaxBuilders;
 
-namespace Caravela.Documentation.SampleCode.AspectFramework.ToString
+namespace Metalama.Documentation.SampleCode.AspectFramework.ToString
 {
     class ToStringAttribute : TypeAspect
     {
