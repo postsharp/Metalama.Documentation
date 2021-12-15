@@ -4,23 +4,21 @@
     <Import Project="MainVersion.props" />
     
     <PropertyGroup>
-        <MetalamaSamplesVersion>$(MainVersion)$(PackageVersionSuffix)</MetalamaSamplesVersion>
-        <MetalamaSamplesAssemblyVersion>$(MainVersion)</MetalamaSamplesAssemblyVersion>
+        <MetalamaDocumentationVersion>$(MainVersion)$(PackageVersionSuffix)</MetalamaDocumentationVersion>
+        <MetalamaDocumentationAssemblyVersion>$(MainVersion)</MetalamaDocumentationAssemblyVersion>
     </PropertyGroup>
 
-    
     <!-- Versions of dependencies -->
     <PropertyGroup>
-        <!-- Currently, only local builds are supported, so this property will be overwritten. -->
-        <MetalamaVersion>LOCAL</MetalamaVersion>
+        <!-- Currently, only local builds are supported. -->
+        <MetalamaVersion>local</MetalamaVersion>
+        <PostSharpEngineeringVersion>1.0.21-preview</PostSharpEngineeringVersion>
     </PropertyGroup>
 
     <!-- Import overrides for the local build -->
-    <Import Project="../artifacts/private/MetalamaDocumentationVersion.props" Condition="Exists('../artifacts/private/MetalamaDocumentationVersion.props')" />
-    <Import Project="Dependencies.props" Condition="Exists('Dependencies.props')"/>
+    <Import Project="Versions.g.props" Condition="Exists('Versions.g.props')" />
 
-    
-
+    <!-- Other properties dependent on the versions set above. -->
     <PropertyGroup>
         <AssemblyVersion>$(MetalamaDocumentationAssemblyVersion)</AssemblyVersion>
         <Version>$(MetalamaDocumentationVersion)</Version>
