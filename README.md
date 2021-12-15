@@ -4,6 +4,14 @@
 
 This repo contains the documentation of Metalama, including the testable code snippets under the `code` subdirectory.
 
+## Building everything
+
+> [!WARNING]
+> You must be a PostSharp employee to build the documentation.
+
+```
+.\Build.ps1 build
+```
 
 ## Building the code snippets
 
@@ -14,9 +22,6 @@ dotnet test
 
 ## Building the documentation
 
-> [!WARNING]
-> You must be a PostSharp employee to build the documentation.
-
 ## First build
 
 1. Clone the current repo in `c:\src\Metalama.Documentation`.
@@ -25,11 +30,11 @@ dotnet test
 
 ## Incremental builds
 
-From `c:\src\Metalama.Documentation`, do `.\build.ps1 -Incremental`.
+From `c:\src\Metalama.Documentation`, do `.\Publish.ps1 -Incremental`.
 
 ## Publishing the documentation
 
-1. From `c:\src\Metalama.Documentation`, do `.\build.ps1 -Pack`.
+1. From `c:\src\Metalama.Documentation`, do `.\Publish.ps1 -Pack`.
 2. Upload `c:\src\Metalama.Documentation\docfx\output\Metalama.Documentation.zip` to `s3://doc.postsharp.net/Metalama.Documentation.zip`.
 3. Invalidate the cache of `https://doc.metalama.net` using the API key.
 
