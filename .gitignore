@@ -21,3 +21,4 @@ x64/
 docfx/log.txt
 code/.local
 artifacts/
+/Caravela.Documentation.Import.props
