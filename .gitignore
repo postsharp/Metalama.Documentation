@@ -22,3 +22,4 @@ docfx/log.txt
 code/.local
 artifacts/
 /Metalama.Documentation.Import.props
+*.g.props
