@@ -48,8 +48,8 @@ namespace Build
         {
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
-                "nuget",
-                "restore \"docfx\\packages.config\" -OutputDirectory \"docfx\\packages\"",
+                "msbuild",
+                "/t:Restore \"docfx\\DocFx.csproj\"",
                 context.RepoDirectory );
         }
     }

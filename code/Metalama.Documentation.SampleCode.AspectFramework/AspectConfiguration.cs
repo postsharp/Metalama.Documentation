@@ -1,6 +1,4 @@
-﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Fabrics;
-using System;
 using System.Linq;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration

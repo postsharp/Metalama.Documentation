@@ -1,4 +1,4 @@
-﻿using Metalama.Framework.Fabrics;
+using Metalama.Framework.Fabrics;
 using System.Linq;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.TypeFabric_

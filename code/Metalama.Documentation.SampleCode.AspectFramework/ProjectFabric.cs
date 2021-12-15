@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_
 {

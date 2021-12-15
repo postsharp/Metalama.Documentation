@@ -11,7 +11,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.TypeFabric_
 
         public void Method2()
         {
-            Console.WriteLine($"Executing Metalama.Documentation.SampleCode.AspectFramework.TypeFabric_.MyClass.Method2().");
+            Console.WriteLine($"Executing MyClass.Method2().");
             return;
         }
 #pragma warning disable CS0067

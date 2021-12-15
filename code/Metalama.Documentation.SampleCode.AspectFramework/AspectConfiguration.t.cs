@@ -1,4 +1,3 @@
-using Metalama.Framework.Aspects;
 using Metalama.Framework.Fabrics;
 using System;
 using System.Linq;
@@ -19,7 +18,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
     {
         public void SomeMethod()
         {
-            Console.WriteLine($"MyCategory: Executing Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration.SomeClass.SomeMethod().");
+            Console.WriteLine($"MyCategory: Executing SomeClass.SomeMethod().");
             return;
         }
     }

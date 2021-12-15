@@ -2,11 +2,6 @@
 	<Import Project="..\eng\Versions.props" />
 	<PropertyGroup>
 		
-		<RestoreAdditionalProjectSources Condition="'$(IS_POSTSHARP_OWNED)'=='True'">
-			$(RestoreAdditionalProjectSources);
-			https://nuget.postsharp.net/nuget/caravela/
-		</RestoreAdditionalProjectSources>
-
  		<Nullable>enable</Nullable>
 		<DebugMetalama>False</DebugMetalama>
 
