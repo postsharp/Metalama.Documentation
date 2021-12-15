@@ -1,6 +1,6 @@
 # Metalama.Framework
 
-> You can try Metalama in your browser, without installing anything, at <https://try.postsharp.net/>.
+> You can try Metalama in your browser, without installing anything, at <https://try.metalama.net/>.
 
 ## Introduction
 

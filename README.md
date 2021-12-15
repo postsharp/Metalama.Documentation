@@ -31,7 +31,7 @@ From `c:\src\Metalama.Documentation`, do `.\build.ps1 -Incremental`.
 
 1. From `c:\src\Metalama.Documentation`, do `.\build.ps1 -Pack`.
 2. Upload `c:\src\Metalama.Documentation\docfx\output\Metalama.Documentation.zip` to `s3://doc.postsharp.net/Metalama.Documentation.zip`.
-3. Invalidate the cache of `https://doc.postsharp.net` using the API key.
+3. Invalidate the cache of `https://doc.metalama.net` using the API key.
 
 
 

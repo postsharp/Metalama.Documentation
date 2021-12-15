@@ -151,12 +151,12 @@ namespace Metalama.Documentation.DfmExtensions
             var currentFileId = currentFile.Substring(prefix.Length,
                 currentFile.Length - prefix.Length - ".md".Length);
             
-            var permalink = "https://doc.postsharp.net/caravela/" + currentFileId + "#" + source.Id;
+            var permalink = "https://doc.metalama.net/" + currentFileId + "#" + source.Id;
             
 
             const string gitBranch = "master";
             const string gitHubProjectPath = "https://github.com/postsharp/Metalama.Documentation/blob/" + gitBranch;
-            const string tryBaseUrl = "https://try.postsharp.net/#";
+            const string tryBaseUrl = "https://try.metalama.net/#";
 
             if (File.Exists(aspectPath))
             {

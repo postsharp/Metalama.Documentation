@@ -34,7 +34,7 @@ The conceptual documentation is hosted on https://github.com/postsharp/Metalama.
 
 | Link                                                              | Description |
 |-------------------------------------------------------------------|------------------------
-| [Try Metalama](https://try.postsharp.net) | Try Metalama from your browser.|
+| [Try Metalama](https://try.metalama.net) | Try Metalama from your browser.|
 | [Metalama.Samples](https://github.com/postsharp/Metalama.Samples) | A dozen of open-source examples in a GitHub repo. |
 
 
