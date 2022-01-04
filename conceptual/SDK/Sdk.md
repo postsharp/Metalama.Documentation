@@ -2,26 +2,26 @@
 uid: sdk
 ---
 
-# Caravela.Framework.Sdk
+# Metalama.Framework.Sdk
 
 ## Introduction
 
-Caravela.Framework.Sdk offers direct access to Caravela's underlying code-modifying capabilities through [Roslyn-based APIs](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/compiler-api-model). 
+Metalama.Framework.Sdk offers direct access to Metalama's underlying code-modifying capabilities through [Roslyn-based APIs](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/compiler-api-model). 
 
-Unlike Caravela.Framework, our high-level API, aspects built with Caravela.Framework.Sdk must be in their own project, separate from
-the code they transform. Caravela.Framework.Sdk is much more complex and unsafe than Caravela.Framework and is not meant for "everyday" use.
-We expect that most developers will use Caravela.Framework.
+Unlike Metalama.Framework, our high-level API, aspects built with Metalama.Framework.Sdk must be in their own project, separate from
+the code they transform. Metalama.Framework.Sdk is much more complex and unsafe than Metalama.Framework and is not meant for "everyday" use.
+We expect that most developers will use Metalama.Framework.
 
 ## Maturity
 
-Caravela.Framework.Sdk is in preview, but it is mostly feature complete.
+Metalama.Framework.Sdk is in preview, but it is mostly feature complete.
 
 ## Implementing an aspect
 
 ### Step 1. Define the public interface of your aspect (a custom attribute)
 
 1. Create an "interface" project (it must target .NET Standard 2.0).
-2. Add a reference to the _Caravela.Framework_ package (but not  _Caravela.Framework.Sdk_).
+2. Add a reference to the _Metalama.Framework_ package (but not  _Metalama.Framework.Sdk_).
 3. Define a custom attribute like this:
 
     ```cs
@@ -32,7 +32,7 @@ Caravela.Framework.Sdk is in preview, but it is mostly feature complete.
 ### Step 2. Create the weaver for this project
 
 1. Create a project that targets .NET Standard 2.0 and name it with the `.Weaver` suffix (by convention).
-2. Add a reference the _Caravela.Framework.Sdk_ package.
+2. Add a reference the _Metalama.Framework.Sdk_ package.
 3. Add a reference to the _first_ project project. In the `<ProjectReference>` in your csproj file, additionally specify `PrivateAssets="all"`.
 3. Add a class that implements the following interface:
 
@@ -56,7 +56,7 @@ Caravela.Framework.Sdk is in preview, but it is mostly feature complete.
 
     An implementation of this interface receives a Roslyn compilation and can modify it in any way using Roslyn syntax and semantic APIs. It also receives information about where its associated attribute has been applied (called "aspect instances"). And it can produce diagnostics (errors and warnings) if it has been used incorrectly.
 
-    Note that because Caravela replaces the compiler used to build your code, but not the one used by the IDE, any modifications made here will not affect code completion.
+    Note that because Metalama replaces the compiler used to build your code, but not the one used by the IDE, any modifications made here will not affect code completion.
 
 
 4. Add these custom attributes to your class: 
@@ -85,7 +85,7 @@ In a _third_ project:
 
 1. Reference the _first_ project (the one defining the custom attribute). Add `OutputItemType="Analyzer" ReferenceOutputAssembly="false"` to its `<ProjectReference>` in the csproj file.
 2. Reference the _second_ project (the one defining the weaver). Add `OutputItemType="Analyzer"` to its `<ProjectReference>`.
-3. Reference the _Caravela.Framework_ package.
+3. Reference the _Metalama.Framework_ package.
 4. Use the aspect by applying the attribute:
 
     ```c#
@@ -104,10 +104,10 @@ To fix this:
 
 ## Examples
 
-Available examples of Caravela.Framework.Sdk weavers are:
+Available examples of Metalama.Framework.Sdk weavers are:
 
-* [Caravela.Open.Virtuosity](https://github.com/postsharp/Caravela.Open.Virtuosity): makes all possible methods in a project `virtual`
-* [Caravela.Open.AutoCancellationToken](https://github.com/postsharp/Caravela.Open.AutoCancellationToken): automatically propagates `CancellationToken` parameter
-* [Caravela.Open.DependencyEmbedder](https://github.com/postsharp/Caravela.Open.DependencyEmbedder): bundles .NET Framework applications into a single executable file
+* [Metalama.Open.Virtuosity](https://github.com/postsharp/Metalama.Open.Virtuosity): makes all possible methods in a project `virtual`
+* [Metalama.Open.AutoCancellationToken](https://github.com/postsharp/Metalama.Open.AutoCancellationToken): automatically propagates `CancellationToken` parameter
+* [Metalama.Open.DependencyEmbedder](https://github.com/postsharp/Metalama.Open.DependencyEmbedder): bundles .NET Framework applications into a single executable file
 
-The Caravela.Open.Virtuosity repository contains very little logic, so it can be used as a template for your own weavers.
+The Metalama.Open.Virtuosity repository contains very little logic, so it can be used as a template for your own weavers.

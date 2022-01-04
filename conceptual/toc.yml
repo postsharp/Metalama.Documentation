@@ -5,7 +5,7 @@ items:
   - name: Creating Aspects
     topicUid: aspects
     items:
-      - name: Adding Caravela To Your Project
+      - name: Adding Metalama To Your Project
         topicUid: installing
       - name: Creating Simple Aspects
         topicUid: simple-aspects
@@ -18,7 +18,7 @@ items:
           topicUid: overriding-events
       - name: Writing Code Templates
         topicUid: templates
-      - name: Design of Caravela Aspect Framework
+      - name: Design of Metalama Aspect Framework
         topicUid: aspect-framework-design
       - name: Reporting and Suppressing Diagnostics
         topicUid: diagnostics
@@ -52,7 +52,7 @@ items:
           topicUid: run-time-testing
       - name: Creating a Live Template
         topicUid: creating-live-template
-      - name: Caravela.Framework.Sdk
+      - name: Metalama.Framework.Sdk
         href: Sdk/Sdk.md
   - name: Using Aspects
     topicUid: using-aspects

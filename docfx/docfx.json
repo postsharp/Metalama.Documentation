@@ -4,11 +4,11 @@
       "src": [
         {
           "files": [
-              "Caravela.Framework/Caravela.Framework.csproj",
-              "Caravela.TestFramework/Caravela.TestFramework.csproj",
-              "Caravela.Framework.Sdk/Caravela.Framework.Sdk.csproj"
+              "Metalama.Framework/Metalama.Framework.csproj",
+              "Metalama.TestFramework/Metalama.TestFramework.csproj",
+              "Metalama.Framework.Sdk/Metalama.Framework.Sdk.csproj"
               ],
-          "src": "c:/src/Caravela"
+          "src": "c:/src/Metalama"
         }
       ],
       "dest": "obj/api",
@@ -63,7 +63,7 @@
     "template":[ 
       "default", 
       "packages/memberpage.2.58.4/content",
-      "../code/Caravela.Documentation.DfmExtensions/bin/Debug"],
+      "../code/Metalama.Documentation.DfmExtensions/bin/Debug"],
     "postProcessors": [],
     "markdownEngineName": "dfm",
     "noLangKeyword": false,

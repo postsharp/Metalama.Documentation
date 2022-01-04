@@ -4,26 +4,24 @@
     <Import Project="MainVersion.props" />
     
     <PropertyGroup>
-        <CaravelaSamplesVersion>$(MainVersion)$(PackageVersionSuffix)</CaravelaSamplesVersion>
-        <CaravelaSamplesAssemblyVersion>$(MainVersion)</CaravelaSamplesAssemblyVersion>
+        <MetalamaDocumentationVersion>$(MainVersion)$(PackageVersionSuffix)</MetalamaDocumentationVersion>
+        <MetalamaDocumentationAssemblyVersion>$(MainVersion)</MetalamaDocumentationAssemblyVersion>
     </PropertyGroup>
 
-    
     <!-- Versions of dependencies -->
     <PropertyGroup>
-        <!-- Currently, only local builds are supported, so this property will be overwritten. -->
-        <CaravelaVersion>LOCAL</CaravelaVersion>
+        <!-- Currently, only local builds are supported. -->
+        <MetalamaVersion>local</MetalamaVersion>
+        <PostSharpEngineeringVersion>1.0.22-preview</PostSharpEngineeringVersion>
     </PropertyGroup>
 
     <!-- Import overrides for the local build -->
-    <Import Project="../artifacts/private/CaravelaDocumentationVersion.props" Condition="Exists('../artifacts/private/CaravelaDocumentationVersion.props')" />
-    <Import Project="Dependencies.props" Condition="Exists('Dependencies.props')"/>
+    <Import Project="Versions.g.props" Condition="Exists('Versions.g.props')" />
 
-    
-
+    <!-- Other properties dependent on the versions set above. -->
     <PropertyGroup>
-        <AssemblyVersion>$(CaravelaDocumentationAssemblyVersion)</AssemblyVersion>
-        <Version>$(CaravelaDocumentationVersion)</Version>
+        <AssemblyVersion>$(MetalamaDocumentationAssemblyVersion)</AssemblyVersion>
+        <Version>$(MetalamaDocumentationVersion)</Version>
     </PropertyGroup>
 
 </Project>

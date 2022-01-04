@@ -6,7 +6,7 @@ using PostSharp.Engineering.BuildTools.Build.Model;
 using PostSharp.Engineering.BuildTools.Utilities;
 using System;
 
-namespace Build
+namespace BuildMetalamaDocumentation
 {
     public class DocFxSolution : Solution
     {
@@ -16,7 +16,7 @@ namespace Build
             this.BuildMethod = PostSharp.Engineering.BuildTools.Build.Model.BuildMethod.Build;
         }
 
-        public override bool Build( BuildContext context, BuildOptions options )
+        public override bool Build( BuildContext context, BuildSettings settings )
         {
             if ( !RunDocFx( context, "metadata" ) )
             {
@@ -40,16 +40,16 @@ namespace Build
                 context.RepoDirectory );
         }
 
-        public override bool Pack( BuildContext context, BuildOptions options ) => throw new NotImplementedException();
+        public override bool Pack( BuildContext context, BuildSettings settings ) => throw new NotImplementedException();
 
-        public override bool Test( BuildContext context, BuildOptions options ) => throw new NotSupportedException();
+        public override bool Test( BuildContext context, BuildSettings settings ) => throw new NotSupportedException();
 
-        public override bool Restore( BuildContext context, BaseBuildSettings options )
+        public override bool Restore( BuildContext context, BaseBuildSettings settings )
         {
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
-                "nuget",
-                "restore \"docfx\\packages.config\" -OutputDirectory \"docfx\\packages\"",
+                "msbuild",
+                "/t:Restore \"docfx\\DocFx.csproj\"",
                 context.RepoDirectory );
         }
     }

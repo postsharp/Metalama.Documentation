@@ -12,7 +12,7 @@ param (
   [switch] $NoKill = $false )
 
 $ErrorActionPreference = "Stop" 
-$outputZipPath = "docfx\output\Caravela.Doc.zip"
+$outputZipPath = "docfx\output\Metalama.Doc.zip"
 
 if ( $Publish ) 
 {
@@ -82,7 +82,7 @@ function Metadata()
 
 function BuildExtensions()
 {
-    dotnet build "code\Caravela.Documentation.DfmExtensions\Caravela.Documentation.DfmExtensions.csproj"
+    dotnet build "code\Metalama.Documentation.DfmExtensions\Metalama.Documentation.DfmExtensions.csproj"
 
     if ($LASTEXITCODE -ne 0 ) { exit }
 }
@@ -90,7 +90,7 @@ function BuildExtensions()
 function RunTests()
 {
     
-    dotnet test "code\Caravela.Documentation.SampleCode.sln"
+    dotnet test "code\Metalama.Documentation.SampleCode.sln"
 
     # We tolerate failing tests for now.
   #  if ($LASTEXITCODE -ne 0 ) { exit }
@@ -136,7 +136,7 @@ function Publish()
 
     # This will use the default credentials.
 
-    Write-S3Object -BucketName "doc.postsharp.net" -File $outputZipPath  -Key "Caravela.Doc.zip" -PublicReadOnly -EndpointUrl https://s3.eu-west-1.amazonaws.com -Region eu-west-1
+    Write-S3Object -BucketName "doc.postsharp.net" -File $outputZipPath  -Key "Metalama.Doc.zip" -PublicReadOnly -EndpointUrl https://s3.eu-west-1.amazonaws.com -Region eu-west-1
 
     Invoke-WebRequest "https://postsharp-helpbrowser.azurewebsites.net/_api/invalidate?key=$($env:DOC_API_KEY)"
  

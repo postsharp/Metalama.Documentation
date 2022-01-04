@@ -1,7 +1,7 @@
 ---
 uid: conceptual
 ---
-# Caravela Conceptual Documentation
+# Metalama Conceptual Documentation
 
 
 | Chapter              | Description                                                         |
@@ -9,4 +9,4 @@ uid: conceptual
 | <xref:aspects>       | This chapter explains how to create your own aspects.               |
 | <xref:using-aspects> | This chapter explains how to use existing aspects in your projects. |
 | <xref:applying-live-templates> | This article describes how to apply a _live template_ to your code. 
-| <xref:packages> | This article describes packages and components that make Caravela.
+| <xref:packages> | This article describes packages and components that make Metalama.

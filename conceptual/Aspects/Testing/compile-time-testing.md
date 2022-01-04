@@ -17,15 +17,15 @@ Concretely, you can follow the following steps (detailed below):
 
 
 > [!NOTE]
-> For a real-world example, see https://github.com/postsharp/Caravela.Samples. Sample aspects are tested using the approach described here.
+> For a real-world example, see https://github.com/postsharp/Metalama.Samples. Sample aspects are tested using the approach described here.
 
-## Step 1. Create an aspect test project with Caravela.TestFramework
+## Step 1. Create an aspect test project with Metalama.TestFramework
 
 1. Create a Xunit test project.
-2. Add the `Caravela.TestFramework` package (see <xref:packages> for details).
+2. Add the `Metalama.TestFramework` package (see <xref:packages> for details).
 
 > [!WARNING]
-> Do not add the `Caravela.TestFramework` to a project that you do not intend to use _exclusively_ for compile-time tests. This packages significantly changes the semantics of the project items.
+> Do not add the `Metalama.TestFramework` to a project that you do not intend to use _exclusively_ for compile-time tests. This packages significantly changes the semantics of the project items.
 
 Typically, the `csproj` project file of a compile-time test project would have the following content:
 
@@ -44,8 +44,8 @@ Typically, the `csproj` project file of a compile-time test project would have t
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Caravela.Framework" Version="TODO" />
-        <PackageReference Include="Caravela.TestFramework" Version="TODO" />
+        <PackageReference Include="Metalama.Framework" Version="TODO" />
+        <PackageReference Include="Metalama.TestFramework" Version="TODO" />
     </ItemGroup>
 
 </Project>
@@ -57,14 +57,14 @@ The following diagram illustrates the typical dependencies between your projects
 ```mermaid
 graph TD
     YourApp -- references --> YourAspectLibrary
-    YourAspectLibrary -- references --> Caravela.Framework
+    YourAspectLibrary -- references --> Metalama.Framework
     YourAspectLibrary.UnitTests -- references --> xUnit
     YourAspectLibrary.UnitTests -- references --> YourAspectLibrary
     YourAspectLibrary.AspectTests -- references --> YourAspectLibrary
-    YourAspectLibrary.AspectTests -- references --> Caravela.TestFramework
-    Caravela.Framework -- references --> Caravela.Framework.Redist
-    Caravela.TestFramework -- references --> xUnit
-    Caravela.TestFramework -- references --> Caravela.Framework
+    YourAspectLibrary.AspectTests -- references --> Metalama.TestFramework
+    Metalama.Framework -- references --> Metalama.Framework.Redist
+    Metalama.TestFramework -- references --> xUnit
+    Metalama.TestFramework -- references --> Metalama.Framework
     
     classDef your fill:yellow;
     classDef yourTest fill:lightyellow;
@@ -75,11 +75,11 @@ graph TD
 
 ```
 
-### Customizations performed by Caravela.TestFramework
+### Customizations performed by Metalama.TestFramework
 
-When you import the `Caravela.TestFramework` package in a project, the following happens:
+When you import the `Metalama.TestFramework` package in a project, the following happens:
 
-1. The `CaravelaEnabled` project property is set to `False`, which completely disables Caravela for the project. Therefore, the `CARAVELA` compilation symbol (usable in a directive like `#if CARAVELA`) is no longer defined.
+1. The `MetalamaEnabled` project property is set to `False`, which completely disables Metalama for the project. Therefore, the `METALAMA` compilation symbol (usable in a directive like `#if METALAMA`) is no longer defined.
   
 2. Expected test results (`*.t.cs`) are excluded from the compilation.
 
@@ -101,11 +101,11 @@ Every test includes:
 
 For instance, suppose that we are testing the following aspect. This file would typically be included in a class library project.
 
-[!include[Main](../../../code/Caravela.Documentation.SampleCode.AspectFramework/Testing.TheAspect.cs)]
+[!include[Main](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Testing.TheAspect.cs)]
 
 To test this aspect, we create a test file with the following content:
 
-[!include[Main](../../../code/Caravela.Documentation.SampleCode.AspectFramework/Testing.cs)]
+[!include[Main](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Testing.cs)]
 
 ### Restricting the compared region of transformed code
 
@@ -123,15 +123,15 @@ The included file will behave just as an auxiliary file.
 
 ### Including references to introduced members and interfaces
 
-Because Caravela is disabled at compile- and design-time for a test project, you will have difficulties referencing members that do not exist in your source code but have been introduced by an aspect. Since the IDE and the compiler do not know about Caravela, you will get errors complaining that these members do not exist.
+Because Metalama is disabled at compile- and design-time for a test project, you will have difficulties referencing members that do not exist in your source code but have been introduced by an aspect. Since the IDE and the compiler do not know about Metalama, you will get errors complaining that these members do not exist.
 
-The solution is to wrap the code accessing introduced members with a `#if CARAVELA` directive. Because the `CARAVELA` symbol is defined when the test framework is running, this code will be taken into account during these tests. However, because it is not defined at design- and compile-time, it this code will be ignored while editing and compiling.
+The solution is to wrap the code accessing introduced members with a `#if METALAMA` directive. Because the `METALAMA` symbol is defined when the test framework is running, this code will be taken into account during these tests. However, because it is not defined at design- and compile-time, it this code will be ignored while editing and compiling.
 
 For instance, if the `Planet.Update` method is introduced by an aspect:
 
 ```cs
 Planet p = new();
-#if CARAVELA
+#if METALAMA
 p.Update( x, y );
 #endif
 Console.WriteLine( $"{p.X}, {p.Y}");
@@ -152,7 +152,7 @@ You can find the output code, transformed by your aspects, at two locations:
 
 For the example above, the test output is the following:
 
-[!include[Testing](../../../code/Caravela.Documentation.SampleCode.AspectFramework/Testing.t.cs)]
+[!include[Testing](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Testing.t.cs)]
 
 Verify that the output code matches your expectations. If necessary, fix your aspect and run the test again. Repeat as many times as necessary.
 
@@ -186,13 +186,13 @@ To accept the output of all tests:
 
 ### Excluding a directory
 
-By default, all files in a compile-time test project are turned into test input files. To disable this behavior for a project directory, create a file named `caravelaTests.json` and add the following content:
+By default, all files in a compile-time test project are turned into test input files. To disable this behavior for a project directory, create a file named `metalamaTests.json` and add the following content:
 
 ```json
 { "Exclude": true }
 ```
 
-Note that, by default, all source files are excluded from the compilation, even those in the directories that have been excluded by this mechanism. To include the files, define the project property _CaravelaTestAutoExclude_ to _False_ and include/exclude the files manually as needed. Note that the `*.t.cs` files are always excluded.
+Note that, by default, all source files are excluded from the compilation, even those in the directories that have been excluded by this mechanism. To include the files, define the project property _MetalamaTestAutoExclude_ to _False_ and include/exclude the files manually as needed. Note that the `*.t.cs` files are always excluded.
 
 ### Enabling file nesting in Solution Explorer
 
@@ -227,11 +227,11 @@ To make the `.t.cs.` file appear under its parent `.cs` file:
 
 ### Creating hierarchical test runners in Rider or Resharper
 
-JetBrains tools do not support the customized compile-time test framework. As a workaround, the Caravela testing framework registers a default test runner that discovers all tests in the current project and add them as test cases for a `[Theory]`-based universal test method.
+JetBrains tools do not support the customized compile-time test framework. As a workaround, the Metalama testing framework registers a default test runner that discovers all tests in the current project and add them as test cases for a `[Theory]`-based universal test method.
 
 If you have a large number of tests and want to see a hierarchical view, you can create, in each directory you want, a file named `_Runner.cs`, with the following content (in the namespace of your choice):
 
-[!include[Test Runner](../../../code/Caravela.Documentation.SampleCode.AspectFramework/_Runner.cs)]
+[!include[Test Runner](../../../code/Metalama.Documentation.SampleCode.AspectFramework/_Runner.cs)]
 
 The `[CurrentDirectory]` attribute will automatically provide test data for all files located under the directory containing the `_Runner.cs` file as well as any child directory.
 

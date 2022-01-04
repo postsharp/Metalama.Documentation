@@ -7,23 +7,23 @@ Many aspects need to modify the target type so it implements a new interface. Th
 
 ## Step 1. Call IAdviceFactory.ImplementInterface
 
-In your implementation of the <xref:Caravela.Framework.Aspects.IAspect%601.BuildAspect%2A> method, call the <xref:Caravela.Framework.Aspects.IAdviceFactory.ImplementInterface%2A> method.
+In your implementation of the <xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> method, call the <xref:Metalama.Framework.Aspects.IAdviceFactory.ImplementInterface%2A> method.
 
 ## Step 2. Add interface members to the aspect class
 
-Add all interface members to the aspect class and mark them with the <xref:Caravela.Framework.Aspects.InterfaceMemberAttribute?text=[InterfaceMember]> custom attribute. There is no need to have the aspect class implement the introduced interface.
+Add all interface members to the aspect class and mark them with the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute?text=[InterfaceMember]> custom attribute. There is no need to have the aspect class implement the introduced interface.
 
 The following rules apply to interface members:
 
 - The name and signature of all interface members must exactly match.
 - The accessibility of introduced members have no importance.
-- The aspect framework will generate public members unless the <xref:Caravela.Framework.Aspects.InterfaceMemberAttribute.IsExplicit> property is set to `true`. In this case, an explicit implementation is generated.
+- The aspect framework will generate public members unless the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute.IsExplicit> property is set to `true`. In this case, an explicit implementation is generated.
 
 Implementing an interface in a complete dynamic manner, when the interface itself is not known by the aspect, is not yet supported.
 
 ## Example: deep cloning
 
-[!include[Deep Clone](../../../code/Caravela.Documentation.SampleCode.AspectFramework/DeepClone.cs)]
+[!include[Deep Clone](../../../code/Metalama.Documentation.SampleCode.AspectFramework/DeepClone.cs)]
 
 
 ## Referencing interface members in other templates
