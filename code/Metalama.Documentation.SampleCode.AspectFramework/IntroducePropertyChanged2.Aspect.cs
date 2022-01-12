@@ -1,11 +1,10 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged2
 {
-    class IntroducePropertyChangedAspect : TypeAspect
+    internal class IntroducePropertyChangedAspect : TypeAspect
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {

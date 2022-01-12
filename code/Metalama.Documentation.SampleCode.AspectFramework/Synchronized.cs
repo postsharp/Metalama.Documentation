@@ -1,10 +1,10 @@
 ﻿namespace Metalama.Documentation.SampleCode.AspectFramework.Synchronized
 {
     [Synchronized]
-    class SynchronizedClass
+    internal class SynchronizedClass
     {
-        double _total;
-        int _samplesCount;
+        private double _total;
+        private int _samplesCount;
 
         public void AddSample(double sample)
         {

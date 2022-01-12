@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.GlobalImport
 {
-    class TargetCode
+    internal class TargetCode
     {
         [Import]
-        IFormatProvider FormatProvider { get; }
+        private IFormatProvider? FormatProvider { get; }
     }
 
-    class ServiceLocator : IServiceProvider
+    internal class ServiceLocator : IServiceProvider
     {
 
         private static readonly ServiceLocator _instance = new();

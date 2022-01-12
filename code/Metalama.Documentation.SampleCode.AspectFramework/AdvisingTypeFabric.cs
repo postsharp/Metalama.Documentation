@@ -1,16 +1,11 @@
 ﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Fabrics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.AdvisingTypeFabric
 {
     internal class MyClass
     {
-        class Fabric : TypeFabric
+        private class Fabric : TypeFabric
         {
             [Template]
             public int MethodTemplate() => (int) meta.Tags["index"]!;

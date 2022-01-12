@@ -9,12 +9,12 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.TypeFabric_
 
         public void Method2() { }
 
-        class Fabric : TypeFabric
+        private class Fabric : TypeFabric
         {
             public override void AmendType(ITypeAmender amender)
             {
                 // Adds logging aspect to all public methods.
-                amender.WithMembers(t => t.Methods.Where(m => m.Accessibility == Framework.Code.Accessibility.Public))
+                amender.WithTargetMembers(t => t.Methods.Where(m => m.Accessibility == Framework.Code.Accessibility.Public))
                     .AddAspect<LogAttribute>();
             }
         }

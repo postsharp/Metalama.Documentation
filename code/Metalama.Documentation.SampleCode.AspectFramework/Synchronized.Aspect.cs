@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.Synchronized
 {
-    class SynchronizedAttribute : TypeAspect
+    internal class SynchronizedAttribute : TypeAspect
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {

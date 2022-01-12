@@ -5,7 +5,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.PrintFieldValues
 {
     internal class PrintFieldValuesAttribute : OverrideMethodAspect
     {
-        public override dynamic OverrideMethod()
+        public override dynamic? OverrideMethod()
         {
             foreach (var fieldOrProperty in meta.Target.Type.FieldsAndProperties)
             {

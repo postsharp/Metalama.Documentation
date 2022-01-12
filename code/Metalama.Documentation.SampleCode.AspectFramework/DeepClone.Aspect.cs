@@ -5,13 +5,9 @@ using Metalama.Framework.Code;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.DeepClone
 {
+    [Inherited]
     public class DeepCloneAttribute : TypeAspect
     {
-        public override void BuildAspectClass(IAspectClassBuilder builder)
-        {
-            builder.IsInherited = true;
-        }
-
         public override void BuildAspect(IAspectBuilder<INamedType> builder)
         {
             var typedMethod = builder.Advices.IntroduceMethod(
@@ -65,7 +61,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.DeepClone
                      fieldType.Aspects<DeepCloneAttribute>().Any())
                 {
                     // If yes, call the method without a cast.
-                    field.Invokers.Base.SetValue(
+                    field.Invokers.Base!.SetValue(
                         clone,
                         meta.Cast(fieldType, field.Invokers.Base.GetValue(meta.This).Clone()));
 
@@ -73,7 +69,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.DeepClone
                 else
                 {
                     // If no, use the interface.
-                    field.Invokers.Base.SetValue(
+                    field.Invokers.Base!.SetValue(
                         clone,
                         meta.Cast(fieldType, ((ICloneable)field.Invokers.Base.GetValue(meta.This)).Clone()));
                 }
@@ -83,7 +79,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.DeepClone
         }
 
         [InterfaceMember(IsExplicit = true)]
-        object Clone() => meta.This.Clone();
+        private object Clone() => meta.This.Clone();
 
     }
 }

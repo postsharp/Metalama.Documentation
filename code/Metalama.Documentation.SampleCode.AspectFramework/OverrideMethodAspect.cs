@@ -19,8 +19,6 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodAspect
             builder.ExceptForInheritance().MustBeNonAbstract();
         }
 
-        public virtual void BuildAspectClass(IAspectClassBuilder builder) { }
-
         [Template]
         public abstract dynamic? OverrideMethod();
     }

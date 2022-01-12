@@ -7,13 +7,13 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.Retry
         [Retry]
         private void RetryDefault()
         {
-            throw new Exception();
+            throw new InvalidOperationException();
         }
 
         [Retry(MaxAttempts = 10)]
         private void RetryTenTimes()
         {
-            throw new Exception();
+            throw new InvalidOperationException();
         }
     }
 }

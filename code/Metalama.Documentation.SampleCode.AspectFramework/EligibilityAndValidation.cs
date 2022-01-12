@@ -1,14 +1,8 @@
-﻿using Metalama.Framework.Aspects;
-using Metalama.Framework.Code;
-using Metalama.Framework.Eligibility;
-using System;
-using System.IO;
-
-namespace Metalama.Documentation.SampleCode.AspectFramework.EligibilityAndValidation
+﻿namespace Metalama.Documentation.SampleCode.AspectFramework.EligibilityAndValidation
 {
     internal class SomeClass
     {
-        object? logger;
+        private object? _logger;
 
         [Log]
         private void InstanceMethod() { }

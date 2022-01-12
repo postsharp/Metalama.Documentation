@@ -4,7 +4,7 @@ using Metalama.Framework.Code;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.Tags
 {
-    class TagsAspect : MethodAspect
+    internal class TagsAspect : MethodAspect
     {
         public override void BuildAspect( IAspectBuilder<IMethod> builder )
         {

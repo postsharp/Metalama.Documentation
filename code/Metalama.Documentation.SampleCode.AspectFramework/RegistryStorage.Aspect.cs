@@ -6,7 +6,7 @@ using Microsoft.Win32;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.RegistryStorage
 {
-    class RegistryStorageAttribute : TypeAspect
+    internal class RegistryStorageAttribute : TypeAspect
     {
         public string Key { get; }
 
@@ -25,7 +25,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.RegistryStorage
         }
 
         [Template]
-        dynamic? OverrideProperty
+        private dynamic? OverrideProperty
         {
             get
             {

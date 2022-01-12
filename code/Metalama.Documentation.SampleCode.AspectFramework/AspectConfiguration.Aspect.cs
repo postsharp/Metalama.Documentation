@@ -7,7 +7,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
     // Options for the [Log] aspects.
     public class LoggingOptions : ProjectExtension
     {
-        private string defaultCategory = "Default";
+        private string _defaultCategory = "Default";
 
         public override void Initialize(IProject project, bool isReadOnly)
         {
@@ -16,13 +16,13 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
             // Optionally, we can initialize the configuration object from properties passed from MSBuild.
             if ( project.TryGetProperty("DefaultLogProperty", out var propertyValue ))
             {
-                this.defaultCategory = propertyValue;
+                this._defaultCategory = propertyValue;
             }
         }
 
         public string DefaultCategory
         {
-            get => defaultCategory; 
+            get => this._defaultCategory; 
             
             set
             {
@@ -31,7 +31,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
                     throw new InvalidOperationException();
                 }
 
-                defaultCategory = value;
+                this._defaultCategory = value;
             }
         }
     }

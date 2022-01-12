@@ -26,12 +26,12 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.ImportService
 
             if (serviceProviderField == null)
             {
-                builder.Diagnostics.Report(builder.Target, _serviceProviderFieldMissing, builder.Target.DeclaringType);
+                _serviceProviderFieldMissing.WithArguments( builder.Target.DeclaringType ).ReportTo( builder.Diagnostics);
                 return;
             }
             else if (!serviceProviderField.Type.Is(typeof(IServiceProvider)))
             {
-                builder.Diagnostics.Report(builder.Target, _serviceProviderFieldTypeMismatch, (serviceProviderField, serviceProviderField.Type));
+                _serviceProviderFieldTypeMismatch.WithArguments( (serviceProviderField, serviceProviderField.Type) ).ReportTo( builder.Diagnostics );
                 return;
             }
 

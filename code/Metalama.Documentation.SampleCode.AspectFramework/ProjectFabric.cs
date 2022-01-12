@@ -2,7 +2,7 @@ using System;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_
 {
-    class Class1
+    internal class Class1
     {
         public void Method1()
         {
@@ -14,7 +14,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_
         }
     }
 
-    class Class2
+    internal class Class2
     {
         public void Method1()
         {

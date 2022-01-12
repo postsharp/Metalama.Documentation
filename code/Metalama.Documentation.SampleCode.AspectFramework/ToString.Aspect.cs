@@ -1,13 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using Metalama.Framework.Aspects;
-using Metalama.Framework.Code;
 using Metalama.Framework.Code.SyntaxBuilders;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.ToString
 {
-    class ToStringAttribute : TypeAspect
+    internal class ToStringAttribute : TypeAspect
     {
         [Introduce( WhenExists = OverrideStrategy.Override, Name = "ToString" )]
         public string IntroducedToString()

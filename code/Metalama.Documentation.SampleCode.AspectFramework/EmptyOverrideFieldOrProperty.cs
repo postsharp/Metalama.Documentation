@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Metalama.Documentation.SampleCode.AspectFramework
+﻿namespace Metalama.Documentation.SampleCode.AspectFramework
 {
-    class EmptyOverrideFieldOrPropertyExample
+    internal class EmptyOverrideFieldOrPropertyExample
     {
         [EmptyOverrideFieldOrProperty]
         public int Field;

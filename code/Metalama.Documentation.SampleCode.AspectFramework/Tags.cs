@@ -2,10 +2,10 @@
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.Tags
 {
-    class TargetCode
+    internal class TargetCode
     {
         [TagsAspect]
-        void Method(int a, int b)
+        private void Method(int a, int b)
         {
             Console.WriteLine($"Method({a}, {b})");
         }

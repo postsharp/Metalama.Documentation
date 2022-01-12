@@ -9,8 +9,8 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.EligibilityAndValida
 {
     internal class LogAttribute : OverrideMethodAspect
     {
-        static DiagnosticDefinition<INamedType> _error1 = new ("MY001", Severity.Error, "The type {0} must have a field named 'logger'.");
-        static DiagnosticDefinition<IField> _error2 = new("MY002", Severity.Error, "The type of the field {0} must be 'TextWriter'.");
+        private static readonly DiagnosticDefinition<INamedType> _error1 = new ("MY001", Severity.Error, "The type {0} must have a field named 'logger'.");
+        private static readonly DiagnosticDefinition<IField> _error2 = new("MY002", Severity.Error, "The type of the field {0} must be 'TextWriter'.");
 
         public override void BuildEligibility(IEligibilityBuilder<IMethod> builder)
         {
@@ -25,16 +25,16 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.EligibilityAndValida
             base.BuildAspect(builder);
 
             // Validate that the target file has a field named 'logger' of type TextWriter.
-            INamedType declaringType = builder.Target.DeclaringType;
+            var declaringType = builder.Target.DeclaringType;
             var loggerField = declaringType.Fields.OfName("logger").SingleOrDefault();
             if ( loggerField == null )
             {
-                builder.Diagnostics.Report(declaringType, _error1, declaringType);
+                _error1.WithArguments( declaringType ).ReportTo( declaringType, builder.Diagnostics );
                 builder.SkipAspect();
             }
             else if ( !loggerField.Type.Is(typeof(TextWriter))                )
             {
-                builder.Diagnostics.Report(loggerField, _error2, loggerField);
+                _error2.WithArguments(loggerField).ReportTo( loggerField, builder.Diagnostics );
                 builder.SkipAspect();
             }
         }

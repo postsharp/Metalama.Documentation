@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.UpdateMethod
 {
-    class UpdateMethodAttribute : TypeAspect
+    internal class UpdateMethodAttribute : TypeAspect
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {

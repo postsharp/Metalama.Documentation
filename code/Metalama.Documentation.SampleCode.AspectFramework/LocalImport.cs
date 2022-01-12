@@ -7,11 +7,11 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.ImportService
        // readonly IServiceProvider _serviceProvider;
 
         [ImportAspect]
-        private IFormatProvider FormatProvider { get; }
+        private IFormatProvider? FormatProvider { get; }
 
         public string Format(object? o)
         {
-            return ((ICustomFormatter)this.FormatProvider.GetFormat(typeof(ICustomFormatter))!)
+            return ((ICustomFormatter)this.FormatProvider!.GetFormat(typeof(ICustomFormatter))!)
                 .Format(null, o, this.FormatProvider);
         }
     }

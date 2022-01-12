@@ -12,7 +12,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
 
 
             // Adds the aspect to all members.
-            amender.WithMembers(c => c.Types.SelectMany(t => t.Methods)).AddAspect<LogAttribute>();
+            amender.WithTargetMembers(c => c.Types.SelectMany(t => t.Methods)).AddAspect<LogAttribute>();
         }
     }
 
