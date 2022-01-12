@@ -12,7 +12,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_
     {
         public override void AmendProject(IProjectAmender project)
         {
-            project.WithMembers(p => p.Types.SelectMany( t => t.Methods )).AddAspect<Log>();
+            project.WithTargetMembers(p => p.Types.SelectMany( t => t.Methods )).AddAspect<Log>();
         }
     }
 
