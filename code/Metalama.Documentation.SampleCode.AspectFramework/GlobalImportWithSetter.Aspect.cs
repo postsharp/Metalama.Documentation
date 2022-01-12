@@ -1,5 +1,8 @@
-﻿using System;
+﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
+// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+
 using Metalama.Framework.Aspects;
+using System;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.GlobalImportWithSetter
 {
@@ -12,12 +15,13 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.GlobalImportWithSett
                 // Gets the current value of the field or property.
                 var service = meta.Proceed();
 
-                if (service == null)
+                if ( service == null )
                 {
                     // Call the service provider.
                     service =
-                         meta.Cast(meta.Target.FieldOrProperty.Type,
-                            ServiceLocator.ServiceProvider.GetService(meta.Target.Property.Type.ToType()));
+                        meta.Cast(
+                            meta.Target.FieldOrProperty.Type,
+                            ServiceLocator.ServiceProvider.GetService( meta.Target.Property.Type.ToType() ) );
 
                     // Set the field or property to the new value.
                     meta.Target.FieldOrProperty.Value = service;

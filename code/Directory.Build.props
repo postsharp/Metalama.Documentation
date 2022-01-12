@@ -1,9 +1,9 @@
 <Project>
-	<Import Project="..\eng\Versions.props" />
-	<PropertyGroup>
-		
- 		<Nullable>enable</Nullable>
-		<DebugMetalama>False</DebugMetalama>
+    <Import Project="..\eng\Versions.props" />
+    <PropertyGroup>
 
-	</PropertyGroup>
+        <Nullable>enable</Nullable>
+        <DebugMetalama>False</DebugMetalama>
+
+    </PropertyGroup>
 </Project>

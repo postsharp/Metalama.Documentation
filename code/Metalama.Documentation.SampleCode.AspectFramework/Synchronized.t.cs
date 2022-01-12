@@ -27,6 +27,5 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.Synchronized
         }
 
         public double Average => this._samplesCount / this._total;
-
     }
 }

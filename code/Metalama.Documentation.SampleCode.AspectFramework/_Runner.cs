@@ -1,19 +1,21 @@
-﻿using System.Threading.Tasks;
+﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
+// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+
 using Metalama.TestFramework;
+using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
 #pragma warning disable IDE1006 // Naming Styles
 
-
 namespace Metalama.Documentation.SampleCode.CompileTimeTesting
 {
     public class _Runner : TestSuite
     {
-        public _Runner(ITestOutputHelper logger) : base(logger) { }
+        public _Runner( ITestOutputHelper logger ) : base( logger ) { }
 
-        
-        [Theory, CurrentDirectory]
-        public Task Test(string f) => this.RunTestAsync(f);
+        [Theory]
+        [CurrentDirectory]
+        public Task Test( string f ) => this.RunTestAsync( f );
     }
 }

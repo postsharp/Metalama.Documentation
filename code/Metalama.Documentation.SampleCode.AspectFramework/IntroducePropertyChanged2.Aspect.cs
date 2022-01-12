@@ -1,6 +1,9 @@
-﻿using System.ComponentModel;
+﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
+// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using System.ComponentModel;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged2
 {
@@ -10,14 +13,13 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.IntroducePropertyCha
         {
             var eventBuilder = builder.Advices.IntroduceEvent(
                 builder.Target,
-                nameof(PropertyChanged));
+                nameof(this.PropertyChanged) );
 
             builder.Advices.IntroduceMethod(
                 builder.Target,
-                nameof(OnPropertyChanged),
-                tags: new () {  ["event"] = eventBuilder });
+                nameof(this.OnPropertyChanged),
+                tags: new Framework.Aspects.Tags { ["event"] = eventBuilder } );
         }
-
 
         [Template]
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -26,8 +28,9 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.IntroducePropertyCha
         protected virtual void OnPropertyChanged( string propertyName )
         {
             ((IEvent) meta.Tags["event"]!).Invokers.Final.Raise(
-                meta.This, 
-                meta.This, new PropertyChangedEventArgs(propertyName));
+                meta.This,
+                meta.This,
+                new PropertyChangedEventArgs( propertyName ) );
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
+// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+
+using System;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.CompileTimeIf
 {
@@ -7,13 +10,13 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.CompileTimeIf
         [CompileTimeIf]
         public void InstanceMethod()
         {
-            Console.WriteLine("InstanceMethod");
+            Console.WriteLine( "InstanceMethod" );
         }
 
         [CompileTimeIf]
         public static void StaticMethod()
         {
-            Console.WriteLine("StaticMethod");
+            Console.WriteLine( "StaticMethod" );
         }
     }
 }

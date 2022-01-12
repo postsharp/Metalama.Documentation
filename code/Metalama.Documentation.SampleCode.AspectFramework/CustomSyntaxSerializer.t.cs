@@ -6,7 +6,9 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.CustomSyntaxSerializ
     public class TargetClass
     {
         public void Method1() { }
+
         public void Method1(int a) { }
+
         public void Method2() { }
 
 

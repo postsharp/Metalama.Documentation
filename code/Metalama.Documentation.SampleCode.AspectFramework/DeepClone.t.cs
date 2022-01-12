@@ -48,5 +48,4 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.DeepClone
             return clone;
         }
     }
-
 }

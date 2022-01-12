@@ -21,6 +21,5 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.PrintFieldValues
             Console.WriteLine($"B={value_2}");
             return;
         }
-
     }
 }

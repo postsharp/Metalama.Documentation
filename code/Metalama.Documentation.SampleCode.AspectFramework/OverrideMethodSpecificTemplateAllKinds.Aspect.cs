@@ -1,7 +1,10 @@
-﻿using System;
+﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
+// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+
+using Metalama.Framework.Aspects;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Metalama.Framework.Aspects;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodSpecificTemplateAllKinds
 {
@@ -9,71 +12,82 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodSpecif
     {
         public override dynamic? OverrideMethod()
         {
-            Console.WriteLine($"{meta.Target.Method.Name}: start");
+            Console.WriteLine( $"{meta.Target.Method.Name}: start" );
             var result = meta.Proceed();
-            Console.WriteLine($"{meta.Target.Method.Name}: returning {result}.");
+            Console.WriteLine( $"{meta.Target.Method.Name}: returning {result}." );
+
             return result;
         }
 
         public override async Task<dynamic?> OverrideAsyncMethod()
         {
-            Console.WriteLine($"{meta.Target.Method.Name}: start");
+            Console.WriteLine( $"{meta.Target.Method.Name}: start" );
             var result = await meta.ProceedAsync();
-            Console.WriteLine($"{meta.Target.Method.Name}: returning {result}.");
+            Console.WriteLine( $"{meta.Target.Method.Name}: returning {result}." );
+
             return result;
         }
-        
+
         public override IEnumerable<dynamic?> OverrideEnumerableMethod()
         {
-            Console.WriteLine($"{meta.Target.Method.Name}: start");
-            foreach (var item in meta.ProceedEnumerable())
+            Console.WriteLine( $"{meta.Target.Method.Name}: start" );
+
+            foreach ( var item in meta.ProceedEnumerable() )
             {
-                Console.WriteLine($"{meta.Target.Method.Name}: intercepted {item}.");
+                Console.WriteLine( $"{meta.Target.Method.Name}: intercepted {item}." );
+
                 yield return item;
             }
-            Console.WriteLine($"{meta.Target.Method.Name}: completed.");
-        }
 
+            Console.WriteLine( $"{meta.Target.Method.Name}: completed." );
+        }
 
         public override IEnumerator<dynamic?> OverrideEnumeratorMethod()
         {
-            Console.WriteLine($"{meta.Target.Method.Name}: start");
-            using (var enumerator = meta.ProceedEnumerator())
+            Console.WriteLine( $"{meta.Target.Method.Name}: start" );
+
+            using ( var enumerator = meta.ProceedEnumerator() )
             {
-                while (enumerator.MoveNext())
+                while ( enumerator.MoveNext() )
                 {
-                    Console.WriteLine($"{meta.Target.Method.Name}: intercepted {enumerator.Current}.");
+                    Console.WriteLine( $"{meta.Target.Method.Name}: intercepted {enumerator.Current}." );
+
                     yield return enumerator.Current;
                 }
             }
-            Console.WriteLine($"{meta.Target.Method.Name}: completed.");
-        }
 
+            Console.WriteLine( $"{meta.Target.Method.Name}: completed." );
+        }
 
         public override async IAsyncEnumerable<dynamic?> OverrideAsyncEnumerableMethod()
         {
-            Console.WriteLine($"{meta.Target.Method.Name}: start");
-            await foreach (var item in meta.ProceedAsyncEnumerable())
+            Console.WriteLine( $"{meta.Target.Method.Name}: start" );
+
+            await foreach ( var item in meta.ProceedAsyncEnumerable() )
             {
-                Console.WriteLine($"{meta.Target.Method.Name}: intercepted {item}.");
+                Console.WriteLine( $"{meta.Target.Method.Name}: intercepted {item}." );
+
                 yield return item;
             }
-            Console.WriteLine($"{meta.Target.Method.Name}: completed.");
+
+            Console.WriteLine( $"{meta.Target.Method.Name}: completed." );
         }
 
         public override async IAsyncEnumerator<dynamic?> OverrideAsyncEnumeratorMethod()
         {
-            Console.WriteLine($"{meta.Target.Method.Name}: start");
-            await using (var enumerator = meta.ProceedAsyncEnumerator())
+            Console.WriteLine( $"{meta.Target.Method.Name}: start" );
+
+            await using ( var enumerator = meta.ProceedAsyncEnumerator() )
             {
-                while (await enumerator.MoveNextAsync())
+                while ( await enumerator.MoveNextAsync() )
                 {
-                    Console.WriteLine($"{meta.Target.Method.Name}: intercepted {enumerator.Current}.");
+                    Console.WriteLine( $"{meta.Target.Method.Name}: intercepted {enumerator.Current}." );
+
                     yield return enumerator.Current;
                 }
             }
-            Console.WriteLine($"{meta.Target.Method.Name}: completed.");
 
+            Console.WriteLine( $"{meta.Target.Method.Name}: completed." );
         }
     }
 }

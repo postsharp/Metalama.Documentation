@@ -4,10 +4,8 @@ using System.Threading.Tasks;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodSpecificTemplateAllKinds
 {
-
     public class Program
     {
-
         [Log]
         public static int NormalMethod()
         {
@@ -34,6 +32,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodSpecif
             Console.WriteLine("  Task.Yield");
             await Task.Yield();
             Console.WriteLine("  Resuming");
+
             return 5;
         }
 
@@ -53,10 +52,15 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodSpecif
         private static IEnumerable<int> EnumerableMethod_Source()
         {
             Console.WriteLine("  Yielding 1");
+
             yield return 1;
+
             Console.WriteLine("  Yielding 2");
+
             yield return 2;
+
             Console.WriteLine("  Yielding 3");
+
             yield return 3;
         }
 
@@ -79,10 +83,15 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodSpecif
         private static IEnumerator<int> EnumeratorMethod_Source()
         {
             Console.WriteLine("  Yielding 1");
+
             yield return 1;
+
             Console.WriteLine("  Yielding 2");
+
             yield return 2;
+
             Console.WriteLine("  Yielding 3");
+
             yield return 3;
         }
 
@@ -103,10 +112,15 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodSpecif
         {
             await Task.Yield();
             Console.WriteLine("  Yielding 1");
+
             yield return 1;
+
             Console.WriteLine("  Yielding 2");
+
             yield return 2;
+
             Console.WriteLine("  Yielding 3");
+
             yield return 3;
         }
 
@@ -130,10 +144,15 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodSpecif
         {
             await Task.Yield();
             Console.WriteLine("  Yielding 1");
+
             yield return 1;
+
             Console.WriteLine("  Yielding 2");
+
             yield return 2;
+
             Console.WriteLine("  Yielding 3");
+
             yield return 3;
         }
 
@@ -147,22 +166,27 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodSpecif
             {
                 Console.WriteLine($" Received {a} from EnumerableMethod");
             }
+
             Console.WriteLine("---");
 
             var enumerator = EnumeratorMethod();
+
             while (enumerator.MoveNext())
             {
                 Console.WriteLine($" Received {enumerator.Current} from EnumeratorMethod");
             }
+
             Console.WriteLine("---");
 
             await foreach (var a in AsyncEnumerableMethod())
             {
                 Console.WriteLine($" Received {a} from AsyncEnumerableMethod");
             }
+
             Console.WriteLine("---");
 
             var asyncEnumerator = AsyncEnumeratorMethod();
+
             while (await asyncEnumerator.MoveNextAsync())
             {
                 Console.WriteLine($" Received {asyncEnumerator.Current} from AsyncEnumeratorMethod");

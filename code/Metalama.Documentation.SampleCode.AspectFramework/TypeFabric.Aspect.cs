@@ -1,4 +1,7 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
+// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+
+using Metalama.Framework.Aspects;
 using System;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.TypeFabric_
@@ -8,10 +11,9 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.TypeFabric_
     {
         public override dynamic? OverrideMethod()
         {
-            Console.WriteLine($"Executing {meta.Target.Method}.");
+            Console.WriteLine( $"Executing {meta.Target.Method}." );
 
             return meta.Proceed();
-
         }
     }
 }

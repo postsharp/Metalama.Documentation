@@ -41,6 +41,5 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.LogParameters
                 throw;
             }
         }
-
     }
 }

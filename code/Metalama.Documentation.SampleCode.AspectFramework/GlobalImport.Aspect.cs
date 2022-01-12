@@ -1,4 +1,7 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
+// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+
+using Metalama.Framework.Aspects;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.GlobalImport
 {
@@ -6,7 +9,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.GlobalImport
     {
         public override dynamic? OverrideProperty
         {
-            get => ServiceLocator.ServiceProvider.GetService(meta.Target.FieldOrProperty.Type.ToType());
+            get => ServiceLocator.ServiceProvider.GetService( meta.Target.FieldOrProperty.Type.ToType() );
 
             set => meta.Proceed();
         }

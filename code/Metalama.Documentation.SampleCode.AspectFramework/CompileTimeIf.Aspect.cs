@@ -1,5 +1,8 @@
-﻿using System;
+﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
+// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+
 using Metalama.Framework.Aspects;
+using System;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.CompileTimeIf
 {
@@ -7,13 +10,13 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.CompileTimeIf
     {
         public override dynamic? OverrideMethod()
         {
-            if (meta.Target.Method.IsStatic)
+            if ( meta.Target.Method.IsStatic )
             {
-                Console.WriteLine($"Invoking {meta.Target.Method.ToDisplayString()}");
+                Console.WriteLine( $"Invoking {meta.Target.Method.ToDisplayString()}" );
             }
             else
             {
-                Console.WriteLine($"Invoking {meta.Target.Method.ToDisplayString()} on instance {meta.This.ToString()}.");
+                Console.WriteLine( $"Invoking {meta.Target.Method.ToDisplayString()} on instance {meta.This.ToString()}." );
             }
 
             return meta.Proceed();

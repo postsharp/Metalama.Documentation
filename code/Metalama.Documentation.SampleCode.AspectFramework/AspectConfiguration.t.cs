@@ -22,5 +22,4 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
             return;
         }
     }
-
 }

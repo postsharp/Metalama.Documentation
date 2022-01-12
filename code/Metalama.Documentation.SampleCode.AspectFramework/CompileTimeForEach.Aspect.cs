@@ -1,7 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
+// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using System;
+using System.Linq;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.CompileTimeForEach
 {
@@ -9,9 +12,9 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.CompileTimeForEach
     {
         public override dynamic? OverrideMethod()
         {
-            foreach (var p in meta.Target.Parameters.Where(p => p.RefKind != RefKind.Out))
+            foreach ( var p in meta.Target.Parameters.Where( p => p.RefKind != RefKind.Out ) )
             {
-                Console.WriteLine($"{p.Name} = {p.Value}");
+                Console.WriteLine( $"{p.Name} = {p.Value}" );
             }
 
             return meta.Proceed();

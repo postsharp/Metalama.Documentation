@@ -17,6 +17,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_
                 Console.WriteLine($"Exiting Class1.Method1().");
             }
         }
+
         public void Method2()
         {
             Console.WriteLine($"Executing Class1.Method2().");
@@ -47,6 +48,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_
                 Console.WriteLine($"Exiting Class2.Method1().");
             }
         }
+
         public void Method2()
         {
             Console.WriteLine($"Executing Class2.Method2().");

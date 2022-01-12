@@ -1,4 +1,7 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
+// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Code.SyntaxBuilders;
 using System.Collections.Generic;
@@ -14,10 +17,9 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.CustomSyntaxSerializ
         public Dictionary<string, MethodOverloadCount> GetMethodOverloadCount()
         {
             var dictionary = meta.Target.Type.Methods
-                .GroupBy(m => m.Name)
-                .Select(g => new MethodOverloadCount(g.Key, g.Count()))
-                .ToDictionary(m => m.Name, m => m);
-
+                .GroupBy( m => m.Name )
+                .Select( g => new MethodOverloadCount( g.Key, g.Count() ) )
+                .ToDictionary( m => m.Name, m => m );
 
             return dictionary;
         }
@@ -34,19 +36,20 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.CustomSyntaxSerializ
             this.Count = count;
         }
 
-        public string Name { get;  }
-        public int Count { get;  }
+        public string Name { get; }
+
+        public int Count { get; }
 
         public IExpression ToExpression()
         {
             var builder = new ExpressionBuilder();
-            builder.AppendVerbatim("new ");
-            builder.AppendTypeName(typeof(MethodOverloadCount));
-            builder.AppendVerbatim("(");
-            builder.AppendLiteral(this.Name);
-            builder.AppendVerbatim(", ");
-            builder.AppendLiteral(this.Count);
-            builder.AppendVerbatim(")");
+            builder.AppendVerbatim( "new " );
+            builder.AppendTypeName( typeof(MethodOverloadCount) );
+            builder.AppendVerbatim( "(" );
+            builder.AppendLiteral( this.Name );
+            builder.AppendVerbatim( ", " );
+            builder.AppendLiteral( this.Count );
+            builder.AppendVerbatim( ")" );
 
             return builder.ToExpression();
         }

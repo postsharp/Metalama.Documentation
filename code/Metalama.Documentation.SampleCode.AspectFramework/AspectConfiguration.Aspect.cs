@@ -1,4 +1,7 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
+// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Project;
 using System;
 
@@ -9,12 +12,12 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
     {
         private string _defaultCategory = "Default";
 
-        public override void Initialize(IProject project, bool isReadOnly)
+        public override void Initialize( IProject project, bool isReadOnly )
         {
-            base.Initialize(project, isReadOnly);
+            base.Initialize( project, isReadOnly );
 
             // Optionally, we can initialize the configuration object from properties passed from MSBuild.
-            if ( project.TryGetProperty("DefaultLogProperty", out var propertyValue ))
+            if ( project.TryGetProperty( "DefaultLogProperty", out var propertyValue ) )
             {
                 this._defaultCategory = propertyValue;
             }
@@ -22,11 +25,11 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
 
         public string DefaultCategory
         {
-            get => this._defaultCategory; 
-            
+            get => this._defaultCategory;
+
             set
             {
-                if ( this.IsReadOnly)
+                if ( this.IsReadOnly )
                 {
                     throw new InvalidOperationException();
                 }
@@ -40,8 +43,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
     [CompileTimeOnly]
     public static class LoggingProjectExtensions
     {
-        public static LoggingOptions LoggingOptions(this IProject project)
-            => project.Extension<LoggingOptions>();
+        public static LoggingOptions LoggingOptions( this IProject project ) => project.Extension<LoggingOptions>();
     }
 
     // The aspect itself, consuming the configuration.
@@ -49,15 +51,13 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
     {
         public string? Category { get; set; }
 
-
         public override dynamic? OverrideMethod()
         {
             var defaultCategory = meta.Target.Project.LoggingOptions().DefaultCategory;
 
-            Console.WriteLine($"{ this.Category ?? defaultCategory }: Executing {meta.Target.Method}.");
+            Console.WriteLine( $"{this.Category ?? defaultCategory}: Executing {meta.Target.Method}." );
 
             return meta.Proceed();
         }
-
     }
 }

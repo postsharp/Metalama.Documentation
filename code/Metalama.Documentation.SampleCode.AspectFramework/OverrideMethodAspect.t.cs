@@ -1,7 +1,7 @@
-using System;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Eligibility;
+using System;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodAspect_
 {
@@ -22,5 +22,6 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodAspect
         public abstract dynamic? OverrideMethod();
     }
 #pragma warning restore CS0067
+
     // </aspect>
 }

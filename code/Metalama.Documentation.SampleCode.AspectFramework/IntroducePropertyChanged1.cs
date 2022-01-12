@@ -1,7 +1,8 @@
-﻿namespace Metalama.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged1
+﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
+// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+
+namespace Metalama.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged1
 {
     [IntroducePropertyChangedAspect]
-    internal class TargetCode
-    {
-    }
+    internal class TargetCode { }
 }

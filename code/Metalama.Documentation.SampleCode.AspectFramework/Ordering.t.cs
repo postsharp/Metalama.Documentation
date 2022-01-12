@@ -1,9 +1,9 @@
 using System;
 
-
 namespace Metalama.Documentation.SampleCode.AspectFramework.Ordering
 {
-    [Aspect1, Aspect2]
+    [Aspect1]
+    [Aspect2]
     internal class TargetCode
     {
         public static void SourceMethod()
@@ -28,12 +28,10 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.Ordering
             Console.WriteLine("Method introduced by Aspect2.");
             return;
         }
-
     }
 
     public static class Program
     {
-
         public static void Main()
         {
             Console.WriteLine("Executing SourceMethod:");
@@ -47,6 +45,5 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.Ordering
             Console.WriteLine("Executing IntroducedMethod2:");
             TargetCode.IntroducedMethod2();
         }
-
     }
 }
