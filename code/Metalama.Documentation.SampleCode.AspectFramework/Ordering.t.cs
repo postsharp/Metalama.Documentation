@@ -1,5 +1,4 @@
 using System;
-using Metalama.Framework.Aspects;
 
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.Ordering

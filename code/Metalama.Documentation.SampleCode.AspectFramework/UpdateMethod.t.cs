@@ -3,9 +3,9 @@ using System;
 namespace Metalama.Documentation.SampleCode.AspectFramework.UpdateMethod
 {
     [UpdateMethod]
-    class CityHunter
+    internal class CityHunter
     {
-        int _x;
+        private int _x;
 
         public string? Y { get; private set; }
 
@@ -19,9 +19,9 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.UpdateMethod
         }
     }
 
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             CityHunter ch = new();
             ch.Update(0, "1");

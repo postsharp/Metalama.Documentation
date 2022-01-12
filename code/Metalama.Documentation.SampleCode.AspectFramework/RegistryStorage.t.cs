@@ -4,7 +4,7 @@ using Microsoft.Win32;
 namespace Metalama.Documentation.SampleCode.AspectFramework.RegistryStorage
 {
     [RegistryStorage("Animals")]
-    class Animals
+    internal class Animals
     {
 
 

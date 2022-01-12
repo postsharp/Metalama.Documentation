@@ -1,9 +1,9 @@
 namespace Metalama.Documentation.SampleCode.AspectFramework.ToString
 {
     [ToString]
-    class TargetCode
+    internal class TargetCode
     {
-        int _x;
+        private int _x;
 
         public string? Y { get; set; }
 

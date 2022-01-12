@@ -3,21 +3,21 @@ using System.Collections.Generic;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.GlobalImportWithSetter
 {
-    class TargetCode
+    internal class TargetCode
     {
 
 
-        private IFormatProvider _formatProvider1;
+        private IFormatProvider? _formatProvider1;
 
 
-        private IFormatProvider _formatProvider
+        private IFormatProvider? _formatProvider
         {
             get
             {
                 var service = _formatProvider_Source;
                 if (service == null)
                 {
-                    service = (IFormatProvider)ServiceLocator.ServiceProvider.GetService(typeof(IFormatProvider));
+                    service = (IFormatProvider?)ServiceLocator.ServiceProvider.GetService(typeof(IFormatProvider));
                     this._formatProvider_Source = service;
                 }
 
@@ -30,7 +30,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.GlobalImportWithSett
             }
         }
 
-        private IFormatProvider _formatProvider_Source
+        private IFormatProvider? _formatProvider_Source
         {
             get
             {
@@ -44,7 +44,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.GlobalImportWithSett
         }
     }
 
-    class ServiceLocator : IServiceProvider
+    internal class ServiceLocator : IServiceProvider
     {
 
         private static readonly ServiceLocator _instance = new();

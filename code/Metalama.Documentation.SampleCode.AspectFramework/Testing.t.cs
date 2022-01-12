@@ -2,10 +2,10 @@ using System;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.Testing
 {
-    class SimpleLogTests
+    internal class SimpleLogTests
     {
         [SimpleLog]
-        void MyMethod()
+        private void MyMethod()
         {
             Console.WriteLine($"Entering SimpleLogTests.MyMethod()");
             try

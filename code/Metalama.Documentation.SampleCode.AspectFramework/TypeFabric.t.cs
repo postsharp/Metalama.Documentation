@@ -16,7 +16,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.TypeFabric_
         }
 #pragma warning disable CS0067
 
-        class Fabric : TypeFabric
+        private class Fabric : TypeFabric
         {
             public override void AmendType(ITypeAmender amender) => throw new System.NotSupportedException("Compile-time only code cannot be called at run-time.");
 

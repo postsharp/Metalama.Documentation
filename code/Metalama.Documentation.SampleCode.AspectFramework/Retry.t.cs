@@ -12,7 +12,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.Retry
             {
                 try
                 {
-                    throw new Exception();
+                    throw new InvalidOperationException();
                     return;
                 }
                 catch (Exception e) when (i < 5)
@@ -30,7 +30,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.Retry
             {
                 try
                 {
-                    throw new Exception();
+                    throw new InvalidOperationException();
                     return;
                 }
                 catch (Exception e) when (i < 10)

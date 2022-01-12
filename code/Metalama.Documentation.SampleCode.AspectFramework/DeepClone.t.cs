@@ -2,7 +2,7 @@ using System;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.DeepClone
 {
-    class ManuallyCloneable : ICloneable
+    internal class ManuallyCloneable : ICloneable
     {
         public object Clone()
         {
@@ -11,13 +11,11 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.DeepClone
     }
 
     [DeepClone]
-    class AutomaticallyCloneable : ICloneable
+    internal class AutomaticallyCloneable : ICloneable
     {
-        int _a;
-
-        ManuallyCloneable? _b;
-
-        AutomaticallyCloneable? _c;
+        private int _a;
+        private ManuallyCloneable? _b;
+        private AutomaticallyCloneable? _c;
 
 
         public virtual AutomaticallyCloneable Clone()
@@ -39,9 +37,9 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.DeepClone
         }
     }
 
-    class DerivedCloneable : AutomaticallyCloneable
+    internal class DerivedCloneable : AutomaticallyCloneable
     {
-        string? _d;
+        private string? _d;
 
 
         public override DerivedCloneable Clone()

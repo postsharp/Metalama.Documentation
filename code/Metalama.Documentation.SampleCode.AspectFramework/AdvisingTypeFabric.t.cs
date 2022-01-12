@@ -1,10 +1,5 @@
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Fabrics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Metalama.Documentation.SampleCode.AspectFramework.AdvisingTypeFabric
 {
@@ -12,7 +7,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.AdvisingTypeFabric
     internal class MyClass
     {
 #pragma warning disable CS0067
-        class Fabric : TypeFabric
+        private class Fabric : TypeFabric
         {
             [Template]
             public int MethodTemplate() => throw new System.NotSupportedException("Compile-time only code cannot be called at run-time.");
