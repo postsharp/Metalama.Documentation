@@ -9,13 +9,13 @@ This repo contains the documentation of Metalama, including the testable code sn
 > [!WARNING]
 > You must be a PostSharp employee to build the documentation.
 
-```
+```powershell
 .\Build.ps1 build
 ```
 
 ## Building the code snippets
 
-```
+```powershell
 cd code
 dotnet test
 ```

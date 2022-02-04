@@ -9,11 +9,12 @@ If you need to share _compile-time_ state between advices, or between advices an
 > [!NOTE]
 > If you need to share _run-time_ state between advices, you have to choose another strategy, for instance introducing a field in the target type and using it from several advices.
 
-## Sharing state with an aspect field
+> [!WARNING]
+> **DO NOT share state with an aspect field** if that state depends on the target declaration of the aspect. In case of inherited aspects, the same instance of the aspect class will be reused for all inherited targets.
 
-A simple way to share state between different aspect methods (both templates or regular compile-time methods) is to simply use a field of the aspect class. You can for instance initialize the field in your implementation of the `BuildAspect` method and use it from template methods.
+## Sharing state with the State property
 
-The inconvenience of this method is that it is not very flexible. You cannot pass state that is specific to an advice.
+You can use the <xref:Metalama.Framework.Aspects.IAspectBuilder.State?text=IAspectBuilder.State> property to store any aspect state that depends on the target declaration. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.State?text=IAspectInstance.State> property and is therefore also visible to inheritors and children aspects.
 
 ## Sharing state with the Tags property
 

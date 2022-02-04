@@ -8,7 +8,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
     // The project fabric configures the project at compile time.
     public class Fabric : ProjectFabric
     {
-        public override void AmendProject(IProjectAmender amender) => throw new System.NotSupportedException("Compile-time only code cannot be called at run-time.");
+        public override void AmendProject(IProjectAmender amender) => throw new System.NotSupportedException("Compile-time-only code cannot be called at run-time.");
 
     }
 #pragma warning restore CS0067

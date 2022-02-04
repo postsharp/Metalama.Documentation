@@ -21,7 +21,6 @@ For more information, see <xref:aspects>.
 classDiagram
     
     class IAspect {
-        BuildAspectClass(IAspectClassBuilder)
         BuildAspect(IAspectBuilder)
     }
 
@@ -29,16 +28,6 @@ classDiagram
         SkipAspect()
         TargetDeclaration
         AdviceFactory
-    }
-
-    class IAspectClassBuilder {
-        DisplayName
-        Description
-        Layers
-    }
-
-    class IAspectDependencyBuilder {
-        RequireAspect()
     }
 
     class IAdviceFactory {
@@ -54,10 +43,8 @@ classDiagram
     }
 
     IAspect --> IAspectBuilder : BuildAspect() receives
-    IAspect --> IAspectClassBuilder : BuildAspectClass() receives
     IAspectBuilder --> IAdviceFactory : exposes
     IAspectBuilder --> IDiagnosticSink : exposes
-    IAspectClassBuilder --> IAspectDependencyBuilder : exposes
 
 ```
 
@@ -78,3 +65,5 @@ class CompileTimeAttribute
 class RunTimeOnlyAttribute
 
 ```
+
+## Namespace members

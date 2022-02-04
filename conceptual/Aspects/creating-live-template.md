@@ -11,12 +11,12 @@ Live templates are built with the Metalama aspect framework, but instead of bein
 > [!NOTE]
 > A fundamental characteristic of an aspect is that it is applied at compile time and does not affect your source code. Therefore, a live template cannot be named an aspect, even if it is built with the aspect framework. To avoid confusion, we suggest not to refer to live templates as aspects in your communications.
 
-## To build a live template
+## To write a live template
 
-1. Build an aspect class as usually, with the following differences:
+1. Write an aspect class as usually, with the following differences:
    - The aspect class does not need to be derived from `System.Attribute`.
    - The implementation should pay more attention to generate idiomatic C# code.
    - Diagnostics reported by the aspect will be ignored.
    - Aspect ordering and requirements will be ignored.
-
-2. Override the <xref:Metalama.Framework.Aspects.IAspect.BuildAspectClass%2A> method and set the <xref:Metalama.Framework.Aspects.IAspectClassBuilder.IsLiveTemplate> property to `true`.
+2. Make sure that the aspect class has a default constructor.
+3. Annotate the class with the <xref:Metalama.Framework.Aspects.LiveTemplateAttribute> attribute.

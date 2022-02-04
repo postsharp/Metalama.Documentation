@@ -2,25 +2,24 @@
 
 Metalama is a meta-programming framework for C# based on Roslyn, Microsoft's managed compiler platform.
 
-> [!NOTE]
-> Metalama is currently in EARLY PREVIEW stage and is not intended for commercial use.
-> Any version of the Metalama preview will stop working 90 days after it has been built.
-> To continue using it, you will need to update to a newer preview.
+## Features
 
 Metalama has the following principal features:
 
 | Feature | Description |
 |---------|-------------|
 | __Aspect-Oriented Programming__ | Encapsulate repetitive patterns of code (such as logging, caching, INotifyPropertyChanged, multi-threading) into executable artifacts named _aspects_ that add behaviors to your code at compile time, so that your source code remains clean and succinct &mdash; easier to read and maintain.
-| __Code Generation__             | Generate repetitive code, in the editor or at compile time, instead of writing it by hand.
-| __Code Validation__             | Verify that hand-written code complies to team rules and conventions.
+| __Code Generation__             | Generate repetitive code, in the editor or at compile time, instead of writing it by hand. With Metalama, you can author your own code actions or refactorings that are available in the lightbulb or screwdriver menu.
+| __Code Validation__             | Verify that hand-written code complies to team rules and conventions. Metalama lets you report diagnostics or suppress source code diagnostics simply.
 
 ## Documentation structure
 
 | Site | Description |
 |------|-------------|
 | <xref:conceptual> | Conceptual and procedural documentation |
-| <xref:api> | API reference |
+| <xref:aspect-api> | Aspect API reference |
+| <xref:introspection-api> | Introspection API reference |
+| <xref:advanced-api> | Advanced API reference |
 
 The conceptual documentation is hosted on https://github.com/postsharp/Metalama.Documentation. You can suggest improvements and corrections using the discussions board, and even submit a pull request.
 

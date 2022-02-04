@@ -4,11 +4,15 @@
       "src": [
         {
           "files": [
-              "Metalama.Framework/Metalama.Framework.csproj",
-              "Metalama.TestFramework/Metalama.TestFramework.csproj",
-              "Metalama.Framework.Sdk/Metalama.Framework.Sdk.csproj"
+              "Metalama/Metalama.Framework/Metalama.Framework.csproj",
+              "Metalama/Metalama.TestFramework/Metalama.TestFramework.csproj",
+              "Metalama/Metalama.Framework.Sdk/Metalama.Framework.Sdk.csproj",
+              "Metalama/Metalama.Framework.Introspection/Metalama.Framework.Introspection.csproj",
+              "Metalama/Metalama.Framework.Workspaces/Metalama.Framework.Workspaces.csproj",
+              "Metalama/Metalama.LinqPad/Metalama.LinqPad.csproj",
+              "Metalama.Compiler/src/Metalama/Metalama.Compiler.Sdk/Metalama.Compiler.Sdk.csproj"
               ],
-          "src": "c:/src/Metalama"
+          "src": "c:/src"
         }
       ],
       "dest": "obj/api",

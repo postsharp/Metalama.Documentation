@@ -2,6 +2,19 @@ items:
 - name: Conceptual Documentation
   topicUid: conceptual
   items:
+  - name: Deployment
+    topicUid: deployment
+    items:
+      - name: NuGet Packages
+        topicUid: packages
+      - name: Metalama Tools for Visual Studio
+        topicUid: install-vs-tools
+      - name: Metalama Command Line Tools
+        topicUid: dotnet-tool
+      - name: Register a License
+        topicUid: register-license
+      - name: Telemetry
+        topicUid: telemetry
   - name: Creating Aspects
     topicUid: aspects
     items:
@@ -65,6 +78,4 @@ items:
         topicUid: debugging
   - name: Using Live Templates
     topicUid: applying-live-templates
-  - name: Packages and Components
-    topicUid: packages
  

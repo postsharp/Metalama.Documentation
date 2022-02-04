@@ -9,14 +9,12 @@ An aspect is, by definition, a class that implements the <xref:Metalama.Framewor
 
 Aspects have different abilities listed in this article. The aspect author can use or configure these abilities in the following methods inherited from the <xref:Metalama.Framework.Aspects.IAspect%601> interface:
 
-* <xref:Metalama.Framework.Aspects.IAspect.BuildAspectClass%2A> configures the aspect _type_, before any instance is created, thanks to a <xref:Metalama.Framework.Aspects.IAspectClassBuilder>;
 * <xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> builds the aspect _instance_ applied on a specific _target declaration_, thanks to a <xref:Metalama.Framework.Aspects.IAspectBuilder%601>;
 
 ```mermaid
 classDiagram
     
     class IAspect {
-        BuildAspectClass(IAspectClassBuilder)
         BuildAspect(IAspectBuilder)
     }
 
@@ -24,16 +22,6 @@ classDiagram
         SkipAspect()
         TargetDeclaration
         AdviceFactory
-    }
-
-    class IAspectClassBuilder {
-        DisplayName
-        Description
-        Layers
-    }
-
-    class IAspectDependencyBuilder {
-        RequireAspect()
     }
 
     class IAdviceFactory {
@@ -49,10 +37,8 @@ classDiagram
     }
 
     IAspect --> IAspectBuilder : BuildAspect() receives
-    IAspect --> IAspectClassBuilder : BuildAspectClass() receives
     IAspectBuilder --> IAdviceFactory : exposes
     IAspectBuilder --> IDiagnosticSink : exposes
-    IAspectClassBuilder --> IAspectDependencyBuilder : exposes
 
 ```
 
@@ -114,10 +100,7 @@ This feature is not yet implemented.
 
 ### Defining the name and description of the aspect class in the IDE
 
-To define the appearance of the aspect in the IDE, implement the <xref:Metalama.Framework.Aspects.IAspect.BuildAspectClass%2A> method and set the <xref:Metalama.Framework.Aspects.IAspectClassBuilder.DisplayName> and <xref:Metalama.Framework.Aspects.IAspectClassBuilder.Description> properties of the <xref:Metalama.Framework.Aspects.IAspectClassBuilder>.
-
-> [!WARNING]
-> Do not reference instance class members in your implementation of  <xref:Metalama.Framework.Aspects.IAspect.BuildAspectClass%2A>. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` -- that is, _without_ invoking the class constructor.
+By default, an aspect class is represented in the IDE by the name of this class without the `Attribute` suffix, if any. To override the default name, annotate the aspect class with the <xref:System.ComponentModel.DisplayNameAttribute> annotation.
 
 ### Using several layers of advices
 
@@ -159,7 +142,7 @@ Aspects cannot modify declarations of lower depth than the target of the aspect.
 
 2. Initialization of aspect classes.
     1. A prototype instance of each aspect class is created using `FormatterServices.GetUninitializedObject`.
-    2. All  <xref:Metalama.Framework.Aspects.IAspect.BuildAspectClass%2A>  methods are executed. Aspect layers are discovered.
+    2. The <xref:Metalama.Framework.Eligibility.IEligible%601.BuildEligibility%2A> method is executed executed. Aspect layers are discovered.
     3. Aspect ordering relationships are discovered in the current project and all referenced assemblies.
     4. Aspects layers are ordered.
 

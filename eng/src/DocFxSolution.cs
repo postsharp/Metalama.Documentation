@@ -5,6 +5,7 @@ using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
 using PostSharp.Engineering.BuildTools.Utilities;
 using System;
+using System.IO;
 
 namespace BuildMetalamaDocumentation
 {
@@ -35,7 +36,7 @@ namespace BuildMetalamaDocumentation
         {
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
-                "docfx\\packages\\docfx.console.2.58.9\\tools\\docfx.exe",
+                Path.Combine( context.RepoDirectory, "docfx\\packages\\docfx.console.2.59.0\\tools\\docfx.exe" ),
                 $"\"docfx\\docfx.json\" {command}",
                 context.RepoDirectory );
         }

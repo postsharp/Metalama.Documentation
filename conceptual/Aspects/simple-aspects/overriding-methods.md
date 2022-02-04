@@ -116,7 +116,7 @@ The following table lists the transformations applied to the `meta.Proceed()` ex
         returning an <xref:Metalama.Framework.RunTime.AsyncEnumerableList%601>
       </td>
       <td>
-         ```
+         ```cs
          await foreach (var r in result)
          {
                yield return r;
@@ -135,7 +135,7 @@ The following table lists the transformations applied to the `meta.Proceed()` ex
         returning an <xref:Metalama.Framework.RunTime.AsyncEnumerableList%601.AsyncEnumerator>
       </td>
       <td>
-         ```
+         ```cs
          await using ( result )
          {
                while (await result.MoveNextAsync())
