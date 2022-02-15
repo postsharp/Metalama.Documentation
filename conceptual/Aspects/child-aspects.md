@@ -12,7 +12,7 @@ An aspect can add other aspects to children declarations. Such aspects are calle
 ## Adding Child Aspects
 
 
-An aspect can add child aspects from the <xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> method by calling <xref:Metalama.Framework.Aspects.IDeclarationSelector%601.WithTarget%2A?text=builder.WithTarget> or <xref:Metalama.Framework.Aspects.IDeclarationSelector%601.WithTargetMembers%2A?text=builder.WithTargetMembers>, and then call and then AddAspect.
+An aspect can add child aspects from the <xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> method by calling <xref:Metalama.Framework.Aspects.IDeclarationSelector%601.WithTarget%2A?text=builder.WithTarget> or <xref:Metalama.Framework.Aspects.IDeclarationSelector%601.WithTargetMembers%2A?text=builder.WithTargetMembers>, and then call and then `AddAspect`.
 
 > TODO: Example
 

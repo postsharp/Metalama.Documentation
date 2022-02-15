@@ -8,10 +8,8 @@
             return a + b;
         }
 
-        [Log]
-        public int Property { get; set; }
+        [Log] public int Property { get; set; }
 
-        [Log]
-        public string? Field { get; set; }
+        [Log] public string? Field { get; set; }
     }
 }

@@ -85,19 +85,20 @@ The aspect may or may not report a diagnostic before calling <xref:Metalama.Fram
 
 ### Specifying on which declarations the aspect can be applied (eligibility)
 
-This feature is not yet implemented.
+See <xref:eligibility>.
 
-### Validating the final code
+### Validating the code after all aspects have been applied
 
-This feature is not yet implemented.
+See <xref:validation>.
 
-### Adding child aspects
+### Validating the code that references the target declaration
 
-This feature is not yet implemented.
+See <xref:validation>.
 
-### Requiring other aspects
 
-This feature is not yet implemented.
+### Adding child aspects and requiring aspects to be applied
+
+See <xref:child-aspects>.
 
 ### Defining the name and description of the aspect class in the IDE
 

@@ -75,7 +75,7 @@ function Restore()
 function Metadata()
 {
     
-    docfx\packages\docfx.console.2.59.0\tools\docfx.exe "docfx\docfx.json" metadata
+    docfx\packages\docfx.console.2.58.9\tools\docfx.exe "docfx\docfx.json" metadata
 
     if ($LASTEXITCODE -ne 0 ) { exit }
 }
@@ -99,7 +99,7 @@ function RunTests()
 function BuildDoc()
 {
  
-   docfx\packages\docfx.console.2.59.0\tools\docfx.exe "docfx\docfx.json" build
+   docfx\packages\docfx.console.2.58.9\tools\docfx.exe "docfx\docfx.json" build
     
    if ($LASTEXITCODE -ne 0 ) { exit }
 }

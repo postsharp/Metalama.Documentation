@@ -21,6 +21,12 @@ The following rules apply to interface members:
 
 Implementing an interface in a complete dynamic manner, when the interface itself is not known by the aspect, is not yet supported.
 
+## Example: IDisposable
+
+The aspect in the next example introduces the `IDisposable` interface. The implementation of the `Dispose` method disposes of all fields or properties that implement the `IDisposable` interface.
+
+[!include[Disposable](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Disposable.cs)]
+
 ## Example: deep cloning
 
 [!include[Deep Clone](../../../code/Metalama.Documentation.SampleCode.AspectFramework/DeepClone.cs)]

@@ -13,9 +13,10 @@ This chapter is structured as follows: first we give a few tricks to get started
 | <xref:simple-aspects>               | This section explains how to create simple aspects with a familiar object-oriented API and without much theory.                                        |
 | <xref:aspect-framework-design>      | This article gives the theory behind the Metalama aspect framework.                                                                                    |
 | <xref:templates>                    | This article explains how to create dynamic code templates.                                                                                            |
-| <xref:diagnostics>                  | This article explains how to report or suppress errors, warnings and information messages.                                                             |
 | <xref:advising-code>                | This section explains how to create aspects that perform advanced code modifications using the complete API.                                           |
-| <xref:child-aspects>                | This section explains an aspect can add other aspects, and how child aspects can know about their parents.                                           |
+| <xref:diagnostics>                  | This article explains how to report or suppress errors, warnings and information messages.                                                             |
+| <xref:child-aspects>                | This section explains how an aspect can add other aspects, and how child aspects can know about their parents.                                           |
+| <xref:validation>                | This section explains how an aspect can validate the references to their target declaration, or validate the final state of the compilation, after all aspects have been applied.                                           |
 | <xref:ordering-aspects>       | This article describes how to order aspect classes so that the order of execution is correct when several aspects are applied to the same declaration. |
 | <xref:exposing-configuration>       | This article explains how an aspect can expose and consume configuration properties or a configuration API. |
 | <xref:testing>                      | This section explains how to test aspects.                                                                                                             |

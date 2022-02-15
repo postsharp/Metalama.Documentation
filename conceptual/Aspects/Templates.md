@@ -1,7 +1,7 @@
 ---
 uid: templates
 ---
-# Writing Code Templates
+# T# Code Templates
 
 The specificity of a tool like Metalama, compared to simple code generation APIs, is that Metalama is able to _modify existing_ code, not only generate new code. Instead of giving you access to the syntax tree, which is extremely complex and error-prone (and you can still do it anyway with <xref:sdk> if you feel brave), Metalama lets you express code transformations in plain C# using a template language named _Metalama Template Language_.
 
@@ -181,11 +181,24 @@ You can combine dynamic code and compile-time expressions:
 meta.This.OnPropertyChanged( meta.Property.Name );
 ```
 
+#### Example 
+
+In the following aspect, the logging aspect uses `meta.This`, which returns a `dynamic` object, to access the type being enhanced. The aspect assumes that the target type defines a field named `_logger`, and that the type of this field a method named `WriteLine`.
+
+[!include[meta.This](../../code/Metalama.Documentation.SampleCode.AspectFramework/DynamicTrivial.cs)]
+
 ### Generating calls to the code model
 
 When you have a <xref:Metalama.Framework.Code> representation of a declaration, you may want to access it from your generated run-time code. You can do this by using the `Invokers` property exposed by the <xref:Metalama.Framework.Code.IMethod>, <xref:Metalama.Framework.Code.IFieldOrProperty> or <xref:Metalama.Framework.Code.IEvent> interfaces.
 
 For details, see the documentation of the <xref:Metalama.Framework.Code.Invokers> namespace.
+
+#### Example
+
+The following example is a variation in the previous one. The aspect no longer assumes that the logger field is named `_logger`. Instead, it looks for any field of type `TextWriter`. Because it does not know the name of the field upfront, the aspect must use `Invokers.Final.GetValue` to get an expression that allows to access the field. `Invokers.Final.GetValue` returns a `dynamic` object.
+
+[!include[Invokers](../../code/Metalama.Documentation.SampleCode.AspectFramework/DynamicCodeModel.cs)]
+
 
 ### Generating run-time arrays
 
@@ -229,18 +242,6 @@ The following example shows how an <xref:Metalama.Framework.Code.SyntaxBuilders.
 
 Sometimes it is easier to generate the run-time code as a simple text instead of using a complex meta API. If you want to use C# code represented as a `string` in your code, you can do it using the <xref:Metalama.Framework.Aspects.meta.ParseExpression%2A?text=meta.ParseExpression> method. This method returns an <xref:Metalama.Framework.Code.IExpression>, which is a compile-time object that you can use anywhere in compile-time code. The <xref:Metalama.Framework.Code.IExpression> interface exposes the run-time expression in the <xref:Metalama.Framework.Code.IExpression.Value> property.
 
-For instance, consider the following template code:
-
-```cs
-var expression = meta.ParseExpression("(a + b)/c");
-MyRunTimeMethod( expression.Value );
-```
-
-This will generate the following run-time code:
-
-```cs
-MyRunTimeMethod((a + b)/c)
-```
 
 >[!NOTE] 
 > The string expression is inserted _as is_ without any validation or transformation. Always specify the full namespace of any declaration used in a text expression.
@@ -248,6 +249,11 @@ MyRunTimeMethod((a + b)/c)
 >[!NOTE]
 > Instead of the traditional `StringBuilder`, you can use <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> to build an expression. It offers convenient methods like `AppendLiteral`, `AppendTypeName` or `AppendExpression`. To add a statement to the generated code, use `StatementBuilder` to create the statement and then `meta.InsertStatement` from the template at the place where the statement should be inserted.
 
+#### Example
+
+In the following example, the `_logger` field is accessed through a parsed expression.
+
+[!include[ParseExpression](../../code/Metalama.Documentation.SampleCode.AspectFramework/ParseExpression.cs)]
 
 ### Capturing run-time expressions into compile-time objects
 

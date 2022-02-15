@@ -66,7 +66,7 @@
     "fileMetadataFiles": [],
     "template":[ 
       "default", 
-      "packages/memberpage.2.58.4/content",
+      "packages/memberpage.2.59.0/content",
       "../code/Metalama.Documentation.DfmExtensions/bin/Debug"],
     "postProcessors": [],
     "markdownEngineName": "dfm",

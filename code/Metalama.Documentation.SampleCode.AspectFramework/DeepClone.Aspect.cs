@@ -49,7 +49,8 @@ namespace Doc.DeepClone
                 meta.Target.Type.FieldsAndProperties.Where(
                     f => f.IsAutoPropertyOrField &&
                          ((f.Type.Is( typeof(ICloneable) ) && f.Type.SpecialType != SpecialType.String) ||
-                          (f.Type is INamedType fieldNamedType && fieldNamedType.Aspects<DeepCloneAttribute>().Any())) );
+                          (f.Type is INamedType fieldNamedType &&
+                           fieldNamedType.Aspects<DeepCloneAttribute>().Any())) );
 
             foreach ( var field in clonableFields )
             {

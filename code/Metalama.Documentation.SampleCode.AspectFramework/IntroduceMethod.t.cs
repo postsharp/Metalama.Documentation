@@ -10,7 +10,7 @@ class MyClass
 
     public override string ToString()
     {
-        return $"{GetType().Name} {RuntimeHelpers.GetHashCode(this)}";
+        return $"{GetType().Name} Id={RuntimeHelpers.GetHashCode(this)}";
     }
 }
 

@@ -11,7 +11,7 @@ namespace Doc.Tags
             builder.Advices.OverrideMethod(
                 builder.Target,
                 nameof(this.OverrideMethod),
-                tags: new () { ["ParameterCount"] = builder.Target.Parameters.Count } );
+                tags: new TagDictionary { ["ParameterCount"] = builder.Target.Parameters.Count } );
         }
 
         [Template]

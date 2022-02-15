@@ -15,11 +15,10 @@ namespace Doc.IntroducePropertyChanged2
             builder.Advices.IntroduceMethod(
                 builder.Target,
                 nameof(this.OnPropertyChanged),
-                tags: new () { ["event"] = eventBuilder } );
+                tags: new TagDictionary { ["event"] = eventBuilder } );
         }
 
-        [Template]
-        public event PropertyChangedEventHandler? PropertyChanged;
+        [Template] public event PropertyChangedEventHandler? PropertyChanged;
 
         [Template]
         protected virtual void OnPropertyChanged( string propertyName )

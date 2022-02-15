@@ -6,8 +6,7 @@ namespace Doc.ImportService
     {
         // readonly IServiceProvider _serviceProvider;
 
-        [ImportAspect]
-        private IFormatProvider? FormatProvider { get; }
+        [ImportAspect] private IFormatProvider? FormatProvider { get; }
 
         public string Format( object? o )
         {

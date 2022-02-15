@@ -1,8 +1,8 @@
-﻿using Metalama.Framework.Aspects;
+﻿using Doc.Ordering;
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
 using System.Linq;
-using Doc.Ordering;
 
 [assembly: AspectOrder( typeof(Aspect1), typeof(Aspect2) )]
 

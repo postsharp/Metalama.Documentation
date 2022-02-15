@@ -26,6 +26,11 @@ To report a diagnostic:
 
     The first parameter of the `Report` method is optional: it specifies the declaration to which the diagnostic relates. The aspect framework computes the file, line and column of the diagnostic based on this declaration. If you don't give a value for this parameter, the diagnostic will be reported for the target declaration of the aspect.
 
+### Example
+
+The following aspect needs a field named `_logger` to exist in the target type. Its `BuildAspect` method checks for that this field exist and reports an error if it does not.
+
+[!include[Report Error](../../code/Metalama.Documentation.SampleCode.AspectFramework/ReportError.cs)]
 
 ## Suppressing a diagnostic
 
@@ -39,7 +44,14 @@ To suppress a diagnostic:
 
 3. Call the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suppress%2A> method using `builder.Diagnostics.Suppress(...)` in the `BuildAspect` method.
 
-## Example
+### Example
+
+The following logging aspect requires a `_logger` field to exist, but it is likely that this field will never be used in user code but only in generated code. Because the IDE does not see the generated code, it will report the `CS0169` warning, which is misleading and annoying to the user. The aspect suppresses this warning.
+
+[!include[Suppress Warning](../../code/Metalama.Documentation.SampleCode.AspectFramework/SuppressWarning.cs)]
+
+
+## Advanced Example
 
 The following aspect can be added to a field or property. It overrides the getter so that its value is retrieved from a service locator. This aspect assumes that the target class has a field named `_serviceProvider` and of type `IServiceProvider`. The aspect reports errors if this field is absent or of a wrong type. The C# compiler may report an error `CS0169` because it looks from source code that the `_serviceProvider` field is unused. Therefore, the aspect must suppress this diagnostic.
 

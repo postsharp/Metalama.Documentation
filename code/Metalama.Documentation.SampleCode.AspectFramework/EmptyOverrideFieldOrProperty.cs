@@ -2,10 +2,8 @@
 {
     internal class EmptyOverrideFieldOrPropertyExample
     {
-        [EmptyOverrideFieldOrProperty]
-        public int Field;
+        [EmptyOverrideFieldOrProperty] public int Field;
 
-        [EmptyOverrideFieldOrProperty]
-        public string? Property { get; set; }
+        [EmptyOverrideFieldOrProperty] public string? Property { get; set; }
     }
 }

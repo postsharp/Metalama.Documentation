@@ -9,7 +9,7 @@ Code fixes can be instantiated using the static methods of the <xref:Metalama.Fr
 
 To add code fixes to a diagnostic, use the <xref:Metalama.Framework.Diagnostics.IDiagnostic.WithCodeFixes%2A?text=IDiagnostic.WithCodeFixes> method.
 
-To suggest a code refactoring without reporting a diagnostic, use the <xref:Metalama.Framework.CodeFixes.CodeFix.SuggestFor%2A> method.
+To suggest a code refactoring without reporting a diagnostic, use the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest%2A>text=IDiagnosticSink.Suggest> method.
 
 ## Class diagram
 
@@ -30,7 +30,6 @@ classDiagram
   class CodeFix {
         Id
         Title
-        SuggestFor()
     }
     class CodeFixFactory {
         ApplyAspect()$

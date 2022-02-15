@@ -2,7 +2,6 @@
 {
     internal class TargetCode
     {
-        [Normalize]
-        public string? Property { get; set; }
+        [Normalize] public string? Property { get; set; }
     }
 }

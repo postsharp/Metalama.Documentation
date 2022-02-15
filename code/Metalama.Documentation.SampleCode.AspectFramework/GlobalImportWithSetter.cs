@@ -5,8 +5,7 @@ namespace Doc.GlobalImportWithSetter
 {
     internal class TargetCode
     {
-        [Import]
-        private IFormatProvider? _formatProvider;
+        [Import] private IFormatProvider? _formatProvider;
     }
 
     internal class ServiceLocator : IServiceProvider

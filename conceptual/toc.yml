@@ -29,15 +29,11 @@ items:
           topicUid: overriding-fields-or-properties
         - name: Overriding Events
           topicUid: overriding-events
-      - name: Writing Code Templates
-        topicUid: templates
       - name: Design of Metalama Aspect Framework
         topicUid: aspect-framework-design
-      - name: Reporting and Suppressing Diagnostics
-        topicUid: diagnostics
-      - name: Defining the Eligibility of Aspects
-        topicUid: eligibility
-      - name: Advising Code
+      - name: T# Code Templates
+        topicUid: templates
+      - name: Transforming Code
         topicUid: advising-code
         items:
         - name: "Overriding Members: Reloaded"
@@ -48,8 +44,14 @@ items:
           topicUid: implementing-interfaces
         - name: Sharing State With Advices
           topicUid: sharing-state-with-advices
+      - name: Reporting and Suppressing Diagnostics
+        topicUid: diagnostics
+      - name: Defining the Eligibility of Aspects
+        topicUid: eligibility
       - name: Adding Child Aspects
         topicUid: child-aspects
+      - name: Validating Code
+        topicUid: validation
       - name: Ordering Aspects
         topicUid: ordering-aspects
       - name: Exposing Configuration

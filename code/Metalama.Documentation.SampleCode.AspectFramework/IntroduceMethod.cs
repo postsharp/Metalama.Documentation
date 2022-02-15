@@ -3,19 +3,16 @@
 namespace Doc.IntroduceMethod;
 
 [ToString]
-class MyClass
+internal class MyClass
 {
-
 }
 
-class Program
+internal class Program
 {
-    static void Main()
+    private static void Main()
     {
         Console.WriteLine( new MyClass().ToString() );
         Console.WriteLine( new MyClass().ToString() );
         Console.WriteLine( new MyClass().ToString() );
     }
 }
-
-
