@@ -13,6 +13,10 @@ This namespace fulfills the following purposes:
   
 * Exposes the service provider, which gives access from high-level code to the low-level plug-ins.
 
+## Conceptual documentation
+
+See <xref:exposing-configuration>.
+
 ## Class diagram
 
 ```mermaid

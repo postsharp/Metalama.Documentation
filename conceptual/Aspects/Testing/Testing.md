@@ -2,7 +2,7 @@
 uid: testing
 ---
 
-# Testing aspects
+# Testing Aspects
 
 There are two complementary ways to test your aspects: 
 

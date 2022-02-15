@@ -1,15 +1,12 @@
-﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
-// This project is not open source. Please see the LICENSE.md file in the repository root for details.
-
-using Metalama.Documentation.SampleCode.AspectFramework.Ordering;
-using Metalama.Framework.Aspects;
+﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
 using System.Linq;
+using Doc.Ordering;
 
 [assembly: AspectOrder( typeof(Aspect1), typeof(Aspect2) )]
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.Ordering
+namespace Doc.Ordering
 {
     internal class Aspect1 : TypeAspect
     {

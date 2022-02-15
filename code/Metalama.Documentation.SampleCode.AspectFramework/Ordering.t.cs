@@ -1,6 +1,6 @@
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.Ordering
+namespace Doc.Ordering
 {
     [Aspect1]
     [Aspect2]

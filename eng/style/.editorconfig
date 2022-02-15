@@ -6,8 +6,9 @@ root = true
 
 #### Core EditorConfig Options ####
 
-# File header
-file_header_template = Copyright (c) SharpCrafters s.r.o.All rights reserved.\nThis project is not open source.Please see the LICENSE.md file in the repository root for details.
+# The file header is no longer configured here because it cannot be suppressed, which does not work for samples
+# and documentation projects.
+
 
 # Indentation and spacing
 indent_size = 4

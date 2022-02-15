@@ -3,7 +3,7 @@ using Metalama.Framework.Code;
 using Metalama.Framework.Eligibility;
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodAspect_
+namespace Doc.OverrideMethodAspect_
 {
 #pragma warning disable CS0067
     // <aspect>

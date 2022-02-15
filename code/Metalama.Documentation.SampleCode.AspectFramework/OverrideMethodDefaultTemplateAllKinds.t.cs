@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Metalama.Framework.RunTime;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodDefaultTemplateAllKinds
+namespace Doc.OverrideMethodDefaultTemplateAllKinds
 {
     public class Program
     {

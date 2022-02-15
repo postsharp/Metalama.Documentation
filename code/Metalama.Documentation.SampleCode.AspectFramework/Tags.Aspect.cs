@@ -1,11 +1,8 @@
-﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
-// This project is not open source. Please see the LICENSE.md file in the repository root for details.
-
-using Metalama.Framework.Aspects;
+﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.Tags
+namespace Doc.Tags
 {
     internal class TagsAspect : MethodAspect
     {
@@ -14,7 +11,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.Tags
             builder.Advices.OverrideMethod(
                 builder.Target,
                 nameof(this.OverrideMethod),
-                tags: new Framework.Aspects.Tags { ["ParameterCount"] = builder.Target.Parameters.Count } );
+                tags: new () { ["ParameterCount"] = builder.Target.Parameters.Count } );
         }
 
         [Template]

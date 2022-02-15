@@ -1,6 +1,6 @@
 using Metalama.Framework.Aspects;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework
+namespace Doc
 {
 #pragma warning disable CS0067
     public class EmptyOverrideMethodAttribute : OverrideMethodAspect

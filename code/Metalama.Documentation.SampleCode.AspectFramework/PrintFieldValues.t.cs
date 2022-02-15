@@ -1,6 +1,6 @@
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.PrintFieldValues
+namespace Doc.PrintFieldValues
 {
     internal class TargetCode
     {

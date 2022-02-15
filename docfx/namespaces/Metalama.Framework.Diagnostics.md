@@ -4,26 +4,37 @@ summary: *content
 ---
 This is namespace allows you to report or suppress diagnostics from your aspect code.
 
+## Conceptual Documentation
+
+See <xref:diagnostics>.
+
 ## Class diagram
 
 ```mermaid
 classDiagram
 
   class SuppressionDefinition {
-
+      SuppressedDiagnosticId
   }
 
     class IDiagnosticSink {
-        Report(IDiagnostic)
-        Suppress(SuppressionDefinition)
+        Report(IDiagnosticLocation, IDiagnostic)
+        Suppress(IDiagnosticLocation, SuppressionDefinition)
         Suggest(IDiagnosticLocation, CodeFix)
 
     }
 
-
-    class IDiagnosticLocation {
-        
+    class ScopedDiagnosticSink {
+        Declaration
+        Location
+        Report(IDiagnostic)
+        Suppress(SuppressionDefinition)
+        Suggest(CodeFix)
     }
+
+    ScopedDiagnosticSink --|> IDiagnosticSink : implements
+
+
   
     class DiagnosticSeverity {
         None
@@ -38,15 +49,30 @@ classDiagram
         Title
         Category
         Severity
-        ReportTo(IDiagnosticSink)
-        ReportTo(IDiagnosticLocation, IDiagnosticSink)
+        CodeFixes
         WithCodeFixes(CodeFix[])
     }
+
+    class CodeFix {
+
+    }
+
+    
+    IDiagnostic *-- CodeFix : can contain
         
-    class DiagnosticDefinition_ {
-        }
+     DiagnosticDefinition_ --|> DiagnosticDefinition~T~ : derives from
+
+class DiagnosticDefinition_ {
+    <<without parameter>>
+}        
 
     class DiagnosticDefinition~T~ {
+        <<with  parameters>>
+        Id
+        Category
+        Severity
+        MessageFormat
+        Title
         WithArguments(T) IDiagnostic
         }
 
@@ -61,13 +87,15 @@ classDiagram
 
     DiagnosticDefinition_ ..|> IDiagnostic : implements
     DiagnosticDefinition~T~ ..> IDiagnostic : WithArguments instantiates
-    IDiagnostic ..> IDiagnosticSink : reported to
-    IDiagnostic ..> IDiagnosticLocation : reported on
     IDiagnostic --> DiagnosticSeverity : Severity
-    SuppressionDefinition ..> IDiagnosticSink : suppressed from
+    IDiagnosticSink ..> IDiagnostic : accepts
+    IDiagnosticSink ..> SuppressionDefinition : accepts
+    IDiagnosticSink ..> CodeFix : accepts
 
-    IAspectBuilder --> IDiagnosticSink : exposes
-    ValidationContext --> IDiagnosticSink : esposes
+    IAspectBuilder --> ScopedDiagnosticSink : exposes
+    ValidationContext --> ScopedDiagnosticSink : exposes
+
+CodeFixFactory --> CodeFix : creates
 
 
 ```
@@ -79,7 +107,7 @@ To report a diagnostic, you must first define a static field of type <xref:Metal
 
 To report a parametric diagnostics, you must first call the <xref:Metalama.Framework.Diagnostics.DiagnosticDefinition%601.WithArguments%2A> method. This step is not necessary with parameterless diagnostics.
 
-To report a diagnostic, call the <xref:Metalama.Framework.Diagnostics.IDiagnostic.ReportTo%2A> method. You need to pass a <xref:Metalama.Framework.Diagnostics.IDiagnosticSink>. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectLayerBuilder.Diagnostics> property of the argument of the <xref:Metalama.Framework.Aspects.IAspectBuilder><xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> method of your aspect. You can also report a diagnostic from a validator. 
+To report a diagnostic, call the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Report%2A> method. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectLayerBuilder.Diagnostics> property of the argument of the <xref:Metalama.Framework.Aspects.IAspectBuilder><xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> method of your aspect. You can also report a diagnostic from a validator. 
 
 When you are reporting a diagnostic, you can specify the *location* of the diagnostic, i.e. the element of code to which it will be reported (which determines the file and line of the error message). If you do not specify the location, the default location for the current context will be used.
 
@@ -93,5 +121,11 @@ You can then suppress a diagnostic from any declaration from an aspect using the
 method.
 
 For more information, see <xref:diagnostics>.
+
+## Suggesting code actions
+
+See <xref:Metalama.Framework.CodeFixes>.
+
+
 
 ## Namespace members

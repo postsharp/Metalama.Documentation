@@ -1,4 +1,4 @@
-namespace Metalama.Documentation.SampleCode.AspectFramework.ToString
+namespace Doc.ToString
 {
     [ToString]
     internal class TargetCode

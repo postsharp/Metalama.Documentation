@@ -1,4 +1,4 @@
-namespace Metalama.Documentation.SampleCode.AspectFramework
+namespace Doc
 {
     internal class EmptyOverrideFieldOrPropertyExample
     {

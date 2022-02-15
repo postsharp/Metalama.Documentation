@@ -19,7 +19,7 @@ Thanks to fabrics, you can add aspects to a large number of declarations without
 * For a namespace-level fabric, add a type implementing the <xref:Metalama.Framework.Fabrics.NamespaceFabric> class in the desired namespace, and implement the <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace%2A> method. 
 * For a type-level fabric, add a nested type implementing the <xref:Metalama.Framework.Fabrics.TypeFabric> class in the target type, and implement the <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType%2A> method.
 
-The `Amend` methods accept a parameter of type <xref:Metalama.Framework.Fabrics.IAmender%601>, which allows you to add aspects by calling <xref:Metalama.Framework.Aspects.IDeclarationSelector%601.WithTargetMembers%2A?text=amender.WithTargetMembers> and then <xref:Metalama.Framework.Aspects.IDeclarationSelection%601.AddAspect%2A>
+The `Amend` methods accept a parameter of type <xref:Metalama.Framework.Fabrics.IAmender%601>, which allows you to add aspects by calling <xref:Metalama.Framework.Aspects.IDeclarationSelector%601.WithTargetMembers%2A?text=amender.WithTargetMembers> or <xref:Metalama.Framework.Aspects.IDeclarationSelector%601.WithTarget%2A?text=amender.WithTarget> and then <xref:Metalama.Framework.Aspects.IDeclarationSelection%601.AddAspect%2A>
 
 ### Example: project fabric
 

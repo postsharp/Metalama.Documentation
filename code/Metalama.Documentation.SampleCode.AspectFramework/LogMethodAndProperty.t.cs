@@ -1,6 +1,6 @@
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.LogMethodAndProperty
+namespace Doc.LogMethodAndProperty
 {
     internal class TargetCode
     {

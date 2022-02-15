@@ -1,6 +1,6 @@
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.Tags
+namespace Doc.Tags
 {
     internal class TargetCode
     {

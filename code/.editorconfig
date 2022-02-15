@@ -1,0 +1,5 @@
+[*.cs]
+
+# File header
+file_header_template = unset
+dotnet_diagnostic.CA1822.severity = silent

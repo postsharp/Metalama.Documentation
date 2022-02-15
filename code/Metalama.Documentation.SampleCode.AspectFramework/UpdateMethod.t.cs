@@ -1,6 +1,6 @@
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.UpdateMethod
+namespace Doc.UpdateMethod
 {
     [UpdateMethod]
     internal class CityHunter

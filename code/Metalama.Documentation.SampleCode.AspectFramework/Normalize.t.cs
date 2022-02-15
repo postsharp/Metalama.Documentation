@@ -1,4 +1,4 @@
-namespace Metalama.Documentation.SampleCode.AspectFramework.Normalize
+namespace Doc.Normalize
 {
     internal class TargetCode
     {

@@ -1,7 +1,7 @@
 ---
 uid: templates
 ---
-# Writing code templates
+# Writing Code Templates
 
 The specificity of a tool like Metalama, compared to simple code generation APIs, is that Metalama is able to _modify existing_ code, not only generate new code. Instead of giving you access to the syntax tree, which is extremely complex and error-prone (and you can still do it anyway with <xref:sdk> if you feel brave), Metalama lets you express code transformations in plain C# using a template language named _Metalama Template Language_.
 

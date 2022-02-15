@@ -1,6 +1,6 @@
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.DeepClone
+namespace Doc.DeepClone
 {
     internal class ManuallyCloneable : ICloneable
     {

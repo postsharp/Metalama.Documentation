@@ -12,6 +12,17 @@ Metalama has the following principal features:
 | __Code Generation__             | Generate repetitive code, in the editor or at compile time, instead of writing it by hand. With Metalama, you can author your own code actions or refactorings that are available in the lightbulb or screwdriver menu.
 | __Code Validation__             | Verify that hand-written code complies to team rules and conventions. Metalama lets you report diagnostics or suppress source code diagnostics simply.
 
+
+```mermaid
+graph TD
+
+Aspects[Aspect &<br>Fabrics] -- report and supress --> Diagnostics
+Aspects -- suggest --> CodeFixes[Code Fixes &<br>Refactorings]
+CodeFixes -- transform<br>at design time --> SourceCode[Source Code] 
+Aspects -- transform<br>at compile time --> TransformedCode[Compiled Code]
+
+```
+
 ## Documentation structure
 
 | Site | Description |

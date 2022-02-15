@@ -1,7 +1,7 @@
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Fabrics;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.AdvisingTypeFabric
+namespace Doc.AdvisingTypeFabric
 {
 #pragma warning disable CS0067
     internal class MyClass

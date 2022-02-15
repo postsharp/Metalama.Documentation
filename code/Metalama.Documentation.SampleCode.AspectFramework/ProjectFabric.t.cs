@@ -1,6 +1,6 @@
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_
+namespace Doc.ProjectFabric_
 {
     internal class Class1
     {

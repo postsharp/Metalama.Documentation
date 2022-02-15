@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.CustomSyntaxSerializer
+namespace Doc.CustomSyntaxSerializer
 {
     [MemberCountAspect]
     public class TargetClass

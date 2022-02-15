@@ -1,11 +1,8 @@
-﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
-// This project is not open source. Please see the LICENSE.md file in the repository root for details.
-
-using Metalama.Framework.Aspects;
+﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System.ComponentModel;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged2
+namespace Doc.IntroducePropertyChanged2
 {
     internal class IntroducePropertyChangedAspect : TypeAspect
     {
@@ -18,7 +15,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.IntroducePropertyCha
             builder.Advices.IntroduceMethod(
                 builder.Target,
                 nameof(this.OnPropertyChanged),
-                tags: new Framework.Aspects.Tags { ["event"] = eventBuilder } );
+                tags: new () { ["event"] = eventBuilder } );
         }
 
         [Template]

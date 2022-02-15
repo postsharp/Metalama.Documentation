@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.IntroducePropertyChanged2
+namespace Doc.IntroducePropertyChanged2
 {
     [IntroducePropertyChangedAspect]
     internal class TargetCode

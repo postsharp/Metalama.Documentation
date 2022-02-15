@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.OverrideMethodSpecificTemplateAllKinds
+namespace Doc.OverrideMethodSpecificTemplateAllKinds
 {
     public class Program
     {

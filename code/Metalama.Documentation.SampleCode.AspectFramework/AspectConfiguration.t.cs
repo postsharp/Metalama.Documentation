@@ -2,7 +2,7 @@ using Metalama.Framework.Fabrics;
 using System;
 using System.Linq;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
+namespace Doc.AspectConfiguration
 {
 #pragma warning disable CS0067
     // The project fabric configures the project at compile time.

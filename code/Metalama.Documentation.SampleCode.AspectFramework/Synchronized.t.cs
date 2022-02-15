@@ -1,4 +1,4 @@
-namespace Metalama.Documentation.SampleCode.AspectFramework.Synchronized
+namespace Doc.Synchronized
 {
     [Synchronized]
     internal class SynchronizedClass

@@ -1,13 +1,10 @@
-﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
-// This project is not open source. Please see the LICENSE.md file in the repository root for details.
-
-using Metalama.Framework.Aspects;
+﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using System;
 using System.Linq;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.ImportService
+namespace Doc.ImportService
 {
     internal class ImportAspect : OverrideFieldOrPropertyAspect
     {
@@ -31,13 +28,13 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.ImportService
 
             if ( serviceProviderField == null )
             {
-                _serviceProviderFieldMissing.WithArguments( builder.Target.DeclaringType ).ReportTo( builder.Diagnostics );
+                builder.Diagnostics.Report( _serviceProviderFieldMissing.WithArguments( builder.Target.DeclaringType ) );
 
                 return;
             }
             else if ( !serviceProviderField.Type.Is( typeof(IServiceProvider) ) )
             {
-                _serviceProviderFieldTypeMismatch.WithArguments( (serviceProviderField, serviceProviderField.Type) ).ReportTo( builder.Diagnostics );
+                builder.Diagnostics.Report( _serviceProviderFieldTypeMismatch.WithArguments( (serviceProviderField, serviceProviderField.Type) ) );
 
                 return;
             }
@@ -46,7 +43,7 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.ImportService
             base.BuildAspect( builder );
 
             // Suppress the diagnostic.
-            builder.Diagnostics.Suppress( serviceProviderField, _suppressFieldIsNeverUsed );
+            builder.Diagnostics.Suppress( _suppressFieldIsNeverUsed, serviceProviderField );
         }
 
         public override dynamic? OverrideProperty

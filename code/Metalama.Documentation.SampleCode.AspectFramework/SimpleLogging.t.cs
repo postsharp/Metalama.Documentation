@@ -1,6 +1,6 @@
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.SimpleLogging
+namespace Doc.SimpleLogging
 {
     internal class TargetCode
     {

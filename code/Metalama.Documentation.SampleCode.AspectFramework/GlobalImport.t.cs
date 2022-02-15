@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.GlobalImport
+namespace Doc.GlobalImport
 {
     internal class TargetCode
     {

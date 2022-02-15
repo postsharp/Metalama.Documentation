@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.Retry
+namespace Doc.Retry
 {
     internal class TargetCode
     {

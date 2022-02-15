@@ -1,14 +1,11 @@
-﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
-// This project is not open source. Please see the LICENSE.md file in the repository root for details.
-
-using Metalama.Framework.Aspects;
+﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using Metalama.Framework.Eligibility;
 using System.IO;
 using System.Linq;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.EligibilityAndValidation
+namespace Doc.EligibilityAndValidation
 {
     internal class LogAttribute : OverrideMethodAspect
     {
@@ -33,12 +30,12 @@ namespace Metalama.Documentation.SampleCode.AspectFramework.EligibilityAndValida
 
             if ( loggerField == null )
             {
-                _error1.WithArguments( declaringType ).ReportTo( declaringType, builder.Diagnostics );
+                builder.Diagnostics.Report( _error1.WithArguments( declaringType ), declaringType );
                 builder.SkipAspect();
             }
             else if ( !loggerField.Type.Is( typeof(TextWriter) ) )
             {
-                _error2.WithArguments( loggerField ).ReportTo( loggerField, builder.Diagnostics );
+                builder.Diagnostics.Report( _error2.WithArguments( loggerField ), loggerField );
                 builder.SkipAspect();
             }
         }

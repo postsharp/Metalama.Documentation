@@ -1,7 +1,7 @@
 ---
 uid: diagnostics
 ---
-# Reporting and suppressing diagnostics
+# Reporting and Suppressing Diagnostics
 
 This article explains how to report a diagnostic (error, warning or information message) from an aspect, or to _suppress_ a diagnostic reported by the C# compiler or another aspect.
 

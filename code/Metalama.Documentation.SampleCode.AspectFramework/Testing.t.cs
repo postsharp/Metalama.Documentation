@@ -1,6 +1,6 @@
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.Testing
+namespace Doc.Testing
 {
     internal class SimpleLogTests
     {

@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Win32;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.RegistryStorage
+namespace Doc.RegistryStorage
 {
     [RegistryStorage("Animals")]
     internal class Animals

@@ -1,7 +1,7 @@
 using Metalama.Framework.Aspects;
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.ConsumingProperty
+namespace Doc.ConsumingProperty
 {
 #pragma warning disable CS0067
     public class Log : OverrideMethodAspect

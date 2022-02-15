@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Metalama.Framework.Fabrics;
 using Metalama.Framework.Aspects;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.ProjectFabric_
+namespace Doc.ProjectFabric_
 {
      internal class Fabric : ProjectFabric
     {

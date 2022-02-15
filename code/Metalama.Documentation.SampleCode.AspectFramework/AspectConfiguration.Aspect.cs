@@ -1,11 +1,8 @@
-﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
-// This project is not open source. Please see the LICENSE.md file in the repository root for details.
-
-using Metalama.Framework.Aspects;
+﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Project;
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.AspectConfiguration
+namespace Doc.AspectConfiguration
 {
     // Options for the [Log] aspects.
     public class LoggingOptions : ProjectExtension

@@ -1,6 +1,6 @@
 using System;
 
-namespace Metalama.Documentation.SampleCode.AspectFramework.CompileTimeIf
+namespace Doc.CompileTimeIf
 {
     internal class TargetCode
     {

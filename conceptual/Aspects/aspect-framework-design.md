@@ -44,6 +44,7 @@ classDiagram
 
 ## Abilities of aspects
 
+
 ### Transforming the target code
 
 Aspects can transform the target code by providing one or many _advices_. Advices are primitive transformations of code. Advices are safely composable: several aspects that do not know about each other can add advices to the same declaration.
