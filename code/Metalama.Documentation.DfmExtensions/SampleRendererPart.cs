@@ -26,7 +26,7 @@ namespace Metalama.Documentation.DfmExtensions
 
         static SampleRendererPart()
         {
-         //   Debugger.Launch();
+//            Debugger.Launch();
         }
 
         public override bool Match( IMarkdownRenderer renderer, DfmIncludeBlockToken token, MarkdownBlockContext context )
@@ -178,11 +178,20 @@ namespace Metalama.Documentation.DfmExtensions
                     Path.ChangeExtension( targetPathRelativeToProjectDir, ".out.cs.html" ) ) );
 
             var currentFile = ((ImmutableStack<string>) context.Variables["FilePathStack"]).Peek();
-            const string prefix = "";
+            const string conceptualPrefix = "../conceptual/";
+
+            if ( currentFile.StartsWith( conceptualPrefix ) )
+            {
+                currentFile = currentFile.Substring( conceptualPrefix.Length );
+            }
+            else
+            {
+                // This is a namespace topic and it does not have a prefix.
+            }
 
             var currentFileId = currentFile.Substring(
-                prefix.Length,
-                currentFile.Length - prefix.Length - ".md".Length );
+                0,
+                currentFile.Length - ".md".Length ).ToLowerInvariant();
 
             var permalink = "https://doc.metalama.net/" + currentFileId + "#" + source.Id;
 
