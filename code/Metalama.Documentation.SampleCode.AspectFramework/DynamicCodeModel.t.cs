@@ -3,18 +3,18 @@ using System.IO;
 
 namespace Doc.DynamicCodeModel
 {
-    class Program
+    internal class Program
     {
-        TextWriter _logger = Console.Out;
+        private TextWriter _logger = Console.Out;
 
         [Log]
-        void Foo()
+        private void Foo()
         {
             _logger.WriteLine($"Executing Program.Foo().");
             return;
         }
 
-        static void Main()
+        private static void Main()
         {
             new Program().Foo();
         }

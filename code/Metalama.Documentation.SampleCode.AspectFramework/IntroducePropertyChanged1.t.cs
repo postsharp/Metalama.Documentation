@@ -6,6 +6,7 @@ namespace Doc.IntroducePropertyChanged1
     internal class TargetCode
     {
 
+
         protected void OnPropertyChanged(string propertyName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

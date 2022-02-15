@@ -3,18 +3,18 @@ using System.IO;
 
 namespace Doc.ParseExpression
 {
-    class Program
+    internal class Program
     {
-        TextWriter _logger = Console.Out;
+        private TextWriter _logger = Console.Out;
 
         [Log]
-        void Foo()
+        private void Foo()
         {
             this._logger?.WriteLine($"Executing Program.Foo().");
             return;
         }
 
-        static void Main()
+        private static void Main()
         {
             new Program().Foo();
         }

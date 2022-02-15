@@ -3,20 +3,20 @@ using System.IO;
 
 namespace Doc.SuppressWarning
 {
-    class Program
+    internal class Program
     {
 #pragma warning disable CS0169
-        TextWriter _logger = Console.Out;
+        private TextWriter _logger = Console.Out;
 #pragma warning restore CS0169
 
         [Log]
-        void Foo()
+        private void Foo()
         {
             this._logger.WriteLine($"Executing Program.Foo().");
             return;
         }
 
-        static void Main()
+        private static void Main()
         {
             new Program().Foo();
         }

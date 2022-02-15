@@ -37,5 +37,4 @@ namespace Doc.Disposable
             this._cancellationTokenSource?.Dispose();
         }
     }
-
 }
