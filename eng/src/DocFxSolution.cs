@@ -6,6 +6,7 @@ using PostSharp.Engineering.BuildTools.Build.Model;
 using PostSharp.Engineering.BuildTools.Utilities;
 using System;
 using System.IO;
+using System.IO.Compression;
 
 namespace BuildMetalamaDocumentation
 {
@@ -14,7 +15,7 @@ namespace BuildMetalamaDocumentation
         public DocFxSolution( string solutionPath ) : base( solutionPath )
         {
             // Packing is done by the publish command.
-            this.BuildMethod = PostSharp.Engineering.BuildTools.Build.Model.BuildMethod.Build;
+            this.BuildMethod = PostSharp.Engineering.BuildTools.Build.Model.BuildMethod.Pack;
         }
 
         public override bool Build( BuildContext context, BuildSettings settings )
@@ -41,7 +42,19 @@ namespace BuildMetalamaDocumentation
                 context.RepoDirectory );
         }
 
-        public override bool Pack( BuildContext context, BuildSettings settings ) => throw new NotImplementedException();
+        public override bool Pack( BuildContext context, BuildSettings settings )
+        {
+            if ( !this.Build( context, settings ))
+            {
+                return false;
+            }
+
+            ZipFile.CreateFromDirectory(
+                Path.Combine( context.RepoDirectory, "docfx\\_site" ),
+                Path.Combine( context.RepoDirectory, "artifacts\\publish\\private\\Metalama.Doc.zip" ) );
+
+            return true;
+        }
 
         public override bool Test( BuildContext context, BuildSettings settings ) => throw new NotSupportedException();
 

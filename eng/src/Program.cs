@@ -16,8 +16,7 @@ var product = new Product
                     new DotNetSolution( "code\\Metalama.Documentation.SampleCode.sln" ) { CanFormatCode = true, BuildMethod = BuildMethod.Test },
                     new DocFxSolution( "docfx\\docfx.json" ) },
     Dependencies = new [] {
-        Dependencies.PostSharpEngineering,
-        Dependencies.Metalama },
+        Dependencies.PostSharpEngineering },
     AdditionalDirectoriesToClean = new[] { "docfx\\obj", "docfx\\_site" },
 
     // Disable automatic build triggers.
