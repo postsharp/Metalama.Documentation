@@ -7,7 +7,6 @@ namespace Doc.ToString
 
         public string? Y { get; set; }
 
-
         public override string ToString()
         {
             return $"{{ TargetCode _x={_x}, Y={Y} }}";

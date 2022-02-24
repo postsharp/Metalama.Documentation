@@ -35,7 +35,7 @@ namespace BuildMetalamaDocumentation
 
         private static bool RunDocFx( BuildContext context, string command )
         {
-            var toolInvocationOptions = new ToolInvocationOptions( DotNetHelper.GetDotNetEnvironmentVariables() );
+            var toolInvocationOptions = new ToolInvocationOptions( DotNetHelper.GetMsBuildFixingEnvironmentVariables() );
 
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
@@ -63,7 +63,7 @@ namespace BuildMetalamaDocumentation
 
         public override bool Restore( BuildContext context, BuildSettings settings )
         {
-            var toolInvocationOptions = new ToolInvocationOptions( DotNetHelper.GetDotNetEnvironmentVariables() );
+            var toolInvocationOptions = new ToolInvocationOptions( DotNetHelper.GetMsBuildFixingEnvironmentVariables() );
 
             return ToolInvocationHelper.InvokeTool(
                 context.Console,

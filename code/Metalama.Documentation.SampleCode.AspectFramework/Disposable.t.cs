@@ -9,7 +9,6 @@ namespace Doc.Disposable
     {
         private CancellationTokenSource _cancellationTokenSource = new();
 
-
         public void Dispose()
         {
             this.Dispose(true);
@@ -29,7 +28,6 @@ namespace Doc.Disposable
     internal class Bar : Foo
     {
         private FileSystemWatcher _cancellationTokenSource = new();
-
 
         protected override void Dispose(bool disposing)
         {

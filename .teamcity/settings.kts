@@ -50,6 +50,14 @@ object DebugBuild : BuildType({
         }
     }
 
+  dependencies {
+
+        snapshot(AbsoluteId("Metalama_Metalama_DebugBuild")) {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+
+     }
+
 })
 
 object ReleaseBuild : BuildType({
@@ -83,6 +91,14 @@ object ReleaseBuild : BuildType({
         }
     }
 
+  dependencies {
+
+        snapshot(AbsoluteId("Metalama_Metalama_ReleaseBuild")) {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+
+     }
+
 })
 
 object PublicBuild : BuildType({
@@ -115,6 +131,14 @@ object PublicBuild : BuildType({
             verbose = true
         }
     }
+
+  dependencies {
+
+        snapshot(AbsoluteId("Metalama_Metalama_PublicBuild")) {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+
+     }
 
 })
 

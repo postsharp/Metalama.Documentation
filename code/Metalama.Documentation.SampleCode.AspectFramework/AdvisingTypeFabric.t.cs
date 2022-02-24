@@ -17,8 +17,6 @@ namespace Doc.AdvisingTypeFabric
 
         }
 #pragma warning restore CS0067
-
-
         public int Method0()
         {
             return 0;

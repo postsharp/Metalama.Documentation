@@ -5,8 +5,6 @@ namespace Doc.IntroducePropertyChanged3
     [IntroducePropertyChangedAspect]
     internal class TargetCode
     {
-
-
         protected void OnPropertyChanged(string propertyName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

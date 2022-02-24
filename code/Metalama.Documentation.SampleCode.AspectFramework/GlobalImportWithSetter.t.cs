@@ -5,11 +5,6 @@ namespace Doc.GlobalImportWithSetter
 {
     internal class TargetCode
     {
-
-
-        private IFormatProvider? _formatProvider1;
-
-
         private IFormatProvider? _formatProvider
         {
             get
@@ -30,18 +25,7 @@ namespace Doc.GlobalImportWithSetter
             }
         }
 
-        private IFormatProvider? _formatProvider_Source
-        {
-            get
-            {
-                return this._formatProvider1;
-            }
-
-            set
-            {
-                this._formatProvider1 = value;
-            }
-        }
+        private IFormatProvider? _formatProvider_Source { get; set; }
     }
 
     internal class ServiceLocator : IServiceProvider

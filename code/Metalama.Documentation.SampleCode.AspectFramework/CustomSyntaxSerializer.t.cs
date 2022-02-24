@@ -11,7 +11,6 @@ namespace Doc.CustomSyntaxSerializer
 
         public void Method2() { }
 
-
         public Dictionary<string, MethodOverloadCount> GetMethodOverloadCount()
         {
             return new Dictionary<string, MethodOverloadCount> { { "Method1", new MethodOverloadCount("Method1", 2) }, { "Method2", new MethodOverloadCount("Method2", 1) } };

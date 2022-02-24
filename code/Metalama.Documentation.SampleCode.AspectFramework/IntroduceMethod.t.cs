@@ -6,8 +6,6 @@ namespace Doc.IntroduceMethod;
 [ToString]
 internal class MyClass
 {
-
-
     public override string ToString()
     {
         return $"{GetType().Name} Id={RuntimeHelpers.GetHashCode(this)}";
