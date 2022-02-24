@@ -35,11 +35,14 @@ namespace BuildMetalamaDocumentation
 
         private static bool RunDocFx( BuildContext context, string command )
         {
+            var toolInvocationOptions = new ToolInvocationOptions( DotNetHelper.GetDotNetEnvironmentVariables() );
+
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
                 Path.Combine( context.RepoDirectory, "docfx\\packages\\docfx.console.2.59.0\\tools\\docfx.exe" ),
                 $"\"docfx\\docfx.json\" {command}",
-                context.RepoDirectory );
+                context.RepoDirectory,
+                toolInvocationOptions );
         }
 
         public override bool Pack( BuildContext context, BuildSettings settings )
