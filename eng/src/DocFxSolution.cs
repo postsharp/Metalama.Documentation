@@ -58,13 +58,16 @@ namespace BuildMetalamaDocumentation
 
         public override bool Test( BuildContext context, BuildSettings settings ) => throw new NotSupportedException();
 
-        public override bool Restore( BuildContext context, BaseBuildSettings settings )
+        public override bool Restore( BuildContext context, BuildSettings settings )
         {
+            var toolInvocationOptions = new ToolInvocationOptions( DotNetHelper.GetDotNetEnvironmentVariables() );
+
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
                 "msbuild",
                 "/t:Restore \"docfx\\DocFx.csproj\"",
-                context.RepoDirectory );
+                context.RepoDirectory,
+                toolInvocationOptions );
         }
     }
 }

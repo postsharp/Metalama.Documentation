@@ -3,10 +3,12 @@
 
 using BuildMetalamaDocumentation;
 using PostSharp.Engineering.BuildTools;
+using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
+using PostSharp.Engineering.BuildTools.Build.Solutions;
 using PostSharp.Engineering.BuildTools.Dependencies.Model;
+using PostSharp.Engineering.BuildToolsS3.Publishers;
 using Spectre.Console.Cli;
-using System.Collections.Immutable;
 
 var product = new Product
 {
@@ -20,7 +22,17 @@ var product = new Product
     AdditionalDirectoriesToClean = new[] { "docfx\\obj", "docfx\\_site" },
 
     // Disable automatic build triggers.
-    Configurations = Product.DefaultConfigurations.WithValue( PostSharp.Engineering.BuildTools.Build.BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
+    Configurations = Product.DefaultConfigurations
+        .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
+        .WithValue( BuildConfiguration.Public, new BuildConfigurationInfo(
+            MSBuildName: "Release",
+            PublicPublishers: new Publisher[]
+            {
+                new S3Publisher( new S3PublisherConfiguration[] {
+                    //TODO
+                    new( "Metalama.doc.zip", "bucket\\Metalama.doc.zip", "key\\Metalama.doc.zip", "path\\Metalama.doc.zip"),
+                } )
+            } ) )
 };
 
 
