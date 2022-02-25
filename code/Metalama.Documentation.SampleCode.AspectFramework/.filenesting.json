@@ -2,23 +2,9 @@
   "help": "https://go.microsoft.com/fwlink/?linkid=866610",
   "dependentFileProviders": {
     "add": {
-      "extensionToExtension": {
+      "allExtensions": {
         "add": {
-          ".t.cs": [
-            ".cs"
-          ],
-          ".t.txt": [
-            ".cs"
-          ],
-          ".Aspect.cs": [
-            ".cs"
-          ],
-          ".Helper.cs": [
-            ".cs"
-          ],
-          ".cs.html": [
-            ".cs"
-          ]
+          ".*": [ ".cs" ]
         }
       }
     }
