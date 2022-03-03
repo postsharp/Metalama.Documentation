@@ -205,17 +205,16 @@ To make the `.t.cs.` file appear under its parent `.cs` file:
 
     ```json
     {
-        "help": "https://go.microsoft.com/fwlink/?linkid=866610",
-        "dependentFileProviders": {
+    "help": "https://go.microsoft.com/fwlink/?linkid=866610",
+    "dependentFileProviders": {
+        "add": {
+        "allExtensions": {
             "add": {
-                "extensionToExtension": {
-                    "add": {
-                        ".t.cs": [ ".cs" ],
-                        ".t.html": [ ".cs" ]
-                    }
-                }
+            ".*": [ ".cs" ]
             }
         }
+        }
+    }
     }
     ```
 

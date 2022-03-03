@@ -1,23 +1,35 @@
 using System;
-using System.Runtime.CompilerServices;
+using System.Threading;
 
-namespace Doc.IntroduceMethod;
-
-[ToString]
-internal class MyClass
+namespace Doc.IntroduceMethod
 {
-    public override string ToString()
+
+    [ToString]
+    internal class MyClass
     {
-        return $"{GetType().Name} Id={RuntimeHelpers.GetHashCode(this)}";
+
+
+        private int _id = IdGenerator.GetId();
+
+        public override string ToString()
+        {
+            return $"{GetType().Name} Id={_id}";
+        }
     }
-}
 
-internal class Program
-{
-    private static void Main()
+    internal static class IdGenerator
     {
-        Console.WriteLine(new MyClass().ToString());
-        Console.WriteLine(new MyClass().ToString());
-        Console.WriteLine(new MyClass().ToString());
+        static int _nextId;
+        public static int GetId() => Interlocked.Increment(ref _nextId);
+    }
+
+    internal class Program
+    {
+        private static void Main()
+        {
+            Console.WriteLine(new MyClass().ToString());
+            Console.WriteLine(new MyClass().ToString());
+            Console.WriteLine(new MyClass().ToString());
+        }
     }
 }
