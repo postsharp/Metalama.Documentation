@@ -7,8 +7,6 @@ namespace Doc.IntroduceMethod
     [ToString]
     internal class MyClass
     {
-
-
         private int _id = IdGenerator.GetId();
 
         public override string ToString()

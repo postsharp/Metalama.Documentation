@@ -2,9 +2,6 @@ namespace Doc.Normalize
 {
     internal class TargetCode
     {
-
-
-        private string? _property;
         [Normalize]
         public string? Property
         {
@@ -19,17 +16,6 @@ namespace Doc.Normalize
             }
         }
 
-        private string? Property_Source
-        {
-            get
-            {
-                return this._property;
-            }
-
-            set
-            {
-                this._property = value;
-            }
-        }
+        private string? Property_Source { get; set; }
     }
 }

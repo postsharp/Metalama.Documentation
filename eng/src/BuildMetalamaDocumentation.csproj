@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -11,7 +11,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+		<PackageReference Include="AWSSDK.S3" Version="3.7.7.23" />
         <PackageReference Include="PostSharp.Engineering.BuildTools" Version="$(PostSharpEngineeringVersion)" />
+		<PackageReference Include="PostSharp.Engineering.BuildTools.AWS" Version="$(PostSharpEngineeringVersion)" />
     </ItemGroup>
 
 </Project>

@@ -16,7 +16,6 @@ namespace Doc.Ordering
             return;
         }
 
-
         public static void IntroducedMethod1()
         {
             Console.WriteLine("Method introduced by Aspect1.");

@@ -12,7 +12,7 @@
               "Metalama/Metalama.LinqPad/Metalama.LinqPad.csproj",
               "Metalama.Compiler/src/Metalama/Metalama.Compiler.Sdk/Metalama.Compiler.Sdk.csproj"
               ],
-          "src": "c:/src"
+          "src": "../../"
         }
       ],
       "dest": "obj/api",

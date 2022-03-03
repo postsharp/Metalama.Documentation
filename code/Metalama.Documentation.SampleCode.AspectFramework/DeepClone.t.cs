@@ -17,7 +17,6 @@ namespace Doc.DeepClone
         private ManuallyCloneable? _b;
         private AutomaticallyCloneable? _c;
 
-
         public virtual AutomaticallyCloneable Clone()
         {
             var clone = (AutomaticallyCloneable)MemberwiseClone();
@@ -40,7 +39,6 @@ namespace Doc.DeepClone
     internal class DerivedCloneable : AutomaticallyCloneable
     {
         private string? _d;
-
 
         public override DerivedCloneable Clone()
         {

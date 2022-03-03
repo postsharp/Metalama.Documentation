@@ -6,7 +6,6 @@ namespace Doc
 
         private int _field;
 
-
         public int Field
         {
             get

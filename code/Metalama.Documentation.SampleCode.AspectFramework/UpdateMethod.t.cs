@@ -11,7 +11,6 @@ namespace Doc.UpdateMethod
 
         public DateTime Z { get; }
 
-
         public void Update(int _x, string? Y)
         {
             this._x = _x;
