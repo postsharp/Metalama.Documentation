@@ -1,10 +1,13 @@
 ﻿using Metalama.Framework.Aspects;
-using System.Runtime.CompilerServices;
 
-namespace Doc.IntroduceMethod;
-
-internal class ToStringAttribute : TypeAspect
+namespace Doc.IntroduceMethod
 {
-    [Introduce( WhenExists = OverrideStrategy.Override )]
-    public string ToString() => $"{this.GetType().Name} Id={RuntimeHelpers.GetHashCode( meta.This )}";
+    internal class ToStringAttribute : TypeAspect
+    {
+        [Introduce]
+        private int _id = IdGenerator.GetId();
+
+        [Introduce( WhenExists = OverrideStrategy.Override )]
+        public override string ToString() => $"{this.GetType().Name} Id={this._id}";
+    }
 }

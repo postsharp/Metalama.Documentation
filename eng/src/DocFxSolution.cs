@@ -58,7 +58,7 @@ namespace BuildMetalamaDocumentation
 
         public override bool Test( BuildContext context, BuildSettings settings ) => throw new NotSupportedException();
 
-        public override bool Restore( BuildContext context, BaseBuildSettings settings )
+        public override bool Restore( BuildContext context, BuildSettings settings )
         {
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
