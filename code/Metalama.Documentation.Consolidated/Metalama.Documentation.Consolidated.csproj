@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk" InitialTargets="CheckConfiguration">
 
 	<!-- The role of this project is to gather all libraries to be documented into the output directory
 		 so they can be used by docfx. -->
@@ -18,5 +18,9 @@
 		<PackageReference Include="Metalama.LinqPad" Version="$(MetalamaVersion)" />
 		<PackageReference Include="Metalama.Compiler" Version="$(MetalamaCompilerVersion)" />
 	</ItemGroup>
+
+	<Target Name="CheckConfiguration">
+		<Error Text="This project can only be built in Debug configuration because its Debug output directory is specificially references. Check the sln file." Condition="'$(Configuration)'!='Debug'"/>
+	</Target>
 
 </Project>
