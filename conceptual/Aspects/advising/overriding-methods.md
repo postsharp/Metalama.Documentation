@@ -197,7 +197,7 @@ In the above sections, we have always derived our aspect class from the <xref:Me
 
 Here is the simplified source code of the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> class:
 
-[!include[Main](../../../code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs#aspect)]
+[!include[Main](../../../code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs)]
 
 
 In many cases, you will want your aspect to override _many_ methods. For instance, a _synchronized object_ aspect has to override all public instance methods and wrap them with a `lock` statement.
