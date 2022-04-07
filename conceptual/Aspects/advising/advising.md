@@ -4,7 +4,13 @@ uid: advising-code
 
 # Transforming Code
 
-<xref:overriding-members>
+<xref:advising-concepts>
+
+<xref:overriding-methods>
+
+<xref:overriding-fields-or-properties>
+
+<xref:overriding-events>
 
 <xref:introducing-members>
 

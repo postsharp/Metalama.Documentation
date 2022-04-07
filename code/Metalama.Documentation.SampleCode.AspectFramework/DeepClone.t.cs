@@ -25,25 +25,25 @@ namespace Doc.DeepClone
             return clone;
         }
 
-        private AutomaticallyCloneable Clone_Source()
-        {
-            return default(AutomaticallyCloneable);
-        }
-
         object ICloneable.Clone()
         {
             return Clone();
         }
     }
 
-    internal class DerivedCloneable : AutomaticallyCloneable
+    internal class DerivedCloneable : AutomaticallyCloneable, ICloneable
     {
         private string? _d;
 
-        public override DerivedCloneable Clone()
+        public virtual DerivedCloneable Clone()
         {
-            var clone = (DerivedCloneable)base.Clone();
+            var clone = (DerivedCloneable)MemberwiseClone();
             return clone;
+        }
+
+        object ICloneable.Clone()
+        {
+            return Clone();
         }
     }
 }

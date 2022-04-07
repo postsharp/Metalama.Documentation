@@ -34,7 +34,7 @@ Typically, the `csproj` project file of a compile-time test project would have t
 
     <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>

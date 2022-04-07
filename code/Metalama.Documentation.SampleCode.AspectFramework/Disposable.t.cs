@@ -25,11 +25,16 @@ namespace Doc.Disposable
     }
 
     [Disposable]
-    internal class Bar : Foo
+    internal class Bar : Foo, IDisposable
     {
         private FileSystemWatcher _cancellationTokenSource = new();
 
-        protected override void Dispose(bool disposing)
+        public void Dispose()
+        {
+            this.Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
         {
             base.Dispose(disposing);
             this._cancellationTokenSource?.Dispose();

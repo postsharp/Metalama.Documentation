@@ -158,7 +158,7 @@ namespace Metalama.Documentation.DfmExtensions
                     projectDir,
                     "obj",
                     "html",
-                    "net5.0",
+                    "net6.0",
                     Path.ChangeExtension( targetPathRelativeToProjectDir, ".Aspect.cs.html" ) ) );
 
             var targetHtmlPath = Path.GetFullPath(
@@ -166,7 +166,7 @@ namespace Metalama.Documentation.DfmExtensions
                     projectDir,
                     "obj",
                     "html",
-                    "net5.0",
+                    "net6.0",
                     Path.ChangeExtension( targetPathRelativeToProjectDir, ".cs.html" ) ) );
 
             var transformedHtmlPath = Path.GetFullPath(
@@ -174,7 +174,7 @@ namespace Metalama.Documentation.DfmExtensions
                     projectDir,
                     "obj",
                     "html",
-                    "net5.0",
+                    "net6.0",
                     Path.ChangeExtension( targetPathRelativeToProjectDir, ".out.cs.html" ) ) );
 
             var currentFile = ((ImmutableStack<string>) context.Variables["FilePathStack"]).Peek();
@@ -199,12 +199,11 @@ namespace Metalama.Documentation.DfmExtensions
             const string gitHubProjectPath = "https://github.com/postsharp/Metalama.Documentation/blob/" + gitBranch;
             const string tryBaseUrl = "https://try.metalama.net/#";
 
-            if ( File.Exists( aspectPath ) )
+            if ( File.Exists( transformedHtmlPath ) )
             {
                 // Create the tab group with the aspect, target, and transformed code.
 
                 var targetHtml = File.ReadAllText( targetHtmlPath );
-                var aspectHtml = File.ReadAllText( aspectHtmlPath );
                 var transformedHtml = File.ReadAllText( transformedHtmlPath );
 
                 string Html2Text( string html )
@@ -215,15 +214,9 @@ namespace Metalama.Documentation.DfmExtensions
                     return HtmlEntity.DeEntitize( doc.DocumentNode.SelectSingleNode( "//pre" ).InnerText );
                 }
 
-                var gitUrl = gitHubProjectPath + "/" + sourceDirectoryRelativeToGitDir + "/" +
-                             shortFileNameWithoutExtension + ".Aspect.cs";
-
+                
                 var targetCs = Html2Text( targetHtml );
-                var aspectCs = Html2Text( aspectHtml );
-                var tryPayloadJson = JsonConvert.SerializeObject( new { a = aspectCs, p = targetCs } );
-                var tryPayloadHash = LZString.CompressToEncodedURIComponent( tryPayloadJson );
-                var tryUrl = tryBaseUrl + tryPayloadHash;
-
+               
                 var snippetId = Interlocked.Increment( ref _nextId ).ToString();
 
                 var tabHeaders = new StringBuilder();
@@ -235,7 +228,22 @@ namespace Metalama.Documentation.DfmExtensions
                     tabBodies.Append( $"<div id=\"tabpanel_{snippetId}_{tabId}\">{content}</div>" );
                 }
 
-                AppendTab( "aspect", "Aspect Code", aspectHtml );
+                string aspectCs;
+                string gitUrlExtension;
+
+                if ( File.Exists( aspectHtmlPath ) )
+                {
+                    var aspectHtml = File.ReadAllText( aspectHtmlPath );
+                    AppendTab( "aspect", "Aspect Code", aspectHtml );
+                    aspectCs = Html2Text( aspectHtml );
+                    gitUrlExtension = ".Aspect.cs";
+                }
+                else
+                {
+                    aspectCs = "";
+                    gitUrlExtension = ".cs";
+                }
+
                 AppendTab( "target", "Target Code", targetHtml );
                 AppendTab( "transformed", "Transformed Code", transformedHtml );
 
@@ -243,6 +251,14 @@ namespace Metalama.Documentation.DfmExtensions
                 {
                     AppendTab( "output", "Program Output", "<pre class=\"program-output\">" + File.ReadAllText( programOutputPath ) + "</pre>" );
                 }
+
+                // Create the links
+                var gitUrl = gitHubProjectPath + "/" + sourceDirectoryRelativeToGitDir + "/" +
+                             shortFileNameWithoutExtension + gitUrlExtension;
+                var tryPayloadJson = JsonConvert.SerializeObject( new { a = aspectCs, p = targetCs } );
+                var tryPayloadHash = LZString.CompressToEncodedURIComponent( tryPayloadJson );
+                var tryUrl = tryBaseUrl + tryPayloadHash;
+
 
                 var totalContent =
                     @$"

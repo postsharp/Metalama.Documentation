@@ -37,7 +37,7 @@ namespace Doc.AspectConfiguration
     }
 
     // For convenience, an extension method to access the options.
-    [CompileTimeOnly]
+    [CompileTime]
     public static class LoggingProjectExtensions
     {
         public static LoggingOptions LoggingOptions( this IProject project ) => project.Extension<LoggingOptions>();

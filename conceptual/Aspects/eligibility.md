@@ -4,23 +4,25 @@ uid: eligibility
 
 # Defining the Eligibility of Aspects
 
-## Why to define eligibility?
-
 Most of the aspects are designed and implemented for specific kinds of target declarations. For instance, you may decide that your caching aspect will not support `void` methods or methods with an `out` or `ref` parameter. It is important, as the author of the aspect, to make sure that the user of your aspect applies it only to the declarations that you expect. Otherwise, at best, the aspect will cause build errors and confuse the user. At worse, the run-time behavior of your aspect will be incorrect.
 
-By defining the eligibility, you ensure that:
+## Benefits
 
-* the IDE or the compiler will report a nice error message when the user tries to add the aspect to an unsupported declaration, and that
-* the IDE will only propose code action in the refactoring menu for eligible declarations.
+Defining the eligibility of an aspect has the following benefits:
+
+* **Predictable behavior**. Applying an aspect to a declaration for which it was not designed or tested can be a very confusing experience for your users because of error messages they may not understand. It is your responsibility, as the author of the aspect, to ensure that using your aspect is easy and predictable.
+* **Standard error messages**. All eligibility error messages are standard. It is easier for the aspect users.
+* **Relevant suggestions in the IDE**.  The IDE will only propose code action in the refactoring menu for eligible declarations.
+
 
 ## Defining eligibility
 
-To define the eligibility of your aspect, implement or override the <xref:Metalama.Framework.Eligibility.IEligible%601.BuildEligibility%2A> method of the aspect. Use the `builder` parameter, of type <xref:Metalama.Framework.Eligibility.IEligibilityBuilder%601>, to specify the requirements of your aspect. For instance, use <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustBeNonAbstract%2A?text=builder.MustBeNonAbstract()> to require a non-abstract method.
+To define the eligibility of your aspect, implement or override the <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method of the aspect. Use the `builder` parameter, of type <xref:Metalama.Framework.Eligibility.IEligibilityBuilder`1>, to specify the requirements of your aspect. For instance, use <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustBeNonAbstract*?text=builder.MustBeNonAbstract()> to require a non-abstract method.
 
-A number of predefined eligibility conditions are implemented by the <xref:Metalama.Framework.Eligibility.EligibilityExtensions> static class. You can add a custom eligibility condition by calling <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy%2A> and providing your own lambda expression. This method also expects the user-readable string that should be included in the error message when the user attempts to add the aspect to an ineligible declaration.
+A number of predefined eligibility conditions are implemented by the <xref:Metalama.Framework.Eligibility.EligibilityExtensions> static class. You can add a custom eligibility condition by calling <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy*> and providing your own lambda expression. This method also expects the user-readable string that should be included in the error message when the user attempts to add the aspect to an ineligible declaration.
 
 >[!NOTE] 
-> Your implementation of <xref:Metalama.Framework.Eligibility.IEligible%601.BuildEligibility%2A> must not reference any instance member of the class. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` that is, _without invoking the class constructor_.
+> Your implementation of <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> must not reference any instance member of the class. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` that is, _without invoking the class constructor_.
 
 ### Example
 

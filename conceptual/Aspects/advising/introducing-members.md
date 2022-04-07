@@ -3,7 +3,7 @@ uid: introducing-members
 ---
 # Introducing Members
 
-In <xref:overriding-members>, you have learned how to override the implementation of existing type members. In this article, you will learn how to add new members to an existing type.
+In the previous articles, you have learned how to override the implementation of existing type members. In this article, you will learn how to add new members to an existing type.
 
 You can currently add the following kinds of members:
 
@@ -89,15 +89,15 @@ Implement the template in your aspect class and annotate it with the <xref:Metal
 
 ### Step 2. Invoke IAdviceFactory.Introduce*
 
-In your implementation of the <xref:Metalama.Framework.Aspects.IAspect%601.BuildAspect%2A> method, call one of the following methods and store the return value in a variable.
+In your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, call one of the following methods and store the return value in a variable.
 
-- <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceMethod%2A> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder>;
+- <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceMethod*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder>;
 
-- <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceProperty%2A> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IPropertyBuilder>;
+- <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceProperty*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IPropertyBuilder>;
 
-- <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceEvent%2A> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IEventBuilder>;
+- <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceEvent*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IEventBuilder>;
 
-- <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceField%2A> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder>.
+- <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceField*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder>.
 
 A call to these method creates a member that has the same characteristics as the template (name, signature, ...), taking into account the properties of the <xref:Metalama.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute. However, they return a _builder_ object that allows you to modify these characteristics.
 
@@ -126,10 +126,10 @@ When you want to introduce a member to a type, it may happen that the same membe
 
 Most of the times, when you override a method, you will want to invoke the aspect to invoke the base implementation. The same applies to properties and events. In plain C#, when you override a base-class member in a derived class, you call the member with the `base` prefix. A similar approach exists in Metalama.
 
-- To invoke the base method or accessor with exactly the same arguments, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed%2A>.
+- To invoke the base method or accessor with exactly the same arguments, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed*>.
 - To invoke the base method with different arguments, use <xref:Metalama.Framework.Code.Advised.IAdvisedMethod.Invoke(System.Object[])?text=meta.Target.Method.Invoke>.
 - To call the base property getter or setter, use <xref:Metalama.Framework.Code.IExpression.Value?text=meta.Property.Value>.
-- To access the base event, use <xref:Metalama.Framework.Code.Advised.IAdvisedEvent.AddMethod?text=meta.Event.AddMethod.Invoke%2A>.
+- To access the base event, use <xref:Metalama.Framework.Code.Advised.IAdvisedEvent.AddMethod?text=meta.Event.AddMethod.Invoke*>.
 
 [comment]: # (TODO: When it will work, Disposable example.)
 

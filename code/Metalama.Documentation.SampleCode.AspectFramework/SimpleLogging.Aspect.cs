@@ -7,7 +7,7 @@ namespace Doc.SimpleLogging
     {
         public override dynamic? OverrideMethod()
         {
-            Console.WriteLine( $"Entering {meta.Target.Method.ToDisplayString()}" );
+            Console.WriteLine( $"Entering {meta.Target.Method}" );
 
             try
             {
@@ -15,7 +15,7 @@ namespace Doc.SimpleLogging
             }
             finally
             {
-                Console.WriteLine( $"Leaving {meta.Target.Method.ToDisplayString()}" );
+                Console.WriteLine( $"Leaving {meta.Target.Method}" );
             }
         }
     }

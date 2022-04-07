@@ -18,8 +18,12 @@ var product = new Product
 {
     ProductName = "Metalama.Documentation",
     Solutions = new Solution[] {
-                    new DotNetSolution( "code\\Metalama.Documentation.DfmExtensions\\Metalama.Documentation.DfmExtensions.csproj" ) { CanFormatCode = true },
-                    new DotNetSolution( "code\\Metalama.Documentation.SampleCode.sln" ) { CanFormatCode = true, BuildMethod = BuildMethod.Test },
+        new DotNetSolution( "code\\Metalama.Documentation.Prerequisites.sln" ) { CanFormatCode = true },
+                    new DotNetSolution( "code\\Metalama.Documentation.SampleCode.sln" ) 
+                    { 
+                        CanFormatCode = true, 
+                        BuildMethod = BuildMethod.Test 
+                    },
                     new DocFxSolution( "docfx\\docfx.json" ) },
 
     PublicArtifacts = Pattern.Create(

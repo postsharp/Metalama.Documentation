@@ -14,7 +14,7 @@ See <xref:aspects>.
 
 ## Overview
 
-To create an aspect, create a class that derives from <xref:System.Attribute> and implement the <xref:Metalama.Framework.Aspects.IAspect%601> interface. Alternatively, you can use one of the following classes, which already XX derive from <xref:System.Attribute>, have the proper  <xref:System.AttributeUsageAttribute>, and implement the <xref:Metalama.Framework.Aspects.IAspect%601> interface:
+To create an aspect, create a class that derives from <xref:System.Attribute> and implement the <xref:Metalama.Framework.Aspects.IAspect`1> interface. Alternatively, you can use one of the following classes, which already XX derive from <xref:System.Attribute>, have the proper  <xref:System.AttributeUsageAttribute>, and implement the <xref:Metalama.Framework.Aspects.IAspect`1> interface:
 
 * <xref:Metalama.Framework.Aspects.CompilationAspect>
 * <xref:Metalama.Framework.Aspects.ConstructorAspect>
@@ -69,10 +69,10 @@ classDiagram
 ```mermaid
 classDiagram
 
-CompileTimeOnlyAttribute --|> ScopeAttribute : derives from
+CompileTimeAttribute --|> ScopeAttribute : derives from
 CompileTimeAttribute --|> ScopeAttribute  : derives from
 RunTimeOnlyAttribute --|> ScopeAttribute  : derives from
-TemplateAttribute --|> CompileTimeOnlyAttribute  : derives from
+TemplateAttribute --|> CompileTimeAttribute  : derives from
 AdviceAttribute --|> TemplateAttribute  : derives from
 IntroduceAttribute --|> AdviceAttribute  : derives from
 InterfaceMemberAttribute --|> TemplateAttribute  : derives from

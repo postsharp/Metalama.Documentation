@@ -3,12 +3,13 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 
 // Both Swabra and swabra need to be imported
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.Swabra
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.swabra
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.*
 
-version = "2019.2"
+version = "2021.2"
 
 project {
 
@@ -170,6 +171,10 @@ object PublicDeployment : BuildType({
         swabra {
             lockingProcesses = Swabra.LockingProcessPolicy.KILL
             verbose = true
+        }
+        sshAgent {
+            // By convention, the SSH key name is the same as the product name.
+            teamcitySshKey = "Metalama.Documentation"
         }
     }
 

@@ -35,11 +35,6 @@ Aspects -- transform<br>at compile time --> TransformedCode[Compiled Code]
 The conceptual documentation is hosted on https://github.com/postsharp/Metalama.Documentation. You can suggest improvements and corrections using the discussions board, and even submit a pull request.
 
 
-## Getting started
-
-1. <xref:installing>
-2. <xref:simple-aspects>
-
 ## Examples
 
 | Link                                                              | Description |

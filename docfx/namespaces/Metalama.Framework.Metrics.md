@@ -5,7 +5,7 @@ summary: *content
 
 This namespace allows you to consume and implement metrics.
 
-To consume a metric, start from a declaration, call the extension method <xref:Metalama.Framework.Metrics.MetricsExtensions.Metrics%2A?text=MetricsExtensions.Metric>, then call <xref:Metalama.Framework.Metrics.Metrics%601.Get%2A>.
+To consume a metric, start from a declaration, call the extension method <xref:Metalama.Framework.Metrics.MetricsExtensions.Metrics*?text=MetricsExtensions.Metric>, then call <xref:Metalama.Framework.Metrics.Metrics`1.Get*>.
 
 
 ## Class Diagram

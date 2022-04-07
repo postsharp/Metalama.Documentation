@@ -7,9 +7,9 @@ This namespace allows you to suggest code fixes and code refactorings, i.e. chan
 
 Code fixes can be instantiated using the static methods of the <xref:Metalama.Framework.CodeFixes.CodeFixFactory> class.
 
-To add code fixes to a diagnostic, use the <xref:Metalama.Framework.Diagnostics.IDiagnostic.WithCodeFixes%2A?text=IDiagnostic.WithCodeFixes> method.
+To add code fixes to a diagnostic, use the <xref:Metalama.Framework.Diagnostics.IDiagnostic.WithCodeFixes*?text=IDiagnostic.WithCodeFixes> method.
 
-To suggest a code refactoring without reporting a diagnostic, use the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest%2A>text=IDiagnosticSink.Suggest> method.
+To suggest a code refactoring without reporting a diagnostic, use the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*>text=IDiagnosticSink.Suggest> method.
 
 ## Class diagram
 

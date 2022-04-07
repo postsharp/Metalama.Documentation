@@ -52,7 +52,7 @@ namespace Doc.LogParameters
             }
         }
 
-        [CompileTimeOnly]
+        [CompileTime]
         private static InterpolatedStringBuilder BuildInterpolatedString()
         {
             var stringBuilder = new InterpolatedStringBuilder();

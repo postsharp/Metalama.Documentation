@@ -6,13 +6,20 @@ uid: exposing-configuration
 
 Some complex and widely-used aspects need a central, project-wide way to configure their compile-time behavior.
 
-For instance, a logging aspect may let the user define the logging level. In the debug build, the aspect should generate code to log the beginning and success of all methods. In the release build, only failures are logged. For performance reasons, this decision must be taken at compile time (we don't want the production code to contain debugging code), so a run-time configuration file or API will not be sufficient. The aspect needs to expose a configuration mechanism.
-
 There are two complementary configuration mechanisms: MSBuild properties and configuration API.
+
+## Benefits
+
+* **Central options of aspects**. When you provide a configuration API, the whole project can be configured at once. Without a configuration API, the user of the aspect needs to supply the configuration every time a custom attribute is used.
+
+* **Debug/Release-aware options**. Without a configuration API, it can be very impractical to set options according to the `Debug`/`Release` build configuration.
+
+* **Run-time performance**. When decisions are taken at compile time and optimal run-time code is generated accordingly, the run-time execution of your app is faster.
+
 
 ## Consuming MSBuild properties
 
-The simplest way for an aspect to accept a configuration property is to read an MSBuild property using the <xref:Metalama.Framework.Project.IProject.TryGetProperty%2A?text=IProject.TryGetProperty> method. MSBuild properties are not visible to aspects by default: you have to instruct MSBuild to pass it to the compiler using the `CompilerVisibleProperty` item.
+The simplest way for an aspect to accept a configuration property is to read an MSBuild property using the <xref:Metalama.Framework.Project.IProject.TryGetProperty*?text=IProject.TryGetProperty> method. MSBuild properties are not visible to aspects by default: you have to instruct MSBuild to pass it to the compiler using the `CompilerVisibleProperty` item.
 
 We recommend the following approach to consume a configuration property:
 
@@ -72,10 +79,10 @@ For more complex aspects, a set of properties may not be convenient enough. Inst
 To create a configuration API:
 
 1. Create a class that derives from <xref:Metalama.Framework.Project.ProjectExtension> and have a default constructor. 
-2. Optionally, implement the <xref:Metalama.Framework.Project.ProjectExtension.Initialize%2A> method, which receives the <xref:Metalama.Framework.Project.IProject>. 
-3. In your aspect code, call the <xref:Metalama.Framework.Project.IProject.Extension%2A?text=IProject.Extension&lt;T&gt;()> method, where `T` is your configuration class, to get the configuration object.
+2. Optionally, implement the <xref:Metalama.Framework.Project.ProjectExtension.Initialize*> method, which receives the <xref:Metalama.Framework.Project.IProject>. 
+3. In your aspect code, call the <xref:Metalama.Framework.Project.IProject.Extension*?text=IProject.Extension&lt;T&gt;()> method, where `T` is your configuration class, to get the configuration object.
 4. Optionally, create an extension method to the <xref:Metalama.Framework.Project.IProject> method to expose your configuration API, so that it is more discoverable.
-5. To configure your aspect, users should implement a project fabric and access your configuration API using this extension method. The class must be annotated with `[CompileTimeOnly]`.
+5. To configure your aspect, users should implement a project fabric and access your configuration API using this extension method. The class must be annotated with `[CompileTime]`.
 
 ### Example
 

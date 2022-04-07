@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- The role of this project is to gather all libraries to be documented into the output directory
+		 so they can be used by docfx. -->
+	
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)" />
+		<PackageReference Include="Metalama.TestFramework" Version="$(MetalamaVersion)" />
+		<PackageReference Include="Metalama.Framework.Introspection" Version="$(MetalamaVersion)" />
+		<PackageReference Include="Metalama.Framework.Workspaces" Version="$(MetalamaVersion)" />
+		<PackageReference Include="Metalama.LinqPad" Version="$(MetalamaVersion)" />
+		<PackageReference Include="Metalama.Compiler" Version="$(MetalamaCompilerVersion)" />
+	</ItemGroup>
+
+</Project>

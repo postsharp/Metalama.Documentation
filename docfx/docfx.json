@@ -4,22 +4,20 @@
       "src": [
         {
           "files": [
-              "Metalama/Metalama.Framework/Metalama.Framework.csproj",
-              "Metalama/Metalama.TestFramework/Metalama.TestFramework.csproj",
-              "Metalama/Metalama.Framework.Sdk/Metalama.Framework.Sdk.csproj",
-              "Metalama/Metalama.Framework.Introspection/Metalama.Framework.Introspection.csproj",
-              "Metalama/Metalama.Framework.Workspaces/Metalama.Framework.Workspaces.csproj",
-              "Metalama/Metalama.LinqPad/Metalama.LinqPad.csproj",
-              "Metalama.Compiler/src/Metalama/Metalama.Compiler.Sdk/Metalama.Compiler.Sdk.csproj"
+              "Metalama.Framework.dll",
+              "Metalama.TestFramework.dll",
+              "Metalama.Framework.Sdk.dll",
+              "Metalama.Framework.Introspection.dll",
+              "Metalama.Framework.Workspaces.dll",
+              "Metalama.LinqPad.dll",
+              "Metalama.Compiler.Interface.dll"
               ],
-          "src": "../../"
+          "src": "../code/Metalama.Documentation.Consolidated/bin/Debug/net6.0-windows"
         }
       ],
       "dest": "obj/api",
       "disableGitFeatures": false,
-      "disableDefaultFilter": false,
-      "properties": {
-        "TargetFramework": "net5.0"}
+      "disableDefaultFilter": false
     }
   ],
   "build": {
@@ -72,7 +70,6 @@
     "markdownEngineName": "dfm",
     "noLangKeyword": false,
     "keepFileLink": false,
-    "cleanupCacheHistory": false,
-    "disableGitFeatures": true
+    "cleanupCacheHistory": false
   }
 }

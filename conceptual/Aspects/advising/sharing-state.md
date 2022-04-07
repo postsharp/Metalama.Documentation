@@ -18,7 +18,7 @@ You can use the <xref:Metalama.Framework.Aspects.IAspectBuilder.State?text=IAspe
 
 ## Sharing state with the Tags property
 
-If your `BuildAspect` method needs to pass to a template method some state that is specific to an advice instance, you can construct an instance of the [Dictionary](xref:System.Collections.Generic.Dictionary%602)<[String](xref:System.String), [object](xref:System.Object)> class and assign all elements of state as tags in the name-value dictionary. In the template method, the tags are available under the `meta.Tags` dictionary.
+If your `BuildAspect` method needs to pass to a template method some state that is specific to an advice instance, you can construct an instance of the [Dictionary](xref:System.Collections.Generic.Dictionary`2)<[String](xref:System.String), [object](xref:System.Object)> class and assign all elements of state as tags in the name-value dictionary. In the template method, the tags are available under the `meta.Tags` dictionary.
 
 ### Example
 
