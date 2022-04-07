@@ -28,7 +28,7 @@ namespace Doc.ForTestOnly
         internal class TestClass
         {
             // Usage allowed here because we are in a Tests namespace.
-            private MyService service = new( DateTime.Now.AddDays( 1 ) );
+            private MyService service = new( DateTime.Now.AddDays( 2 ) );
         }
     }
 }

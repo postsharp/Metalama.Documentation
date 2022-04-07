@@ -24,7 +24,7 @@ namespace Doc.ForTestOnly
         {
             if (
                 context.ReferencingType != context.ReferencedDeclaration.GetDeclaringType() &&
-                !context.ReferencingType.Namespace.FullName.EndsWith( "Test" ) )
+                !context.ReferencingType.Namespace.FullName.EndsWith( ".Tests" ) )
             {
                 context.Diagnostics.Report( _warning.WithArguments( context.ReferencedDeclaration ) );
             }

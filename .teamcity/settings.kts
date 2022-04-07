@@ -172,10 +172,6 @@ object PublicDeployment : BuildType({
             lockingProcesses = Swabra.LockingProcessPolicy.KILL
             verbose = true
         }
-        sshAgent {
-            // By convention, the SSH key name is the same as the product name.
-            teamcitySshKey = "Metalama.Documentation"
-        }
     }
 
   dependencies {
