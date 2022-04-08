@@ -10,8 +10,7 @@
 
     <!-- Versions of dependencies -->
     <PropertyGroup>
-        <!-- Currently, only local builds are supported. -->
-        <MetalamaVersion>local</MetalamaVersion>
+        <MetalamaVersion>branch:master</MetalamaVersion>
         <PostSharpEngineeringVersion>1.0.61-preview</PostSharpEngineeringVersion>
     </PropertyGroup>
 
