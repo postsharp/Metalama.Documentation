@@ -15,7 +15,7 @@ namespace BuildMetalamaDocumentation
         public DocFxSolution( string solutionPath ) : base( solutionPath )
         {
             // Packing is done by the publish command.
-            this.BuildMethod = PostSharp.Engineering.BuildTools.Build.Model.BuildMethod.Pack;
+            this.BuildMethod = PostSharp.Engineering.BuildTools.Build.Model.BuildMethod.Pack;            
         }
 
         public override bool Build( BuildContext context, BuildSettings settings )
@@ -59,7 +59,10 @@ namespace BuildMetalamaDocumentation
             return true;
         }
 
-        public override bool Test( BuildContext context, BuildSettings settings ) => throw new NotSupportedException();
+        public override bool Test( BuildContext context, BuildSettings settings )
+        {
+            return true;
+        }
 
         public override bool Restore( BuildContext context, BuildSettings settings )
         {
