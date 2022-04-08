@@ -16,21 +16,18 @@ const string docPackageFileName = "Metalama.Doc.zip";
 var product = new Product
 {
     ProductName = "Metalama.Documentation",
-    Solutions = new Solution[] {
+    Solutions = new Solution[]
+    {
         new DotNetSolution( "code\\Metalama.Documentation.Prerequisites.sln" ) { CanFormatCode = true },
-                    new DotNetSolution( "code\\Metalama.Documentation.SampleCode.sln" ) 
-                    { 
-                        CanFormatCode = true, 
-                        BuildMethod = BuildMethod.Test 
-                    },
-                    new DocFxSolution( "docfx\\docfx.json" ) },
-
+        new DotNetSolution( "code\\Metalama.Documentation.SampleCode.sln" )
+        {
+            CanFormatCode = true, BuildMethod = BuildMethod.Test,
+        },
+        new DocFxSolution( "docfx\\docfx.json" )
+    },
     PublicArtifacts = Pattern.Create(
         docPackageFileName ),
-
-    Dependencies = new [] {
-        Dependencies.PostSharpEngineering,
-        Dependencies.Metalama },
+    Dependencies = new[] { Dependencies.PostSharpEngineering, Dependencies.Metalama },
     AdditionalDirectoriesToClean = new[] { "docfx\\obj", "docfx\\_site" },
 
     // Disable automatic build triggers.
@@ -40,13 +37,13 @@ var product = new Product
             MSBuildName: "Release",
             PublicPublishers: new Publisher[]
             {
-                new DocumentationPublisher( new S3PublisherConfiguration[] {
+                new DocumentationPublisher( new S3PublisherConfiguration[]
+                {
                     //TODO
-                    new( docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
+                    new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
                 } )
             } ) )
 };
-
 
 
 var commandApp = new CommandApp();

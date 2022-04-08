@@ -4,7 +4,7 @@ uid: validation
 
 # Validating Code
 
-This chapter describes how to validate your source code complies against the architecture, design patterns, and other team conventions.
+This chapter describes how to validate your source code against the architecture, design patterns, and other team conventions.
 
 ## Benefits
 

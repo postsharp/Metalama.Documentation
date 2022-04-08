@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk"  InitialTargets="CheckConfiguration">
 
     <PropertyGroup>
         <TargetFramework>net472</TargetFramework>
@@ -12,5 +12,9 @@
         <PackageReference Include="Microsoft.Composition" Version="1.0.31"/>
         <PackageReference Include="PKT.LZStringCSharp" Version="2.1.0"/>
     </ItemGroup>
+
+    <Target Name="CheckConfiguration">
+		<Error Text="This project can only be built in Debug configuration because its Debug output directory is specificially references. Check the sln file." Condition="'$(Configuration)'!='Debug'"/>
+	</Target>
 
 </Project>
