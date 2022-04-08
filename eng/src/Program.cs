@@ -63,6 +63,9 @@ static void OnPrepareCompleted( PrepareCompletedEventArgs args )
 {
     var nuget = Path.Combine( Path.GetDirectoryName( Process.GetCurrentProcess().MainModule.FileName ), "nuget.exe " );
 
-    ToolInvocationHelper.InvokeTool( args.Context.Console, nuget,
-        "restore \"docfx\\packages.config\" -OutputDirectory \"docfx\\packages\"", args.Context.RepoDirectory );
+    if ( !ToolInvocationHelper.InvokeTool( args.Context.Console, nuget,
+        "restore \"docfx\\packages.config\" -OutputDirectory \"docfx\\packages\"", args.Context.RepoDirectory ) )
+    {
+        args.IsFailed = true;
+    }
 }
