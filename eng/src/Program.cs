@@ -9,7 +9,10 @@ using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
 using PostSharp.Engineering.BuildTools.Dependencies.Model;
+using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
+using System;
+using System.IO;
 
 const string docPackageFileName = "Metalama.Doc.zip";
 
@@ -45,9 +48,18 @@ var product = new Product
             } ) )
 };
 
+product.PrepareCompleted += OnPrepareCompleted;
+
 
 var commandApp = new CommandApp();
 
 commandApp.AddProductCommands( product );
 
 return commandApp.Run( args );
+
+
+void OnPrepareCompleted( PrepareCompletedEventArgs args )
+{
+    ToolInvocationHelper.InvokeTool( args.Context.Console, "nuget",
+        "restore \"docfx\\packages.config\" -OutputDirectory \"docfx\\packages\"", args.Context.RepoDirectory );
+}
