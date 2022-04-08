@@ -13,6 +13,7 @@ using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
 using System;
 using System.IO;
+using System.Diagnostics;
 
 const string docPackageFileName = "Metalama.Doc.zip";
 
@@ -58,8 +59,10 @@ commandApp.AddProductCommands( product );
 return commandApp.Run( args );
 
 
-void OnPrepareCompleted( PrepareCompletedEventArgs args )
+static void OnPrepareCompleted( PrepareCompletedEventArgs args )
 {
-    ToolInvocationHelper.InvokeTool( args.Context.Console, "nuget",
+    var nuget = Path.Combine( Path.GetDirectoryName( Process.GetCurrentProcess().MainModule.FileName ), "nuget.exe " );
+
+    ToolInvocationHelper.InvokeTool( args.Context.Console, nuget,
         "restore \"docfx\\packages.config\" -OutputDirectory \"docfx\\packages\"", args.Context.RepoDirectory );
 }

@@ -12,8 +12,17 @@
 
     <ItemGroup>
 		<PackageReference Include="AWSSDK.S3" Version="3.7.7.23" />
+		<PackageReference Include="NuGet.CommandLine" Version="6.1.0" GeneratePathProperty="True">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
         <PackageReference Include="PostSharp.Engineering.BuildTools" Version="$(PostSharpEngineeringVersion)" />
 		<PackageReference Include="PostSharp.Engineering.BuildTools.AWS" Version="$(PostSharpEngineeringVersion)" />
+        
+        <Content Include="$(PkgNuGet_CommandLine)\tools\nuget.exe">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+   
     </ItemGroup>
 
 </Project>
