@@ -9,13 +9,15 @@ You can achieve this thanks to the <xref:Metalama.Framework.Aspects.OverrideMeth
 
 ## The simple way: deriving the OverrideMethod abstract class
 
-1. Create a new class derived from the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
+1. Add Metalama to your project as described in <xref:installing>.
+   
+2. Create a new class derived from the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
 
-2. Implement the <xref:Metalama.Framework.Aspects.OverrideMethodAspect.OverrideMethod> method in plain C#. This method will serve as a <xref:templates?text=template> defining the way the aspect overrides the hand-written target method.
+3. Implement the <xref:Metalama.Framework.Aspects.OverrideMethodAspect.OverrideMethod> method in plain C#. This method will serve as a <xref:templates?text=template> defining the way the aspect overrides the hand-written target method.
    - To insert code or expressions that depend on the target method of the aspect (such as the method name or the parameter type), use the <xref:Metalama.Framework.Aspects.meta> API.
    - Where the original implementation must be invoked, call the <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed> method.
 
-3. The aspect is a custom attribute. To transform a method using the aspect, just add the aspect custom attribute to the method.
+4. The aspect is a custom attribute. To transform a method using the aspect, just add the aspect custom attribute to the method.
 
 ### Example: an empty OverrideMethod aspect
 

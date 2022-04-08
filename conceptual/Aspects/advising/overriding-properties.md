@@ -7,13 +7,15 @@ In <xref:overriding-methods>, you have learned how to wrap an existing method wi
 
 ## The simple way: deriving the OverrideFieldOrPropertyAspect abstract class
 
-1. Create a new class derived from the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
+1. Add Metalama to your project as described in <xref:installing>.
+   
+2. Create a new class derived from the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
 
-2. Implement the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect.OverrideProperty> property in plain C#. The accessors of this property will serve as <xref:templates?text=templates> defining the way the aspect overrides the accessors of the hand-written field or property.
+3. Implement the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect.OverrideProperty> property in plain C#. The accessors of this property will serve as <xref:templates?text=templates> defining the way the aspect overrides the accessors of the hand-written field or property.
    - To insert code or expressions that depend on the target accessors of the aspect (such as the field or property name or type), use the <xref:Metalama.Framework.Aspects.meta> API.
    - Where the original implementation must be invoked, call the <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed> method.
 
-3. The aspect is a custom attribute. To transform a field or property using the aspect, just add the aspect custom attribute to the field or property.
+4. The aspect is a custom attribute. To transform a field or property using the aspect, just add the aspect custom attribute to the field or property.
 
 > [!WARNING]
 > When you apply an aspect to a field, Metalama will automatically transform the field into a property. If the field is used by reference using `ref`, `out` and `in` keywords, it will result in a compile-time error.

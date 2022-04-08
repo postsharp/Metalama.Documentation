@@ -4,14 +4,13 @@ items:
   items:
   - name: Getting Started
     topicUid: getting-started
-    items: 
-     - name: Installing Metalama To Your Project
-       topicUid: installing
   - name: Requirements
     topicUid: requirements
   - name: Deployment
     topicUid: deployment
     items:
+      - name: Quick Start
+        topicUid: installing
       - name: NuGet Packages
         topicUid: packages
       - name: Metalama Tools for Visual Studio
