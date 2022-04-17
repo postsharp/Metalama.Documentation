@@ -4,7 +4,7 @@ uid: register-license
 
 # Registering a license
 
-When you use Metalama when the first time, Metalama will automatically activate the trial mode, which will work for a period of 45 days. To use Metalama beyond this period, you need to switch to Metalama Essentials or to register a license key.
+When you use Metalama for the first time it will automatically activate the trial mode which will work for a period of 45 days. To use Metalama beyond this period you will need to switch to Metalama Essentials or register a license key.
 
 ## Switching to Metalama Essentials
 

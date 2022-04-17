@@ -4,7 +4,7 @@ uid: getting-started
 
 # Getting Started with Metalama
 
-1. **Install Metalama**. Add the `Metalama.Framework` package to your project. We also recommend to install [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama).
+1. **Install Metalama**. Add the `Metalama.Framework` package to your project. We also recommend that you install [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama).
    
    See <xref:installing> for details.
    
@@ -12,7 +12,7 @@ uid: getting-started
    
    See <xref:overriding-methods> for details.
 
-3. **Validate your source code**. Reports errors and warnings to the IDE or to the build when the source code is off the line. 
+3. **Validate your source code**. Report errors and warnings to the IDE or to the build when the source code is off the line. 
 
    See <xref:validation> for details.
 

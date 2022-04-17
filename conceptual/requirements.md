@@ -8,7 +8,7 @@ uid: requirements
 
 * .NET SDK 6.0 needs to be installed.
 * Metalama has been tested on Windows and Ubuntu.
-* Building on an ARM machine is not yet tested but it should be supported in the future.
+* Building on an ARM machine is not as yet possible but it should be supported in the future.
 
 ## IDEs
 

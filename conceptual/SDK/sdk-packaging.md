@@ -13,11 +13,12 @@ To fix this:
 2. Specify `<PackageId>` with a `.Redist` suffix inside a `<PropertyGroup>` in the csproj of the first project.
 3. (Optional) Add `<IsPackable>false</IsPackable>` to a `<PropertyGroup>` in the csproj of the first project, to prevent you from creating a package that would contain just the attribute.
 
+<!--- Illustrating the above with an example would be a good idea -->
 ## Formatting the output code
 
 Your weaver does not need to format the output code itself. This is done by Metalama at the end of the pipeline, and only when necessary.
 
-However, your weaver is responsible to annotate the syntax nodes with the annotations declared in the  <xref:Metalama.Framework.Engine.Formatting.FormattingAnnotations> class.
+However, your weaver is responsible to annotating the syntax nodes with the annotations declared in the  <xref:Metalama.Framework.Engine.Formatting.FormattingAnnotations> class.
 
 
 ## Examples

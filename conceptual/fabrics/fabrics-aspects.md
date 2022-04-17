@@ -2,7 +2,7 @@
 uid: fabrics-aspects
 ---
 
-# Adding Aspects in Bulk from a Fabrics
+# Adding Aspects in Bulk from a Fabric
 
 You can use a fabric to programmatically add aspects to any declaration that is "under" the target of the fabric. Thanks to fabrics, you do not need to add aspects one by one using custom attributes.
 * From a type fabric, you can add aspects to any member of this type or to the type itself.
@@ -11,13 +11,13 @@ You can use a fabric to programmatically add aspects to any declaration that is 
 
 To add an an aspect from a fabric:
 
-1. Create a fabric class and add a <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>, <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method.
+1. Create a fabric class and add an <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>, <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method.
 
 2. Call one of the following methods from <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>:
-   * To select type members (methods, fields, nested types, ...), use the <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.WithTargetMembers*?text=amender.WithTargetMembers> method and provide a lambda expression that select the relevent type members, or
+   * To select type members (methods, fields, nested types, ...), use the <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.WithTargetMembers*?text=amender.WithTargetMembers> method and provide a lambda expression that selects the relevent type members, or
    * To select the type itself, use <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.WithTarget*?text=amender.WithTarget>.
 
-    The reason of this design is that the <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.WithTargetMembers*> method will not only select members declared in source code, but also members introduced by other aspects and that are unknown when your  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed.
+    The reason for this design is that the <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.WithTargetMembers*> method will not only select members declared in source code, but also members introduced by other aspects and that are unknown when your  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed.
 
 
 3. Chain the call to <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.WithTargetMembers*> or  <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.WithTarget*> with a call to thr  <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> method.
@@ -33,4 +33,5 @@ In the following example, a type fabric adds a logging aspect to all public meth
 
 In the following example, a type fabric adds a logging aspect to all public methods in the type.
 
+<!---Ok then  in kinds of fabrics  you state "implement type fabrics in a separate file, and mark the parent class as partial."  Why then is the type fabric illustrated below not partial?  -->
 [!include[Type Fabric Adding Aspects](../../code/Metalama.Documentation.SampleCode.AspectFramework/TypeFabric.cs)]

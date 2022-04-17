@@ -8,8 +8,8 @@ This article explains how to report a diagnostic (error, warning or information 
 ## Benefits
 
 * **Avoid non-intuitive error messages**. Aspects that are applied to unexpected or untested kinds of declarations can throw very confusing exceptions or cause errors while compiling the transformed code. This confusion can be avoided by reporting clear error messages when the target of the aspect does not meet expectations. See also <xref:eligibility> for this use case.
-* **Avoid confusing warnings**. The C# compiler and other analyzers are not aware that the code is being transformed by your aspect. Therefore, they may report irrelevant warnings. If you suppress these warnings from your aspects, developers using your aspect will be less confused and will lose not lose time suppressing the warnings manually.
-* **Improve the productivity of the users of your aspect**. Overall, reporting and suppressing relevant diagnostics greatly improve the productivity of people using your aspect.
+* **Avoid confusing warnings**. The C# compiler and other analyzers are not aware that the code is being transformed by your aspect and they may, therefore, report irrelevant warnings. If you suppress these warnings from your aspects, developers using your aspect will be less confused and will not lose time suppressing the warnings manually.
+* **Improve the productivity of the users of your aspect**. Overall, reporting and suppressing relevant diagnostics greatly improves the productivity of people using your aspect.
 * **Diagnostic-only aspects**. You can also create aspects that _only_ report or suppress diagnostics, without transforming source code. See <xref:validation> for details and benefits.
 
 ## Reporting a diagnostic
@@ -35,8 +35,10 @@ To report a diagnostic:
 
 ### Example
 
-The following aspect needs a field named `_logger` to exist in the target type. Its `BuildAspect` method checks for that this field exist and reports an error if it does not.
-
+The following aspect needs a field named `_logger` to exist in the target type. Its `BuildAspect` method checks that this field exists and reports an error if it does not.
+<!--- Ok I know that this is picking hairs, BUT... Thus far in your webinar and other presentation material that you have made you have demonstrated Metalamas ability to produce quick and easy logging, 
+and in everything I've seen you have also introduced Fabrics that show how you can 'automate' logging methods in a project.
+I look at this example now and think to myself   'well this would never fire becuase I'd have a fabric that applies the log attribute to everything anyway  -->
 [!include[Report Error](../../code/Metalama.Documentation.SampleCode.AspectFramework/ReportError.cs)]
 
 ## Suppressing a diagnostic
@@ -55,6 +57,11 @@ To suppress a diagnostic:
 
 The following logging aspect requires a `_logger` field to exist, but it is likely that this field will never be used in user code but only in generated code. Because the IDE does not see the generated code, it will report the `CS0169` warning, which is misleading and annoying to the user. The aspect suppresses this warning.
 
+<!--- and then to add insult to injury you go on to show me a way to surpress a warning I likely wouldn't have created given that a fabric is the obvious way to do logging.
+
+NOW OF MUCH MORE USE  consider the following.  Most generic logging is going to be tell me I've entered a method with x params, I'm leaving a method with x result and tell me if we hit an exception.
+what you can't really predict in advance is whether for example there will be something like a for loop or a dictionary in a method.  Now lets say that a team's rule is that all for loops in financial 
+methods are logged, now thats where an example of this sort would really come into it's own becuase you'd be demonstrating something that might well have to be done.  -->
 [!include[Suppress Warning](../../code/Metalama.Documentation.SampleCode.AspectFramework/SuppressWarning.cs)]
 
 
@@ -66,6 +73,6 @@ The following aspect can be added to a field or property. It overrides the gette
 
 ## Validating the target code after all aspects have been applied
 
-When the `BuildAspect` method of your aspect is execute, it sees the code model as it was _before_ the aspect was applied.
+When the `BuildAspect` method of your aspect is executed, it sees the code model as it was _before_ the aspect was applied.
 
 If you need to validate the code after all aspects have been applied, see <xref:validation>.

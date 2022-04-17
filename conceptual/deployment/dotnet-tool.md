@@ -4,7 +4,7 @@ uid: dotnet-tool
 
 # Installing Metalama Command Line Tools
 
-In order to register a license key or access some configuration settings, you ned to install Metalama Command-Line Tools, an extension to the `dotnet` command-line utility.
+In order to register a license key or access some configuration settings, you need to install Metalama Command-Line Tools, an extension to the `dotnet` command-line utility.
 
 In order to install Metalama Command Line Tools:
 

@@ -21,7 +21,7 @@ For details of all NuGet packages and their dependencies, see <xref:packages>.
 
 ## 2. Install Metalama Tools for Visual Studio (optional)
 
-To create new aspects, we suggest that you use Visual Studio 2022 and install [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama). This extension adds syntax highlighting to aspect code (like in the present documentation) and can be of great help, especially if you are just getting started with Metalama.
+To create new aspects, we suggest that you use Visual Studio 2022 and install [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama). This extension adds syntax highlighting to aspect code (as seen in the examples in this documentation) and can be of great help, especially if you are just getting started with Metalama.
 
 ## What's Next?
 

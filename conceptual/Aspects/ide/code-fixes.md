@@ -6,7 +6,7 @@ uid: code-fixes
 
 ## Attaching code fixes to diagnostics
 
-Whenever an aspect or fabric reports a diagnostic, it can attach as set of code fixes by calling the <xref:Metalama.Framework.Diagnostics.IDiagnostic.WithCodeFixes*?text=IDiagnostic.WithCodeFixes> method. To create one-step code fixes, you can use the <xref:Metalama.Framework.CodeFixes.CodeFixFactory> class.
+Whenever an aspect or fabric reports a diagnostic, it can attach <!--- to What? --> as set of code fixes by calling the <xref:Metalama.Framework.Diagnostics.IDiagnostic.WithCodeFixes*?text=IDiagnostic.WithCodeFixes> method. To create one-step code fixes, you can use the <xref:Metalama.Framework.CodeFixes.CodeFixFactory> class.
 
 
 ## Suggesting code refactorings without diagnostics
@@ -28,11 +28,11 @@ To create a custom code fix, instantiate the <xref:Metalama.Framework.CodeFixes.
 The <xref:Metalama.Framework.CodeFixes.CodeFix> constructor accepts two arguments:
 
 * the _title_ of the code fix, as displayed to the user, and
-* a _delegate_ of type `Func<ICodeActionBuilder, Task>` that applies the code fix when the it is selected by the user.
+* a _delegate_ of type `Func<ICodeActionBuilder, Task>` that applies the code fix when it is selected by the user.
 
 The title must be globally unique for the target declaration. Even two different aspects cannot provide two code fixes of the same title to the same declaration.
 
-The delegate will typically use one of following methofs of the <xref:Metalama.Framework.CodeFixes.ICodeActionBuilder> interface:
+The delegate will typically use one of following methods of the <xref:Metalama.Framework.CodeFixes.ICodeActionBuilder> interface:
 
 | Method | Description |
 |------|----|
@@ -56,10 +56,10 @@ The custom does the following:
 
 * Code fixes and refactorings are only useful at design time. At compile time, all code fixes will be ignored. If you want to avoid generating code fixes at compile time, you can make your logic conditional to the `MetalamaExecutionContext.Current.ExecutionScenario.CapturesCodeFixTitles` expression.
 
-* The `Func<ICodeActionBuilder, Task>`  delegate is only executed when the code fix or refactoring is selected by the user. However, the whole aspect will be executed again. It has two implications:
+* The `Func<ICodeActionBuilder, Task>`  delegate is only executed when the code fix or refactoring is selected by the user. However, the whole aspect will be executed again which has two implications:
   *  The logic that _creates_ the delegate must be very fast because it is rarely useful. Any expensive logic should be moved to the _implementation_ of the delegate itself.
   *  If you want to avoid generating the delegate, you can make it conditional to the `MetalamaExecutionContext.Current.ExecutionScenario.CapturesCodeFixImplementations` expression.
 
-* At design time, all code fix titles, including those added by the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method,  are cached for the whole solution. Therefore, you should avoid suggesting a large amount of suggestions. The current Metalama design is not suited for this scenario.
+* At design time, all code fix titles, including those added by the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method,  are cached for the whole solution. Therefore, you should avoid adding a large number of suggestions. The current Metalama design is not suited for this scenario.
 
 

@@ -3,8 +3,8 @@ uid: packages
 ---
 
 # List of NuGet Packages
-
-Metalama is composed of a dozen of NuGet packages. It may sound a lot, but some are used only for testing or troubleshootin (using the _introspection_ APIs) and will never make it to your public packages.
+<!--- I count nine in the list below-->
+Metalama is composed of many NuGet packages, however some are used only for testing or trouble shooting (using the _introspection_ APIs) and will never be included in your public packages.
 
 
 ## Package list
@@ -13,7 +13,7 @@ Metalama is composed of a dozen of NuGet packages. It may sound a lot, but some 
 |--|--|--|
 | Metalama.Framework.Redist | Run-Time Execution | The only package required to execute code built with Metalama. It does not contain or reference the assets to _build_ with Metalama. |
 | Metalama.Framework | Compiling, Testing, Introspection | The typical top-level package for a project that defines Metalama aspects. See <xref:installing>.
-| Metalama.Compiler | Compiling | Replaces Microsoft's C# compiler by Metalama's own fork.
+| Metalama.Compiler | Compiling | Replaces Microsoft's C# compiler with Metalama's own fork.
 | Metalama.Compiler.Sdk | Compiling | Defines the extensibility API of `Metalama.Compiler`.
 | Metalama.Framework.Sdk | Compiling | Defines the low-level extensibility API of `Metalama.Framework` (extensions using the Roslyn API). |
 | Metalama.TestFramework | Testing | The top-level package for test projects. References `Metalama.Framework` but inhibits most of its behaviors. See <xref:compile-time-testing>. |

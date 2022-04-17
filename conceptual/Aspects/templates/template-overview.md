@@ -10,15 +10,19 @@ T# is the template language used by Metalama. The syntax of T# is 100% compatibl
 
 T# templates are a mix between _compile-time_ and _run-time_ expressions and statements. Compile-time expressions and statements are evaluated at compile time in the compiler (or at design time in the IDE when you use the Preview feature), and result in the generation of other run-time expressions.
 
-Metalama analyzes T# and splits the compile-time part from the run-time part. It does it by applying a set of inference rules. Compile-time expressions and statements very often start with the `meta` pseudo-keyword. <xref:Metalama.Framework.Aspects.meta> is actually a static class, but it is useful to think of it as a kind of magic keyword that means that starts a compile-time expression or statement.
+Metalama analyzes T# and splits the compile-time part from the run-time part. It does it by applying a set of inference rules. Compile-time expressions and statements very often start with the `meta` pseudo-keyword. <xref:Metalama.Framework.Aspects.meta> is actually a static class, but it is useful to think of it as a kind of magic keyword that means that it starts a compile-time expression or statement.
 
 
 ### Initial example
 
-Before moving forward, let's illustrate this concept with an example. The next aspect writes some text to the console before and after the execution of a method. 
+Before moving forward, let's illustrate this concept with an example. The following aspect writes some text to the console before and after the execution of a method. 
 
-In the below code, compile-time code is highlighted <span class="metalamaClassification_CompileTime">differently</span>, so you can see which part of the code executes at compile time and which part executes at run time. In the different tabs on the example, you can see the aspect code (with the template), the target code (to which the aspect is applied) and the transformed code, i.e. the target code transformed by the aspect.
+In the below code, compile-time code is highlighted <span class="metalamaClassification_CompileTime">differently</span>, so you can see which part of the code executes at compile time and which part executes at run time (if you are viewing this documentation in a dark theme click the Try Online link above the sample which will illustrate this more clearly). In the different tabs on the example, you can see the aspect code (with the template), the target code (to which the aspect is applied) and the transformed code, i.e. the target code transformed by the aspect.
 
+<!--- I would be inclined to rename the taget Code class to anything but Target Code as this is in essence the first sample that you are 
+introducing to people.  At this stage you need to illustrate what you have just described.  As you talk about Metalama working on the Target Code and being able to read information
+from it you'd illustrate the point better I feel if the actual code you wanted to pass the aspect over wasn't called TargetCode.  Similarly the targeted method could perhaps be given a 
+different name other than Method.  By doing that you would illustrate much more effectively just what metalama is doing.  -->
 [!include[Simple Logging](../../../code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs)]
 
 
@@ -33,6 +37,6 @@ The call to `meta.Proceed()` means that the original method body should be injec
 
 ### Comparison with Razor
 
-You can compare T# to Razor. Razor allows you to create dynamic web pages by mixing two levels languages: C# for server-side code (the _meta_ code), and HTML for client-side code. With T#, you also have two _compile-time_ and _run-time_ code and, basically, the compile-time code generates the run-time code. The difference with Razor is that in T# both the compile-time and run-time code are the same language: C#. Metalama interprets every expression or statement in a template as having _either_ run-time scope _or_ compile-time scope. Compile-time expressions are generally initiated by calls to the <xref:Metalama.Framework.Aspects.meta> API.
+You can compare T# to Razor. Razor allows you to create dynamic web pages by mixing two levels languages: C# for server-side code (the _meta_ code), and HTML for client-side code. With T#, you also have two ( _compile-time_ and _run-time_ code) and basically the compile-time code generates the run-time code. The difference with Razor is that in T# both the compile-time and run-time code are the same language: C#. Metalama interprets every expression or statement in a template as having _either_ run-time scope _or_ compile-time scope. Compile-time expressions are generally initiated by calls to the <xref:Metalama.Framework.Aspects.meta> API.
 
 
