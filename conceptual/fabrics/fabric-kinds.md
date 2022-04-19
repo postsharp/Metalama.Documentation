@@ -8,7 +8,7 @@ There are four kinds of fabrics. Each kind applies to a different scope. All fab
 
 | Kind | Base Class | Scope | Abilities |
 |-------|-|---------|--|
-| Type Fabrics | <xref:Metalama.Framework.Fabrics.TypeFabric> | The containing type (type fabrics are nested types) and any member. | Add aspects, advices, and validators.
+| Type Fabrics | <xref:Metalama.Framework.Fabrics.TypeFabric> | The containing type (type fabrics are nested types) and any member. | Add aspects, advice, and validators.
 | Namespace Fabrics | <xref:Metalama.Framework.Fabrics.NamespaceFabric> | Any type in the namespace that contains the fabric type. | Add aspects and validators.
 | Project Fabrics | <xref:Metalama.Framework.Fabrics.ProjectFabric> | Any type in the project that contains the fabric type or in any project. | Add aspects and validators, and by set configuration options. Project fabrics can be inherited from parent directories.
 | Transitive Project Fabrics | <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric> | Any type in  any project _referencing_ the containing project | Add aspects and validators, set configuration options.

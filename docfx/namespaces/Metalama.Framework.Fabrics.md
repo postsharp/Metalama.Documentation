@@ -17,7 +17,7 @@ Fabrics can:
 * add aspects to code,
 * register validators,
 * configure aspects (project fabrics only),
-* add advices to the current type (type fabrics only)
+* add advice to the current type (type fabrics only)
 
 
 ## Class diagrams

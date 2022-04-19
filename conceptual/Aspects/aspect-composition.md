@@ -8,16 +8,16 @@ What happens when several aspects are applied to the same class? This problem is
 
 There are three major points of interest:
 
-1. Strong ordering of aspects and advices
+1. Strong ordering of aspects and advice
 2. Code model versioning
-3. Safe composition of advices
+3. Safe composition of advice
 
 
-## 1. Strong ordering of aspects and advices
+## 1. Strong ordering of aspects and advice
 
-Aspects are "things" that receive a code model as input, and provides a number of outputs: advices, diagnostics, validators, and children aspects. The only important output for this discussion are advices because the other outputs do not modify the code. Most aspects have a single layer of advices, but it is possible to define several layers.
+Aspects are "things" that receive a code model as input, and provides a number of outputs: advice, diagnostics, validators, and children aspects. The only important output for this discussion are _advice_ because the other outputs do not modify the code. Most aspects have a single layer of advice, but it is possible to define several layers.
 
-To make sure that the order of execution of aspects and advices is consistent, Metalama uses two ordering factors:
+To make sure that the order of execution of aspects and advice is consistent, Metalama uses two ordering factors:
 
 1. _Aspect layer_. The order of execution of aspect layers _must_ be specified by the aspect author or user. To learn how to specify the order of aspect classes and layers, see <xref:ordering-aspects>. 
    
@@ -28,7 +28,7 @@ Aspects and ddvices in the same layer and applied to declarations of the same de
 
 ## 2. Code model versioning
 
-Since the code model only represents declarations but does not give access to implementations such as method bodies or initializers, the only advices that affect the code model are introductions and interface implementations. Overriding an existing method does not affect the code model because it only overrides its implementation.
+Since the code model only represents declarations but does not give access to implementations such as method bodies or initializers, the only kind of advice that affect the code model are introductions and interface implementations. Overriding an existing method does not affect the code model because it only overrides its implementation.
 
 For each aspect layer and depth level, Metalama will create a new version of the code model that reflects the changes done by the previous aspect layer or depth layer.
 
@@ -36,7 +36,7 @@ Therefore, if an aspect introduces a member into a type, the next aspects will s
 
 To ensure the consistency of this model, aspects cannot provide outputs to previous aspects or to declarations that are not "under" the current target.
 
-## 3. Safe composition of advices
+## 3. Safe composition of advice
 
 When several aspects that are not aware of each other add an advice to the same declaration, Metalama guarantees that the resulting code will be correct. 
 

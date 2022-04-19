@@ -61,6 +61,8 @@ items:
           topicUid: introducing-members
         - name: Implementing Interfaces
           topicUid: implementing-interfaces
+        - name: Adding Initializers
+          topicUid: initializers
         - name: Sharing State With Advices
           topicUid: sharing-state-with-advices
       - name: Reporting and Suppressing Diagnostics

@@ -24,10 +24,9 @@ classDiagram
     }
 
     class IAdviceFactory {
-        OverrideMethod(...)
-        IntroduceMethod(...)
-        OverrideFieldOrProperty(...)
-        IntroduceFieldOrProperty(...)
+        Override*(...)
+        Introduce*(...)
+        AddInitializer*(...)
     }
 
     class IDiagnosticSink {

@@ -16,4 +16,6 @@ uid: advising-code
 
 <xref:implementing-interfaces>
 
-<xref:sharing-state-with-advices>
+<xref:initializers>
+
+<xref:sharing-state-with-advice>

@@ -8,14 +8,6 @@ Metalama.Framework is an [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_pro
 
 These templates make it easy to write code that combines compile-time information (such as names and types of parameters of a method) and run-time information (such as parameter values) in a natural way, without having to learn another language or having to combine C# with some special templating language.
 
-## Limitations
-
-Metalama.Framework is in a very early preview, which means it currently has severe limitations:
-
-- `OverrideMethod` is the only available aspect/advice;
-- many constructs of C# (including very common ones) are not supported in templates;
-- only a single advice can be applied to each method.
-
 ## Example
 
 For example, consider this simple aspect, which logs the name of a method and information about its parameters to the console and then lets it execute as usual:
@@ -66,7 +58,7 @@ void CountDown(string format, int n)
 
 Notice that the compile-time `foreach` loop was unrolled, so that each parameter has its own statement and that the compile-time expressions `parameter.Type` and `parameter.Name` have been evaluated and even folded with the nearby constants. On the other hand, the run-time calls to `Console.WriteLine` have been preserved. The expression `parameter.Value` is special, and has been translated to accessing the values of the parameters.
 
-## Aspects, advices and Initialize
+## Aspects, advice and Initialize
 
 While abstract aspects like `OverrideMethodAspect` work well for simple needs, more customization is required in more complex cases. For example, consider the situation where you want to apply an aspect attribute to a type and have it affect all its methods. In Metalama, you can do this by directly implementing the `IAspect<T>` interface and putting this logic into the `Initialize` method. For example:
 
@@ -81,7 +73,7 @@ public class CountMethodsAspect : Attribute, IAspect<INamedType>
 
         foreach (var method in methods)
         {
-            aspectBuilder.Advices.OverrideMethod(method, nameof(Template));
+            aspectBuilder.Advices.Override(method, nameof(Template));
         }
     }
 
@@ -97,9 +89,9 @@ public class CountMethodsAspect : Attribute, IAspect<INamedType>
 }
 ```
 
-This aspect adds the `OverrideMethod` *advice* to each method in a marked type. Here, "advice" is some kind of modification applied to a single element in your code.
+This aspect adds the `Override` *advice* to each method in a marked type. Here, "advice" is some kind of modification applied to a single element in your code.
 
-As you can see, the `Initialize` method can also be used for other purposes, like initializing values shared by the advices of the aspect.
+As you can see, the `Initialize` method can also be used for other purposes, like initializing values shared by the advice methods of the aspect.
 
 ## Template context
 
@@ -107,9 +99,9 @@ Inside a template method, extra operations are available through members of the 
 
 These members are:
 
-- `dynamic proceed()`: Gives control to the original code of the method the template is being applied to. When multiple advices per method are supported, this will instead give control to the next template in line, if there are any left.
-- `ITemplateContext target { get; }`: Gives access to information about the code element the template is being applied to.
-- `T compileTime<T>( T expression )`: Informs the templating engine that this expression should be considered to be compile-time, even when it normally would not. Other than that, the input value is returned unchanged.
+- `dynamic Proceed()`: Gives control to the original code of the method the template is being applied to. When multiple advice methods per method are supported, this will instead give control to the next template in line, if there are any left.
+- `ITemplateContext Target { get; }`: Gives access to information about the code element the template is being applied to.
+- `T CompileTime<T>( T expression )`: Informs the templating engine that this expression should be considered to be compile-time, even when it normally would not. Other than that, the input value is returned unchanged.
 
 ## Packaging an aspect
 

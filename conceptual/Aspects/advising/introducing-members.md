@@ -117,8 +117,8 @@ The following aspect introduces an `Update` method that assigns all writable fie
 
 When you want to introduce a member to a type, it may happen that the same member is already defined in this type or in a parent type. The default strategy of the aspect framework in this case it simply to report an error and fail the build. You can change this behavior by setting the <xref:Metalama.Framework.Aspects.OverrideStrategy> for this advice:
 
-- For declarative advices, set the <xref:Metalama.Framework.Aspects.TemplateAttribute.WhenExists> property of the custom attribute,
-- For programmatic advices, set the _whenExists_ optional parameter of the advice factory method.
+- For declarative advice, set the <xref:Metalama.Framework.Aspects.TemplateAttribute.WhenExists> property of the custom attribute,
+- For programmatic advice, set the _whenExists_ optional parameter of the advice factory method.
 
 [comment]: # (TODO: The implementation and documentation are not final. Another property and parameter should be defined to cope with the case when the member is inherited.)
 
@@ -150,7 +150,7 @@ When you introduce a member to a type, your will often want to access it from te
 If none of the approaches above offer you the required flexibility (typically because the name of the introduced member is dynamic), use the invokers exposed on the builder object returned from the advice factory method.
 
 > [!NOTE]
-> Declarations introduced by an aspect or aspect layer are not visible in the `meta` code model exposed to in the same aspect or aspect layer. To reference builders, you have to reference them differently. For details, see <xref:sharing-state-with-advices>.
+> Declarations introduced by an aspect or aspect layer are not visible in the `meta` code model exposed to in the same aspect or aspect layer. To reference builders, you have to reference them differently. For details, see <xref:sharing-state-with-advice>.
 
 For details, see <xref:Metalama.Framework.Code.Invokers>
 

@@ -8,7 +8,6 @@ using Metalama.Framework.CodeFixes;
 namespace Doc.ToStringWithSimpleToString
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-    [CompileTime]
     public class NotToStringAttribute : Attribute { }
 
 

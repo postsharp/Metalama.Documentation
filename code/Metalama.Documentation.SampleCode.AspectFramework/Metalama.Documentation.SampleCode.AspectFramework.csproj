@@ -9,7 +9,16 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Remove="BuildInfo - Copy.t.cs" />
         <Compile Remove="ProjectFabric.Aspect.cs" />
+        <Compile Remove="RegisterInstance - Copy.t.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="BuildInfo.Aspect.t.cs">
+        <SubType>Code</SubType>
+        <DependentUpon>BuildInfo.Aspect.cs</DependentUpon>
+      </None>
     </ItemGroup>
 
     <ItemGroup>

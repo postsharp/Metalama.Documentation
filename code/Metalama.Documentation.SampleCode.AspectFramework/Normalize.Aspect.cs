@@ -7,7 +7,7 @@ namespace Doc.Normalize
     {
         public override void BuildAspect( IAspectBuilder<IFieldOrProperty> builder )
         {
-            builder.Advices.OverrideFieldOrProperty( builder.Target, nameof(this.OverrideProperty) );
+            builder.Advices.Override( builder.Target, nameof(this.OverrideProperty) );
         }
 
         [Template]

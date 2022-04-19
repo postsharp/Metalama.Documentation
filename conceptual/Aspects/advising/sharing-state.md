@@ -1,13 +1,13 @@
 ---
-uid: sharing-state-with-advices
+uid: sharing-state-with-advice
 ---
 
 # Sharing State with Advices
 
-If you need to share _compile-time_ state between advices, or between advices and your implementation of the `BuildAspect` method, a few strategies are available to you.
+If you need to share _compile-time_ state between different pieces of advice, or between your implementation of the `BuildAspect` method and between advice, a few strategies are available to you.
 
 > [!NOTE]
-> If you need to share _run-time_ state between advices, you have to choose another strategy, for instance introducing a field in the target type and using it from several advices.
+> If you need to share _run-time_ state with advice, you have to choose another strategy, for instance introducing a field in the target type and using it from several advice methods.
 
 > [!WARNING]
 > **DO NOT share state with an aspect field** if that state depends on the target declaration of the aspect. In case of inherited aspects, the same instance of the aspect class will be reused for all inherited targets.
