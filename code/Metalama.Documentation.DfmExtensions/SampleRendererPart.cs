@@ -156,13 +156,13 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
                 "net6.0",
                 Path.ChangeExtension( targetPathRelativeToProjectDir, ".Aspect.cs.html" ) ) );
         
-        var programHtmlPath = Path.GetFullPath(
+        var additionalHtmlPath = Path.GetFullPath(
             Path.Combine(
                 projectDir,
                 "obj",
                 "html",
                 "net6.0",
-                Path.ChangeExtension( targetPathRelativeToProjectDir, ".Program.cs.html" ) ) );
+                Path.ChangeExtension( targetPathRelativeToProjectDir, ".Additional.cs.html" ) ) );
 
         var targetHtmlPath = Path.GetFullPath(
             Path.Combine(
@@ -247,15 +247,16 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
                 gitUrlExtension = ".cs";
             }
 
-            if ( File.Exists( programHtmlPath ) )
+            AppendTab( "target", "Target Code", targetHtml );
+            
+            if ( File.Exists( additionalHtmlPath ) )
             {
-                var programHtml = File.ReadAllText( programHtmlPath );
-                AppendTab( "program", "Program", programHtml );
+                var programHtml = File.ReadAllText( additionalHtmlPath );
+                AppendTab( "additional", "Additional Code", programHtml );
                 
                 // TODO: we should add this to the TryMetalama link, but TryMetalama does not support 3 buffers. 
             }
 
-            AppendTab( "target", "Target Code", targetHtml );
             AppendTab( "transformed", "Transformed Code", transformedHtml );
 
             if ( File.Exists( programOutputPath ) )

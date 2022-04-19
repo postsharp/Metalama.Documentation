@@ -7,12 +7,13 @@ namespace Doc.RegisterInstance
     [RegisterInstance]
     internal class DemoClass
     {
-        private IDisposable _instanceRegistryHandle;
-
+        // TODO: the default constructor should not be necessary, but now it is (bug #30214).
         public DemoClass()
         {
             this._instanceRegistryHandle = InstanceRegistry.Register(this);
         }
+
+        private IDisposable _instanceRegistryHandle;
     }
 
 }
