@@ -17,7 +17,7 @@ To fix this:
 
 Your weaver does not need to format the output code itself. This is done by Metalama at the end of the pipeline, and only when necessary.
 
-However, your weaver is responsible to annotate the syntax nodes with the annotations declared in the  <xref:Metalama.Framework.Engine.Formatting.FormattingAnnotations> class.
+However, your weaver is responsible to annotating the syntax nodes with the annotations declared in the  <xref:Metalama.Framework.Engine.Formatting.FormattingAnnotations> class.
 
 
 ## Examples

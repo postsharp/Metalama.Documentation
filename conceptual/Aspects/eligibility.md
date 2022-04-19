@@ -4,7 +4,7 @@ uid: eligibility
 
 # Defining the Eligibility of Aspects
 
-Most of the aspects are designed and implemented for specific kinds of target declarations. For instance, you may decide that your caching aspect will not support `void` methods or methods with an `out` or `ref` parameter. It is important, as the author of the aspect, to make sure that the user of your aspect applies it only to the declarations that you expect. Otherwise, at best, the aspect will cause build errors and confuse the user. At worse, the run-time behavior of your aspect will be incorrect.
+Most of the aspects are designed and implemented for specific kinds of target declarations. For instance, you may decide that your caching aspect will not support `void` methods or methods with an `out` or `ref` parameter. It is important, as the author of the aspect, to make sure that the user of your aspect applies it only to the declarations that you expect. Otherwise, at best, the aspect will cause build errors and confuse the user or at worse, the run-time behavior of your aspect will be incorrect.
 
 ## Benefits
 
@@ -32,7 +32,7 @@ A number of predefined eligibility conditions are implemented by the <xref:Metal
 
 It may be tempting to add an eligibility condition for every requirement of your aspect instead of emitting a custom error message. However, this may be confusing for the user. 
 
-As a rule of thumb, you should use eligibility to define for which declarations the aspect makes sense or not, and use error messages when the aspect makes sense on the declaration, but there is some contingency that prevents the aspect from being used. 
+As a rule of thumb, you should use eligibility to define those declarations for which it makes sense to either apply the aspect or not, and use error messages when the aspect makes sense on the declaration, but there is some contingency that prevents the aspect from being used. 
 
 For details about reporting errors, see <xref:diagnostics>.
 
@@ -46,6 +46,6 @@ Adding a dependency injection aspect to an `int` or `string` field does not make
 
 ### Example
 
-The following example revisits the previous one, but reports custom errors when the target class does not define a field `logger` of type `TextWriter`.
+The following example expands the previous one, reporting custom errors when the target class does not define a field `logger` of type `TextWriter`.
 
 [!include[Eligibility and Validation](../../code/Metalama.Documentation.SampleCode.AspectFramework/EligibilityAndValidation.cs)]

@@ -4,7 +4,6 @@ uid: template-dynamic-code
 
 # Dynamically generating run-time code
 
-When you know
 
 ## Dynamic typing
 
@@ -71,8 +70,7 @@ meta.This.OnPropertyChanged( meta.Property.Name );
 ```
 
 ### Example 
-
-In the following aspect, the logging aspect uses `meta.This`, which returns a `dynamic` object, to access the type being enhanced. The aspect assumes that the target type defines a field named `_logger`, and that the type of this field a method named `WriteLine`.
+In the following aspect, the logging aspect uses `meta.This`, which returns a `dynamic` object, to access the type being enhanced. The aspect assumes that the target type defines a field named `_logger`, and that the type of this field has a method named `WriteLine`.
 
 [!include[meta.This](../../../code/Metalama.Documentation.SampleCode.AspectFramework/DynamicTrivial.cs)]
 
@@ -84,7 +82,7 @@ For details, see the documentation of the <xref:Metalama.Framework.Code.Invokers
 
 ### Example
 
-The following example is a variation in the previous one. The aspect no longer assumes that the logger field is named `_logger`. Instead, it looks for any field of type `TextWriter`. Because it does not know the name of the field upfront, the aspect must use `Invokers.Final.GetValue` to get an expression that allows to access the field. `Invokers.Final.GetValue` returns a `dynamic` object.
+The following example is a variation of the previous one. The aspect no longer assumes that the logger field is named `_logger`. Instead, it looks for any field of type `TextWriter`. Because it does not know the name of the field upfront, the aspect must use `Invokers.Final.GetValue` to get an expression that allows it to access the field. `Invokers.Final.GetValue` returns a `dynamic` object.
 
 [!include[Invokers](../../../code/Metalama.Documentation.SampleCode.AspectFramework/DynamicCodeModel.cs)]
 

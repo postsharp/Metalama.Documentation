@@ -36,7 +36,7 @@ Examples:
 - In `var parameters = meta.Target.Parameters`, `parameters` is compile-time variable.
 
 > [!NOTE]
-> It is not allowed to assign a compile-time variable from a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, - a `catch` or `finally`.
+> You cannot assign a compile-time variable from a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, - a `catch` or `finally`.
 
 
 ### Compile-time if
@@ -44,7 +44,7 @@ Examples:
 If the condition of an `if` statement is a compile-time expression, the `if` statement will be interpreted at compile-time.
 
 > [!NOTE]
-> It is not allowed to have a compile-time `if` inside a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, `switch`, `catch` or `finally`.
+> You may not have a compile-time `if` inside a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, `switch`, `catch` or `finally`.
 
 
 #### Example
@@ -87,7 +87,7 @@ Aspect members are compile-time and can be accessed from templates. For instance
 
 There are a few exceptions to this rule:
 
-- aspect members whose signature contain a run-time-only type cannot be accessed from a template.
+- aspect members whose signature's contain a run-time-only type cannot be accessed from a template.
 - aspect members annotated with the `[Template]` attribute (or overriding members that are, such as `OverrideMethod`) cannot be invoked from a template.
 - aspect members annotated with the `[Introduce]` or `[InterfaceMember]` attribute are considered run-time (see <xref:introducing-members> and <xref:implementing-interfaces>).
 

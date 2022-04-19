@@ -13,7 +13,7 @@ uid: aspect-weavers
 
 1. Create an "interface" project (it must target .NET Standard 2.0), which will contain your custom attributes.
 2. Add a reference to the _Metalama.Framework_ package (but not  _Metalama.Framework.Sdk_).
-3. Define an aspect custom attribute as usually, e.g.
+3. Define an aspect custom attribute as usual, e.g.
 
     ```cs
     public class AutoCancellationAttribute : TypeAspect { }
@@ -58,7 +58,6 @@ Each weaver will be invoked a single time per project, regardless the number of 
 The list of aspect instances that need to be handled by your weaver is given by the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation?context.AspectInstances> property.
 
 To map the Metalama code model to an `ISymbol`, use the extension methods in <xref:Metalama.Framework.Engine.CodeModel.SymbolExtensions>.
-
 
 ### Step 4. Use your aspect
 
