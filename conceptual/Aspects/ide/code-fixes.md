@@ -6,7 +6,7 @@ uid: code-fixes
 
 ## Attaching code fixes to diagnostics
 
-Whenever an aspect or fabric reports a diagnostic, it can attach <!--- to What? --> as set of code fixes by calling the <xref:Metalama.Framework.Diagnostics.IDiagnostic.WithCodeFixes*?text=IDiagnostic.WithCodeFixes> method. To create one-step code fixes, you can use the <xref:Metalama.Framework.CodeFixes.CodeFixFactory> class.
+Whenever an aspect or fabric reports a diagnostic, it can attach a set of code fixes to this diagnostic by calling the <xref:Metalama.Framework.Diagnostics.IDiagnostic.WithCodeFixes*?text=IDiagnostic.WithCodeFixes> method. To create one-step code fixes, you can use the <xref:Metalama.Framework.CodeFixes.CodeFixFactory> class.
 
 
 ## Suggesting code refactorings without diagnostics

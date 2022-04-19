@@ -4,9 +4,7 @@ uid: deployment
 
 # Deployment and Configuration
 
-<!--- I wonder if the following might be better:
-This section describes the component parts that make up Metalama, how to install them, and how to configure Metalama before use. -->
-This section describes the components that make Metalama, how to install them, and how to configure Metalama before use.
+This section describes the component parts that make up Metalama, how to install them, and how to configure Metalama before use.
 
 | Article | Description |
 |---------|-------------|

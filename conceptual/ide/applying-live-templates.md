@@ -4,11 +4,9 @@ uid: applying-live-templates
 
 # Using Live Templates
 
-<!-- do you not mean VS 2022? -->
-
 > [!NOTE]
 > This scenario is in early preview. 
-> It requires __Visual Studio 2019__ and does not seem to work in other IDEs.
+> It requires __Visual Studio 2022__ and does not seem to work in other IDEs.
 
 ## Step 1. Add a project or package reference.
 

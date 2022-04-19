@@ -16,7 +16,7 @@ The easiest option to debug the transformed code (instead of the source code) is
 To create a LamaDebug build configuration using Visual Studio:
 
 1. In the _Build_ menu, choose _Configuration Manager_.
-2. In the _Active solution configuration_ list box, choose \<New>.
+2. In the _Active solution configuration_ list box, choose _<New>_.
 3. Fill this dialog as follows:
 
     * Name: `LamaDebug` (or your own name).

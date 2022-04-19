@@ -4,7 +4,6 @@ uid: template-dynamic-code
 
 # Dynamically generating run-time code
 
-When you know  <!--- What, I wonder....  -->
 
 ## Dynamic typing
 
@@ -71,8 +70,7 @@ meta.This.OnPropertyChanged( meta.Property.Name );
 ```
 
 ### Example 
-<!--- The last part of the sentence below makes no sense as written.  Perhaps it should be 'and that the type of this field possesses a method called Writeline.  -->
-In the following aspect, the logging aspect uses `meta.This`, which returns a `dynamic` object, to access the type being enhanced. The aspect assumes that the target type defines a field named `_logger`, and that the type of this field a method named `WriteLine`.
+In the following aspect, the logging aspect uses `meta.This`, which returns a `dynamic` object, to access the type being enhanced. The aspect assumes that the target type defines a field named `_logger`, and that the type of this field has a method named `WriteLine`.
 
 [!include[meta.This](../../../code/Metalama.Documentation.SampleCode.AspectFramework/DynamicTrivial.cs)]
 

@@ -4,7 +4,7 @@ uid: validating-references
 
 # Validating References
 
-It is often useful to validate how a declaration is _used_ outside of its parent type or namespace. With Metalama, you can analyze valid _code references_ and:
+It is often useful to validate how a declaration is _used_ outside of its parent type or namespace. With Metalama, you can analyze _code references_ and:
 
 * report errors and warnings for the code reference;
 * suppress warnings reported by the C# compiler or by another analyzer for the code reference;

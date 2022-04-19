@@ -59,7 +59,6 @@ The list of aspect instances that need to be handled by your weaver is given by 
 
 To map the Metalama code model to an `ISymbol`, use the extension methods in <xref:Metalama.Framework.Engine.CodeModel.SymbolExtensions>.
 
-<!--- an extension of the sample from above would help here I think -->
 ### Step 4. Use your aspect
 
 In a _third_ project:

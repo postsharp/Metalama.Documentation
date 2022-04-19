@@ -4,20 +4,6 @@ uid: fabrics-advising
 
 # Advising the Current Type
 
-<!---  I'm at something of a loss as to what to suggest here.
-
-In Engish the is no plural for Advice.  I could give you a piece of advice or I could give you several pieces of advice. 
-Similarly you could have one sheep or an entire flock of sheep, you wouldn't have a flock of sheeps.
-This raises something of an issue becuase reading about advices simply doesn't sit well in English.  
-Of course they are baked into Metalama so the arguement can be made for leaving it as is, except for the fact that 
-it distracts from ones understanding of the topic in general becuase as you read it ( and most of us to an extent read 
-aloud in our mind as we read) it sounds wrong, and because it sounds wrong it makes comprehension that bit more difficult.  
-This is a topic where comprehension is paramount.
-
-When talking about advice  in the plural sense we would normaly refer to bits of, or pieces of advice.
-In most cases that distinction would work in this documentation (in its entirety, but sadly not all).
-To that end I have not corrected those here (save for the one distinction between noun and verb.  
-However i do belive that leaving advices as is hinders comprehension. -->
  
 
 Instead of using aspects, you can advise the current type using a type fabric. A type fabric is a compile-time nested class that acts as a type-level aspect added to the nesting type.

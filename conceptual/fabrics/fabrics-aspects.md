@@ -33,5 +33,5 @@ In the following example, a type fabric adds a logging aspect to all public meth
 
 In the following example, a type fabric adds a logging aspect to all public methods in the type.
 
-<!---Ok then  in kinds of fabrics  you state "implement type fabrics in a separate file, and mark the parent class as partial."  Why then is the type fabric illustrated below not partial?  -->
+<!--- TODO: make class partial and split into different file -->
 [!include[Type Fabric Adding Aspects](../../code/Metalama.Documentation.SampleCode.AspectFramework/TypeFabric.cs)]
