@@ -2,12 +2,12 @@ using System;
 
 namespace Doc.SimpleLogging
 {
-    internal class TargetCode
+    internal class Foo
     {
         [SimpleLog]
         public void Method1()
         {
-            Console.WriteLine($"Entering TargetCode.Method1()");
+            Console.WriteLine($"Entering Foo.Method1()");
             try
             {
                 Console.WriteLine("Hello, world.");
@@ -15,7 +15,7 @@ namespace Doc.SimpleLogging
             }
             finally
             {
-                Console.WriteLine($"Leaving TargetCode.Method1()");
+                Console.WriteLine($"Leaving Foo.Method1()");
             }
         }
     }

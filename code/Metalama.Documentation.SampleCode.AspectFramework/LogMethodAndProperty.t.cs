@@ -2,19 +2,19 @@ using System;
 
 namespace Doc.LogMethodAndProperty
 {
-    internal class TargetCode
+    internal class Foo
     {
         [Log]
         public int Method(int a, int b)
         {
-            Console.WriteLine("Entering TargetCode.Method(int, int)");
+            Console.WriteLine("Entering Foo.Method(int, int)");
             try
             {
                 return a + b;
             }
             finally
             {
-                Console.WriteLine(" Leaving TargetCode.Method(int, int)");
+                Console.WriteLine(" Leaving Foo.Method(int, int)");
             }
         }
 
@@ -31,7 +31,7 @@ namespace Doc.LogMethodAndProperty
 
             set
             {
-                Console.WriteLine("Assigning TargetCode.Property.set");
+                Console.WriteLine("Assigning Foo.Property.set");
                 this._property = value;
             }
         }
@@ -49,7 +49,7 @@ namespace Doc.LogMethodAndProperty
 
             set
             {
-                Console.WriteLine("Assigning TargetCode.Field.set");
+                Console.WriteLine("Assigning Foo.Field.set");
                 this._field = value;
             }
         }

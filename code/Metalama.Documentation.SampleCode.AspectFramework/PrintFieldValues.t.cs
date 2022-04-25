@@ -2,7 +2,7 @@ using System;
 
 namespace Doc.PrintFieldValues
 {
-    internal class TargetCode
+    internal class Foo
     {
         private readonly int _a;
 
@@ -11,7 +11,7 @@ namespace Doc.PrintFieldValues
         private static readonly int _c;
 
         [PrintFieldValues]
-        public void Method()
+        public void Bar()
         {
             var value = _a;
             Console.WriteLine($"_a={value}");

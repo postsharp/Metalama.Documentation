@@ -4,12 +4,12 @@ namespace Doc.Ordering
 {
     [Aspect1]
     [Aspect2]
-    internal class TargetCode
+    internal class Foo
     {
         public static void SourceMethod()
         {
-            Console.WriteLine("Executing Aspect1 on SourceMethod. Methods present before applying Aspect1: SourceMethod, IntroducedMethod2");
-            Console.WriteLine("Executing Aspect2 on SourceMethod. Methods present before applying Aspect2: SourceMethod");
+            Console.WriteLine("Executing Aspect1 on SourceMethod. Methods present before applying Aspect1: SourceMethod, IntroducedMethod2, IntroducedMethod1");
+            Console.WriteLine("Executing Aspect2 on SourceMethod. Methods present before applying Aspect2: SourceMethod, IntroducedMethod2");
             Console.WriteLine("Method defined in source code.");
             goto __aspect_return_1;
         __aspect_return_1:
@@ -23,7 +23,7 @@ namespace Doc.Ordering
 
         public static void IntroducedMethod2()
         {
-            Console.WriteLine("Executing Aspect1 on IntroducedMethod2. Methods present before applying Aspect1: SourceMethod, IntroducedMethod2");
+            Console.WriteLine("Executing Aspect1 on IntroducedMethod2. Methods present before applying Aspect1: SourceMethod, IntroducedMethod2, IntroducedMethod1");
             Console.WriteLine("Method introduced by Aspect2.");
             return;
         }
@@ -34,15 +34,15 @@ namespace Doc.Ordering
         public static void Main()
         {
             Console.WriteLine("Executing SourceMethod:");
-            TargetCode.SourceMethod();
+            Foo.SourceMethod();
 
             Console.WriteLine("---");
             Console.WriteLine("Executing IntroducedMethod1:");
-            TargetCode.IntroducedMethod1();
+            Foo.IntroducedMethod1();
 
             Console.WriteLine("---");
             Console.WriteLine("Executing IntroducedMethod2:");
-            TargetCode.IntroducedMethod2();
+            Foo.IntroducedMethod2();
         }
     }
 }

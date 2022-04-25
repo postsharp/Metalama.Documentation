@@ -2,12 +2,12 @@ using System;
 
 namespace Doc.CompileTimeIf
 {
-    internal class TargetCode
+    internal class Foo
     {
         [CompileTimeIf]
         public void InstanceMethod()
         {
-            Console.WriteLine($"Invoking TargetCode.InstanceMethod() on instance {base.ToString()}.");
+            Console.WriteLine($"Invoking Foo.InstanceMethod() on instance {base.ToString()}.");
             Console.WriteLine("InstanceMethod");
             return;
         }
@@ -15,7 +15,7 @@ namespace Doc.CompileTimeIf
         [CompileTimeIf]
         public static void StaticMethod()
         {
-            Console.WriteLine($"Invoking TargetCode.StaticMethod()");
+            Console.WriteLine($"Invoking Foo.StaticMethod()");
             Console.WriteLine("StaticMethod");
             return;
         }

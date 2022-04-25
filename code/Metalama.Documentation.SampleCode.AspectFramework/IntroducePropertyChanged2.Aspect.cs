@@ -15,7 +15,7 @@ namespace Doc.IntroducePropertyChanged2
             builder.Advices.IntroduceMethod(
                 builder.Target,
                 nameof(this.OnPropertyChanged),
-                tags: new TagDictionary { ["event"] = eventBuilder } );
+                tags: new { @event = eventBuilder } );
         }
 
         [Template] public event PropertyChangedEventHandler? PropertyChanged;

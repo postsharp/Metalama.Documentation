@@ -17,7 +17,7 @@ namespace Doc.AdvisingTypeFabric
                     var methodBuilder = amender.Advices.IntroduceMethod(
                         amender.Type,
                         nameof(this.MethodTemplate),
-                        tags: new TagDictionary { ["index"] = i } );
+                        tags: new { index = i } );
 
                     methodBuilder.Name = "Method" + i;
                 }

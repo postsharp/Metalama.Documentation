@@ -1,7 +1,7 @@
 namespace Doc.ToString
 {
     [ToString]
-    internal class TargetCode
+    internal class Foo
     {
         private int _x;
 
@@ -9,7 +9,7 @@ namespace Doc.ToString
 
         public override string ToString()
         {
-            return $"{{ TargetCode _x={_x}, Y={Y} }}";
+            return $"{{ Foo _x={_x}, Y={Y} }}";
         }
     }
 }

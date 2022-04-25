@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace Doc.Retry
 {
-    internal class TargetCode
+    internal class Foo
     {
         [Retry]
         private void RetryDefault()

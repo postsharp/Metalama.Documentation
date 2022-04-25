@@ -3,7 +3,7 @@ using System.ComponentModel;
 namespace Doc.IntroducePropertyChanged3
 {
     [IntroducePropertyChangedAspect]
-    internal class TargetCode
+    internal class Foo
     {
         protected void OnPropertyChanged(string propertyName)
         {
