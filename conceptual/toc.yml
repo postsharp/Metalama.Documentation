@@ -63,8 +63,8 @@ items:
           topicUid: implementing-interfaces
         - name: Adding Initializers
           topicUid: initializers
-        - name: Sharing State With Advices
-          topicUid: sharing-state-with-advices
+        - name: Sharing State With Advice
+          topicUid: sharing-state-with-advice
       - name: Reporting and Suppressing Diagnostics
         topicUid: diagnostics
       - name: Defining the Eligibility of Aspects
