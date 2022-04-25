@@ -2,7 +2,7 @@
 
 namespace Doc.SimpleLogging
 {
-    internal class TargetCode
+    internal class Foo
     {
         [SimpleLog]
         public void Method1()

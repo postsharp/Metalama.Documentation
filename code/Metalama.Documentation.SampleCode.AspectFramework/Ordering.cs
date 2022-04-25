@@ -4,7 +4,7 @@ namespace Doc.Ordering
 {
     [Aspect1]
     [Aspect2]
-    internal class TargetCode
+    internal class Foo
     {
         public static void SourceMethod()
         {
@@ -17,18 +17,18 @@ namespace Doc.Ordering
         public static void Main()
         {
             Console.WriteLine( "Executing SourceMethod:" );
-            TargetCode.SourceMethod();
+            Foo.SourceMethod();
 
             Console.WriteLine( "---" );
             Console.WriteLine( "Executing IntroducedMethod1:" );
 #if TESTRUNNER
-             TargetCode.IntroducedMethod1();
+             Foo.IntroducedMethod1();
 #endif
 
             Console.WriteLine( "---" );
             Console.WriteLine( "Executing IntroducedMethod2:" );
 #if TESTRUNNER
-             TargetCode.IntroducedMethod2();
+             Foo.IntroducedMethod2();
 #endif
         }
     }

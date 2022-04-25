@@ -2,7 +2,7 @@
 
 namespace Doc.CompileTimeIf
 {
-    internal class TargetCode
+    internal class Foo
     {
         [CompileTimeIf]
         public void InstanceMethod()

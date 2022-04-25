@@ -2,10 +2,10 @@
 
 namespace Doc.CompileTimeForEach
 {
-    internal class TargetCode
+    internal class Foo
     {
         [CompileTimeForEach]
-        private void Method( int a, string b )
+        private void Bar( int a, string b )
         {
             Console.WriteLine( $"Hello, world! a={a}, b='{b}'." );
         }

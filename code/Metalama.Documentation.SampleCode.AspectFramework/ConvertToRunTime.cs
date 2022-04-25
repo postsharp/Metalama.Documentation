@@ -2,10 +2,10 @@
 
 namespace Doc.ConvertToRunTime
 {
-    internal class TargetCode
+    internal class Foo
     {
         [ConvertToRunTimeAspect]
-        private void Method( string a, int c, DateTime e )
+        private void Bar( string a, int c, DateTime e )
         {
             Console.WriteLine( $"Method({a}, {c}, {e})" );
         }

@@ -1,6 +1,6 @@
 ﻿namespace Doc.Normalize
 {
-    internal class TargetCode
+    internal class Foo
     {
         [Normalize] public string? Property { get; set; }
     }

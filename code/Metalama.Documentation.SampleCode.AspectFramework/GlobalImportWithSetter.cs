@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Doc.GlobalImportWithSetter
 {
-    internal class TargetCode
+    internal class Foo
     {
         [Import] private IFormatProvider? _formatProvider;
     }

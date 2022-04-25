@@ -1,6 +1,6 @@
 ﻿namespace Doc.PrintFieldValues
 {
-    internal class TargetCode
+    internal class Foo
     {
         private readonly int _a;
 
@@ -9,6 +9,6 @@
         private static readonly int _c;
 
         [PrintFieldValues]
-        public void Method() { }
+        public void Bar() { }
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace Doc.ToString
 {
     [ToString]
-    internal class TargetCode
+    internal class Foo
     {
         private int _x;
 

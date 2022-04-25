@@ -1,6 +1,6 @@
 ﻿namespace Doc.LogParameters
 {
-    internal class TargetCode
+    internal class Foo
     {
         [Log]
         private void VoidMethod( int a, out int b )

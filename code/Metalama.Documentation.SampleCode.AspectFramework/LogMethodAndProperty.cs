@@ -1,6 +1,6 @@
 ﻿namespace Doc.LogMethodAndProperty
 {
-    internal class TargetCode
+    internal class Foo
     {
         [Log]
         public int Method( int a, int b )

@@ -2,7 +2,7 @@
 
 namespace Doc.ImportService
 {
-    internal class TargetCode
+    internal class Foo
     {
         // readonly IServiceProvider _serviceProvider;
 
