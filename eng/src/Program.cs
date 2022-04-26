@@ -17,7 +17,7 @@ using System.Diagnostics;
 
 const string docPackageFileName = "Metalama.Doc.zip";
 
-var product = new Product
+var product = new Product( Dependencies.MetalamaDocumentation )
 {
     ProductName = "Metalama.Documentation",
     Solutions = new Solution[]
