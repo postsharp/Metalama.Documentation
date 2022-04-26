@@ -9,12 +9,12 @@ namespace Doc.LogMethodAndProperty
     {
         public void BuildAspect( IAspectBuilder<IMethod> builder )
         {
-            builder.Advices.Override( builder.Target, nameof(this.OverrideMethod) );
+            builder.Advice.Override( builder.Target, nameof(this.OverrideMethod) );
         }
 
         public void BuildAspect( IAspectBuilder<IFieldOrProperty> builder )
         {
-            builder.Advices.Override( builder.Target, nameof(this.OverrideProperty) );
+            builder.Advice.Override( builder.Target, nameof(this.OverrideProperty) );
         }
 
         [Template]

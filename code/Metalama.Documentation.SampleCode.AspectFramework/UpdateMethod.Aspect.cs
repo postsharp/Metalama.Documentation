@@ -8,7 +8,7 @@ namespace Doc.UpdateMethod
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            var updateMethodBuilder = builder.Advices.IntroduceMethod( builder.Target, nameof(this.Update) );
+            var updateMethodBuilder = builder.Advice.IntroduceMethod( builder.Target, nameof(this.Update) );
 
             var fieldsAndProperties =
                 builder.Target.FieldsAndProperties

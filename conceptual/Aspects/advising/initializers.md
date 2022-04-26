@@ -37,7 +37,7 @@ You can also use the T# template language inside field and property analyzers. T
 To inject some initialization before any user code of the instance constructor is called:
 
 1. Add a method of signature `void BeforeInstanceConstructor()` to your aspect class and annotate it with the `[Template]` custom attribute. The name of this method is arbitrary.
-2. Call the <xref:Metalama.Framework.Aspects.IAdviceFactory.AddInitializerBeforeInstanceConstructor*?text=builder.Advices.AddInitializerBeforeInstanceConstructor> method in your aspect (or <xref:Metalama.Framework.Aspects.IAdviceFactory.AddInitializerBeforeInstanceConstructor*?text=amender.Advices.AddInitializerBeforeInstanceConstructor>) in a fabric). Pass the type that must be initialized, and the name of the method of the previous step.
+2. Call the <xref:Metalama.Framework.Aspects.IAdviceFactory.AddInitializerBeforeInstanceConstructor*?text=builder.Advice.AddInitializerBeforeInstanceConstructor> method in your aspect (or <xref:Metalama.Framework.Aspects.IAdviceFactory.AddInitializerBeforeInstanceConstructor*?text=amender.Advice.AddInitializerBeforeInstanceConstructor>) in a fabric). Pass the type that must be initialized, and the name of the method of the previous step.
 
 The `AddInitializerBeforeInstanceConstructor` advice will _not_ affect the constructors that call a chained `this` constructor. That is, the advice always runs before any constructor of the current class. However, the initialization logic does run _after_ the call to the `base` constructor, if any.
 

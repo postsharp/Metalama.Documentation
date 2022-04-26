@@ -4,7 +4,7 @@ uid: advising-concepts
 
 # Transforming Code: Concepts
 
-Aspects can transform the target code by providing one or many _advices_. Advices are primitive transformations of code. Advices are safely composable: several aspects that do not know about each other can add advice to the same declaration.
+Aspects can transform the target code by providing _advice_. Advice are primitive transformations of code. Advice are safely composable: several aspects that do not know about each other can add advice to the same declaration.
 
 There are two ways to add advice: _declaratively_ and _imperatively_.
 
@@ -14,7 +14,7 @@ The only _declarative advice_ is the _member introduction_ advice and is marked 
 
 ## Imperative advising
 
-_Imperative advices_ are added by the implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method thanks to the methods exposed by the <xref:Metalama.Framework.Aspects.IAspectLayerBuilder.Advices> property of the `builder` parameter. See <xref:Metalama.Framework.Aspects.IAdviceFactory> for a complete list of methods. In short:
+_Imperative advice_ are added by the implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method thanks to the methods exposed by the <xref:Metalama.Framework.Aspects.IAspectLayerBuilder.Advice> property of the `builder` parameter. See <xref:Metalama.Framework.Aspects.IAdviceFactory> for a complete list of methods. In short:
 
 * <xref:Metalama.Framework.Aspects.IAdviceFactory.Override*> allows you to replace the implementation of a type member.
 * <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceMethod*>, <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceProperty*>, <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceField*> and <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceEvent*> allows your aspect to introduce new members into the target type. See <xref:introducing-members> for details.

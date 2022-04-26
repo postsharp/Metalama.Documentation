@@ -14,7 +14,7 @@ namespace Doc.Ordering
         {
             foreach ( var m in builder.Target.Methods )
             {
-                builder.Advices.Override( m, nameof(this.Override) );
+                builder.Advice.Override( m, nameof(this.Override) );
             }
         }
 
@@ -41,7 +41,7 @@ namespace Doc.Ordering
         {
             foreach ( var m in builder.Target.Methods )
             {
-                builder.Advices.Override( m, nameof(this.Override) );
+                builder.Advice.Override( m, nameof(this.Override) );
             }
         }
 

@@ -73,7 +73,7 @@ public class CountMethodsAspect : Attribute, IAspect<INamedType>
 
         foreach (var method in methods)
         {
-            aspectBuilder.Advices.Override(method, nameof(Template));
+            aspectBuilder.Advice.Override(method, nameof(Template));
         }
     }
 

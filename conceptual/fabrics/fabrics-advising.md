@@ -17,7 +17,7 @@ To advise a type using a type fabric:
 
 2. Implement the <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method.
 
-3. Use the methods exposed on the <xref:Metalama.Framework.Aspects.IAspectLayerBuilder.Advices?text=amender.Advices> property. You must be familiar with advanced aspects to use this feature. For details, see <xref:advising-code>.
+3. Use the methods exposed on the <xref:Metalama.Framework.Aspects.IAspectLayerBuilder.Advice?text=amender.Advice> property. You must be familiar with advanced aspects to use this feature. For details, see <xref:advising-code>.
    
 4. You can also add declarative advice such as member introductions to your type fabrics. See <xref:introducing-members> for details.
 
@@ -30,5 +30,5 @@ To advise a type using a type fabric:
 
 The following example demonstrates a type fabric that introduces 10 methods to the target type.
 
-[!include[Type Fabric Adding Advices](../../code/Metalama.Documentation.SampleCode.AspectFramework/AdvisingTypeFabric.cs)]
+[!include[Type Fabric Adding Advice](../../code/Metalama.Documentation.SampleCode.AspectFramework/AdvisingTypeFabric.cs)]
 

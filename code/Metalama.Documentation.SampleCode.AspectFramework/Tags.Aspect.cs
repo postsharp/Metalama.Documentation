@@ -8,7 +8,7 @@ namespace Doc.Tags
     {
         public override void BuildAspect( IAspectBuilder<IMethod> builder )
         {
-            builder.Advices.Override(
+            builder.Advice.Override(
                 builder.Target,
                 nameof(this.OverrideMethod),
                 tags: new { ParameterCount = builder.Target.Parameters.Count } );

@@ -2,12 +2,8 @@
 using Metalama.Framework.CodeFixes;
 using Metalama.Framework.Diagnostics;
 using Metalama.Framework.Fabrics;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Doc.ProjectValidatorWithFix
 {
@@ -17,7 +13,7 @@ namespace Doc.ProjectValidatorWithFix
 
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.WithTargetMembers(
+            amender.With(
                 p => p.Types.SelectMany( t => t.Fields.Where( f => f.Accessibility != Accessibility.Private && f.Type.Is( typeof( TextWriter ) ) ) ) )
                 .ReportDiagnostic( f => _warning.WithArguments( f ).WithCodeFixes( CodeFixFactory.ChangeAccessibility( f, Accessibility.Private ) ) );
             

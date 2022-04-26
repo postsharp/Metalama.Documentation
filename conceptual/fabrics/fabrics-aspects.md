@@ -14,13 +14,13 @@ To add an an aspect from a fabric:
 1. Create a fabric class and add an <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>, <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method.
 
 2. Call one of the following methods from <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>:
-   * To select type members (methods, fields, nested types, ...), use the <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.WithTargetMembers*?text=amender.WithTargetMembers> method and provide a lambda expression that selects the relevent type members, or
-   * To select the type itself, use <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.WithTarget*?text=amender.WithTarget>.
+   * To select type members (methods, fields, nested types, ...), use the <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*?text=amender.With> method and provide a lambda expression that selects the relevant type members, or
+   * To select the type itself, use `amender.With( x => x)`.
 
-    The reason for this design is that the <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.WithTargetMembers*> method will not only select members declared in source code, but also members introduced by other aspects and that are unknown when your  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed.
+    The reason for this design is that the <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*> method will not only select members declared in source code, but also members introduced by other aspects and that are unknown when your  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed.
 
 
-3. Chain the call to <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.WithTargetMembers*> or  <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.WithTarget*> with a call to thr  <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> method.
+3. Chain the call to <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*> with a call to thr  <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> method.
 
 ## Example: adding an aspect to all methods in a project
 

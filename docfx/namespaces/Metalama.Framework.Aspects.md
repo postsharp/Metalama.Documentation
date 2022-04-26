@@ -92,8 +92,7 @@ classDiagram
     }
 
     class IDeclarationSelector {
-        WithTarget()
-        withTargetMembers()
+        With()
     }
 
     IAspectBuilder --|> IDeclarationSelector : derives from

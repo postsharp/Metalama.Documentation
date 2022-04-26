@@ -15,7 +15,7 @@ namespace Doc.ForTestOnly_Fabric
 
             public override void AmendNamespace( INamespaceAmender amender )
             {
-                amender.WithTarget().ValidateReferences( this.ValidateReference, ReferenceKinds.All );
+                amender.With( x => x ).ValidateReferences( this.ValidateReference, ReferenceKinds.All );
             }
 
             private void ValidateReference( in ReferenceValidationContext context )

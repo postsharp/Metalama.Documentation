@@ -15,7 +15,7 @@ namespace Doc.TypeFabric_
             public override void AmendType( ITypeAmender amender )
             {
                 // Adds logging aspect to all public methods.
-                amender.WithTargetMembers( t => t.Methods.Where( m => m.Accessibility == Accessibility.Public ) )
+                amender.With( t => t.Methods.Where( m => m.Accessibility == Accessibility.Public ) )
                     .AddAspect<LogAttribute>();
             }
         }

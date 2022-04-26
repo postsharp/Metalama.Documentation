@@ -9,7 +9,7 @@ namespace Doc.Disposable
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            builder.Advices.ImplementInterface( builder.Target, typeof(IDisposable),
+            builder.Advice.ImplementInterface( builder.Target, typeof(IDisposable),
                 whenExists: OverrideStrategy.Ignore );
         }
 

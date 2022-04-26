@@ -16,7 +16,7 @@ namespace Doc.RegisterInstance
         {
             base.BuildAspect( builder );
 
-            builder.Advices.AddInitializerBeforeInstanceConstructor( builder.Target, nameof( BeforeInstanceConstructor ) );
+            builder.Advice.AddInitializerBeforeInstanceConstructor( builder.Target, nameof( BeforeInstanceConstructor ) );
         }
 
         [Template]

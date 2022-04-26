@@ -61,7 +61,7 @@ This example builds over the previous one, but the dependency is stored in the f
 
 ## Overriding several fields or properties from the same aspect
 
-Just like for methods, to override one or more fields or properties from a single aspect, your aspect needs to implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.Advices`. Your implementation must then call the <xref: Metalama.Framework.Aspects.IAdviceFactory.OverrideFieldOrProperty*> method.
+Just like for methods, to override one or more fields or properties from a single aspect, your aspect needs to implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.Advice`. Your implementation must then call the <xref: Metalama.Framework.Aspects.IAdviceFactory.OverrideFieldOrProperty*> method.
 
 There are two overloads of this method:
 

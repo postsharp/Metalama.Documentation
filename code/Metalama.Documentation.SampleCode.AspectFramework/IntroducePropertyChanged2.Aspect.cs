@@ -8,11 +8,11 @@ namespace Doc.IntroducePropertyChanged2
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            var eventBuilder = builder.Advices.IntroduceEvent(
+            var eventBuilder = builder.Advice.IntroduceEvent(
                 builder.Target,
                 nameof(this.PropertyChanged) );
 
-            builder.Advices.IntroduceMethod(
+            builder.Advice.IntroduceMethod(
                 builder.Target,
                 nameof(this.OnPropertyChanged),
                 tags: new { @event = eventBuilder } );

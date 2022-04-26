@@ -19,7 +19,7 @@ namespace Doc.RegistryStorage
         {
             foreach ( var property in builder.Target.FieldsAndProperties.Where( p => p.IsAutoPropertyOrField ) )
             {
-                builder.Advices.Override( property, nameof(this.OverrideProperty) );
+                builder.Advice.Override( property, nameof(this.OverrideProperty) );
             }
         }
 

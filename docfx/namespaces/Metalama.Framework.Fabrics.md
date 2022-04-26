@@ -69,8 +69,7 @@ classDiagram
     }
 
     class IDeclarationSelector {
-        WithTarget()
-        withTargetMembers()
+        With()
     }
 
     IAmender --|> IDeclarationSelector : derives from
@@ -98,7 +97,7 @@ classDiagram
 
     class ITypeAmender  {
         Type
-        Advices : IAdviceFactory
+        Advice : IAdviceFactory
     }
 
     ITypeAmender --> IAdviceFactory : exposes

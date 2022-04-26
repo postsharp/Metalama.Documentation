@@ -11,7 +11,7 @@ namespace Doc.OverrideMethodAspect_
     {
         public virtual void BuildAspect( IAspectBuilder<IMethod> builder )
         {
-            builder.Advices.Override( builder.Target, nameof(this.OverrideMethod) );
+            builder.Advice.Override( builder.Target, nameof(this.OverrideMethod) );
         }
 
         public virtual void BuildEligibility( IEligibilityBuilder<IMethod> builder )

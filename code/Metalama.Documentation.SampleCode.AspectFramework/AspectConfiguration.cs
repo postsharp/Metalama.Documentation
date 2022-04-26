@@ -11,7 +11,7 @@ namespace Doc.AspectConfiguration
             amender.Project.LoggingOptions().DefaultCategory = "MyCategory";
 
             // Adds the aspect to all members.
-            amender.WithTargetMembers( c => c.Types.SelectMany( t => t.Methods ) ).AddAspect<LogAttribute>();
+            amender.With( c => c.Types.SelectMany( t => t.Methods ) ).AddAspect<LogAttribute>();
         }
     }
 

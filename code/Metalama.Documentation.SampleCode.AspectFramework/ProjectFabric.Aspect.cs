@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Metalama.Framework.Fabrics;
 using Metalama.Framework.Aspects;
 
 namespace Doc.ProjectFabric_
 {
-     internal class Fabric : ProjectFabric
+    internal class Fabric : ProjectFabric
     {
         public override void AmendProject(IProjectAmender project)
         {
-            project.WithTargetMembers(p => p.Types.SelectMany( t => t.Methods )).AddAspect<Log>();
+            project.With(p => p.Types.SelectMany( t => t.Methods )).AddAspect<Log>();
         }
     }
 

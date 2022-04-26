@@ -10,7 +10,7 @@ namespace Doc.Synchronized
         {
             foreach ( var method in builder.Target.Methods.Where( m => !m.IsStatic ) )
             {
-                builder.Advices.Override( method, nameof(this.OverrideMethod) );
+                builder.Advice.Override( method, nameof(this.OverrideMethod) );
             }
         }
 

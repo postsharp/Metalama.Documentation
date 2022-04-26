@@ -9,8 +9,8 @@ flowchart  TB
     Aspects -- report & suppress --> Diagnostics
     Aspects -- register --> Validators
     Aspects -- suggest --> CodeFixes
-    Aspects -- provide --> Advices
-    Advices -- provide --> Transformations[Code Transformations]
+    Aspects -- provide --> Advice
+    Advice -- provide --> Transformations[Code Transformations]
     SourceCode[Source Code] -- annotated with<br>custom attributes --> Aspects
     SourceCode -- contains --> Fabrics
     Fabrics -- provide --> Aspects
