@@ -22,7 +22,7 @@ In the following example, the aspect introduces an `Id` property of type `Guid`,
 
 [!include[Introduce Id](../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceId.cs)]
 
-### Example: initializing with a template
+#### Example: initializing with a template
 
 You can also use the T# template language inside field and property analyzers. The aspect in the following example introduces a property that is initialized to the build configuration and target framework.
 
@@ -30,7 +30,13 @@ You can also use the T# template language inside field and property analyzers. T
 
 ### Initialization of programmatic advice
 
+If you use the programmatic advice <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceProperty*>, <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceField*> or <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceEvent*> you can set the `Metalama.Framework.Code.DeclarationBuilders.IFieldOrPropertyBuilder.InitializerExpression` of the builder object that these advice methods return, and set it to any expression.
 
+#### Example: initializing a programmatically introduced field
+
+The example in the following aspect introduces a field using the <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceField*> programmatic advice and sets its initializer expression to an array that contains the name of all methods in the target type.
+
+[!include[Programmatic Initializer](../../../code/Metalama.Documentation.SampleCode.AspectFramework/ProgrammaticInitializer.cs)]
 
 ## Before object constructor
 
@@ -52,4 +58,4 @@ The aspect in the following aspect registers any new aspect of the target class 
 
 ## Before type constructor
 
-TODO
+The same approach as above can be used to add logic to the type constructor (i.e. static constructor) instead of the object constructor. The <xref:Metalama.Framework.Aspects.IAdviceFactory.AddInitializerBeforeTypeConstructor> method needs to be used instead.

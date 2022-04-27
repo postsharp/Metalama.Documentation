@@ -22,7 +22,7 @@ namespace Doc.OverrideMethodSpecificTemplateAllKinds
         public static async Task<int> AsyncMethod()
         {
             Console.WriteLine($"AsyncMethod: start");
-            var result = await Program.AsyncMethod_Source();
+            var result = await AsyncMethod_Source();
             Console.WriteLine($"AsyncMethod: returning {result}.");
             return result;
         }
