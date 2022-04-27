@@ -11,13 +11,12 @@ using PostSharp.Engineering.BuildTools.Build.Model;
 using PostSharp.Engineering.BuildTools.Dependencies.Model;
 using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
-using System;
 using System.IO;
 using System.Diagnostics;
 
 const string docPackageFileName = "Metalama.Doc.zip";
 
-var product = new Product
+var product = new Product( Dependencies.MetalamaDocumentation )
 {
     ProductName = "Metalama.Documentation",
     Solutions = new Solution[]
