@@ -182,6 +182,16 @@ To accept the output of all tests:
 
 3. Review each modified file in your repository using the diff tool.
 
+## Skipping a test
+
+To skip a test, add the following comment to the file:
+
+```cs
+// @Skipped(I do not want it to run)
+```
+
+The text between the parenthesis is the skip reason.
+
 ## Advanced features
 
 ### Excluding a directory
@@ -194,35 +204,45 @@ By default, all files in a compile-time test project are turned into test input 
 
 Note that, by default, all source files are excluded from the compilation, even those in the directories that have been excluded by this mechanism. To include the files, define the project property _MetalamaTestAutoExclude_ to _False_ and include/exclude the files manually as needed. Note that the `*.t.cs` files are always excluded.
 
-### Enabling file nesting in Solution Explorer
+### Specifying test options
 
-To make the `.t.cs.` file appear under its parent `.cs` file:
+The Metalama test framework supports several test options. They are documented in the <xref: Metalama.TestFramework.TestOptions> class.
 
-- In Visual Studio:
-    1. In Solution Explorer, select the compile-time project.
-    2. Click on the file nesting icon in the Solution Explorer Toolbar.
-    3. Define a custom profile and add the following content:
+To set a test option, add a special comment to the test file, for instance:
 
-    ```json
-    {
-    "help": "https://go.microsoft.com/fwlink/?linkid=866610",
-    "dependentFileProviders": {
-        "add": {
-        "allExtensions": {
-            "add": {
-            ".*": [ ".cs" ]
-            }
-        }
-        }
-    }
-    }
-    ```
+```cs
+// @IncludeAllSeverities
+```
 
-- In Rider:
-    1. In Solution Explorer, click on the settings (wheel) icon in the Solution Explorer toolbar.
-    2. Choose _File Nesting Settings_.
-    3. To the `.cs` rule, add the `.t.cs` extension.
+Alternatively, to set an option for the whole directory, create a file named `metalamaTests.json` and add properties of the <xref: Metalama.TestFramework.TestOptions> class. For instance:
 
+```json
+{ "IncludeAllSeverities": true }
+```
+
+### Trimming the test output to one or two classes
+
+If you want to limit the test output to one or more declarations (instead as the whole transformed input file), add the `// <target>` comment to the declarations that must be included.
+
+Example:
+
+```cs
+class NotIncluded {}
+
+// <target>
+class Included {}
+```
+
+If no `// <target>` comment is found in the file, the whole file is considered.
+
+### Creating a dependent project
+
+If you need to create a multi-project test, you can create a dependent project by adding a file named `Foo.Dependency.cs` to your test, where `Foo.cs` is your principal test file.
+
+```mermaid
+graph TD
+    Foo -- references --> Foo.Dependency
+```
 
 ### Creating hierarchical test runners in Rider or Resharper
 
