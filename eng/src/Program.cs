@@ -18,7 +18,6 @@ const string docPackageFileName = "Metalama.Doc.zip";
 
 var product = new Product( Dependencies.MetalamaDocumentation )
 {
-    ProductName = "Metalama.Documentation",
     Solutions = new Solution[]
     {
         new DotNetSolution( "code\\Metalama.Documentation.Prerequisites.sln" ) { CanFormatCode = true },
