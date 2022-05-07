@@ -58,4 +58,4 @@ The aspect in the following aspect registers any new aspect of the target class 
 
 ## Before type constructor
 
-The same approach as above can be used to add logic to the type constructor (i.e. static constructor) instead of the object constructor. The <xref:Metalama.Framework.Aspects.IAdviceFactory.AddInitializerBeforeTypeConstructor> method needs to be used instead.
+The same approach as above can be used to add logic to the type constructor (i.e. static constructor) instead of the object constructor. The <xref:Metalama.Framework.Aspects.IAdviceFactory.AddInitializerBeforeTypeConstructor*> method needs to be used instead.

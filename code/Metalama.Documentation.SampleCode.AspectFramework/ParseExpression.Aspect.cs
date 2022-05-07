@@ -1,4 +1,5 @@
 ﻿using Metalama.Framework.Aspects;
+using Metalama.Framework.Code.SyntaxBuilders;
 
 namespace Doc.ParseExpression
 {
@@ -6,7 +7,7 @@ namespace Doc.ParseExpression
     {
         public override dynamic? OverrideMethod()
         {
-            var logger = meta.ParseExpression( "this._logger" );
+            var logger = ExpressionFactory.Parse( "this._logger" );
 
             logger.Value?.WriteLine( $"Executing {meta.Target.Method}." );
 

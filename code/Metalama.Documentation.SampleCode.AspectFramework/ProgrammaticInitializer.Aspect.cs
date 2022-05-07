@@ -28,7 +28,7 @@ namespace Doc.ProgrammaticInitializer
 
             // Introduce a field and initialize it to that array.
             var fieldBuilder = builder.Advice.IntroduceField( builder.Target, "_methodNames" );
-            fieldBuilder.Type = fieldBuilder.Compilation.TypeFactory.GetTypeByReflectionType( typeof( string[] ) );
+            fieldBuilder.Type = TypeFactory.GetType( typeof( string[] ) );
             fieldBuilder.InitializerExpression = expressionBuilder.ToExpression();
         }
     }
