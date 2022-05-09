@@ -144,3 +144,8 @@ items:
         topicUid: custom-metrics
       - name: Packaging
         topicUid: sdk-packaging
+  - name: Troubleshooting
+    topicUid: troubleshooting 
+    items: 
+      - name: Enabling logging
+        topicUid: creating-logs
