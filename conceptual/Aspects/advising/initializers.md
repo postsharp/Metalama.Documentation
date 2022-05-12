@@ -43,9 +43,9 @@ The example in the following aspect introduces a field using the <xref:Metalama.
 To inject some initialization before any user code of the instance constructor is called:
 
 1. Add a method of signature `void BeforeInstanceConstructor()` to your aspect class and annotate it with the `[Template]` custom attribute. The name of this method is arbitrary.
-2. Call the <xref:Metalama.Framework.Aspects.IAdviceFactory.AddInitializerBeforeInstanceConstructor*?text=builder.Advice.AddInitializerBeforeInstanceConstructor> method in your aspect (or <xref:Metalama.Framework.Aspects.IAdviceFactory.AddInitializerBeforeInstanceConstructor*?text=amender.Advice.AddInitializerBeforeInstanceConstructor>) in a fabric). Pass the type that must be initialized, and the name of the method of the previous step.
+2. Call the <xref:Metalama.Framework.Aspects.IAdviceFactory.AddInitializer*?text=builder.Advice.AddInitializer> method in your aspect (or <xref:Metalama.Framework.Aspects.IAdviceFactory.AddInitializer*?text=amender.Advice.AddInitializer>) in a fabric). Pass the type that must be initialized, then the name of the method of the previous step, and finally the value `InitializerType.BeforeInstanceConstructor`.
 
-The `AddInitializerBeforeInstanceConstructor` advice will _not_ affect the constructors that call a chained `this` constructor. That is, the advice always runs before any constructor of the current class. However, the initialization logic does run _after_ the call to the `base` constructor, if any.
+The `AddInitializer` advice will _not_ affect the constructors that call a chained `this` constructor. That is, the advice always runs before any constructor of the current class. However, the initialization logic does run _after_ the call to the `base` constructor, if any.
 
 If the type does not contain any constructor, a default constructor will be created.
 
@@ -58,4 +58,4 @@ The aspect in the following aspect registers any new aspect of the target class 
 
 ## Before type constructor
 
-The same approach as above can be used to add logic to the type constructor (i.e. static constructor) instead of the object constructor. The <xref:Metalama.Framework.Aspects.IAdviceFactory.AddInitializerBeforeTypeConstructor*> method needs to be used instead.
+The same approach as above can be used to add logic to the type constructor (i.e. static constructor) instead of the object constructor. The `InitializerType.BeforeTypeConstructor` value needs to be used instead.

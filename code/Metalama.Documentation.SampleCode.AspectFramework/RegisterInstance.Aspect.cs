@@ -1,9 +1,6 @@
 ﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Threading;
 
 namespace Doc.RegisterInstance
 {
@@ -16,13 +13,13 @@ namespace Doc.RegisterInstance
         {
             base.BuildAspect( builder );
 
-            builder.Advice.AddInitializerBeforeInstanceConstructor( builder.Target, nameof( BeforeInstanceConstructor ) );
+            builder.Advice.AddInitializer( builder.Target, nameof( BeforeInstanceConstructor ), InitializerKind.BeforeInstanceConstructor );
         }
 
         [Template]
         private void BeforeInstanceConstructor()
         {
-            this._instanceRegistryHandle = InstanceRegistry.Register( meta.This );            
+            this._instanceRegistryHandle = InstanceRegistry.Register( meta.This );
         }
     }
 
