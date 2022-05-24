@@ -3,10 +3,7 @@ using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BuildMetalamaDocumentation
 {
@@ -17,7 +14,7 @@ namespace BuildMetalamaDocumentation
         {
         }
 
-        public override SuccessCode Execute( BuildContext context, PublishSettings settings, string file, BuildInfo buildInfo, BuildConfigurationInfo configuration )
+        public override SuccessCode PublishFile( BuildContext context, PublishSettings settings, string file, BuildInfo buildInfo, BuildConfigurationInfo configuration )
         {
             var hasEnvironmentError = false;
 
@@ -32,7 +29,7 @@ namespace BuildMetalamaDocumentation
                 return SuccessCode.Fatal;
             }
 
-            var successCode = base.Execute( context, settings, file, buildInfo, configuration );
+            var successCode = base.PublishFile( context, settings, file, buildInfo, configuration );
 
             if ( successCode != SuccessCode.Success )
             {
