@@ -20,8 +20,8 @@ namespace Doc.DeepClone
         public virtual AutomaticallyCloneable Clone()
         {
             var clone = (AutomaticallyCloneable)MemberwiseClone();
-            clone._b = (ManuallyCloneable?)_b.Clone();
-            clone._c = _c.Clone();
+            clone._b = (ManuallyCloneable?)this._b?.Clone();
+            clone._c = (this._c?.Clone());
             return clone;
         }
 

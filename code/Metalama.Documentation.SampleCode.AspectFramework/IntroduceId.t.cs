@@ -5,6 +5,6 @@ namespace Doc.IntroduceId
     [IntroduceId]
     class MyClass
     {
-        public Guid Id { get; } = Guid.NewGuid()
+        public Guid Id { get; } = Guid.NewGuid();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using Metalama.Framework.Code.SyntaxBuilders;
 using System;
 using System.Linq;
 
@@ -12,7 +13,7 @@ namespace Doc.DeepClone
         {
             var typedMethod = builder.Advice.IntroduceMethod(
                 builder.Target,
-                nameof(this.CloneImpl),
+                nameof( this.CloneImpl ),
                 whenExists: OverrideStrategy.Override );
 
             typedMethod.Name = "Clone";
@@ -20,7 +21,7 @@ namespace Doc.DeepClone
 
             builder.Advice.ImplementInterface(
                 builder.Target,
-                typeof(ICloneable),
+                typeof( ICloneable ),
                 whenExists: OverrideStrategy.Ignore );
         }
 
@@ -34,11 +35,11 @@ namespace Doc.DeepClone
 
             if ( meta.Target.Method.IsOverride )
             {
-                meta.DefineExpression( meta.Base.Clone(), out baseCall );
+                ExpressionFactory.Capture( meta.Base.Clone(), out baseCall );
             }
             else
             {
-                meta.DefineExpression( meta.Base.MemberwiseClone(), out baseCall );
+                ExpressionFactory.Capture( meta.Base.MemberwiseClone(), out baseCall );
             }
 
             // Define a local variable of the same type as the target type.
@@ -48,7 +49,7 @@ namespace Doc.DeepClone
             var clonableFields =
                 meta.Target.Type.FieldsAndProperties.Where(
                     f => f.IsAutoPropertyOrField &&
-                         ((f.Type.Is( typeof(ICloneable) ) && f.Type.SpecialType != SpecialType.String) ||
+                         ((f.Type.Is( typeof( ICloneable ) ) && f.Type.SpecialType != SpecialType.String) ||
                           (f.Type is INamedType fieldNamedType &&
                            fieldNamedType.Aspects<DeepCloneAttribute>().Any())) );
 
@@ -58,27 +59,38 @@ namespace Doc.DeepClone
                 var fieldType = (INamedType) field.Type;
                 var cloneMethod = fieldType.Methods.OfExactSignature( "Clone", Array.Empty<IType>() );
 
+                IExpression callClone;
+
                 if ( cloneMethod is { Accessibility: Accessibility.Public } ||
                      fieldType.Aspects<DeepCloneAttribute>().Any() )
                 {
                     // If yes, call the method without a cast.
-                    field.Invokers.Base!.SetValue(
-                        clone,
-                        meta.Cast( fieldType, field.Invokers.Base.GetValue( meta.This ).Clone() ) );
+                    ExpressionFactory.Capture( field.Invokers.Base!.GetValue( meta.This )?.Clone(), out callClone );
                 }
                 else
                 {
-                    // If no, use the interface.
-                    field.Invokers.Base!.SetValue(
-                        clone,
-                        meta.Cast( fieldType, ((ICloneable) field.Invokers.Base.GetValue( meta.This )).Clone() ) );
+                    // If no, explicitly cast to the interface.
+                    ExpressionFactory.Capture( ((ICloneable) field.Invokers.Base!.GetValue( meta.This ))?.Clone(), out callClone );
                 }
+
+                if ( cloneMethod == null || !cloneMethod.ReturnType.ConstructNullable().Is( fieldType ) )
+                {
+                    // If necessary, cast the return value of Clone to the field type.
+                    ExpressionFactory.Capture( meta.Cast( fieldType, callClone.Value )!, out callClone );
+
+                }
+
+                // Finally, set the field value.
+                field.Invokers.Base!.SetValue( clone, callClone.Value );
             }
 
             return clone;
         }
 
         [InterfaceMember( IsExplicit = true )]
-        private object Clone() => meta.This.Clone();
+        private object Clone()
+        {
+            return meta.This.Clone();
+        }
     }
 }

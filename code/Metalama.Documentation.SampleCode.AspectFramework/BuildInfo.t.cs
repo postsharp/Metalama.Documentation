@@ -3,27 +3,9 @@ namespace Doc.BuildInfo
 #pragma warning disable CS0067
     internal partial class BuildInfo
     {
+        public string? Configuration { get; } = "Debug";
 
-
-        private string? _configuration = "Debug";
-
-        public string? Configuration
-        {
-            get
-            {
-                return this._configuration;
-            }
-        }
-
-        private string? _targetFramework = "net6.0";
-
-        public string? TargetFramework
-        {
-            get
-            {
-                return this._targetFramework;
-            }
-        }
+        public string? TargetFramework { get; } = "net6.0";
 
     }
 #pragma warning restore CS0067
