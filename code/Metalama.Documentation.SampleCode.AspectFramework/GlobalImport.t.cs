@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections.Generic;
 
 namespace Doc.GlobalImport
@@ -11,6 +11,11 @@ namespace Doc.GlobalImport
             get
             {
                 return (IFormatProvider?)ServiceLocator.ServiceProvider.GetService(typeof(IFormatProvider));
+            }
+
+            set
+            {
+                throw new NotSupportedException($"FormatProvider should not be set from source code.");
             }
         }
     }
