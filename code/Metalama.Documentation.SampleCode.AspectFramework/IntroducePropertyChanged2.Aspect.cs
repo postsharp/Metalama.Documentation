@@ -10,20 +10,20 @@ namespace Doc.IntroducePropertyChanged2
         {
             var eventBuilder = builder.Advice.IntroduceEvent(
                 builder.Target,
-                nameof(this.PropertyChanged) );
+                nameof( this.PropertyChanged ) );
 
             builder.Advice.IntroduceMethod(
                 builder.Target,
-                nameof(this.OnPropertyChanged),
-                tags: new { @event = eventBuilder } );
+                nameof( this.OnPropertyChanged ),
+                args: new { theEvent = eventBuilder } );
         }
 
         [Template] public event PropertyChangedEventHandler? PropertyChanged;
 
         [Template]
-        protected virtual void OnPropertyChanged( string propertyName )
+        protected virtual void OnPropertyChanged( string propertyName, IEvent theEvent )
         {
-            ((IEvent) meta.Tags["event"]!).Invokers.Final.Raise(
+            theEvent.Invokers.Final.Raise(
                 meta.This,
                 meta.This,
                 new PropertyChangedEventArgs( propertyName ) );

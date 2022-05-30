@@ -46,6 +46,8 @@ items:
             topicUid: template-compile-time
           - name:  Dynamically Generating Run-Time Code
             topicUid: template-dynamic-code
+          - name: Template Parameters and Type Parameters
+            topicUid: template-parameters
       - name: Transforming Code
         topicUid: advising-code
         items:
