@@ -59,6 +59,8 @@ items:
           topicUid: overriding-fields-or-properties
         - name: Overriding Events
           topicUid: overriding-events          
+        - name: Validating Parameters, Fields and Properties
+          topicUid: contracts
         - name: Introducing Members
           topicUid: introducing-members
         - name: Implementing Interfaces

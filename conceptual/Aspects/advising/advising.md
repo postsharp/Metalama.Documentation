@@ -12,6 +12,8 @@ uid: advising-code
 
 <xref:overriding-events>
 
+<xref:contracts>
+
 <xref:introducing-members>
 
 <xref:implementing-interfaces>
