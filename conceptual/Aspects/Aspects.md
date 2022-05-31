@@ -28,7 +28,8 @@ This chapter is composed of the following articles:
 | <xref:advising-code>                | This section explains how to create aspects that perform advanced code modifications using the complete API.                                           |
 | <xref:diagnostics>                  | This article explains how to report or suppress errors, warnings and information messages.                                                             |
 | <xref:building-ide-interactions> | This article explains how to create live templates, code fixes and refactorings.                                                    |
-| <xref:child-aspects>                | This section explains how an aspect can add other aspects, and how child aspects can know about their parents.                                           |
+| <xref:child-aspects>                | This section explains how an aspect can add other aspects, and how child aspects can know about their parents.          |
+| <xref:aspect-inheritance>            | This section explains how to automatically make an aspect apply to all declarations derived from its direct targets.  |
 | <xref:ordering-aspects>       | This article describes how to order aspect classes so that the order of execution is correct when several aspects are applied to the same declaration. |
 | <xref:exposing-configuration>       | This article explains how an aspect can expose and consume configuration properties or a configuration API. |
 | <xref:testing>                      | This section explains how to test aspects.                                                                                                             |
