@@ -12,7 +12,7 @@ If your aspect needs to read the syntax tree, it can do it through an _SDK servi
 
 ### Step 1. Create the solution scaffolding 
 
-This step is described in <ref:sdk-scaffolding>.
+This step is described in <xref:sdk-scaffolding>.
 
 ### Step 2. Define the interface
 
