@@ -31,3 +31,26 @@ Aspect inheritance also works across project boundaries, that is, even when the 
 To make this possible, the aspect instance on in the project containing the base class is _serialized_ into a binary buffer, and stored as a managed resource in the assembly. When compiling the project containing the derived class, the aspect is _deserialized_ from the binary buffer, and its <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method can be called.
 
 Serialization is done using a custom formatter whose semantics are close to the legacy <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter> of the now obsolete `[Serializable]`. To mark a field or property as non-serializable, use the <xref:Metalama.Framework.Serialization.LamaNonSerializedAttribute> custom attribute.
+
+## Eligibility of inherited aspects
+
+The _eligibility_ of an aspect is a set of rules that define on which target declarations an aspect can be legitimately applied. For details, see <xref:eligibility>.
+
+When an aspect is inherited, it has two sets of eligibility rules:
+* the _normal_ eligibility rules define on which declarations the aspect can be expanded; typically this would _not_ include any abstract members;
+* the _inheritance_ eligibility rules define on which declarations the aspect can be added _for inheritance_; typically this would include abstract members.
+
+When an inherited aspect is added to a target that match the inheritance eligibility rules but not the normal eligibility rules, an _abstract_ aspect instance is added to that target. That is, <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method is _not_ called for that target, but only for derived targets.
+
+To define the eligibility rules that do not apply to the inheritance scenario, use the <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method, use the <xref:Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForInheritance*> method, for instance:
+
+### Example
+
+The following implementation of <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> specifies that the aspect will be applied abstractly when applied to an abstract method, that its <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method will not be invoke for the abstract method, but only for methods implementing the abstract method.s
+
+```cs
+public override void BuildEligibility( IEligibilityBuilder<IMethod> builder )
+{
+    builder.ExceptForInheritance().MustBeNonAbstract();
+}
+```
