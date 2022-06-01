@@ -1,4 +1,5 @@
 ﻿using Metalama.Framework.Aspects;
+using System;
 
 namespace Doc.GlobalImport
 {
@@ -8,7 +9,7 @@ namespace Doc.GlobalImport
         {
             get => ServiceLocator.ServiceProvider.GetService( meta.Target.FieldOrProperty.Type.ToType() );
 
-            set => meta.Proceed();
+            set => throw new NotSupportedException( $"{meta.Target.FieldOrProperty.Name} should not be set from source code." );
         }
     }
 }

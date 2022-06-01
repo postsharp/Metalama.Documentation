@@ -8,7 +8,10 @@ namespace Doc.AdvisingTypeFabric
         private class Fabric : TypeFabric
         {
             [Template]
-            public int MethodTemplate() => (int) meta.Tags["index"]!;
+            public int MethodTemplate( [CompileTime] int index )
+            {
+                return index;
+            }
 
             public override void AmendType( ITypeAmender amender )
             {
@@ -16,8 +19,8 @@ namespace Doc.AdvisingTypeFabric
                 {
                     var methodBuilder = amender.Advices.IntroduceMethod(
                         amender.Type,
-                        nameof(this.MethodTemplate),
-                        tags: new { index = i } );
+                        nameof( this.MethodTemplate ),
+                        args: new { index = i } );
 
                     methodBuilder.Name = "Method" + i;
                 }

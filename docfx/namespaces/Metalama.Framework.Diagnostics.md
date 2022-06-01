@@ -107,7 +107,7 @@ To report a diagnostic, you must first define a static field of type <xref:Metal
 
 To report a parametric diagnostics, you must first call the <xref:Metalama.Framework.Diagnostics.DiagnosticDefinition`1.WithArguments*> method. This step is not necessary with parameterless diagnostics.
 
-To report a diagnostic, call the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Report*> method. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectLayerBuilder.Diagnostics> property of the argument of the <xref:Metalama.Framework.Aspects.IAspectBuilder><xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method of your aspect. You can also report a diagnostic from a validator. 
+To report a diagnostic, call the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Report*> method. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectLayerBuilder.Diagnostics> property of the argument of the <xref:Metalama.Framework.Aspects.IAspectBuilder>.<xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method of your aspect. You can also report a diagnostic from a validator. 
 
 When you are reporting a diagnostic, you can specify the *location* of the diagnostic, i.e. the element of code to which it will be reported (which determines the file and line of the error message). If you do not specify the location, the default location for the current context will be used.
 

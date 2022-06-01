@@ -39,6 +39,14 @@ This chapter contains the following articles:
     </tr>
     <tr>
         <td>
+            <xref:template-parameters>
+        </td>
+        <td>
+            This article explains how to pass parameters (including generic parameters) from the `BuildAspect` method to the template.
+        </td>
+    </tr>
+    <tr>
+        <td>
             <xref:debugging-aspects>
         </td>
         <td>

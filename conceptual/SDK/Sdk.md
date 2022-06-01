@@ -11,7 +11,8 @@ the code they transform. _Metalama.Framework.Sdk_ is much more complex and less 
 
 This chapter contains the following articles:
 
+* <xref:sdk-scaffolding>
 * <xref:aspect-weavers>
 * <xref:custom-metrics>
 * <xref:services>
-* <xref:sdk-packaging>
+

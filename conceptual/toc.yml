@@ -46,6 +46,8 @@ items:
             topicUid: template-compile-time
           - name:  Dynamically Generating Run-Time Code
             topicUid: template-dynamic-code
+          - name: Template Parameters and Type Parameters
+            topicUid: template-parameters
       - name: Transforming Code
         topicUid: advising-code
         items:
@@ -57,6 +59,8 @@ items:
           topicUid: overriding-fields-or-properties
         - name: Overriding Events
           topicUid: overriding-events          
+        - name: Validating Parameters, Fields and Properties
+          topicUid: contracts
         - name: Introducing Members
           topicUid: introducing-members
         - name: Implementing Interfaces
@@ -67,7 +71,7 @@ items:
           topicUid: sharing-state-with-advice
       - name: Reporting and Suppressing Diagnostics
         topicUid: diagnostics
-      - name: Defining the Eligibility of Aspects
+      - name: Defining Aspect Eligibility
         topicUid: eligibility
       - name: Building IDE Interactions
         topicUid: building-ide-interactions
@@ -78,6 +82,8 @@ items:
           topicUid: code-fixes
       - name: Adding Child Aspects
         topicUid: child-aspects
+      - name: Aspect Inheritance
+        topicUid: aspect-inheritance
       - name: Ordering Aspects
         topicUid: ordering-aspects
         items:
@@ -133,17 +139,17 @@ items:
     items:                
     - name: Using Live Templates
       topicUid: applying-live-templates
-  - name: Extending Metalama with the Roslyn API
+  - name: Extending Metalama
     topicUid: sdk
     items:
+      - name: Creating the project structure
+        topicUid: sdk-scaffolding
       - name: Aspect Weavers
         topicUid: aspect-weavers
       - name: Services
         topicUid: services
       - name: Custom Metrics
         topicUid: custom-metrics
-      - name: Packaging
-        topicUid: sdk-packaging
   - name: Troubleshooting
     topicUid: troubleshooting 
     items: 
