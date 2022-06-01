@@ -51,7 +51,7 @@ Since Metalama includes a fork of Roslyn, and Roslyn comes with Visual Studio,  
 
 To keep yourself safe from versioning issues, follow the following suggestions:
 
-* You can update your IDE at any time and without impact on Metalama projects as long as you do not start using new C# features in Metalama projects. That is, updating your IDE should not be a problem.
+* You can update your IDE at any time and without impact on Metalama projects as long as you do not start using new C# features in Metalama projects. That is, you should not get into troubles just by updating Visual Studio.
 * Before you start using new C# features in a Metalama project, you must update Metalama to a version that supports the new C# version. If you do not update, your code will not compile.
 * Always use a version of Visual Studio that is in active [mainstream support](https://docs.microsoft.com/en-us/lifecycle/policies/fixed#mainstream-support) by Microsoft. When a version of Visual Studio falls out of support, update to a supported version within 3 months.  If you use an unsupported version, you will only be able to use the language features of the last supported C# version _below_ the version that you are using. If you do not use a supported version of Visual Studio, you may be stuck to an unsupported version of Metalama.
   
