@@ -29,9 +29,9 @@ This step is described in <xref:sdk-scaffolding>.
 
 In the _public API project_ created in the previous step, define an aspect class as usual, e.g.
 
-    ```cs
-    public class AutoCancellationAttribute : TypeAspect { }
-    ```
+```cs
+public class AutoCancellationAttribute : TypeAspect { }
+```
 
 ### Step 3. Create the weaver for this aspect
 
