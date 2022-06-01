@@ -25,7 +25,7 @@ uid: aspect-weavers
 2. Add a reference the _Metalama.Framework.Sdk_ package.
 3. Add a reference to the _first_ project project. In the `<ProjectReference>` in your csproj file, additionally specify `PrivateAssets="all"`.
 4. Add a class that implements the <xref:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver> interface. 
-5. Add the <xref:Metalama.Compiler.MetalamaPlugInAttribute> and <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverAttribute>  custom attributes to this class.
+5. Add the <xref:Metalama.Compiler.MetalamaPlugInAttribute> and <xref:Metalama.Framework.Aspects.RequireAspectWeaverAttribute>  custom attributes to this class.
 
 
 At this point, the code will look like this:

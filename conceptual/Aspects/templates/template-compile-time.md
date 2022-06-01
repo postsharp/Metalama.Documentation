@@ -36,7 +36,7 @@ Examples:
 - In `var parameters = meta.Target.Parameters`, `parameters` is compile-time variable.
 
 > [!NOTE]
-> You cannot assign a compile-time variable from a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, - a `catch` or `finally`.
+> You cannot assign a compile-time variable from a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, `switch`, `catch` or `finally`.
 
 
 ### Compile-time if
@@ -83,7 +83,7 @@ If the approach above is not possible, you can try to move your logic to a compi
 
 ## Accessing aspect members
 
-Aspect members are compile-time and can be accessed from templates. For instance, an aspect custom attribute can define a property that can be set when when the custom attribute is applied to a target declaration and then read from the aspect compile-time code.
+Aspect members are compile-time and can be accessed from templates. For instance, an aspect custom attribute can define a property that can be set when the custom attribute is applied to a target declaration and then read from the aspect compile-time code.
 
 There are a few exceptions to this rule:
 

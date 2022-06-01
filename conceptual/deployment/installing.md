@@ -6,7 +6,7 @@ uid: installing
 
 ## 1. Install main the NuGet package
 
-Before you start developing aspects, you must add the `Metalama.Framework` package to your project:
+Before you start developing aspects, you must add the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) package to your project:
 
 ```xml
 <ItemGroup>
