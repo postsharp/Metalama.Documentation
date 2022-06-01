@@ -55,13 +55,13 @@ To keep yourself safe from versioning issues, follow the following suggestions:
 * Before you start using new C# features in a Metalama project, you must update Metalama to a version that supports the new C# version. If you do not update, your code will not compile.
 * Always use a version of Visual Studio that is in active [mainstream support](https://docs.microsoft.com/en-us/lifecycle/policies/fixed#mainstream-support) by Microsoft. When a version of Visual Studio falls out of support, update to a supported version within 3 months.  If you use an unsupported version, you will only be able to use the language features of the last supported C# version _below_ the version that you are using. If you do not use a supported version of Visual Studio, you may be stuck to an unsupported version of Metalama.
   
-To learn more about the support policies of Visual Studio, see [Visual Studio Product Lifecycle and Servicing](https://docs.microsoft.com/en-us/visualstudio/productinfo/vs-servicing) and [Visual Studio Channels and Release Rhythm](https://docs.microsoft.com/en-us/visualstudio/productinfo/release-rhythm).* 
+To learn more about the support policies of Visual Studio, see [Visual Studio Product Lifecycle and Servicing](https://docs.microsoft.com/en-us/visualstudio/productinfo/vs-servicing) and [Visual Studio Channels and Release Rhythm](https://docs.microsoft.com/en-us/visualstudio/productinfo/release-rhythm). 
 
 The reasons behind these suggestions are:
 
 * By policy, we are adding support for new Roslyn version not later than 3 weeks after their stable release, and remove support for obsolete versions no sooner than 3 months after they fall out of mainstream support by Microsoft.
 * The `Metalama.Framework` package always replaces the compiler, so your code will build against the version of Roslyn that Metalama was built for regardless of the installed version of your IDE or the .NET SDK.
-* Metalama includes design-time support for several versions of Visual Studio. Many Metalama implementation assemblies have to be compiled for each targeted version of Roslyn. To keep our packages small, we need to remove supported Roslyn 
+* Metalama includes design-time support for several versions of Visual Studio. Many Metalama implementation assemblies have to be compiled for each targeted version of Roslyn. To keep our packages small, we need to remove supported Roslyn. 
 
 
 The following table shows the correlation between Visual Studio and Metalama versions:
