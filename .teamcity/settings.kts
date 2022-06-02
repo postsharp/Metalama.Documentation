@@ -30,6 +30,14 @@ object DebugBuild : BuildType({
     }
 
     steps {
+        // Step to kill all dotnet or VBCSCompiler processes that might be locking files.
+        powerShell {
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools kill")
+        }
         powerShell {
             scriptMode = file {
                 path = "Build.ps1"
@@ -71,6 +79,14 @@ object PublicBuild : BuildType({
     }
 
     steps {
+        // Step to kill all dotnet or VBCSCompiler processes that might be locking files.
+        powerShell {
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools kill")
+        }
         powerShell {
             scriptMode = file {
                 path = "Build.ps1"
