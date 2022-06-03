@@ -30,8 +30,9 @@ object DebugBuild : BuildType({
     }
 
     steps {
-        // Step to kill all dotnet or VBCSCompiler processes that might be locking files.
+        // Step to kill all dotnet or VBCSCompiler processes that might be locking files we delete in during cleanup.
         powerShell {
+            name = "Kill background processes before cleanup"
             scriptMode = file {
                 path = "Build.ps1"
             }
@@ -39,6 +40,7 @@ object DebugBuild : BuildType({
             param("jetbrains_powershell_scriptArguments", "tools kill")
         }
         powerShell {
+            name = "Build [Debug]"
             scriptMode = file {
                 path = "Build.ps1"
             }
@@ -79,8 +81,9 @@ object PublicBuild : BuildType({
     }
 
     steps {
-        // Step to kill all dotnet or VBCSCompiler processes that might be locking files.
+        // Step to kill all dotnet or VBCSCompiler processes that might be locking files we delete in during cleanup.
         powerShell {
+            name = "Kill background processes before cleanup"
             scriptMode = file {
                 path = "Build.ps1"
             }
@@ -88,6 +91,7 @@ object PublicBuild : BuildType({
             param("jetbrains_powershell_scriptArguments", "tools kill")
         }
         powerShell {
+            name = "Build [Public]"
             scriptMode = file {
                 path = "Build.ps1"
             }
@@ -129,6 +133,7 @@ object PublicDeployment : BuildType({
 
     steps {
         powerShell {
+            name = "Deploy [Public]"
             scriptMode = file {
                 path = "Build.ps1"
             }
