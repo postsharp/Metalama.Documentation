@@ -23,7 +23,9 @@ You can validate code using both aspects or fabrics. The approach is very simila
 
 * Use **aspects** if you want to encapsulate your validation logic as a _custom attribute_ that you can then use many times in the current project or in other projects.
 * Use **fabrics** if you don't need your logic to be reusable, or if you prefer to expose an object-oriented API instead of custom attributes.
+
 ## In this chapter
+
 This chapter contains the following articles:
 
 | Article | Description |

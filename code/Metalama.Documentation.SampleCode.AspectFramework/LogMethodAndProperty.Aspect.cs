@@ -14,7 +14,7 @@ namespace Doc.LogMethodAndProperty
 
         public void BuildAspect( IAspectBuilder<IFieldOrProperty> builder )
         {
-            builder.Advice.Override( builder.Target, nameof(this.OverrideProperty) );
+            builder.Advice.Override( builder.Target, nameof(this.OverrideFieldOrProperty) );
         }
 
         [Template]
@@ -33,13 +33,13 @@ namespace Doc.LogMethodAndProperty
         }
 
         [Template]
-        private dynamic? OverrideProperty
+        private dynamic? OverrideFieldOrProperty
         {
             get => meta.Proceed();
 
             set
             {
-                Console.WriteLine( "Assigning " + meta.Target.Method.ToDisplayString() );
+                Console.WriteLine( "Assigning " + meta.Target.FieldOrProperty.ToDisplayString() );
                 meta.Proceed();
             }
         }

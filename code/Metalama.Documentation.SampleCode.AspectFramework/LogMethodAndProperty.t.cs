@@ -31,7 +31,7 @@ namespace Doc.LogMethodAndProperty
 
             set
             {
-                Console.WriteLine("Assigning Foo.Property.set");
+                Console.WriteLine("Assigning Foo.Property");
                 this._property = value;
             }
         }
@@ -39,7 +39,6 @@ namespace Doc.LogMethodAndProperty
 
         private string? _field;
 
-        [Log]
         public string? Field
         {
             get
@@ -49,7 +48,7 @@ namespace Doc.LogMethodAndProperty
 
             set
             {
-                Console.WriteLine("Assigning Foo.Field.set");
+                Console.WriteLine("Assigning Foo.Field");
                 this._field = value;
             }
         }
