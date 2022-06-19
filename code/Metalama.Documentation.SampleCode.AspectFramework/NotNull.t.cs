@@ -21,7 +21,6 @@ namespace Doc.NotNull
             }
         }
 
-
         [return: NotNull]
         public string Method3()
         {
@@ -58,12 +57,10 @@ namespace Doc.NotNull
                 this._property = value;
             }
         }
-
     }
 
     public class PostConditionFailedException : Exception
     {
         public PostConditionFailedException(string message) : base(message) { }
     }
-
 }

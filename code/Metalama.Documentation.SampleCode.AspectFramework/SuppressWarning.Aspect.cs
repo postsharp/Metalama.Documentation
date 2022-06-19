@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using System.Linq;
@@ -7,7 +9,7 @@ namespace Doc.SuppressWarning
 {
     internal class LogAttribute : OverrideMethodAspect
     {
-        private static SuppressionDefinition _suppression = new("CS0169");
+        private static SuppressionDefinition _suppression = new( "CS0169" );
 
         public override void BuildAspect( IAspectBuilder<IMethod> builder )
         {
@@ -25,6 +27,7 @@ namespace Doc.SuppressWarning
         public override dynamic? OverrideMethod()
         {
             meta.This._logger.WriteLine( $"Executing {meta.Target.Method}." );
+
             return meta.Proceed();
         }
     }

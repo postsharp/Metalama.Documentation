@@ -1,4 +1,6 @@
-﻿// @Skipped(Bug 30453)
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+// @Skipped(Bug 30453)
 
 namespace Doc.InheritedMethodLevel
 {
@@ -31,8 +33,8 @@ namespace Doc.InheritedMethodLevel
         }
 
         public virtual void InterfaceMethodWithAspect() { }
-        public virtual void InterfaceMethodWithoutAspect() { }
 
+        public virtual void InterfaceMethodWithoutAspect() { }
     }
 
     internal class DerivedTwiceClass : DerivedClass

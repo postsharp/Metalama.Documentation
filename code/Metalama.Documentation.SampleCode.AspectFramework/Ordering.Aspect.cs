@@ -1,4 +1,6 @@
-﻿using Doc.Ordering;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Doc.Ordering;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;

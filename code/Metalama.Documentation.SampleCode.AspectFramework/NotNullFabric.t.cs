@@ -11,10 +11,5 @@ namespace Doc.NotNullFabric
                 throw new ArgumentNullException("notNullableString");
             }
         }
-
-
-
     }
-
-
 }

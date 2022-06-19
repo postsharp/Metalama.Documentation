@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using System.Linq;
@@ -8,8 +10,10 @@ namespace Doc.ReportError
     internal class LogAttribute : OverrideMethodAspect
     {
         // You MUST have a static field that defines the diagnostic.
-        private static DiagnosticDefinition<INamedType> _error = new("MY001", Severity.Error,
-            "The type {0} must have a field named '_logger'.");
+        private static DiagnosticDefinition<INamedType> _error = new(
+            "MY001",
+            Severity.Error,
+            "The type {0} must have a field named '_logger'." );
 
         public override void BuildAspect( IAspectBuilder<IMethod> builder )
         {
@@ -23,6 +27,7 @@ namespace Doc.ReportError
         public override dynamic? OverrideMethod()
         {
             meta.This._logger.WriteLine( $"Executing {meta.Target.Method}." );
+
             return meta.Proceed();
         }
     }

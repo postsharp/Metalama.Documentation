@@ -12,7 +12,6 @@ namespace Doc.Trim
         }
 
         public string Property { get; set; }
-
     }
 
     internal class Program
@@ -24,7 +23,5 @@ namespace Doc.Trim
             foo.Property = "    C   ";
             Console.WriteLine($"Property='{foo.Property}'");
         }
-
     }
-
 }

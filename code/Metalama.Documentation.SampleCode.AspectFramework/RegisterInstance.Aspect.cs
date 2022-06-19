@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
 
@@ -13,7 +15,7 @@ namespace Doc.RegisterInstance
         {
             base.BuildAspect( builder );
 
-            builder.Advice.AddInitializer( builder.Target, nameof( BeforeInstanceConstructor ), InitializerKind.BeforeInstanceConstructor );
+            builder.Advice.AddInitializer( builder.Target, nameof(this.BeforeInstanceConstructor), InitializerKind.BeforeInstanceConstructor );
         }
 
         [Template]
@@ -22,5 +24,4 @@ namespace Doc.RegisterInstance
             this._instanceRegistryHandle = InstanceRegistry.Register( meta.This );
         }
     }
-
 }

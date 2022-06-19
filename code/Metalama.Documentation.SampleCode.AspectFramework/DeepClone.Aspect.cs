@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Code.SyntaxBuilders;
 using System;
@@ -13,20 +15,17 @@ namespace Doc.DeepClone
         {
             builder.Advice.IntroduceMethod(
                 builder.Target,
-                nameof( this.CloneImpl ),
+                nameof(this.CloneImpl),
                 whenExists: OverrideStrategy.Override,
                 buildMethod: t =>
                 {
                     t.Name = "Clone";
                     t.ReturnType = builder.Target;
-
                 } );
-
-           
 
             builder.Advice.ImplementInterface(
                 builder.Target,
-                typeof( ICloneable ),
+                typeof(ICloneable),
                 whenExists: OverrideStrategy.Ignore );
         }
 
@@ -54,7 +53,7 @@ namespace Doc.DeepClone
             var clonableFields =
                 meta.Target.Type.FieldsAndProperties.Where(
                     f => f.IsAutoPropertyOrField &&
-                         ((f.Type.Is( typeof( ICloneable ) ) && f.Type.SpecialType != SpecialType.String) ||
+                         ((f.Type.Is( typeof(ICloneable) ) && f.Type.SpecialType != SpecialType.String) ||
                           (f.Type is INamedType fieldNamedType &&
                            fieldNamedType.Aspects<DeepCloneAttribute>().Any())) );
 
@@ -82,7 +81,6 @@ namespace Doc.DeepClone
                 {
                     // If necessary, cast the return value of Clone to the field type.
                     ExpressionFactory.Capture( meta.Cast( fieldType, callClone.Value )!, out callClone );
-
                 }
 
                 // Finally, set the field value.

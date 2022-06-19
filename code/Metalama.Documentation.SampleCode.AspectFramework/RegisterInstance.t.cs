@@ -3,7 +3,6 @@ using System;
 
 namespace Doc.RegisterInstance
 {
-
     [RegisterInstance]
     internal class DemoClass
     {
@@ -14,5 +13,4 @@ namespace Doc.RegisterInstance
             this._instanceRegistryHandle = InstanceRegistry.Register(this);
         }
     }
-
 }

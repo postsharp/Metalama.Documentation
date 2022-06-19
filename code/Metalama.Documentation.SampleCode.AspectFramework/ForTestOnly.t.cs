@@ -1,20 +1,15 @@
-// Warning MY001 on `new(DateTime.Now.AddDays( 1 ))`: `'MyService.MyService(DateTime)' can only be invoked from a namespace that ends with Tests.`
+// Warning MY001 on `new( DateTime.Now.AddDays( 1 ) )`: `'MyService.MyService(DateTime)' can only be invoked from a namespace that ends with Tests.`
 using System;
 
 namespace Doc.ForTestOnly
 {
-
     public class MyService
     {
         // Normal constructor.
-        public MyService() : this(DateTime.Now)
-        {
-        }
+        public MyService() : this(DateTime.Now) { }
 
         [ForTestOnly]
-        internal MyService(DateTime dateTime)
-        {
-        }
+        internal MyService(DateTime dateTime) { }
     }
 
     internal class NormalClass
@@ -25,7 +20,6 @@ namespace Doc.ForTestOnly
 
     namespace Tests
     {
-
         internal class TestClass
         {
             // Usage allowed here because we are in a Tests namespace.

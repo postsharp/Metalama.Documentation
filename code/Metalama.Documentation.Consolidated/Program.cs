@@ -1,4 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
 using Metalama.Compiler;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Engine.AspectWeavers;
@@ -9,4 +10,12 @@ using Metalama.LinqPad;
 Console.WriteLine( "Hello, World!" );
 
 // // This is to make sure that all packages are properly referenced.
-_ = new Type[] { typeof( IAspect ), typeof( AspectWeaverContext ), typeof( Workspace ), typeof( IIntrospectionAspectClass ), typeof( MetalamaPlugInAttribute ), typeof( MetalamaDriver ) };
+_ = new Type[]
+{
+    typeof(IAspect),
+    typeof(AspectWeaverContext),
+    typeof(Workspace),
+    typeof(IIntrospectionAspectClass),
+    typeof(MetalamaPlugInAttribute),
+    typeof(MetalamaDriver)
+};

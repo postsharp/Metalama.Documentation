@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System.Linq;
 
@@ -8,20 +10,21 @@ namespace Doc.UpdateMethod
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            var updateMethodBuilder = builder.Advice.IntroduceMethod( builder.Target, nameof(this.Update), buildMethod:
+            var updateMethodBuilder = builder.Advice.IntroduceMethod(
+                builder.Target,
+                nameof(this.Update),
+                buildMethod:
                 m =>
                 {
                     var fieldsAndProperties =
-                     builder.Target.FieldsAndProperties
-                   .Where( f => f.Writeability == Writeability.All );
+                        builder.Target.FieldsAndProperties
+                            .Where( f => f.Writeability == Writeability.All );
 
                     foreach ( var field in fieldsAndProperties )
                     {
                         m.AddParameter( field.Name, field.Type );
                     }
                 } );
-
-           
         }
 
         [Template]

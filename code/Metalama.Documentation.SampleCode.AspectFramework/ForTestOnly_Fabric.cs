@@ -1,14 +1,12 @@
-﻿using Doc.ForTestOnly_Fabric.ValidatedNamespace;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Doc.ForTestOnly_Fabric.ValidatedNamespace;
 
 namespace Doc.ForTestOnly_Fabric
 {
     namespace ValidatedNamespace
     {
-
-        public class MyService
-        {
-
-        }
+        public class MyService { }
     }
 
     internal class NormalClass

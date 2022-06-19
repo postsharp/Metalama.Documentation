@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Code.SyntaxBuilders;
 using System.Linq;
@@ -13,6 +15,7 @@ namespace Doc.ProgrammaticInitializer
             var expressionBuilder = new ExpressionBuilder();
             expressionBuilder.AppendVerbatim( "new string[] {" );
             var i = 0;
+
             foreach ( var methodName in builder.Target.Methods.Select( m => m.Name ).Distinct() )
             {
                 if ( i > 0 )
@@ -24,14 +27,18 @@ namespace Doc.ProgrammaticInitializer
 
                 i++;
             }
+
             expressionBuilder.AppendVerbatim( "}" );
 
             // Introduce a field and initialize it to that array.
-            builder.Advice.IntroduceField( builder.Target, "_methodNames", typeof( string[] ),  buildField: f =>
-            {
-                f.InitializerExpression = expressionBuilder.ToExpression();
-            } );
-            
+            builder.Advice.IntroduceField(
+                builder.Target,
+                "_methodNames",
+                typeof(string[]),
+                buildField: f =>
+                {
+                    f.InitializerExpression = expressionBuilder.ToExpression();
+                } );
         }
     }
 }

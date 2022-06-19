@@ -21,5 +21,4 @@ namespace Doc.ToStringWithComplexCodeFix
             return $"{{ MovingVertex X={X}, Y={Y}, DX={DX}, DY={DY} }}";
         }
     }
-
 }

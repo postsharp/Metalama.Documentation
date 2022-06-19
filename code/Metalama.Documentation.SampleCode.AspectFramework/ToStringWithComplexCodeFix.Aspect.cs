@@ -1,12 +1,12 @@
-﻿// This is an open-source Metalama example. See https://github.com/postsharp/Metalama.Samples for more.
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
 
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Code.SyntaxBuilders;
 using Metalama.Framework.CodeFixes;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Doc.ToStringWithComplexCodeFix
 {
@@ -17,7 +17,6 @@ namespace Doc.ToStringWithComplexCodeFix
     [LiveTemplate]
     public class ToStringAttribute : TypeAspect
     {
-
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
             base.BuildAspect( builder );
@@ -35,8 +34,8 @@ namespace Doc.ToStringWithComplexCodeFix
         private async Task ImplementManually( ICodeActionBuilder builder, INamedType targetType )
         {
             await builder.ApplyAspectAsync( targetType, this );
-            await builder.RemoveAttributesAsync( targetType, typeof( ToStringAttribute ) );
-            await builder.RemoveAttributesAsync( targetType, typeof( NotToStringAttribute ) );
+            await builder.RemoveAttributesAsync( targetType, typeof(ToStringAttribute) );
+            await builder.RemoveAttributesAsync( targetType, typeof(NotToStringAttribute) );
         }
 
         [Introduce( WhenExists = OverrideStrategy.Override, Name = "ToString" )]
@@ -53,7 +52,7 @@ namespace Doc.ToStringWithComplexCodeFix
 
             foreach ( var field in fields )
             {
-                if ( field.Attributes.Any( a => a.Type.Is( typeof( NotToStringAttribute ) ) ) )
+                if ( field.Attributes.Any( a => a.Type.Is( typeof(NotToStringAttribute) ) ) )
                 {
                     continue;
                 }
@@ -71,7 +70,6 @@ namespace Doc.ToStringWithComplexCodeFix
             }
 
             stringBuilder.AddText( " }" );
-
 
             return stringBuilder.ToValue();
         }

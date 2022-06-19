@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Fabrics;
 
 namespace Doc.BuildInfo
@@ -13,6 +15,5 @@ namespace Doc.BuildInfo
             [Introduce]
             public string? Configuration { get; } = meta.Target.Project.Configuration;
         }
-
     }
 }

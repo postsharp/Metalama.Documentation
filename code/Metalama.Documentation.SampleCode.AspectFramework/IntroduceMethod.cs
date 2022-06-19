@@ -1,18 +1,18 @@
-﻿using System;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using System;
 using System.Threading;
 
 namespace Doc.IntroduceMethod
 {
-
     [ToString]
-    internal class MyClass
-    {
-    }
+    internal class MyClass { }
 
     internal static class IdGenerator
     {
-        static int _nextId;
-        public static int GetId() => Interlocked.Increment(ref _nextId);
+        private static int _nextId;
+
+        public static int GetId() => Interlocked.Increment( ref _nextId );
     }
 
     internal class Program

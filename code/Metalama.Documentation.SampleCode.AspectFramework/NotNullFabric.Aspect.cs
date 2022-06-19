@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Fabrics;
 using System;
@@ -12,13 +14,13 @@ namespace Doc.NotNullFabric
         {
             base.BuildAspect( builder );
 
-            foreach ( var parameter in builder.Target.Parameters.Where( p => p.RefKind is RefKind.None or RefKind.In
-                            && !p.Type.IsNullable.GetValueOrDefault()
-                            && p.Type.IsReferenceType.GetValueOrDefault() ) )
+            foreach ( var parameter in builder.Target.Parameters.Where(
+                         p => p.RefKind is RefKind.None or RefKind.In
+                              && !p.Type.IsNullable.GetValueOrDefault()
+                              && p.Type.IsReferenceType.GetValueOrDefault() ) )
             {
-                builder.Advice.AddContract( parameter, nameof( Validate ), args: new { parameterName = parameter.Name } );
+                builder.Advice.AddContract( parameter, nameof(this.Validate), args: new { parameterName = parameter.Name } );
             }
-
         }
 
         [Template]
@@ -36,12 +38,11 @@ namespace Doc.NotNullFabric
         public override void AmendProject( IProjectAmender amender )
         {
             amender.With(
-                a => a.Types
-                .Where( t => t.Accessibility == Accessibility.Public )
-                .SelectMany( t => t.Methods )
-                .Where( m => m.Accessibility == Accessibility.Public )
-                ).AddAspect<NotNullAttribute>();
-
+                    a => a.Types
+                        .Where( t => t.Accessibility == Accessibility.Public )
+                        .SelectMany( t => t.Methods )
+                        .Where( m => m.Accessibility == Accessibility.Public ) )
+                .AddAspect<NotNullAttribute>();
         }
     }
 }

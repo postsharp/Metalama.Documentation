@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using System;
 using System.IO;
 
 namespace Doc.DynamicTrivial
@@ -8,9 +10,7 @@ namespace Doc.DynamicTrivial
         private TextWriter _logger = Console.Out;
 
         [Log]
-        private void Foo()
-        {
-        }
+        private void Foo() { }
 
         private static void Main()
         {

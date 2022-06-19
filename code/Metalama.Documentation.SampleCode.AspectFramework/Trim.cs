@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using System;
 
 namespace Doc.Trim
 {
@@ -6,12 +8,10 @@ namespace Doc.Trim
     {
         public void Method1( [Trim] string nonNullableString, [Trim] string? nullableString )
         {
-
             Console.WriteLine( $"nonNullableString='{nonNullableString}', nullableString='{nullableString}'" );
         }
 
         public string Property { get; set; }
-
     }
 
     internal class Program
@@ -23,7 +23,5 @@ namespace Doc.Trim
             foo.Property = "    C   ";
             Console.WriteLine( $"Property='{foo.Property}'" );
         }
-
     }
-
 }

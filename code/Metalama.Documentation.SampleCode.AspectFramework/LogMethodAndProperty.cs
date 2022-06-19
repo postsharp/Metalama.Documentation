@@ -1,4 +1,6 @@
-﻿namespace Doc.LogMethodAndProperty
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+namespace Doc.LogMethodAndProperty
 {
     internal class Foo
     {
@@ -8,8 +10,10 @@
             return a + b;
         }
 
-        [Log] public int Property { get; set; }
+        [Log]
+        public int Property { get; set; }
 
-        [Log] public string? Field { get; set; }
+        [Log]
+        public string? Field { get; set; }
     }
 }

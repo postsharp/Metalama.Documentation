@@ -10,6 +10,7 @@ namespace Doc.InheritedTypeLevel
             Console.WriteLine("Hacked!");
             return;
         }
+
         public virtual void Method2()
         {
             Console.WriteLine("Hacked!");

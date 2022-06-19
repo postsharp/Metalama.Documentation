@@ -1,11 +1,12 @@
-﻿using System;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
 
 namespace Doc.RegisterInstance
 {
-
     internal static class Program
     {
         private static void Main()
@@ -13,7 +14,7 @@ namespace Doc.RegisterInstance
             Console.WriteLine( "Allocate object." );
             AllocateObject();
 
-            Console.WriteLine( "GC.Collect()" );                
+            Console.WriteLine( "GC.Collect()" );
             GC.Collect();
 
             PrintInstances();
@@ -76,19 +77,13 @@ namespace Doc.RegisterInstance
             public void Dispose()
             {
                 GC.SuppressFinalize( this );
-                Unregister( _id );
+                Unregister( this._id );
             }
 
             ~Handle()
             {
-                Unregister( _id );
+                Unregister( this._id );
             }
         }
-
     }
-
-
-
-
-
 }

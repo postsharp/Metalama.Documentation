@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using Metalama.Framework.Eligibility;
@@ -9,11 +11,15 @@ namespace Doc.EligibilityAndValidation
 {
     internal class LogAttribute : OverrideMethodAspect
     {
-        private static readonly DiagnosticDefinition<INamedType> _error1 = new("MY001", Severity.Error,
-            "The type '{0}' must have a field named '_logger'.");
+        private static readonly DiagnosticDefinition<INamedType> _error1 = new(
+            "MY001",
+            Severity.Error,
+            "The type '{0}' must have a field named '_logger'." );
 
-        private static readonly DiagnosticDefinition<IField> _error2 = new("MY002", Severity.Error,
-            "The type of the field '{0}' must be 'TextWriter'.");
+        private static readonly DiagnosticDefinition<IField> _error2 = new(
+            "MY002",
+            Severity.Error,
+            "The type of the field '{0}' must be 'TextWriter'." );
 
         public override void BuildEligibility( IEligibilityBuilder<IMethod> builder )
         {

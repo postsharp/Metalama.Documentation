@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using System;
 
 namespace Doc.ImportService
 {
@@ -6,7 +8,8 @@ namespace Doc.ImportService
     {
         // readonly IServiceProvider _serviceProvider;
 
-        [ImportAspect] private IFormatProvider? FormatProvider { get; }
+        [ImportAspect]
+        private IFormatProvider? FormatProvider { get; }
 
         public string Format( object? o )
         {

@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Code;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using Metalama.Framework.Fabrics;
 using Metalama.Framework.Validation;
@@ -7,11 +9,12 @@ namespace Doc.ForTestOnly_Fabric
 {
     namespace ValidatedNamespace
     {
-
         public class Fabric : NamespaceFabric
         {
-            private static DiagnosticDefinition<IDeclaration> _warning = new( "MY001",
-                Severity.Warning, "'{0}' can only be invoked from a namespace that ends with '.Tests'." );
+            private static DiagnosticDefinition<IDeclaration> _warning = new(
+                "MY001",
+                Severity.Warning,
+                "'{0}' can only be invoked from a namespace that ends with '.Tests'." );
 
             public override void AmendNamespace( INamespaceAmender amender )
             {

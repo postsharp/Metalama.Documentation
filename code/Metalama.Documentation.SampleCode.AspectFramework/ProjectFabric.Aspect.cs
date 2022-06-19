@@ -1,15 +1,17 @@
-﻿using System;
-using System.Linq;
-using Metalama.Framework.Fabrics;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
 using Metalama.Framework.Aspects;
+using Metalama.Framework.Fabrics;
+using System;
+using System.Linq;
 
 namespace Doc.ProjectFabric_
 {
     internal class Fabric : ProjectFabric
     {
-        public override void AmendProject(IProjectAmender project)
+        public override void AmendProject( IProjectAmender project )
         {
-            project.With(p => p.Types.SelectMany( t => t.Methods )).AddAspect<Log>();
+            project.With( p => p.Types.SelectMany( t => t.Methods ) ).AddAspect<Log>();
         }
     }
 
@@ -17,14 +19,15 @@ namespace Doc.ProjectFabric_
     {
         public override dynamic? OverrideMethod()
         {
-            Console.WriteLine($"Executing {meta.Target.Method}.");
+            Console.WriteLine( $"Executing {meta.Target.Method}." );
+
             try
             {
                 return meta.Proceed();
             }
             finally
             {
-                Console.WriteLine($"Exiting {meta.Target.Method}.");
+                Console.WriteLine( $"Exiting {meta.Target.Method}." );
             }
         }
     }

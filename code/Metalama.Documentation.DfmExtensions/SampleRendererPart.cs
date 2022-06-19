@@ -1,4 +1,6 @@
-﻿using HtmlAgilityPack;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using HtmlAgilityPack;
 using Microsoft.DocAsCode.Common;
 using Microsoft.DocAsCode.Dfm;
 using Microsoft.DocAsCode.MarkdownLite;
@@ -155,7 +157,7 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
                 "html",
                 "net6.0",
                 Path.ChangeExtension( targetPathRelativeToProjectDir, ".Aspect.cs.html" ) ) );
-        
+
         var additionalHtmlPath = Path.GetFullPath(
             Path.Combine(
                 projectDir,
@@ -248,12 +250,12 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
             }
 
             AppendTab( "target", "Target Code", targetHtml );
-            
+
             if ( File.Exists( additionalHtmlPath ) )
             {
                 var programHtml = File.ReadAllText( additionalHtmlPath );
                 AppendTab( "additional", "Additional Code", programHtml );
-                
+
                 // TODO: we should add this to the TryMetalama link, but TryMetalama does not support 3 buffers. 
             }
 

@@ -20,5 +20,4 @@ namespace Doc.ToStringWithSimpleToString
             return $"{{ MovingVertex X={X}, Y={Y}, DX={DX}, DY={DY}, Velocity={Velocity} }}";
         }
     }
-
 }

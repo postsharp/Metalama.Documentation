@@ -6,11 +6,7 @@ namespace Doc.ForTestOnly_Fabric
 {
     namespace ValidatedNamespace
     {
-
-        public class MyService
-        {
-
-        }
+        public class MyService { }
     }
 
     internal class NormalClass

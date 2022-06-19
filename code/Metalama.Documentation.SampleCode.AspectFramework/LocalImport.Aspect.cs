@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using System;
@@ -12,14 +14,14 @@ namespace Doc.ImportService
             "MY001",
             Severity.Error,
             "The 'ImportServiceAspect' aspects requires the type '{0}' to have a field named '_serviceProvider' and " +
-            " of type 'IServiceProvider'.");
+            " of type 'IServiceProvider'." );
 
         private static readonly DiagnosticDefinition<(IField, IType)> _serviceProviderFieldTypeMismatch = new(
             "MY002",
             Severity.Error,
-            "The type of field '{0}' must be 'IServiceProvider', but it is '{1}.");
+            "The type of field '{0}' must be 'IServiceProvider', but it is '{1}." );
 
-        private static readonly SuppressionDefinition _suppressFieldIsNeverUsed = new("CS0169");
+        private static readonly SuppressionDefinition _suppressFieldIsNeverUsed = new( "CS0169" );
 
         public override void BuildAspect( IAspectBuilder<IFieldOrProperty> builder )
         {
@@ -29,16 +31,16 @@ namespace Doc.ImportService
 
             if ( serviceProviderField == null )
             {
-                builder.Diagnostics.Report(
-                    _serviceProviderFieldMissing.WithArguments( builder.Target.DeclaringType ) );
+                builder.Diagnostics.Report( _serviceProviderFieldMissing.WithArguments( builder.Target.DeclaringType ) );
 
                 return;
             }
             else if ( !serviceProviderField.Type.Is( typeof(IServiceProvider) ) )
             {
                 builder.Diagnostics.Report(
-                    _serviceProviderFieldTypeMismatch.WithArguments( (serviceProviderField,
-                        serviceProviderField.Type) ) );
+                    _serviceProviderFieldTypeMismatch.WithArguments(
+                        (serviceProviderField,
+                         serviceProviderField.Type) ) );
 
                 return;
             }

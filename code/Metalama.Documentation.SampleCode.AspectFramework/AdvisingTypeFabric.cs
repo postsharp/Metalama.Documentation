@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Fabrics;
 
 namespace Doc.AdvisingTypeFabric
@@ -19,7 +21,7 @@ namespace Doc.AdvisingTypeFabric
                 {
                     amender.Advices.IntroduceMethod(
                         amender.Type,
-                        nameof( this.MethodTemplate ),
+                        nameof(this.MethodTemplate),
                         args: new { index = i },
                         buildMethod: m => m.Name = "Method" + i );
                 }

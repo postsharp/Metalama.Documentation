@@ -1,11 +1,14 @@
-﻿using System;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using System;
 using System.Collections.Generic;
 
 namespace Doc.GlobalImportWithSetter
 {
     internal class Foo
     {
-        [Import] private IFormatProvider? _formatProvider;
+        [Import]
+        private IFormatProvider? _formatProvider;
     }
 
     internal class ServiceLocator : IServiceProvider

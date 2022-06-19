@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
 using System.Linq;
@@ -9,7 +11,9 @@ namespace Doc.Disposable
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            builder.Advice.ImplementInterface( builder.Target, typeof(IDisposable),
+            builder.Advice.ImplementInterface(
+                builder.Target,
+                typeof(IDisposable),
                 whenExists: OverrideStrategy.Ignore );
         }
 

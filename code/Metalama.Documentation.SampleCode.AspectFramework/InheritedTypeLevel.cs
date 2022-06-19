@@ -1,9 +1,12 @@
-﻿namespace Doc.InheritedTypeLevel
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+namespace Doc.InheritedTypeLevel
 {
     [InheritedAspect]
     internal class BaseClass
     {
         public void Method1() { }
+
         public virtual void Method2() { }
     }
 

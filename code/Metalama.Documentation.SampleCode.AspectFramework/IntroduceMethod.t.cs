@@ -3,7 +3,6 @@ using System.Threading;
 
 namespace Doc.IntroduceMethod
 {
-
     [ToString]
     internal class MyClass
     {
@@ -17,7 +16,8 @@ namespace Doc.IntroduceMethod
 
     internal static class IdGenerator
     {
-        static int _nextId;
+        private static int _nextId;
+
         public static int GetId() => Interlocked.Increment(ref _nextId);
     }
 
