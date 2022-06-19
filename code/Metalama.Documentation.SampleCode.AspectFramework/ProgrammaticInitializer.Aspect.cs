@@ -27,9 +27,11 @@ namespace Doc.ProgrammaticInitializer
             expressionBuilder.AppendVerbatim( "}" );
 
             // Introduce a field and initialize it to that array.
-            var fieldBuilder = builder.Advice.IntroduceField( builder.Target, "_methodNames" );
-            fieldBuilder.Type = TypeFactory.GetType( typeof( string[] ) );
-            fieldBuilder.InitializerExpression = expressionBuilder.ToExpression();
+            builder.Advice.IntroduceField( builder.Target, "_methodNames", typeof( string[] ),  buildField: f =>
+            {
+                f.InitializerExpression = expressionBuilder.ToExpression();
+            } );
+            
         }
     }
 }

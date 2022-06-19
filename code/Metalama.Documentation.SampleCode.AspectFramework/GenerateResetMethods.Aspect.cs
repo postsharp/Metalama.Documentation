@@ -12,8 +12,16 @@ namespace Doc.GenerateResetMethods
 
             foreach ( var field in builder.Target.FieldsAndProperties.Where( f => f.Writeability != Writeability.None ) )
             {
-                var method = builder.Advice.IntroduceMethod( builder.Target, nameof( Reset ), args: new { field = field, T = field.Type } );
-                method.Name = "Reset" + CamelCase( field.Name );
+                builder.Advice.IntroduceMethod(
+                    builder.Target, 
+                    nameof( Reset ), 
+                    args: new { field = field, T = field.Type },
+                    buildMethod: m =>
+                    {
+                        m.Name = "Reset" + CamelCase( field.Name );
+                    }
+                    );
+                
 
             }
         }

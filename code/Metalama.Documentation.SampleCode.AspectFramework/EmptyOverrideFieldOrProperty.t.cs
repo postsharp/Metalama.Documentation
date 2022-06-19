@@ -6,6 +6,7 @@ namespace Doc
 
         private int _field;
 
+        [EmptyOverrideFieldOrProperty]
         public int Field
         {
             get

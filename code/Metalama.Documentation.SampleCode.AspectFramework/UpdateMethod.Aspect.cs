@@ -8,16 +8,20 @@ namespace Doc.UpdateMethod
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            var updateMethodBuilder = builder.Advice.IntroduceMethod( builder.Target, nameof(this.Update) );
+            var updateMethodBuilder = builder.Advice.IntroduceMethod( builder.Target, nameof(this.Update), buildMethod:
+                m =>
+                {
+                    var fieldsAndProperties =
+                     builder.Target.FieldsAndProperties
+                   .Where( f => f.Writeability == Writeability.All );
 
-            var fieldsAndProperties =
-                builder.Target.FieldsAndProperties
-                    .Where( f => f.Writeability == Writeability.All );
+                    foreach ( var field in fieldsAndProperties )
+                    {
+                        m.AddParameter( field.Name, field.Type );
+                    }
+                } );
 
-            foreach ( var field in fieldsAndProperties )
-            {
-                updateMethodBuilder.AddParameter( field.Name, field.Type );
-            }
+           
         }
 
         [Template]

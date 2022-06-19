@@ -30,7 +30,9 @@ var product = new Product( Dependencies.MetalamaDocumentation )
     },
     PublicArtifacts = Pattern.Create(
         docPackageFileName ),
-    Dependencies = new[] { Dependencies.PostSharpEngineering, Dependencies.Metalama },
+        // Metalama is a a transitive dependency.
+    Dependencies = new[] { Dependencies.PostSharpEngineering,
+         Dependencies.MetalamaFrameworkExtensions },
     AdditionalDirectoriesToClean = new[] { "docfx\\obj", "docfx\\_site" },
 
     // Disable automatic build triggers.

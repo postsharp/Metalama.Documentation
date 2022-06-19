@@ -17,12 +17,11 @@ namespace Doc.AdvisingTypeFabric
             {
                 for ( var i = 0; i < 10; i++ )
                 {
-                    var methodBuilder = amender.Advices.IntroduceMethod(
+                    amender.Advices.IntroduceMethod(
                         amender.Type,
                         nameof( this.MethodTemplate ),
-                        args: new { index = i } );
-
-                    methodBuilder.Name = "Method" + i;
+                        args: new { index = i },
+                        buildMethod: m => m.Name = "Method" + i );
                 }
             }
         }

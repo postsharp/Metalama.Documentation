@@ -1,0 +1,2 @@
+nonNullableString='A', nullableString='B'
+Property='    C   '

@@ -10,7 +10,9 @@
               "Metalama.Framework.Introspection.dll",
               "Metalama.Framework.Workspaces.dll",
               "Metalama.LinqPad.dll",
-              "Metalama.Compiler.Interface.dll"
+              "Metalama.Compiler.Interface.dll",
+              "Metalama.Framework.DependencyInjection.dll",
+              "Metalama.Framework.DependencyInjection.ServiceLocator.dll"
               ],
           "src": "../code/Metalama.Documentation.Consolidated/bin/Debug/net6.0-windows"
         }

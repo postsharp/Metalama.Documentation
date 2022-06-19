@@ -11,13 +11,18 @@ namespace Doc.DeepClone
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            var typedMethod = builder.Advice.IntroduceMethod(
+            builder.Advice.IntroduceMethod(
                 builder.Target,
                 nameof( this.CloneImpl ),
-                whenExists: OverrideStrategy.Override );
+                whenExists: OverrideStrategy.Override,
+                buildMethod: t =>
+                {
+                    t.Name = "Clone";
+                    t.ReturnType = builder.Target;
 
-            typedMethod.Name = "Clone";
-            typedMethod.ReturnType = builder.Target;
+                } );
+
+           
 
             builder.Advice.ImplementInterface(
                 builder.Target,
