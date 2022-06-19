@@ -21,24 +21,36 @@ graph TD
     MyProject --> MyExtension
     MyProject -- analyzer --> MyExtension.Weaver
     MyExtension --> Metalama.Framework.Redist
-    MyExtension.Weaver --> MyExtension
+    MyExtension.Weaver -. optional .-> MyExtension
     MyExtension.Weaver --> Metalama.Framework.Sdk
     MyExtension.UnitTests --> MyExtension
     MyExtension.UnitTests -- analyzer --> MyExtension.Weaver
     MyExtension.UnitTests --> Metalama.TestFramework
     Metalama.Framework.Sdk --> Roslyn
-    Metalama.Framework.Sdk --> Metalama.Framework.Redist
     Metalama.TestFramework --> Metalama.Framework.Redist
+    Metalama.Framework.Sdk --> Metalama.Framework.Redist
     
     Metalama.Framework.Sdk([Metalama.Framework.Sdk<br/>package])
     Roslyn([Roslyn<br/>packages])
     Metalama.Framework.Redist([Metalama.Framework.Redist<br/>package])
     Metalama.TestFramework([Metalama.Framework.Sdk<br/>package]) 
+    MyExtension[MyExtension<br/>project]
+    MyExtension.Weaver[MyExtension.Weaver<br/>project]
+    MyExtension.UnitTests[MyExtension.UnitTests<br/>project]
+    MyProject[MyProject<br/>project]
 ```
 
 ## NuGet packaging
 
 Both the public assembly and the weaver assembly are typically deployed in a single NuGet package
+
+```text
+/lib/netstandard2.0/MyExtension.dll
+/lib/netstandard2.0/MyExtension.xml
+/analyzers/dotnet/cs/MyExtension.Weaver.dll
+```
+
+(TODO)
 
 ## 1. The public API project
 
