@@ -139,6 +139,8 @@ items:
     items:                
     - name: Using Live Templates
       topicUid: applying-live-templates
+    - name: Previewing the generated code
+      topicUid: preview
   - name: Extending Metalama
     topicUid: sdk
     items:

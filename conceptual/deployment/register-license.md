@@ -13,7 +13,7 @@ To switch to the Metalama Essentials license:
 1. Install Metalama Command Line Tools as described in <xref:dotnet-tool>.
 2. Execute the following commands:
 
-   ```powershell
+   ```
    metalama-config register essentials
    ```
 
@@ -24,7 +24,7 @@ To register a license:
 1. Install Metalama Command Line Tools as described in <xref:dotnet-tool>.
 2. Execute the following commands:
    
-   ```powershell
+   ```
    metalama-config register <LICENSE KEY>
    ````
 

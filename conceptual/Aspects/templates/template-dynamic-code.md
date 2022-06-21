@@ -127,7 +127,7 @@ The following example shows how an <xref:Metalama.Framework.Code.SyntaxBuilders.
 
 ## Parsing C# code
 
-Sometimes it is easier to generate the run-time code as a simple text instead of using a complex meta API. If you want to use C# code represented as a `string` in your code, you can do it using the <xref:Metalama.Framework.Code.ExpressionFactory.Parse*?text=ExpressionFactory.Parse> method. This method returns an <xref:Metalama.Framework.Code.IExpression>, which is a compile-time object that you can use anywhere in compile-time code. The <xref:Metalama.Framework.Code.IExpression> interface exposes the run-time expression in the <xref:Metalama.Framework.Code.IExpression.Value> property.
+Sometimes it is easier to generate the run-time code as a simple text instead of using a complex meta API. If you want to use C# code represented as a `string` in your code, you can do it using the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Parse*?text=ExpressionFactory.Parse> method. This method returns an <xref:Metalama.Framework.Code.IExpression>, which is a compile-time object that you can use anywhere in compile-time code. The <xref:Metalama.Framework.Code.IExpression> interface exposes the run-time expression in the <xref:Metalama.Framework.Code.IExpression.Value> property.
 
 
 >[!NOTE] 
@@ -144,7 +144,7 @@ In the following example, the `_logger` field is accessed through a parsed expre
 
 ## Capturing run-time expressions into compile-time objects
 
-If you want to manipulate a run-time expression as a compile-time object, you can do it using the <xref:Metalama.Framework.Aspects.meta.DefineExpression*?text=meta.DefineExpression> method. This allows you to have expressions that depend on compile-time conditions and control flows. The <xref:Metalama.Framework.Aspects.meta.DefineExpression*> method returns an <xref:Metalama.Framework.Code.IExpression>, the same interface returned by <xref:Metalama.Framework.Code.ExpressionFactory.Parse*>. The <xref:Metalama.Framework.Code.IExpression> is a compile-time object that you can use anywhere in compile-time code. It exposes the run-time expression in the <xref:Metalama.Framework.Code.IExpression.Value> property.
+If you want to manipulate a run-time expression as a compile-time object, you can do it using the <xref:Metalama.Framework.Aspects.meta.DefineExpression*?text=meta.DefineExpression> method. This allows you to have expressions that depend on compile-time conditions and control flows. The <xref:Metalama.Framework.Aspects.meta.DefineExpression*> method returns an <xref:Metalama.Framework.Code.IExpression>, the same interface returned by <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Parse*>. The <xref:Metalama.Framework.Code.IExpression> is a compile-time object that you can use anywhere in compile-time code. It exposes the run-time expression in the <xref:Metalama.Framework.Code.IExpression.Value> property.
 
 The following example is taken from the clone aspect. It declares a local variable named `clone`, but the expression assigned to the variable depends on whether the `Clone` method is an override.
 

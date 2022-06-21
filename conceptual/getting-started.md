@@ -4,7 +4,7 @@ uid: getting-started
 
 # Getting Started with Metalama
 
-1. **Install Metalama**. Add the `Metalama.Framework` package to your project. We also recommend that you install [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama).
+1. **Install Metalama**. Add the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) package to your project. We also recommend that you install [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama).
    
    See <xref:installing> for details.
    
