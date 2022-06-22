@@ -7,7 +7,7 @@ Many aspects need to modify the target type so it implements a new interface. Th
 
 ## Step 1. Call IAdviceFactory.ImplementInterface
 
-In your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, call the <xref:Metalama.Framework.Aspects.IAdviceFactory.ImplementInterface*> method.
+In your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, call the <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> method.
 
 ## Step 2. Add interface members to the aspect class
 

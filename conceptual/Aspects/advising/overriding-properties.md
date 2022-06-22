@@ -61,7 +61,7 @@ This example builds over the previous one, but the dependency is stored in the f
 
 ## Overriding several fields or properties from the same aspect
 
-Just like for methods, to override one or more fields or properties from a single aspect, your aspect needs to implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.Advice`. Your implementation must then call the <xref: Metalama.Framework.Aspects.IAdviceFactory.OverrideFieldOrProperty*> method.
+Just like for methods, to override one or more fields or properties from a single aspect, your aspect needs to implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.Advice`. Your implementation must then call the <xref: Metalama.Framework.Advising.IAdviceFactory.OverrideFieldOrProperty*> method.
 
 There are two overloads of this method:
 
@@ -102,7 +102,7 @@ Advising fields or properties with the `OverrideFieldOrProperty` has the followi
 * You cannot choose a template for each accessor separately.
 * You cannot have generic templates.  (Not yet implemented in `Overrideccessors` anyway.)
 
-To alleviate these limitations, you can use the method <xref:Metalama.Framework.Aspects.IAdviceFactory.Override*> and provide one or two method templates: a getter template and/or a setter template.
+To alleviate these limitations, you can use the method <xref:Metalama.Framework.Advising.IAdviceFactory.Override*> and provide one or two method templates: a getter template and/or a setter template.
 
 The templates must fulfill the following conditions:
 

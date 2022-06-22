@@ -37,7 +37,7 @@ The easiest way to introduce a member from an aspect is to implement this member
     </tr>
     <tr>
         <td>
-            <xref:Metalama.Framework.Aspects.TemplateAttribute.Scope>
+            <xref:Metalama.Framework.Aspects.IntroduceAttribute.Scope>
         </td>
         <td>
             Decides whether the introduced member will be `static` or not. See <xref:Metalama.Framework.Aspects.IntroductionScope> for possible strategies. By default, it is copied from the template, except when the aspect is applied to a static member, in which case the introduced member is always `static`.
@@ -91,13 +91,13 @@ Implement the template in your aspect class and annotate it with the <xref:Metal
 
 In your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, call one of the following methods and store the return value in a variable.
 
-- <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceMethod*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder>;
+- <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceMethod*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder>;
 
-- <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceProperty*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IPropertyBuilder>;
+- <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceProperty*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IPropertyBuilder>;
 
-- <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceEvent*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IEventBuilder>;
+- <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceEvent*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IEventBuilder>;
 
-- <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceField*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder>.
+- <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceField*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder>.
 
 A call to these method creates a member that has the same characteristics as the template (name, signature, ...), taking into account the properties of the <xref:Metalama.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute. However, they return a _builder_ object that allows you to modify these characteristics.
 
@@ -117,7 +117,7 @@ The following aspect introduces an `Update` method that assigns all writable fie
 
 When you want to introduce a member to a type, it may happen that the same member is already defined in this type or in a parent type. The default strategy of the aspect framework in this case it simply to report an error and fail the build. You can change this behavior by setting the <xref:Metalama.Framework.Aspects.OverrideStrategy> for this advice:
 
-- For declarative advice, set the <xref:Metalama.Framework.Aspects.TemplateAttribute.WhenExists> property of the custom attribute,
+- For declarative advice, set the <xref:Metalama.Framework.Aspects.IntroduceAttribute.WhenExists> property of the custom attribute,
 - For programmatic advice, set the _whenExists_ optional parameter of the advice factory method.
 
 [comment]: # (TODO: The implementation and documentation are not final. Another property and parameter should be defined to cope with the case when the member is inherited.)

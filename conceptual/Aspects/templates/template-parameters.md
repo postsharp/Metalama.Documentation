@@ -19,7 +19,7 @@ To define and use a compile-time parameter in a template method:
 
 1. Add one or more parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The parameter type must not be run-time-only. If the parameter type is compile-time-only (e.g. `IField`), the custom attribute is redundant.
   
-2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Aspects.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { a = "", b = 3, c = field }` where `a`, `b` and `c` and the exact names of the template parameters (the name matching is case sensitive).
+2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { a = "", b = 3, c = field }` where `a`, `b` and `c` and the exact names of the template parameters (the name matching is case sensitive).
   
 
 ### Alternative
@@ -34,7 +34,7 @@ To define and use a compile-time type parameter in a template method, follow alm
 
 1. Add one or more parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The type parameter can have arbitrary constraints, but the current version of Metalama will ignore them when expanding the template.
   
-2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Aspects.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { T1 = typeof(int), T2 = field.Type }` where `T1` and `T2` and the exact names of the template parameters (the name matching is case sensitive).
+2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { T1 = typeof(int), T2 = field.Type }` where `T1` and `T2` and the exact names of the template parameters (the name matching is case sensitive).
 
 ### Alternative
 

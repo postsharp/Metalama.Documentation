@@ -63,7 +63,7 @@ To learn about customizing eligibility for different contract directions than th
 
 ## Adding contract advice programmatically
 
-Just as any advice, you can add a contract to a parameter, field or property from the `BuildAspect` method of your aspect using the <xref:Metalama.Framework.Aspects.IAdviceFactory.AddContract*> method.
+Just as any advice, you can add a contract to a parameter, field or property from the `BuildAspect` method of your aspect using the <xref:Metalama.Framework.Advising.IAdviceFactory.AddContract*> method.
 
 > [!NOTE]
 > When possible, provide all contracts to the same method from a single aspect. It has better compile-time performance than using several aspects.
@@ -72,7 +72,7 @@ Just as any advice, you can add a contract to a parameter, field or property fro
 
 The following snippet shows how to automatically add precondition checks for all situations in the public API where a non-nullable parameter could receive a null value from a consumer. 
 
-The fabric adds a method-level aspect to all exposed methods. Then, the aspect adds individual contracts using the <xref:Metalama.Framework.Aspects.IAdviceFactory.AddContract*> method.
+The fabric adds a method-level aspect to all exposed methods. Then, the aspect adds individual contracts using the <xref:Metalama.Framework.Advising.IAdviceFactory.AddContract*> method.
 
 
 [!include[NotNull Fabric](../../../code/Metalama.Documentation.SampleCode.AspectFramework/NotNullFabric.cs)]

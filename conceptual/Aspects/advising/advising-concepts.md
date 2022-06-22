@@ -14,11 +14,11 @@ The only _declarative advice_ is the _member introduction_ advice and is marked 
 
 ## Imperative advising
 
-_Imperative advice_ are added by the implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method thanks to the methods exposed by the <xref:Metalama.Framework.Aspects.IAspectLayerBuilder.Advice> property of the `builder` parameter. See <xref:Metalama.Framework.Aspects.IAdviceFactory> for a complete list of methods. In short:
+_Imperative advice_ are added by the implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method thanks to the methods exposed by the <xref:Metalama.Framework.Aspects.IAspectLayerBuilder.Advice> property of the `builder` parameter. See <xref:Metalama.Framework.Advising.IAdviceFactory> for a complete list of methods. In short:
 
-* <xref:Metalama.Framework.Aspects.IAdviceFactory.Override*> allows you to replace the implementation of a type member.
-* <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceMethod*>, <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceProperty*>, <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceField*> and <xref:Metalama.Framework.Aspects.IAdviceFactory.IntroduceEvent*> allows your aspect to introduce new members into the target type. See <xref:introducing-members> for details.
-* <xref:Metalama.Framework.Aspects.IAdviceFactory.ImplementInterface*> makes the target type implement an interface. See <xref:implementing-interfaces> for details.
+* <xref:Metalama.Framework.Advising.IAdviceFactory.Override*> allows you to replace the implementation of a type member.
+* <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceMethod*>, <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceProperty*>, <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceField*> and <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceEvent*> allows your aspect to introduce new members into the target type. See <xref:introducing-members> for details.
+* <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> makes the target type implement an interface. See <xref:implementing-interfaces> for details.
 
 ## Template methods
 
