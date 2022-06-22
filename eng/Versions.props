@@ -14,7 +14,7 @@
 		<MetalamaVersion>0.5.23-preview</MetalamaVersion>
         <MetalamaVersion Condition="$(VcsBranch.StartsWith('dev'))">branch:master</MetalamaVersion>
         <MetalamaFrameworkExtensionsVersion>0.5.23-preview</MetalamaFrameworkExtensionsVersion>
-        <MetalamaFrameworkExtensionsVersion Condition="$(VcsBranch.StartsWith('dev'))">branch:master</MetalamaFrameworkExtensionsVersion>
+        <MetalamaFrameworkExtensionsVersion Condition="$(VcsBranch.StartsWith('dev'))">branch:dev</MetalamaFrameworkExtensionsVersion>
     </PropertyGroup>
 
     <!-- Import overrides for the local build -->
