@@ -25,6 +25,8 @@ namespace Doc.RegisterInstance
             var o = new DemoClass();
 
             PrintInstances();
+
+            _ = o;
         }
 
         private static void PrintInstances()

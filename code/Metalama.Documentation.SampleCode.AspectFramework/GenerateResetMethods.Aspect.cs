@@ -18,10 +18,7 @@ namespace Doc.GenerateResetMethods
                     builder.Target,
                     nameof(this.Reset),
                     args: new { field = field, T = field.Type },
-                    buildMethod: m =>
-                    {
-                        m.Name = "Reset" + CamelCase( field.Name );
-                    } );
+                    buildMethod: m => m.Name = "Reset" + CamelCase( field.Name ) );
             }
         }
 

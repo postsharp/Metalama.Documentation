@@ -16,7 +16,7 @@ namespace Doc.ForTestOnly
     internal class NormalClass
     {
         // Usage NOT allowed here because we are not in a Tests namespace.
-        private MyService service = new( DateTime.Now.AddDays( 1 ) );
+        private MyService _service = new( DateTime.Now.AddDays( 1 ) );
     }
 
     namespace Tests
@@ -24,7 +24,7 @@ namespace Doc.ForTestOnly
         internal class TestClass
         {
             // Usage allowed here because we are in a Tests namespace.
-            private MyService service = new( DateTime.Now.AddDays( 2 ) );
+            private MyService _service = new( DateTime.Now.AddDays( 2 ) );
         }
     }
 }

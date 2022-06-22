@@ -12,7 +12,7 @@ namespace Doc.ForTestOnly_Fabric
     internal class NormalClass
     {
         // Usage NOT allowed here.
-        private MyService service = new();
+        private MyService _service = new();
     }
 
     namespace Tests
@@ -20,7 +20,7 @@ namespace Doc.ForTestOnly_Fabric
         internal class TestClass
         {
             // Usage allowed here because we are in the Tests namespace.
-            private MyService service = new();
+            private MyService _service = new();
         }
     }
 }

@@ -39,6 +39,7 @@ namespace Doc.LogMethodAndProperty
 
         private string? _field;
 
+        [Log]
         public string? Field
         {
             get

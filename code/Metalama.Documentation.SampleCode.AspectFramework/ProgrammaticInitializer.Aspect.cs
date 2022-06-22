@@ -35,10 +35,7 @@ namespace Doc.ProgrammaticInitializer
                 builder.Target,
                 "_methodNames",
                 typeof(string[]),
-                buildField: f =>
-                {
-                    f.InitializerExpression = expressionBuilder.ToExpression();
-                } );
+                buildField: f => f.InitializerExpression = expressionBuilder.ToExpression() );
         }
     }
 }

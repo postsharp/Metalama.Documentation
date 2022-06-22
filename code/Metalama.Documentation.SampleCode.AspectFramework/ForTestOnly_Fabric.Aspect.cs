@@ -4,6 +4,7 @@ using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using Metalama.Framework.Fabrics;
 using Metalama.Framework.Validation;
+using System;
 
 namespace Doc.ForTestOnly_Fabric
 {
@@ -25,7 +26,7 @@ namespace Doc.ForTestOnly_Fabric
             {
                 if (
                     context.ReferencingType.Namespace != context.ReferencedDeclaration &&
-                    !context.ReferencingType.Namespace.FullName.EndsWith( ".Tests" ) )
+                    !context.ReferencingType.Namespace.FullName.EndsWith( ".Tests", StringComparison.Ordinal ) )
                 {
                     context.Diagnostics.Report( _warning.WithArguments( context.ReferencedDeclaration ) );
                 }
