@@ -1,5 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. All rights reserved.
-// This project is not open source. Please see the LICENSE.md file in the repository root for details.
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
 
 using Amazon;
 using BuildMetalamaDocumentation;
@@ -63,7 +62,7 @@ return commandApp.Run( args );
 
 static void OnPrepareCompleted( PrepareCompletedEventArgs args )
 {
-    var nuget = Path.Combine( Path.GetDirectoryName( Process.GetCurrentProcess().MainModule.FileName ), "nuget.exe " );
+    var nuget = Path.Combine( Path.GetDirectoryName( Process.GetCurrentProcess().MainModule!.FileName )!, "nuget.exe " );
 
     if ( !ToolInvocationHelper.InvokeTool( args.Context.Console, nuget,
         "restore \"docfx\\packages.config\" -OutputDirectory \"docfx\\packages\"", args.Context.RepoDirectory ) )

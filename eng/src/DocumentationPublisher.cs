@@ -1,4 +1,6 @@
-﻿using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this git repo for details.
+
+using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
 using System;
