@@ -38,9 +38,9 @@ The example in the following aspect introduces a field using the <xref:Metalama.
 
 [!include[Programmatic Initializer](../../../code/Metalama.Documentation.SampleCode.AspectFramework/ProgrammaticInitializer.cs)]
 
-## Before object constructor
+## Before any object constructor
 
-To inject some initialization before any user code of the instance constructor is called:
+To inject some initialization before any user code of the any instance constructor is called:
 
 1. Add a method of signature `void BeforeInstanceConstructor()` to your aspect class and annotate it with the `[Template]` custom attribute. The name of this method is arbitrary.
 2. Call the <xref:Metalama.Framework.Advising.IAdviceFactory.AddInitializer*?text=builder.Advice.AddInitializer> method in your aspect (or <xref:Metalama.Framework.Advising.IAdviceFactory.AddInitializer*?text=amender.Advice.AddInitializer>) in a fabric). Pass the type that must be initialized, then the name of the method of the previous step, and finally the value `InitializerType.BeforeInstanceConstructor`.
@@ -54,6 +54,11 @@ If the type does not contain any constructor, a default constructor will be crea
 The aspect in the following aspect registers any new aspect of the target class in a registry of live instances. When an instance is garbage collected, it is automatically removed from the registry. The aspect injects the registration logic into the constructor of the target class.
 
 [!include[Register Instance](../../../code/Metalama.Documentation.SampleCode.AspectFramework/RegisterInstance.cs)]
+
+
+## Before a specific object constructor
+
+If you want to insert logic into a specific constructor, you can also call the <xref:Metalama.Framework.Advising.IAdviceFactory.AddInitializer*> method and pass an <xref:Metalama.Framework.Code.IConstructor>. With this method overload, you can also advise constructors that are chained to another constructor of the same type through the `this` keyword.
 
 
 ## Before type constructor

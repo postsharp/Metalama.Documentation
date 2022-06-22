@@ -28,6 +28,7 @@ This chapter is composed of the following articles:
 | <xref:templates>                    | This article explains how to create dynamic code templates.                                                                                            |
 | <xref:advising-code>                | This section explains how to create aspects that perform advanced code modifications using the complete API.                                           |
 | <xref:diagnostics>                  | This article explains how to report or suppress errors, warnings and information messages.                                                             |
+| <xref:dependency-injection>         | This article describes how an aspect can use a dependency and pull it from the container.                                                             |
 | <xref:building-ide-interactions> | This article explains how to create live templates, code fixes and refactorings.                                                    |
 | <xref:child-aspects>                | This section explains how an aspect can add other aspects, and how child aspects can know about their parents.          |
 | <xref:aspect-inheritance>            | This section explains how to automatically make an aspect apply to all declarations derived from its direct targets.  |

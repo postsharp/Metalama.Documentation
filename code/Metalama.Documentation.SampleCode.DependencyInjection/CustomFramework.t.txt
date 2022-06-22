@@ -1,0 +1,3 @@
+Worker.ExecuteAsync(CancellationToken) started.
+Hello, world.
+Worker.ExecuteAsync(CancellationToken) completed.

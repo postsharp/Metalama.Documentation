@@ -20,4 +20,6 @@ uid: advising-code
 
 <xref:initializers>
 
+<xref:introducing-constructor-parameters>
+
 <xref:sharing-state-with-advice>

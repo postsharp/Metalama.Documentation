@@ -8,16 +8,6 @@
         <LangVersion>9.0</LangVersion>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Compile Remove="InheritedTypeLevel - Copy.t.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Include="InheritedMethodLevel.t.cs">
-        <SubType>Code</SubType>
-        <DependentUpon>InheritedMethodLevel.cs</DependentUpon>
-      </None>
-    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />

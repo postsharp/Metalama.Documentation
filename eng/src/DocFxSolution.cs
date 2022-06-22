@@ -38,7 +38,7 @@ namespace BuildMetalamaDocumentation
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
                 Path.Combine( context.RepoDirectory, "docfx\\packages\\docfx.console.2.59.0\\tools\\docfx.exe" ),
-                $"\"docfx\\docfx.json\" {command}",
+                Path.Combine( context.RepoDirectory, "docfx\\docfx.json" ) + " " + command,
                 context.RepoDirectory,
                 toolInvocationOptions );
         }

@@ -67,10 +67,14 @@ items:
           topicUid: implementing-interfaces
         - name: Adding Initializers
           topicUid: initializers
+        - name: Introducing Constructor Parameters
+          topicUid: introducing-constructor-parameters
         - name: Sharing State With Advice
           topicUid: sharing-state-with-advice
       - name: Reporting and Suppressing Diagnostics
         topicUid: diagnostics
+      - name: Injecting Dependencies Into Aspects
+        topicUid: dependency-injection
       - name: Defining Aspect Eligibility
         topicUid: eligibility
       - name: Building IDE Interactions
@@ -123,6 +127,8 @@ items:
         topicUid: fabrics-validation
       - name: Advising a Type
         topicUid: fabrics-advising
+      - name: Configuring a Project
+        topicUid: fabrics-configuring
       - name: Targeting Multiple Projects
         topicUid: fabrics-multiple-projects
       - name: Execution Order

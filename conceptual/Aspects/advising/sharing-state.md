@@ -32,4 +32,4 @@ To define and use tags:
 
 ## Sharing state with the State property
 
-You can use the <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState?text=IAspectBuilder.AspectState> property to store any aspect state that depends on the target declaration. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.State?text=IAspectInstance.State> property and is therefore also visible to inheritors and children aspects.
+You can use the <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState?text=IAspectBuilder.AspectState> property to store any aspect state that depends on the target declaration. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.AspectState?text=IAspectInstance.AspectState> property and is therefore also visible to inheritors and children aspects.

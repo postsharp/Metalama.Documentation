@@ -26,5 +26,6 @@ This chapter contains the following articles:
 | <xref:fabrics-aspects> | This article describes how to use fabrics to programmatically add aspects to several declarations - without custom attributes |
 | <xref:fabrics-validation> | This article explains how to validate code using fabrics. |
 | <xref:fabrics-advising> | This article shows how to modify the current type using a type fabric without having to use a separate aspect class. |
+| <xref:fabrics-configuring> | This article explains how to use a project fabric to configure an aspect library. |
 | <xref:fabrics-multiple-projects> | This article explains how to target multiple projects with fabrics, either by using a shared fabric in the root directory of your repo, or by using transitive project fabrics.
 | <xref:fabrics-execution-order> | This article explains in which order fabrics and aspects execute in a project.
