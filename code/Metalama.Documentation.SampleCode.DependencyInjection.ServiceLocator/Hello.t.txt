@@ -1,0 +1,3 @@
+Worker.ExecuteAsync() started.
+Hello, world.
+Worker.ExecuteAsync() completed.

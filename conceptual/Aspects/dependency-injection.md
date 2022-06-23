@@ -30,11 +30,17 @@ To consume a dependency from an aspect:
   * <xref:Metalama.Framework.DependencyInjection.IntroduceDependencyAttribute.IsRequired> throws an exception if the dependency is not available.
 4. Use this field or property from any template member of your aspect.
 
-### Example
+### Example: default dependency injection patterns
 
 The following example uses the `Microsoft.Extensions.Hosting`, typical to .NET Core applications, to build an application and inject services. The `Program.Main` method builds the host, which then instantiates our `Worker` class. We add a `[Log]` aspect to this class. The `Log` aspect class has a field of type `IMessageWriter`, marked with the <xref:Metalama.Framework.DependencyInjection.IntroduceDependencyAttribute> custom attribute. As you can see in the transformed code, this field is introduced into the `Worker` class and pulled from the constructor.
 
 [!include[Dependency Injection](../../code/Metalama.Documentation.SampleCode.DependencyInjection/Hello.cs)]
+
+### Example: ServiceLocator
+
+What follows is the same example as the previous one, but using the `ServiceLocator` pattern instead of pulling dependencies from the constructor.
+
+[!include[Service Locator](../../code/Metalama.Documentation.SampleCode.DependencyInjection.ServiceLocator/Hello.cs)]
 
 
 ## Selecting a dependency injection framework

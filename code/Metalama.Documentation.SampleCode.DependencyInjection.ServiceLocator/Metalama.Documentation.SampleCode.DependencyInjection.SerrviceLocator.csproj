@@ -10,8 +10,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
 		<PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
 		<PackageReference Include="xunit" Version="2.4.1" />
@@ -21,7 +19,7 @@
 		</PackageReference>
 
 		<PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)" />
-		<PackageReference Include="Metalama.Framework.DependencyInjection" Version="$(MetalamaFrameworkExtensionsVersion)" />
+		<PackageReference Include="Metalama.Framework.DependencyInjection.ServiceLocator" Version="$(MetalamaFrameworkExtensionsVersion)" />
 		<PackageReference Include="Metalama.TestFramework" Version="$(MetalamaVersion)" />
 	</ItemGroup>
 
