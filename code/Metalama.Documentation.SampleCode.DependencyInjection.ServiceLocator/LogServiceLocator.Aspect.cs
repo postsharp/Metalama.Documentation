@@ -3,13 +3,17 @@ using Metalama.Framework.DependencyInjection;
 
 #pragma warning disable CS0649, CS8618
 
-[assembly: AspectOrder( typeof(Doc.DependencyInjection.LogAttribute), typeof(DependencyAttribute))] 
+[assembly: AspectOrder( typeof(Doc.LogServiceLocator.LogAttribute), typeof(DependencyAttribute))] 
 
-namespace Doc.DependencyInjection
+namespace Doc.LogServiceLocator
 {
 
+    // Our logging aspect.
     public class LogAttribute : OverrideMethodAspect
     {
+
+        // Defines the dependency consumed by the aspect. It will be handled initialized from a service locator,
+        // but note that the aspect does not need to know the implementation details of the dependency injection framework.
         [IntroduceDependency]
         private readonly IMessageWriter _messageWriter;
 

@@ -4,8 +4,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
-namespace Doc.CustomFramework
+namespace Doc.LogCustomFramework
 {
+    // Program entry point. Creates the host, configure dependencies, and runs it.
     public static class Program
     {
         private static Task Main() =>

@@ -1,8 +1,6 @@
 ﻿namespace Doc.IntroduceParameter
 {
-
-
-    class Foo
+    internal class Foo
     {
         [RegisterInstance]
         public Foo()
@@ -12,7 +10,7 @@
 
     }
 
-    class Bar : Foo
+    internal class Bar : Foo
     {
 
     }

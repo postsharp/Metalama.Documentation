@@ -4,8 +4,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
-namespace Doc.DependencyInjection
+namespace Doc.LogDefaultFramework
 {
+    // Program entry point. Creates the host, configure dependencies, and runs it.
     public static class Program
     {
         private static Task Main() =>
@@ -20,11 +21,13 @@ namespace Doc.DependencyInjection
 
     }
 
+    // Definition of the interface consumed by the aspect.
     public interface IMessageWriter
     {
         void Write( string message );
     }
 
+    // Implementation actually consumed by the aspect.
     public class MessageWriter : IMessageWriter
     {
         public void Write( string message )

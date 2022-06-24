@@ -1,8 +1,9 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Doc.DependencyInjection
+namespace Doc.LogServiceLocator
 {
+    // The class using the Log aspect. This class is NOT instantiated by any dependency injection container.
     public class Worker 
     {
         [Log]
