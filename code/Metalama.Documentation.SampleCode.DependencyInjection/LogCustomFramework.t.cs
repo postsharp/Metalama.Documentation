@@ -4,8 +4,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Doc.CustomFramework
+namespace Doc.LogCustomFramework
 {
+    // The class using the Log aspect. This class is instantiated by the host builder and dependencies are automatically passed.
     public class Worker : BackgroundService
     {
         [Log]

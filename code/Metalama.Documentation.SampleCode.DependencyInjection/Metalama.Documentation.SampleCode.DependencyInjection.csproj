@@ -25,12 +25,4 @@
 		<PackageReference Include="Metalama.TestFramework" Version="$(MetalamaVersion)" />
 	</ItemGroup>
 
-
-	<ItemGroup>
-	  <Compile Update="CustomFramework.Aspect.cs">
-	    <DependentUpon>CustomFramework.cs</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-
 </Project>

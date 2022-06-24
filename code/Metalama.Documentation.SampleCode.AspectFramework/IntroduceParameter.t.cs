@@ -1,8 +1,6 @@
 namespace Doc.IntroduceParameter
 {
-
-
-    class Foo
+    internal class Foo
     {
         [RegisterInstance]
         public Foo(IInstanceRegistry instanceRegistry = default)
@@ -11,7 +9,7 @@ namespace Doc.IntroduceParameter
         }
     }
 
-    class Bar : Foo
+    internal class Bar : Foo
     {
         public Bar(IInstanceRegistry instanceRegistry = default) : base(instanceRegistry)
         {
