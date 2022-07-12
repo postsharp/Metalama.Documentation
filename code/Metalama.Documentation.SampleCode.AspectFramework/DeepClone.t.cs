@@ -25,11 +25,6 @@ namespace Doc.DeepClone
             return clone;
         }
 
-        private AutomaticallyCloneable Clone_Source()
-        {
-            return default(AutomaticallyCloneable);
-        }
-
         object ICloneable.Clone()
         {
             return Clone();

@@ -18,10 +18,6 @@ namespace Doc.Disposable
         {
             this._cancellationTokenSource?.Dispose();
         }
-
-        private void Dispose_Source(bool disposing)
-        {
-        }
     }
 
     [Disposable]
