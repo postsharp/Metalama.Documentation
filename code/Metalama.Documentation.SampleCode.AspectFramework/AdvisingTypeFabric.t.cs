@@ -3,10 +3,10 @@ using Metalama.Framework.Fabrics;
 
 namespace Doc.AdvisingTypeFabric
 {
-#pragma warning disable CS0067
+#pragma warning disable CS0067, CS8618, CA1822, CS0162, CS0169, CS0414
     internal class MyClass
     {
-#pragma warning disable CS0067
+#pragma warning disable CS0067, CS8618, CA1822, CS0162, CS0169, CS0414
         private class Fabric : TypeFabric
         {
             [Template]
@@ -16,7 +16,7 @@ namespace Doc.AdvisingTypeFabric
             public override void AmendType(ITypeAmender amender) => throw new System.NotSupportedException("Compile-time-only code cannot be called at run-time.");
 
         }
-#pragma warning restore CS0067
+#pragma warning restore CS0067, CS8618, CA1822, CS0162, CS0169, CS0414
         public int Method0()
         {
             return 0;
@@ -67,5 +67,5 @@ namespace Doc.AdvisingTypeFabric
             return 9;
         }
     }
-#pragma warning restore CS0067
+#pragma warning restore CS0067, CS8618, CA1822, CS0162, CS0169, CS0414
 }
