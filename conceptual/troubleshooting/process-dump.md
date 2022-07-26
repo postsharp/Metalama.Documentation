@@ -37,7 +37,7 @@ In the next example, Metalama is configured to capture a process dump for the co
 {
  "miniDump": {
     "processes": {
-      "Compiler": false,
+      "Compiler": true,
       "Rider": false,
       "DevEnv": false,
       "RoslynCodeAnalysisService": false
