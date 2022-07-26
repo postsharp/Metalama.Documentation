@@ -163,3 +163,5 @@ items:
     items: 
       - name: Enabling logging
         topicUid: creating-logs
+      - name: Capturing process dumps
+        topicUid: process-dump

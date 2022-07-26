@@ -1,4 +1,5 @@
 warn: Doc.LogCustomFramework.Worker[0]
       Worker.ExecuteAsync(CancellationToken) started.
 Hello, world.
-warn
+warn: Doc.LogCustomFramework.Worker[0]
+      Worker.ExecuteAsync(CancellationToken) completed.

@@ -5,7 +5,8 @@ using System;
 
 namespace Doc.OverrideMethodAspect_
 {
-#pragma warning disable CS0067
+
+#pragma warning disable CS0067, CS8618, CA1822, CS0162, CS0169, CS0414
     // <aspect>
     [AttributeUsage(AttributeTargets.Method)]
     public abstract class OverrideMethodAspect : Attribute, IAspect<IMethod>
@@ -19,7 +20,8 @@ namespace Doc.OverrideMethodAspect_
         [Template]
         public abstract dynamic? OverrideMethod();
     }
-#pragma warning restore CS0067
+
+#pragma warning restore CS0067, CS8618, CA1822, CS0162, CS0169, CS0414
 
     // </aspect>
 }
