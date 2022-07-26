@@ -5,8 +5,10 @@ namespace Doc.SuppressWarning
 {
     internal class Program
     {
+
 #pragma warning disable CS0169
         private TextWriter _logger = Console.Out;
+
 #pragma warning restore CS0169
 
         [Log]
