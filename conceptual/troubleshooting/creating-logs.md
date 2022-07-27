@@ -41,16 +41,7 @@ In the next example, logging is enabled for the compiler process and for all cat
             "RoslynCodeAnalysisService": false
         },
         "categories": {
-            "*": true,
-            "Licensing": false
-        }
-    },
-    "debugger": {
-        "processes": {
-            "Compiler": false,
-            "Rider": false,
-            "DevEnv": false,
-            "RoslynCodeAnalysisService": false
+            "*": true
         }
     }
 }
