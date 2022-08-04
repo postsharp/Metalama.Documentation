@@ -13,7 +13,7 @@ namespace Doc.GlobalImport
                 return (IFormatProvider?)ServiceLocator.ServiceProvider.GetService(typeof(IFormatProvider));
             }
 
-            set
+            init
             {
                 throw new NotSupportedException($"FormatProvider should not be set from source code.");
             }
