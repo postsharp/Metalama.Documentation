@@ -20,6 +20,7 @@ namespace Doc.AdvisingTypeFabric
         }
 
 #pragma warning restore CS0067, CS8618, CA1822, CS0162, CS0169, CS0414
+
         public int Method0()
         {
             return 0;
@@ -72,4 +73,5 @@ namespace Doc.AdvisingTypeFabric
     }
 
 #pragma warning restore CS0067, CS8618, CA1822, CS0162, CS0169, CS0414
+
 }
