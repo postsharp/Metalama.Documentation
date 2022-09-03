@@ -49,6 +49,9 @@ This is like in mathematics: if we have `a < b` and `b < c`, then we have `a < c
 
 If you specify conflicting relationships, or import aspect library that define conflicting ordering, Metalama will emit a compilation error.
 
+> [!NOTE]
+> Metalama will merge all `[assembly: AspectOrder(...)]` attributes that it finds not only in the current project, but also in all referenced projects or libraries. Therefore, you don't need to repeat the `[assembly: AspectOrder(...)]` attributes in all projects that use aspects. It is sufficient to define them projects that define aspects.
+
 ### Example
 
 The following code snippet shows two aspects that both add a method to the target type and display the list of methods that were defined on the target type before the aspect was applied. The order of execution is defined as `Aspect1 < Aspect2`. You can see from this example that the order of application of aspects is opposite. `Aspect2` is applied first and sees the source code, then `Aspect1` is applied and sees the method added by `Aspect1`. The modified method body of `SourceMethod` shows that the aspects are executed in this order: `Aspect1`, `Aspect2`, then the original method.
@@ -58,7 +61,7 @@ The following code snippet shows two aspects that both add a method to the targe
 
 ## Several instances of the same aspect type on the same declaration
 
-When there are several instances of the same aspect type on the same declaration, a single instance of the aspect, named the primary instance, gets applied to the target. The other instances are exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances?text=IAspectInstance.SecondaryInstances> property, which you can access from <xref:Metalama.Framework.Aspects.meta.AspectInstance?meta.AspectInstance> or <xref:Metalama.Framework.Aspects.IAspectLayerBuilder.AspectInstance?builder.AspectInstance>. It is the responsibility of the aspect implementation to decide what to do with the secondary aspect instances.
+When there are several instances of the same aspect type on the same declaration, a single instance of the aspect, named the primary instance, gets applied to the target. The other instances are exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances?text=IAspectInstance.SecondaryInstances> property, which you can access from <xref:Metalama.Framework.Aspects.meta.AspectInstance?meta.AspectInstance> or <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectInstance?builder.AspectInstance>. It is the responsibility of the aspect implementation to decide what to do with the secondary aspect instances.
 
 The primary aspect instance is the instance that has been defined the "closest" to the target declaration. The sorting criteria are the following:
     1. Aspects defined using a *custom attribute*.

@@ -14,6 +14,6 @@ namespace Doc.LogMethodAndProperty
         public int Property { get; set; }
 
         [Log]
-        public string? Field { get; set; }
+        public string? Field;
     }
 }
