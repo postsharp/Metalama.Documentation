@@ -4,7 +4,7 @@ using System;
 namespace Doc.ConsumingProperty
 {
 
-#pragma warning disable CS0067, CS8618, CA1822, CS0162, CS0169, CS0414
+#pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823 
     public class Log : OverrideMethodAspect
     {
         public string? Category { get; set; }
@@ -13,6 +13,6 @@ namespace Doc.ConsumingProperty
 
     }
 
-#pragma warning restore CS0067, CS8618, CA1822, CS0162, CS0169, CS0414
+#pragma warning restore CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823 
 
 }
