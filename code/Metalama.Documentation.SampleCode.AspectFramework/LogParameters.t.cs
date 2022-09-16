@@ -30,8 +30,6 @@ namespace Doc.LogParameters
             {
                 int result;
                 result = a;
-                goto __aspect_return_1;
-            __aspect_return_1:
                 Console.WriteLine($"Foo.IntMethod(a = {{{a}}}) returned {result}.");
                 return result;
             }

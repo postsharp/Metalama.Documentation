@@ -11,8 +11,6 @@ namespace Doc.Ordering
             Console.WriteLine("Executing Aspect1 on SourceMethod. Methods present before applying Aspect1: SourceMethod, IntroducedMethod2");
             Console.WriteLine("Executing Aspect2 on SourceMethod. Methods present before applying Aspect2: SourceMethod");
             Console.WriteLine("Method defined in source code.");
-            goto __aspect_return_1;
-        __aspect_return_1:
             return;
         }
 
