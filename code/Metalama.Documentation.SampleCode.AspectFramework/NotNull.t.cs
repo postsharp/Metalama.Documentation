@@ -26,8 +26,6 @@ namespace Doc.NotNull
         {
             string returnValue;
             returnValue = null!;
-            goto __aspect_return_1;
-        __aspect_return_1:
             if (returnValue == null)
             {
                 throw new PostConditionFailedException($"'<return>' cannot be null when the method returns.");

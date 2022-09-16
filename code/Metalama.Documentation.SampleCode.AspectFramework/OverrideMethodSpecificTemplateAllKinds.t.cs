@@ -12,8 +12,6 @@ namespace Doc.OverrideMethodSpecificTemplateAllKinds
             Console.WriteLine($"NormalMethod: start");
             int result;
             result = 5;
-            goto __aspect_return_1;
-        __aspect_return_1:
             Console.WriteLine($"NormalMethod: returning {result}.");
             return result;
         }
