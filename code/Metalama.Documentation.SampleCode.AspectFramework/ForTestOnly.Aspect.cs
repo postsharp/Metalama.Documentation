@@ -27,7 +27,7 @@ namespace Doc.ForTestOnly
         private void ValidateReference( in ReferenceValidationContext context )
         {
             if (
-                context.ReferencingType != context.ReferencedDeclaration.GetDeclaringType() &&
+                context.ReferencingType != context.ReferencedDeclaration.GetClosestNamedType() &&
                 !context.ReferencingType.Namespace.FullName.EndsWith( ".Tests", StringComparison.Ordinal ) )
             {
                 context.Diagnostics.Report( _warning.WithArguments( context.ReferencedDeclaration ) );
