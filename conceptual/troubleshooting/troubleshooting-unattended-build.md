@@ -90,7 +90,7 @@ In the next example you can find entire resulting `diagnostics.json` file after 
 
 ## Step 3. Copy the diagnostics configuration to environment variable
 
-Having the logging and process dumps options set in `diagnostics.json`, copy the entire content of the file and environment variable as its value passed to the build server.
+Having the logging and process dumps options set in `diagnostics.json`, copy the entire content of the file and set the copied content as a value of environment variable called `METALAMA_DIAGNOSTICS`. Pass this environment variable to the build server.
 
 > [!WARNING]
 > Using diagnostics set by environment variable always overrides local diagnostics settings used by `metalama-config` tool. The `stopLoggingAfterHours` property is also ignored and therefore logging will never be disabled autoamtically.
