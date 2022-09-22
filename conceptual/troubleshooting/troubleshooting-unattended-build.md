@@ -97,5 +97,6 @@ Having the logging and process dumps options set in `diagnostics.json`, copy the
 
 ## Step 4. Run the build on build server
 
-Metalama will automatically read the diagnostics configuration from environment variable,
-You will find the log under the `%TEMP%\Metalama\Logs` directory.
+Metalama will automatically read the diagnostics configuration from environment variable. The build will produce diagnostics based on the specified configuration set in the environment variable.
+
+You will find the logs under the `%TEMP%\Metalama\Logs` directory.
