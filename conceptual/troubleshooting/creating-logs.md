@@ -62,15 +62,8 @@ Restart the logged processes:
 Execute the sequence of actions to be logged.
 
 > [!WARNING]
-> Logging is automatically disabled after specified amount of hours since the last modification of `diagnostics.json`. The time value is taken from `stopLoggingAfterHours` property set in `logging` section and defaults to 2 hours. See the optional step below.
+> Logging is automatically disabled after specified amount of hours since the last modification of `diagnostics.json`. The time value is taken from `stopLoggingAfterHours` property set in `logging` section and defaults to 2 hours. You can edit the `diagnostics.json` to change the value.
 
 ## Step 5. Open the log file
 
 You will find the log under the `%TEMP%\Metalama\Logs` directory.
-
-## Optional step: Changing the time before logging is disabled
-
-You can change the amount of hours before logging is disabled by either directly editing the value of  `stopLoggingAfterHours` property or by executing the command to set the amount of hours:
-```
-metalama-config diag log <hours>
-```
