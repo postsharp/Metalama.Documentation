@@ -4,11 +4,11 @@ using Metalama.Framework.Fabrics;
 namespace Doc.AdvisingTypeFabric
 {
 
-#pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823 
+#pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052
     internal class MyClass
     {
 
-#pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823 
+#pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052
         private class Fabric : TypeFabric
         {
             [Template]
@@ -19,7 +19,7 @@ namespace Doc.AdvisingTypeFabric
 
         }
 
-#pragma warning restore CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823 
+#pragma warning restore CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052
 
         public int Method0()
         {
@@ -72,6 +72,6 @@ namespace Doc.AdvisingTypeFabric
         }
     }
 
-#pragma warning restore CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823 
+#pragma warning restore CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052
 
 }
