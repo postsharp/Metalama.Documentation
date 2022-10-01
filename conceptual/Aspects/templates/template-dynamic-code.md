@@ -2,7 +2,7 @@
 uid: template-dynamic-code
 ---
 
-# Dynamically generating run-time code
+# Generating run-time code
 
 
 ## Dynamic typing
@@ -39,8 +39,21 @@ You can use `meta.RunTime( expression )` to convert the result of a compile-time
 
 ## Dynamic code
 
-The `meta` API exposes some properties of `dynamic` type and some methods returning `dynamic` values. These members are compile-time, but their value represents a _declaration_ that you can dynamically read at run time.
-In the case of writable properties, it is also possible to set the value.
+The `meta` API exposes some properties of `dynamic` type and some methods returning `dynamic` values. These members are compile-time, but their value represents a _declaration_ that you can dynamically read at run time. In the case of writable properties, it is also possible to set the value.
+
+A few examples of these properties are:
+
+* Equivalents to the `this` or `base` keywords:
+  * <xref:Metalama.Framework.Aspects.meta.This?text=meta.This>, equivalent to the `this` keyword, allows to call arbitrary _instance_ members of the target type.
+  * <xref:Metalama.Framework.Aspects.meta.Base?text=meta.Base>, equivalent to the `base` keyword, allows to call arbitrary _instance_ members of the _base_ of the target type.
+  * <xref:Metalama.Framework.Aspects.meta.ThisType?text=meta.ThisType> allows to call arbitrary _static_ members of the target type.
+  * <xref:Metalama.Framework.Aspects.meta.BaseType?text=meta.BaseType>, equivalent to the `base` keyword, allows to call arbitrary _static_ members of the _base_ of the target type.
+* <xref:Metalama.Framework.Code.IExpression.Value?text=IExpression.Value> allows to get or set the value, in run time code, of a compile-time expression. It is implemented for instance by:
+  * `meta.Target.Field.Value`, `meta.Target.Property.Value` or `meta.Target.FieldOrProperty.Value` allow to get or set the value of the target field or property.
+  * `meta.Target.Parameter.Value` allows to get or set the value of the target parameter.
+  * `meta.Target.Method.Parameters[*].Value` allows to get or set the value of a parameter of the target method.
+  * <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.ToExpression*?text=ExpressionFactory.ToExpression(*).Value> allows to get or set the value of an arbitrary <xref:Metalama.Framework.Code.IField>, <xref:Metalama.Framework.Code.IProperty>, or <xref:Metalama.Framework.Code.IParameter>
+
 
 Dynamic values are a bit _magic_ because their compile-time value translates into _syntax_ that is injected in the transformed code.
 
@@ -144,7 +157,7 @@ In the following example, the `_logger` field is accessed through a parsed expre
 
 ## Capturing run-time expressions into compile-time objects
 
-If you want to manipulate a run-time expression as a compile-time object, you can do it using the <xref:Metalama.Framework.Aspects.meta.DefineExpression*?text=meta.DefineExpression> method. This allows you to have expressions that depend on compile-time conditions and control flows. The <xref:Metalama.Framework.Aspects.meta.DefineExpression*> method returns an <xref:Metalama.Framework.Code.IExpression>, the same interface returned by <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Parse*>. The <xref:Metalama.Framework.Code.IExpression> is a compile-time object that you can use anywhere in compile-time code. It exposes the run-time expression in the <xref:Metalama.Framework.Code.IExpression.Value> property.
+If you want to manipulate a run-time expression as a compile-time object, you can do it using the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Capture*?textExpressionFactory.Capture> method. This allows you to have expressions that depend on compile-time conditions and control flows. The <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Capture*?textExpressionFactory.Capture> method returns an <xref:Metalama.Framework.Code.IExpression>, the same interface returned by <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Parse*>. The <xref:Metalama.Framework.Code.IExpression> is a compile-time object that you can use anywhere in compile-time code. It exposes the run-time expression in the <xref:Metalama.Framework.Code.IExpression.Value> property.
 
 The following example is taken from the clone aspect. It declares a local variable named `clone`, but the expression assigned to the variable depends on whether the `Clone` method is an override.
 
@@ -153,11 +166,11 @@ IExpression baseCall;
 
 if (meta.Target.Method.IsOverride)
 {
-    meta.DefineExpression(meta.Base.Clone(), out baseCall);
+    ExpressionFactory.Capture(meta.Base.Clone(), out baseCall);
 }
 else
 {
-    meta.DefineExpression(meta.Base.MemberwiseClone(), out baseCall);
+    ExpressionFactory.Capture(meta.Base.MemberwiseClone(), out baseCall);
 }
 
 // Define a local variable of the same type as the target type.
@@ -167,6 +180,8 @@ var clone = meta.Cast(meta.Target.Type, baseCall);
 [comment]: # (TODO: Reference code snippets from the file by marked region)
 
 This template generates either `var clone = (TargetType) base.Clone();` or `var clone = (TargetType) this.MemberwiseClone();`.
+
+> [!INFO] The weird syntax of Capture, which gives the result as an `out` parameter instead of a return value, is due to a technical limitation of Roslyn.
 
 ## Converting custom objects from compile-time to run-time values
 

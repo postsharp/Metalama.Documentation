@@ -44,7 +44,7 @@ items:
             topicUid: template-overview
           - name: Writing Compile-Time Code
             topicUid: template-compile-time
-          - name:  Dynamically Generating Run-Time Code
+          - name:  Generating Run-Time Code
             topicUid: template-dynamic-code
           - name: Template Parameters and Type Parameters
             topicUid: template-parameters

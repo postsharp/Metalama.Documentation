@@ -31,7 +31,7 @@ In the next example you can find entire resulting `diagnostics.json` file after 
 }
 ```
 
-## Step 2. Copy `diagnostics.json` to the METALAMA_DIAGNOSTICS environment variable
+## Step 2. Copy diagnostics.json to the METALAMA_DIAGNOSTICS environment variable
 
 In your build or pipeline configuration, create an environment variable named `METALAMA_DIAGNOSTICS` and set its value to the content of the `diagnostics.json` file.
 
