@@ -9,6 +9,7 @@ If you report a Metalama bug, when logs are not enough to understand the issue, 
 > [!WARNING]
 > Process dumps may contain a copy of your source code. Although we will handle process dumps as confidential material, your company may not allow you to send us a process dump.
 
+If you are using Metalama on build server, the process of enabling process dumps is described in <xref:troubleshooting-unattended-build>.
 
 ## Step 1. Install metalama-config
 
@@ -37,10 +38,14 @@ In the next example, Metalama is configured to capture a process dump for the co
 {
  "miniDump": {
     "processes": {
+      "Other": false,
       "Compiler": true,
-      "Rider": false,
       "DevEnv": false,
-      "RoslynCodeAnalysisService": false
+      "RoslynCodeAnalysisService": false,
+      "Rider": false,
+      "BackstageWorker": false,
+      "MetalamaConfig": false,
+      "TestHost": false
     },
     "flags": [
       "WithDataSegments",

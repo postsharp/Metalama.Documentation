@@ -34,16 +34,21 @@ In the next example, logging is enabled for the compiler process and for all cat
 ```json
 {
     "logging": {
-        "processes": {
+		"processes": {
+            "Other": false,
             "Compiler": true,
-            "Rider": false,
             "DevEnv": false,
-            "RoslynCodeAnalysisService": false
-        },
-        "categories": {
-            "*": true
-        }
-    }
+            "RoslynCodeAnalysisService": false,
+            "Rider": false,
+            "BackstageWorker": false,
+            "MetalamaConfig": false,
+            "TestHost": false
+    },
+    "categories": {
+		"*": false
+    },
+    "stopLoggingAfterHours": 5.0
+  }
 }
 ```
 
@@ -57,8 +62,8 @@ Restart the logged processes:
 Execute the sequence of actions to be logged.
 
 > [!WARNING]
-> Do not forget to turn off logging after you are done.
+> Logging is automatically disabled after specified amount of hours since the last modification of `diagnostics.json`. The time value is taken from `stopLoggingAfterHours` property set in `logging` section and defaults to 2 hours. You can edit the `diagnostics.json` to change the value.
 
-## Step 4. Open the log file
+## Step 5. Open the log file
 
 You will find the log under the `%TEMP%\Metalama\Logs` directory.

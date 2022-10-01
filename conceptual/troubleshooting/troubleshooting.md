@@ -8,3 +8,4 @@ This chapter explains a some procedures that may be useful when troubleshooting 
 
 * <xref:creating-logs>
 * <xref:process-dump>
+* <xref:troubleshooting-unattended-build>
