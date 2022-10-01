@@ -165,3 +165,5 @@ items:
         topicUid: creating-logs
       - name: Capturing process dumps
         topicUid: process-dump
+      - name: Troubleshooting a build server
+        topicUid: troubleshooting-unattended-build

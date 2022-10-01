@@ -2,7 +2,7 @@
 uid: troubleshooting-unattended-build
 ---
 
-# Troubleshooting unattended build
+# Troubleshooting an unattended build
 
 This article describes steps to enable logging and process dumps in an unattended build on a build server without having to install `metalama-config` tool.
 
