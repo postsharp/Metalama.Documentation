@@ -76,9 +76,14 @@ foreach (int i in meta.CompileTime( Enumerable.Range( 0, n ) ))
 
 If the approach above is not possible, you can try to move your logic to a compile-time aspect function (not a template method), have this function return an enumerable, and use the return value in a `foreach` loop in the template method.
 
-### typeof, nameof expressions
+### nameof expressions
 
-`typeof` and `nameof` expressions in compile-time code are always pre-compiled into compile-time expression, which makes it possible for compile-time code to reference run-time types.
+`nameof` expressions in compile-time code are always pre-compiled into compile-time expression, which makes it possible for compile-time code to reference run-time types.
+
+### typeof expressions
+
+When `typeof(Foo)` is used with a run-time-only type `Foo`, a mock `System.Type` object is returned. This object can be used in run-time expressions or as an argument of Metalama compile-time methods. However, the members of this fake `System.Type`, for instance `Type.Name`, _cannot_ be evaluated at design time. You may sometimes need to call the <xref:Metalama.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method to tip the C# compiler that you want a run-time expression instead of a compile-time one.
+
 
 
 ## Accessing aspect members
@@ -87,7 +92,7 @@ Aspect members are compile-time and can be accessed from templates. For instance
 
 There are a few exceptions to this rule:
 
-- aspect members whose signature's contain a run-time-only type cannot be accessed from a template.
+- aspect members whose signature contains a run-time-only type cannot be accessed from a template.
 - aspect members annotated with the `[Template]` attribute (or overriding members that are, such as `OverrideMethod`) cannot be invoked from a template.
 - aspect members annotated with the `[Introduce]` or `[InterfaceMember]` attribute are considered run-time (see <xref:introducing-members> and <xref:implementing-interfaces>).
 
@@ -98,8 +103,38 @@ The following example shows a simple _Retry_ aspect. The maximum number of attem
 [!include[Retry](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Retry.cs)]
 
 
-### Custom compile-time types and methods
+## Custom compile-time types and methods
 
-If you need to move some compile-time logic from the template to a method, you can create a method in the aspect. It will automatically be considered as compile-time.
+If you want to share compile-time code between aspects, aspects or aspect methods, you can create your own types and methods that execute at compile time. 
 
-If you want to share compile-time code between aspects, you can create a compile-time class by marking it with the `[CompileTime]` custom attribute.
+* Compile-time code must be annotated with a [<xref:Metalama.Framework.Aspects.CompileTimeAttribute?text=CompileTime>] custom attribute. You would typically use this attribute on:
+  * a method or field of an aspect;
+  * a type (`class`, `struct`, `record`, ...);
+  * an assembly, using `[assembly: CompileTime]`.
+* Code that can run either at compile time or at run time must be annotated with the [<xref:Metalama.Framework.Aspects.CompileTimeOrRunTimeAttribute?text=CompileTimeOrRunTime>] custom attribute.
+
+## Calling other packages from compile-time code
+
+By default, compile-time code can call only the following APIs:
+* .NET Standard 2.0 (all libraries)
+* Metalama.Framework
+
+For advanced scenarios, the following packages are also included by default:
+* Metalama.Framework.Sdk
+* Microsoft.CodeAnalysis.CSharp
+
+To make another package available in compile-time code:
+1. Make sure that this packages targets .NET Standard 2.0.
+2. Make sure that the package is included in the project.
+3. Edit your `.csproj` or `Directory.Build.props` file and add the following:
+
+```xml
+<ItemGroup>
+ <MetalamaCompileTimePackage Include="MyPackage"/>
+</ItemGroup>
+```
+
+When this configuration is done, `MyPackage` can be used both in run-time and compile-time code.
+
+> [!WARNING]
+> You must also specify `MetalamaCompileTimePackage` in each project that _uses_ the aspects.
