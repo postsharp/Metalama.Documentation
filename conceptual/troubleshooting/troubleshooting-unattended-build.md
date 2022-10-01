@@ -4,27 +4,16 @@ uid: troubleshooting-unattended-build
 
 # Troubleshooting unattended build
 
-This article describes steps to enable logging and process dumps on an unattended build on a build server without having to install `metalama-config` tool.
+This article describes steps to enable logging and process dumps in an unattended build on a build server without having to install `metalama-config` tool.
 
 
-## Step 1. Install metalama-config locally
+## Step 1. Create the diagnostics.json on your local machine
 
-Install `metalama-config` as described in <xref:dotnet-tool> on your local device.
+You can follow the other articles of this chapter to learn how to create a `diagnostics.json` file for different scenarios.
 
-## Step 2. Edit diagnostics.json
+### Example: enabling logging
 
-Execute the command:
-
-```
-metalama-config diag edit
-```
-
-This should open a `diagnostics.json` file in your default editor.
-
-1. To set up logging, edit the file accordingly following steps in <xref:creating-logs> article.
-2. To set up process dumps, edit the file accordingly following steps in <xref:process-dump> article.
-
-In the next example you can find entire resulting `diagnostics.json` file after finishing editting it.
+In the next example you can find entire resulting `diagnostics.json` file after finishing editing it.
 - Logging is enabled for the compiler process and for all categories.
 - Metalama is configured to capture a process dump for the compiler process.
 
@@ -33,69 +22,23 @@ In the next example you can find entire resulting `diagnostics.json` file after 
 {
 	"logging": {
 		"processes": {
-		"Other": false,
 		"Compiler": true,
-		"DevEnv": false,
-		"RoslynCodeAnalysisService": false,
-		"Rider": false,
-		"BackstageWorker": false,
-		"MetalamaConfig": false,
-		"TestHost": false
-    },
+		},
     "categories": {
-		"*": false
-    },
-    "stopLoggingAfterHours": 2.0
-  },
-  "debugger": {
-    "processes": {
-      "Other": false,
-      "Compiler": false,
-      "DevEnv": false,
-      "RoslynCodeAnalysisService": false,
-      "Rider": false,
-      "BackstageWorker": false,
-      "MetalamaConfig": false,
-      "TestHost": false
+		"*": true
     }
-  },
-  "miniDump": {
-    "processes": {
-      "Other": false,
-      "Compiler": true,
-      "DevEnv": false,
-      "RoslynCodeAnalysisService": false,
-      "Rider": false,
-      "BackstageWorker": false,
-      "MetalamaConfig": false,
-      "TestHost": false
-    },
-    "flags": [
-      "WithDataSegments",
-      "WithProcessThreadData",
-      "WithHandleData",
-      "WithPrivateReadWriteMemory",
-      "WithUnloadedModules",
-      "WithFullMemoryInfo",
-      "WithThreadInfo",
-      "FilterMemory",
-      "WithoutAuxiliaryState"
-    ],
-    "ExceptionTypes": [
-      "*"
-    ]
   }
 }
 ```
 
-## Step 3. Copy the diagnostics configuration to environment variable
+## Step 2. Copy `diagnostics.json` to the METALAMA_DIAGNOSTICS environment variable
 
-Having the logging and process dumps options set in `diagnostics.json`, copy the entire content of the file and set the copied content as a value of environment variable called `METALAMA_DIAGNOSTICS`. Pass this environment variable to the build server.
+In your build or pipeline configuration, create an environment variable named `METALAMA_DIAGNOSTICS` and set its value to the content of the `diagnostics.json` file.
 
 > [!WARNING]
-> Using diagnostics set by environment variable always overrides local diagnostics settings used by `metalama-config` tool. The `stopLoggingAfterHours` property is also ignored and therefore logging will never be disabled autoamtically.
+> Using diagnostics set by environment variable always overrides local diagnostics settings used by `metalama-config` tool. 
 
-## Step 4. Run the build on build server
+## Step 3. Run the build on build server
 
 Metalama will automatically read the diagnostics configuration from environment variable. The build will produce diagnostics based on the specified configuration set in the environment variable.
 
