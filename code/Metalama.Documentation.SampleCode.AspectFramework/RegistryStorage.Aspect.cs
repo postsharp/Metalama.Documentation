@@ -30,12 +30,11 @@ namespace Doc.RegistryStorage
         {
             get
             {
-                var type = meta.Target.FieldOrProperty.Type.ToType();
                 var value = Registry.GetValue( this.Key, meta.Target.FieldOrProperty.Name, null );
 
                 if ( value != null )
                 {
-                    return Convert.ChangeType( value, type );
+                    return Convert.ChangeType( value, meta.Target.FieldOrProperty.Type.ToType() );
                 }
                 else
                 {
