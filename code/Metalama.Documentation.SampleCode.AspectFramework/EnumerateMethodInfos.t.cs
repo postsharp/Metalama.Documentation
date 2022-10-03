@@ -8,13 +8,13 @@ namespace Doc.EnumerateMethodInfos
     internal class Foo
     {
         private void Method1() { }
-        private void Method2( int x, string y ) { }
+        private void Method2(int x, string y) { }
 
         public IReadOnlyList<MethodInfo> GetMethods()
         {
             var methods = new List<MethodInfo>();
-            methods.Add( (MethodInfo) typeof( Foo ).GetMethod( "Method1", BindingFlags.NonPublic | BindingFlags.Instance, null, Type.EmptyTypes, null )! );
-            methods.Add( (MethodInfo) typeof( Foo ).GetMethod( "Method2", BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { typeof( int ), typeof( string ) }, null )! );
+            methods.Add((MethodInfo)typeof(Foo).GetMethod("Method1", BindingFlags.NonPublic | BindingFlags.Instance, null, Type.EmptyTypes, null)!);
+            methods.Add((MethodInfo)typeof(Foo).GetMethod("Method2", BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { typeof(int), typeof(string) }, null)!);
             return methods;
         }
     }
