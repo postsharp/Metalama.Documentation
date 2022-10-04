@@ -47,6 +47,14 @@ This chapter contains the following articles:
     </tr>
     <tr>
         <td>
+            <xref:reflection>
+        </td>
+        <td>
+            This article explains how to generate run-time `System.Reflection` objects for compile-time `Metalama.Framework.Code` objects from a template.
+        </td>
+    </tr>
+    <tr>
+        <td>
             <xref:debugging-aspects>
         </td>
         <td>

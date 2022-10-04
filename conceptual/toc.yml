@@ -48,6 +48,8 @@ items:
             topicUid: template-dynamic-code
           - name: Template Parameters and Type Parameters
             topicUid: template-parameters
+          - name: Generating System.Reflection Objects
+            topicUid: reflection
       - name: Transforming Code
         topicUid: advising-code
         items:

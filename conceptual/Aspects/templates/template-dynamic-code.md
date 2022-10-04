@@ -32,16 +32,22 @@ You can use `meta.RunTime( expression )` to convert the result of a compile-time
 - <xref:System.Guid>;
 - Generic collections: <xref:System.Collections.Generic.List`1> and <xref:System.Collections.Generic.Dictionary`2>;
 - <xref:System.DateTime> and <xref:System.TimeSpan>.
+- Immutable collections: <xref:System.Collections.Immutable.ImmutableArray`1> and <xef:System.Collections.Immutable.ImmutableDictionary12>.
+- Custom objects implementing the the <xref:Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder> interface (see [Converting custom objects from compile-time to run-time values](#custom-conversion) for details).
 
 ### Example
+
+The following aspect causes converts the following build-time values into a run-time expression: a `List<string>`, a `Guid` and a `System.Type`.
 
 [!include[Dynamic](../../../code/Metalama.Documentation.SampleCode.AspectFramework/ConvertToRunTime.cs)]
 
 ## Dynamic code
 
-The `meta` API exposes some properties of `dynamic` type and some methods returning `dynamic` values. These members are compile-time, but their value represents a _declaration_ that you can dynamically read at run time. In the case of writable properties, it is also possible to set the value.
+The `meta` API exposes some properties of `dynamic` type and some methods returning `dynamic` values. These members are compile-time, but they return _C# expression_ that can be used in the run-time code of the template. Because these members return a `dynamic` value, they can be used anywhere in your template. The code will not be validated when the template is compiled, but when the template is applied.
 
-A few examples of these properties are:
+For instance, `meta.This` returns a `dynamic` object that represents the expression `this`. Because `meta.This` is `dynamic`, you can write `meta.This._logger` in your template, and this will translate to `this._logger`. This will work even if your template does not contain a member named `_logger` because `meta.This` returns a `dynamic`, therefore any field or method referenced on the right hand of the `meta.This` expression will not be validated when the template is compiled (or in the IDE), but when the template is _expanded_, in the context of a specific target declaration.
+
+Here are a few examples of APIs that return a `dynamic`:
 
 * Equivalents to the `this` or `base` keywords:
   * <xref:Metalama.Framework.Aspects.meta.This?text=meta.This>, equivalent to the `this` keyword, allows to call arbitrary _instance_ members of the target type.
@@ -55,24 +61,27 @@ A few examples of these properties are:
   * <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.ToExpression*?text=ExpressionFactory.ToExpression(*).Value> allows to get or set the value of an arbitrary <xref:Metalama.Framework.Code.IField>, <xref:Metalama.Framework.Code.IProperty>, or <xref:Metalama.Framework.Code.IParameter>
 
 
-Dynamic values are a bit _magic_ because their compile-time value translates into _syntax_ that is injected in the transformed code.
+### Abilities
 
-For instance, `meta.Target.Parameters["p"].Value` refers to `p` parameter of the target method and compiles simply into the syntax `p`. It is possible to read this parameter and, if this is an `out` or `ref` parameter, it is also possible to write it.
-
-```cs
-// Translates into: Console.WriteLine( "p = " + p );
-Console.WriteLine( "p = " + meta.Target.Parameters["p"].Value );
-
-
-// Translates into: this.MyProperty = 5;
-meta.Property.Value = 5;
-```
-
-You can also write dynamic code on the left of a dynamic expression:
+You can also write any dynamic code on the left of a dynamic expression. As with any dynamically typed code, the syntax of the code is validated, but not the existence of the invoked members.
 
 ```cs
 // Translates into: this.OnPropertyChanged( "X" );
 meta.This.OnPropertyChanged( "X" );
+```
+
+Some more complex expressions also expose `dynamic`. For instance, `meta.Target.Parameters["p"].Value` refers to `p` parameter of the target method and compiles simply into the syntax `p`. 
+
+```cs
+// Translates into: Console.WriteLine( "p = " + p );
+Console.WriteLine( "p = " + meta.Target.Parameters["p"].Value );
+```
+
+When the expression is writable, the `dynamic` member can be used on the right hand of an assignment:
+
+```cs
+// Translates into: this.MyProperty = 5;
+meta.Property.Value = 5;
 ```
 
 You can combine dynamic code and compile-time expressions:
@@ -181,9 +190,11 @@ var clone = meta.Cast(meta.Target.Type, baseCall);
 
 This template generates either `var clone = (TargetType) base.Clone();` or `var clone = (TargetType) this.MemberwiseClone();`.
 
-> [!INFO] The weird syntax of Capture, which gives the result as an `out` parameter instead of a return value, is due to a technical limitation of Roslyn.
+> [!NOTE] The weird syntax of Capture, which gives the result as an `out` parameter instead of a return value, is due to a technical limitation of Roslyn.
 
 ## Converting custom objects from compile-time to run-time values
+
+> [!div id="custom-conversion" class="anchor"]
 
 You can have classes that exist both at compile and run time. To allow Metalama to convert a compile-time value to a run-time value, your class must implement the <xref:Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder> interface. The <xref:Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder.ToExpression> method must generate a C# expression that, when evaluated, returns a value that is structurally equivalent to the current value. Note that your implementation of <xref:Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder> is _not_ a template, so you will have to use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> class to generate your code.
 
