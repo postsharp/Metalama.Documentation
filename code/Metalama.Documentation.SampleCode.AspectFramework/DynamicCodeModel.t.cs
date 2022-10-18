@@ -10,7 +10,7 @@ namespace Doc.DynamicCodeModel
         [Log]
         private void Foo()
         {
-            _logger.WriteLine($"Executing Program.Foo().");
+            _logger.WriteLine("Executing Program.Foo().");
             return;
         }
 

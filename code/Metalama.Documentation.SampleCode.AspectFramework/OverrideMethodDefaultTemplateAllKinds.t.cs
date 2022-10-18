@@ -10,7 +10,7 @@ namespace Doc.OverrideMethodDefaultTemplateAllKinds
         [Log]
         public static int NormalMethod()
         {
-            Console.WriteLine($"NormalMethod: start");
+            Console.WriteLine("NormalMethod: start");
             int result;
             result = 5;
             Console.WriteLine($"NormalMethod: returning {result}.");
@@ -20,7 +20,7 @@ namespace Doc.OverrideMethodDefaultTemplateAllKinds
         [Log]
         public static async Task<int> AsyncMethod()
         {
-            Console.WriteLine($"AsyncMethod: start");
+            Console.WriteLine("AsyncMethod: start");
             var result = await AsyncMethod_Source();
             Console.WriteLine($"AsyncMethod: returning {result}.");
             return result;
@@ -38,7 +38,7 @@ namespace Doc.OverrideMethodDefaultTemplateAllKinds
         [Log]
         public static IEnumerable<int> EnumerableMethod()
         {
-            Console.WriteLine($"EnumerableMethod: start");
+            Console.WriteLine("EnumerableMethod: start");
             var result = EnumerableMethod_Source().Buffer();
             Console.WriteLine($"EnumerableMethod: returning {result}.");
             return result;
@@ -62,7 +62,7 @@ namespace Doc.OverrideMethodDefaultTemplateAllKinds
         [Log]
         public static IEnumerator<int> EnumeratorMethod()
         {
-            Console.WriteLine($"EnumeratorMethod: start");
+            Console.WriteLine("EnumeratorMethod: start");
             var result = EnumeratorMethod_Source().Buffer();
             Console.WriteLine($"EnumeratorMethod: returning {result}.");
             return result;
@@ -86,7 +86,7 @@ namespace Doc.OverrideMethodDefaultTemplateAllKinds
         [Log]
         public static async IAsyncEnumerable<int> AsyncEnumerableMethod()
         {
-            Console.WriteLine($"AsyncEnumerableMethod: start");
+            Console.WriteLine("AsyncEnumerableMethod: start");
             var result = await AsyncEnumerableMethod_Source().BufferAsync();
             Console.WriteLine($"AsyncEnumerableMethod: returning {result}.");
             await foreach (var r in result)
@@ -116,7 +116,7 @@ namespace Doc.OverrideMethodDefaultTemplateAllKinds
         [Log]
         public static async IAsyncEnumerator<int> AsyncEnumeratorMethod()
         {
-            Console.WriteLine($"AsyncEnumeratorMethod: start");
+            Console.WriteLine("AsyncEnumeratorMethod: start");
             var result = await AsyncEnumeratorMethod_Source().BufferAsync();
             Console.WriteLine($"AsyncEnumeratorMethod: returning {result}.");
             await using (result)

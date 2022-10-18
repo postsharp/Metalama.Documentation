@@ -7,7 +7,7 @@ namespace Doc.Tags
         [TagsAspect]
         private void Bar(int a, int b)
         {
-            Console.WriteLine($"This method has 2 parameters.");
+            Console.WriteLine("This method has 2 parameters.");
             Console.WriteLine($"Method({a}, {b})");
             return;
         }

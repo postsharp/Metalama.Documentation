@@ -22,7 +22,7 @@ namespace Doc.AspectConfiguration
     {
         public void SomeMethod()
         {
-            Console.WriteLine($"MyCategory: Executing SomeClass.SomeMethod().");
+            Console.WriteLine("MyCategory: Executing SomeClass.SomeMethod().");
             return;
         }
     }

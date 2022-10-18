@@ -19,7 +19,7 @@ namespace Doc.RegistryStorage
 
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            foreach ( var property in builder.Target.FieldsAndProperties.Where( p => p.IsAutoPropertyOrField ) )
+            foreach ( var property in builder.Target.FieldsAndProperties.Where( p => p.IsAutoPropertyOrField.GetValueOrDefault() ) )
             {
                 builder.Advice.Override( property, nameof(this.OverrideProperty) );
             }

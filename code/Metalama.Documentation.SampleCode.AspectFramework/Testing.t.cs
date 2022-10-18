@@ -7,7 +7,7 @@ namespace Doc.Testing
         [SimpleLog]
         private void MyMethod()
         {
-            Console.WriteLine($"Entering SimpleLogTests.MyMethod()");
+            Console.WriteLine("Entering SimpleLogTests.MyMethod()");
             try
             {
                 Console.WriteLine("Hello, world");
@@ -15,7 +15,7 @@ namespace Doc.Testing
             }
             finally
             {
-                Console.WriteLine($"Leaving SimpleLogTests.MyMethod()");
+                Console.WriteLine("Leaving SimpleLogTests.MyMethod()");
             }
         }
     }

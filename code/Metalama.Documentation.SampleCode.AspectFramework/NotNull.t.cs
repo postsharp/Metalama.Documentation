@@ -17,7 +17,7 @@ namespace Doc.NotNull
             s = null!;
             if (s == null)
             {
-                throw new PostConditionFailedException($"'s' cannot be null when the method returns.");
+                throw new PostConditionFailedException("'s' cannot be null when the method returns.");
             }
         }
 
@@ -28,7 +28,7 @@ namespace Doc.NotNull
             returnValue = null!;
             if (returnValue == null)
             {
-                throw new PostConditionFailedException($"'<return>' cannot be null when the method returns.");
+                throw new PostConditionFailedException("'<return>' cannot be null when the method returns.");
             }
 
             return returnValue;

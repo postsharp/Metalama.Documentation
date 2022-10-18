@@ -15,7 +15,7 @@ namespace Doc.GlobalImport
 
             init
             {
-                throw new NotSupportedException($"FormatProvider should not be set from source code.");
+                throw new NotSupportedException("FormatProvider should not be set from source code.");
             }
         }
     }

@@ -14,13 +14,13 @@ namespace Doc.LogCustomFramework
         {
             try
             {
-                LoggerExtensions.LogWarning(this._logger, $"Worker.ExecuteAsync(CancellationToken) started.");
+                LoggerExtensions.LogWarning(this._logger, "Worker.ExecuteAsync(CancellationToken) started.");
                 Console.WriteLine("Hello, world.");
                 return Task.CompletedTask;
             }
             finally
             {
-                LoggerExtensions.LogWarning(this._logger, $"Worker.ExecuteAsync(CancellationToken) completed.");
+                LoggerExtensions.LogWarning(this._logger, "Worker.ExecuteAsync(CancellationToken) completed.");
             }
         }
 

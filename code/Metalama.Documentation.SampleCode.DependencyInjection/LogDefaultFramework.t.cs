@@ -13,13 +13,13 @@ namespace Doc.LogDefaultFramework
         {
             try
             {
-                this._messageWriter.Write($"Worker.ExecuteAsync(CancellationToken) started.");
+                this._messageWriter.Write("Worker.ExecuteAsync(CancellationToken) started.");
                 Console.WriteLine("Hello, world.");
                 return Task.CompletedTask;
             }
             finally
             {
-                this._messageWriter.Write($"Worker.ExecuteAsync(CancellationToken) completed.");
+                this._messageWriter.Write("Worker.ExecuteAsync(CancellationToken) completed.");
             }
         }
 

@@ -13,7 +13,7 @@ namespace Doc.TypeFabric_
 
         public void Method2()
         {
-            Console.WriteLine($"Executing MyClass.Method2().");
+            Console.WriteLine("Executing MyClass.Method2().");
             return;
         }
 

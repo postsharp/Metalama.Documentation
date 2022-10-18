@@ -9,7 +9,7 @@ namespace Doc.OverrideMethodSpecificTemplateAllKinds
         [Log]
         public static int NormalMethod()
         {
-            Console.WriteLine($"NormalMethod: start");
+            Console.WriteLine("NormalMethod: start");
             int result;
             result = 5;
             Console.WriteLine($"NormalMethod: returning {result}.");
@@ -19,7 +19,7 @@ namespace Doc.OverrideMethodSpecificTemplateAllKinds
         [Log]
         public static async Task<int> AsyncMethod()
         {
-            Console.WriteLine($"AsyncMethod: start");
+            Console.WriteLine("AsyncMethod: start");
             var result = await AsyncMethod_Source();
             Console.WriteLine($"AsyncMethod: returning {result}.");
             return result;
@@ -37,14 +37,14 @@ namespace Doc.OverrideMethodSpecificTemplateAllKinds
         [Log]
         public static IEnumerable<int> EnumerableMethod()
         {
-            Console.WriteLine($"EnumerableMethod: start");
+            Console.WriteLine("EnumerableMethod: start");
             foreach (var item in Program.EnumerableMethod_Source())
             {
                 Console.WriteLine($"EnumerableMethod: intercepted {item}.");
                 yield return item;
             }
 
-            Console.WriteLine($"EnumerableMethod: completed.");
+            Console.WriteLine("EnumerableMethod: completed.");
         }
 
         private static IEnumerable<int> EnumerableMethod_Source()
@@ -65,7 +65,7 @@ namespace Doc.OverrideMethodSpecificTemplateAllKinds
         [Log]
         public static IEnumerator<int> EnumeratorMethod()
         {
-            Console.WriteLine($"EnumeratorMethod: start");
+            Console.WriteLine("EnumeratorMethod: start");
             using (var enumerator = Program.EnumeratorMethod_Source())
             {
                 while (enumerator.MoveNext())
@@ -75,7 +75,7 @@ namespace Doc.OverrideMethodSpecificTemplateAllKinds
                 }
             }
 
-            Console.WriteLine($"EnumeratorMethod: completed.");
+            Console.WriteLine("EnumeratorMethod: completed.");
         }
 
         private static IEnumerator<int> EnumeratorMethod_Source()
@@ -96,14 +96,14 @@ namespace Doc.OverrideMethodSpecificTemplateAllKinds
         [Log]
         public static async IAsyncEnumerable<int> AsyncEnumerableMethod()
         {
-            Console.WriteLine($"AsyncEnumerableMethod: start");
+            Console.WriteLine("AsyncEnumerableMethod: start");
             await foreach (var item in Program.AsyncEnumerableMethod_Source())
             {
                 Console.WriteLine($"AsyncEnumerableMethod: intercepted {item}.");
                 yield return item;
             }
 
-            Console.WriteLine($"AsyncEnumerableMethod: completed.");
+            Console.WriteLine("AsyncEnumerableMethod: completed.");
         }
 
         private static async IAsyncEnumerable<int> AsyncEnumerableMethod_Source()
@@ -125,7 +125,7 @@ namespace Doc.OverrideMethodSpecificTemplateAllKinds
         [Log]
         public static async IAsyncEnumerator<int> AsyncEnumeratorMethod()
         {
-            Console.WriteLine($"AsyncEnumeratorMethod: start");
+            Console.WriteLine("AsyncEnumeratorMethod: start");
             await using (var enumerator = Program.AsyncEnumeratorMethod_Source())
             {
                 while (await enumerator.MoveNextAsync())
@@ -135,7 +135,7 @@ namespace Doc.OverrideMethodSpecificTemplateAllKinds
                 }
             }
 
-            Console.WriteLine($"AsyncEnumeratorMethod: completed.");
+            Console.WriteLine("AsyncEnumeratorMethod: completed.");
         }
 
         private static async IAsyncEnumerator<int> AsyncEnumeratorMethod_Source()

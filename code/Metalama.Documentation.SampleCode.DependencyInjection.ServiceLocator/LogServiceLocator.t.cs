@@ -12,13 +12,13 @@ namespace Doc.LogServiceLocator
         {
             try
             {
-                this._messageWriter.Write($"Worker.ExecuteAsync() started.");
+                this._messageWriter.Write("Worker.ExecuteAsync() started.");
                 Console.WriteLine("Hello, world.");
                 return Task.CompletedTask;
             }
             finally
             {
-                this._messageWriter.Write($"Worker.ExecuteAsync() completed.");
+                this._messageWriter.Write("Worker.ExecuteAsync() completed.");
             }
         }
 
@@ -26,7 +26,7 @@ namespace Doc.LogServiceLocator
 
         public Worker()
         {
-            this._messageWriter = (IMessageWriter)ServiceProviderProvider.ServiceProvider().GetService(typeof(IMessageWriter)) ?? throw new InvalidOperationException($"The service 'IMessageWriter' could not be obtained from the service locator.");
+            this._messageWriter = (IMessageWriter)ServiceProviderProvider.ServiceProvider().GetService(typeof(IMessageWriter)) ?? throw new InvalidOperationException("The service 'IMessageWriter' could not be obtained from the service locator.");
         }
     }
 

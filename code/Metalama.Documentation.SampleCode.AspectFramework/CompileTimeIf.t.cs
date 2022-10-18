@@ -15,7 +15,7 @@ namespace Doc.CompileTimeIf
         [CompileTimeIf]
         public static void StaticMethod()
         {
-            Console.WriteLine($"Invoking Foo.StaticMethod()");
+            Console.WriteLine("Invoking Foo.StaticMethod()");
             Console.WriteLine("StaticMethod");
             return;
         }

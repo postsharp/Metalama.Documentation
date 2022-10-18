@@ -6,7 +6,7 @@ namespace Doc.ProjectFabric_
     {
         public void Method1()
         {
-            Console.WriteLine($"Executing Class1.Method1().");
+            Console.WriteLine("Executing Class1.Method1().");
             try
             {
                 Console.WriteLine("Inside Class1.Method1");
@@ -14,13 +14,13 @@ namespace Doc.ProjectFabric_
             }
             finally
             {
-                Console.WriteLine($"Exiting Class1.Method1().");
+                Console.WriteLine("Exiting Class1.Method1().");
             }
         }
 
         public void Method2()
         {
-            Console.WriteLine($"Executing Class1.Method2().");
+            Console.WriteLine("Executing Class1.Method2().");
             try
             {
                 Console.WriteLine("Inside Class1.Method2");
@@ -28,7 +28,7 @@ namespace Doc.ProjectFabric_
             }
             finally
             {
-                Console.WriteLine($"Exiting Class1.Method2().");
+                Console.WriteLine("Exiting Class1.Method2().");
             }
         }
     }
@@ -37,7 +37,7 @@ namespace Doc.ProjectFabric_
     {
         public void Method1()
         {
-            Console.WriteLine($"Executing Class2.Method1().");
+            Console.WriteLine("Executing Class2.Method1().");
             try
             {
                 Console.WriteLine("Inside Class2.Method1");
@@ -45,13 +45,13 @@ namespace Doc.ProjectFabric_
             }
             finally
             {
-                Console.WriteLine($"Exiting Class2.Method1().");
+                Console.WriteLine("Exiting Class2.Method1().");
             }
         }
 
         public void Method2()
         {
-            Console.WriteLine($"Executing Class2.Method2().");
+            Console.WriteLine("Executing Class2.Method2().");
             try
             {
                 Console.WriteLine("Inside Class2.Method2");
@@ -59,7 +59,7 @@ namespace Doc.ProjectFabric_
             }
             finally
             {
-                Console.WriteLine($"Exiting Class2.Method2().");
+                Console.WriteLine("Exiting Class2.Method2().");
             }
         }
     }

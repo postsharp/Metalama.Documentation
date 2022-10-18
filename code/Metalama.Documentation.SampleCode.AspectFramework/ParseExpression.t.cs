@@ -10,7 +10,7 @@ namespace Doc.ParseExpression
         [Log]
         private void Foo()
         {
-            this._logger?.WriteLine($"Executing Program.Foo().");
+            this._logger?.WriteLine("Executing Program.Foo().");
             return;
         }
 
