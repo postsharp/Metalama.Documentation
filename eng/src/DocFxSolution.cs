@@ -33,14 +33,11 @@ namespace BuildMetalamaDocumentation
 
         private static bool RunDocFx( BuildContext context, string command )
         {
-            var toolInvocationOptions = new ToolInvocationOptions( DotNetHelper.GetMsBuildFixingEnvironmentVariables() );
-
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
                 Path.Combine( context.RepoDirectory, "docfx\\packages\\docfx.console.2.59.0\\tools\\docfx.exe" ),
                 Path.Combine( context.RepoDirectory, "docfx\\docfx.json" ) + " " + command,
-                context.RepoDirectory,
-                toolInvocationOptions );
+                context.RepoDirectory );
         }
 
         public override bool Pack( BuildContext context, BuildSettings settings )
@@ -64,14 +61,11 @@ namespace BuildMetalamaDocumentation
 
         public override bool Restore( BuildContext context, BuildSettings settings )
         {
-            var toolInvocationOptions = new ToolInvocationOptions( DotNetHelper.GetMsBuildFixingEnvironmentVariables() );
-
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
                 "msbuild",
                 "/t:Restore \"docfx\\DocFx.csproj\"",
-                context.RepoDirectory,
-                toolInvocationOptions );
+                context.RepoDirectory );
         }
     }
 }
