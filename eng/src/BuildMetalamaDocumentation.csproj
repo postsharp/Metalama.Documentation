@@ -11,8 +11,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-		<PackageReference Include="AWSSDK.S3" Version="3.7.7.23" />
-		<PackageReference Include="NuGet.CommandLine" Version="6.2.1" GeneratePathProperty="True">
+		<PackageReference Include="NuGet.CommandLine" Version="6.2.2" GeneratePathProperty="True">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
