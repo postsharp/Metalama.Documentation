@@ -49,7 +49,7 @@ namespace Doc.LogCustomFramework
             // Returns the type of the required or created constructor parameter. We return ILogger<T> where T is the declaring type
             // (The default behavior would return just ILogger).
             protected override IType ParameterType => 
-                ((INamedType) TypeFactory.GetType( typeof(ILogger<>) )).ConstructGenericInstance( this.IntroducedFieldOrProperty.DeclaringType );
+                ((INamedType) TypeFactory.GetType( typeof(ILogger<>) )).WithTypeArguments( this.IntroducedFieldOrProperty.DeclaringType );
         }
     }
 
