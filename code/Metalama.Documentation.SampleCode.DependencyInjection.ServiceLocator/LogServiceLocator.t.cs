@@ -24,7 +24,8 @@ namespace Doc.LogServiceLocator
 
         private IMessageWriter _messageWriter;
 
-        public Worker()
+        public Worker
+        ()
         {
             this._messageWriter = (IMessageWriter)ServiceProviderProvider.ServiceProvider().GetService(typeof(IMessageWriter)) ?? throw new InvalidOperationException("The service 'IMessageWriter' could not be obtained from the service locator.");
         }
