@@ -48,7 +48,8 @@ var product = new Product( Dependencies.MetalamaDocumentation )
                     new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
                 } )
             } ) ),
-    BuildAgentType = "caravela03"
+    BuildAgentType = "caravela03",
+    PublishTestResults = true
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
