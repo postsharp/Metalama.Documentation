@@ -16,8 +16,8 @@
 		<PackageReference Include="Metalama.Framework.Introspection" Version="$(MetalamaVersion)" />
 		<PackageReference Include="Metalama.Framework.Workspaces" Version="$(MetalamaVersion)" />
 		<PackageReference Include="Metalama.LinqPad" Version="$(MetalamaVersion)" />
-		<PackageReference Include="Metalama.Framework.DependencyInjection" Version="$(MetalamaFrameworkExtensionsVersion)" />
-		<PackageReference Include="Metalama.Framework.DependencyInjection.ServiceLocator" Version="$(MetalamaFrameworkExtensionsVersion)" />
+		<PackageReference Include="Metalama.Extensions.DependencyInjection" Version="$(MetalamaExtensionsVersion)" />
+		<PackageReference Include="Metalama.Extensions.DependencyInjection.ServiceLocator" Version="$(MetalamaExtensionsVersion)" />
 		<PackageReference Include="Metalama.Compiler" Version="$(MetalamaCompilerVersion)" />
 	</ItemGroup>
 

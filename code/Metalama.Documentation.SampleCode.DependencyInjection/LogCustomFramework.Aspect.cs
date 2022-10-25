@@ -1,7 +1,7 @@
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
-using Metalama.Framework.DependencyInjection;
-using Metalama.Framework.DependencyInjection.Implementation;
+using Metalama.Extensions.DependencyInjection;
+using Metalama.Extensions.DependencyInjection.Implementation;
 using Metalama.Framework.Fabrics;
 using Microsoft.Extensions.Logging;
 

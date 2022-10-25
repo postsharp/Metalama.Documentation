@@ -1,4 +1,4 @@
-using Metalama.Framework.DependencyInjection.ServiceLocator;
+using Metalama.Extensions.DependencyInjection.ServiceLocator;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;

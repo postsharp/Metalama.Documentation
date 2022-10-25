@@ -19,7 +19,7 @@
 		</PackageReference>
 
 		<PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)" />
-		<PackageReference Include="Metalama.Framework.DependencyInjection.ServiceLocator" Version="$(MetalamaFrameworkExtensionsVersion)" />
+		<PackageReference Include="Metalama.Extensions.DependencyInjection.ServiceLocator" Version="$(MetalamaExtensionsVersion)" />
 		<PackageReference Include="Metalama.TestFramework" Version="$(MetalamaVersion)" />
 	</ItemGroup>
 </Project>
