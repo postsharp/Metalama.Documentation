@@ -31,7 +31,7 @@ var product = new Product( Dependencies.MetalamaDocumentation )
         docPackageFileName ),
         // Metalama is a a transitive dependency.
     Dependencies = new[] { Dependencies.PostSharpEngineering,
-         Dependencies.MetalamaFrameworkExtensions },
+         Dependencies.MetalamaExtensions },
     AdditionalDirectoriesToClean = new[] { "docfx\\obj", "docfx\\_site" },
 
     // Disable automatic build triggers.

@@ -1,5 +1,5 @@
 using Metalama.Framework.Aspects;
-using Metalama.Framework.DependencyInjection;
+using Metalama.Extensions.DependencyInjection;
 
 #pragma warning disable CS0649, CS8618
 

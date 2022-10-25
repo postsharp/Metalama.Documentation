@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Metalama.Framework.DependencyInjection.ServiceLocator;
+using Metalama.Extensions.DependencyInjection.ServiceLocator;
 
 namespace Doc.LogServiceLocator
 {
