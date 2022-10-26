@@ -21,7 +21,7 @@
 		</PackageReference>
 
 		<PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)" />
-		<PackageReference Include="Metalama.Framework.DependencyInjection" Version="$(MetalamaFrameworkExtensionsVersion)" />
+		<PackageReference Include="Metalama.Extensions.DependencyInjection" Version="$(MetalamaExtensionsVersion)" />
 		<PackageReference Include="Metalama.TestFramework" Version="$(MetalamaVersion)" />
 	</ItemGroup>
 

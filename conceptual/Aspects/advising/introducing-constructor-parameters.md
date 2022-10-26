@@ -4,7 +4,7 @@ uid: introducing-constructor-parameters
 
 # Introducing Constructor Parameters
 
-Most of the times, when an aspects needs to introduce a constructor to a parameter, it is because it needs to pull a dependency from a dependency injection framework. In this situation, it is recommended to use the `Metalama.Framework.DependencyInjection` framework described in <xref:dependency-injection>.
+Most of the times, when an aspects needs to introduce a constructor to a parameter, it is because it needs to pull a dependency from a dependency injection framework. In this situation, it is recommended to use the `Metalama.Extensions.DependencyInjection` framework described in <xref:dependency-injection>.
 
 Implementations of dependency injection frameworks typically introduce parameters using the method described here.
 
