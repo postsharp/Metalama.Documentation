@@ -169,3 +169,5 @@ items:
         topicUid: process-dump
       - name: Troubleshooting a build server
         topicUid: troubleshooting-unattended-build
+  - name: Migrating from PostSharp
+    topicUid: migration
