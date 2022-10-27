@@ -16,7 +16,7 @@
         <MetalamaCompilerVersion>4.3.1010-preview</MetalamaCompilerVersion>
         <MetalamaCompilerVersion Condition="$(VcsBranch.StartsWith('dev'))">branch:master</MetalamaCompilerVersion>
         <MetalamaMigrationVersion>0.5.23-preview</MetalamaMigrationVersion>
-        <MetalamaMigrationVersion Condition="$(VcsBranch.StartsWith('dev'))">branch:master</MetalamaMigrationVersion>       
+        <MetalamaMigrationVersion Condition="$(VcsBranch.StartsWith('dev'))">branch:dev</MetalamaMigrationVersion>       
         <MetalamaExtensionsVersion>0.5.50-preview</MetalamaExtensionsVersion>
         <MetalamaExtensionsVersion Condition="$(VcsBranch.StartsWith('dev'))">branch:dev</MetalamaExtensionsVersion>
     </PropertyGroup>
