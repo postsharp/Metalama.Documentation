@@ -19,6 +19,7 @@
 		<PackageReference Include="Metalama.Extensions.DependencyInjection" Version="$(MetalamaExtensionsVersion)" />
 		<PackageReference Include="Metalama.Extensions.DependencyInjection.ServiceLocator" Version="$(MetalamaExtensionsVersion)" />
 		<PackageReference Include="Metalama.Compiler" Version="$(MetalamaCompilerVersion)" />
+		<PackageReference Include="Metalama.Migration" Version="$(MetalamaMigrationVersion)" />
 	</ItemGroup>
 
 	<Target Name="CheckConfiguration">

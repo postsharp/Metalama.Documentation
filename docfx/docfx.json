@@ -11,6 +11,7 @@
               "Metalama.Framework.Workspaces.dll",
               "Metalama.LinqPad.dll",
               "Metalama.Compiler.Interface.dll",
+              "Metalama.Migration.dll",
               "Metalama.Extensions.DependencyInjection.dll",
               "Metalama.Extensions.DependencyInjection.ServiceLocator.dll"
               ],
