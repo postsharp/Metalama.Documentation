@@ -77,7 +77,7 @@ namespace Doc.DeepClone
                     ExpressionFactory.Capture( ((ICloneable) field.Invokers.Base!.GetValue( meta.This ))?.Clone(), out callClone );
                 }
 
-                if ( cloneMethod == null || !cloneMethod.ReturnType.ConstructNullable().Is( fieldType ) )
+                if ( cloneMethod == null || !cloneMethod.ReturnType.ToNullableType().Is( fieldType ) )
                 {
                     // If necessary, cast the return value of Clone to the field type.
                     ExpressionFactory.Capture( meta.Cast( fieldType, callClone.Value )!, out callClone );
