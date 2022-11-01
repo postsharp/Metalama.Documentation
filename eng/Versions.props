@@ -13,9 +13,9 @@
     <PropertyGroup>
         <PostSharpEngineeringVersion>1.0.101-preview</PostSharpEngineeringVersion>
         <MetalamaVersion>branch:master</MetalamaVersion>
-		<MetalamaVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.53-preview</MetalamaVersion>
+        <MetalamaVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.53-preview</MetalamaVersion>
         <MetalamaCompilerVersion>branch:master</MetalamaCompilerVersion>
-		<MetalamaCompilerVersion Condition="$(VcsBranch.StartsWith('master'))">4.3.1010-preview</MetalamaCompilerVersion>
+        <MetalamaCompilerVersion Condition="$(VcsBranch.StartsWith('master'))">4.3.1010-preview</MetalamaCompilerVersion>
         <MetalamaMigrationVersion>branch:dev</MetalamaMigrationVersion>
         <MetalamaMigrationVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.53-preview</MetalamaMigrationVersion>
         <MetalamaExtensionsVersion>branch:dev</MetalamaExtensionsVersion>
