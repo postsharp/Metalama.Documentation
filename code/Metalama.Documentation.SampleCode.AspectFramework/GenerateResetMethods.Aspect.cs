@@ -2,6 +2,7 @@
 
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using Metalama.Framework.Code.SyntaxBuilders;
 using System.Linq;
 
 namespace Doc.GenerateResetMethods
@@ -12,7 +13,7 @@ namespace Doc.GenerateResetMethods
         {
             base.BuildAspect( builder );
 
-            foreach ( var field in builder.Target.FieldsAndProperties.Where( f => f.Writeability != Writeability.None ) )
+            foreach ( var field in builder.Target.FieldsAndProperties.Where( f => !f.IsImplicitlyDeclared && f.Writeability != Writeability.None ) )
             {
                 builder.Advice.IntroduceMethod(
                     builder.Target,
@@ -32,7 +33,7 @@ namespace Doc.GenerateResetMethods
         [Template]
         public void Reset<[CompileTime] T>( IFieldOrProperty field )
         {
-            field.Invokers.Final.SetValue( meta.This, default(T) );
+            field.ToExpression().Value = default(T);
         }
     }
 }

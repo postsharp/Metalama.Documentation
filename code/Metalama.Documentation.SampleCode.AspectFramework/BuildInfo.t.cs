@@ -6,6 +6,7 @@ namespace Doc.BuildInfo
     {
         public string? Configuration { get; } = "Debug";
 
+
         public string? TargetFramework { get; } = "net6.0";
     }
 

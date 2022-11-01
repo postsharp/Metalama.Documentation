@@ -46,7 +46,7 @@ namespace Doc.ToStringWithComplexCodeFix
             stringBuilder.AddText( meta.Target.Type.Name );
             stringBuilder.AddText( " " );
 
-            var fields = meta.Target.Type.FieldsAndProperties.Where( f => !f.IsStatic ).ToList();
+            var fields = meta.Target.Type.FieldsAndProperties.Where( f => !f.IsStatic && !f.IsImplicitlyDeclared).ToList();
 
             var i = meta.CompileTime( 0 );
 
@@ -64,7 +64,7 @@ namespace Doc.ToStringWithComplexCodeFix
 
                 stringBuilder.AddText( field.Name );
                 stringBuilder.AddText( "=" );
-                stringBuilder.AddExpression( field.Invokers.Final.GetValue( meta.This ) );
+                stringBuilder.AddExpression( field.ToExpression().Value );
 
                 i++;
             }

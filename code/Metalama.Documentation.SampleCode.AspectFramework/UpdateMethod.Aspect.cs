@@ -2,6 +2,7 @@
 
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using Metalama.Framework.Code.SyntaxBuilders;
 using System.Linq;
 
 namespace Doc.UpdateMethod
@@ -18,7 +19,7 @@ namespace Doc.UpdateMethod
                 {
                     var fieldsAndProperties =
                         builder.Target.FieldsAndProperties
-                            .Where( f => f.Writeability == Writeability.All );
+                            .Where( f => !f.IsImplicitlyDeclared && f.Writeability == Writeability.All );
 
                     foreach ( var field in fieldsAndProperties )
                     {
@@ -36,7 +37,7 @@ namespace Doc.UpdateMethod
             {
                 var field = meta.Target.Type.FieldsAndProperties.OfName( parameter.Name ).Single();
 
-                field.Invokers.Final.SetValue( meta.This, meta.Target.Parameters[index].Value );
+                field.ToExpression().Value = meta.Target.Parameters[index].Value;
                 index++;
             }
         }

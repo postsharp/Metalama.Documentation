@@ -2,6 +2,7 @@
 
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using Metalama.Framework.Code.SyntaxBuilders;
 using System;
 using System.Linq;
 
@@ -30,7 +31,7 @@ namespace Doc.Disposable
             // Disposes the current field or property.
             foreach ( var field in disposableFields )
             {
-                field.Invokers.Final.GetValue( meta.This )?.Dispose();
+                field.ToExpression().Value?.Dispose();
             }
         }
 

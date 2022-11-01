@@ -20,7 +20,7 @@ namespace Doc.ToStringWithSimpleToString
             base.BuildAspect( builder );
 
             // For each field, suggest a code fix to remove from ToString.
-            foreach ( var field in builder.Target.FieldsAndProperties.Where( f => !f.IsStatic ) )
+            foreach ( var field in builder.Target.FieldsAndProperties.Where( f => !f.IsStatic && !f.IsImplicitlyDeclared) )
             {
                 if ( !field.Attributes.Any( a => a.Type.Is( typeof(NotToStringAttribute) ) ) )
                 {
@@ -37,7 +37,7 @@ namespace Doc.ToStringWithSimpleToString
             stringBuilder.AddText( meta.Target.Type.Name );
             stringBuilder.AddText( " " );
 
-            var fields = meta.Target.Type.FieldsAndProperties.Where( f => !f.IsStatic ).ToList();
+            var fields = meta.Target.Type.FieldsAndProperties.Where( f => !f.IsImplicitlyDeclared && !f.IsStatic ).ToList();
 
             var i = meta.CompileTime( 0 );
 
@@ -55,7 +55,7 @@ namespace Doc.ToStringWithSimpleToString
 
                 stringBuilder.AddText( field.Name );
                 stringBuilder.AddText( "=" );
-                stringBuilder.AddExpression( field.Invokers.Final.GetValue( meta.This ) );
+                stringBuilder.AddExpression( field.ToExpression() );
 
                 i++;
             }
