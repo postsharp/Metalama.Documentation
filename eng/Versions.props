@@ -11,15 +11,15 @@
 
     <!-- Versions of dependencies -->
     <PropertyGroup>
-        <PostSharpEngineeringVersion>1.0.100-preview</PostSharpEngineeringVersion>
-		<MetalamaVersion>0.5.50-preview</MetalamaVersion>
-        <MetalamaVersion Condition="$(VcsBranch.StartsWith('dev'))">branch:master</MetalamaVersion>
-        <MetalamaCompilerVersion>4.3.1010-preview</MetalamaCompilerVersion>
-        <MetalamaCompilerVersion Condition="$(VcsBranch.StartsWith('dev'))">branch:master</MetalamaCompilerVersion>
-        <MetalamaMigrationVersion>0.5.51-preview</MetalamaMigrationVersion>
-        <MetalamaMigrationVersion Condition="$(VcsBranch.StartsWith('dev'))">branch:dev</MetalamaMigrationVersion>       
-        <MetalamaExtensionsVersion>0.5.51-preview</MetalamaExtensionsVersion>
-        <MetalamaExtensionsVersion Condition="$(VcsBranch.StartsWith('dev'))">branch:dev</MetalamaExtensionsVersion>
+        <PostSharpEngineeringVersion>1.0.101-preview</PostSharpEngineeringVersion>
+        <MetalamaVersion>branch:master</MetalamaVersion>
+		<MetalamaVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.53-preview</MetalamaVersion>
+        <MetalamaCompilerVersion>branch:master</MetalamaCompilerVersion>
+		<MetalamaCompilerVersion Condition="$(VcsBranch.StartsWith('master'))">4.3.1010-preview</MetalamaCompilerVersion>
+        <MetalamaMigrationVersion>branch:dev</MetalamaMigrationVersion>
+        <MetalamaMigrationVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.53-preview</MetalamaMigrationVersion>
+        <MetalamaExtensionsVersion>branch:dev</MetalamaExtensionsVersion>
+        <MetalamaExtensionsVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.53-preview</MetalamaExtensionsVersion>
     </PropertyGroup>
 
     <!-- Import overrides for the local build -->
