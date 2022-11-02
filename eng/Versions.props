@@ -20,6 +20,7 @@
         <MetalamaMigrationVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.53-preview</MetalamaMigrationVersion>
         <MetalamaExtensionsVersion>branch:dev</MetalamaExtensionsVersion>
         <MetalamaExtensionsVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.53-preview</MetalamaExtensionsVersion>
+		<NuGetCommandLineVersion>6.2.2</NuGetCommandLineVersion>
     </PropertyGroup>
 
     <!-- Import overrides for the local build -->
