@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+
 <Project>
 
     <!-- Set the default version -->
@@ -17,9 +17,9 @@
         <MetalamaCompilerVersion>branch:master</MetalamaCompilerVersion>
         <MetalamaCompilerVersion Condition="$(VcsBranch.StartsWith('master'))">4.3.1010-preview</MetalamaCompilerVersion>
         <MetalamaMigrationVersion>branch:dev</MetalamaMigrationVersion>
-        <MetalamaMigrationVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.53-preview</MetalamaMigrationVersion>
+        <MetalamaMigrationVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.55-preview</MetalamaMigrationVersion>
         <MetalamaExtensionsVersion>branch:dev</MetalamaExtensionsVersion>
-        <MetalamaExtensionsVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.53-preview</MetalamaExtensionsVersion>
+        <MetalamaExtensionsVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.55-preview</MetalamaExtensionsVersion>
 		<NuGetCommandLineVersion>6.2.2</NuGetCommandLineVersion>
     </PropertyGroup>
 
