@@ -1,1 +1,10 @@
-// Error LAMA0236 on `WithCodeFixes`: `Cannot reference 'IDiagnostic.WithCodeFixes(params CodeFix[])' in 'MyProjectFabric.AmendProject(IProjectAmender)' because 'IDiagnostic.WithCodeFixes(params CodeFix[])' is run-time-only but 'MyProjectFabric.AmendProject(IProjectAmender)' is compile-time-only.`
+// Warning MY001 on `Writer`: `The field SomeType.Writer must be private.`
+//    CodeFix: Make private`
+using System.IO;
+namespace Doc.ProjectValidatorWithFix
+{
+  internal class SomeType
+  {
+    public TextWriter Writer;
+  }
+}

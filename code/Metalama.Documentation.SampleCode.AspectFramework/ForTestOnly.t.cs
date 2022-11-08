@@ -1,29 +1,29 @@
 // Warning MY001 on `new( DateTime.Now.AddDays( 1 ) )`: `'MyService.MyService(DateTime)' can only be invoked from a namespace that ends with Tests.`
 using System;
-
 namespace Doc.ForTestOnly
 {
-    public class MyService
+  public class MyService
+  {
+    // Normal constructor.
+    public MyService() : this(DateTime.Now)
     {
-        // Normal constructor.
-        public MyService() : this(DateTime.Now) { }
-
-        [ForTestOnly]
-        internal MyService(DateTime dateTime) { }
     }
-
-    internal class NormalClass
+    [ForTestOnly]
+    internal MyService(DateTime dateTime)
     {
-        // Usage NOT allowed here because we are not in a Tests namespace.
-        private MyService _service = new(DateTime.Now.AddDays(1));
     }
-
-    namespace Tests
+  }
+  internal class NormalClass
+  {
+    // Usage NOT allowed here because we are not in a Tests namespace.
+    private MyService _service = new(DateTime.Now.AddDays(1));
+  }
+  namespace Tests
+  {
+    internal class TestClass
     {
-        internal class TestClass
-        {
-            // Usage allowed here because we are in a Tests namespace.
-            private MyService _service = new(DateTime.Now.AddDays(2));
-        }
+      // Usage allowed here because we are in a Tests namespace.
+      private MyService _service = new(DateTime.Now.AddDays(2));
     }
+  }
 }

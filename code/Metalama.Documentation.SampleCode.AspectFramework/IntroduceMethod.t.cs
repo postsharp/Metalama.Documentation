@@ -1,33 +1,28 @@
 using System;
 using System.Threading;
-
 namespace Doc.IntroduceMethod
 {
-    [ToString]
-    internal class MyClass
+  [ToString]
+  internal class MyClass
+  {
+    private int _id = IdGenerator.GetId();
+    public override string ToString()
     {
-        private int _id = IdGenerator.GetId();
-
-        public override string ToString()
-        {
-            return $"{GetType().Name} Id={_id}";
-        }
+      return $"{GetType().Name} Id={_id}";
     }
-
-    internal static class IdGenerator
+  }
+  internal static class IdGenerator
+  {
+    private static int _nextId;
+    public static int GetId() => Interlocked.Increment(ref _nextId);
+  }
+  internal class Program
+  {
+    private static void Main()
     {
-        private static int _nextId;
-
-        public static int GetId() => Interlocked.Increment(ref _nextId);
+      Console.WriteLine(new MyClass().ToString());
+      Console.WriteLine(new MyClass().ToString());
+      Console.WriteLine(new MyClass().ToString());
     }
-
-    internal class Program
-    {
-        private static void Main()
-        {
-            Console.WriteLine(new MyClass().ToString());
-            Console.WriteLine(new MyClass().ToString());
-            Console.WriteLine(new MyClass().ToString());
-        }
-    }
+  }
 }
