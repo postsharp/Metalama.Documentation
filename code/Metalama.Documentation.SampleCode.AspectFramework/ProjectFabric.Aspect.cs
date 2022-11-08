@@ -11,7 +11,7 @@ namespace Doc.ProjectFabric_
     {
         public override void AmendProject( IProjectAmender project )
         {
-            project.With( p => p.Types.SelectMany( t => t.Methods ) ).AddAspect<Log>();
+            project.With( p => p.Types.SelectMany( t => t.Methods ) ).AddAspectIfEligible<Log>();
         }
     }
 

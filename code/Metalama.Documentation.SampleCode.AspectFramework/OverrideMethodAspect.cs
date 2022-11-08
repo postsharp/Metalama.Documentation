@@ -18,7 +18,7 @@ namespace Doc.OverrideMethodAspect_
 
         public virtual void BuildEligibility( IEligibilityBuilder<IMethod> builder )
         {
-            builder.ExceptForInheritance().MustBeNonAbstract();
+            builder.ExceptForInheritance().MustNotBeAbstract();
         }
 
         [Template]

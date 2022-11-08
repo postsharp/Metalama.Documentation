@@ -13,7 +13,7 @@ namespace Doc.Eligibility
             base.BuildEligibility( builder );
 
             // The aspect must not be offered to non-static methods because it uses a static field 'logger'.
-            builder.MustBeNonStatic();
+            builder.MustNotBeStatic();
         }
 
         public override dynamic? OverrideMethod()
