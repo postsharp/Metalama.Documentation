@@ -13,7 +13,8 @@
               "Metalama.Compiler.Interface.dll",
               "Metalama.Migration.dll",
               "Metalama.Extensions.DependencyInjection.dll",
-              "Metalama.Extensions.DependencyInjection.ServiceLocator.dll"
+              "Metalama.Extensions.DependencyInjection.ServiceLocator.dll",
+              "Metalama.Extensions.Multicast.dll"
               ],
           "src": "../code/Metalama.Documentation.Consolidated/bin/Debug/net6.0-windows"
         }
