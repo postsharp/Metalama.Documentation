@@ -24,3 +24,4 @@ artifacts/
 /Metalama.Documentation.Import.props
 *.g.props
 eng/tools
+packages/
