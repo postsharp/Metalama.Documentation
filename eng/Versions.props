@@ -17,9 +17,9 @@
         <MetalamaCompilerVersion>branch:master</MetalamaCompilerVersion>
         <MetalamaCompilerVersion Condition="$(VcsBranch.StartsWith('master'))">4.3.1010-preview</MetalamaCompilerVersion>
         <MetalamaMigrationVersion>branch:dev</MetalamaMigrationVersion>
-        <MetalamaMigrationVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.59-preview</MetalamaMigrationVersion>
+        <MetalamaMigrationVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.60-preview</MetalamaMigrationVersion>
         <MetalamaExtensionsVersion>branch:dev</MetalamaExtensionsVersion>
-        <MetalamaExtensionsVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.59-preview</MetalamaExtensionsVersion>
+        <MetalamaExtensionsVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.60-preview</MetalamaExtensionsVersion>
 		<NuGetCommandLineVersion>6.2.2</NuGetCommandLineVersion>
     </PropertyGroup>
 
