@@ -5,7 +5,8 @@
         {
           "files": [
               "Metalama.Framework.dll",
-              "Metalama.TestFramework.dll",
+              "Metalama.Testing.AspectTesting.dll",
+              "Metalama.Testing.UnitTesting.dll",
               "Metalama.Framework.Sdk.dll",
               "Metalama.Framework.Introspection.dll",
               "Metalama.Framework.Workspaces.dll",
@@ -14,7 +15,8 @@
               "Metalama.Migration.dll",
               "Metalama.Extensions.DependencyInjection.dll",
               "Metalama.Extensions.DependencyInjection.ServiceLocator.dll",
-              "Metalama.Extensions.Multicast.dll"
+              "Metalama.Extensions.Multicast.dll",
+              "Metalama.Extensions.Metrics.dll"
               ],
           "src": "../code/Metalama.Documentation.Consolidated/bin/Debug/net6.0-windows"
         }

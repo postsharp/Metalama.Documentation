@@ -163,4 +163,4 @@ If you want the _source_ code (not your aspect code) to reference declarations i
 If the user does not add the `partial` keyword, Metalama will report a warning and offer a code fix.
 
 > [!NOTE]
-> In __test projects__ built using `Metalama.TestFramework`, the Metalama compiler is _not_ activated. Therefore, the source code of test projects cannot reference introduced declarations. Since the present documentation relies on `Metalama.TestFramework` for all examples, we cannot include an example here.
+> In __test projects__ built using `Metalama.Testing.AspectTesting`, the Metalama compiler is _not_ activated. Therefore, the source code of test projects cannot reference introduced declarations. Since the present documentation relies on `Metalama.Testing.AspectTesting` for all examples, we cannot include an example here.

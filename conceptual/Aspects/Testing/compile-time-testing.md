@@ -19,13 +19,13 @@ Concretely, you can follow the following steps (detailed below):
 > [!NOTE]
 > For a real-world example, see https://github.com/postsharp/Metalama.Samples. Sample aspects are tested using the approach described here.
 
-## Step 1. Create an aspect test project with Metalama.TestFramework
+## Step 1. Create an aspect test project with Metalama.Testing.AspectTesting
 
 1. Create a Xunit test project.
-2. Add the `Metalama.TestFramework` package (see <xref:packages> for details).
+2. Add the `Metalama.Testing.AspectTesting` package (see <xref:packages> for details).
 
 > [!WARNING]
-> Do not add the `Metalama.TestFramework` to a project that you do not intend to use _exclusively_ for compile-time tests. This packages significantly changes the semantics of the project items.
+> Do not add the `Metalama.Testing.AspectTesting` to a project that you do not intend to use _exclusively_ for compile-time tests. This packages significantly changes the semantics of the project items.
 
 Typically, the `csproj` project file of a compile-time test project would have the following content:
 
@@ -45,7 +45,7 @@ Typically, the `csproj` project file of a compile-time test project would have t
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Metalama.Framework" Version="TODO" />
-        <PackageReference Include="Metalama.TestFramework" Version="TODO" />
+        <PackageReference Include="Metalama.Testing.AspectTesting" Version="TODO" />
     </ItemGroup>
 
 </Project>
@@ -61,10 +61,10 @@ graph TD
     YourAspectLibrary.UnitTests -- references --> xUnit
     YourAspectLibrary.UnitTests -- references --> YourAspectLibrary
     YourAspectLibrary.AspectTests -- references --> YourAspectLibrary
-    YourAspectLibrary.AspectTests -- references --> Metalama.TestFramework
+    YourAspectLibrary.AspectTests -- references --> Metalama.Testing.AspectTesting
     Metalama.Framework -- references --> Metalama.Framework.Redist
-    Metalama.TestFramework -- references --> xUnit
-    Metalama.TestFramework -- references --> Metalama.Framework
+    Metalama.Testing.AspectTesting -- references --> xUnit
+    Metalama.Testing.AspectTesting -- references --> Metalama.Framework
     
     classDef your fill:yellow;
     classDef yourTest fill:lightyellow;
@@ -75,9 +75,9 @@ graph TD
 
 ```
 
-### Customizations performed by Metalama.TestFramework
+### Customizations performed by Metalama.Testing.AspectTesting
 
-When you import the `Metalama.TestFramework` package in a project, the following happens:
+When you import the `Metalama.Testing.AspectTesting` package in a project, the following happens:
 
 1. The `MetalamaEnabled` project property is set to `False`, which completely disables Metalama for the project. Therefore, the `METALAMA` compilation symbol (usable in a directive like `#if METALAMA`) is no longer defined.
   
@@ -206,7 +206,7 @@ Note that, by default, all source files are excluded from the compilation, even 
 
 ### Specifying test options
 
-The Metalama test framework supports several test options. They are documented in the <xref: Metalama.TestFramework.TestOptions> class.
+The Metalama test framework supports several test options. They are documented in the <xref: Metalama.Testing.AspectTesting.TestOptions> class.
 
 To set a test option, add a special comment to the test file, for instance:
 
@@ -214,7 +214,7 @@ To set a test option, add a special comment to the test file, for instance:
 // @IncludeAllSeverities
 ```
 
-Alternatively, to set an option for the whole directory, create a file named `metalamaTests.json` and add properties of the <xref: Metalama.TestFramework.TestOptions> class. For instance:
+Alternatively, to set an option for the whole directory, create a file named `metalamaTests.json` and add properties of the <xref: Metalama.Testing.AspectTesting.TestOptions> class. For instance:
 
 ```json
 { "IncludeAllSeverities": true }

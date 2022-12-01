@@ -25,15 +25,15 @@ graph TD
     MyExtension.Weaver --> Metalama.Framework.Sdk
     MyExtension.UnitTests --> MyExtension
     MyExtension.UnitTests -- analyzer --> MyExtension.Weaver
-    MyExtension.UnitTests --> Metalama.TestFramework
+    MyExtension.UnitTests --> Metalama.Testing.AspectTesting
     Metalama.Framework.Sdk --> Roslyn
-    Metalama.TestFramework --> Metalama.Framework.Redist
+    Metalama.Testing.AspectTesting --> Metalama.Framework.Redist
     Metalama.Framework.Sdk --> Metalama.Framework.Redist
     
     Metalama.Framework.Sdk([Metalama.Framework.Sdk<br/>package])
     Roslyn([Roslyn<br/>packages])
     Metalama.Framework.Redist([Metalama.Framework.Redist<br/>package])
-    Metalama.TestFramework([Metalama.Framework.Sdk<br/>package]) 
+    Metalama.Testing.AspectTesting([Metalama.Framework.Sdk<br/>package]) 
     MyExtension[MyExtension<br/>project]
     MyExtension.Weaver[MyExtension.Weaver<br/>project]
     MyExtension.UnitTests[MyExtension.UnitTests<br/>project]
@@ -118,7 +118,7 @@ The unit test project:
 * references the public project with `OutputItemType="Analyzer"`;
 * references the weaver project with both `OutputItemType="Analyzer"` and `ReferenceOutputAssembly="false"`;
 * references the following packages:
-  * `Metalama.TestFramework`
+  * `Metalama.Testing.AspectTesting`
   * `Microsoft.NET.Test.Sdk`
   * `xunit`
   * `xunit.runner.visualstudio`
@@ -137,7 +137,7 @@ The unit test project:
     <ItemGroup>
         <ProjectReference Include="..\Metalama.Open.Virtuosity.Weaver\Metalama.Open.Virtuosity.Weaver.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
         <ProjectReference Include="..\Metalama.Open.Virtuosity\Metalama.Open.Virtuosity.csproj" OutputItemType="Analyzer"/>
-        <PackageReference Include="Metalama.TestFramework" Version="$(MetalamaVersion)"/>
+        <PackageReference Include="Metalama.Testing.AspectTesting" Version="$(MetalamaVersion)"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0"/>
         <PackageReference Include="xunit" Version="2.4.1"/>
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5"/>

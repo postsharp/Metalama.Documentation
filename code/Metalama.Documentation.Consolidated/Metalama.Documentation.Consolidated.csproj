@@ -11,7 +11,8 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Metalama.TestFramework" Version="$(MetalamaVersion)" />
+		<PackageReference Include="Metalama.Testing.AspectTesting" Version="$(MetalamaVersion)" />
+		<PackageReference Include="Metalama.Testing.UnitTesting" Version="$(MetalamaVersion)" />
 		<PackageReference Include="Metalama.Framework.Introspection" Version="$(MetalamaVersion)" />
 		<PackageReference Include="Metalama.Framework.Workspaces" Version="$(MetalamaVersion)" />
 		<PackageReference Include="Metalama.Framework.Sdk" Version="$(MetalamaVersion)" />

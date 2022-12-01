@@ -15,7 +15,7 @@ Metalama is composed of many NuGet packages, however some are used only for test
 | Metalama.Compiler | Compiling | Replaces Microsoft's C# compiler with Metalama's own fork.
 | Metalama.Compiler.Sdk | Compiling | Defines the extensibility API of `Metalama.Compiler`.
 | Metalama.Framework.Sdk | Compiling | Defines the low-level extensibility API of `Metalama.Framework` (extensions using the Roslyn API). |
-| Metalama.TestFramework | Testing | The top-level package for test projects. References `Metalama.Framework` but inhibits most of its behaviors. See <xref:compile-time-testing>. |
+| Metalama.Testing.AspectTesting | Testing | The top-level package for test projects. References `Metalama.Framework` but inhibits most of its behaviors. See <xref:compile-time-testing>. |
 | Metalama.Framework.Engine | Testing, Introspection | An opaque implementation assembly required by the testing and introspection packages. |
 | Metalama.Framework.Introspection | Introspection | Allows to query the code model representing the output of the Metalama process.
 | Metalama.Framework.Workspaces | Introspection | Allows any application to load a Visual Studio project or solution and to represent its code model and the Introspection of the Metalama process.
@@ -59,12 +59,12 @@ graph TD
     Metalama.Framework -- references --> Metalama.Framework.Redist
     Metalama.Framework -- references-->  Metalama.Compiler
     Metalama.Framework -- contains --> analyzers((compiler add-ins))
-    Metalama.TestFramework -- references --> Metalama.Framework.Redist
-    Metalama.TestFramework -- inhibits --> Metalama.Framework
-    Metalama.TestFramework -- references--> Metalama.Framework.Engine
-    Metalama.TestFramework -- references--> xUnit
+    Metalama.Testing.AspectTesting -- references --> Metalama.Framework.Redist
+    Metalama.Testing.AspectTesting -- inhibits --> Metalama.Framework
+    Metalama.Testing.AspectTesting -- references--> Metalama.Framework.Engine
+    Metalama.Testing.AspectTesting -- references--> xUnit
     Metalama.Framework.Engine -- references --> Metalama.Framework
-    YourTests -- references --> Metalama.TestFramework
+    YourTests -- references --> Metalama.Testing.AspectTesting
     IDE -- loads --> analyzers
     Metalama.Compiler -- loads --> analyzers
     
@@ -74,7 +74,7 @@ graph TD
     Metalama.Compiler -- contains --> compiler((full compiler))
 
     classDef testing fill:orange;
-    class Metalama.TestFramework testing;
+    class Metalama.Testing.AspectTesting testing;
     class Metalama.Framework.Engine testing;
     class Metalama.Framework.Introspection testing;
     class Metalama.Framework.Workspaces testing;
@@ -119,7 +119,7 @@ graph TD
     YourApp[Your Introspection App]
 
     classDef testing fill:orange;
-    class Metalama.TestFramework testing;
+    class Metalama.Testing.AspectTesting testing;
     class Metalama.Framework.Engine testing;
     class Metalama.Framework.Introspection testing;
     class Metalama.Framework.Workspaces testing;
@@ -169,7 +169,7 @@ graph TD
    
 
     classDef testing fill:orange;
-    class Metalama.TestFramework testing;
+    class Metalama.Testing.AspectTesting testing;
     class Metalama.Framework.Engine testing;
     class Metalama.Framework.Introspection testing;
     class Metalama.Framework.Workspaces testing;

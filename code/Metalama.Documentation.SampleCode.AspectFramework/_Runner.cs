@@ -1,6 +1,6 @@
 ﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
-using Metalama.TestFramework;
+using Metalama.Testing.AspectTesting;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
@@ -9,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace Metalama.Documentation.SampleCode.CompileTimeTesting
 {
-    public class _Runner : TestSuite
+    public class _Runner : AspectTestClass
     {
         public _Runner( ITestOutputHelper logger ) : base( logger ) { }
 
