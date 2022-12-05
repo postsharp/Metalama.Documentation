@@ -16,7 +16,7 @@ You can validate references from an aspect or from a fabric, and both approaches
 
 Additionally or instead of transforming the code of the target declaration, an aspect can validate how the target declaration is being _used_, i.e. it can validate references to its target.
 
-To create an aspect that validate references:
+To create an aspect that validates references:
 
 1. Create an aspect class by inheriting one of the following classes, according to the kind of declarations you want to validate: <xref:Metalama.Framework.Aspects.CompilationAspect>, 
 <xref:Metalama.Framework.Aspects.ConstructorAspect>, <xref:Metalama.Framework.Aspects.EventAspect>,
@@ -33,7 +33,7 @@ To create an aspect that validate references:
 
 ### Example: ForTestOnly, aspect implementation
 
-The following example implements a custom attribute `[ForTestOnly]` that means that the target of this attribute can be used only from a namespace that ends with `.Tests.`.
+The following example implements a custom attribute `[ForTestOnly]` that enforces that the target of this attribute can be used only from a namespace that ends with `.Tests.`.
 
 [!include[For Test Only, Aspect Implementation](../../code/Metalama.Documentation.SampleCode.AspectFramework/ForTestOnly.cs)]
 
@@ -66,7 +66,7 @@ The following example implements the same logic above, but using a fabric.
 
 When a validator is added to a non-private member, the scope is not limited to the current project. Code references in referenced projects will also be validated.
 
-To implement this feature, the aspects are _serialized_ during build and stored as an embedded resource in each binary assembly. This resource is then _deserialized_ when the assembly is referenced in another project.
+To implement this feature, the aspects are _serialized_ during the build and stored as an embedded resource in each binary assembly. This resource is then _deserialized_ when the assembly is referenced in another project.
 
 The cross-project scenario and the need for serialization are the reasons why the validation code must be in a stand-alone method of the aspect or fabric class.
 

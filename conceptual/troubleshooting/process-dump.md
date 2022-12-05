@@ -81,7 +81,7 @@ Execute the sequence of actions to be logged.
 ## Step 4. Upload the process dump to an online drive
 
 You will find the process dumps under the `%TEMP%\Metalama\CrashReports` directory, with extension `*.dmp.gz`.
-Upload this file to an online drive service like OneDrive.
+Upload this file to an online storage service like OneDrive.
 
 ## Step 5. Send us the URL through a private channel
 

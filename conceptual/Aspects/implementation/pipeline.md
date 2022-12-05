@@ -27,10 +27,10 @@ For each aspect layer, by order of application (i.e., inverse order of execution
   * Target declarations are visited in [breadth-first order](https://en.wikipedia.org/wiki/Breadth-first_search) of _depth level_, as defined above. For each target declaration:
     * The aspect is instantiated.
     * <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> is invoked.
-    * Advice are added to the next steps of the pipeline.
+    * Advice is added to the next steps of the pipeline.
 
 * For all aspect layers, and for all target declarations visited in breadth-first order:
-  * Advice are executed. Advice can provide observable or non-observable transformations (or both), defined as follows:
+  * Advice is executed. Advice can provide observable or non-observable transformations (or both), defined as follows:
     * _observable transformations_ are transformations that affect _declarations_, i.e. they are visible from the code model or from the source code (for instance: introducing a method);
     * _non-observable transformations_ are transformations that only affect the _implementation_ of declarations (for instance: overriding a method).
 

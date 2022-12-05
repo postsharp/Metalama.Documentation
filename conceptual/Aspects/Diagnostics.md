@@ -36,8 +36,7 @@ To report a diagnostic:
 ### Example
 
 The following aspect needs a field named `_logger` to exist in the target type. Its `BuildAspect` method checks that this field exists and reports an error if it does not.
-and in everything I've seen you have also introduced Fabrics that show how you can 'automate' logging methods in a project.
-I look at this example now and think to myself   'well this would never fire becuase I'd have a fabric that applies the log attribute to everything anyway  -->
+
 [!include[Report Error](../../code/Metalama.Documentation.SampleCode.AspectFramework/ReportError.cs)]
 
 ## Suppressing a diagnostic

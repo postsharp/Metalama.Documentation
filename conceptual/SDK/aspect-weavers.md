@@ -79,7 +79,7 @@ The type of the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContex
 
 Do not forget to write back the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation?context.Compilation> property.
 
-Each weaver will be invoked a single time per project, regardless the number of aspect instances in the project.
+Each weaver will be invoked a single time per project, regardless of the number of aspect instances in the project.
 
 The list of aspect instances that need to be handled by your weaver is given by the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation?context.AspectInstances> property.
 
@@ -88,7 +88,7 @@ To map the Metalama code model to an `ISymbol`, use the extension methods in <xr
 
 Your weaver does not need to format the output code itself. This is done by Metalama at the end of the pipeline, and only when necessary.
 
-However, your weaver is responsible to annotating the syntax nodes with the annotations declared in the  <xref:Metalama.Framework.Engine.Formatting.FormattingAnnotations> class.
+However, your weaver is responsible for annotating the syntax nodes with the annotations declared in the  <xref:Metalama.Framework.Engine.Formatting.FormattingAnnotations> class.
 
 
 ### Step 6. Write unit tests

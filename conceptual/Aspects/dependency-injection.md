@@ -6,7 +6,7 @@ uid: dependency-injection
 
 Many aspects need to consume services that must be injected from a dependency injection container. For instance, a caching aspect may depend on the `IMemoryCache` service. If you are using the `Microsoft.Extensions.DependencyInjection` framework, your aspect will need to pull this service from the constructor. If the target type of the aspect does not already accept this service from the constructor, the aspect will have to append this parameter to the constructor.
 
-However, the code pattern that must be implemented to pull any dependency depends on the dependency injection framework in use for that project. As we have seen, the default .NET Core framework require a constructor parameter, but other  frameworks may use an `[Import]` or `[Inject]` custom attribute. 
+However, the code pattern that must be implemented to pull any dependency depends on the dependency injection framework in use for that project. As we have seen, the default .NET Core framework requires a constructor parameter, but other frameworks may use an `[Import]` or `[Inject]` custom attribute. 
 
 In some cases, you as the author of the aspect do not know which dependency injection framework will be used for the classes to which your aspect is applied.
 
@@ -47,7 +47,7 @@ What follows is the same example as the previous one, but using the `ServiceLoca
 
 By default, Metalama generates code for the default .NET dependency injection framework implemented in the ``Microsoft.Extensions.DependencyInjection`` namespace (also called the .NET Core dependency injection framework).
 
-If you want to select a different framework for a project, it is generally sufficient to add a reference to the package implementing this dependency framework i.e. for instance `Metalama.Extensions.DependencyInjection.ServiceLocator`. These packages generally include a <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric> that register themselves. This works well when there is a single dependency injection framework in the project.
+If you want to select a different framework for a project, it is generally sufficient to add a reference to the package implementing this dependency framework i.e. for instance `Metalama.Extensions.DependencyInjection.ServiceLocator`. These packages generally include a <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric> that registers itself. This works well when there is a single dependency injection framework in the project.
 
 When there are several dependency injection frameworks in a project, Metalama will call the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptions.Selector?text=DependencyInjectionOptions.Selector> delegate. Its default implementation is to return the first eligible framework in the input list, i.e. the topmost in the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptions.RegisteredFrameworks> list. 
 

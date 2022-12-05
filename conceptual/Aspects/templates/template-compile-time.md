@@ -11,7 +11,7 @@ Compile-time statements are statements, such as `if`, `foreach` or `meta.DebugBr
 
 ## The meta pseudo-keyword
 
-The entry point of the compile-time API is the <xref:Metalama.Framework.Aspects.meta> static class, which you can consider as a pseudo-keyword that opens the door to the _meta_ side of meta-programming. The <xref:Metalama.Framework.Aspects.meta> class is the entry point to the meta model and the members of this class can be invoked only in the context of a template.
+The entry point of the compile-time API is the <xref:Metalama.Framework.Aspects.meta> static class, which you can consider as a pseudo-keyword that opens the door to the _meta_ side of meta-programming. The <xref:Metalama.Framework.Aspects.meta> class is the entry point to the meta-model and the members of this class can be invoked only in the context of a template.
 
 The <xref:Metalama.Framework.Aspects.meta> static class exposes to the following members:
 
@@ -78,7 +78,7 @@ If the approach above is not possible, you can try to move your logic to a compi
 
 ### nameof expressions
 
-`nameof` expressions in compile-time code are always pre-compiled into compile-time expression, which makes it possible for compile-time code to reference run-time types.
+`nameof` expressions in compile-time code are always pre-compiled into compile-time expressions, which makes it possible for compile-time code to reference run-time types.
 
 ### typeof expressions
 
@@ -124,7 +124,7 @@ For advanced scenarios, the following packages are also included by default:
 * Microsoft.CodeAnalysis.CSharp
 
 To make another package available in compile-time code:
-1. Make sure that this packages targets .NET Standard 2.0.
+1. Make sure that this package targets .NET Standard 2.0.
 2. Make sure that the package is included in the project.
 3. Edit your `.csproj` or `Directory.Build.props` file and add the following:
 

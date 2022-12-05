@@ -63,7 +63,7 @@ The following code snippet shows two aspects that both add a method to the targe
 
 When there are several instances of the same aspect type on the same declaration, a single instance of the aspect, named the primary instance, gets applied to the target. The other instances are exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances?text=IAspectInstance.SecondaryInstances> property, which you can access from <xref:Metalama.Framework.Aspects.meta.AspectInstance?meta.AspectInstance> or <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectInstance?builder.AspectInstance>. It is the responsibility of the aspect implementation to decide what to do with the secondary aspect instances.
 
-The primary aspect instance is the instance that has been defined the "closest" to the target declaration. The sorting criteria are the following:
+The primary aspect instance is the instance that has been applied to the "closest" to the target declaration. The sorting criteria are the following:
     1. Aspects defined using a *custom attribute*.
     2. Aspects added by another aspect (child aspects).
     3. Aspects inherited from another declaration.

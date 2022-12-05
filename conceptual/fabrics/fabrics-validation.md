@@ -14,7 +14,7 @@ Validating code from a fabric is exactly the same, but you use the _amender_ par
 
 ## Using validation API
 
-We have a vision for validation using fabrics, but it is not implemented yet. However, you can implemented it yourself for your own projects.
+We have a vision for validation using fabrics, but it is not implemented yet. However, you can implement it yourself for your own projects.
 
 That vision is to create a validation API that would be exposed as extension methods of the _amender_ parameter. For instance, if we have an `INamespaceAmender`, we could create an extension method `MakeNamespaceInternal(this INamespaceAmender)` that would forbid the use of internal members of this namespace to be used out of this namespace.
 

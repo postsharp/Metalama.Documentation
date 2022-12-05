@@ -34,9 +34,9 @@ public struct SyntaxNodeNumberMetric : IMetric<IMethodBase>, IMetric<INamedType>
 
 ### Step 3. Create the metric implementation
 
-A metric requires several implementation classes. All must be contained in the weaver project created at Step 1.
+A metric requires several implementation classes. All must be contained in the weaver project created in Step 1.
 
-1. Create a visitor class that derives from <xref:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor`1>, where `T` is the metric type create above. Override the relevant `Visit` methods in this class. This is the actual implementation of the metric. The visitor should recursively compute the metric for each syntax node in the syntax tree. The visitor is invoked by the metric provider (described below) for each _member_, i.e. the visitor should not implement aggregation at type or namespace level.
+1. Create a visitor class that derives from <xref:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor`1>, where `T` is the metric type created above. Override the relevant `Visit` methods in this class. This is the actual implementation of the metric. The visitor should recursively compute the metric for each syntax node in the syntax tree. The visitor is invoked by the metric provider (described below) for each _member_, i.e. the visitor should not implement aggregation at type or namespace level.
 
 2. Create a public class that derives from <xref:Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1>, where `T` is again the same metric type. In the class constructor, pass an instance of the visitor created in the previous step.
 
@@ -78,7 +78,7 @@ The following example implements a metric that counts the number of nodes in a m
 
 ## Consuming a custom metric
 
-Custom metrics can be consumed just as usually.
+Custom metrics can be consumed just as usual.
 
 ## Testing a custom metric
 

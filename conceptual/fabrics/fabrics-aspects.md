@@ -9,7 +9,7 @@ You can use a fabric to programmatically add aspects to any declaration that is 
 * From a namespace fabric, you can add aspects to any type of that namespace, or to any member of one of these types.
 * From a project fabric, you can add aspects to any type or member of that project.
 
-To add an an aspect from a fabric:
+To add an aspect from a fabric:
 
 1. Create a fabric class and add an <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>, <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method.
 
@@ -20,7 +20,7 @@ To add an an aspect from a fabric:
     The reason for this design is that the <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*> method will not only select members declared in source code, but also members introduced by other aspects and that are unknown when your  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed.
 
 
-3. Chain the call to <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*> with a call to thr  <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> method.
+3. Chain the call to <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*> with a call to the  <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> method.
 
 ## Example: adding an aspect to all methods in a project
 

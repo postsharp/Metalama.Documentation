@@ -24,5 +24,5 @@ Fabrics are executed in the following order:
 
 5. **Namespace Fabrics**.
 
-5. **Type Fabrics**. Note that type fabrics can provide advice. These advice are executed before any aspect.
+5. **Type Fabrics**. Note that type fabrics can provide advice. This advice is executed before any aspect.
 6. **Aspects**. See <xref:ordering-aspects>.

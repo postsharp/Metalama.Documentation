@@ -34,7 +34,7 @@ We recommend the following approach to consume a configuration property:
     ```
 
 
-2. Include `YourProject.targets` in your project and mark it for inclusion under the `build` directory of your NuGet package. This ensure that the property will be visible by the aspect for all projects referencing your package. Your `csproj` file should look like this:
+2. Include `YourProject.targets` in your project and mark it for inclusion under the `build` directory of your NuGet package. This ensures that the property will be visible by the aspect for all projects referencing your package. Your `csproj` file should look like this:
 
     ```xml
     <Project  Sdk="Microsoft.NET.Sdk">

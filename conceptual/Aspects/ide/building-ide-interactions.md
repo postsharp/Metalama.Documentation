@@ -13,7 +13,7 @@ In this chapter, you will learn how to add your own actions to the screwdriver o
 The benefits of building custom IDE interactions for your architecture and your team are:
 
 * **Fewer keystrokes**. Developers have to type less.
-* **Fewer documentation lookups**. A code fix provides implicit implementation guidance. Developers' don't need to look at documentation to know how to fix the custom warning or error your aspect reported to their code.
+* **Fewer documentation lookups**. A code fix provides implicit implementation guidance. Developers don't need to look at the documentation to know how to fix the custom warning or error your aspect reported to their code.
 * **Improve team alignment**. By providing live templates for those implementation scenarios that occur most often, you are encouraging the team to follow common development patterns. The resulting code base will be more consistent.
 * **Higher developers' productivity**. By providing your development team with custom code fixes and refactorings you will enhance their productivity.
 

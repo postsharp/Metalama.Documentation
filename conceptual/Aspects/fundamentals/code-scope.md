@@ -10,7 +10,7 @@ A fundamental concept of Metalama is that any type of your source code belongs t
 
 ### Run-time code
 
-_Run-time code_ is the code that you are used too: it compiles to a binary assembly and typically executes on the end user's device. In a project that does not reference _Metalama.Framework_, all code is considered run-time.
+_Run-time code_ is the code that you are used to: it compiles to a binary assembly and typically executes on the end user's device. In a project that does not reference _Metalama.Framework_, all code is considered run-time.
 
 The entry point of run-time code is typically the _Program.Main_ method.
 
@@ -19,7 +19,7 @@ The entry point of run-time code is typically the _Program.Main_ method.
 _Compile-time code_ is code that is executed either at compile time by the compiler, or at design time by the IDE. 
 
 <!--- the second sentence here makes no sense as it's written, perhaps you meant to say...Metalama will look for the attribute    -->
-Metalama recognizes compile-time-only code thanks to the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. It will look the attribute on the member, on the declaring type, and on the base types and interfaces. Most classes and interfaces of the _Metalama.Framework_ assembly are compile-time-only.
+Metalama recognizes compile-time-only code thanks to the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. It will look at the attribute on the member, on the declaring type, and at the base types and interfaces. Most classes and interfaces of the _Metalama.Framework_ assembly are compile-time-only.
 
 You can create compile-time classes by annotating them with <xref:Metalama.Framework.Aspects.CompileTimeAttribute>.
 
@@ -38,7 +38,7 @@ Scope-neutral code is annotated with the <xref:Metalama.Framework.Aspects.RunTim
 
 Aspect classes are scope-neutral because aspects are a special kind of class. Aspects are typically represented as custom attributes, and these attributes can be accessed at run time using _System.Reflection_, but they are also instantiated at compile time by Metalama. Therefore, it is important that the constructors and public properties of the aspects are both run-time and compile-time.
 
-However, some methods of aspect classes are purely compile-time. They cannot be executed at run time because they access API's that exist only at compile time. These methods are annotated with <xref:Metalama.Framework.Aspects.CompileTimeAttribute> or one of the other derived attribute classes.
+However, some methods of aspect classes are purely compile-time. They cannot be executed at run time because they access APIs that exist only at compile time. These methods are annotated with <xref:Metalama.Framework.Aspects.CompileTimeAttribute> or one of the other derived attribute classes.
 
 
 ## Compilation process

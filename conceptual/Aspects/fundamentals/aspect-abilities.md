@@ -4,7 +4,7 @@ uid: aspect-abilities
 
 # Abilities of Aspects
 
-An aspect is, by definition, a class that implements the <xref:Metalama.Framework.Aspects.IAspect`1> generic interface. The generic parameter of this interface is the type of declaration  <!--- I may be wrong in thinking that the singular is more appropriate here --> to which that aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
+An aspect is, by definition, a class that implements the <xref:Metalama.Framework.Aspects.IAspect`1> generic interface. The generic parameter of this interface is the type of declaration to which that aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
 
 Aspects have different abilities which are expounded below. The aspect author can use or configure these abilities in the following method <!--- as you only list one method this should be singular -->inherited from the <xref:Metalama.Framework.Aspects.IAspect`1> interface:
 
@@ -73,7 +73,7 @@ See <xref:validation>.
 
 ## Eligibility
 
-Aspects can define on which declarations they can be legally applied.
+Aspects can define which declarations they can be legally applied to.
 
 See <xref:eligibility>.
 
@@ -91,7 +91,7 @@ If an aspect instance decides that it cannot be applied to the target to which i
 
 The aspect may or may not report a diagnostic before calling <xref:Metalama.Framework.Aspects.IAspectBuilder.SkipAspect>. Calling this method does not report any diagnostic.
 
-## Customize its appareance in the IDE.
+## Customize its appearance in the IDE.
 
 By default, an aspect class is represented in the IDE by the name of this class without the `Attribute` suffix, if any. To override the default name, annotate the aspect class with the <xref:System.ComponentModel.DisplayNameAttribute> annotation.
 

@@ -125,7 +125,7 @@ The included file will behave just as an auxiliary file.
 
 Because Metalama is disabled at compile- and design-time for a test project, you will have difficulties referencing members that do not exist in your source code but have been introduced by an aspect. Since the IDE and the compiler do not know about Metalama, you will get errors complaining that these members do not exist.
 
-The solution is to wrap the code accessing introduced members with a `#if METALAMA` directive. Because the `METALAMA` symbol is defined when the test framework is running, this code will be taken into account during these tests. However, because it is not defined at design- and compile-time, it this code will be ignored while editing and compiling.
+The solution is to wrap the code accessing introduced members with a `#if METALAMA` directive. Because the `METALAMA` symbol is defined when the test framework is running, this code will be taken into account during these tests. However, because it is not defined at design- and compile-time, this code will be ignored while editing and compiling.
 
 For instance, if the `Planet.Update` method is introduced by an aspect:
 
@@ -165,7 +165,7 @@ Once you are satisfied with the test output, copy the expected code to `.t.cs` f
 
 To accept the output of all tests:
 
-1. Commit or stage the changes in your repository, so you will be able to review and possibly rollback the consequences of the next steps.
+1. Commit or stage the changes in your repository, so you will be able to review and possibly roll back the consequences of the next steps.
 
 2. Run the following sequence of commands:
 
@@ -222,7 +222,7 @@ Alternatively, to set an option for the whole directory, create a file named `me
 
 ### Trimming the test output to one or two classes
 
-If you want to limit the test output to one or more declarations (instead as the whole transformed input file), add the `// <target>` comment to the declarations that must be included.
+If you want to limit the test output to one or more declarations (instead of the whole transformed input file), add the `// <target>` comment to the declarations that must be included.
 
 Example:
 

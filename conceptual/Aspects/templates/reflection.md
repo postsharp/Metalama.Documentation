@@ -23,7 +23,7 @@ To help in this situation, the  `Metalama.Framework.Code` exposes a few methods 
 
 ## Example
 
-The following examples introduce a method that returns a list of all methods, represented as a <xref:System.Reflection.MethodInfo> objects, in the target type.
+The following examples introduce a method that returns a list of all methods, represented as a <xref:System.Reflection.MethodInfo> object, in the target type.
 
 [!include[Enumerate MethodInfos](../../../code/Metalama.Documentation.SampleCode.AspectFramework/EnumerateMethodInfos.cs)]
 

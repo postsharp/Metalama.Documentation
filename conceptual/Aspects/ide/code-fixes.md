@@ -44,7 +44,7 @@ The delegate will typically use one of following methods of the <xref:Metalama.F
 
 We are continuing the previous example, but instead of a single-step code fix, we want to offer the user the ability to switch from an aspect-oriented implementation of `ToString` to source code. That is, apply the aspect to the source code itself.
 
-The custom does the following:
+The custom code action does the following:
 
 * Apply the aspect itself using <xref:Metalama.Framework.CodeFixes.ICodeActionBuilder.ApplyAspectAsync*>.
 * Remove the `[ToString]` custom attribute.
@@ -60,6 +60,6 @@ The custom does the following:
   *  The logic that _creates_ the delegate must be very fast because it is rarely useful. Any expensive logic should be moved to the _implementation_ of the delegate itself.
   *  If you want to avoid generating the delegate, you can make it conditional to the `MetalamaExecutionContext.Current.ExecutionScenario.CapturesCodeFixImplementations` expression.
 
-* At design time, all code fix titles, including those added by the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method,  are cached for the whole solution. Therefore, you should avoid adding a large number of suggestions. The current Metalama design is not suited for this scenario.
+* At design time, all code fix titles, including those added by the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method, are cached for the whole solution. Therefore, you should avoid adding a large number of suggestions. The current Metalama design is not suited for this scenario.
 
 

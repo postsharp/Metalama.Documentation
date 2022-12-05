@@ -2,7 +2,7 @@
 uid: contracts
 ---
 
-# Validating Parameter, Field and Property Values
+# Validating Parameters, Fields, and Property Values
 
 One of the most popular use cases of aspect-oriented programming is to create a custom attribute that validates the field, property, or parameter to which it is applied. Typical examples are `[NotNull]` or `[NotEmpty]`.
 
@@ -24,13 +24,13 @@ Technically speaking, a contract is a piece of code that you inject after _recei
     In this template, the incoming value is represented by the parameter name `value`, regardless of the real name of the field or parameter.
    
 
-4. The aspect is a custom attribute. You can add it to any field, property or parameter. To validate the return value of a method, use this syntax: `[return: MyAspect]`.
+4. The aspect is a custom attribute. You can add it to any field, property, or parameter. To validate the return value of a method, use this syntax: `[return: MyAspect]`.
 
-### Accessing the metadata of the field, property or parameter being validated
+### Accessing the metadata of the field, property, or parameter being validated
 
 Your template code can access its context using the following meta APIs:
 
-* `meta.Target.Declaration` returns the target parameter, property or field.
+* `meta.Target.Declaration` returns the target parameter, property. or field.
 * `meta.Target.FieldOrProperty` returns the target property or field, but will throw an exception if the contract is applied to a parameter.
 * `meta.Target.Parameter` returns the parameter (including the parameter representing the return value), but will throw an exception if the contract is applied to a field or property.
 * `meta.Target.ContractDirection` returns `Input` or `Output` according to the data flow being validated (see below). Typically, it is `Input` for input parameters and property setters, and `Output` for output parameters and return values.
@@ -38,7 +38,7 @@ Your template code can access its context using the following meta APIs:
 
 ### Example: NotNull
 
-The following aspect throws an exception if the field, property or parameter to which it is applied receives a null value, or if a null value is assigned to an `out` parameter or to the return value.
+The following aspect throws an exception if the field, property, or parameter to which it is applied receives a null value, or if a null value is assigned to an `out` parameter or to the return value.
 
 [!include[NotNull](../../../code/Metalama.Documentation.SampleCode.AspectFramework/NotNull.cs)]
 
@@ -51,7 +51,7 @@ The following aspect normalizes the received value by calling the `string.Trim` 
 
 ### Contract directions
 
-By default, the <xref:Metalama.Framework.Aspects.ContractAspect> aspect applies the contract to the _default data flow direction_ of the target parameter, field or property. The default direction is:
+By default, the <xref:Metalama.Framework.Aspects.ContractAspect> aspect applies the contract to the _default data flow direction_ of the target parameter, field, or property. The default direction is:
 
 * for input and `ref` parameters: the _input_ value,
 * for fields and properties, the _assigned_ value (i.e. the `value` parameter of the setter),
@@ -63,7 +63,7 @@ To learn about customizing eligibility for different contract directions than th
 
 ## Adding contract advice programmatically
 
-Just as any advice, you can add a contract to a parameter, field or property from the `BuildAspect` method of your aspect using the <xref:Metalama.Framework.Advising.IAdviceFactory.AddContract*> method.
+Just as any advice, you can add a contract to a parameter, field, or property from the `BuildAspect` method of your aspect using the <xref:Metalama.Framework.Advising.IAdviceFactory.AddContract*> method.
 
 > [!NOTE]
 > When possible, provide all contracts to the same method from a single aspect. It has better compile-time performance than using several aspects.

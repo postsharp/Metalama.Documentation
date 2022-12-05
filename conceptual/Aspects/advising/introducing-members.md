@@ -73,7 +73,7 @@ The easiest way to introduce a member from an aspect is to implement this member
 
 The following example shows an aspect that implements the `ToString` method. It will return a string including the object type and a reasonably unique identifier for that object.
 
-Note that this aspect will replace any hand-written implementation of `ToString`, which is not desirable. It can can only be avoided by introducing the method programmatically and conditionally (TODO 28807).
+Note that this aspect will replace any hand-written implementation of `ToString`, which is not desirable. It can only be avoided by introducing the method programmatically and conditionally (TODO 28807).
 
 [!include[ToString](../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceMethod.cs)]
 
@@ -99,7 +99,7 @@ In your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAs
 
 - <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceField*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder>.
 
-A call to these method creates a member that has the same characteristics as the template (name, signature, ...), taking into account the properties of the <xref:Metalama.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute. However, they return a _builder_ object that allows you to modify these characteristics.
+A call to one of these methods creates a member that has the same characteristics as the template (name, signature, ...), taking into account the properties of the <xref:Metalama.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute. However, they return a _builder_ object that allows you to modify these characteristics.
 
 ### Step 3. Adjust the name and signature using the builder
 
@@ -107,7 +107,7 @@ Modify the name and signature of the introduced declaration as needed using the 
 
 ### Example: Update method
 
-The following aspect introduces an `Update` method that assigns all writable field in the target type. The method signature is dynamic: there is one parameter per writable field or property.
+The following aspect introduces an `Update` method that assigns all writable fields in the target type. The method signature is dynamic: there is one parameter per writable field or property.
 
 [!include[Update method](../../../code/Metalama.Documentation.SampleCode.AspectFramework/UpdateMethod.cs)]
 
@@ -124,7 +124,7 @@ When you want to introduce a member to a type, it may happen that the same membe
 
 ### Accessing the overridden declaration
 
-Most of the times, when you override a method, you will want to invoke the aspect to invoke the base implementation. The same applies to properties and events. In plain C#, when you override a base-class member in a derived class, you call the member with the `base` prefix. A similar approach exists in Metalama.
+Most of the time, when you override a method, you will want to invoke the aspect to invoke the base implementation. The same applies to properties and events. In plain C#, when you override a base-class member in a derived class, you call the member with the `base` prefix. A similar approach exists in Metalama.
 
 - To invoke the base method or accessor with exactly the same arguments, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed*>.
 - To invoke the base method with different arguments, use <xref:Metalama.Framework.Code.Advised.IAdvisedMethod.Invoke(System.Object[])?text=meta.Target.Method.Invoke>.
@@ -133,9 +133,9 @@ Most of the times, when you override a method, you will want to invoke the aspec
 
 [comment]: # (TODO: When it will work, Disposable example.)
 
-## Referencing introduced members in template
+## Referencing introduced members in a template
 
-When you introduce a member to a type, your will often want to access it from templates. There are three ways to do it:
+When you introduce a member to a type, you will often want to access it from templates. There are three ways to do it:
 
 ### Option 1. Access the aspect template member
 

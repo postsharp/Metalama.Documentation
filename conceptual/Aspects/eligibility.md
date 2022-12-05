@@ -19,7 +19,7 @@ Defining the eligibility of an aspect has the following benefits:
 
 To define the eligibility of your aspect, implement or override the <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method of the aspect. Use the `builder` parameter, of type <xref:Metalama.Framework.Eligibility.IEligibilityBuilder`1>, to specify the requirements of your aspect. For instance, use <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract*?text=builder.MustNotBeAbstract()> to require a non-abstract method.
 
-A number of predefined eligibility conditions are implemented by the <xref:Metalama.Framework.Eligibility.EligibilityExtensions> static class. You can add a custom eligibility condition by calling <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy*> and providing your own lambda expression. This method also expects the user-readable string that should be included in the error message when the user attempts to add the aspect to an ineligible declaration.
+A number of predefined eligibility conditions are implemented by the <xref:Metalama.Framework.Eligibility.EligibilityExtensions> static class. You can add a custom eligibility condition by calling <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy*> and by providing your own lambda expression. This method also expects the user-readable string that should be included in the error message when the user attempts to add the aspect to an ineligible declaration.
 
 >[!NOTE] 
 > Your implementation of <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> must not reference any instance member of the class. Indeed, this method is called on an instance obtained using `FormatterServices.GetUninitializedObject` that is, _without invoking the class constructor_.
@@ -38,7 +38,7 @@ For details about reporting errors, see <xref:diagnostics>.
 
 ### Example 1
 
-Adding a caching to a `void` method does not make sense and should be addressed with eligibility. However, the fact that your aspect does not support methods returning a collection is an implementation detail and should be reported using a custom error.
+Adding a caching aspect to a `void` method does not make sense and should be addressed with eligibility. However, the fact that your aspect does not support methods returning a collection is an implementation detail and should be reported using a custom error.
 
 ### Example 2
 

@@ -13,9 +13,9 @@ Live templates are built with the Metalama aspect framework, but instead of bein
 
 ## To write a live template
 
-1. Write an aspect class as usually, with the following differences:
+1. Write an aspect class as usual, with the following differences:
    - The aspect class does not need to be derived from `System.Attribute`.
-   - The implementation should pay more attention to generate idiomatic C# code.
+   - The implementation should pay more attention to generating idiomatic C# code.
    - Diagnostics reported by the aspect will be ignored.
    - Aspect ordering and requirements will be ignored.
 2. Make sure that the aspect class has a default constructor.

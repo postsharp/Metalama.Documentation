@@ -22,7 +22,7 @@ For event, properties or field templates, compile-time template parameters are n
 
 To define and use tags:
 
-1. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the tags as an anonymous object to the `tags` argument like this: `args: new { A = 5, B = "x", C = builder.Target.DeclaringType }` where `A`, `B` and `C` are three arbitrary names..
+1. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the tags as an anonymous object to the `tags` argument like this: `args: new { A = 5, B = "x", C = builder.Target.DeclaringType }` where `A`, `B` and `C` are three arbitrary names.
 
 2. In your template method, the tags are available under the `meta.Tags` dictionary. You would for instance use the `meta.Tags["A"]` expression to access the tag named `A` that you defined in the previous step.
 

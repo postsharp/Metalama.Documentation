@@ -6,6 +6,7 @@
     "matryoshka",
     "Metalama",
     "multicasting",
+    "refactorings",
     "structs"
 ],
 "markdownlint.config": {

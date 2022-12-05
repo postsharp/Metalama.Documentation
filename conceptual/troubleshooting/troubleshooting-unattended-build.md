@@ -40,6 +40,6 @@ In your build or pipeline configuration, create an environment variable named `M
 
 ## Step 3. Run the build on build server
 
-Metalama will automatically read the diagnostics configuration from environment variable. The build will produce diagnostics based on the specified configuration set in the environment variable.
+Metalama will automatically read the diagnostics configuration from an environment variable. The build will produce diagnostics based on the specified configuration set in the environment variable.
 
 You will find the logs under the `%TEMP%\Metalama\Logs` directory.

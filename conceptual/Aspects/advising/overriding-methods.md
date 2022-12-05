@@ -27,7 +27,7 @@ The following code shows an empty <xref:Metalama.Framework.Aspects.OverrideMetho
 
 ## Accessing the metadata and parameters of the overridden method
 
-The metadata of the method being overridden are available from the template method on the <xref:Metalama.Framework.Aspects.IMetaTarget.Method?text=meta.Target.Method> property . This property gives you all information about the name, type, parameters and custom attributes of the method. For instance, the metadata of method parameters are exposed on `meta.Target.Method.Parameters`. But note that only _metadata_ are exposed there.
+The metadata of the method being overridden is available from the template method on the <xref:Metalama.Framework.Aspects.IMetaTarget.Method?text=meta.Target.Method> property. This property gives you all information about the name, type, parameters and custom attributes of the method. For instance, the metadata of method parameters is exposed on `meta.Target.Method.Parameters`. But note that only _metadata_ are exposed there.
 
 To access the parameter _values_, you need to access <xref:Metalama.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters>. For instance:
 
@@ -184,7 +184,7 @@ Note that there is no obligation to implement these methods as `async` methods o
 
 ### Example: specific templates for all kinds of methods
 
-The following example derives from the previous one implements all specific template methods instead of just the default template methods. Note that now the output of iterators is no longer buffered, because this new version of the aspect supports iterator streaming.
+The following example derives from the previous one and implements all specific template methods instead of just the default template methods. Note that now the output of iterators is no longer buffered because this new version of the aspect supports iterator streaming.
 
 [!include[Specific templates for all kinds of methods](../../../code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodSpecificTemplateAllKinds.cs)]
 
@@ -195,7 +195,7 @@ or <xref:Metalama.Framework.Aspects.OverrideMethodAspect.UseEnumerableTemplateFo
 
 ## Overriding several methods with the same aspect
 
-In the above sections, we have always derived our aspect class from the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class. This class exists for simplificy and convenience. It is merely a shortcut that derives from the <xref:System.Attribute> class and implements the `IAspect<IMethod>` interface. The only thing it does is to add an `Override` advice to the target of the custom attribute.
+In the above sections, we have always derived our aspect class from the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class. This class exists for simplicity and convenience. It is merely a shortcut that derives from the <xref:System.Attribute> class and implements the `IAspect<IMethod>` interface. The only thing it does is add an `Override` advice to the target of the custom attribute.
 
 Here is the simplified source code of the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> class:
 
@@ -219,7 +219,7 @@ The _second argument_ of `Override` is the name of the template method. This met
 
 ### Example: synchronized object
 
-The following aspects wraps all instance methods with a `lock( this )` statement.
+The following aspect wraps all instance methods with a `lock( this )` statement.
 
 > [!NOTE]
 > In a production-ready implementation, you should not lock `this` but a private field. You can introduce this field as described in <xref:introducing-members>. A product-ready implementation should also wrap properties.
