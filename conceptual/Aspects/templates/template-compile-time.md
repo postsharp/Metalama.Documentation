@@ -111,7 +111,7 @@ If you want to share compile-time code between aspects, aspects or aspect method
   * a method or field of an aspect;
   * a type (`class`, `struct`, `record`, ...);
   * an assembly, using `[assembly: CompileTime]`.
-* Code that can run either at compile time or at run time must be annotated with the [<xref:Metalama.Framework.Aspects.CompileTimeOrRunTimeAttribute?text=CompileTimeOrRunTime>] custom attribute.
+* Code that can run either at compile time or at run time must be annotated with the [<xref:Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute?text=RunTimeOrCompileTime>] custom attribute.
 
 ## Calling other packages from compile-time code
 

@@ -51,6 +51,6 @@ The following implementation of <xref:Metalama.Framework.Eligibility.IEligible`1
 ```cs
 public override void BuildEligibility( IEligibilityBuilder<IMethod> builder )
 {
-    builder.ExceptForInheritance().MustBeNonAbstract();
+    builder.ExceptForInheritance().MustNotBeAbstract();
 }
 ```

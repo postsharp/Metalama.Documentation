@@ -1,10 +1,10 @@
 ---
-uid: compile-time-testing
+uid: aspect-testing
 ---
 
-# Compile-Time Testing
+# Testing the Aspects
 
-The idea of compile-time testing is to create both _input_ test files annotated with aspects and _output_ test files which contain the transformed code (possibly with comments for errors and warnings), and to rely on the compile-time testing framework to automatically execute inputs and verify that the outputs match the expectations.
+The idea of compile-time testing is to create both _input_ test files annotated with aspects and _output_ test files, which contain the transformed code (possibly with comments for errors and warnings), and to rely on the compile-time testing framework to automatically execute inputs and verify that the outputs match the expectations.
 
 Concretely, you can follow the following steps (detailed below):
 

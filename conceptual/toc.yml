@@ -103,7 +103,7 @@ items:
         topicUid: testing
         items:
         - name: Compile-Time Testing
-          topicUid: compile-time-testing        
+          topicUid: aspect-testing        
         - name: Run-Time Testing
           topicUid: run-time-testing
       - name: Implementation notes
@@ -171,3 +171,19 @@ items:
         topicUid: troubleshooting-unattended-build
   - name: Migrating from PostSharp
     topicUid: migration
+    items:
+      - name: Migrating your Custom Aspects to Metalama
+        topicUid: migrating-aspects
+      - name: Why Migrate
+        topicUid: benefits-over-postsharp
+      - name: When Migrate
+        topicUid: when-migrate
+      - name: Feature Status
+        topicUid: migration-feature-status
+      - name: Architectural Differences from PostSharp
+        topicUid: differences-from-postsharp
+      - name: Migrating Attribute Multicasting
+        topicUid: migrating-multicasting
+      - name: Migrating Configuraiton
+        topicUid: migrating-configuration
+        

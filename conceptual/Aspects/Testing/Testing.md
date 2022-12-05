@@ -13,7 +13,7 @@ There are two complementary ways to test your aspects:
     <tr>
     <tr>
         <td>
-            <xref:compile-time-testing>
+            <xref:aspect-testing>
         </td>
         <td>
              **Compile-time tests**, by contrast, verify that the aspect transforms some target code as expected, or emits errors and warnings as expected. With compile-time tests, the transformed code is not executed.

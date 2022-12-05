@@ -10,7 +10,7 @@ In Metalama, you can achieve this using a _contract_. With a contract, you can:
 * throw an exception when the value does not fulfill a condition of your choice, or
 * normalize the received value (for instance trimming the spaces of a string).
 
-Technically speaking, a contract a piece of code that you inject after _receiving_ a value (for input parameters and field/property setters) or _sending_ it (for output parameters and field/property getters). So you can actually do more than throwing an exception or normalizing the value.
+Technically speaking, a contract is a piece of code that you inject after _receiving_ a value (for input parameters and field/property setters) or _sending_ it (for output parameters and field/property getters). So you can actually do more than throwing an exception or normalizing the value.
 
 
 ## The simple way: overriding the ContractAspect class

@@ -3,8 +3,10 @@
 "editor.wordWrap" : "bounded",
 "editor.wordWrapColumn": 120,
 "cSpell.words": [
+    "matryoshka",
     "Metalama",
-    "matryoshka"
+    "multicasting",
+    "structs"
 ],
 "markdownlint.config": {
     "MD028": false,

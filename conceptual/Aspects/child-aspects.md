@@ -18,6 +18,6 @@ An aspect can add child aspects from the <xref:Metalama.Framework.Aspects.IAspec
 
 ## Accessing the Parent Aspect
 
-Parent aspects are listed in the <xref:Metalama.Framework.Aspects.IAspectInstance.Predecessors?text=IAspectInstance.Predecessors> property, which the child aspect can access from <xref:Metalama.Framework.Aspects.meta.AspectInstance?text=meta.AspectInstance> or <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectInstance?text=builder.AspectInstance>.
+Parent aspects are listed in the <xref:Metalama.Framework.Aspects.IAspectPredecessor.Predecessors?text=IAspectPredecessor.Predecessors> property, which the child aspect can access from <xref:Metalama.Framework.Aspects.meta.AspectInstance?text=meta.AspectInstance> or <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectInstance?text=builder.AspectInstance>.
 
 > TODO: Example

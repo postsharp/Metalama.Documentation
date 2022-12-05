@@ -190,7 +190,8 @@ var clone = meta.Cast(meta.Target.Type, baseCall);
 
 This template generates either `var clone = (TargetType) base.Clone();` or `var clone = (TargetType) this.MemberwiseClone();`.
 
-> [!NOTE] The weird syntax of Capture, which gives the result as an `out` parameter instead of a return value, is due to a technical limitation of Roslyn.
+> [!NOTE] 
+> The weird syntax of Capture, which gives the result as an `out` parameter instead of a return value, is due to a technical limitation of Roslyn.
 
 ## Converting custom objects from compile-time to run-time values
 
