@@ -55,7 +55,7 @@ namespace Doc.DeepClone
                     f => f.IsAutoPropertyOrField.GetValueOrDefault() &&
                          ((f.Type.Is( typeof(ICloneable) ) && f.Type.SpecialType != SpecialType.String) ||
                           (f.Type is INamedType fieldNamedType &&
-                           fieldNamedType.Aspects<DeepCloneAttribute>().Any())) );
+                           fieldNamedType.Enhancements().HasAspect<DeepCloneAttribute>())) );
 
             foreach ( var field in clonableFields )
             {
@@ -66,7 +66,7 @@ namespace Doc.DeepClone
                 IExpression callClone;
 
                 if ( cloneMethod is { Accessibility: Accessibility.Public } ||
-                     fieldType.Aspects<DeepCloneAttribute>().Any() )
+                     fieldType.Enhancements().HasAspect<DeepCloneAttribute>() )
                 {
                     // If yes, call the method without a cast.
                     ExpressionFactory.Capture( field.Invokers.Base!.GetValue( meta.This )?.Clone(), out callClone );
