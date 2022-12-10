@@ -14,7 +14,7 @@ namespace Doc.ToStringWithComplexCodeFix
     [RunTimeOrCompileTime]
     public class NotToStringAttribute : Attribute { }
 
-    [LiveTemplate]
+    [EditorExperience( SuggestAsLiveTemplate = true )]
     public class ToStringAttribute : TypeAspect
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )

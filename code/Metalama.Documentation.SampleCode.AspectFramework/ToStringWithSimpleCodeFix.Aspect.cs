@@ -12,7 +12,7 @@ namespace Doc.ToStringWithSimpleToString
     [AttributeUsage( AttributeTargets.Field | AttributeTargets.Property )]
     public class NotToStringAttribute : Attribute { }
 
-    [LiveTemplate]
+    [EditorExperience( SuggestAsLiveTemplate = true )]
     public class ToStringAttribute : TypeAspect
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
