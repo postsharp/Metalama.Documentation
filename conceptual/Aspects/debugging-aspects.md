@@ -35,7 +35,7 @@ To attach a debugger to the design-time compiler process:
 2. Execute the following commands:
 
    ```powershell
-   metalama-config diag edit
+   metalama diag edit
    ```
 
 3. In the `diagnostics.json` file, edit the `debugger/processes` section and enable debugging for the proper process. If you are using Visual Studio, this process is named `RoslynCodeAnalysisService`.

@@ -4,7 +4,7 @@ uid: troubleshooting-unattended-build
 
 # Troubleshooting an unattended build
 
-This article describes steps to enable logging and process dumps in an unattended build on a build server without having to install `metalama-config` tool.
+This article describes steps to enable logging and process dumps in an unattended build on a build server without having to install `Metalama.Tool` command-line tool.
 
 
 ## Step 1. Create the diagnostics.json on your local machine
@@ -36,7 +36,7 @@ In the next example you can find entire resulting `diagnostics.json` file after 
 In your build or pipeline configuration, create an environment variable named `METALAMA_DIAGNOSTICS` and set its value to the content of the `diagnostics.json` file.
 
 > [!WARNING]
-> Using diagnostics set by environment variable always overrides local diagnostics settings used by `metalama-config` tool. 
+> Using diagnostics set by environment variable always overrides local diagnostics settings used by `Metalama.Tool` command-line tool.. 
 
 ## Step 3. Run the build on build server
 

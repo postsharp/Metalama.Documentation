@@ -11,16 +11,16 @@ If you report a Metalama bug, when logs are not enough to understand the issue, 
 
 If you are using Metalama on build server, the process of enabling process dumps is described in <xref:troubleshooting-unattended-build>.
 
-## Step 1. Install metalama-config
+## Step 1. Install Metalama.Tool
 
-Install `metalama-config` as described in <xref:dotnet-tool>.
+Install `Metalama.Tool` as described in <xref:dotnet-tool>.
 
 ## Step 2. Edit diagnostics.json
 
 Execute the command:
 
 ```
-metalama-config diag edit
+metalama config diag edit
 ```
 
 This should open a `diagnostics.json` file in your default editor.

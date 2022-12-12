@@ -37,7 +37,7 @@ Using this approach, you can easily disable telemetry for build agents, or you c
 2. Execute the following commands:
 
    ```powershell
-   metalama-config telemetry disable
+   metalama telemetry disable
    ```
 
 ## Resetting your device id
@@ -46,6 +46,6 @@ Using this approach, you can easily disable telemetry for build agents, or you c
 2. Execute the following commands:
 
    ```powershell
-   metalama-config telemetry reset-device-id
+   metalama telemetry reset-device-id
    ```
 
