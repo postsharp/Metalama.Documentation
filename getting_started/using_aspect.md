@@ -7,7 +7,10 @@ code will be spinkled with such code calls.
 
 Also, in green-field projects as an architect or team lead you start with a vision for code quality and architure best practices that you want to follow. However over time other commitments and duties like shipping before deadline and within budget becomes the priority. This results in huge technical-debt accumulated over time. I bet you wished for some magical thing that could help you stay on track for your architectural vision and prevent the so called architural-erosion from happening; so that you can not only ship good code on time but stay ready for obvious future enhancements that are already on your way! 
 
-Aspect oritented programming can help you in these situatins and many more. This guide is written to aquanit you to the process of using aspects created using "Metalama" the world leading aspect oriented programming framework for C#
+Aspect oritented programming a.k.a [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) can help you in these situations and many more. This guide is written to aquaint you to the process of using aspects created using "Metalama" the world leading aspect oriented programming framework for C# and the best Visual Studio Plugin for 
+AOP. 
+
+
 
 ### What’s an Aspect? 
 An aspect is a programming block that changes the behaviour of a system by attributing different capabilities that the original program lacked _at runtime_. The part of the original program on top of which the aspect is applied is called `Target`
