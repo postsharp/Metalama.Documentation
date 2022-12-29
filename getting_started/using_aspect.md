@@ -115,9 +115,11 @@ public bool UpdateDatabase(ItemDetails details)
    UpdateStatus(details.Id);
 }
 
+
 [Log]
 public void UpdateCore(ItemDetails details)
 { 
+   
 }
 
 [Log]
@@ -128,6 +130,40 @@ public void UpdateStatus(ItemDetails details)
 
 
 ```
+
+On a sample run the above code will emit this type of result 
+because the value of `ok` could have been false. 
+
+```
+Entering UpdateDatabase
+Entering UpdateStatus 
+Exiting UpdateStatus
+Exiting UpdateDatabase
+```
+
+another sample run might yeild the following result where `ok` was `true`
+
+```
+Entering UpdateDatabase
+Entering UpdateCore
+Exiting UpdateCore
+Entering UpdateStatus 
+Exiting UpdateStatus
+Exiting UpdateDatabase
+```
+
+So you can see how easy it becomes to enable method level logging capability 
+across your application using simple atrributes. It has many advantages which you may well have spotted. But in a nutshell,
+
+#### Advantages 
+
+- You **DON'T**  need to change the business code to change certain behaviour 
+- You can **toggle** the **behaviour** easily 
+- The logging facility is **absolutely decoupled** from the `Target` 
+
+
+
+
 ### What is compile time and what’s runtime?
 ###	What can I do with Aspect 
 
