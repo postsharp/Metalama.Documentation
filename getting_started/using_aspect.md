@@ -34,6 +34,82 @@ An aspect can help you in multitude of situations. However all of these can be b
 * _Preventing Architectural Decay_
     * Prevent bad quality code check-ins by enforcing your coding standard via aspects 
 	and other related tools like fabrics. 
+	
+The following sections tries to go a bit deeper along each of this areas of applications. 
+
+
+#### Boilerplate reduction
+* Logging (ex: Creating aspect to log details automatically)
+* Caching 
+* Parallizing function calls 
+* Interface auto-implementation 
+
+#### Code Generation 
+* Introduce new properties (Introduce new properties) 
+* Introduce new methods 
+
+#### Preventing Architectural Decay
+* Create code analyzers for several situations (detect code-smells)
+* Create code fixers for several situations (And fix them as you see fit)
+
+
+### Getting Metala 
+
+### Getting Metalama Visual Studio Extension 
+You can easily download and install Metalama Visual Studio Extension from Visual Studio marketplace by the following steps 
+
+#### **Step 1** : Go to `Extensions` > `Manage Extensions` 
+
+![step1](images/ext_manage_1.png)  
+
+#### **Step 2**: Click on `Manage Extensions`. This will show the prompt like this
+
+![step2](images/ext_manage_2.png)  
+
+#### **Step 3**: Type "Metalama" in the searchbox to the right of this prompt as shown below.  
+
+![step3](images/ext_manage_3.png)  
+
+
+#### **Step 4**: Click the `Download` button to initiate the download.
+
+![step4](images/ext_manage_4.png)  
+
+
+#### **Step 5**: Once downloaded the extension will be ready to be installed 
+as soon as all instances of visual studio is closed. Note that this is highlighted 
+at the bottom of this screen. 
+
+![step5](images/ext_manage_5.png)  
+
+#### **Step 6**: Give consent to install the extension 
+As soon as you close the Visual Studio, the installer will start installing the extension. 
+
+![wizard_init](images/ext_manage_6.png)
+The installer initializing 
+
+
+The installation wizard will work indepedently and will require your consent at the following stage 
+
+![wizard_asking_consent](images/ext_manage_consent.png)
+
+#### **Step 7**: Click "Modify" to complete installation 
+To continue installing the extension, click on the `Modify` button. Once clicked the wizard will start installing the extension as shown below. 
+
+ 
+![metalama_install_progress](images/metalama_install_progress.png)
+
+:eyes: Note that the extension is only supported for Visual Studio 2022 edition.
+
+Finally, when the wizard is done installing it will show the result as shown below. 
+
+![metalama_install_done](images/metalama_install_done.png)
+ 
+### Checking installation from Visual Studio
+To check that the installation had been successfull go to the same visual studio marketplace again via the Extensions menu and then try to locate "Metalama". If the installation had been successfull you should see the following screenshot with a green tick mark on the top right indicating that indeed the extension have been installed correctly!
+
+![metalama_already_installed](images/metalama_already_installed.png)
+
 
 ### Meet your first aspect 
 
@@ -97,7 +173,22 @@ namespace MetaLamaEx
 }
 
 ```
-Now you can use this newly created _aspect_ as an attribute like this 
+Metalama extension uses a color scheme to help you write code that will compile at design and at runtime. The code will be rendered as follows 
+
+![First Aspect](images/first_aspect.png)  
+
+
+:eyes: Notice how the color of `meta.Target` and `meta.Proceed()` are different from the rest. 
+
+|Part |Representation |
+|-----|---------------|
+|`meta.Target`|![meta_target](images/meta_target.png)|
+|`meta.Proceed()`|![meta_target](images/meta_proceed.png)|
+
+Applying an aspect means _attributing_ a type or parts of a type with _a behvavior_ 
+that was not originally present. In C# and Metalama this is done by writing the name of the aspect as an attribute on top of the type or on top of the part on which it has to be applied. 
+
+The following code snippet shows how this newly created _aspect_ can be applied as an attribute on methods (`target` of the aspect is method in this case) 
 
 
 ```csharp
@@ -157,14 +248,15 @@ across your application using simple atrributes. It has many advantages which yo
 
 #### Advantages 
 
-- You **DON'T**  need to change the business code to change certain behaviour 
+- You **DON'T**  need to change the business code to add certain behaviour 
 - You can **toggle** the **behaviour** easily 
-- The logging facility is **absolutely decoupled** from the `Target` 
-
+- The facility/behaviour attributed is **absolutely decoupled** from the `Target` 
 
 
 
 ### What is compile time and what’s runtime?
+Compile time is when you are creating the program. Information about different parts of the 
+
 ###	What can I do with Aspect 
 
 ### Can I debug an aspect that I am using ?
