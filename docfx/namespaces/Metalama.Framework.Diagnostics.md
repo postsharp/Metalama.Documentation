@@ -32,7 +32,7 @@ classDiagram
         Suggest(CodeFix)
     }
 
-    ScopedDiagnosticSink --|> IDiagnosticSink : implements
+    IDiagnosticSink <|-- ScopedDiagnosticSink : implements
 
 
   
@@ -60,14 +60,13 @@ classDiagram
     
     IDiagnostic *-- CodeFix : can contain
         
-     DiagnosticDefinition_ --|> DiagnosticDefinition~T~ : derives from
+     DiagnosticDefinition~T~ <|-- `DiagnosticDefinition ` : derives from
 
-class DiagnosticDefinition_ {
-    <<without parameter>>
+class `DiagnosticDefinition ` {
+    
 }        
 
     class DiagnosticDefinition~T~ {
-        <<with  parameters>>
         Id
         Category
         Severity
@@ -85,17 +84,17 @@ class DiagnosticDefinition_ {
     }
 
 
-    DiagnosticDefinition_ ..|> IDiagnostic : implements
-    DiagnosticDefinition~T~ ..> IDiagnostic : WithArguments instantiates
-    IDiagnostic --> DiagnosticSeverity : Severity
-    IDiagnosticSink ..> IDiagnostic : accepts
-    IDiagnosticSink ..> SuppressionDefinition : accepts
-    IDiagnosticSink ..> CodeFix : accepts
+    IDiagnostic <|.. `DiagnosticDefinition ` : implements
+    IDiagnostic <.. DiagnosticDefinition~T~ : WithArguments instantiates
+    DiagnosticSeverity <-- IDiagnostic : Severity
+    IDiagnostic <.. IDiagnosticSink : accepts
+    SuppressionDefinition <.. IDiagnosticSink : accepts
+    CodeFix <.. IDiagnosticSink : accepts
 
-    IAspectBuilder --> ScopedDiagnosticSink : exposes
-    ValidationContext --> ScopedDiagnosticSink : exposes
+    ScopedDiagnosticSink <-- IAspectBuilder : exposes
+    ScopedDiagnosticSink <-- ValidationContext : exposes
 
-CodeFixFactory --> CodeFix : creates
+CodeFix <-- CodeFixFactory : creates
 
 
 ```

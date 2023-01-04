@@ -28,16 +28,16 @@ class IInvokerFactory~T~ {
    T ConditionalBase
 }
 
-IInvokerFactory~T~ --> IInvoker: exposes
+IInvoker <-- IInvokerFactory~T~: exposes
 
-IMethod --> IInvokerFactory~IMethodInvoker~: exposes
-IEvent --> IInvokerFactory~IEventInvoker~: exposes
-IFieldOrProperty --> IInvokerFactory~IFieldOrPropertyInvoker~: exposes
+IInvokerFactory~IMethodInvoker~ <-- IMethod: exposes
+IInvokerFactory~IEventInvoker~ <-- IEvent: exposes
+IInvokerFactory~IFieldOrPropertyInvoker~ <-- IFieldOrProperty: exposes
 
-IMethodInvoker <|-- IInvoker
-IFieldOrPropertyInvoker <|-- IInvoker
-IPropertyInvoker <|-- IFieldOrPropertyInvoker
-IEventInvoker <|-- IInvoker
+IInvoker <|-- IMethodInvoker
+IInvoker <|-- IFieldOrPropertyInvoker
+IInvoker <|-- IIndexerInvoker
+IInvoker <|-- IEventInvoker
 
 class IMethod {
    Invokers
@@ -62,9 +62,9 @@ class IFieldOrPropertyInvoker {
    +SetValue()
 }
 
-class IPropertyInvoker {
-   +GetIndexerValue()
-   +SetIndexerValue()
+class IIndexerInvoker {
+   +GetValue()
+   +SetValue()
 }
 
 class IEventInvoker {

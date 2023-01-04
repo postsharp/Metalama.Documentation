@@ -8,20 +8,20 @@ This namespace contains the representation of the source code or the transformed
 
 ```mermaid
 classDiagram
-      IMemberOrNamedType --|> IDeclaration
-      IMember --|> IMemberOrNamedType
-      INamedType --|> IMemberOrNamedType
-      IFieldOrProperty --|> IMember
-      IField --|> IFieldOrProperty
-      IProperty --|> IFieldOrProperty
-      IMethodBase --|> IMember
-      IMethod --|> IMethodBase
-      IConstructor --|> IMethodBase
-      IParameter --|> IDeclaration
-      IGenericParameter --|> IDeclaration
-      IAttribute --|> IDeclaration
-      INamespace --|> IDeclaration
-      ICompilation --|> IDeclaration
+      IDeclaration <|-- IMemberOrNamedType
+      IMemberOrNamedType <|-- IMember
+      IMemberOrNamedType <|-- INamedType
+      IMember <|-- IFieldOrProperty
+      IFieldOrProperty <|-- IField
+      IFieldOrProperty <|-- IProperty
+      IMember <|-- IMethodBase
+      IMethodBase <|-- IMethod
+      IMethodBase <|-- IConstructor
+      IDeclaration <|-- IParameter
+      IDeclaration <|-- IGenericParameter
+      IDeclaration <|-- IAttribute
+      IDeclaration <|-- INamespace
+      IDeclaration <|-- ICompilation
       
 
       IMethodBase o-- IParameter
