@@ -15,7 +15,7 @@ There are three major points of interest:
 
 ## 1. Strong ordering of aspects and advice
 
-Aspects are "things" that receive a code model as inputs and provide some outputs: advice, diagnostics, validators, and children aspects. The only important output for this discussion is _advice_ because the other outputs do not modify the code. Most aspects have a single layer of advice, but it is possible to define several layers.
+Aspects are "things" that receive a code model as inputs and provide some outputs: advice, diagnostics, validators, and child aspects. The only important output for this discussion is _advice_ because the other outputs do not modify the code. Most aspects have a single layer of advice, but it is possible to define several layers.
 
 To make sure that the order of execution of aspects and advice is consistent, Metalama uses two ordering factors:
 
@@ -30,9 +30,9 @@ Aspects and advice in the same layer and applied to declarations of the same dep
 
 Since the code model only represents declarations but does not give access to implementations such as method bodies or initializers, the only kind of advice that affects the code model are introductions and interface implementations. Overriding an existing method does not affect the code model because it only overrides its implementation.
 
-For each aspect layer and depth level, Metalama will create a new version of the code model that reflects the changes done by the previous aspect layer or depth layer.
+For each aspect layer and depth level, Metalama will create a new version of the code model that reflects the changes done by the previous aspect layer or depth level.
 
-Therefore, if an aspect introduces a member into a type, the next aspects will see that new member in the code model, and will be able to advise it.
+Therefore, if an aspect introduces a member into a type, the following aspects will see that new member in the code model, and will be able to advise it.
 
 To ensure the consistency of this model, aspects cannot provide outputs to previous aspects or to declarations that are not "under" the current target.
 

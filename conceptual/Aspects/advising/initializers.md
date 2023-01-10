@@ -43,7 +43,7 @@ The example in the following aspect introduces a field using the <xref:Metalama.
 To inject some initialization before any user code of the instance constructor is called:
 
 1. Add a method of signature `void BeforeInstanceConstructor()` to your aspect class and annotate it with the `[Template]` custom attribute. The name of this method is arbitrary.
-2. Call the <xref:Metalama.Framework.Advising.IAdviceFactory.AddInitializer*?text=builder.Advice.AddInitializer> method in your aspect (or <xref:Metalama.Framework.Advising.IAdviceFactory.AddInitializer*?text=amender.Advice.AddInitializer>) in a fabric). Pass the type that must be initialized, then the name of the method of the previous step, and finally the value `InitializerType.BeforeInstanceConstructor`.
+2. Call the <xref:Metalama.Framework.Advising.IAdviceFactory.AddInitializer*?text=builder.Advice.AddInitializer> method in your aspect (or <xref:Metalama.Framework.Advising.IAdviceFactory.AddInitializer*?text=amender.Advice.AddInitializer> in a fabric). Pass the type that must be initialized, then the name of the method of the previous step, and finally the value `InitializerType.BeforeInstanceConstructor`.
 
 The `AddInitializer` advice will _not_ affect the constructors that call a chained `this` constructor. That is, the advice always runs before any constructor of the current class. However, the initialization logic does run _after_ the call to the `base` constructor, if any.
 

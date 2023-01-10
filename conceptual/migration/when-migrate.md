@@ -16,7 +16,7 @@ Before you decide to migrate your code from PostSharp to Metalama, it is importa
 Mixing PostSharp and Metalama in the same project is in theory possible, but it is not recommended for the following reasons:
 
 * Metalama, like PostSharp, introduces helper methods and properties, i.e. methods that have no equivalent in source code. PostSharp, since it runs _after_ Metalama, will see these helper declarations and the aspects will pick them as if they were user code, which could create incorrect and confusing situations.
-* All Metalama aspects will be applied before any PostSharp aspect, just because Metalama runs before PostSharp. It limits the way to will be able to order aspects.
+* All Metalama aspects will be applied before any PostSharp aspect, just because Metalama runs before PostSharp. It limits the way you will be able to order aspects.
 * We have not tested PostSharp with Metalama and will not investigate or address issues arising from the combined use of these products. In other words, this scenario is not _supported_.
 
 ## Migrating is not an all-or-nothing decision
@@ -26,7 +26,7 @@ As a team or company, you can use both PostSharp and Metalama at the same time. 
 You may decide to keep using PostSharp for one product but migrate to Metalama for another product. As long as these products have no dependencies that would result in a single C# project using both Metalama and PostSharp, this may be a sound decision.
 
 
-## When Migrate to Metalama,
+## When to Migrate to Metalama
 
 Consider migrating to Metalama if:
 

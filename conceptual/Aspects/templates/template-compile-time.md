@@ -6,7 +6,7 @@ uid: template-compile-time
 
 Compile-time expressions are expressions that either contain a call to a compile-time method, or contain a reference to a compile-time local variable or a compile-time aspect member. Compile-time expressions are executed at compile time, when the aspect is applied to a target.
 
-Compile-time statements are statements, such as `if`, `foreach` or `meta.DebugBreak()`, that are executed at compile time.
+Compile-time statements are statements, such as `if`, `foreach` or `meta.DebugBreak();`, that are executed at compile time.
 
 
 ## The meta pseudo-keyword
@@ -31,9 +31,9 @@ Local variables are run-time by default. To declare a compile-time local variabl
 
 Examples:
 
-- In `var i = 0`, `i` is a run-time variable.
-- In `var i = meta.CompileTime(0)`, `i` is a compile-time variable.
-- In `var parameters = meta.Target.Parameters`, `parameters` is compile-time variable.
+- In `var i = 0;`, `i` is a run-time variable.
+- In `var i = meta.CompileTime(0);`, `i` is a compile-time variable.
+- In `var parameters = meta.Target.Parameters;`, `parameters` is a compile-time variable.
 
 > [!NOTE]
 > You cannot assign a compile-time variable from a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, `switch`, `catch` or `finally`.
@@ -71,7 +71,7 @@ The following aspect uses a `foreach` loop to print the value of each parameter 
 It is not possible to create compile-time `for` or `while` loops. `goto` statements are forbidden in templates. If you need a compile-time `for`, you can use the following construct:
 
 ```cs
-foreach (int i in meta.CompileTime( Enumerable.Range( 0, n ) ))
+foreach ( int i in meta.CompileTime( Enumerable.Range( 0, n ) ) )
 ```
 
 If the approach above is not possible, you can try to move your logic to a compile-time aspect function (not a template method), have this function return an enumerable, and use the return value in a `foreach` loop in the template method.
@@ -105,9 +105,9 @@ The following example shows a simple _Retry_ aspect. The maximum number of attem
 
 ## Custom compile-time types and methods
 
-If you want to share compile-time code between aspects, aspects or aspect methods, you can create your own types and methods that execute at compile time. 
+If you want to share compile-time code between aspects or aspect methods, you can create your own types and methods that execute at compile time. 
 
-* Compile-time code must be annotated with a [<xref:Metalama.Framework.Aspects.CompileTimeAttribute?text=CompileTime>] custom attribute. You would typically use this attribute on:
+* Compile-time code must be annotated with the [<xref:Metalama.Framework.Aspects.CompileTimeAttribute?text=CompileTime>] custom attribute. You would typically use this attribute on:
   * a method or field of an aspect;
   * a type (`class`, `struct`, `record`, ...);
   * an assembly, using `[assembly: CompileTime]`.

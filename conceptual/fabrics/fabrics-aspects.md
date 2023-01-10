@@ -15,7 +15,7 @@ To add an aspect from a fabric:
 
 2. Call one of the following methods from <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>:
    * To select type members (methods, fields, nested types, ...), use the <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*?text=amender.With> method and provide a lambda expression that selects the relevant type members, or
-   * To select the type itself, use `amender.With( x => x)`.
+   * To select the type itself, use `amender.With( x => x )`.
 
     The reason for this design is that the <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*> method will not only select members declared in source code, but also members introduced by other aspects and that are unknown when your  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed.
 

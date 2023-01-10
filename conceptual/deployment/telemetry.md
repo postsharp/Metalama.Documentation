@@ -11,9 +11,9 @@ This article describes what is collected using telemetry and how you can disable
 By default, Metalama will collect and send to PostSharp Technologies usage and quality reports. These reports are anonymous. They are collected in the following situations:
 
 * In case of unexpected _failure_ or _performance degradation_ that is not caused by user code. In this case, we create an exception report including the anonymized call stack.
-* Periodically, for each project you are building, we are collecting data such as a non-reversible hash of the project name, the target framework and version, the project size, number of aspects used, amount of code saved to Metalama, or performance.
+* Periodically, for each project you are building, we are collecting data such as a non-reversible hash of the project name, the target framework and version, the project size, number of aspects used, amount of code saved by Metalama, or performance.
 
-All reports include a randomly generated device id, which you can reset at any time using Metalama Command Line Tools (see below).
+All reports include a randomly generated device id, which you can [reset at any time using Metalama Command Line Tools](#resetting-your-device-id).
 
 Telemetry data is collected and processed according to our [Privacy Policy](https://www.postsharp.net/company/legal/privacy-policy).
 

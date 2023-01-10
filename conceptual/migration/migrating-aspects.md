@@ -40,14 +40,14 @@ Verify in <xref:migration-feature-status> if your projects are using a feature o
 You will know that you will be done with the migration when your projects will compile without any new warnings and your unit tests will be green. So, before you start, make sure that your projects are all in a clean state:
 
 * Create a new branch for this work in your source repository.
-* Verify that the projects build without error. If possible, address any warning in your code.
+* Verify that the projects build without error. If possible, address any warnings in your code.
 * Verify that all unit tests are successful.
 * When your projects are free of errors, warnings, and failed tests, commit and push.
 
 
 ## Step 4. Change PostSharp package references to Metalama.Migration and check errors
 
-In all projects, replace all references to the `PostSharp` package with references to the `Metalama.Migration` project. You can probably do this with a "Replace in Files" operation unless you are using `packages.config`. In this case, consider migrating your projects to the new `PackageReference` format. If you cannot, use the NuGet Package Manager UI, uninstall the `PostSharp` package and install the `Metalama.Migration` package.
+In all projects, replace all references to the `PostSharp` package with references to the `Metalama.Migration` package. You can probably do this with a "Replace in Files" operation unless you are using `packages.config`. In this case, consider migrating your projects to the new `PackageReference` format. If you cannot, use the NuGet Package Manager UI, uninstall the `PostSharp` package and install the `Metalama.Migration` package.
 
 The `Metalama.Migration` package contains the public API of PostSharp, but not its implementation. Instead, it contains `[Obsolete]` annotations with indications about the equivalent class or method in Metalama.
 

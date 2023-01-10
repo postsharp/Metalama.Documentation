@@ -127,7 +127,7 @@ flowchart LR
 
 The difference in aspect lifetime has major implications for the way aspects are designed.
 
-* **Metalama templates should generate succinct code.**  In PostSharp, advice methods could be long and complex because they were actually independent C# methods, compiled and JIT-compiled just one, and executed at run time. However, in Metalama, advice methods are templates. They can be long, but it is important that the code they are generating is short. This code will need to be compiled and JIT-compiled as many times as the advice is applied, so potentially thousands of times. Any logic that may repeat itself should be moved into run-time helper classes.
+* **Metalama templates should generate succinct code.**  In PostSharp, advice methods could be long and complex because they were actually independent C# methods, compiled and JIT-compiled just once, and executed at run time. However, in Metalama, advice methods are templates. They can be long, but it is important that the code they are generating is short. This code will need to be compiled and JIT-compiled as many times as the advice is applied, so potentially thousands of times. Any logic that may repeat itself should be moved into run-time helper classes.
 
 * **Aspects can no longer "hold" run-time state**. In PostSharp, aspect fields could hold any run-time state required by the aspect. In Metalama, if an aspect needs a run-time state, it has to _introduce_ a field into the target class (see <xref:introducing-members> for details). 
 
@@ -240,4 +240,4 @@ flowchart LR
 
 ### Implications
 
-* **In Metalama, aspect classes must be written in an immutable style.** Since aspect instances are may be reused among several declarations, they cannot store state that is specific to a target declaration. For details, see <xref:sharing-state-with-advice>.
+* **In Metalama, aspect classes must be written in an immutable style.** Since aspect instances may be reused among several declarations, they cannot store state that is specific to a target declaration. For details, see <xref:sharing-state-with-advice>.

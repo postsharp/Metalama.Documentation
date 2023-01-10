@@ -42,7 +42,7 @@ When an aspect is inherited, it has two sets of eligibility rules:
 
 When an inherited aspect is added to a target that matches the inheritance eligibility rules but not the normal eligibility rules, an _abstract_ aspect instance is added to that target. That is, <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method is _not_ called for that target, but only for derived targets.
 
-To define the eligibility rules that do not apply to the inheritance scenario, use the <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method, use the <xref:Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForInheritance*> method, for instance:
+To define the eligibility rules that do not apply to the inheritance scenario, use the <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method, use the <xref:Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForInheritance*> method.
 
 ### Example
 

@@ -4,7 +4,7 @@ uid: eligibility
 
 # Defining the Eligibility of Aspects
 
-Most of the aspects are designed and implemented for specific kinds of target declarations. For instance, you may decide that your caching aspect will not support `void` methods or methods with an `out` or `ref` parameter. It is important, as the author of the aspect, to make sure that the user of your aspect applies it only to the declarations that you expect. Otherwise, at best, the aspect will cause build errors and confuse the user or at worse, the run-time behavior of your aspect will be incorrect.
+Most of the aspects are designed and implemented for specific kinds of target declarations. For instance, you may decide that your caching aspect will not support `void` methods or methods with an `out` or `ref` parameter. It is important, as the author of the aspect, to make sure that the user of your aspect applies it only to the declarations that you expect. Otherwise, at best, the aspect will cause build errors and confuse the user or at worst, the run-time behavior of your aspect will be incorrect.
 
 ## Benefits
 

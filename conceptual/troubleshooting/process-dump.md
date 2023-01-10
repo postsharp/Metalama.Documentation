@@ -36,7 +36,7 @@ In the next example, Metalama is configured to capture a process dump for the co
 
 ```json
 {
- "miniDump": {
+  "miniDump": {
     "processes": {
       "Other": false,
       "Compiler": true,
@@ -62,7 +62,7 @@ In the next example, Metalama is configured to capture a process dump for the co
     "ExceptionTypes": [
       "*"
     ]
- }
+  }
 }
 ```
 

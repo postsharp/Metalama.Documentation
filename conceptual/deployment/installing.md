@@ -17,7 +17,7 @@ Before you start developing aspects, you must add the [Metalama.Framework](https
 For details of all NuGet packages and their dependencies, see <xref:packages>.
 
 >[!NOTE]
->Metalama requires a target framework that supports .NET Standard 2.0.
+>Metalama requires [a target framework that supports .NET Standard 2.0](xref:requirements#target-frameworks).
 
 ## 2. Install Metalama Tools for Visual Studio (optional)
 

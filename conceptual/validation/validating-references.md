@@ -57,7 +57,7 @@ To validate code from a fabric, the steps are almost the same as from an aspect.
 
 ### Example: ForTestOnly, fabric implementation
 
-The following example implements the same logic above, but using a fabric.
+The following example implements the same logic as above, but using a fabric.
 
 [!include[For Test Only](../../code/Metalama.Documentation.SampleCode.AspectFramework/ForTestOnly_Fabric.cs)]
 
@@ -73,4 +73,4 @@ The cross-project scenario and the need for serialization are the reasons why th
 
 ## Passing state to the validation method
 
-You must use `IAspectBuilder.AspectState`. Do not store in an aspect field state that depends on the target of the aspect.
+You must use <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState?text=builder.AspectState>. Do not store in an aspect field state that depends on the target of the aspect.

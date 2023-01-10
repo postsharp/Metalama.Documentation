@@ -4,7 +4,7 @@ uid: template-overview
 
 # T# Templates: Overview
 
-T# is the template language used by Metalama. The syntax of T# is 100% compatible with C#. The difference between T# and C# is the T# compiler executes within the compiler or the IDE and generates C# code, while the C# compiler generates IL (binary) files.
+T# is the template language used by Metalama. The syntax of T# is 100% compatible with C#. The difference between T# and C# is that the T# compiler executes within the compiler or the IDE and generates C# code, while the C# compiler generates IL (binary) files.
 
 ## Introduction
 

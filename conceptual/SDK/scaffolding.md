@@ -88,7 +88,7 @@ The weaver project:
 
 * typically has a name that ends with the `.Weaver` suffix, although not following this convention has no impact;
 * references `Metalama.Framework.Sdk`;
-* typically references the public project, although this not not always necessary;
+* typically references the public project, although this is not always necessary;
 * targets exclusively `netstandard2.0`;
 * is typically the main project of the NuGet package;
 * redefines the `PackageId` to the real package name, i.e. removes the `.Weaver` suffix from the package name.
@@ -150,9 +150,9 @@ The unit test project:
 
 If the consuming projects are a part of the same solution as the Metalama extension projects, they need to:
 
-* references the public project with `OutputItemType="Analyzer"` so that it is included both at run time and compile time;
-* references the weaver project with both `OutputItemType="Analyzer"` and `ReferenceOutputAssembly="false"` so that it is included only at compile time.
-* references the `Metalama.Framework` package (the indirect reference to `Metalama.Framework.Redist` is not sufficient).
+* reference the public project with `OutputItemType="Analyzer"` so that it is included both at run time and compile time;
+* reference the weaver project with both `OutputItemType="Analyzer"` and `ReferenceOutputAssembly="false"` so that it is included only at compile time.
+* reference the `Metalama.Framework` package (the indirect reference to `Metalama.Framework.Redist` is not sufficient).
 
 ### Example
 

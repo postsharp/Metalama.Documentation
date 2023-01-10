@@ -62,9 +62,9 @@ Aspects can report diagnostics (a single word for errors, warnings and informati
 
 For details about this feature, see <xref:diagnostics>.
 
-## Suggest code fixes
+## Suggesting code fixes
 
-Aspects can suggest code fixes to any diagnostic it reports, or suggest code refactorings.
+Aspects can suggest code fixes to any diagnostic they report, or suggest code refactorings.
 
 
 ## Validating the code that references the target declaration
@@ -94,7 +94,7 @@ If an aspect instance decides that it cannot be applied to the target to which i
 
 The aspect may or may not report a diagnostic before calling <xref:Metalama.Framework.Aspects.IAspectBuilder.SkipAspect>. Calling this method does not report any diagnostic.
 
-## Customize its appearance in the IDE.
+## Customizing its appearance in the IDE
 
 By default, an aspect class is represented in the IDE by the name of this class without the `Attribute` suffix, if any. To override the default name, annotate the aspect class with the <xref:System.ComponentModel.DisplayNameAttribute> annotation.
 

@@ -75,13 +75,13 @@ public class AutoCancellationAttribute : TypeAspect { }
 
 <xref:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync*> has a parameter of type <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext>. The <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation> property of this object contains the input compilation, and your implementation must set this property to the new compilation.
 
-The type of the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation> property is <xref:Metalama.Framework.Engine.CodeModel.IPartialCompilation>. Compilations are immutable objects. This interface, as well as the extension class <xref:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions>, offer different methods to transform the compilation. For instance, the <xref:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTrees*> will apply a rewriter to the input compilation and return the resulting compilation.
+The type of the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation> property is <xref:Metalama.Framework.Engine.CodeModel.IPartialCompilation>. Compilations are immutable objects. This interface, as well as the extension class <xref:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions>, offer different methods to transform the compilation. For instance, the <xref:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync*> method will apply a rewriter to the input compilation and return the resulting compilation.
 
-Do not forget to write back the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation?context.Compilation> property.
+Do not forget to write back the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation?text=context.Compilation> property.
 
 Each weaver will be invoked a single time per project, regardless of the number of aspect instances in the project.
 
-The list of aspect instances that need to be handled by your weaver is given by the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation?context.AspectInstances> property.
+The list of aspect instances that need to be handled by your weaver is given by the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances?text=context.AspectInstances> property.
 
 To map the Metalama code model to an `ISymbol`, use the extension methods in <xref:Metalama.Framework.Engine.CodeModel.SymbolExtensions>.
 

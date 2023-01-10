@@ -176,7 +176,7 @@ items:
         topicUid: migrating-aspects
       - name: Why Migrate
         topicUid: benefits-over-postsharp
-      - name: When Migrate
+      - name: When to Migrate
         topicUid: when-migrate
       - name: Feature Status
         topicUid: migration-feature-status

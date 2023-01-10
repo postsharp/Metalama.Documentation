@@ -40,7 +40,7 @@ A metric requires several implementation classes. All must be contained in the w
 
 2. Create a public class that derives from <xref:Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1>, where `T` is again the same metric type. In the class constructor, pass an instance of the visitor created in the previous step.
 
-3. Implement the <xref:<xref:Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1.Aggregate*?text=SyntaxMetricProvider.Aggregate> method. This method is used to aggregate the metric from the level of members to the level of types, namespaces, or the whole project.
+3. Implement the <xref:Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate*> method. This method is used to aggregate the metric from the level of members to the level of types, namespaces, or the whole project.
 
 4. Annotate this class with the <xref:Metalama.Compiler.MetalamaPlugInAttribute> custom attribute.
 
