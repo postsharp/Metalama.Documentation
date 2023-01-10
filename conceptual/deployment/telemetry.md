@@ -19,7 +19,7 @@ Telemetry data is collected and processed according to our [Privacy Policy](http
 
 ### License audit
 
-In addition to Telemetry, the use of the software may be subject to a _license audit_. License audit is anonymous but mandatory for Metalama Free and the self-generated Metalama Trial, and is used to estimate the number of users. When you are using a license key, license audit reports include the id of your license key. If you do not agree with license audit, please contact our sales team and we will provide you with a new license key including a license audit waiver flag.
+In addition to Telemetry, the use of the software may be subject to a _license audit_. License audit is anonymous but mandatory for Metalama Free and the self-generated Metalama Trial, and is used to estimate the number of users. When you are using a license key, license audit reports include the id of your license key. If you do not agree with license audit, please [contact our sales team](mailto:hello@postsharp.net) and we will provide you with a new license key including a license audit waiver flag.
 
 ## Disabling telemetry
 

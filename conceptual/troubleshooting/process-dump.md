@@ -87,5 +87,5 @@ Upload this file to an online storage service like OneDrive.
 
 NEVER share the process dump URL publicly on a service like GitHub Issues.
 
-Instead, send us the hyperlink by email.
+Instead, send us the hyperlink by [email](mailto:hello@postsharp.net).
 

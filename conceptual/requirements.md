@@ -6,7 +6,7 @@ uid: requirements
 
 ## Build Environment
 
-* .NET SDK 6.0 needs to be installed.
+* [.NET SDK](https://dotnet.microsoft.com/download) 6.0 needs to be installed.
 * Metalama has been tested on Windows (x84), Ubuntu (x84) and MacOS (ARM).
 
 ## IDEs

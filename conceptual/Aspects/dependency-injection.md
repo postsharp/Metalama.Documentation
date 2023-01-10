@@ -4,7 +4,7 @@ uid: dependency-injection
 
 # Injecting Dependencies Into Aspects
 
-Many aspects need to consume services that must be injected from a dependency injection container. For instance, a caching aspect may depend on the `IMemoryCache` service. If you are using the `Microsoft.Extensions.DependencyInjection` framework, your aspect will need to pull this service from the constructor. If the target type of the aspect does not already accept this service from the constructor, the aspect will have to append this parameter to the constructor.
+Many aspects need to consume services that must be injected from a dependency injection container. For instance, a caching aspect may depend on the `IMemoryCache` service. If you are using the [Microsoft.Extensions.DependencyInjection](https://learn.microsoft.com/dotnet/core/extensions/dependency-injection) framework, your aspect will need to pull this service from the constructor. If the target type of the aspect does not already accept this service from the constructor, the aspect will have to append this parameter to the constructor.
 
 However, the code pattern that must be implemented to pull any dependency depends on the dependency injection framework in use for that project. As we have seen, the default .NET Core framework requires a constructor parameter, but other frameworks may use an `[Import]` or `[Inject]` custom attribute. 
 
@@ -13,7 +13,7 @@ In some cases, you as the author of the aspect do not know which dependency inje
 Enter the <xref:Metalama.Extensions.DependencyInjection> project. Thanks to this namespace, your aspect can consume and pull a dependency with a single custom attribute. The code pattern to pull the dependency is implemented by the implementation of the <xref:Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework> interface, which is chosen by the _user_ project. 
 
 The <xref:Metalama.Extensions.DependencyInjection> namespace is an open source hosted on [GitHub](https://github.com/postsharp/Metalama.Framework.Extensions). It currently has implementations for the following dependency injection framework:
-* <xref:Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionFramework> implements the default .NET Core pattern  (see `Microsoft.Extensions.DependencyInjection` ).
+* <xref:Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionFramework> implements the default .NET Core pattern  (see [Dependency injection in .NET](https://learn.microsoft.com/dotnet/core/extensions/dependency-injection)).
 * <xref:Metalama.Extensions.DependencyInjection.ServiceLocator.ServiceLocatorDependencyInjectionFramework> can be used by classes or projects that are not instantiated by a dependency injection framework thanks a simple _service locator_ pattern.
 
 The <xref:Metalama.Extensions.DependencyInjection> project is designed to make it easy to implement other dependency injection frameworks.
@@ -32,7 +32,7 @@ To consume a dependency from an aspect:
 
 ### Example: default dependency injection patterns
 
-The following example uses the `Microsoft.Extensions.Hosting`, typical to .NET Core applications, to build an application and inject services. The `Program.Main` method builds the host, which then instantiates our `Worker` class. We add a `[Log]` aspect to this class. The `Log` aspect class has a field of type `IMessageWriter`, marked with the <xref:Metalama.Extensions.DependencyInjection.IntroduceDependencyAttribute> custom attribute. As you can see in the transformed code, this field is introduced into the `Worker` class and pulled from the constructor.
+The following example uses the [Microsoft.Extensions.Hosting](https://learn.microsoft.com/dotnet/core/extensions/generic-host), typical to .NET Core applications, to build an application and inject services. The `Program.Main` method builds the host, which then instantiates our `Worker` class. We add a `[Log]` aspect to this class. The `Log` aspect class has a field of type `IMessageWriter`, marked with the <xref:Metalama.Extensions.DependencyInjection.IntroduceDependencyAttribute> custom attribute. As you can see in the transformed code, this field is introduced into the `Worker` class and pulled from the constructor.
 
 [!include[Dependency Injection](../../code/Metalama.Documentation.SampleCode.DependencyInjection/LogDefaultFramework.cs)]
 
