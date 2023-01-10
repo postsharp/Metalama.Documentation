@@ -73,7 +73,9 @@ The easiest way to introduce a member from an aspect is to implement this member
 
 The following example shows an aspect that implements the `ToString` method. It will return a string including the object type and a reasonably unique identifier for that object.
 
-Note that this aspect will replace any hand-written implementation of `ToString`, which is not desirable. It can only be avoided by introducing the method programmatically and conditionally (TODO 28807).
+Note that this aspect will replace any hand-written implementation of `ToString`, which is not desirable. It can only be avoided by introducing the method programmatically and conditionally.
+
+[comment]: # (TODO: #28807)
 
 [!include[ToString](../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceMethod.cs)]
 

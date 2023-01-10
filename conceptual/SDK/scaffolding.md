@@ -50,7 +50,7 @@ Both the public assembly and the weaver assembly are typically deployed in a sin
 /analyzers/dotnet/cs/MyExtension.Weaver.dll
 ```
 
-(TODO)
+[comment]: # (TODO)
 
 ## 1. The public API project
 

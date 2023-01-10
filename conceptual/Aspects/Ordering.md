@@ -71,4 +71,4 @@ The primary aspect instance is the instance that has been applied to the "closes
 
 Within these individual categories, the ordering is currently undefined, which means that the build may be nondeterministic if the aspect implementation relies on that ordering.
 
-> TODO: Example of handling secondary instances
+[comment]: # (TODO: Example of handling secondary instances)

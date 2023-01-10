@@ -19,8 +19,8 @@ In <xref:overriding-methods>, you have learned how to wrap an existing method wi
 
 > [!WARNING]
 > When you apply an aspect to a field, Metalama will automatically transform the field into a property. If the field is used by reference using `ref`, `out` and `in` keywords, it will result in a compile-time error.
-> (TODO #28909)
 
+[comment]: # (TODO: #28909)
 
 ### Example: An empty OverrideFieldOrPropertyAspect aspect
 
@@ -35,8 +35,7 @@ If you have only worked with methods so far, you may be already used to using th
 
 If you need to get the property value from the setter, or if you need to set the property value to something else than the `value` parameter, you can do it by getting or setting the `meta.Target.FieldOrProperty.Value` property.
 
-TODO: example
-
+[comment]: # (TODO: example)
 
 ## Accessing the metadata of the overridden field or property
 
@@ -110,4 +109,4 @@ The templates must fulfill the following conditions:
 * The getter template must be of signature `T Getter()`, where `T` is either `dynamic` or a type compatible with the target field or property.
 * The setter template must be of signature `void Setter(T value)`, where the name `value` of the first parameter is mandatory.
 
-TODO: example
+[comment]: # (TODO: example)

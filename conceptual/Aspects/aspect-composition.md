@@ -42,5 +42,4 @@ When several aspects that are not aware of each other add an advice to the same 
 
 For instance, if two aspects override the same method, both aspects are guaranteed to compose correctly. This is a very hard problem, but it is solved by Metalama, so you don't have to bother about it.
 
-TODO: example log and cache
-
+[comment]: # (TODO: example log and cache)

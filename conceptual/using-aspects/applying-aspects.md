@@ -17,7 +17,7 @@ If the aspect derives from `System.Attribute`, you can apply it to your code as 
 
 ## Option 2. Programmatically, with a fabric
 
-(TODO: document better)
+[comment]: # (TODO: document better)
 
 Thanks to fabrics, you can add aspects to a large number of declarations without using custom attributes. You can add a fabric to a project, to a namespace, or to a type:
 

@@ -230,4 +230,4 @@ The following aspect wraps all instance methods with a `lock( this )` statement.
 
 Instead of providing a single template method, you can provide several of them and let the framework choose which one is the most suitable. The principle of this feature is described above. Instead of passing a string to the second argument of `OverrideMethod`, you can pass a <xref:Metalama.Framework.Aspects.MethodTemplateSelector> and initialize it with many templates. See the reference documentation of <xref:Metalama.Framework.Advising.IAdviceFactory.Override*?> and <xref:Metalama.Framework.Aspects.MethodTemplateSelector> for details.
 
-TODO: example
+[comment]: # (TODO: example)

@@ -33,5 +33,7 @@ In the following example, a type fabric adds a logging aspect to all public meth
 
 In the following example, a type fabric adds a logging aspect to all public methods in the type.
 
-<!--- TODO: make class partial and split into different file -->
+[comment]: # (TODO: make class partial and split into different file)
+
+
 [!include[Type Fabric Adding Aspects](../../code/Metalama.Documentation.SampleCode.AspectFramework/TypeFabric.cs)]

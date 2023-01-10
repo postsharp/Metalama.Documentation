@@ -80,6 +80,5 @@ The following example implements a metric that counts the number of nodes in a m
 
 Custom metrics can be consumed just as usual.
 
-## Testing a custom metric
 
-TODO
+[comment]: # (TODO: Testing a custom metric)
