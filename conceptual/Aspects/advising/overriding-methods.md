@@ -23,6 +23,8 @@ You can achieve this thanks to the <xref:Metalama.Framework.Aspects.OverrideMeth
 
 The following code shows an empty <xref:Metalama.Framework.Aspects.OverrideMethodAspect>, which does not do anything:
 
+[comment]: # (TODO: show only the aspect, when supported)
+
 [!include[Empty OverrideMethodAttribute](../../../code/Metalama.Documentation.SampleCode.AspectFramework/EmptyOverrideMethodAttribute.cs)]
 
 ## Accessing the metadata and parameters of the overridden method
@@ -198,6 +200,8 @@ or <xref:Metalama.Framework.Aspects.OverrideMethodAspect.UseEnumerableTemplateFo
 In the above sections, we have always derived our aspect class from the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class. This class exists for simplicity and convenience. It is merely a shortcut that derives from the <xref:System.Attribute> class and implements the `IAspect<IMethod>` interface. The only thing it does is add an `Override` advice to the target of the custom attribute.
 
 Here is the simplified source code of the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> class:
+
+[comment]: # (TODO: show only the aspect, when supported)
 
 [!include[Main](../../../code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs)]
 

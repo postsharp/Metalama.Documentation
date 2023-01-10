@@ -4,6 +4,9 @@ uid: aspect-abilities
 
 # Abilities of Aspects
 
+[comment]: # (TODO: what is the relationship between aspects and attributes)
+[comment]: # (TODO: what is the Aspect base class)
+
 An aspect is, by definition, a class that implements the <xref:Metalama.Framework.Aspects.IAspect`1> generic interface. The generic parameter of this interface is the type of declaration to which that aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
 
 Aspects have different abilities which are expounded below. The aspect author can use or configure these abilities in the following method <!--- as you only list one method this should be singular -->inherited from the <xref:Metalama.Framework.Aspects.IAspect`1> interface:
@@ -107,4 +110,4 @@ The following example shows an aspect that targets methods, fields and propertie
 
 [!include[Aspect Targeting Methods, Fields and Properties](../../../code/Metalama.Documentation.SampleCode.AspectFramework/LogMethodAndProperty.cs)]
 
-## Code model versioning
+[comment]: # (TODO: Code model versioning)

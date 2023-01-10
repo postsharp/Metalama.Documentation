@@ -52,6 +52,8 @@ If you specify conflicting relationships, or import aspect library that define c
 > [!NOTE]
 > Metalama will merge all `[assembly: AspectOrder(...)]` attributes that it finds not only in the current project, but also in all referenced projects or libraries. Therefore, you don't need to repeat the `[assembly: AspectOrder(...)]` attributes in all projects that use aspects. It is sufficient to define them projects that define aspects.
 
+[comment]: # (TODO: mention what happens when the ordering is not fully specified?)
+
 ### Example
 
 The following code snippet shows two aspects that both add a method to the target type and display the list of methods that were defined on the target type before the aspect was applied. The order of execution is defined as `Aspect1 < Aspect2`. You can see from this example that the order of application of aspects is opposite. `Aspect2` is applied first and sees the source code, then `Aspect1` is applied and sees the method added by `Aspect1`. The modified method body of `SourceMethod` shows that the aspects are executed in this order: `Aspect1`, `Aspect2`, then the original method.

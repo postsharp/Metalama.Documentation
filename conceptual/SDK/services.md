@@ -27,6 +27,8 @@ In the _weaver project_ created in Step 1:
 2. Make sure the class is `public`.
 3. Add the <xref:Metalama.Compiler.MetalamaPlugInAttribute> custom attributes to this class.
 
+[comment]: # (TODO: example)
+
 ## Consuming an SDK service
 
 In your aspect class, you can get your service implementation from the <xref:System.IServiceProvider> exposed on the <xref:Metalama.Framework.Project.IProject> interface. This interface is available from any declaration of the code model through `declaration.Compilation.Project`, or from the <xref:Metalama.Framework.Project.MetalamaExecutionContext> static class.

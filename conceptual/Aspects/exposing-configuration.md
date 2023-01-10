@@ -67,6 +67,8 @@ We recommend the following approach to consume a configuration property:
 
 ### Example
 
+[comment]: # (TODO: show only the aspect, when supported)
+
 In the following example, the `Log` aspect reads the default category from the MSBuild project. It assumes the property has been exposed using the approach described above.
 
 [!include[Consuming Property](../../code/Metalama.Documentation.SampleCode.AspectFramework/ConsumingProperty.cs)]
