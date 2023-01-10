@@ -7,16 +7,16 @@ uid: creating-logs
 If you report a Metalama bug, you may be asked to send Metalama logs. Here is how to produce them.
 
 
-## Step 1. Install metalama-config
+## Step 1. Install the metalama tool
 
-Install `metalama-config` as described in <xref:dotnet-tool>.
+Install the `metalama` tool as described in <xref:dotnet-tool>.
 
 ## Step 2. Edit diagnostics.json
 
 Execute the command:
 
 ```
-metalama-config diag edit
+metalama diag edit
 ```
 
 This should open a `diagnostics.json` file in your default editor. Edit this file as follows:

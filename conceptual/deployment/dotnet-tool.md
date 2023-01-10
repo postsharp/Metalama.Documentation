@@ -9,7 +9,7 @@ In order to register a license key or access some configuration settings, you ne
 In order to install Metalama Command Line Tools, execute this at the command prompt:
 
 ```
-dotnet tool install -g metalama-config --prerelease
+dotnet tool install -g Metalama.Tool --prerelease
 ```
 
-Once the tool is installed, you can access it from the command line using the `metalama-config` command.
+Once the tool is installed, you can access it from the command line using the `metalama` command.
