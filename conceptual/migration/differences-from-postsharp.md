@@ -26,13 +26,13 @@ flowchart LR
   IDE --> Compiler --> input_dll>binary] --> PostSharp --> output_dll>Binary With Aspects] --> Execute
 
   subgraph design-time
-  IDE
+    IDE
   end
 
   subgraph compile-time
-  Compiler
-  PostSharp
-  input_dll
+    Compiler
+    PostSharp
+    input_dll
   end
 
   subgraph run-time
@@ -47,29 +47,25 @@ flowchart LR
 
 flowchart LR
 
-
-  Compiler <--> Metalama
-  IDE <--> Metalama2
   IDE --> Compiler --> output_dll>Binary With Aspects] --> Execute
-  Metalama <--> compiledAspects>Compiled Aspects] <--> Metalama2
-
+  IDE <--> Metalama2
+  Metalama2 <--> compiledAspects
+  Compiler <--> Metalama
+  Metalama <--> compiledAspects>Compiled Aspects]
   
   subgraph compile-time
-  Compiler
-  Metalama[Compile-Time\nMetalama]
+    Compiler
+    Metalama[Compile-Time\nMetalama]
   end
 
   subgraph design-time
-   IDE 
-   Metalama2[Design-Time\nMetalama]
+    IDE 
+    Metalama2[Design-Time\nMetalama]
   end
 
   subgraph run-time
-  Execute
+    Execute
   end
-
-
-
 
 ```
 
@@ -150,7 +146,7 @@ For cross-project inheritance or validators,  inheritable aspect instances are _
 #### Cross-project aspects in PostSharp
 
 ```mermaid
-flowchart LR
+flowchart BT
 
   subgraph BaseAssembly
 
@@ -180,7 +176,7 @@ flowchart LR
     DerivedAspect3
     end
 
-   DerivedAspect2 --> |instantiated from| CustomAttribute
+   DerivedAspect2 ----> |instantiated from| CustomAttribute
    DerivedAspect3 --> |instantiated from| CustomAttribute
   end
 
@@ -192,7 +188,7 @@ flowchart LR
 
 
 ```mermaid
-flowchart LR
+flowchart BT
 
   subgraph BaseAssembly
 
@@ -207,7 +203,7 @@ flowchart LR
     end
 
     subgraph ManagedResource
-    BaseAspect -->|serialized into| SerializedAspect(Serialized\nAspect)
+    SerializedAspect(Serialized\nAspect) -->|serialized from| BaseAspect
     end
 
 

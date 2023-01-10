@@ -16,24 +16,24 @@ A Metalama SDK solution typically contains the following projects:
 The following graph illustrates the different projects and their dependencies.
 
 ```mermaid
-graph TD
+graph BT
 
-    MyProject --> MyExtension
-    MyProject -- analyzer --> MyExtension.Weaver
-    MyExtension --> Metalama.Framework.Redist
-    MyExtension.Weaver -. optional .-> MyExtension
-    MyExtension.Weaver --> Metalama.Framework.Sdk
     MyExtension.UnitTests --> MyExtension
     MyExtension.UnitTests -- analyzer --> MyExtension.Weaver
     MyExtension.UnitTests --> Metalama.Testing.AspectTesting
+    MyExtension.Weaver -. optional .-> MyExtension
+    MyExtension.Weaver --> Metalama.Framework.Sdk
     Metalama.Framework.Sdk --> Roslyn
     Metalama.Testing.AspectTesting --> Metalama.Framework.Redist
+    MyExtension --> Metalama.Framework.Redist
+    MyProject --> MyExtension
+    MyProject -- analyzer --> MyExtension.Weaver
     Metalama.Framework.Sdk --> Metalama.Framework.Redist
     
     Metalama.Framework.Sdk([Metalama.Framework.Sdk<br/>package])
     Roslyn([Roslyn<br/>packages])
     Metalama.Framework.Redist([Metalama.Framework.Redist<br/>package])
-    Metalama.Testing.AspectTesting([Metalama.Framework.Sdk<br/>package]) 
+    Metalama.Testing.AspectTesting([Metalama.Testing.AspectTesting<br/>package]) 
     MyExtension[MyExtension<br/>project]
     MyExtension.Weaver[MyExtension.Weaver<br/>project]
     MyExtension.UnitTests[MyExtension.UnitTests<br/>project]

@@ -55,11 +55,11 @@ Typically, the `csproj` project file of a compile-time test project would have t
 The following diagram illustrates the typical dependencies between your projects and our packages.
 
 ```mermaid
-graph TD
-    YourApp -- references --> YourAspectLibrary
+graph BT
     YourAspectLibrary -- references --> Metalama.Framework
     YourAspectLibrary.UnitTests -- references --> xUnit
     YourAspectLibrary.UnitTests -- references --> YourAspectLibrary
+    YourApp -- references --> YourAspectLibrary
     YourAspectLibrary.AspectTests -- references --> YourAspectLibrary
     YourAspectLibrary.AspectTests -- references --> Metalama.Testing.AspectTesting
     Metalama.Framework -- references --> Metalama.Framework.Redist
@@ -236,7 +236,7 @@ If no `// <target>` comment is found in the file, the whole file is considered.
 If you need to create a multi-project test, you can create a dependent project by adding a file named `Foo.Dependency.cs` to your test, where `Foo.cs` is your principal test file.
 
 ```mermaid
-graph TD
+graph BT
     Foo -- references --> Foo.Dependency
 ```
 
