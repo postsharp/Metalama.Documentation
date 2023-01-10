@@ -8,7 +8,7 @@ namespace Doc.GlobalImport
     internal class Foo
     {
         [Import]
-        private IFormatProvider? FormatProvider { get; }
+        private IFormatProvider? FormatProvider { get => null; }
     }
 
     internal class ServiceLocator : IServiceProvider

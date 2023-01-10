@@ -11,7 +11,7 @@ namespace Doc.UpdateMethod
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            var updateMethodBuilder = builder.Advice.IntroduceMethod(
+            builder.Advice.IntroduceMethod(
                 builder.Target,
                 nameof(this.Update),
                 buildMethod:

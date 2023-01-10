@@ -7,7 +7,6 @@ using System;
 
 namespace Doc.OverrideMethodAspect_
 {
-    // <aspect>
     [AttributeUsage( AttributeTargets.Method )]
     public abstract class OverrideMethodAspect : Attribute, IAspect<IMethod>
     {
@@ -24,6 +23,4 @@ namespace Doc.OverrideMethodAspect_
         [Template]
         public abstract dynamic? OverrideMethod();
     }
-
-    // </aspect>
 }
