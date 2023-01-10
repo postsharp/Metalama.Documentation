@@ -24,7 +24,7 @@ To add an aspect from a fabric:
 
 ## Example: adding an aspect to all methods in a project
 
-In the following example, a type fabric adds a logging aspect to all public methods in the type.
+In the following example, a type fabric adds a logging aspect to all methods in the type.
 
 [!include[Type Fabric Adding Aspects](../../code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric.cs)]
 

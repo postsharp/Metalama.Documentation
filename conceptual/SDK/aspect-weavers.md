@@ -51,10 +51,9 @@ using Metalama.Framework.Engine.AspectWeavers;
 namespace Metalama.Open.AutoCancellationToken;
 
 [MetalamaPlugIn]
-[AspectWeaver( typeof(AutoCancellationTokenAttribute) )]
 internal partial class AutoCancellationTokenWeaver : IAspectWeaver
 {
-    public void Transform( AspectWeaverContext context )
+    public Task TransformAsync( AspectWeaverContext context )
     {
         throw new NotImplementedException();
     }

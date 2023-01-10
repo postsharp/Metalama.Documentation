@@ -19,7 +19,7 @@ The <xref:Metalama.Framework.Aspects.meta> static class exposes to the following
 - The <xref:Metalama.Framework.Aspects.meta.Target?text=meta.Target> property gives access to the declaration to which the template is applied.
 - The <xref:Metalama.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> property gives access to the current method or accessor parameters.
 - The <xref:Metalama.Framework.Aspects.meta.This?text=meta.This> property represents the `this` instance. Together with <xref:Metalama.Framework.Aspects.meta.Base?text=meta.Base>, <xref:Metalama.Framework.Aspects.meta.ThisType?text=meta.ThisType>, and <xref:Metalama.Framework.Aspects.meta.BaseType?text=meta.BaseType> properties, it allows your template to access members of the target class using dynamic code (see below).
-- The <xref:Metalama.Framework.Aspects.meta.Tags?text=meta.Tags> property gives access to an arbitrary dictionary that has been passed to the advice factory method.
+- The <xref:Metalama.Framework.Aspects.meta.Tags?text=meta.Tags> property gives access to an arbitrary dictionary that has been passed to the advice factory method, see <xref:sharing-state-with-advice#sharing-state-with-the-tags-property>.
 - The <xref:Metalama.Framework.Aspects.meta.CompileTime*?text=meta.CompileTime> method coerces a neutral expression into a compile-time expression.
 - The <xref:Metalama.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method converts the result of a compile-time expression into a run-time value (see below).
 
@@ -82,7 +82,7 @@ If the approach above is not possible, you can try to move your logic to a compi
 
 ### typeof expressions
 
-When `typeof(Foo)` is used with a run-time-only type `Foo`, a mock `System.Type` object is returned. This object can be used in run-time expressions or as an argument of Metalama compile-time methods. However, the members of this fake `System.Type`, for instance `Type.Name`, _cannot_ be evaluated at design time. You may sometimes need to call the <xref:Metalama.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method to tip the C# compiler that you want a run-time expression instead of a compile-time one.
+When `typeof(Foo)` is used with a run-time-only type `Foo`, a mock `System.Type` object is returned. This object can be used in run-time expressions or as an argument of Metalama compile-time methods. However, the members of this fake `System.Type`, for instance `Type.Name`, _cannot_ be evaluated at design time. You may sometimes need to call the <xref:Metalama.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method to tip the T# compiler that you want a run-time expression instead of a compile-time one.
 
 
 

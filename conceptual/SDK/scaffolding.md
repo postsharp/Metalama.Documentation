@@ -70,7 +70,7 @@ The public project:
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>$(AssemblyName).Redist</PackageId>
+    <PackageId>Metalama.Open.Virtuosity.Redist</PackageId>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -166,9 +166,8 @@ If the consuming projects are a part of the same solution as the Metalama extens
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Moq" Version="4.18.1" />
-	<ProjectReference Include="..\Metalama.Open.Virtuosity.Weaver\Metalama.Open.Virtuosity.Weaver.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-	<ProjectReference Include="..\Metalama.Open.Virtuosity\Metalama.Open.Virtuosity.csproj" OutputItemType="Analyzer" />
+    <ProjectReference Include="..\Metalama.Open.Virtuosity.Weaver\Metalama.Open.Virtuosity.Weaver.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\Metalama.Open.Virtuosity\Metalama.Open.Virtuosity.csproj" OutputItemType="Analyzer" />
   </ItemGroup>
 
 </Project>

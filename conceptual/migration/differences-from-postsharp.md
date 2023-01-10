@@ -137,7 +137,7 @@ Some aspects are applied to a declaration in a project but affect other projects
 
 The way how inheritance is implemented differs between Metalama and PostSharp.
 
-In PostSharp, each inherited aspect instance is instantiated again from the custom attribute from which it stems (i.e. to be exact, it is deserialized from the custom attribute). This mechanism for intra-project inheritance as well as for cross-project inheritance.
+In PostSharp, each inherited aspect instance is instantiated again from the custom attribute from which it stems (i.e. to be exact, it is deserialized from the custom attribute). This mechanism is used for intra-project inheritance as well as for cross-project inheritance.
 
 In Metalama, the mechanism is different inside a project than across projects.
 

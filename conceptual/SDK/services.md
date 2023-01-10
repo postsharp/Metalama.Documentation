@@ -31,7 +31,7 @@ In the _weaver project_ created in Step 1:
 
 ## Consuming an SDK service
 
-In your aspect class, you can get your service implementation from the <xref:System.IServiceProvider> exposed on the <xref:Metalama.Framework.Project.IProject> interface. This interface is available from any declaration of the code model through `declaration.Compilation.Project`, or from the <xref:Metalama.Framework.Project.MetalamaExecutionContext> static class.
+In your aspect class, you can get your service implementation from the <xref:Metalama.Framework.Services.IServiceProvider`1> exposed on the <xref:Metalama.Framework.Project.IProject> interface. This interface is available from any declaration of the code model through `declaration.Compilation.Project`, or from the <xref:Metalama.Framework.Project.MetalamaExecutionContext> static class.
 
 > [!WARNING]
 > SDK services are not available at design time.

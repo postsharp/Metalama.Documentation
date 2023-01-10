@@ -83,8 +83,8 @@ To create a configuration API:
 1. Create a class that derives from <xref:Metalama.Framework.Project.ProjectExtension> and has a default constructor. 
 2. Optionally, override the <xref:Metalama.Framework.Project.ProjectExtension.Initialize*> method, which receives the <xref:Metalama.Framework.Project.IProject>. 
 3. In your aspect code, call the [IProject.Extension\<T>()](xref:Metalama.Framework.Project.IProject.Extension*) method, where `T` is your configuration class, to get the configuration object.
-4. Optionally, create an extension method to the <xref:Metalama.Framework.Project.IProject> type to expose your configuration API, so that it is more discoverable.
-5. To configure your aspect, users should implement a project fabric and access your configuration API using this extension method. The class must be annotated with `[CompileTime]`.
+4. Optionally, create an extension method to the <xref:Metalama.Framework.Project.IProject> type to expose your configuration API, so that it is more discoverable. The class must be annotated with `[CompileTime]`.
+5. To configure your aspect, users should implement a project fabric and access your configuration API using this extension method.
 
 ### Example
 

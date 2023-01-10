@@ -73,7 +73,7 @@ Restart the logged processes:
  * If you are logging the `Compiler` process, restart the Roslyn compiler processes.
  * If you are logging any design-time process, restart the IDE.
 
-Execute the sequence of actions to be logged.
+Execute the sequence of actions that triggers the issue.
 
 > [!WARNING]
 > Do not forget to disable the setting after you are done.

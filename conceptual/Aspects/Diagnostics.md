@@ -60,7 +60,7 @@ The following logging aspect requires a `_logger` field to exist, but it is like
 
 ## Advanced Example
 
-The following aspect can be added to a field or property. It overrides the getter so that its value is retrieved from a service locator. This aspect assumes that the target class has a field named `_serviceProvider` and of type `IServiceProvider`. The aspect reports errors if this field is absent or of a wrong type. The C# compiler may report an error `CS0169` because it looks from source code that the `_serviceProvider` field is unused. Therefore, the aspect must suppress this diagnostic.
+The following aspect can be added to a field or property. It overrides the getter so that its value is retrieved from a service locator. This aspect assumes that the target class has a field named `_serviceProvider` and of type `IServiceProvider`. The aspect reports errors if this field is absent or of a wrong type. The C# compiler may report a warning `CS0169` because it looks from source code that the `_serviceProvider` field is unused. Therefore, the aspect must suppress this diagnostic.
 
 [!include[Import Service](../../code/Metalama.Documentation.SampleCode.AspectFramework/LocalImport.cs)]
 

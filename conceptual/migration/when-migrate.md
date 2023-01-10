@@ -39,7 +39,7 @@ DO NOT migrate to Metalama at the moment if:
 
     * Visual Studio 2019 or earlier,
     * .NET Standard 1.6 or earlier,
-    * .NET Framework 4.6.0 or earlier, or
+    * .NET Framework 4.6 or earlier, or
     * Visual Basic (Metalama is available for C# projects only);
 
 * your project relies on PostSharp features that have not yet been ported to Metalama. For details, see <xref:migration-feature-status>.

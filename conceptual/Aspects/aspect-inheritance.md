@@ -11,10 +11,11 @@ This feature is called _aspect inheritance_. It is activated by adding the <xref
 Aspect can be inherited along the following lines:
 
 * from a base class to derived classes;
-* from an interface to all classes implementing that interface;
-* from a `virtual` member to ts `override` members;
-* from an interface members to its implementations;
-* from a parameter of a `virtual` method to the corresponding parameter of all `override` methods;
+* from a base interface to derived interfaces;
+* from an interface to all types implementing that interface;
+* from a `virtual` or `abstract` member to its `override` members;
+* from an interface member to its implementations;
+* from a parameter of a `virtual` or `abstract` method to the corresponding parameter of all `override` methods;
 * from a parameter of an interface member to the corresponding parameter of all its implementations.
 
 ## Example

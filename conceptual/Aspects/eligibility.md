@@ -38,7 +38,7 @@ For details about reporting errors, see <xref:diagnostics>.
 
 ### Example 1
 
-Adding a caching aspect to a `void` method does not make sense and should be addressed with eligibility. However, the fact that your aspect does not support methods returning a collection is an implementation detail and should be reported using a custom error.
+Adding a caching aspect to a `void` method does not make sense and should be addressed with eligibility. However, the fact that your aspect does not support methods returning a collection is a limitation caused by your particular implementation and should be reported using a custom error.
 
 ### Example 2
 

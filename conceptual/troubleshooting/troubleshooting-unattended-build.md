@@ -14,18 +14,18 @@ You can follow the other articles of this chapter to learn how to create a `diag
 ### Example: enabling logging
 
 In the next example you can find entire resulting `diagnostics.json` file after finishing editing it.
-- Logging is enabled for the compiler process and for all categories.
-- Metalama is configured to capture a process dump for the compiler process.
+
+Here, logging is enabled for the compiler process and for all categories.
 
 
 ```json
 {
-	"logging": {
-		"processes": {
-		"Compiler": true,
-		},
+  "logging": {
+    "processes": {
+      "Compiler": true
+    },
     "categories": {
-		"*": true
+      "*": true
     }
   }
 }

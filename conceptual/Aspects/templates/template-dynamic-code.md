@@ -53,7 +53,7 @@ Here are a few examples of APIs that return a `dynamic`:
   * <xref:Metalama.Framework.Aspects.meta.This?text=meta.This>, equivalent to the `this` keyword, allows to call arbitrary _instance_ members of the target type.
   * <xref:Metalama.Framework.Aspects.meta.Base?text=meta.Base>, equivalent to the `base` keyword, allows to call arbitrary _instance_ members of the _base_ of the target type.
   * <xref:Metalama.Framework.Aspects.meta.ThisType?text=meta.ThisType> allows to call arbitrary _static_ members of the target type.
-  * <xref:Metalama.Framework.Aspects.meta.BaseType?text=meta.BaseType>, equivalent to the `base` keyword, allows to call arbitrary _static_ members of the _base_ of the target type.
+  * <xref:Metalama.Framework.Aspects.meta.BaseType?text=meta.BaseType>, allows to call arbitrary _static_ members of the _base_ of the target type.
 * <xref:Metalama.Framework.Code.IExpression.Value?text=IExpression.Value> allows to get or set the value, in run time code, of a compile-time expression. It is implemented for instance by:
   * `meta.Target.Field.Value`, `meta.Target.Property.Value` or `meta.Target.FieldOrProperty.Value` allow to get or set the value of the target field or property.
   * `meta.Target.Parameter.Value` allows to get or set the value of the target parameter.
@@ -120,7 +120,7 @@ args[1] = DateTime.Now;
 MyRunTimeMethod( args );
 ```
 
-If you want to generate an array as a single-line expression, you can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ArrayBuilder> class.
+If you want to generate an array of a variable length, you can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ArrayBuilder> class.
 
 For instance:
 
@@ -191,7 +191,7 @@ var clone = meta.Cast(meta.Target.Type, baseCall);
 This template generates either `var clone = (TargetType) base.Clone();` or `var clone = (TargetType) this.MemberwiseClone();`.
 
 > [!NOTE] 
-> The weird syntax of Capture, which gives the result as an `out` parameter instead of a return value, is due to a technical limitation of Roslyn.
+> The weird syntax of Capture, which gives the result as an `out` parameter instead of a return value, is due to the viral nature of `dynamic`. In C#, the return type of `ExpressionFactory.Caputre(someDynamicExpression)` would be `dynamic`, when Metalama would require it to be `IExpression`.
 
 ## Converting custom objects from compile-time to run-time values
 

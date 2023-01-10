@@ -107,10 +107,6 @@ To test this aspect, we create a test file with the following content:
 
 [!include[Main](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Testing.cs)]
 
-### Restricting the compared region of transformed code
-
-If you want the test to compare only one declaration (e.g. a class or a method) of your main file, you can mark this class with the `// <target>` comment. This comment must be on the top of any custom attribute on this declaration, and its spacing must be exactly as shown.
-
 ### Include other files
 
 If you want to include in the test compilation other files than auxiliary files based on the file name, you can do it by adding a comment of this form in the main test file:
@@ -222,7 +218,7 @@ Alternatively, to set an option for the whole directory, create a file named `me
 
 ### Trimming the test output to one or two classes
 
-If you want to limit the test output to one or more declarations (instead of the whole transformed input file), add the `// <target>` comment to the declarations that must be included.
+If you want to limit the test output to one or more declarations (instead of the whole transformed input file), add the `// <target>` comment to the declarations that must be included. This comment must be on the top of any custom attribute on this declaration, and its spacing must be exactly as shown.
 
 Example:
 

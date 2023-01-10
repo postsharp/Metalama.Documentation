@@ -101,11 +101,9 @@ In your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAs
 
 - <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceField*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder>.
 
-A call to one of these methods creates a member that has the same characteristics as the template (name, signature, ...), taking into account the properties of the <xref:Metalama.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute. However, they return a _builder_ object that allows you to modify these characteristics.
+A call to one of these methods creates by default a member that has the same characteristics as the template (name, signature, ...), taking into account the properties of the <xref:Metalama.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute.
 
-### Step 3. Adjust the name and signature using the builder
-
-Modify the name and signature of the introduced declaration as needed using the _builder_ object returned by the advice factory method.
+To modify the name and signature of the introduced declaration, use the `buildMethod`, `buildProperty`, `buildEvent` or `buildField` parameter of the `Introduce*` method.
 
 ### Example: Update method
 

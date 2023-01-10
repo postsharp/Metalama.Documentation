@@ -30,7 +30,7 @@ You can also use the T# template language inside field and property analyzers. T
 
 ### Initialization of programmatic advice
 
-If you use the programmatic advice <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceProperty*>, <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceField*> or <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceEvent*> you can set the `Metalama.Framework.Code.DeclarationBuilders.IFieldOrPropertyBuilder.InitializerExpression` of the builder object that these advice methods return, and set it to any expression.
+If you use the programmatic advice <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceProperty*>, <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceField*> or <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceEvent*> you can set the <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldOrPropertyBuilder.InitializerExpression> in the lambda passed to the `build*` parameter of these advice methods.
 
 #### Example: initializing a programmatically introduced field
 

@@ -33,19 +33,19 @@ In the next example, logging is enabled for the compiler process and for all cat
 
 ```json
 {
-    "logging": {
-		"processes": {
-            "Other": false,
-            "Compiler": true,
-            "DevEnv": false,
-            "RoslynCodeAnalysisService": false,
-            "Rider": false,
-            "BackstageWorker": false,
-            "MetalamaConfig": false,
-            "TestHost": false
+  "logging": {
+    "processes": {
+      "Other": false,
+      "Compiler": true,
+      "DevEnv": false,
+      "RoslynCodeAnalysisService": false,
+      "Rider": false,
+      "BackstageWorker": false,
+      "MetalamaConfig": false,
+      "TestHost": false
     },
     "categories": {
-		"*": false
+      "*": true
     },
     "stopLoggingAfterHours": 5.0
   }
