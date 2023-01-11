@@ -4,9 +4,9 @@ uid: advising-concepts
 
 # Transforming Code: Concepts
 
-Aspects can transform the target code by providing _advices_. An advice is a primitive transformation of code. Advice is safely composable: several aspects that do not know about each other can add advices to the same declaration.
+Aspects can transform the target code by providing _advice_. An advice is a primitive transformation of code. Advice is safely composable: several aspects that do not know about each other can add advice to the same declaration.
 
-There are two ways to add advices: _declaratively_ and _imperatively_.
+There are two ways to add advice: _declaratively_ and _imperatively_.
 
 ## Declarative advising
 
@@ -14,7 +14,7 @@ The only _declarative advice_ is the _member introduction_ advice, and is marked
 
 ## Imperative advising
 
-An _imperative advice_ is added by the implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method thanks to the methods exposed by the <xref:Metalama.Framework.Aspects.IAspectBuilder.Advice> property of the `builder` parameter. See <xref:Metalama.Framework.Advising.IAdviceFactory> for a complete list of methods. In short:
+_Imperative advice_ is added by the implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method thanks to the methods exposed by the <xref:Metalama.Framework.Aspects.IAspectBuilder.Advice> property of the `builder` parameter. See <xref:Metalama.Framework.Advising.IAdviceFactory> for a complete list of methods. In short:
 
 * <xref:Metalama.Framework.Advising.IAdviceFactory.Override*> allows you to replace the implementation of a type member.
 * <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceMethod*>, <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceProperty*>, <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceField*> and <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceEvent*> allows your aspect to introduce new members into the target type. See <xref:introducing-members#introducing-members-programmatically> for details.
