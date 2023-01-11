@@ -56,7 +56,7 @@ In the next example, logging is enabled for the compiler process and for all cat
 
 Restart the logged processes:
 
- * If you are logging the `Compiler` process, restart the Roslyn compiler processes.
+ * If you are logging the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
  * If you are logging any design-time process, restart the IDE.
 
 Execute the sequence of actions to be logged.

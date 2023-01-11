@@ -70,7 +70,7 @@ In the next example, Metalama is configured to capture a process dump for the co
 
 Restart the logged processes:
 
- * If you are logging the `Compiler` process, restart the Roslyn compiler processes.
+ * If you are logging the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
  * If you are logging any design-time process, restart the IDE.
 
 Execute the sequence of actions that triggers the issue.
