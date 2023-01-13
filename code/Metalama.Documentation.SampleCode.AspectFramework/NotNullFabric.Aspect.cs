@@ -16,8 +16,8 @@ namespace Doc.NotNullFabric
 
             foreach ( var parameter in builder.Target.Parameters.Where(
                          p => p.RefKind is RefKind.None or RefKind.In
-                              && !p.Type.IsNullable.GetValueOrDefault()
-                              && p.Type.IsReferenceType.GetValueOrDefault() ) )
+                              && p.Type.IsNullable != true
+                              && p.Type.IsReferenceType == true ) )
             {
                 builder.Advice.AddContract( parameter, nameof(this.Validate), args: new { parameterName = parameter.Name } );
             }

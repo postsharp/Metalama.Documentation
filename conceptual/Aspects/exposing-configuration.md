@@ -23,7 +23,7 @@ The simplest way for an aspect to accept a configuration property is to read an 
 
 We recommend the following approach to consume a configuration property:
 
-1. Create a file named `YourProject.targets` (the actual name of the file does not matter but the extension does) 
+1. Create a file named `YourProject.targets` (the actual name of the file does not matter but the extension does):
  
     ```xml
     <Project>
@@ -67,6 +67,8 @@ We recommend the following approach to consume a configuration property:
 
 ### Example
 
+[comment]: # (TODO: show only the aspect, when supported)
+
 In the following example, the `Log` aspect reads the default category from the MSBuild project. It assumes the property has been exposed using the approach described above.
 
 [!include[Consuming Property](../../code/Metalama.Documentation.SampleCode.AspectFramework/ConsumingProperty.cs)]
@@ -78,11 +80,11 @@ For more complex aspects, a set of properties may not be convenient enough. Inst
 
 To create a configuration API:
 
-1. Create a class that derives from <xref:Metalama.Framework.Project.ProjectExtension> and have a default constructor. 
-2. Optionally, implement the <xref:Metalama.Framework.Project.ProjectExtension.Initialize*> method, which receives the <xref:Metalama.Framework.Project.IProject>. 
-3. In your aspect code, call the <xref:Metalama.Framework.Project.IProject.Extension*?text=IProject.Extension&lt;T&gt;()> method, where `T` is your configuration class, to get the configuration object.
-4. Optionally, create an extension method to the <xref:Metalama.Framework.Project.IProject> method to expose your configuration API, so that it is more discoverable.
-5. To configure your aspect, users should implement a project fabric and access your configuration API using this extension method. The class must be annotated with `[CompileTime]`.
+1. Create a class that derives from <xref:Metalama.Framework.Project.ProjectExtension> and has a default constructor. 
+2. Optionally, override the <xref:Metalama.Framework.Project.ProjectExtension.Initialize*> method, which receives the <xref:Metalama.Framework.Project.IProject>. 
+3. In your aspect code, call the [IProject.Extension\<T>()](xref:Metalama.Framework.Project.IProject.Extension*) method, where `T` is your configuration class, to get the configuration object.
+4. Optionally, create an extension method to the <xref:Metalama.Framework.Project.IProject> type to expose your configuration API, so that it is more discoverable. The class must be annotated with `[CompileTime]`.
+5. To configure your aspect, users should implement a project fabric and access your configuration API using this extension method.
 
 ### Example
 

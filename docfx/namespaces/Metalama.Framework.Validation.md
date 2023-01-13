@@ -30,12 +30,12 @@ Since aspects can modify the code model, it can be useful to be aware of which r
 ```mermaid
 classDiagram
 
-    class ValidatorDelegate_Of_DeclarationValidationContext{
+    class ValidatorDelegate~DeclarationValidationContext~{
         <<delegate>>
         Invoke(context)
     }
 
-     class ValidatorDelegate_Of_ReferenceValidationContext{
+     class ` ValidatorDelegate~ReferenceValidationContext~`{
         <<delegate>>
         Invoke(context)
     }
@@ -64,11 +64,11 @@ classDiagram
         SuggestCodeFix()
     }
 
-    IValidatorReceiver --> ValidatorDelegate_Of_DeclarationValidationContext : registers
-    IValidatorReceiver --> ValidatorDelegate_Of_ReferenceValidationContext : registers
+    ValidatorDelegate~DeclarationValidationContext~ <-- IValidatorReceiver : registers
+    ` ValidatorDelegate~ReferenceValidationContext~` <-- IValidatorReceiver : registers
 
-ValidatorDelegate_Of_DeclarationValidationContext --> DeclarationValidationContext  : receives
-    ValidatorDelegate_Of_ReferenceValidationContext --> ReferenceValidationContext : receives
+DeclarationValidationContext <-- ValidatorDelegate~DeclarationValidationContext~  : receives
+    ReferenceValidationContext <-- ` ValidatorDelegate~ReferenceValidationContext~` : receives
 
     class IValidatorReceiverSelector {
         With()
@@ -76,13 +76,13 @@ ValidatorDelegate_Of_DeclarationValidationContext --> DeclarationValidationConte
         BeforeAnyAspect()
     }
 
-    IValidatorReceiverSelector --> IValidatorReceiver : creates
-    IValidatorReceiverSelector --> IValidatorReceiverSelector
+    IValidatorReceiver <-- IValidatorReceiverSelector : creates
+    IValidatorReceiverSelector <-- IValidatorReceiverSelector
 
-    IAspectBuilder --|> IValidatorReceiverSelector : derives from
-    IAmender --|> IValidatorReceiverSelector : derives from
-    IAspect --> IAspectBuilder : receives
-    Fabric --> IAmender : receives
+    IValidatorReceiverSelector <|-- IAspectBuilder : derives from
+    IValidatorReceiverSelector <|-- IAmender : derives from
+    IAspectBuilder <-- IAspect : receives
+    IAmender <-- Fabric : receives
 
 ```
 

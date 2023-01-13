@@ -4,7 +4,7 @@ uid: troubleshooting-unattended-build
 
 # Troubleshooting an unattended build
 
-This article describes steps to enable logging and process dumps in an unattended build on a build server without having to install `metalama-config` tool.
+This article describes steps to enable logging and process dumps in an unattended build on a build server without having to install the `metalama` tool.
 
 
 ## Step 1. Create the diagnostics.json on your local machine
@@ -14,18 +14,18 @@ You can follow the other articles of this chapter to learn how to create a `diag
 ### Example: enabling logging
 
 In the next example you can find entire resulting `diagnostics.json` file after finishing editing it.
-- Logging is enabled for the compiler process and for all categories.
-- Metalama is configured to capture a process dump for the compiler process.
+
+Here, logging is enabled for the compiler process and for all categories.
 
 
 ```json
 {
-	"logging": {
-		"processes": {
-		"Compiler": true,
-		},
+  "logging": {
+    "processes": {
+      "Compiler": true
+    },
     "categories": {
-		"*": true
+      "*": true
     }
   }
 }
@@ -36,7 +36,7 @@ In the next example you can find entire resulting `diagnostics.json` file after 
 In your build or pipeline configuration, create an environment variable named `METALAMA_DIAGNOSTICS` and set its value to the content of the `diagnostics.json` file.
 
 > [!WARNING]
-> Using diagnostics set by environment variable always overrides local diagnostics settings used by `metalama-config` tool. 
+> Using diagnostics set by environment variable always overrides local diagnostics settings used by `metalama` tool. 
 
 ## Step 3. Run the build on build server
 

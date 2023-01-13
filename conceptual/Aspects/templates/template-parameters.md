@@ -28,11 +28,11 @@ When you cannot use compile-time parameters (typically because you have a field,
 
 ## Type parameters
 
-_Compile-time type parameters_, aka compile-time generic parameters, are generic parameters whose value is specified at compile time by the `BuildAspect` method. Compile-time type parameters are a type-safe alternative to dynamic typing in templates. With compile-time type parameters, it is more convenient to reference a type from a template since a type can be referenced as a type, instead of using more a cumbersome syntax like `meta.Cast`.
+_Compile-time type parameters_, aka compile-time generic parameters, are generic parameters whose value is specified at compile time by the `BuildAspect` method. Compile-time type parameters are a type-safe alternative to dynamic typing in templates. With compile-time type parameters, it is more convenient to reference a type from a template since a type can be referenced as a type, instead of using a more cumbersome syntax like `meta.Cast`.
 
 To define and use a compile-time type parameter in a template method, follow almost the same steps as for a normal compile-time parameter:
 
-1. Add one or more parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The type parameter can have arbitrary constraints, but the current version of Metalama will ignore them when expanding the template.
+1. Add one or more type parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The type parameter can have arbitrary constraints, but the current version of Metalama will ignore them when expanding the template.
   
 2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { T1 = typeof(int), T2 = field.Type }` where `T1` and `T2` and the exact names of the template parameters (the name matching is case sensitive).
 

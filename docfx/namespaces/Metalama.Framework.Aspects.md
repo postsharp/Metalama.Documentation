@@ -57,9 +57,9 @@ classDiagram
         Suppress(...)
     }
 
-    IAspect --> IAspectBuilder : BuildAspect() receives
-    IAspectBuilder --> IAdviceFactory : exposes
-    IAspectBuilder --> IDiagnosticSink : exposes
+    IAspectBuilder <-- IAspect : BuildAspect() receives
+    IAdviceFactory <-- IAspectBuilder : exposes
+    IDiagnosticSink <-- IAspectBuilder : exposes
 
 ```
 
@@ -68,13 +68,12 @@ classDiagram
 ```mermaid
 classDiagram
 
-CompileTimeAttribute --|> ScopeAttribute : derives from
-CompileTimeAttribute --|> ScopeAttribute  : derives from
-RunTimeOnlyAttribute --|> ScopeAttribute  : derives from
-TemplateAttribute --|> CompileTimeAttribute  : derives from
-AdviceAttribute --|> TemplateAttribute  : derives from
-IntroduceAttribute --|> AdviceAttribute  : derives from
-InterfaceMemberAttribute --|> TemplateAttribute  : derives from
+ScopeAttribute <|-- CompileTimeAttribute  : derives from
+ScopeAttribute <|-- RunTimeOnlyAttribute  : derives from
+CompileTimeAttribute <|-- TemplateAttribute  : derives from
+TemplateAttribute <|-- AdviceAttribute  : derives from
+AdviceAttribute <|-- IntroduceAttribute  : derives from
+TemplateAttribute <|-- InterfaceMemberAttribute  : derives from
 
 class CompileTimeAttribute
 class RunTimeOnlyAttribute
@@ -86,7 +85,7 @@ class RunTimeOnlyAttribute
 ```mermaid
 classDiagram
 
-    IAspect --> IAspectBuilder : receives
+    IAspectBuilder <-- IAspect : receives
     
     class IAspectBuilder {
     }
@@ -95,7 +94,7 @@ classDiagram
         With()
     }
 
-    IAspectBuilder --|> IDeclarationSelector : derives from
+    IDeclarationSelector <|-- IAspectBuilder : derives from
 
     class IDeclarationSelection {
         AddAspect()
@@ -104,7 +103,7 @@ classDiagram
         RequireAspect()
     }
 
-    IDeclarationSelector --> IDeclarationSelection : creates
+    IDeclarationSelection <-- IDeclarationSelector : creates
 ```
 
 ### IAspectInstance, IAspectPredecessor
@@ -114,8 +113,15 @@ The <xref:Metalama.Framework.Aspects.IAspectPredecessor> facility allows aspects
 ```mermaid
 classDiagram
 
-    IAspect --> IAspectBuilder : receives
-    
+   class AspectPredecessorKind {
+       <<enum>>
+       Attribute
+       ChildAspect
+       RequiredAspect
+       Inherited
+       Fabric
+   }
+
     class IAspect {
         BuildAspect(IAspectBuilder)
     }
@@ -136,11 +142,13 @@ classDiagram
         NamedArguments
     }
 
-    IAspectBuilder --> IAspectInstance : exposes
+    IAspectInstance <-- IAspectBuilder : exposes
 
-    IAttribute --|> IAspectPredecessor : derives from
+    IAspectBuilder <-- IAspect : receives
+    
+    IAspectPredecessor <|-- IAttribute : derives from
 
-    IFabricInstance --|> IAspectPredecessor : derives from
+    IAspectPredecessor <|-- IFabricInstance : derives from
 
     class IAspectPredecessor {
 
@@ -150,8 +158,6 @@ classDiagram
         Fabric
         TargetDeclaration
     }
-
-    IAspectInstance --|> IAspectPredecessor : derives from
 
    class IAspectInstance {
        Aspect
@@ -163,9 +169,10 @@ classDiagram
        TargetDeclaration
    }
 
-    IAspectInstance --> IAspectState : exposes
-    IAspectInstance --> IAspect : exposes
-    IAspect --> IAspectState : reads & writes
+    IAspectState <-- IAspectInstance : exposes
+    IAspect <-- IAspectInstance : exposes
+    IAspectPredecessor <|-- IAspectInstance : derives from
+    IAspectState <-- IAspect : reads & writes
 
    IAspectInstance *-- AspectPredecessor : has
 
@@ -174,18 +181,8 @@ classDiagram
        Instance
    }
 
-   AspectPredecessor --> IAspectPredecessor : exposes
-   AspectPredecessor --> AspectPredecessorKind : has
-
-   class AspectPredecessorKind {
-       <<enum>>
-       Attribute
-       ChildAspect
-       RequiredAspect
-       Inherited
-       Fabric
-   }
-
+   IAspectPredecessor <-- AspectPredecessor : exposes
+   AspectPredecessorKind <-- AspectPredecessor : has
    
 ```
 

@@ -18,7 +18,7 @@ This is the most straightforward way to pass values from your `BuildAspect` meth
 
 ## Sharing state with the Tags property
 
-For event, properties or field templates, compile-time template parameters are not available. The simplest alternative is to use tags. Tags are arbitrary values assigned to arbitrary names.
+For event, property or field templates, compile-time template parameters are not available. The simplest alternative is to use tags. Tags are arbitrary values assigned to arbitrary names.
 
 To define and use tags:
 
@@ -30,6 +30,6 @@ To define and use tags:
 
 [!include[Tags](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Tags.cs)]
 
-## Sharing state with the State property
+## Sharing state with the AspectState property
 
-You can use the <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState?text=IAspectBuilder.AspectState> property to store any aspect state that depends on the target declaration. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.AspectState?text=IAspectInstance.AspectState> property and is therefore also visible to inheritors and children aspects.
+You can use the <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState?text=IAspectBuilder.AspectState> property to store any aspect state that depends on the target declaration. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.AspectState?text=IAspectInstance.AspectState> property and is therefore also visible to inheritors and child aspects.

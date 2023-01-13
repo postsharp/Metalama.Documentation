@@ -6,18 +6,18 @@ uid: aspect-testing
 
 The idea of compile-time testing is to create both _input_ test files annotated with aspects and _output_ test files, which contain the transformed code (possibly with comments for errors and warnings), and to rely on the compile-time testing framework to automatically execute inputs and verify that the outputs match the expectations.
 
-Concretely, you can follow the following steps (detailed below):
+Concretely, you can follow these steps (detailed below):
 
 1. Create a test project.
 2. For each test case:
    1. Create an input file, say `MyTest.cs`, that includes some target code annotated with the aspect custom attribute.
    2. Run the test.
-   3. Verify the transformed code visually. Fix bugs until the transformed code is not as expected.
+   3. Verify the transformed code visually. Fix bugs until the transformed code is as expected.
    4. Copy the test output to a file named with the extension `.t.cs`, say `MyTest.t.cs`.
 
 
 > [!NOTE]
-> For a real-world example, see https://github.com/postsharp/Metalama.Samples. Sample aspects are tested using the approach described here.
+> For a real-world example, see [the Metalama.Samples repo on GitHub](https://github.com/postsharp/Metalama.Samples). Sample aspects are tested using the approach described here.
 
 ## Step 1. Create an aspect test project with Metalama.Testing.AspectTesting
 
@@ -25,7 +25,7 @@ Concretely, you can follow the following steps (detailed below):
 2. Add the `Metalama.Testing.AspectTesting` package (see <xref:packages> for details).
 
 > [!WARNING]
-> Do not add the `Metalama.Testing.AspectTesting` to a project that you do not intend to use _exclusively_ for compile-time tests. This packages significantly changes the semantics of the project items.
+> Do not add the `Metalama.Testing.AspectTesting` to a project that you do not intend to use _exclusively_ for compile-time tests. This package significantly changes the semantics of the project items.
 
 Typically, the `csproj` project file of a compile-time test project would have the following content:
 
@@ -33,8 +33,8 @@ Typically, the `csproj` project file of a compile-time test project would have t
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-    <OutputType>Library</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -55,11 +55,11 @@ Typically, the `csproj` project file of a compile-time test project would have t
 The following diagram illustrates the typical dependencies between your projects and our packages.
 
 ```mermaid
-graph TD
-    YourApp -- references --> YourAspectLibrary
+graph BT
     YourAspectLibrary -- references --> Metalama.Framework
     YourAspectLibrary.UnitTests -- references --> xUnit
     YourAspectLibrary.UnitTests -- references --> YourAspectLibrary
+    YourApp -- references --> YourAspectLibrary
     YourAspectLibrary.AspectTests -- references --> YourAspectLibrary
     YourAspectLibrary.AspectTests -- references --> Metalama.Testing.AspectTesting
     Metalama.Framework -- references --> Metalama.Framework.Redist
@@ -106,10 +106,6 @@ For instance, suppose that we are testing the following aspect. This file would 
 To test this aspect, we create a test file with the following content:
 
 [!include[Main](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Testing.cs)]
-
-### Restricting the compared region of transformed code
-
-If you want the test to compare only one declaration (e.g. a class or a method) of your main file, you can mark this class with the `// <target>` comment. This comment must be on the top of any custom attribute on this declaration, and its spacing must be exactly as shown.
 
 ### Include other files
 
@@ -206,7 +202,7 @@ Note that, by default, all source files are excluded from the compilation, even 
 
 ### Specifying test options
 
-The Metalama test framework supports several test options. They are documented in the <xref: Metalama.Testing.AspectTesting.TestOptions> class.
+The Metalama test framework supports several test options. They are documented in the <xref:Metalama.Testing.AspectTesting.TestOptions> class.
 
 To set a test option, add a special comment to the test file, for instance:
 
@@ -214,7 +210,7 @@ To set a test option, add a special comment to the test file, for instance:
 // @IncludeAllSeverities
 ```
 
-Alternatively, to set an option for the whole directory, create a file named `metalamaTests.json` and add properties of the <xref: Metalama.Testing.AspectTesting.TestOptions> class. For instance:
+Alternatively, to set an option for the whole directory, create a file named `metalamaTests.json` and add properties of the <xref:Metalama.Testing.AspectTesting.TestOptions> class. For instance:
 
 ```json
 { "IncludeAllSeverities": true }
@@ -222,7 +218,7 @@ Alternatively, to set an option for the whole directory, create a file named `me
 
 ### Trimming the test output to one or two classes
 
-If you want to limit the test output to one or more declarations (instead of the whole transformed input file), add the `// <target>` comment to the declarations that must be included.
+If you want to limit the test output to one or more declarations (instead of the whole transformed input file), add the `// <target>` comment to the declarations that must be included. This comment must be on the top of any custom attribute on this declaration, and its spacing must be exactly as shown.
 
 Example:
 
@@ -240,13 +236,13 @@ If no `// <target>` comment is found in the file, the whole file is considered.
 If you need to create a multi-project test, you can create a dependent project by adding a file named `Foo.Dependency.cs` to your test, where `Foo.cs` is your principal test file.
 
 ```mermaid
-graph TD
+graph BT
     Foo -- references --> Foo.Dependency
 ```
 
-### Creating hierarchical test runners in Rider or Resharper
+### Creating hierarchical test runners in Rider or ReSharper
 
-JetBrains tools do not support the customized compile-time test framework. As a workaround, the Metalama testing framework registers a default test runner that discovers all tests in the current project and add them as test cases for a `[Theory]`-based universal test method.
+JetBrains tools do not support the customized compile-time test framework. As a workaround, the Metalama testing framework registers a default test runner that discovers all tests in the current project and adds them as test cases for a `[Theory]`-based universal test method.
 
 If you have a large number of tests and want to see a hierarchical view, you can create, in each directory you want, a file named `_Runner.cs`, with the following content (in the namespace of your choice):
 
@@ -254,4 +250,4 @@ If you have a large number of tests and want to see a hierarchical view, you can
 
 The `[CurrentDirectory]` attribute will automatically provide test data for all files located under the directory containing the `_Runner.cs` file as well as any child directory.
 
-Note that custom runners are only supported in Resharper and Rider. They are ignored in other environments and replaced by the customized test framework.
+Note that custom runners are only supported in ReSharper and Rider. They are ignored in other environments and replaced by the customized test framework.

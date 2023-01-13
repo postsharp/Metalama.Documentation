@@ -6,18 +6,28 @@ uid: installing
 
 ## 1. Install main the NuGet package
 
-Before you start developing aspects, you must add the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) package to your project:
+Before you start developing aspects, you must add the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) package to your project.
+
+You can do that from your IDE or from the command line:
+
+```
+dotnet add package Metalama.Framework --prerelease
+```
+
+Or by editing your project file:
+
+[comment]: # (TODO: Change the following to the latest stable version once 1.0 is released)
 
 ```xml
 <ItemGroup>
-    <ProjectReference Include="Metalama.Framework" Version="CHANGE ME"/>
+    <PackageReference Include="Metalama.Framework" Version="0.*-*" />
 </ItemGroup>    
 ```
 
 For details of all NuGet packages and their dependencies, see <xref:packages>.
 
 >[!NOTE]
->Metalama requires a target framework that supports .NET Standard 2.0.
+>Metalama requires [a target framework that supports .NET Standard 2.0](xref:requirements#target-frameworks).
 
 ## 2. Install Metalama Tools for Visual Studio (optional)
 

@@ -24,12 +24,11 @@ To create an aspect that validates references:
 <xref:Metalama.Framework.Aspects.MethodAspect>, <xref:Metalama.Framework.Aspects.ParameterAspect>, 
 <xref:Metalama.Framework.Aspects.PropertyAspect>, <xref:Metalama.Framework.Aspects.TypeAspect> or <xref:Metalama.Framework.Aspects.TypeParameterAspect>. If you want to validate several kinds of declarations, you can inherit your class from <xref:System.Attribute> and implement as many generic constructions of the <xref:Metalama.Framework.Aspects.IAspect`1> interface as needed.
 2. In the aspect class, define one or more static fields of type <xref:Metalama.Framework.Diagnostics.DiagnosticDefinition> as explained in <xref:diagnostics>.
-3. Create a method of arbitrary name with the signature `void ValidateReference( ReferenceValidationContext context )`. Implement the validation logic in this method. All the data you need is in the <xref:Metalama.Framework.Validation.ReferenceValidationContext> object. When you detect a rule violation, report a diagnostic as described inin <xref:diagnostics>.
-4. Override the <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>, <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method of your fabric.
-5. From the `Amend*` method, call <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*?text=builder.With>, then chain with a call to <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ValidateReferences*>. Pass two parameters:
-   - The name of the new method that you have defined in the previous step. *It must be a method. It cannot be a delegate, lambda, or a local function.*
-   - The kinds of references that you want to validate for instance `All` to validate all references, `TypeOf` to validate references in a `typeof` expression, and so on.
-
+3. Create a method of arbitrary name with the signature `void ValidateReference( in ReferenceValidationContext context )`. Implement the validation logic in this method. All the data you need is in the <xref:Metalama.Framework.Validation.ReferenceValidationContext> object. When you detect a rule violation, report a diagnostic as described inin <xref:diagnostics>.
+4. Override or implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method of your aspect.
+5. From `BuildAspect`, call <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*?text=builder.With>, then chain with a call to <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ValidateReferences*>. Pass two parameters:
+   - The new method that you have defined in the previous step. *It must be a method. It cannot be a delegate, lambda, or a local function.*
+   - The kinds of references that you want to validate for instance `All` to validate all references, `TypeOf` to validate references in a `typeof` expression, and so on. You can select multiple kinds of references using the `|` operator.
 
 ### Example: ForTestOnly, aspect implementation
 
@@ -49,15 +48,15 @@ To validate code from a fabric, the steps are almost the same as from an aspect.
    * <xref:Metalama.Framework.Fabrics.ProjectFabric> to validate the current project;
    * <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric> to validate any project referencing the current project.
 2. In the fabric class, define one or more static fields of type <xref:Metalama.Framework.Diagnostics.DiagnosticDefinition> as explained in <xref:diagnostics>.
-3. Create a method of arbitrary name with the signature `void ValidateReference( ReferenceValidationContext context )`. Implement the validation logic in this method. All the data you need is in the <xref:Metalama.Framework.Validation.ReferenceValidationContext> object. When you detect a rule violation, report a diagnostic as described in <xref:diagnostics>.
-4. Override or implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method of your aspect.
-5. From `BuildAspect`, call <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*?text=builder.With>, then chain with a call to <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ValidateReferences*>. Pass two parameters:
-   - The name of the new method that you have defined in the previous step. *It must be a method. It cannot be a delegate, lambda, or a local function.*
-   - The kinds of references that you want to validate for instance `All` to validate all references, `TypeOf` to validate references in a `typeof` expression, and so on.
+3. Create a method of arbitrary name with the signature `void ValidateReference( in ReferenceValidationContext context )`. Implement the validation logic in this method. All the data you need is in the <xref:Metalama.Framework.Validation.ReferenceValidationContext> object. When you detect a rule violation, report a diagnostic as described in <xref:diagnostics>.
+4. Override the <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>, <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method of your fabric.
+5. From the `Amend*` method, call <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*?text=builder.With>, then chain with a call to <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ValidateReferences*>. Pass two parameters:
+   - The new method that you have defined in the previous step. *It must be a method. It cannot be a delegate, lambda, or a local function.*
+   - The kinds of references that you want to validate for instance `All` to validate all references, `TypeOf` to validate references in a `typeof` expression, and so on. You can select multiple kinds of references using the `|` operator.
 
 ### Example: ForTestOnly, fabric implementation
 
-The following example implements the same logic above, but using a fabric.
+The following example implements the same logic as above, but using a fabric.
 
 [!include[For Test Only](../../code/Metalama.Documentation.SampleCode.AspectFramework/ForTestOnly_Fabric.cs)]
 
@@ -73,4 +72,4 @@ The cross-project scenario and the need for serialization are the reasons why th
 
 ## Passing state to the validation method
 
-You must use `IAspectBuilder.AspectState`. Do not store in an aspect field state that depends on the target of the aspect.
+You must use <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState?text=builder.AspectState>. Do not store in an aspect field state that depends on the target of the aspect.

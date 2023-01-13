@@ -7,16 +7,16 @@ uid: creating-logs
 If you report a Metalama bug, you may be asked to send Metalama logs. Here is how to produce them.
 
 
-## Step 1. Install metalama-config
+## Step 1. Install the metalama tool
 
-Install `metalama-config` as described in <xref:dotnet-tool>.
+Install the `metalama` tool as described in <xref:dotnet-tool>.
 
 ## Step 2. Edit diagnostics.json
 
 Execute the command:
 
 ```
-metalama-config diag edit
+metalama diag edit
 ```
 
 This should open a `diagnostics.json` file in your default editor. Edit this file as follows:
@@ -33,19 +33,19 @@ In the next example, logging is enabled for the compiler process and for all cat
 
 ```json
 {
-    "logging": {
-		"processes": {
-            "Other": false,
-            "Compiler": true,
-            "DevEnv": false,
-            "RoslynCodeAnalysisService": false,
-            "Rider": false,
-            "BackstageWorker": false,
-            "MetalamaConfig": false,
-            "TestHost": false
+  "logging": {
+    "processes": {
+      "Other": false,
+      "Compiler": true,
+      "DevEnv": false,
+      "RoslynCodeAnalysisService": false,
+      "Rider": false,
+      "BackstageWorker": false,
+      "MetalamaConfig": false,
+      "TestHost": false
     },
     "categories": {
-		"*": false
+      "*": true
     },
     "stopLoggingAfterHours": 5.0
   }
@@ -56,7 +56,7 @@ In the next example, logging is enabled for the compiler process and for all cat
 
 Restart the logged processes:
 
- * If you are logging the `Compiler` process, restart the Roslyn compiler processes.
+ * If you are logging the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
  * If you are logging any design-time process, restart the IDE.
 
 Execute the sequence of actions to be logged.

@@ -19,5 +19,5 @@ Live templates are built with the Metalama aspect framework, but instead of bein
    - Diagnostics reported by the aspect will be ignored.
    - Aspect ordering and requirements will be ignored.
 2. Make sure that the aspect class has a default constructor.
-3. Annotate the class with the <xref:Metalama.Framework.Aspects.LiveTemplateAttribute> attribute.
-4. Make sure that you properly defined the aspect eligibility, so the code refactoring will only be suggested for relevant declarations. See <xref:eligibility> for details.
+3. Annotate the class with `[EditorExperience( SuggestAsLiveTemplate = true )]`.
+4. Make sure that you properly defined the aspect eligibility, so the code refactoring will only be suggested for relevant declarations. See <xref:eligibility> for details. The guideline of using diagnostics for implementation limitations does not apply here.

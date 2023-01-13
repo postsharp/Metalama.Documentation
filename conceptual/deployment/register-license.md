@@ -16,7 +16,7 @@ To switch to the Metalama Free license:
 2. Execute the following command:
 
    ```
-   metalama-config register free
+   metalama license free
    ```
 
 ## Registering a license key
@@ -27,7 +27,7 @@ To register a license for the current user:
 2. Execute the following command:
    
    ```
-   metalama-config register <LICENSE KEY>
+   metalama license register <LICENSE KEY>
    ```
 
 ## Registering a license key manually

@@ -11,16 +11,16 @@ If you report a Metalama bug, when logs are not enough to understand the issue, 
 
 If you are using Metalama on build server, the process of enabling process dumps is described in <xref:troubleshooting-unattended-build>.
 
-## Step 1. Install metalama-config
+## Step 1. Install the metalama tool
 
-Install `metalama-config` as described in <xref:dotnet-tool>.
+Install the `metalama` tool as described in <xref:dotnet-tool>.
 
 ## Step 2. Edit diagnostics.json
 
 Execute the command:
 
 ```
-metalama-config diag edit
+metalama diag edit
 ```
 
 This should open a `diagnostics.json` file in your default editor.
@@ -36,7 +36,7 @@ In the next example, Metalama is configured to capture a process dump for the co
 
 ```json
 {
- "miniDump": {
+  "miniDump": {
     "processes": {
       "Other": false,
       "Compiler": true,
@@ -62,7 +62,7 @@ In the next example, Metalama is configured to capture a process dump for the co
     "ExceptionTypes": [
       "*"
     ]
- }
+  }
 }
 ```
 
@@ -70,10 +70,10 @@ In the next example, Metalama is configured to capture a process dump for the co
 
 Restart the logged processes:
 
- * If you are logging the `Compiler` process, restart the Roslyn compiler processes.
+ * If you are logging the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
  * If you are logging any design-time process, restart the IDE.
 
-Execute the sequence of actions to be logged.
+Execute the sequence of actions that triggers the issue.
 
 > [!WARNING]
 > Do not forget to disable the setting after you are done.
@@ -87,5 +87,5 @@ Upload this file to an online storage service like OneDrive.
 
 NEVER share the process dump URL publicly on a service like GitHub Issues.
 
-Instead, send us the hyperlink by email.
+Instead, send us the hyperlink by [email](mailto:hello@postsharp.net).
 

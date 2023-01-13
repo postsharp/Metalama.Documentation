@@ -18,12 +18,7 @@ namespace BuildMetalamaDocumentation
 
         public override bool Build( BuildContext context, BuildSettings settings )
         {
-            if ( !RunDocFx( context, "metadata" ) )
-            {
-                return false;
-            }
-
-            if ( !RunDocFx( context, "build" ) )
+            if ( !RunDocFx( context, "" ) )
             {
                 return false;
             }

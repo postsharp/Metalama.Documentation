@@ -38,20 +38,20 @@ classDiagram
     class TransitiveProjectFabric {
     }
 
-    ProjectFabric --|> Fabric : derives from
-    TransitiveProjectFabric --|> ProjectFabric : derives from
+    Fabric <|-- ProjectFabric : derives from
+    ProjectFabric <|-- TransitiveProjectFabric : derives from
 
     class NamespaceFabric {
         AmendNamespace(NamespaceAmender)
     }
 
-    NamespaceFabric --|> Fabric : derives from
+    Fabric <|-- NamespaceFabric : derives from
 
     class TypeFabric {
         AmendType(TypeAmender)
     }
 
-    TypeFabric --|> Fabric : derives from
+    Fabric <|-- TypeFabric : derives from
 
 
 ```
@@ -72,7 +72,7 @@ classDiagram
         With()
     }
 
-    IAmender --|> IDeclarationSelector : derives from
+    IDeclarationSelector <|-- IAmender : derives from
 
     class IDeclarationSelection {
         AddAspect()
@@ -81,15 +81,15 @@ classDiagram
         RequireAspect()
     }
 
-    IDeclarationSelector --> IDeclarationSelection : creates
+    IDeclarationSelection <-- IDeclarationSelector : creates
 
     class IProjectAmender {
 
     }
 
-    IProjectAmender --|> IAmender
-    INamespaceAmender --|> IAmender
-    ITypeAmender --|> IAmender
+    IAmender <|-- IProjectAmender
+    IAmender <|-- INamespaceAmender
+    IAmender <|-- ITypeAmender
 
     class INamespaceAmender  {
         Namespace
@@ -100,7 +100,7 @@ classDiagram
         Advice : IAdviceFactory
     }
 
-    ITypeAmender --> IAdviceFactory : exposes
+    IAdviceFactory <-- ITypeAmender : exposes
 
 
 

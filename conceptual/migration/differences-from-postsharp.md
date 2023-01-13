@@ -26,13 +26,13 @@ flowchart LR
   IDE --> Compiler --> input_dll>binary] --> PostSharp --> output_dll>Binary With Aspects] --> Execute
 
   subgraph design-time
-  IDE
+    IDE
   end
 
   subgraph compile-time
-  Compiler
-  PostSharp
-  input_dll
+    Compiler
+    PostSharp
+    input_dll
   end
 
   subgraph run-time
@@ -47,29 +47,25 @@ flowchart LR
 
 flowchart LR
 
-
-  Compiler <--> Metalama
-  IDE <--> Metalama2
   IDE --> Compiler --> output_dll>Binary With Aspects] --> Execute
-  Metalama <--> compiledAspects>Compiled Aspects] <--> Metalama2
-
+  IDE <--> Metalama2
+  Metalama2 <--> compiledAspects
+  Compiler <--> Metalama
+  Metalama <--> compiledAspects>Compiled Aspects]
   
   subgraph compile-time
-  Compiler
-  Metalama[Compile-Time\nMetalama]
+    Compiler
+    Metalama[Compile-Time\nMetalama]
   end
 
   subgraph design-time
-   IDE 
-   Metalama2[Design-Time\nMetalama]
+    IDE 
+    Metalama2[Design-Time\nMetalama]
   end
 
   subgraph run-time
-  Execute
+    Execute
   end
-
-
-
 
 ```
 
@@ -127,7 +123,7 @@ flowchart LR
 
 The difference in aspect lifetime has major implications for the way aspects are designed.
 
-* **Metalama templates should generate succinct code.**  In PostSharp, advice methods could be long and complex because they were actually independent C# methods, compiled and JIT-compiled just one, and executed at run time. However, in Metalama, advice methods are templates. They can be long, but it is important that the code they are generating is short. This code will need to be compiled and JIT-compiled as many times as the advice is applied, so potentially thousands of times. Any logic that may repeat itself should be moved into run-time helper classes.
+* **Metalama templates should generate succinct code.**  In PostSharp, advice methods could be long and complex because they were actually independent C# methods, compiled and JIT-compiled just once, and executed at run time. However, in Metalama, advice methods are templates. They can be long, but it is important that the code they are generating is short. This code will need to be compiled and JIT-compiled as many times as the advice is applied, so potentially thousands of times. Any logic that may repeat itself should be moved into run-time helper classes.
 
 * **Aspects can no longer "hold" run-time state**. In PostSharp, aspect fields could hold any run-time state required by the aspect. In Metalama, if an aspect needs a run-time state, it has to _introduce_ a field into the target class (see <xref:introducing-members> for details). 
 
@@ -137,7 +133,7 @@ Some aspects are applied to a declaration in a project but affect other projects
 
 The way how inheritance is implemented differs between Metalama and PostSharp.
 
-In PostSharp, each inherited aspect instance is instantiated again from the custom attribute from which it stems (i.e. to be exact, it is deserialized from the custom attribute). This mechanism for intra-project inheritance as well as for cross-project inheritance.
+In PostSharp, each inherited aspect instance is instantiated again from the custom attribute from which it stems (i.e. to be exact, it is deserialized from the custom attribute). This mechanism is used for intra-project inheritance as well as for cross-project inheritance.
 
 In Metalama, the mechanism is different inside a project than across projects.
 
@@ -150,7 +146,7 @@ For cross-project inheritance or validators,  inheritable aspect instances are _
 #### Cross-project aspects in PostSharp
 
 ```mermaid
-flowchart LR
+flowchart BT
 
   subgraph BaseAssembly
 
@@ -180,7 +176,7 @@ flowchart LR
     DerivedAspect3
     end
 
-   DerivedAspect2 --> |instantiated from| CustomAttribute
+   DerivedAspect2 ----> |instantiated from| CustomAttribute
    DerivedAspect3 --> |instantiated from| CustomAttribute
   end
 
@@ -192,7 +188,7 @@ flowchart LR
 
 
 ```mermaid
-flowchart LR
+flowchart BT
 
   subgraph BaseAssembly
 
@@ -207,7 +203,7 @@ flowchart LR
     end
 
     subgraph ManagedResource
-    BaseAspect -->|serialized into| SerializedAspect(Serialized\nAspect)
+    SerializedAspect(Serialized\nAspect) -->|serialized from| BaseAspect
     end
 
 
@@ -240,4 +236,4 @@ flowchart LR
 
 ### Implications
 
-* **In Metalama, aspect classes must be written in an immutable style.** Since aspect instances are may be reused among several declarations, they cannot store state that is specific to a target declaration. For details, see <xref:sharing-state-with-advice>.
+* **In Metalama, aspect classes must be written in an immutable style.** Since aspect instances may be reused among several declarations, they cannot store state that is specific to a target declaration. For details, see <xref:sharing-state-with-advice>.

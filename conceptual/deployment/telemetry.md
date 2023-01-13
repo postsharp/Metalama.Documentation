@@ -11,15 +11,15 @@ This article describes what is collected using telemetry and how you can disable
 By default, Metalama will collect and send to PostSharp Technologies usage and quality reports. These reports are anonymous. They are collected in the following situations:
 
 * In case of unexpected _failure_ or _performance degradation_ that is not caused by user code. In this case, we create an exception report including the anonymized call stack.
-* Periodically, for each project you are building, we are collecting data such as a non-reversible hash of the project name, the target framework and version, the project size, number of aspects used, amount of code saved to Metalama, or performance.
+* Periodically, for each project you are building, we are collecting data such as a non-reversible hash of the project name, the target framework and version, the project size, number of aspects used, amount of code saved by Metalama, or performance.
 
-All reports include a randomly generated device id, which you can reset at any time using Metalama Command Line Tools (see below).
+All reports include a randomly generated device id, which you can [reset at any time using Metalama Command Line Tools](#resetting-your-device-id).
 
 Telemetry data is collected and processed according to our [Privacy Policy](https://www.postsharp.net/company/legal/privacy-policy).
 
 ### License audit
 
-In addition to Telemetry, the use of the software may be subject to a _license audit_. License audit is anonymous but mandatory for Metalama Free and the self-generated Metalama Trial, and is used to estimate the number of users. When you are using a license key, license audit reports include the id of your license key. If you do not agree with license audit, please contact our sales team and we will provide you with a new license key including a license audit waiver flag.
+In addition to Telemetry, the use of the software may be subject to a _license audit_. License audit is anonymous but mandatory for Metalama Free and the self-generated Metalama Trial, and is used to estimate the number of users. When you are using a license key, license audit reports include the id of your license key. If you do not agree with license audit, please [contact our sales team](mailto:hello@postsharp.net) and we will provide you with a new license key including a license audit waiver flag.
 
 ## Disabling telemetry
 
@@ -37,7 +37,7 @@ Using this approach, you can easily disable telemetry for build agents, or you c
 2. Execute the following commands:
 
    ```powershell
-   metalama-config telemetry disable
+   metalama telemetry disable
    ```
 
 ## Resetting your device id
@@ -46,6 +46,6 @@ Using this approach, you can easily disable telemetry for build agents, or you c
 2. Execute the following commands:
 
    ```powershell
-   metalama-config telemetry reset-device-id
+   metalama telemetry reset-device-id
    ```
 
