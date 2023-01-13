@@ -16,7 +16,8 @@
               "Metalama.Extensions.DependencyInjection.dll",
               "Metalama.Extensions.DependencyInjection.ServiceLocator.dll",
               "Metalama.Extensions.Multicast.dll",
-              "Metalama.Extensions.Metrics.dll"
+              "Metalama.Extensions.Metrics.dll",
+              "Metalama.Extensions.Architecture.dll"
               ],
           "src": "../code/Metalama.Documentation.Consolidated/bin/Debug/net6.0-windows"
         }
