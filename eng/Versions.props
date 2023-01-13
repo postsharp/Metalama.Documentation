@@ -14,7 +14,7 @@
         <PostSharpEngineeringVersion>1.0.113-preview</PostSharpEngineeringVersion>
         <MetalamaVersion>0.5.79-preview</MetalamaVersion>
         <MetalamaVersion Condition="$(VcsBranch)!=''">branch:master</MetalamaVersion>
-        <MetalamaCompilerVersion>4.3.1010-preview</MetalamaCompilerVersion>
+        <MetalamaCompilerVersion>4.4.1013-preview</MetalamaCompilerVersion>
         <MetalamaCompilerVersion Condition="$(VcsBranch)!=''">branch:master</MetalamaCompilerVersion>
         <MetalamaMigrationVersion>0.5.79-preview</MetalamaMigrationVersion>
         <MetalamaMigrationVersion Condition="$(VcsBranch)!=''">branch:dev</MetalamaMigrationVersion>
