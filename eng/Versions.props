@@ -11,7 +11,7 @@
 
     <!-- Versions of dependencies -->
     <PropertyGroup>
-        <PostSharpEngineeringVersion>1.0.113-preview</PostSharpEngineeringVersion>
+        <PostSharpEngineeringVersion>1.0.114-preview</PostSharpEngineeringVersion>
         <MetalamaVersion>0.5.80-preview</MetalamaVersion>
         <MetalamaVersion Condition="$(VcsBranch)!=''">branch:master</MetalamaVersion>
         <MetalamaCompilerVersion>4.4.1014-preview</MetalamaCompilerVersion>
@@ -20,7 +20,7 @@
         <MetalamaMigrationVersion Condition="$(VcsBranch)!=''">branch:dev</MetalamaMigrationVersion>
         <MetalamaExtensionsVersion>0.5.80-preview</MetalamaExtensionsVersion>
         <MetalamaExtensionsVersion Condition="$(VcsBranch)!=''">branch:dev</MetalamaExtensionsVersion>
-		    <NuGetCommandLineVersion>6.2.2</NuGetCommandLineVersion>
+		<NuGetCommandLineVersion>6.2.2</NuGetCommandLineVersion>
     </PropertyGroup>
 
     <!-- Import overrides for the local build -->
