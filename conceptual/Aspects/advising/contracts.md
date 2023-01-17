@@ -7,6 +7,7 @@ uid: contracts
 One of the most popular use cases of aspect-oriented programming is to create a custom attribute that validates the field, property, or parameter to which it is applied. Typical examples are `[NotNull]` or `[NotEmpty]`.
 
 In Metalama, you can achieve this using a _contract_. With a contract, you can:
+
 * throw an exception when the value does not fulfill a condition of your choice, or
 * normalize the received value (for instance trimming the spaces of a string).
 
