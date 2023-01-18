@@ -16,6 +16,7 @@
         <MetalamaCompilerVersion>4.4.1014-preview</MetalamaCompilerVersion>
         <MetalamaMigrationVersion>0.5.81-preview</MetalamaMigrationVersion>
         <MetalamaExtensionsVersion>0.5.81-preview</MetalamaExtensionsVersion>
+        <MetalamaLinqPadVersion>0.5.81-preview</MetalamaLinqPadVersion>
 		<NuGetCommandLineVersion>6.2.2</NuGetCommandLineVersion>
     </PropertyGroup>
 
