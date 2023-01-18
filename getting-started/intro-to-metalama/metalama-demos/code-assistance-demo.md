@@ -1,0 +1,3 @@
+---
+uid: code-assistance-demo
+---

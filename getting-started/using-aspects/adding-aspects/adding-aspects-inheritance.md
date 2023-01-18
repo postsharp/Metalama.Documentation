@@ -1,0 +1,3 @@
+---
+uid: adding-aspects-inheritance
+---
