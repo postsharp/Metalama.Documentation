@@ -21,7 +21,7 @@ namespace Doc.ForTestOnly
 
         public void BuildAspect( IAspectBuilder<IMember> builder )
         {
-            builder.With( d => d ).ValidateReferences( this.ValidateReference, ReferenceKinds.All );
+            builder.Outbound.ValidateReferences( this.ValidateReference, ReferenceKinds.All );
         }
 
         private void ValidateReference( in ReferenceValidationContext context )

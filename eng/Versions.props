@@ -11,15 +11,17 @@
 
     <!-- Versions of dependencies -->
     <PropertyGroup>
-        <PostSharpEngineeringVersion>1.0.101-preview</PostSharpEngineeringVersion>
-        <MetalamaVersion>branch:master</MetalamaVersion>
-        <MetalamaVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.53-preview</MetalamaVersion>
-        <MetalamaCompilerVersion>branch:master</MetalamaCompilerVersion>
-        <MetalamaCompilerVersion Condition="$(VcsBranch.StartsWith('master'))">4.3.1010-preview</MetalamaCompilerVersion>
-        <MetalamaMigrationVersion>branch:dev</MetalamaMigrationVersion>
-        <MetalamaMigrationVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.80-preview</MetalamaMigrationVersion>
-        <MetalamaExtensionsVersion>branch:dev</MetalamaExtensionsVersion>
-        <MetalamaExtensionsVersion Condition="$(VcsBranch.StartsWith('master'))">0.5.80-preview</MetalamaExtensionsVersion>
+        <PostSharpEngineeringVersion>1.0.114-preview</PostSharpEngineeringVersion>
+        <MetalamaVersion>0.5.80-preview</MetalamaVersion>
+        <MetalamaVersion Condition="$(VcsBranch)!=''">branch:master</MetalamaVersion>
+        <MetalamaCompilerVersion>4.4.1014-preview</MetalamaCompilerVersion>
+        <MetalamaCompilerVersion Condition="$(VcsBranch)!=''">branch:master</MetalamaCompilerVersion>
+        <MetalamaMigrationVersion>0.5.81-preview</MetalamaMigrationVersion>
+        <MetalamaMigrationVersion Condition="$(VcsBranch)!=''">branch:dev</MetalamaMigrationVersion>
+        <MetalamaExtensionsVersion>0.5.81-preview</MetalamaExtensionsVersion>
+        <MetalamaExtensionsVersion Condition="$(VcsBranch)!=''">branch:dev</MetalamaExtensionsVersion>
+        <MetalamaLinqPadVersion>0.5.81-preview</MetalamaLinqPadVersion>
+        <MetalamaLinqPadVersion Condition="$(VcsBranch)!=''">branch:dev</MetalamaLinqPadVersion>
 		<NuGetCommandLineVersion>6.2.2</NuGetCommandLineVersion>
     </PropertyGroup>
 

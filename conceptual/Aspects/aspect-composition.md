@@ -28,11 +28,11 @@ Aspects and advice in the same layer and applied to declarations of the same dep
 
 ## 2. Code model versioning
 
-Since the code model only represents declarations but does not give access to implementations such as method bodies or initializers, the only kind of advice that affects the code model are introductions and interface implementations. Overriding an existing method does not affect the code model because it only overrides its implementation.
+Since the code model only represents declarations but does not give access to implementations such as method bodies or initializers, the only kinds of advice that affects the code model are introductions and interface implementations. Overriding an existing method does not affect the code model because it only overrides its implementation.
 
 For each aspect layer and depth level, Metalama will create a new version of the code model that reflects the changes done by the previous aspect layer or depth level.
 
-Therefore, if an aspect introduces a member into a type, the following aspects will see that new member in the code model, and will be able to advise it.
+Therefore, if an aspect introduces a member into a type, the next aspects will see that new member in the code model and will be able to advise it.
 
 To ensure the consistency of this model, aspects cannot provide outputs to previous aspects or to declarations that are not "under" the current target.
 

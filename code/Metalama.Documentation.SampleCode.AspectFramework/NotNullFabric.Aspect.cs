@@ -37,7 +37,7 @@ namespace Doc.NotNullFabric
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.With(
+            amender.Outbound.SelectMany(
                     a => a.Types
                         .Where( t => t.Accessibility == Accessibility.Public )
                         .SelectMany( t => t.Methods )
