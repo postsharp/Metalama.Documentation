@@ -16,11 +16,12 @@
 		<PackageReference Include="Metalama.Framework.Introspection" Version="$(MetalamaVersion)" />
 		<PackageReference Include="Metalama.Framework.Workspaces" Version="$(MetalamaVersion)" />
 		<PackageReference Include="Metalama.Framework.Sdk" Version="$(MetalamaVersion)" />
-		<PackageReference Include="Metalama.LinqPad" Version="$(MetalamaVersion)" />
+		<PackageReference Include="Metalama.LinqPad" Version="$(MetalamaLinqPadVersion)" />
 		<PackageReference Include="Metalama.Extensions.Multicast" Version="$(MetalamaExtensionsVersion)" />
 		<PackageReference Include="Metalama.Extensions.DependencyInjection" Version="$(MetalamaExtensionsVersion)" />
 		<PackageReference Include="Metalama.Extensions.DependencyInjection.ServiceLocator" Version="$(MetalamaExtensionsVersion)" />
 		<PackageReference Include="Metalama.Extensions.Metrics" Version="$(MetalamaExtensionsVersion)" />
+		<PackageReference Include="Metalama.Extensions.Architecture" Version="$(MetalamaExtensionsVersion)" />
 		<PackageReference Include="Metalama.Compiler" Version="$(MetalamaCompilerVersion)" />
 		<PackageReference Include="Metalama.Migration" Version="$(MetalamaMigrationVersion)" />
 	</ItemGroup>

@@ -6,7 +6,7 @@ using System;
 
 namespace Doc.InheritedTypeLevel
 {
-    [Inherited]
+    [Inheritable]
     internal class InheritedAspectAttribute : TypeAspect
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )

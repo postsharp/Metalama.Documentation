@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Doc.DeepClone
 {
-    [Inherited]
+    [Inheritable]
     public class DeepCloneAttribute : TypeAspect
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )

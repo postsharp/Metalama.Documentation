@@ -61,11 +61,7 @@ namespace BuildMetalamaDocumentation
 
         public override bool Restore( BuildContext context, BuildSettings settings )
         {
-            return ToolInvocationHelper.InvokeTool(
-                context.Console,
-                "msbuild",
-                "/t:Restore \"docfx\\DocFx.csproj\"",
-                context.RepoDirectory );
+            return DotNetHelper.Run(context, settings, Path.Combine( context.RepoDirectory, "docfx\\DocFx.csproj" ), "restore");
         }
     }
 }

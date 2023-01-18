@@ -50,7 +50,7 @@ object DebugBuild : BuildType({
     }
 
     requirements {
-        equals("env.BuildAgentType", "caravela03")
+        equals("env.BuildAgentType", "caravela04")
     }
 
     features {
@@ -67,6 +67,10 @@ object DebugBuild : BuildType({
                 }
 
         snapshot(AbsoluteId("Metalama_MetalamaExtensions_DebugBuild")) {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+
+        snapshot(AbsoluteId("Metalama_MetalamaLinqPad_DebugBuild")) {
                      onDependencyFailure = FailureAction.FAIL_TO_START
                 }
 
@@ -105,7 +109,7 @@ object PublicBuild : BuildType({
     }
 
     requirements {
-        equals("env.BuildAgentType", "caravela03")
+        equals("env.BuildAgentType", "caravela04")
     }
 
     features {
@@ -122,6 +126,10 @@ object PublicBuild : BuildType({
                 }
 
         snapshot(AbsoluteId("Metalama_MetalamaExtensions_PublicBuild")) {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+
+        snapshot(AbsoluteId("Metalama_MetalamaLinqPad_PublicBuild")) {
                      onDependencyFailure = FailureAction.FAIL_TO_START
                 }
 
@@ -151,7 +159,7 @@ object PublicDeployment : BuildType({
     }
 
     requirements {
-        equals("env.BuildAgentType", "caravela03")
+        equals("env.BuildAgentType", "caravela04")
     }
 
     features {
@@ -172,6 +180,10 @@ object PublicDeployment : BuildType({
                 }
 
         snapshot(AbsoluteId("Metalama_MetalamaExtensions_PublicDeployment")) {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+
+        snapshot(AbsoluteId("Metalama_MetalamaLinqPad_PublicDeployment")) {
                      onDependencyFailure = FailureAction.FAIL_TO_START
                 }
 

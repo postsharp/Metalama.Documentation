@@ -5,7 +5,7 @@ using System;
 
 namespace Doc.InheritedMethodLevel
 {
-    [Inherited]
+    [Inheritable]
     internal class InheritedAspectAttribute : OverrideMethodAspect
     {
         public override dynamic OverrideMethod()

@@ -32,7 +32,8 @@ var product = new Product( Dependencies.MetalamaDocumentation )
         // Metalama is a a transitive dependency.
     Dependencies = new[] { Dependencies.PostSharpEngineering,
          Dependencies.MetalamaMigration,
-         Dependencies.MetalamaExtensions },
+         Dependencies.MetalamaExtensions,
+         Dependencies.MetalamaLinqPad },
     AdditionalDirectoriesToClean = new[] { "docfx\\obj", "docfx\\_site" },
 
     // Disable automatic build triggers.
@@ -48,8 +49,7 @@ var product = new Product( Dependencies.MetalamaDocumentation )
                     //TODO
                     new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
                 } )
-            } ) ),
-    BuildAgentType = "caravela03"
+            } ) )
 };
 
 product.PrepareCompleted += OnPrepareCompleted;

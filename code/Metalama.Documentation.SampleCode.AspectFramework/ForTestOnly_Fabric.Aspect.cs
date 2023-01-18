@@ -19,7 +19,7 @@ namespace Doc.ForTestOnly_Fabric
 
             public override void AmendNamespace( INamespaceAmender amender )
             {
-                amender.With( x => x ).ValidateReferences( this.ValidateReference, ReferenceKinds.All );
+                amender.Outbound.ValidateReferences( this.ValidateReference, ReferenceKinds.All );
             }
 
             private void ValidateReference( in ReferenceValidationContext context )
