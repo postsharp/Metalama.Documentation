@@ -20,7 +20,7 @@
         <MetalamaMigrationVersion Condition="$(VcsBranch)!=''">branch:dev</MetalamaMigrationVersion>
         <MetalamaExtensionsVersion>0.5.80-preview</MetalamaExtensionsVersion>
         <MetalamaExtensionsVersion Condition="$(VcsBranch)!=''">branch:dev</MetalamaExtensionsVersion>
-        <MetalamaLinqPadVersion>TODO</MetalamaLinqPadVersion>
+        <MetalamaLinqPadVersion>0.5.80-preview</MetalamaLinqPadVersion>
         <MetalamaLinqPadVersion Condition="$(VcsBranch)!=''">branch:dev</MetalamaLinqPadVersion>
 		<NuGetCommandLineVersion>6.2.2</NuGetCommandLineVersion>
     </PropertyGroup>
