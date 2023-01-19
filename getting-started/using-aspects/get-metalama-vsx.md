@@ -52,7 +52,7 @@ Finally, when the wizard is done installing it will show the result as shown bel
 
 ![metalama_install_done](../../images/metalama_install_done.png)
 
-### Checking installation from Visual Studio
+## Checking installation from Visual Studio
 To check that the installation had been successfull go to the same visual studio marketplace again via the Extensions menu and then try to locate "Metalama". If the installation had been successfull you should see the following screenshot with a green tick mark on the top right indicating that indeed the extension have been installed correctly!
 
 ![metalama_already_installed](../../images/metalama_already_installed.png)
