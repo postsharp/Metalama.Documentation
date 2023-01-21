@@ -8,7 +8,7 @@ namespace Doc
     {
       get
       {
-        return this._field;
+        return _field;
       }
       set
       {
@@ -21,7 +21,7 @@ namespace Doc
     {
       get
       {
-        return this._property;
+        return _property;
       }
       set
       {
