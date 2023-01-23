@@ -22,7 +22,7 @@ namespace Doc.LogMethodAndProperty
     {
       get
       {
-        return this._property;
+        return _property;
       }
       set
       {
@@ -36,7 +36,7 @@ namespace Doc.LogMethodAndProperty
     {
       get
       {
-        return this._field;
+        return _field;
       }
       set
       {
