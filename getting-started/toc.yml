@@ -1,0 +1,50 @@
+items:
+- name: Chapter 1 Meta programming  
+  topicUid: meta-programming
+- name: Chapter 2 Introduction to Metalama
+  topicUid:intro-to-metalama
+  items:
+    - name:Metalama Demos 
+      topicUid: metalama-demos
+      items:
+        - name: Logging Demo 
+          topicUid: metalama-logging-demo
+        - name: Code Validation Demo
+          topicUid: metalama-validation-demo
+        - name: Code Assistance Demo 
+          topicUid: code-assistance-demo 
+
+- name: Chapter 3 Using Aspects 
+  topicUid: get-using-aspects
+  items:
+    - name: Getting Metalama extension
+      topicUid: get-metalama-vsx
+    - name: Getting Metalama Nuget package
+      topicUid: get-metalama-nuget
+    - name: Creating a retry aspect 
+      topicUid: create-retry-aspect 
+    - name: Adding aspects 
+      topicUid: adding-aspects
+      items:
+         - name: Using Custom attributes
+           topicUid: adding-aspects-custom-attr
+         - name: Using Context menu 
+           topicUid: adding-aspects-context-menu
+         - name: Using Inheritance
+           topicUid: adding-aspects-using-inheritance
+    - name: Metalama diff 
+      topicUid: preview-metalama-diff
+    - name: Debugging code with aspects
+      topicUid: lama-debug-demo
+    - name: Aspect ordering
+      topicUid: aspect-ordering
+    - name: Automatic Aspect application 
+      topicUid: automatic-aspect-application
+      items: 
+         - name: Via Fabric
+           topicUid: aspect-application-via-fabric
+         - name: Seeing details via CodeLense 
+           topicUid: codelense-aspect-details
+
+
+
