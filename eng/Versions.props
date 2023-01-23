@@ -14,10 +14,10 @@
         <PostSharpEngineeringVersion>1.0.114-preview</PostSharpEngineeringVersion>
         <MetalamaVersion>0.5.81-preview</MetalamaVersion>
         <MetalamaCompilerVersion>4.4.1014-preview</MetalamaCompilerVersion>
-        <MetalamaMigrationVersion>0.5.81-preview</MetalamaMigrationVersion>
-        <MetalamaExtensionsVersion>0.5.81-preview</MetalamaExtensionsVersion>
-        <MetalamaLinqPadVersion>0.5.81-preview</MetalamaLinqPadVersion>
-		<NuGetCommandLineVersion>6.2.2</NuGetCommandLineVersion>
+        <MetalamaMigrationVersion>0.5.82-preview</MetalamaMigrationVersion>
+        <MetalamaExtensionsVersion>0.5.82-preview</MetalamaExtensionsVersion>
+        <MetalamaLinqPadVersion>0.5.82-preview</MetalamaLinqPadVersion>
+        <NuGetCommandLineVersion>6.2.2</NuGetCommandLineVersion>
     </PropertyGroup>
 
     <!-- Import overrides for the local build -->
