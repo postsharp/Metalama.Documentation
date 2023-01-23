@@ -9,18 +9,18 @@ If you report a Metalama bug, when logs are not enough to understand the issue, 
 > [!WARNING]
 > Process dumps may contain a copy of your source code. Although we will handle process dumps as confidential material, your company may not allow you to send us a process dump.
 
-If you are using Metalama on build server, the process of enabling process dumps is described in <xref:troubleshooting-unattended-build>.
+If you are using Metalama on a build server, the process of enabling process dumps is described in <xref:troubleshooting-unattended-build>.
 
-## Step 1. Install metalama-config
+## Step 1. Install the Metalama global tools
 
-Install `metalama-config` as described in <xref:dotnet-tool>.
+Install the `metalama` global tool as described in <xref:dotnet-tool>.
 
 ## Step 2. Edit diagnostics.json
 
 Execute the command:
 
 ```
-metalama-config diag edit
+metalama config edit diagnostics
 ```
 
 This should open a `diagnostics.json` file in your default editor.
@@ -36,33 +36,22 @@ In the next example, Metalama is configured to capture a process dump for the co
 
 ```json
 {
- "miniDump": {
+ // ...
+"crashDumps": {
     "processes": {
-      "Other": false,
-      "Compiler": true,
-      "DevEnv": false,
-      "RoslynCodeAnalysisService": false,
       "Rider": false,
+      "RoslynCodeAnalysisService": false,
+      "CodeLensService": false,
+      "Other": false,
+      "TestHost": false,
+      "DevEnv": false,
+      "OmniSharp": false,
       "BackstageWorker": false,
-      "MetalamaConfig": false,
-      "TestHost": false
-    },
-    "flags": [
-      "WithDataSegments",
-      "WithProcessThreadData",
-      "WithHandleData",
-      "WithPrivateReadWriteMemory",
-      "WithUnloadedModules",
-      "WithFullMemoryInfo",
-      "WithThreadInfo",
-      "FilterMemory",
-      "WithoutAuxiliaryState",
-      "IgnoreInaccessibleMemory"
-    ],
-    "ExceptionTypes": [
-      "*"
-    ]
- }
+      "DotNetTool": false,
+      "Compiler": false
+    }
+// ...
+    }
 }
 ```
 
