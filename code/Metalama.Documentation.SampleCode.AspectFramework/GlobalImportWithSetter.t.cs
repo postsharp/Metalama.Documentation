@@ -4,16 +4,17 @@ namespace Doc.GlobalImportWithSetter
 {
   internal class Foo
   {
+    private IFormatProvider? _formatProvider1;
     [Import]
     private IFormatProvider? _formatProvider
     {
       get
       {
-        var service = _formatProvider_Source;
+        var service = _formatProvider1;
         if (service == null)
         {
           service = (IFormatProvider? )ServiceLocator.ServiceProvider.GetService(typeof(IFormatProvider));
-          this._formatProvider_Source = service;
+          this._formatProvider1 = service;
         }
         return service;
       }
@@ -22,7 +23,6 @@ namespace Doc.GlobalImportWithSetter
         throw new NotSupportedException();
       }
     }
-    private IFormatProvider? _formatProvider_Source { get; set; }
   }
   internal class ServiceLocator : IServiceProvider
   {
