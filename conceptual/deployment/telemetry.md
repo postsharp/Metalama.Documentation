@@ -42,6 +42,8 @@ Using this approach, you can easily disable telemetry for build agents, or you c
 
 ## Resetting your device id
 
+Metalama Telemetry uses a randomly generated GUID to uniquely identify your device. You can reset this ID at any time. After you reset your ID, PostSharp Technologies will no longer be able to correlate past and future reports.
+
 1. Install Metalama Command Line Tools as described in <xref:dotnet-tool>.
 2. Execute the following commands:
 
