@@ -41,8 +41,9 @@
           "**.md",
           "toc.yml"
         ],
-        "src": "../conceptual"
+        "src": "../content"
       }
+     
     ],
     "resource": [
       {
@@ -51,6 +52,7 @@
         ],
         "src": "../conceptual"
       }
+	  
     ],
     "overwrite": [
       {

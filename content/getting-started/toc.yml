@@ -2,9 +2,9 @@ items:
 - name: Chapter 1 Meta programming  
   topicUid: meta-programming
 - name: Chapter 2 Introduction to Metalama
-  topicUid:intro-to-metalama
+  topicUid: intro-to-metalama
   items:
-    - name:Metalama Demos 
+    - name: Metalama Demos 
       topicUid: metalama-demos
       items:
         - name: Logging Demo 
