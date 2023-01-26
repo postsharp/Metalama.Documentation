@@ -2,8 +2,6 @@ items:
 - name: Conceptual Documentation
   topicUid: conceptual
   items:
-    - name: Getting Started
-      topicUid: getting-started
     - name: Requirements
       topicUid: requirements
     - name: Deployment

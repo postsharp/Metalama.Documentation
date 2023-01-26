@@ -1,6 +1,6 @@
 items:
-- name: Getting started with Metalama 
-  topicUid: getting-started-with-metalama
+- name: Getting Started Guide
+  topicUid: getting-started
   items:
   - name: Chapter 1 Meta programming  
     topicUid: meta-programming

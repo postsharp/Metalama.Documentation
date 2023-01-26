@@ -1,5 +1,20 @@
-- name: Getting Started
+items:
+- name: Reviewer Guide
+  href: reviewing/toc.yml
+- name: Quick Start Guide
   href: getting-started/toc.yml
 - name: Conceptual Documentation
   href: conceptual/toc.yml
-          
+- name: API Documentation          
+  topicUid: api
+  items:
+    - name: Aspect API
+      topicUid: aspect-api
+    - name: Extensions API
+      topicUid: extensions-api      
+    - name: Introspection API
+      topicUid: introspection-api      
+    - name: Advanced API
+      topicUid: advanced-api      
+    - name: PostSharp API Migration
+      topicUid: migration-api      

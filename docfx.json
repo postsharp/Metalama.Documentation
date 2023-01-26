@@ -48,7 +48,8 @@
     "resource": [
       {
         "files": [
-          "**.png"
+          "**.png",
+          "api.xml"
         ],
         "src": "content"
       }
