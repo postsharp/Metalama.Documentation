@@ -1,33 +1,18 @@
 items:
-- name: Getting Started Guide
+- name: Quick Start Guide
   topicUid: getting-started
   items:
-  - name: Chapter 1 Meta programming  
-    topicUid: meta-programming
-  - name: Chapter 2 Introduction to Metalama
-    topicUid: intro-to-metalama
-    items:
-      - name: Metalama Demos 
-        topicUid: metalama-demos
-        items:
-          - name: Logging Demo 
-            topicUid: metalama-logging-demo
-          - name: Code Validation Demo
-            topicUid: metalama-validation-demo
-          - name: Code Assistance Demo 
-            topicUid: code-assistance-demo 
-
-  - name: Chapter 3 Using Aspects 
+  - name: Using Aspects 
     topicUid: get-using-aspects
     items:
-      - name: Getting Metalama extension
+      - name: Installing the IDE tooling
         topicUid: get-metalama-vsx
-      - name: Getting Metalama Nuget package
+      - name: Adding the NuGet package
         topicUid: get-metalama-nuget
       - name: Creating a retry aspect 
         topicUid: create-retry-aspect 
       - name: Adding aspects 
-        topicUid: adding-aspects
+        topicUid: get-adding-aspects
         items:
           - name: Using Custom attributes
             topicUid: adding-aspects-custom-attr

@@ -1,0 +1,20 @@
+<redirect>
+    <!-- This is a list of rules that are applied when an article is requested but cannot be found.
+         To match, a rule should fulfil two conditions: the `from` attribute should match the article path, and the new 
+         article path specified by the `to` attribute should exist. The first rule that fulfils the two conditions wins. -->
+
+    <!-- All articles have been moved to the /conceptual directory -->
+    <rule from="^(.*)$" to="conceptual/$1"/>
+
+    <!-- The name of articles that have the same name as the parent directory has been simplified-->
+    <rule from="^([\w-]+)/\1$" to="conceptual/$1" />
+    <rule from="^([\w-]+)/([\w-]+)/\2$" to="conceptual/$1/$2"/>
+    <rule from="^([\w-]+)/([\w-]+)/([\w-]+)/\3$" to="conceptual/$1/$2/$3" />
+    <rule from="^([\w-]+)/([\w-]+)/([\w-]+)/([\w-]+)/\4$" to="conceptual/$1/$2/$3/$4" />
+
+    <!-- Articles that end by 'index' have been simplified -->
+    <rule from="^index$" to="/conceptual" />
+    <rule from="^([\w-]+)/index" to="conceptual/$1"/>
+    <rule from="^([\w-]+)/([\w-]+)/index$" to="conceptual/$1/$2" />
+    <rule from="^([\w-]+)/([\w-]+)/([\w-]+)/index$" to="conceptual/$1/$2/$3" />
+</redirect>

@@ -1,7 +1,7 @@
 ---
 uid: conceptual
 ---
-# Metalama Conceptual Documentation
+# Conceptual Documentation
 
 
 | Chapter              | Description                                                                                                              |

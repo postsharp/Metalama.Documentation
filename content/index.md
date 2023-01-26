@@ -1,54 +1,35 @@
-# Metalama
+---
+uid: index
+---
 
-Metalama is a meta-programming framework for C# based on Roslyn, Microsoft's managed compiler platform.
+# Metalama Documentation
 
-## Features
+Welcome to the documentation of Metalama, a code quality and productivity improvement framework for C#.
 
-Metalama has the following principal features:
+If you don't know Metalama yet and want to have an understanding, it's best to start with the <xref:reviewing>.
 
-| Feature | Description |
-|---------|-------------|
-| __Aspect-Oriented Programming__ | Encapsulate repetitive patterns of code (such as logging, caching, INotifyPropertyChanged, multi-threading) into executable artifacts named _aspects_ that add behaviors to your code at compile time, so that your source code remains clean and succinct &mdash; easier to read and maintain.
-| __Code Generation__             | Generate repetitive code, in the editor or at compile time, instead of writing it by hand. With Metalama, you can author your own code actions or refactorings that are available in the lightbulb or screwdriver menu.
-| __Code Validation__             | Verify that hand-written code complies to team rules and conventions. Metalama lets you report diagnostics (e.g. warnings or errors) or suppress source code diagnostics simply.
+## Documentation Structure
 
-
-```mermaid
-graph TD
-
-Aspects[Aspect &<br>Fabrics] -- report and supress --> Diagnostics
-Aspects -- suggest --> CodeFixes[Code Fixes &<br>Refactorings]
-CodeFixes -- transform<br>at design time --> SourceCode[Source Code] 
-Aspects -- transform<br>at compile time --> TransformedCode[Compiled Code]
-
-```
-
-## Documentation structure
-
-| Site | Description |
+| Book | Description |
 |------|-------------|
-| <xref:conceptual> | Conceptual and procedural documentation |
-| <xref:aspect-api> | Aspect API reference |
-| <xref:introspection-api> | Introspection API reference |
-| <xref:advanced-api> | Advanced API reference |
+| <xref:reviewing> | Read this book if you are considering using Metalama in a project and want to have an overview of features, requirements and limitations. Some articles are dedicated to security, deployment and privacy aspects of the product. |
+| <xref:getting-started> | This book gives you a quick start to Metalama. It is written for two audiences: developers who want to use _existing_ aspects in their projects, and developers who want to create _new_ aspects. |
+| <xref:conceptual> | This is the exhaustive and precise developer's documentation. |
+| <xref:api> | This book contains the API documentation generated from the source code. |
 
-The conceptual documentation is hosted on https://github.com/postsharp/Metalama.Documentation. You can suggest improvements and corrections using the discussions board, and even submit a pull request.
+## Giving Feedback
+
+If you have any feedback regarding Metalama, please [open an issue](https://github.com/postsharp/Metalama/issues/new),
+ [start a discussion](https://github.com/postsharp/Metalama/discussions/new), or contact us directly at hello@postsharp.net.
+
+This documentation, except the API documentation, is hosted on https://github.com/postsharp/Metalama.Documentation. You can suggest improvements and corrections using the discussions board, and even submit a pull request.
 
 
-## Examples
+## Other Resources
+
+See also the following resources:
 
 | Link                                                              | Description |
 |-------------------------------------------------------------------|------------------------
 | [Try Metalama](https://try.metalama.net) | Try Metalama from your browser.|
 | [Metalama.Samples](https://github.com/postsharp/Metalama.Samples) | A dozen of open-source examples in a GitHub repo. |
-
-
-## Licensing
-
-Metalama is currently released under the terms of the Evaluation License of PostSharp.
-
-## Feedback
-
-If you have any feedback regarding Metalama, please [open an issue](https://github.com/postsharp/Metalama/issues/new),
- [start a discussion](https://github.com/postsharp/Metalama/discussions/new), or contact us directly at hello@postsharp.net.
-
