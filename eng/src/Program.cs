@@ -25,7 +25,7 @@ var product = new Product( Dependencies.MetalamaDocumentation )
         {
             CanFormatCode = true, BuildMethod = BuildMethod.Test,
         },
-        new DocFxSolution( "docfx\\docfx.json" )
+        new DocFxSolution( "docfx.json" )
     },
     PublicArtifacts = Pattern.Create(
         docPackageFileName ),
@@ -34,7 +34,7 @@ var product = new Product( Dependencies.MetalamaDocumentation )
          Dependencies.MetalamaMigration,
          Dependencies.MetalamaExtensions,
          Dependencies.MetalamaLinqPad },
-    AdditionalDirectoriesToClean = new[] { "docfx\\obj", "docfx\\_site" },
+    AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
 
     // Disable automatic build triggers.
     Configurations = Product.DefaultConfigurations
