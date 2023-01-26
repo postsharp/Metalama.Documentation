@@ -101,11 +101,11 @@ Every test includes:
 
 For instance, suppose that we are testing the following aspect. This file would typically be included in a class library project.
 
-[!include[Main](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Testing.TheAspect.cs)]
+[!include[Main](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/Testing.TheAspect.cs)]
 
 To test this aspect, we create a test file with the following content:
 
-[!include[Main](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Testing.cs)]
+[!include[Main](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/Testing.cs)]
 
 ### Restricting the compared region of transformed code
 
@@ -152,7 +152,7 @@ You can find the output code, transformed by your aspects, at two locations:
 
 For the example above, the test output is the following:
 
-[!include[Testing](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Testing.t.cs)]
+[!include[Testing](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/Testing.t.cs)]
 
 Verify that the output code matches your expectations. If necessary, fix your aspect and run the test again. Repeat as many times as necessary.
 
@@ -250,7 +250,7 @@ JetBrains tools do not support the customized compile-time test framework. As a 
 
 If you have a large number of tests and want to see a hierarchical view, you can create, in each directory you want, a file named `_Runner.cs`, with the following content (in the namespace of your choice):
 
-[!include[Test Runner](../../../code/Metalama.Documentation.SampleCode.AspectFramework/_Runner.cs)]
+[!include[Test Runner](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/_Runner.cs)]
 
 The `[CurrentDirectory]` attribute will automatically provide test data for all files located under the directory containing the `_Runner.cs` file as well as any child directory.
 

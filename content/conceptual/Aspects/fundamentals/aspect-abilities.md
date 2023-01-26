@@ -105,6 +105,6 @@ By default, an aspect class is represented in the IDE by the name of this class 
 
 The following example shows an aspect that targets methods, fields and properties with a single implementation class.
 
-[!include[Aspect Targeting Methods, Fields and Properties](../../../code/Metalama.Documentation.SampleCode.AspectFramework/LogMethodAndProperty.cs)]
+[!include[Aspect Targeting Methods, Fields and Properties](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/LogMethodAndProperty.cs)]
 
 ## Code model versioning

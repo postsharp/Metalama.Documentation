@@ -19,7 +19,7 @@ Before moving forward, let's illustrate this concept with an example. The follow
 
 In the below code, compile-time code is highlighted <span class="metalamaClassification_CompileTime">differently</span>, so you can see which part of the code executes at compile time and which part executes at run time. In the different tabs on the example, you can see the aspect code (with the template), the target code (to which the aspect is applied) and the transformed code, i.e. the target code transformed by the aspect.
 
-[!include[Simple Logging](../../../code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs)]
+[!include[Simple Logging](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs)]
 
 
 > [!NOTE]

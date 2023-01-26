@@ -31,11 +31,11 @@ The `Amend` methods accept a parameter of type <xref:Metalama.Framework.Fabrics.
 
 The following example shows how to add a `Log` aspect to all methods in the current project.
 
-[!include[Project Fabric](../../code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric.cs)]
+[!include[Project Fabric](../../../code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric.cs)]
 
 ### Example: type fabric fabric
 
-[!include[Type Fabric](../../code/Metalama.Documentation.SampleCode.AspectFramework/TypeFabric.cs)]
+[!include[Type Fabric](../../../code/Metalama.Documentation.SampleCode.AspectFramework/TypeFabric.cs)]
 
 ## Option 3. Programmatically, from another aspect
 

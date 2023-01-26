@@ -23,7 +23,7 @@ You can achieve this thanks to the <xref:Metalama.Framework.Aspects.OverrideMeth
 
 The following code shows an empty <xref:Metalama.Framework.Aspects.OverrideMethodAspect>, which does not do anything:
 
-[!include[Empty OverrideMethodAttribute](../../../code/Metalama.Documentation.SampleCode.AspectFramework/EmptyOverrideMethodAttribute.cs)]
+[!include[Empty OverrideMethodAttribute](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/EmptyOverrideMethodAttribute.cs)]
 
 ## Accessing the metadata and parameters of the overridden method
 
@@ -39,7 +39,7 @@ To access the parameter _values_, you need to access <xref:Metalama.Framework.As
 
 The following code writes a message to the system console before and after the method execution. The text includes the name of the target method.
 
-[!include[Simple Logging](../../../code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs)]
+[!include[Simple Logging](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs)]
 
 ## Invoking the method with different arguments
 
@@ -159,7 +159,7 @@ As you can see, the buffering of iterators is performed by the <xref:Metalama.Fr
 
 The following example demonstrates the behavior of the default template when applied to different kinds of methods. Note that the output of iterators methods is buffered. This is visible in the program output.
 
-[!include[Default template applied to all kinds of methods](../../../code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodDefaultTemplateAllKinds.cs)]
+[!include[Default template applied to all kinds of methods](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodDefaultTemplateAllKinds.cs)]
 
 ### Implementing a specific template for async or iterator methods
 
@@ -186,7 +186,7 @@ Note that there is no obligation to implement these methods as `async` methods o
 
 The following example derives from the previous one and implements all specific template methods instead of just the default template methods. Note that now the output of iterators is no longer buffered because this new version of the aspect supports iterator streaming.
 
-[!include[Specific templates for all kinds of methods](../../../code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodSpecificTemplateAllKinds.cs)]
+[!include[Specific templates for all kinds of methods](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodSpecificTemplateAllKinds.cs)]
 
 ### Using specific templates for non-async awaitable or non-yield enumerable methods
 
@@ -199,7 +199,7 @@ In the above sections, we have always derived our aspect class from the <xref:Me
 
 Here is the simplified source code of the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> class:
 
-[!include[Main](../../../code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs)]
+[!include[Main](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs)]
 
 
 In many cases, you will want your aspect to override _many_ methods. For instance, a _synchronized object_ aspect has to override all public instance methods and wrap them with a `lock` statement.
@@ -224,7 +224,7 @@ The following aspect wraps all instance methods with a `lock( this )` statement.
 > [!NOTE]
 > In a production-ready implementation, you should not lock `this` but a private field. You can introduce this field as described in <xref:introducing-members>. A product-ready implementation should also wrap properties.
 
-[!include[Synchronized](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Synchronized.cs)]
+[!include[Synchronized](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/Synchronized.cs)]
 
 ### Specifying templates for async and iterator methods
 

@@ -35,7 +35,7 @@ To create an aspect that validates references:
 
 The following example implements a custom attribute `[ForTestOnly]` that enforces that the target of this attribute can be used only from a namespace that ends with `.Tests.`.
 
-[!include[For Test Only, Aspect Implementation](../../code/Metalama.Documentation.SampleCode.AspectFramework/ForTestOnly.cs)]
+[!include[For Test Only, Aspect Implementation](../../../code/Metalama.Documentation.SampleCode.AspectFramework/ForTestOnly.cs)]
 
 
 ##  Validating references from a fabric
@@ -59,7 +59,7 @@ To validate code from a fabric, the steps are almost the same as from an aspect.
 
 The following example implements the same logic above, but using a fabric.
 
-[!include[For Test Only](../../code/Metalama.Documentation.SampleCode.AspectFramework/ForTestOnly_Fabric.cs)]
+[!include[For Test Only](../../../code/Metalama.Documentation.SampleCode.AspectFramework/ForTestOnly_Fabric.cs)]
 
 
 ## Cross-project validation

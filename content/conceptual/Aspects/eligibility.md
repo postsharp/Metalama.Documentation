@@ -26,7 +26,7 @@ A number of predefined eligibility conditions are implemented by the <xref:Metal
 
 ### Example
 
-[!include[Eligibility](../../code/Metalama.Documentation.SampleCode.AspectFramework/Eligibility.cs)]
+[!include[Eligibility](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Eligibility.cs)]
 
 ## When to emit custom errors instead?
 
@@ -48,4 +48,4 @@ Adding a dependency injection aspect to an `int` or `string` field does not make
 
 The following example expands the previous one, reporting custom errors when the target class does not define a field `logger` of type `TextWriter`.
 
-[!include[Eligibility and Validation](../../code/Metalama.Documentation.SampleCode.AspectFramework/EligibilityAndValidation.cs)]
+[!include[Eligibility and Validation](../../../code/Metalama.Documentation.SampleCode.AspectFramework/EligibilityAndValidation.cs)]

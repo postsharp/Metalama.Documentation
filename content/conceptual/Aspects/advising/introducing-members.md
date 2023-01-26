@@ -75,7 +75,7 @@ The following example shows an aspect that implements the `ToString` method. It 
 
 Note that this aspect will replace any hand-written implementation of `ToString`, which is not desirable. It can only be avoided by introducing the method programmatically and conditionally (TODO 28807).
 
-[!include[ToString](../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceMethod.cs)]
+[!include[ToString](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceMethod.cs)]
 
 ## Introducing members programmatically
 
@@ -109,7 +109,7 @@ Modify the name and signature of the introduced declaration as needed using the 
 
 The following aspect introduces an `Update` method that assigns all writable fields in the target type. The method signature is dynamic: there is one parameter per writable field or property.
 
-[!include[Update method](../../../code/Metalama.Documentation.SampleCode.AspectFramework/UpdateMethod.cs)]
+[!include[Update method](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/UpdateMethod.cs)]
 
 ## Overriding existing implementations
 
@@ -139,11 +139,11 @@ When you introduce a member to a type, you will often want to access it from tem
 
 ### Option 1. Access the aspect template member
 
-[!include[Introduce OnPropertyChanged](../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged1.cs)]
+[!include[Introduce OnPropertyChanged](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged1.cs)]
 
 ### Option 2. Use `meta.This` and write dynamic code
 
-[!include[Introduce OnPropertyChanged](../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged3.cs)]
+[!include[Introduce OnPropertyChanged](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged3.cs)]
 
 ### Option 3. Use the invoker of the builder object
 
@@ -154,7 +154,7 @@ If none of the approaches above offer you the required flexibility (typically be
 
 For details, see <xref:Metalama.Framework.Code.Invokers>
 
-[!include[Introduce OnPropertyChanged](../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged2.cs)]
+[!include[Introduce OnPropertyChanged](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged2.cs)]
 
 ## Referencing introduced members from source code
 

@@ -49,4 +49,4 @@ The `Reset` template method accepts two compile-time parameters:
 * A standard parameter `field` that contains the field or property to which the template relates.
 * A _type_ parameter `T` that contains the type of the field or property. This type parameter is used to generate the `default(T)` syntax, where `T` is replaced by the actual field or property when the template is expanded.
 
-[!include[Generate Reset Methods](../../../code/Metalama.Documentation.SampleCode.AspectFramework/GenerateResetMethods.cs)]
+[!include[Generate Reset Methods](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/GenerateResetMethods.cs)]

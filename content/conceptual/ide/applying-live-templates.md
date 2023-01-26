@@ -18,7 +18,7 @@ Add the aspect library to your project using a `<ProjectReference>` or a `<Packa
 ## Step 2. Apply the live template
 
 1. Position the caret on the name of the declaration to which you want to apply the aspect. 
-2. Click on the lightbulb or refactoring icon, and choose Apply live template_.
+2. Click on the lightbulb or refactoring icon, and choose to Apply live template_.
     ![Screenshot](LiveTemplate1.png)
 
 3. Select the aspect that you want to apply
