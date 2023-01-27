@@ -69,7 +69,7 @@ We recommend the following approach to consume a configuration property:
 
 In the following example, the `Log` aspect reads the default category from the MSBuild project. It assumes the property has been exposed using the approach described above.
 
-[!include[Consuming Property](../../../code/Metalama.Documentation.SampleCode.AspectFramework/ConsumingProperty.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/ConsumingProperty.cs name="Consuming Property"]
 
 
 ## Exposing a configuration API
@@ -86,4 +86,4 @@ To create a configuration API:
 
 ### Example
 
-[!include[Consuming Property](../../../code/Metalama.Documentation.SampleCode.AspectFramework/AspectConfiguration.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/AspectConfiguration.cs name="Consuming Property"]

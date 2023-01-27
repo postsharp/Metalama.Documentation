@@ -30,5 +30,5 @@ To advise a type using a type fabric:
 
 The following example demonstrates a type fabric that introduces 10 methods to the target type.
 
-[!include[Type Fabric Adding Advice](../../../code/Metalama.Documentation.SampleCode.AspectFramework/AdvisingTypeFabric.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/AdvisingTypeFabric.cs name="Type Fabric Adding Advice"]
 

@@ -51,7 +51,7 @@ If the condition of an `if` statement is a compile-time expression, the `if` sta
 
 In the following example, the aspect prints a different string for static methods than for instance ones.
 
-[!include[Compile-Time If](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeIf.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeIf.cs name="Compile-Time If"]
 
 ### Compile-time foreach
 
@@ -64,7 +64,7 @@ If the expression of a `foreach` statement is a compile-time expression, the `fo
 
 The following aspect uses a `foreach` loop to print the value of each parameter of the method to which it is applied.
 
-[!include[Compile-Time If](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeForEach.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeForEach.cs name="Compile-Time If"]
 
 ### No compile-time for, while and goto
 
@@ -100,7 +100,7 @@ There are a few exceptions to this rule:
 
 The following example shows a simple _Retry_ aspect. The maximum number of attempts can be configured by setting a property of the custom attribute. This property is compile-time.
 
-[!include[Retry](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/Retry.cs)]
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Retry.cs name="Retry"]
 
 
 ## Custom compile-time types and methods

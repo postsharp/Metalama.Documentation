@@ -28,7 +28,7 @@ To add an aspect from a fabric:
 
 In the following example, a type fabric adds a logging aspect to all public methods in the type.
 
-[!include[Type Fabric Adding Aspects](../../../code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric.cs name="Type Fabric Adding Aspects"]
 
 
 ## Example: adding an aspect from a type fabric
@@ -36,4 +36,4 @@ In the following example, a type fabric adds a logging aspect to all public meth
 In the following example, a type fabric adds a logging aspect to all public methods in the type.
 
 <!--- TODO: make class partial and split into different file -->
-[!include[Type Fabric Adding Aspects](../../../code/Metalama.Documentation.SampleCode.AspectFramework/TypeFabric.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/TypeFabric.cs name="Type Fabric Adding Aspects"]

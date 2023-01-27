@@ -34,13 +34,13 @@ To consume a dependency from an aspect:
 
 The following example uses the `Microsoft.Extensions.Hosting`, typical to .NET Core applications, to build an application and inject services. The `Program.Main` method builds the host, which then instantiates our `Worker` class. We add a `[Log]` aspect to this class. The `Log` aspect class has a field of type `IMessageWriter`, marked with the <xref:Metalama.Extensions.DependencyInjection.IntroduceDependencyAttribute> custom attribute. As you can see in the transformed code, this field is introduced into the `Worker` class and pulled from the constructor.
 
-[!include[Dependency Injection](../../../code/Metalama.Documentation.SampleCode.DependencyInjection/LogDefaultFramework.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.DependencyInjection/LogDefaultFramework.cs name="Dependency Injection"]
 
 ### Example: ServiceLocator
 
 What follows is the same example as the previous one, but using the `ServiceLocator` pattern instead of pulling dependencies from the constructor.
 
-[!include[Service Locator](../../../code/Metalama.Documentation.SampleCode.DependencyInjection.ServiceLocator/LogServiceLocator.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.DependencyInjection.ServiceLocator/LogServiceLocator.cs name="Service Locator"]
 
 
 ## Selecting a dependency injection framework
@@ -78,4 +78,4 @@ The following example shows how to implement the right code generation pattern f
 Our implementation of <xref:Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework> implements the <xref:Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionFramework.CanHandleDependency*> method, and returns `true` only when the dependency is of type `ILogger`. The only difference in the default implementation strategy is the parameter type.
 
 
-[!include[Custom Adapter](../../../code/Metalama.Documentation.SampleCode.DependencyInjection/LogCustomFramework.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.DependencyInjection/LogCustomFramework.cs name="Custom Adapter"]

@@ -41,13 +41,13 @@ Your template code can access its context using the following meta APIs:
 
 The following aspect throws an exception if the field, property, or parameter to which it is applied receives a null value, or if a null value is assigned to an `out` parameter or to the return value.
 
-[!include[NotNull](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/NotNull.cs)]
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/NotNull.cs name="NotNull"]
 
 ### Example: Trim
 
 The following aspect normalizes the received value by calling the `string.Trim` method. The only difficulty is that it needs to choose between `value.Trim` and the null-conditional `value?.Trim` according to the nullability of the target.
 
-[!include[Trim](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/Trim.cs)]
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Trim.cs name="Trim"]
 
 
 ### Contract directions
@@ -76,4 +76,4 @@ The following snippet shows how to automatically add precondition checks for all
 The fabric adds a method-level aspect to all exposed methods. Then, the aspect adds individual contracts using the <xref:Metalama.Framework.Advising.IAdviceFactory.AddContract*> method.
 
 
-[!include[NotNull Fabric](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/NotNullFabric.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/NotNullFabric.cs name="NotNull Fabric"]

@@ -20,13 +20,13 @@ The simple way to initialize a field or property introduced by an aspect is to a
 
 In the following example, the aspect introduces an `Id` property of type `Guid`, and initializes it to a new unique value.
 
-[!include[Introduce Id](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceId.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceId.cs name="Introduce Id"]
 
 #### Example: initializing with a template
 
 You can also use the T# template language inside field and property analyzers. The aspect in the following example introduces a property that is initialized to the build configuration and target framework.
 
-[!include[Introduce Build Info](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/BuildInfo.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/BuildInfo.cs name="Introduce Build Info"]
 
 ### Initialization of programmatic advice
 
@@ -36,7 +36,7 @@ If you use the programmatic advice <xref:Metalama.Framework.Advising.IAdviceFact
 
 The example in the following aspect introduces a field using the <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceField*> programmatic advice and sets its initializer expression to an array that contains the name of all methods in the target type.
 
-[!include[Programmatic Initializer](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/ProgrammaticInitializer.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/ProgrammaticInitializer.cs name="Programmatic Initializer"]
 
 ## Before any object constructor
 
@@ -53,7 +53,7 @@ If the type does not contain any constructor, a default constructor will be crea
 
 The aspect in the following aspect registers any new aspect of the target class in a registry of live instances. When an instance is garbage-collected, it is automatically removed from the registry. The aspect injects the registration logic into the constructor of the target class.
 
-[!include[Register Instance](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/RegisterInstance.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/RegisterInstance.cs name="Register Instance"]
 
 
 ## Before a specific object constructor

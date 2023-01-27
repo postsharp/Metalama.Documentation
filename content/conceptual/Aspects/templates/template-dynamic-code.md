@@ -39,7 +39,7 @@ You can use `meta.RunTime( expression )` to convert the result of a compile-time
 
 The following aspect causes converts the following build-time values into a run-time expression: a `List<string>`, a `Guid` and a `System.Type`.
 
-[!include[Dynamic](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/ConvertToRunTime.cs)]
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ConvertToRunTime.cs name="Dynamic"]
 
 ## Dynamic code
 
@@ -94,7 +94,7 @@ meta.This.OnPropertyChanged( meta.Property.Name );
 ### Example 
 In the following aspect, the logging aspect uses `meta.This`, which returns a `dynamic` object, to access the type being enhanced. The aspect assumes that the target type defines a field named `_logger`, and that the type of this field has a method named `WriteLine`.
 
-[!include[meta.This](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/DynamicTrivial.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/DynamicTrivial.cs name="meta.This"]
 
 ## Generating calls to the code model
 
@@ -106,7 +106,7 @@ For details, see the documentation of the <xref:Metalama.Framework.Code.Invokers
 
 The following example is a variation of the previous one. The aspect no longer assumes that the logger field is named `_logger`. Instead, it looks for any field of type `TextWriter`. Because it does not know the name of the field upfront, the aspect must use `Invokers.Final.GetValue` to get an expression that allows it to access the field. `Invokers.Final.GetValue` returns a `dynamic` object.
 
-[!include[Invokers](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/DynamicCodeModel.cs)]
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/DynamicCodeModel.cs name="Invokers"]
 
 
 ## Generating run-time arrays
@@ -143,7 +143,7 @@ Instead of generating a string as an array separately and using `string.Format`,
 
 The following example shows how an <xref:Metalama.Framework.Code.SyntaxBuilders.InterpolatedStringBuilder> can be used to automatically implement the `ToString` method.
 
-[!include[ToString](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/ToString.cs)]
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ToString.cs name="ToString"]
  
 > [!div id="parsing" class="anchor"]
 
@@ -162,7 +162,7 @@ Sometimes it is easier to generate the run-time code as a simple text instead of
 
 In the following example, the `_logger` field is accessed through a parsed expression.
 
-[!include[ParseExpression](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/ParseExpression.cs)]
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ParseExpression.cs name="ParseExpression"]
 
 ## Capturing run-time expressions into compile-time objects
 
@@ -201,4 +201,4 @@ You can have classes that exist both at compile and run time. To allow Metalama 
 
 ### Example
 
-[!include[Custom Syntax Serializer](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/CustomSyntaxSerializer.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/CustomSyntaxSerializer.cs name="Custom Syntax Serializer"]

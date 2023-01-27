@@ -1,6 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
-
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
 using Microsoft.DocAsCode.Common;
 using Microsoft.DocAsCode.Dfm;
 using Microsoft.DocAsCode.MarkdownLite;
@@ -15,30 +13,23 @@ using System.Threading;
 
 namespace Metalama.Documentation.DfmExtensions;
 
-public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRenderer, DfmIncludeBlockToken,
-    MarkdownBlockContext>
+internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer, SampleToken, MarkdownBlockContext>
 {
     private static int _nextId = 1;
+    public override string Name => nameof(SampleRenderer);
 
-    public override string Name => nameof(SampleRendererPart);
-
-    static SampleRendererPart()
+    public override bool Match( IMarkdownRenderer renderer, SampleToken token, MarkdownBlockContext context )
     {
-//            Debugger.Launch();
-    }
-
-    public override bool Match( IMarkdownRenderer renderer, DfmIncludeBlockToken token, MarkdownBlockContext context )
-    {
-        return TryParseToken( token, out _ );
+        return true;
     }
 
     private static string HtmlEncode( string s )
     {
         var stringBuilder = new StringBuilder( s.Length );
 
-        foreach ( var c in s )
+        foreach (var c in s)
         {
-            switch ( c )
+            switch (c)
             {
                 case '<':
                     stringBuilder.Append( "&lt;" );
@@ -65,52 +56,10 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
         return stringBuilder.ToString();
     }
 
-    private static bool TryParseToken(
-        DfmIncludeBlockToken token,
-        out ( string FilePath, string Fragment, NameValueCollection Query, string Id ) parsed )
-    {
-        var targetFileName = UriUtility.GetPath( token.Src );
-
-        if ( !targetFileName.EndsWith( ".cs" ) )
-        {
-            parsed = default;
-
-            return false;
-        }
-
-        var parameters = new NameValueCollection();
-
-        if ( UriUtility.HasQueryString( token.Src ) )
-        {
-            foreach ( var part in UriUtility.GetQueryString( token.Src ).Split( '&' ) )
-            {
-                var nameValuePair = part.Split( '=' );
-
-                parameters.Add( nameValuePair[0], nameValuePair.Length > 1 ? nameValuePair[1] : null );
-            }
-        }
-
-        var fragment = UriUtility.GetFragment( token.Src );
-        var id = "code-" + Path.GetFileNameWithoutExtension( targetFileName ).ToLowerInvariant();
-
-        if ( !string.IsNullOrEmpty( fragment ) )
-        {
-            id += "-" + fragment;
-        }
-
-        parsed = (targetFileName, fragment, parameters, id);
-
-        return true;
-    }
 
     private static string FindParentDirectory( string directory, Predicate<string> predicate )
     {
-        if ( directory == null )
-        {
-            return null;
-        }
-
-        if ( predicate( directory ) )
+        if (predicate( directory ))
         {
             return directory;
         }
@@ -118,37 +67,56 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
         {
             var parentDirectory = Path.GetDirectoryName( directory );
 
+            if (parentDirectory == null)
+            {
+                throw new InvalidOperationException( $"Cannot get the directory of '{directory}'." );
+            }
+
             return FindParentDirectory( parentDirectory, predicate );
         }
     }
 
     public override StringBuffer Render(
         IMarkdownRenderer renderer,
-        DfmIncludeBlockToken token,
+        SampleToken token,
         MarkdownBlockContext context )
     {
-        TryParseToken( token, out var source );
+        var baseDirectory = (string) context.Variables["BaseFolder"];
+        var path = token.Src.Replace( "~", baseDirectory );
+        var id = "code-" + Path.GetFileNameWithoutExtension( path ).ToLowerInvariant();
 
-        string CreateCodeBlock( string content ) => $"<div id={source.Id} class=\"anchor\">{content}</div>";
+
+
+        string CreateCodeBlock( string content )
+        {
+            return $"<div id={id} class=\"anchor\">{content}</div>";
+        }
 
         var referencingFile =
-            Path.GetFullPath( Path.Combine( (string) context.Variables["BaseFolder"], token.SourceInfo.File ) );
+            Path.GetFullPath( Path.Combine( baseDirectory, token.SourceInfo.File ) );
 
-        var shortFileNameWithoutExtension = Path.GetFileNameWithoutExtension( source.FilePath );
-        var targetPath = Path.GetFullPath( Path.Combine( Path.GetDirectoryName( referencingFile ), source.FilePath ) );
+        var shortFileNameWithoutExtension = Path.GetFileNameWithoutExtension( path );
+        var targetPath = Path.GetFullPath( Path.Combine( Path.GetDirectoryName( referencingFile )!, path ) );
         var programOutputPath = Path.ChangeExtension( targetPath, ".t.txt" );
 
         // Find the directories.
+        var targetDirectory = Path.GetDirectoryName( targetPath );
+
+        if (targetDirectory == null)
+        {
+            throw new InvalidOperationException( $"Cannot get the directory of '{targetPath}'." );
+        }
+
         var projectDir = FindParentDirectory(
-            Path.GetDirectoryName( targetPath ),
+            targetDirectory,
             directory => Directory.GetFiles( directory, "*.csproj" ).Length > 0 );
 
         var gitDirectory = FindParentDirectory(
-            Path.GetDirectoryName( targetPath ),
+            targetDirectory,
             directory => Directory.Exists( Path.Combine( directory, ".git" ) ) );
 
         var targetPathRelativeToProjectDir = GetRelativePath( projectDir, targetPath );
-        var sourceDirectoryRelativeToGitDir = GetRelativePath( gitDirectory, Path.GetDirectoryName( targetPath ) );
+        var sourceDirectoryRelativeToGitDir = GetRelativePath( gitDirectory, targetDirectory );
 
         var aspectHtmlPath = Path.GetFullPath(
             Path.Combine(
@@ -182,10 +150,10 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
                 "net6.0",
                 Path.ChangeExtension( targetPathRelativeToProjectDir, ".out.cs.html" ) ) );
 
-        var currentFile = ((ImmutableStack<string>) context.Variables["FilePathStack"]).Peek();
+        var currentFile = ( (ImmutableStack<string>)context.Variables["FilePathStack"] ).Peek();
         const string conceptualPrefix = "../conceptual/";
 
-        if ( currentFile.StartsWith( conceptualPrefix ) )
+        if (currentFile.StartsWith( conceptualPrefix ))
         {
             currentFile = currentFile.Substring( conceptualPrefix.Length );
         }
@@ -199,13 +167,13 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
                 currentFile.Length - ".md".Length )
             .ToLowerInvariant();
 
-        var permalink = "https://doc.metalama.net/" + currentFileId + "#" + source.Id;
+        var permalink = "https://doc.metalama.net/" + currentFileId + "#" + id;
 
         const string gitBranch = "master";
         const string gitHubProjectPath = "https://github.com/postsharp/Metalama.Documentation/blob/" + gitBranch;
         const string tryBaseUrl = "https://try.metalama.net/#";
 
-        if ( File.Exists( transformedHtmlPath ) )
+        if (File.Exists( transformedHtmlPath ))
         {
             // Create the tab group with the aspect, target, and transformed code.
 
@@ -236,7 +204,7 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
             string aspectCs;
             string gitUrlExtension;
 
-            if ( File.Exists( aspectHtmlPath ) )
+            if (File.Exists( aspectHtmlPath ))
             {
                 var aspectHtml = File.ReadAllText( aspectHtmlPath );
                 AppendTab( "aspect", "Aspect Code", aspectHtml );
@@ -251,7 +219,7 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
 
             AppendTab( "target", "Target Code", targetHtml );
 
-            if ( File.Exists( additionalHtmlPath ) )
+            if (File.Exists( additionalHtmlPath ))
             {
                 var programHtml = File.ReadAllText( additionalHtmlPath );
                 AppendTab( "additional", "Additional Code", programHtml );
@@ -261,9 +229,12 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
 
             AppendTab( "transformed", "Transformed Code", transformedHtml );
 
-            if ( File.Exists( programOutputPath ) )
+            if (File.Exists( programOutputPath ))
             {
-                AppendTab( "output", "Program Output", "<pre class=\"program-output\">" + File.ReadAllText( programOutputPath ) + "</pre>" );
+                AppendTab(
+                    "output",
+                    "Program Output",
+                    "<pre class=\"program-output\">" + File.ReadAllText( programOutputPath ) + "</pre>" );
             }
 
             // Create the links
@@ -301,7 +272,7 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
     <a class=""permalink"" href=""{permalink}"" target=""doc"">Permalink</a>
 </div>";
 
-            if ( File.Exists( targetHtmlPath ) )
+            if (File.Exists( targetHtmlPath ))
             {
                 // Write the syntax-highlighted HTML instead.
 

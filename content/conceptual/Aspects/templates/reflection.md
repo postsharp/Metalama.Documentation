@@ -25,6 +25,6 @@ To help in this situation, the  `Metalama.Framework.Code` exposes a few methods 
 
 The following examples introduce a method that returns a list of all methods, represented as a <xref:System.Reflection.MethodInfo> object, in the target type.
 
-[!include[Enumerate MethodInfos](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/EnumerateMethodInfos.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/EnumerateMethodInfos.cs name="Enumerate MethodInfos"]
 
 

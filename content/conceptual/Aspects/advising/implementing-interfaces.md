@@ -25,11 +25,11 @@ Implementing an interface in a complete dynamic manner, when the interface itsel
 
 The aspect in the next example introduces the `IDisposable` interface. The implementation of the `Dispose` method disposes of all fields or properties that implement the `IDisposable` interface.
 
-[!include[Disposable](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/Disposable.cs)]
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Disposable.cs name="Disposable"]
 
 ## Example: deep cloning
 
-[!include[Deep Clone](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/DeepClone.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/DeepClone.cs name="Deep Clone"]
 
 
 ## Referencing interface members in other templates

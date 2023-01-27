@@ -28,7 +28,7 @@ To define and use tags:
 
 ### Example
 
-[!include[Tags](../../../../code/Metalama.Documentation.SampleCode.AspectFramework/Tags.cs)]
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Tags.cs name="Tags"]
 
 ## Sharing state with the State property
 
