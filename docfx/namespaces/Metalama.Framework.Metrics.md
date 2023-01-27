@@ -47,19 +47,19 @@ classDiagram
         Metrics()$
     }
 
-    MetricsExtensions --> IMeasurable : extension methods
-    MetricsExtensions --> Metrics : exposes
-    Metrics --> IMetric~TMeasurable~ : exposes
+    IMeasurable <-- MetricsExtensions : extension methods
+    Metrics <-- MetricsExtensions : exposes
+    IMetric~TMeasurable~ <-- Metrics : exposes
 
-    IDeclaration --|> IMeasurable : implements
+    IMeasurable <|-- IDeclaration : implements
 
-    YourCustomMetric --<| IMetric~TMeasurable~ : implements
-    YourCustomMetricProvider --<| IMetricProvider~TMetric~ : implements
-    YourCustomMetricProvider --> YourCustomMetric : computes
+    IMetric~TMeasurable~ <|-- YourCustomMetric : implements
+    IMetricProvider~TMetric~ <|-- YourCustomMetricProvider : implements
+    YourCustomMetric <-- YourCustomMetricProvider : computes
 
-    IMetricProvider~TMetric~ --> IMetric~TMeasurable~ : computes
+    IMetric~TMeasurable~ <-- IMetricProvider~TMetric~ : computes
 
-    IMetric~TMeasurable~ --> IMeasurable : applies to
+    IMeasurable <-- IMetric~TMeasurable~ : applies to
 
    
 ```

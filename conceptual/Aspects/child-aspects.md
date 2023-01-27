@@ -14,10 +14,9 @@ An aspect can add other aspects to child declarations. Such aspects are called _
 
 An aspect can add child aspects from the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method by getting the <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound*?text=builder.Outbound> and then call and then <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect> method. To add child aspects on members of the current declaration, use the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> or <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> method, then call <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect>.
 
-> TODO: Example
 
 ## Accessing the Parent Aspect
 
 Parent aspects are listed in the <xref:Metalama.Framework.Aspects.IAspectPredecessor.Predecessors?text=IAspectPredecessor.Predecessors> property, which the child aspect can access from <xref:Metalama.Framework.Aspects.meta.AspectInstance?text=meta.AspectInstance> or <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectInstance?text=builder.AspectInstance>.
 
-> TODO: Example
+[comment]: # (TODO: example)

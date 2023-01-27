@@ -43,11 +43,11 @@ classDiagram
        RemoteAttributeAsync()
     }
 
-    CodeFixFactory --> ICodeFixBuilder : custom code fixes\nimplemented with
-    CodeFixFactory --> CodeFix : creates
-    CodeFix --> IDiagnostic: add to
-    CodeFix --> IDiagnosticSink: suggest to
-    IDiagnostic --> IDiagnosticSink: reports to
+    ICodeFixBuilder <-- CodeFixFactory : custom code fixes\nimplemented with
+    CodeFix <-- CodeFixFactory : creates
+    IDiagnostic <-- CodeFix: add to
+    IDiagnosticSink <-- CodeFix: suggest to
+    IDiagnosticSink <-- IDiagnostic: reports to
 ```
 
 ## Namespace members

@@ -34,7 +34,7 @@ classDiagram
         ServiceProvider
         TargetFramework
         TryGetProperty()
-        Extension~T~()
+        Extension< T >()
     }
 
     class IExecutionContext {
@@ -48,18 +48,18 @@ classDiagram
         Current
     }
 
+    class ProjectExtension {
+        IsReadOnly
+        Initialize()
+        MakeReadOnly()
+    }
+
     class IServiceProvider {
         GetService()
     }
 
     class IService {
 
-    }
-
-    class ProjectExtension {
-        IsReadOnly
-        Initialize()
-        MakeReadOnly()
     }
 
     class IExecutionScenario {
@@ -70,13 +70,13 @@ classDiagram
         CapturesNonObservableTransformations	
     }
 
-    ICompilation --> IProject : exposes
-    IProject --> IServiceProvider: exposes
-    IProject --> ProjectExtension: exposes
-    MetalamaExecutionContext --> IExecutionContext : exposes
-    IExecutionContext --> IServiceProvider: exposes
-    IExecutionContext --> IExecutionScenario: exposes
-    IServiceProvider --> IService: provides
+    IProject <-- ICompilation : exposes
+    IServiceProvider <-- IProject: exposes
+    ProjectExtension <-- IProject: exposes
+    IExecutionContext <-- MetalamaExecutionContext : exposes
+    IServiceProvider <-- IExecutionContext: exposes
+    IExecutionScenario <-- IExecutionContext: exposes
+    IService <-- IServiceProvider: provides
 
 ```
 

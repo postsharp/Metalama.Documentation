@@ -6,7 +6,7 @@ uid: dotnet-tool
 
 In order to register a license key or access some configuration settings, you need to install Metalama Command-Line Tools, an extension to the `dotnet` command-line utility.
 
-In order to install Metalama Command Line Tools:
+In order to install Metalama Command Line Tools, execute this at the command prompt:
 
 1. While Metalama is in preview, check the latest version of the `Metalama.Tool` package on [nuget.org](https://www.nuget.org/packages/Metalama.Tool).
 2. Execute this at the command prompt:

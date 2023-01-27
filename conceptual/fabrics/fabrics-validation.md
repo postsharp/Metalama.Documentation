@@ -4,7 +4,7 @@ uid: fabrics-validation
 
 # Validating Code with Fabrics
 
-(TODO)
+[comment]: # (TODO)
 
 ## Adding validators from a fabric
 

@@ -11,10 +11,11 @@ This feature is called _aspect inheritance_. It is activated by adding the <xref
 Aspect can be inherited along the following lines:
 
 * from a base class to derived classes;
-* from an interface to all classes implementing that interface;
-* from a `virtual` member to ts `override` members;
-* from an interface members to its implementations;
-* from a parameter of a `virtual` method to the corresponding parameter of all `override` methods;
+* from a base interface to derived interfaces;
+* from an interface to all types implementing that interface;
+* from a `virtual` or `abstract` member to its `override` members;
+* from an interface member to its implementations;
+* from a parameter of a `virtual` or `abstract` method to the corresponding parameter of all `override` methods;
 * from a parameter of an interface member to the corresponding parameter of all its implementations.
 
 ## Example
@@ -48,7 +49,7 @@ When an aspect is inherited, it has two sets of eligibility rules:
 
 When an inherited aspect is added to a target that matches the inheritance eligibility rules but not the normal eligibility rules, an _abstract_ aspect instance is added to that target. That is, <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method is _not_ called for that target, but only for derived targets.
 
-To define the eligibility rules that do not apply to the inheritance scenario, use the <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method, use the <xref:Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForInheritance*> method, for instance:
+To define the eligibility rules that do not apply to the inheritance scenario, use the <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method, use the <xref:Metalama.Framework.Eligibility.EligibilityExtensions.ExceptForInheritance*> method.
 
 ### Example
 

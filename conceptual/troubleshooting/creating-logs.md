@@ -7,7 +7,7 @@ uid: creating-logs
 If you report a Metalama bug, you may be asked to send Metalama logs. Here is how to produce them.
 
 
-## Step 1. Install metalama-config
+## Step 1. Install the metalama tool
 
 Install `metalama` .NET tool as described in <xref:dotnet-tool>.
 

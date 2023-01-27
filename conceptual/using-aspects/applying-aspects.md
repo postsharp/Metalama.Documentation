@@ -17,13 +17,13 @@ If the aspect derives from `System.Attribute`, you can apply it to your code as 
 
 ## Option 2. Programmatically, with a fabric
 
-(TODO: document better)
+[comment]: # (TODO: document better)
 
 Thanks to fabrics, you can add aspects to a large number of declarations without using custom attributes. You can add a fabric to a project, to a namespace, or to a type:
 
-* For a project-level fabric, add a type implementing the <xref:Metalama.Framework.Fabrics.ProjectFabric> class anywhere in the project, and implement the <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method.
-* For a namespace-level fabric, add a type implementing the <xref:Metalama.Framework.Fabrics.NamespaceFabric> class in the desired namespace, and implement the <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> method. 
-* For a type-level fabric, add a nested type implementing the <xref:Metalama.Framework.Fabrics.TypeFabric> class in the target type, and implement the <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method.
+* For a project-level fabric, add a type inheriting the <xref:Metalama.Framework.Fabrics.ProjectFabric> class anywhere in the project, and override the <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method.
+* For a namespace-level fabric, add a type inheriting the <xref:Metalama.Framework.Fabrics.NamespaceFabric> class in the desired namespace, and override the <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> method. 
+* For a type-level fabric, add a nested type inheriting the <xref:Metalama.Framework.Fabrics.TypeFabric> class in the target type, and override the <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method.
 
 The `Amend` methods accept a parameter of type <xref:Metalama.Framework.Fabrics.IAmender`1>, which allows you to add aspects by accessing the <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound*?text=amender.Outbound> property, selecting targets thanks to the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> or <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*>  methods, and finally calling the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> method.
 
@@ -33,7 +33,7 @@ The following example shows how to add a `Log` aspect to all methods in the curr
 
 [!include[Project Fabric](../../code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric.cs)]
 
-### Example: type fabric fabric
+### Example: type fabric
 
 [!include[Type Fabric](../../code/Metalama.Documentation.SampleCode.AspectFramework/TypeFabric.cs)]
 

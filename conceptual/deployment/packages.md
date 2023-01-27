@@ -53,7 +53,7 @@ graph TD
 ### Building, executing and testing
 
 ```mermaid
-graph TD
+graph BT
     YourCode -- references --> Metalama.Framework
     YourTests -- references --> YourCode
     Metalama.Framework -- references --> Metalama.Framework.Redist
@@ -103,7 +103,7 @@ graph TD
 ### Introspection
 
 ```mermaid
-graph TD
+graph BT
     Metalama.Framework.Introspection -- references --> Metalama.Framework
     Metalama.Framework.Workspaces -- references --> Metalama.Framework.Engine
     Metalama.Framework.Workspaces -- references --> Metalama.Framework.Introspection
@@ -145,7 +145,7 @@ graph TD
 
 
 ```mermaid
-graph TD
+graph BT
 
   YourPackage -- contains --> YourCode
   YourPackage -- contains --> YourWeaver

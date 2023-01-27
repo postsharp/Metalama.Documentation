@@ -11,7 +11,7 @@ In Metalama, aspects are _inlined_ into your source code: aspects provide code t
 
 By contrast, in PostSharp, aspects were run-time objects that were _invoked_ from your source code. To pass the execution context, such as the current instance and method arguments, from the source code to the aspect, PostSharp used heap-allocated objects such as `MethodExecutionArgs`. This implementation strategy caused a performance overhead, which is avoided in Metalama.
 
-Thanks to the T# templating technology, it is much easier in Metalama to build high-performance aspects. It is also much easier to understand the performance characteristics of an aspects because the generated code is immediately readable by a human.
+Thanks to the [T# templating technology](xref:templates), it is much easier in Metalama to build high-performance aspects. It is also much easier to understand the performance characteristics of an aspect because the generated code is immediately readable by a human.
 
 ## Broader platform support
 

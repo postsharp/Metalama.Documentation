@@ -73,15 +73,17 @@ The easiest way to introduce a member from an aspect is to implement this member
 
 The following example shows an aspect that implements the `ToString` method. It will return a string including the object type and a reasonably unique identifier for that object.
 
-Note that this aspect will replace any hand-written implementation of `ToString`, which is not desirable. It can only be avoided by introducing the method programmatically and conditionally (TODO 28807).
+Note that this aspect will replace any hand-written implementation of `ToString`, which is not desirable. Currently, this can only be avoided by introducing the method programmatically and conditionally.
+
+[comment]: # (TODO: #28807)
 
 [!include[ToString](../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceMethod.cs)]
 
 ## Introducing members programmatically
 
-The principal limitation of declarative introductions is that the name, type and signature of the introduced member must be known upfront. They cannot depend on the target aspect. The programmatic approach allows your aspect to completely customize the declaration based on the target code.
+The principal limitation of declarative introductions is that the name, type and signature of the introduced member must be known upfront. They cannot depend on the aspect target. The programmatic approach allows your aspect to completely customize the declaration based on the target code.
 
-There are three steps to introduce a member programmatically:
+There are two steps to introduce a member programmatically:
 
 ### Step 1. Implement the template
 
@@ -99,11 +101,9 @@ In your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAs
 
 - <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceField*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder>.
 
-A call to one of these methods creates a member that has the same characteristics as the template (name, signature, ...), taking into account the properties of the <xref:Metalama.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute. However, they return a _builder_ object that allows you to modify these characteristics.
+A call to one of these methods creates by default a member that has the same characteristics as the template (name, signature, ...), taking into account the properties of the <xref:Metalama.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute.
 
-### Step 3. Adjust the name and signature using the builder
-
-Modify the name and signature of the introduced declaration as needed using the _builder_ object returned by the advice factory method.
+To modify the name and signature of the introduced declaration, use the `buildMethod`, `buildProperty`, `buildEvent` or `buildField` parameter of the `Introduce*` method.
 
 ### Example: Update method
 
@@ -124,12 +124,12 @@ When you want to introduce a member to a type, it may happen that the same membe
 
 ### Accessing the overridden declaration
 
-Most of the time, when you override a method, you will want to invoke the aspect to invoke the base implementation. The same applies to properties and events. In plain C#, when you override a base-class member in a derived class, you call the member with the `base` prefix. A similar approach exists in Metalama.
+Most of the time, when you override a method, you will want to invoke the base implementation. The same applies to properties and events. In plain C#, when you override a base-class member in a derived class, you call the member with the `base` prefix. A similar approach exists in Metalama.
 
-- To invoke the base method or accessor with exactly the same arguments, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed*>.
+- To invoke the base method or accessor with exactly the same arguments, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed>.
 - To invoke the base method with different arguments, use <xref:Metalama.Framework.Code.Advised.IAdvisedMethod.Invoke(System.Object[])?text=meta.Target.Method.Invoke>.
 - To call the base property getter or setter, use <xref:Metalama.Framework.Code.IExpression.Value?text=meta.Property.Value>.
-- To access the base event, use <xref:Metalama.Framework.Code.Advised.IAdvisedEvent.AddMethod?text=meta.Event.AddMethod.Invoke*>.
+- To access the base event, use <xref:Metalama.Framework.Code.Advised.IAdvisedEvent.AddMethod?text=meta.Event.AddMethod.Invoke>.
 
 [comment]: # (TODO: When it will work, Disposable example.)
 
@@ -152,13 +152,13 @@ If none of the approaches above offer you the required flexibility (typically be
 > [!NOTE]
 > Declarations introduced by an aspect or aspect layer are not visible in the `meta` code model exposed to in the same aspect or aspect layer. To reference builders, you have to reference them differently. For details, see <xref:sharing-state-with-advice>.
 
-For details, see <xref:Metalama.Framework.Code.Invokers>
+For details, see <xref:Metalama.Framework.Code.Invokers>.
 
 [!include[Introduce OnPropertyChanged](../../../code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged2.cs)]
 
 ## Referencing introduced members from source code
 
-If you want the _source_ code (not your aspect code) to reference declarations introduced by your aspect, the _user_ of your aspect needs to make the target types `partial`. Without this keyword, the introduced declarations will not be visible at design time in syntax completion, and the IDE will report errors. Note that the _compiler_ will not complain because Metalama replaces the compiler, but the IDE will because it does not know about Metalama, and here Metalama, and therefore your aspect, has to follow the rules of the C# compiler. How inconvenient it may be, there is nothing you as an aspect author, or us as the authors of Metalama, can do.
+If you want the _source_ code (not your aspect code) to reference declarations introduced by your aspect, the _user_ of your aspect needs to make the target types `partial`. Without this keyword, the introduced declarations will not be visible at design time in syntax completion, and the IDE will report errors. Note that the _compiler_ will not complain because Metalama replaces the compiler, but the IDE will because it does not know about Metalama, and here Metalama, and therefore your aspect, has to follow the rules of the C# compiler. However inconvenient it may be, there is nothing you as an aspect author, or us as the authors of Metalama, can do.
 
 If the user does not add the `partial` keyword, Metalama will report a warning and offer a code fix.
 

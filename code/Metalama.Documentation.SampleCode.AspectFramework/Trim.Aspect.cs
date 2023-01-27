@@ -12,7 +12,7 @@ namespace Doc.Trim
     {
         public override void Validate( dynamic? value )
         {
-            if ( ((IHasType) meta.Target.Declaration).Type.IsNullable.GetValueOrDefault() )
+            if ( ((IHasType) meta.Target.Declaration).Type.IsNullable == true )
             {
                 value = value?.Trim();
             }

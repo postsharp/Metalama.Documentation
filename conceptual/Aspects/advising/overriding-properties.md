@@ -19,8 +19,8 @@ In <xref:overriding-methods>, you have learned how to wrap an existing method wi
 
 > [!WARNING]
 > When you apply an aspect to a field, Metalama will automatically transform the field into a property. If the field is used by reference using `ref`, `out` and `in` keywords, it will result in a compile-time error.
-> (TODO #28909)
 
+[comment]: # (TODO: #28909)
 
 ### Example: An empty OverrideFieldOrPropertyAspect aspect
 
@@ -35,14 +35,13 @@ If you have only worked with methods so far, you may be already used to using th
 
 If you need to get the property value from the setter, or if you need to set the property value to something else than the `value` parameter, you can do it by getting or setting the `meta.Target.FieldOrProperty.Value` property.
 
-TODO: example
-
+[comment]: # (TODO: example)
 
 ## Accessing the metadata of the overridden field or property
 
-The metadata of the field or property being overridden are available from the template accessors on the <xref:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty?text=meta.Target.FieldOrProperty> property . This property gives you all information about the name, type, parameters and custom attributes of the field or property. For instance, the member name is available on `meta.Target.FieldOrProperty.Name` and its type on `meta.Target.FieldOrProperty.Type`.
+The metadata of the field or property being overridden are available from the template accessors on the <xref:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty?text=meta.Target.FieldOrProperty> property. This property gives you all information about the name, type and custom attributes of the field or property. For instance, the member name is available on `meta.Target.FieldOrProperty.Name` and its type on `meta.Target.FieldOrProperty.Type`.
 
-The _value_ of the field or property is available on <xref:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty?text=meta.Target.FieldOrProperty.Value>. Your aspect can read and write this property, as long as the field or the property is writable. To determine if the field is `readonly` or if the property has a `set` accessor, you can use <xref:Metalama.Framework.Code.IFieldOrPropertyOrIndexer.Writeability?meta.Target.FieldOrProperty.Writeability>.
+The _value_ of the field or property is available on <xref:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty?text=meta.Target.FieldOrProperty.Value>. Your aspect can read and write this property, as long as the field or the property is writable. To determine if the field is `readonly` or if the property has a `set` accessor, you can use <xref:Metalama.Framework.Code.IFieldOrPropertyOrIndexer.Writeability?text=meta.Target.FieldOrProperty.Writeability>.
 
 ### Example: Resolving dependencies on the fly
 
@@ -61,18 +60,15 @@ This example builds over the previous one, but the dependency is stored in the f
 
 ## Overriding several fields or properties from the same aspect
 
-Just like for methods, to override one or more fields or properties from a single aspect, your aspect needs to implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.Advice`. Your implementation must then call the <xref: Metalama.Framework.Advising.IAdviceFactory.OverrideFieldOrProperty*> method.
+Just like for methods, to override one or more fields or properties from a single aspect, your aspect needs to implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.Advice`. Your implementation must then call the <xref:Metalama.Framework.Advising.IAdviceFactory.Override(Metalama.Framework.Code.IFieldOrProperty,System.String,System.Object)?text=builder.Advice.Override> method.
 
-There are two overloads of this method:
-
-* One overload accepts a _property_ template.
-* The second overload accepts one or two _accessor_ templates, i.e. one template _method_ for the getter and/or one other method for the setter.
+Alternatively, you can call the <xref:Metalama.Framework.Advising.IAdviceFactory.OverrideAccessors(Metalama.Framework.Code.IFieldOrPropertyOrIndexer,Metalama.Framework.Advising.GetterTemplateSelector@,System.String,System.Object,System.Object)?text=builder.Advice.OverrideAccessors> method, which accepts one or two _accessor_ templates, i.e. one template _method_ for the getter and/or one other method for the setter.
 
 ### Using a property template
 
-The _first argument_ of `OverrideFieldOrProperty` is the <xref:Metalama.Framework.Code.IFieldOrProperty> that you want to override. This field or property must be in the type being targeted by the current aspect instance.
+The _first argument_ of `Override` is the <xref:Metalama.Framework.Code.IFieldOrProperty> that you want to override. This field or property must be in the type being targeted by the current aspect instance.
 
-The _second argument_ of `OverrideFieldOrProperty` is the name of the template property. This property must exist in the aspect class and, additionally:
+The _second argument_ of `Override` is the name of the template property. This property must exist in the aspect class and, additionally:
 
 * the template property must be annotated with the `[Template]` attribute,
 * the template property must be of type `dynamic?` (_dynamically-typed_ template), or a type that is compatible with the type of the overridden property (_strongly-typed_ template).
@@ -97,12 +93,12 @@ The following aspect can be applied to fields of properties of type `string`. It
 ### Using an accessor template
 
 
-Advising fields or properties with the `OverrideFieldOrProperty` has the following limitations over the use of `OverrideAccessors`:
+Advising fields or properties with the `Override` method has the following limitations over the use of `OverrideAccessors`:
 
 * You cannot choose a template for each accessor separately.
-* You cannot have generic templates.  (Not yet implemented in `Overrideccessors` anyway.)
+* You cannot have generic templates.  (Not yet implemented in `OverrideAccessors` anyway.)
 
-To alleviate these limitations, you can use the method <xref:Metalama.Framework.Advising.IAdviceFactory.Override*> and provide one or two method templates: a getter template and/or a setter template.
+To alleviate these limitations, you can use the method <xref:Metalama.Framework.Advising.IAdviceFactory.OverrideAccessors(Metalama.Framework.Code.IFieldOrPropertyOrIndexer,Metalama.Framework.Advising.GetterTemplateSelector@,System.String,System.Object,System.Object)> and provide one or two method templates: a getter template and/or a setter template.
 
 The templates must fulfill the following conditions:
 
@@ -110,4 +106,4 @@ The templates must fulfill the following conditions:
 * The getter template must be of signature `T Getter()`, where `T` is either `dynamic` or a type compatible with the target field or property.
 * The setter template must be of signature `void Setter(T value)`, where the name `value` of the first parameter is mandatory.
 
-TODO: example
+[comment]: # (TODO: example)

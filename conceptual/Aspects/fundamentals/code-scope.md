@@ -46,9 +46,9 @@ However, some methods of aspect classes are purely compile-time. They cannot be 
 When Metalama compiles your project, one of the first steps is to separate the compile-time code from the run-time code. From your initial project, Metalama creates two compilations: 
 
 1. The _compile-time_ compilation contains only compile-time code. It is compiled against .NET Standard 2.0. It is then loaded within the compiler or IDE process, and executed at compile or design time. 
-2. The _run-time_ compilation contains the run-time code. It also contains the compile-time _declarations_, but their implementation is replaced by a `throw NotSupportedException()`.
+2. The _run-time_ compilation contains the run-time code. It also contains the compile-time _declarations_, but their implementation is replaced by `throw new NotSupportedException()`.
 
-During compilation, Metalama compiles the T# templates into standard C# code that generates the run-time code using the Roslyn API. This generated code, as well as any non-template compile-time code, is then zipped and embedded in the run-time assembly as a managed resource. 
+During compilation, Metalama compiles the [T# templates](xref:templates) into standard C# code that generates the run-time code using the Roslyn API. This generated code, as well as any non-template compile-time code, is then zipped and embedded in the run-time assembly as a managed resource.
 
 > [!WARNING]
 > *Intellectual property alert.* The _source_ of your compile-time code is embedded in clear text, without any obfuscation, in the run-time binary assemblies as a managed resource.

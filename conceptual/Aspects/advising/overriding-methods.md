@@ -23,6 +23,8 @@ You can achieve this thanks to the <xref:Metalama.Framework.Aspects.OverrideMeth
 
 The following code shows an empty <xref:Metalama.Framework.Aspects.OverrideMethodAspect>, which does not do anything:
 
+[comment]: # (TODO: show only the aspect, when supported)
+
 [!include[Empty OverrideMethodAttribute](../../../code/Metalama.Documentation.SampleCode.AspectFramework/EmptyOverrideMethodAttribute.cs)]
 
 ## Accessing the metadata and parameters of the overridden method
@@ -67,10 +69,10 @@ The following table lists the transformations applied to the `meta.Proceed()` ex
    <tr>
       <th>Target Method</th>
       <th>
-        Transformation of `"meta.Proceed()"`
+        Transformation of `meta.Proceed();`
       </th>
       <th>
-         Transformation of `"return result;"`
+         Transformation of `return result;`
       </th>
    </tr>
    <tr>
@@ -82,7 +84,7 @@ The following table lists the transformations applied to the `meta.Proceed()` ex
       </td>
 
       <td>
-         `return result`
+         `return result;`
       </td>
    </tr>
     <tr>
@@ -94,7 +96,7 @@ The following table lists the transformations applied to the `meta.Proceed()` ex
         returning a `List<T>`
       </td>
       <td>
-         `return result`
+         `return result;`
       </td>
    </tr>
    <tr>
@@ -106,50 +108,48 @@ The following table lists the transformations applied to the `meta.Proceed()` ex
         returning a `List<T>.Enumerator`
       </td>
       <td>
-         `return result`
+         `return result;`
       </td>
    </tr>
     <tr>
       <td>
-         `IAsyncEnumerable<T> async`
+         `async IAsyncEnumerable<T>`
       </td>
       <td>
          `await RunTimeAspectHelper.BufferAsync( meta.Proceed() )`
         returning an <xref:Metalama.Framework.RunTime.AsyncEnumerableList`1>
       </td>
       <td>
-         ```cs
-         await foreach (var r in result)
-         {
-               yield return r;
-         }
+        <pre class="lang-csharp">
+await foreach (var r in result)
+{
+      yield return r;
+}
 
-         yield break;
-         ```         
+yield break;</pre>
       </td>
    </tr>
      <tr>
       <td>
-         `IAsyncEnumerator<T> async`
+         `async IAsyncEnumerator<T>`
       </td>
       <td>
         `await RunTimeAspectHelper.BufferAsync( meta.Proceed() )`
         returning an <xref:Metalama.Framework.RunTime.AsyncEnumerableList`1.AsyncEnumerator>
       </td>
       <td>
-         ```cs
-         await using ( result )
-         {
-               while (await result.MoveNextAsync())
-               {
-                  yield return result.Current;
-               }
-         }
-         yield break;
-         ``` 
+        <pre class="lang-csharp">
+await using ( result )
+{
+      while (await result.MoveNextAsync())
+      {
+         yield return result.Current;
+      }
+}
+yield break;</pre>
       </td>
    </tr>
-   </table>
+</table>
 
 
 As you can see, the buffering of iterators is performed by the <xref:Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer*> and <xref:Metalama.Framework.RunTime.RunTimeAspectHelper.BufferAsync*> methods.
@@ -199,12 +199,14 @@ In the above sections, we have always derived our aspect class from the <xref:Me
 
 Here is the simplified source code of the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> class:
 
+[comment]: # (TODO: show only the aspect, when supported)
+
 [!include[Main](../../../code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs)]
 
 
 In many cases, you will want your aspect to override _many_ methods. For instance, a _synchronized object_ aspect has to override all public instance methods and wrap them with a `lock` statement.
 
-To override one or more methods, your aspect needs to implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke <xref:Metalama.Framework.Advising.IAdviceFactory.Override*?text=builder.Advice.Override> method.
+To override one or more methods, your aspect needs to implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke the <xref:Metalama.Framework.Advising.IAdviceFactory.Override(Metalama.Framework.Code.IMethod,Metalama.Framework.Advising.MethodTemplateSelector@,System.Object,System.Object)?text=builder.Advice.Override> method.
 
 The _first argument_ of `Override` is the <xref:Metalama.Framework.Code.IMethod> that you want to override. This method must be in the type being targeted by the current aspect instance.
 
@@ -228,6 +230,6 @@ The following aspect wraps all instance methods with a `lock( this )` statement.
 
 ### Specifying templates for async and iterator methods
 
-Instead of providing a single template method, you can provide several of them and let the framework choose which one is the most suitable. The principle of this feature is described above. Instead of passing a string to the second argument of `OverrideMethod`, you can pass a <xref:Metalama.Framework.Aspects.MethodTemplateSelector> and initialize it with many templates. See the reference documentation of <xref:Metalama.Framework.Advising.IAdviceFactory.Override*?> and <xref:Metalama.Framework.Aspects.MethodTemplateSelector> for details.
+Instead of providing a single template method, you can provide several of them and let the framework choose which one is the most suitable. The principle of this feature is described above. Instead of passing a string to the second argument of `OverrideMethod`, you can pass a <xref:Metalama.Framework.Advising.MethodTemplateSelector> and initialize it with many templates. See the reference documentation of <xref:Metalama.Framework.Advising.IAdviceFactory.Override*?displayProperty=nameWithType> and <xref:Metalama.Framework.Advising.MethodTemplateSelector> for details.
 
-TODO: example
+[comment]: # (TODO: example)

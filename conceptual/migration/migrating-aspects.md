@@ -40,14 +40,14 @@ Verify in <xref:migration-feature-status> if your projects are using a feature o
 You will know that you will be done with the migration when your projects will compile without any new warnings and your unit tests will be green. So, before you start, make sure that your projects are all in a clean state:
 
 * Create a new branch for this work in your source repository.
-* Verify that the projects build without error. If possible, address any warning in your code.
+* Verify that the projects build without error. If possible, address any warnings in your code.
 * Verify that all unit tests are successful.
 * When your projects are free of errors, warnings, and failed tests, commit and push.
 
 
 ## Step 4. Change PostSharp package references to Metalama.Migration and check errors
 
-In all projects, replace all references to the `PostSharp` package with references to the `Metalama.Migration` project. You can probably do this with a "Replace in Files" operation unless you are using `packages.config`. In this case, consider migrating your projects to the new `PackageReference` format. If you cannot, use the NuGet Package Manager UI, uninstall the `PostSharp` package and install the `Metalama.Migration` package.
+In all projects, replace all references to the `PostSharp` package with references to the `Metalama.Migration` package. You can probably do this with a "Replace in Files" operation unless you are using `packages.config`. In this case, consider migrating your projects to the new `PackageReference` format. If you cannot, use the NuGet Package Manager UI, uninstall the `PostSharp` package and install the `Metalama.Migration` package.
 
 The `Metalama.Migration` package contains the public API of PostSharp, but not its implementation. Instead, it contains `[Obsolete]` annotations with indications about the equivalent class or method in Metalama.
 
@@ -72,7 +72,7 @@ Take the list that you created in step 1 and start from the most important aspec
 
 Metalama is not a mere update of PostSharp, it has a completely different architecture and approach. Therefore, you will need to rewrite every single aspect from scratch. 
 
-To figure out what is the Metalama equivalent to any PostSharp API, you can get indications from the `[Obsolete]` warnings reported by the `Metalama.Migration` package on your code. You can also find this documentation in <xref:aspect-testing>. We do not attempt to write here a tutorial about porting a specific aspect to Metalama because, if you have gone through Step 0 as we suggested, you should already know that at this point. As we mentioned, it is better to learn Metalama _before_ doing the actual migration work.
+To figure out what is the Metalama equivalent to any PostSharp API, you can get indications from the `[Obsolete]` warnings reported by the `Metalama.Migration` package on your code. We do not attempt to write here a tutorial about porting a specific aspect to Metalama because, if you have gone through Step 0 as we suggested, you should already know that at this point. As we mentioned, it is better to learn Metalama _before_ doing the actual migration work.
 
 We strongly recommend writing aspect tests for each aspect that you are implementing.
 
@@ -88,7 +88,7 @@ For type-level multicasting, if you have built multicasting into your Metalama a
 
 ## Step 8. Migrate configuration
 
-If you have configuration or multicasting in a PostSharp like `postsharp.config` or `MyProject.psproj`, they should be migrated to project fabrics as described in <xref:fabrics-configuring>.
+If you have configuration or multicasting in a PostSharp file like `postsharp.config` or `MyProject.psproj`, they should be migrated to project fabrics as described in <xref:fabrics-configuring>.
 
 For details, see <xref:migrating-configuration>.
 

@@ -59,10 +59,10 @@ In the next example, Metalama is configured to capture a process dump for the co
 
 Restart the logged processes:
 
- * If you are logging the `Compiler` process, restart the Roslyn compiler processes.
+ * If you are logging the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
  * If you are logging any design-time process, restart the IDE.
 
-Execute the sequence of actions to be logged.
+Execute the sequence of actions that triggers the issue.
 
 > [!WARNING]
 > Do not forget to disable the setting after you are done.
@@ -76,5 +76,5 @@ Upload this file to an online storage service like OneDrive.
 
 NEVER share the process dump URL publicly on a service like GitHub Issues.
 
-Instead, send us the hyperlink by email.
+Instead, send us the hyperlink by [email](mailto:hello@postsharp.net).
 

@@ -31,10 +31,10 @@ Technically speaking, a contract is a piece of code that you inject after _recei
 
 Your template code can access its context using the following meta APIs:
 
-* `meta.Target.Declaration` returns the target parameter, property. or field.
+* `meta.Target.Declaration` returns the target parameter, property or field.
 * `meta.Target.FieldOrProperty` returns the target property or field, but will throw an exception if the contract is applied to a parameter.
 * `meta.Target.Parameter` returns the parameter (including the parameter representing the return value), but will throw an exception if the contract is applied to a field or property.
-* `meta.Target.ContractDirection` returns `Input` or `Output` according to the data flow being validated (see below). Typically, it is `Input` for input parameters and property setters, and `Output` for output parameters and return values.
+* `meta.Target.ContractDirection` returns `Input` or `Output` according to the data flow being validated ([see below](#contract-directions)). Typically, it is `Input` for input parameters and property setters, and `Output` for output parameters and return values.
 
 
 ### Example: NotNull
@@ -73,7 +73,7 @@ Just as any advice, you can add a contract to a parameter, field, or property fr
 
 The following snippet shows how to automatically add precondition checks for all situations in the public API where a non-nullable parameter could receive a null value from a consumer. 
 
-The fabric adds a method-level aspect to all exposed methods. Then, the aspect adds individual contracts using the <xref:Metalama.Framework.Advising.IAdviceFactory.AddContract*> method.
+The [fabric](xref:fabrics) adds a method-level aspect to all exposed methods. Then, the aspect adds individual contracts using the <xref:Metalama.Framework.Advising.IAdviceFactory.AddContract*> method.
 
 
 [!include[NotNull Fabric](../../../code/Metalama.Documentation.SampleCode.AspectFramework/NotNullFabric.cs)]

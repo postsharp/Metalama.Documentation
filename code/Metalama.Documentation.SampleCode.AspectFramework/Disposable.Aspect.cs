@@ -26,7 +26,7 @@ namespace Doc.Disposable
             meta.Proceed();
 
             var disposableFields = meta.Target.Type.FieldsAndProperties
-                .Where( x => x.Type.Is( typeof(IDisposable) ) && x.IsAutoPropertyOrField.GetValueOrDefault() );
+                .Where( x => x.Type.Is( typeof(IDisposable) ) && x.IsAutoPropertyOrField == true );
 
             // Disposes the current field or property.
             foreach ( var field in disposableFields )

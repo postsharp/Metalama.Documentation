@@ -6,9 +6,9 @@ uid: migration
 
  Although there is no pressure from our side to do so, you may want to migrate your projects from PostSharp to Metalama. If you decide to do so, this chapter is here to help.
 
- When we designed Metalama as the successor of PostSharp, we decided to break backward compatibility. After all, PostSharp Framework was designed in 2004-2010, the years of C# 2.0 and .NET 2.0, and we have maintained backward compatibility since then. We could not take advantage of the new .NET stack (C# 11, .NET 6, Roslyn) by staying loyal to our 2010 API. So, we opted for a complete redesign of the concepts and APIs. 
+ When we designed Metalama as the successor of PostSharp, we decided to break backward compatibility. After all, PostSharp Framework was designed in 2004-2010, the years of C# 2.0 and .NET Framework 2.0, and we have maintained backward compatibility since then. We could not take advantage of the new .NET stack (C# 11, .NET 6, Roslyn) by staying loyal to our 2010 API. So, we opted for a complete redesign of the concepts and APIs. 
  
- However, we appreciate that many customers have tens of thousands to millions of lines of code that use PostSharp. We did not either want to ask these customers to port these large code bases.
+ However, we appreciate that many customers have tens of thousands to millions of lines of code that use PostSharp. And we did not want to ask these customers to port these large code bases.
 
  So we took the following decisions:
 
