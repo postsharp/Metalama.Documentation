@@ -23,7 +23,7 @@ object DebugBuild : BuildType({
 
     name = "Build [Debug]"
 
-    artifactRules = "+:artifacts/publish/public/**/*=>artifacts/publish/public\n+:artifacts/publish/private/**/*=>artifacts/publish/private\n+:artifacts/testResults/**/*=>artifacts/testResults\n+:artifacts/logs/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/AssemblyLocator/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/CompileTime/**/.completed=>logs\n+:%system.teamcity.build.tempDir%/Metalama/CompileTimeTroubleshooting/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/CrashReports/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/Extract/**/.completed=>logs\n+:%system.teamcity.build.tempDir%/Metalama/ExtractExceptions/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/Logs/**/*=>logs"
+    artifactRules = "+:artifacts/publish/public/**/*=>artifacts/publish/public\n+:artifacts/publish/private/**/*=>artifacts/publish/private\n+:artifacts/testResults/**/*=>artifacts/testResults\n+:source-dependencies/**/*=>source-dependencies\n+:artifacts/logs/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/AssemblyLocator/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/CompileTime/**/.completed=>logs\n+:%system.teamcity.build.tempDir%/Metalama/CompileTimeTroubleshooting/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/CrashReports/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/Extract/**/.completed=>logs\n+:%system.teamcity.build.tempDir%/Metalama/ExtractExceptions/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/Logs/**/*=>logs"
 
     vcs {
         root(DslContext.settingsRoot)
@@ -66,11 +66,11 @@ object DebugBuild : BuildType({
                      onDependencyFailure = FailureAction.FAIL_TO_START
                 }
 
-        snapshot(AbsoluteId("Metalama_MetalamaExtensions_DebugBuild")) {
+        snapshot(AbsoluteId("Metalama_MetalamaLinqPad_DebugBuild")) {
                      onDependencyFailure = FailureAction.FAIL_TO_START
                 }
 
-        snapshot(AbsoluteId("Metalama_MetalamaLinqPad_DebugBuild")) {
+        snapshot(AbsoluteId("Metalama_MetalamaSamples_DebugBuild")) {
                      onDependencyFailure = FailureAction.FAIL_TO_START
                 }
 
@@ -82,7 +82,7 @@ object PublicBuild : BuildType({
 
     name = "Build [Public]"
 
-    artifactRules = "+:artifacts/publish/public/**/*=>artifacts/publish/public\n+:artifacts/publish/private/**/*=>artifacts/publish/private\n+:artifacts/testResults/**/*=>artifacts/testResults\n+:artifacts/logs/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/AssemblyLocator/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/CompileTime/**/.completed=>logs\n+:%system.teamcity.build.tempDir%/Metalama/CompileTimeTroubleshooting/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/CrashReports/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/Extract/**/.completed=>logs\n+:%system.teamcity.build.tempDir%/Metalama/ExtractExceptions/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/Logs/**/*=>logs"
+    artifactRules = "+:artifacts/publish/public/**/*=>artifacts/publish/public\n+:artifacts/publish/private/**/*=>artifacts/publish/private\n+:artifacts/testResults/**/*=>artifacts/testResults\n+:source-dependencies/**/*=>source-dependencies\n+:artifacts/logs/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/AssemblyLocator/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/CompileTime/**/.completed=>logs\n+:%system.teamcity.build.tempDir%/Metalama/CompileTimeTroubleshooting/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/CrashReports/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/Extract/**/.completed=>logs\n+:%system.teamcity.build.tempDir%/Metalama/ExtractExceptions/**/*=>logs\n+:%system.teamcity.build.tempDir%/Metalama/Logs/**/*=>logs"
 
     vcs {
         root(DslContext.settingsRoot)
@@ -125,11 +125,11 @@ object PublicBuild : BuildType({
                      onDependencyFailure = FailureAction.FAIL_TO_START
                 }
 
-        snapshot(AbsoluteId("Metalama_MetalamaExtensions_PublicBuild")) {
+        snapshot(AbsoluteId("Metalama_MetalamaLinqPad_PublicBuild")) {
                      onDependencyFailure = FailureAction.FAIL_TO_START
                 }
 
-        snapshot(AbsoluteId("Metalama_MetalamaLinqPad_PublicBuild")) {
+        snapshot(AbsoluteId("Metalama_MetalamaSamples_PublicBuild")) {
                      onDependencyFailure = FailureAction.FAIL_TO_START
                 }
 
@@ -179,11 +179,11 @@ object PublicDeployment : BuildType({
                      onDependencyFailure = FailureAction.FAIL_TO_START
                 }
 
-        snapshot(AbsoluteId("Metalama_MetalamaExtensions_PublicDeployment")) {
+        snapshot(AbsoluteId("Metalama_MetalamaLinqPad_PublicDeployment")) {
                      onDependencyFailure = FailureAction.FAIL_TO_START
                 }
 
-        snapshot(AbsoluteId("Metalama_MetalamaLinqPad_PublicDeployment")) {
+        snapshot(AbsoluteId("Metalama_MetalamaSamples_PublicDeployment")) {
                      onDependencyFailure = FailureAction.FAIL_TO_START
                 }
 
@@ -194,7 +194,7 @@ object PublicDeployment : BuildType({
 
             artifacts {
                 cleanDestination = true
-                artifactRules = "+:artifacts/publish/public/**/*=>artifacts/publish/public\n+:artifacts/publish/private/**/*=>artifacts/publish/private\n+:artifacts/testResults/**/*=>artifacts/testResults"
+                artifactRules = "+:artifacts/publish/public/**/*=>artifacts/publish/public\n+:artifacts/publish/private/**/*=>artifacts/publish/private\n+:artifacts/testResults/**/*=>artifacts/testResults\n+:source-dependencies/**/*=>source-dependencies"
             }
         }
 

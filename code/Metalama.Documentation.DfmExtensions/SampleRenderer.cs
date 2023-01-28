@@ -1,13 +1,12 @@
 ﻿using HtmlAgilityPack;
-using Microsoft.DocAsCode.Common;
 using Microsoft.DocAsCode.Dfm;
 using Microsoft.DocAsCode.MarkdownLite;
 using Newtonsoft.Json;
 using PKT.LZStringCSharp;
 using System;
 using System.Collections.Immutable;
-using System.Collections.Specialized;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -16,6 +15,7 @@ namespace Metalama.Documentation.DfmExtensions;
 internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer, SampleToken, MarkdownBlockContext>
 {
     private static int _nextId = 1;
+
     public override string Name => nameof(SampleRenderer);
 
     public override bool Match( IMarkdownRenderer renderer, SampleToken token, MarkdownBlockContext context )
@@ -56,7 +56,6 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
         return stringBuilder.ToString();
     }
 
-
     private static string FindParentDirectory( string directory, Predicate<string> predicate )
     {
         if (predicate( directory ))
@@ -81,11 +80,9 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
         SampleToken token,
         MarkdownBlockContext context )
     {
-        var baseDirectory = (string) context.Variables["BaseFolder"];
+        var baseDirectory = (string)context.Variables["BaseFolder"];
         var path = token.Src.Replace( "~", baseDirectory );
         var id = "code-" + Path.GetFileNameWithoutExtension( path ).ToLowerInvariant();
-
-
 
         string CreateCodeBlock( string content )
         {
@@ -177,6 +174,8 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
         {
             // Create the tab group with the aspect, target, and transformed code.
 
+            bool IsTabEnabled( string id ) => token.Tabs.Length == 0 || token.Tabs.Contains( id );
+
             var targetHtml = File.ReadAllText( targetHtmlPath );
             var transformedHtml = File.ReadAllText( transformedHtmlPath );
 
@@ -194,15 +193,23 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
 
             var tabHeaders = new StringBuilder();
             var tabBodies = new StringBuilder();
+            string? lastContent = null;
+            var tabCount = 0;
 
             void AppendTab( string tabId, string header, string content )
             {
-                tabHeaders.Append( $"<li><a href=\"#tabpanel_{snippetId}_{tabId}\">{header}</a></li>" );
-                tabBodies.Append( $"<div id=\"tabpanel_{snippetId}_{tabId}\">{content}</div>" );
+                if (IsTabEnabled( tabId ))
+                {
+                    tabHeaders.Append( $"<li><a href=\"#tabpanel_{snippetId}_{tabId}\">{header}</a></li>" );
+                    tabBodies.Append( $"<div id=\"tabpanel_{snippetId}_{tabId}\">{content}</div>" );
+                    lastContent = content;
+                    tabCount++;
+                }
             }
 
             string aspectCs;
             string gitUrlExtension;
+            var canTryOnline = true;
 
             if (File.Exists( aspectHtmlPath ))
             {
@@ -215,6 +222,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
             {
                 aspectCs = "";
                 gitUrlExtension = ".cs";
+                canTryOnline = false;
             }
 
             AppendTab( "target", "Target Code", targetHtml );
@@ -227,7 +235,10 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
                 // TODO: we should add this to the TryMetalama link, but TryMetalama does not support 3 buffers. 
             }
 
-            AppendTab( "transformed", "Transformed Code", transformedHtml );
+            if (IsTabEnabled( "transformed" ))
+            {
+                AppendTab( "transformed", "Transformed Code", transformedHtml );
+            }
 
             if (File.Exists( programOutputPath ))
             {
@@ -238,28 +249,38 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
             }
 
             // Create the links
+            var links = new StringBuilder();
+            links.AppendLine( @"<div class=""sample-links tabbed"">" );
+
             var gitUrl = gitHubProjectPath + "/" + sourceDirectoryRelativeToGitDir + "/" +
                          shortFileNameWithoutExtension + gitUrlExtension;
 
-            var tryPayloadJson = JsonConvert.SerializeObject( new { a = aspectCs, p = targetCs } );
-            var tryPayloadHash = LZString.CompressToEncodedURIComponent( tryPayloadJson );
-            var tryUrl = tryBaseUrl + tryPayloadHash;
+            if (canTryOnline)
+            {
+                var tryPayloadJson = JsonConvert.SerializeObject( new { a = aspectCs, p = targetCs } );
+                var tryPayloadHash = LZString.CompressToEncodedURIComponent( tryPayloadJson );
+                var tryUrl = tryBaseUrl + tryPayloadHash;
 
-            var totalContent =
+                links.AppendLine( $@"  <a class=""try"" href=""{tryUrl}"" target=""try"">Try Online</a> |" );
+            }
+
+            links.AppendLine(
                 @$"
-<div class=""sample-links tabbed"">
-    <a class=""try"" href=""{tryUrl}"" target=""try"">Try Online</a> |
     <a class=""github"" href=""{gitUrl}"" target=""github"">See on GitHub</a> | 
     <a class=""permalink"" href=""{permalink}"" target=""doc"">Permalink</a>
-</div>
+</div>" );
+
+            var tabs = tabCount > 1
+                ? @$"
 <div class=""tabGroup"">
     <ul>
-        {tabHeaders}
+    {tabHeaders}
     </ul>
     {tabBodies}
-</div>";
+</div>"
+                : lastContent;
 
-            return CreateCodeBlock( totalContent );
+            return CreateCodeBlock( links + tabs );
         }
         else
         {

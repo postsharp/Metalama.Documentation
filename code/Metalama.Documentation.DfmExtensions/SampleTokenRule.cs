@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text.RegularExpressions;
-using Microsoft.DocAsCode.MarkdownLite;
+﻿using Microsoft.DocAsCode.MarkdownLite;
 using Microsoft.DocAsCode.MarkdownLite.Matchers;
 
 namespace Metalama.Documentation.DfmExtensions;
@@ -14,18 +12,12 @@ public sealed class SampleTokenRule : IMarkdownRule
         Matcher.WhiteSpacesOrEmpty +
         Matcher.AnyCharNotIn( ' ', ']' ).RepeatAtLeast( 1 ).ToGroup( "path" ) +
         Matcher.WhiteSpacesOrEmpty +
-        ( Matcher.AnyWordCharacter.RepeatAtLeast( 1 ) + Matcher.WhiteSpacesOrEmpty + Matcher.Char( '=' )
-          + Matcher.WhiteSpacesOrEmpty + Matcher.Char( '"' ) + Matcher.AnyCharNot( '"' ).RepeatAtLeast( 0 ) + Matcher.Char( '"' )
-          + Matcher.WhiteSpacesOrEmpty )
-        .RepeatAtLeast( 0 )
-        .ToGroup( "attributes" )
+        AttributeMatcher.AttributeListMatcher
         +
         Matcher.WhiteSpacesOrEmpty +
         ']' +
         Matcher.WhiteSpacesOrEmpty +
         ( Matcher.NewLine.RepeatAtLeast( 1 ) | Matcher.EndOfString );
-
-    private static readonly Regex _attributesRegex = new( @"(?<name>\w+)=(""(?<quoted_value>[^""]*)""|(?<unquoted_value>\w+))" );
 
     public IMarkdownToken? TryMatch( IMarkdownParser parser, IMarkdownParsingContext context )
     {
@@ -36,40 +28,25 @@ public sealed class SampleTokenRule : IMarkdownRule
             var sourceInfo = context.Consume( match.Length );
 
             var path = match["path"].GetValue();
-            var attributes = match["attributes"].GetValue();
-            string name = "";
-            string title = "";
 
-            foreach (Match attributeMatch in _attributesRegex.Matches( attributes ))
-            {
-                var attributeName = attributeMatch.Groups["name"];
-                var attributeValue = ( attributeMatch.Groups["quoted_value"] ?? attributeMatch.Groups["unquoted_value"] ).Value;
+            var attributes = AttributeMatcher.ParseAttributes( match );
 
-                switch (attributeName.Value)
-                {
-                    case "name":
-                        name = attributeValue;
-
-                        break;
-
-                    case "title":
-                        title = attributeValue;
-
-                        break;
-                }
-            }
+            attributes.TryGetValue( "name", out var name );
+            attributes.TryGetValue( "title", out var title );
+            attributes.TryGetValue( "tabs", out var tabs );
 
             return new SampleToken(
                 this,
                 parser.Context,
+                sourceInfo,
                 StringHelper.UnescapeMarkdown( path ),
-                StringHelper.UnescapeMarkdown( name ),
-                StringHelper.UnescapeMarkdown( title ),
-                sourceInfo );
+                StringHelper.UnescapeMarkdown( name ?? "" ),
+                StringHelper.UnescapeMarkdown( title ?? "" ),
+                tabs ?? "" );
         }
 
         return null;
     }
 
-    public string Name => "Sample";
+    public string Name => "MetalamaSample";
 }

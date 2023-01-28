@@ -7,7 +7,7 @@ namespace Metalama.Documentation.DfmExtensions;
 
 [Export( typeof(IDfmCustomizedRendererPartProvider) )]
 [UsedImplicitly]
-public class SampleRendererProvider : IDfmCustomizedRendererPartProvider
+public class RendererProvider : IDfmCustomizedRendererPartProvider
 {
     public IEnumerable<IDfmCustomizedRendererPart> CreateParts( IReadOnlyDictionary<string, object> parameters )
     {

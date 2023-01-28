@@ -5,6 +5,8 @@ items:
   href: getting-started/toc.yml
 - name: Conceptual Documentation
   href: conceptual/toc.yml
+- name: Commented Examples
+  href: examples/toc.yml
 - name: API Documentation          
   topicUid: api
   items:
