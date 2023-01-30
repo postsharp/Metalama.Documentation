@@ -2,9 +2,9 @@ items:
 - name: Commented Examples
   topicUid: examples
   items:
-    - name: Level 100
-      topicUid: examples-100
+    - name: Logging
+      topicUid: example-logging
       items:
-         - name: Logging
-           topicUid: example-logging-1
+         - name: Logging 100
+           topicUid: example-logging-100
      
