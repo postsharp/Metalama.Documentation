@@ -18,7 +18,7 @@ namespace Doc.Eligibility
 
         public override dynamic? OverrideMethod()
         {
-            meta.This.logger.WriteLine( $"Executing {meta.Target.Method}" );
+            meta.This._logger.WriteLine( $"Executing {meta.Target.Method}" );
 
             return meta.Proceed();
         }

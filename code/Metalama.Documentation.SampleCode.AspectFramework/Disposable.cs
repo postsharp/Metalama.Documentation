@@ -14,6 +14,6 @@ namespace Doc.Disposable
     [Disposable]
     internal class Bar : Foo
     {
-        private FileSystemWatcher _cancellationTokenSource = new();
+        private MemoryStream _stream = new();
     }
 }

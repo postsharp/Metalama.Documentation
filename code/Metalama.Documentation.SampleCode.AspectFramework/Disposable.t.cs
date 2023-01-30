@@ -19,11 +19,11 @@ namespace Doc.Disposable
   [Disposable]
   internal class Bar : Foo
   {
-    private FileSystemWatcher _cancellationTokenSource = new();
+    private MemoryStream _stream = new();
     protected override void Dispose(bool disposing)
     {
       base.Dispose(disposing);
-      this._cancellationTokenSource?.Dispose();
+      this._stream?.Dispose();
     }
   }
 }
