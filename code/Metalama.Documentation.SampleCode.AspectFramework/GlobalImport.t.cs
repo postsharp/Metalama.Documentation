@@ -11,6 +11,10 @@ namespace Doc.GlobalImport
       {
         return (IFormatProvider? )ServiceLocator.ServiceProvider.GetService(typeof(IFormatProvider));
       }
+      init
+      {
+        throw new NotSupportedException("FormatProvider should not be set from source code.");
+      }
     }
   }
   internal class ServiceLocator : IServiceProvider
