@@ -1,1 +1,1 @@
-.\Build.ps1 build --solution 3
+.\Build.ps1 build --solution 4
