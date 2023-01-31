@@ -3,7 +3,8 @@ uid: creating-simple-aspects
 ---
 
 # Creating simple aspects 
-You have seen how using aspects you can modify your program before it is compiled. In this chapter you shall learn how to create 
+You have seen how using aspects you can modify your program before it is compiled. In this chapter you shall learn how to create your own aspects targetting several parts of the code
+
 
 ## Different aspect types 
 The following diagram shows the relationship between several types available in `Metalama.Framework.Aspects` namespace to create simple aspects easily. 
