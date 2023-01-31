@@ -34,5 +34,9 @@ items:
           - name: Seeing details via CodeLense 
             topicUid: codelense-aspect-details
 
-
-
+  - name: Creating Simple Aspects 
+    topicUid: creating-simple-aspects
+    items:
+      - name: Overriding Methods 
+        topicUid: override-method-aspects
+    
