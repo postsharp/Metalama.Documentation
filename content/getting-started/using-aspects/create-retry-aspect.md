@@ -7,7 +7,9 @@ Sometimes you have to call a service via a method call and the service may be fl
 
 The following example shows how to use this aspect and how to create it. Right now don't concentrate on the creation part as that will be described in detail in the next chapter. 
 
-[!include[Retry](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Retry.cs)]
+## Sample  
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Retry.cs name="Retry aspect with sample code"]
 
 
 
