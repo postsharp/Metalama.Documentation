@@ -19,7 +19,7 @@ items:
           - name: Using Context menu 
             topicUid: adding-aspects-context-menu
           - name: Using Inheritance
-            topicUid: adding-aspects-using-inheritance
+            topicUid: adding-aspects-by-inheritable-aspects
       - name: Metalama diff 
         topicUid: preview-metalama-diff
       - name: Debugging code with aspects
@@ -39,4 +39,5 @@ items:
     items:
       - name: Overriding Methods 
         topicUid: override-method-aspects
-    
+      - name: Blocking obsolete method calls
+        topicUid: obsolete-method-blocker
