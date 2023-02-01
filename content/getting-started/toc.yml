@@ -2,38 +2,34 @@ items:
 - name: Quick Start Guide
   topicUid: getting-started
   items:
-  - name: Using Aspects 
+  - name: Using Metalama 
     topicUid: get-using-aspects
     items:
-      - name: Installing the IDE tooling
+      - name: Getting Metalama Extension
         topicUid: get-metalama-vsx
-      - name: Adding the NuGet package
+      - name: Getting Metalama Nuget Package
         topicUid: get-metalama-nuget
-      - name: Creating a retry aspect 
+      - name: Looking at a sample aspect  
         topicUid: create-retry-aspect 
-      - name: Adding aspects 
+      - name: Adding aspects one by one
         topicUid: get-adding-aspects
         items:
-          - name: Using Custom attributes
+          - name: Using Custom attribute
             topicUid: adding-aspects-custom-attr
-          - name: Using Context menu 
+          - name: With the context menu 
             topicUid: adding-aspects-context-menu
-          - name: Using Inheritance
-            topicUid: adding-aspects-by-inheritable-aspects
-      - name: Metalama diff 
-        topicUid: preview-metalama-diff
-      - name: Debugging code with aspects
-        topicUid: lama-debug-demo
-      - name: Aspect ordering
-        topicUid: aspect-ordering
-      - name: Automatic Aspect application 
-        topicUid: automatic-aspect-application
+      - name: Understanding your code with aspects
+        topicUid: understanding-your-code-with-aspects
+      - name: Debugging aspect oriented code 
+        topicUid: debugging-aspect-oriented-code
+      - name: Adding aspects in bulk
+        topicUid: adding-aspects-in-bulk
         items: 
-          - name: Via Fabric
-            topicUid: aspect-application-via-fabric
-          - name: Seeing details via CodeLense 
-            topicUid: codelense-aspect-details
-
+        - name: Using Inheritance
+          topicUid: adding-aspects-by-inheritable-aspects
+        - name: Using Fabric
+          topicUid: adding-aspects-by-fabric
+     
   - name: Creating Simple Aspects 
     topicUid: creating-simple-aspects
     items:
