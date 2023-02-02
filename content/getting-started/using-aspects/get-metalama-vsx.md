@@ -2,7 +2,14 @@
 uid: get-metalama-vsx
 ---
 
-# Getting Metalama Extension
+# Installing Metalama Extension
+
+Metalama has a visual studio plugin that helps you to apply aspects, understand your code, show visual differences of the original and transformed code. However this extension is optional and Metalama will work without it too. But it is highly recommended that you dowanload and install it for a better experience.
+
+> [!NOTE] 
+> This Metalama Visual Studio Plugin will only work with Visual Studio 2022
+
+
 
 #### **Step 1** : Go to `Extensions` > `Manage Extensions` 
 
