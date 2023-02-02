@@ -40,4 +40,20 @@ From `c:\src\Metalama.Documentation`, do `.\Publish.ps1 -Incremental`.
 
 
 
+## Our Markdown extensions
 
+### Include a sample (i.e. an aspect test)
+```
+[!metalama-sample <path> [tabs="<tabs>"] ]
+
+```
+where:
+
+* `<tabs>` is a comma-separated list of one or more of the following values:
+    
+    * `aspect`
+    * `target` 
+    * `transformed`
+    * `output`
+
+* `<path>` is a relative path, usually starting by `~`, where `~` is replaced by the root of the current repo.
