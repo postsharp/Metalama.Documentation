@@ -12,14 +12,13 @@ As you apply an aspect you can see the details about that in Code Lense. The fol
 
 As you can see that CodeLense shows the following details 
 
-* Aspect Class 
-  * _The name of the aspect applied on this target_ 
-* Aspect Target
-  * _The fully qualified name of the target_ 
-* Aspect Origin 
-  * _How the aspect is applied._
-* Transformation 
-  * _This is a default message showing that the aspect changes the behaviour of the target method_
+|Detail | Purpose 
+|-------|---------
+|Aspect Class | The name of the aspect applied on this target 
+|Aspect Target |The fully qualified name of the target 
+|Aspect Origin |How the aspect is applied.
+|Transformation|This is a default message showing that the aspect changes the behaviour of the target method
+
 
 Another interesting thing that CodeLense shows is a clickable link to show the aspect modidied code and original code side by side. 
 
