@@ -7,10 +7,8 @@ items:
     items:
       - name: Installing Metalama Extension
         topicUid: get-metalama-vsx
-      - name: Installing Metalama Nuget Package
-        topicUid: get-metalama-nuget
-      - name: Looking at a sample aspect  
-        topicUid: create-retry-aspect 
+      - name: Reviewing Sample aspects   
+        topicUid: sample-aspects
       - name: Adding aspects one by one
         topicUid: get-adding-aspects
         items:
