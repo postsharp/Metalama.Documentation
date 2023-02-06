@@ -41,9 +41,24 @@ You can also see this from the Context menu that is popped when you right-click 
 ![Metalama_Diff_Menu_Option](../images/../using-aspects/images/showing_metalama_diff_option.png)
 
 
-## When you have many aspects?
-TODO
+## Implicit aspect addition
+In the previous sections,  <xref:adding-aspects-custom-attr> and <xref:adding-aspects-context-menu> you have seen how aspects can be added to a target method one at a time. This operation is _explicit_ because you are adding the attribute. 
+
+However, sometimes you shall discover that CodeLense shows some aspects that are applied on some targets even though there is no explicit attribute given. This is like _implicit_ aspect application. 
+
+This sort of thing is possible because some of the aspects can be designed as <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> aspects and these aspects are inherited from the base class to the children classes. 
+
+### Intercepting all methods in derived classes
+Consider the following example aspect. 
 
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/InheritedTypeLevel.cs name="Type-level inherited aspect" tabs="Aspect"]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/InheritedTypeLevel.cs name="Type-level inherited aspect"]
+
+
+### Implementing `INotifyPropertyChanged` on all derived class properties 
+When this aspect is applied to the following target 
+
+It implicitly adds the `NotifyPropertyChanged` to all the public fields as visible via the CodeLense in the screenshot below. 
+
+
 
