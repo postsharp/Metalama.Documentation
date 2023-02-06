@@ -1,5 +1,5 @@
 ---
-uid: get-adding-aspects
+uid: adding-aspects
 ---
 
 # Adding Aspects

@@ -10,7 +10,7 @@ items:
       - name: Reviewing Sample aspects   
         topicUid: sample-aspects
       - name: Adding aspects one by one
-        topicUid: get-adding-aspects
+        topicUid: adding-aspects
         items:
           - name: Using Custom attribute
             topicUid: adding-aspects-custom-attr
@@ -22,11 +22,7 @@ items:
         topicUid: debugging-aspect-oriented-code
       - name: Adding aspects in bulk
         topicUid: adding-aspects-in-bulk
-        items: 
-        - name: Using Inheritance
-          topicUid: adding-aspects-by-inheritable-aspects
-        - name: Using Fabric
-          topicUid: adding-aspects-by-fabric
+       
      
   - name: Creating Simple Aspects 
     topicUid: creating-simple-aspects

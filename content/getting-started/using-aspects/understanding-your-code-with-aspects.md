@@ -2,7 +2,7 @@
 uid: understanding-your-code-with-aspects
 ---
 
-# Understanding your aspect oriented code 
+# Understanding your aspect-oriented code 
 
 As you apply an aspect you can see the details about that in CodeLense. The following section shows what details Code Lense shows
 
@@ -43,3 +43,7 @@ You can also see this from the Context menu that is popped when you right-click 
 
 ## When you have many aspects?
 TODO
+
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/InheritedTypeLevel.cs name="Type-level inherited aspect" tabs="Aspect"]
+
