@@ -7,20 +7,20 @@ items:
     items:
       - name: Installing Metalama Extension
         topicUid: get-metalama-vsx
-      - name: Reviewing Sample aspects   
+      - name: Reviewing Sample Aspects   
         topicUid: sample-aspects
       - name: Adding aspects one by one
         topicUid: adding-aspects
         items:
-          - name: Using Custom attribute
+          - name: Using Custom Attribute
             topicUid: adding-aspects-custom-attr
-          - name: With the context menu 
+          - name: With the Context Menu 
             topicUid: adding-aspects-context-menu
-      - name: Understanding your code with aspects
+      - name: Understanding Your Code with Aspects
         topicUid: understanding-your-code-with-aspects
-      - name: Debugging aspect oriented code 
+      - name: Debugging Aspect Oriented code 
         topicUid: debugging-aspect-oriented-code
-      - name: Adding aspects in bulk
+      - name: Adding Aspects in Bulk
         topicUid: adding-aspects-in-bulk
        
      
@@ -29,5 +29,5 @@ items:
     items:
       - name: Overriding Methods 
         topicUid: override-method-aspects
-      - name: Blocking obsolete method calls
+      - name: Blocking Obsolete Method Calls
         topicUid: obsolete-method-blocker
