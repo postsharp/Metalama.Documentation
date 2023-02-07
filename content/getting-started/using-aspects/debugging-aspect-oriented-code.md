@@ -38,6 +38,29 @@ The configuration manager will present the following dialog.
 
 Now you are ready to debug your aspect transformed code. 
 
+## Breakpoints and Step-Into
+As of now, if you put breakpoint in your code that is being modified by aspect, those breakpoints will not be hit. However you can use `F11` to Step-Into like you do otherwise. 
+
+You can however put breakpoints into the transformed code. In the following sections you shall learn how to locate the transfoermed code and how to debug this. 
+
+Consider the following code with the logging (`[Log]`) aspect 
+
+![](../../images/../using-aspects/images/../../getting-started/using-aspects/images/aspect_debug_01.png)
+
+The logging aspect just adds a line at the beginning of the method that it intercepts. It just add the name of the method that is being intercepted. So when you step into this code by pressing `F11` you should see the transformed code like this. 
+
+![](../../images/../using-aspects/images/../../getting-started/using-aspects/images/aspect_debug_02.png)
 
 > [!NOTE]
-> When your breakpoint gets hit, notice that the code you are debugging is actually the transformed code.  
+> Note carefully that the line `Console.WriteLine("Running Demo.DoThis()")` is coming from the Logging aspect that is in the namespace `AspectLib` 
+
+To locate the transformed code click on the `Show all files` button as shown below. 
+
+
+![Show_All_Files](../../images/../using-aspects/images/../../getting-started/using-aspects/images/show_all_files.png)
+
+Once it shows all files in your solution explorer, locate the file under `LamaDebug\net6.0\metalama`  as shown in the solution explorer screenshot below.   
+
+![](../../images/../using-aspects/images/../../getting-started/using-aspects/images/debug_transformed_code.png)
+
+As you can see you can put breakpoint on this transformed code and it will be hit because for this is the code that got compiled. 
