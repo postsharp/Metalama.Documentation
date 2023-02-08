@@ -4,9 +4,12 @@ uid: understanding-your-code-with-aspects
 
 # Understanding your aspect-oriented code 
 
-As you apply an aspect you can see the details about that in CodeLense. The following section shows what details Code Lense shows
+Now that you have aspects in your code, you may wonder with some anxiety: what will my code do? How will it execute? Worry no more: Metalama offers several tools to let you know what _exactly_ happens with your code when you hit the Run button.
+
 
 ## Code lens details
+
+The first tool that can help you understand your code is one we have already met before: Code Lens. It shows you, inside the editor, how many aspects have been applied to your code. When you click on the summary, it gives you more details:
 
 ![](./images/log_aspect_applied_on_flakymethod.png)
 
@@ -17,12 +20,16 @@ As you can see that CodeLense shows the following details
 |Aspect Class | The name of the aspect applied on this target 
 |Aspect Target |The fully qualified name of the target 
 |Aspect Origin |How the aspect is applied.
-|Transformation|This is a default message showing that the aspect changes the behaviour of the target method
+|Transformation|This is a default message showing that the aspect changes the behavior of the target method
 
+At the moment you may wonder why this could be useful, but it will become clear when you will see that _many_ aspects can be added to your code, and when aspects are _implicitly_ applied.
+
+[comment]: # (TODO: Show an example with many aspects so we can discuss ordering here.
 
 Another interesting thing that CodeLense shows is a clickable link to show the transformed code and original code side by side. 
 
 ## Previewing generated code 
+
 To preview the change click on the link `Preview Transformed` Code` It will show the result like this 
 
 ![Metalama_Diff_Side_by_Side](../images/../using-aspects/images/lama_diff_side_by_side.png)
@@ -42,7 +49,7 @@ You can also see this from the Context menu that is popped when you right-click 
 
 
 ## Implicit aspect addition
-In the previous sections,  <xref:adding-aspects-custom-attr> and <xref:adding-aspects-context-menu> you have seen how aspects can be added to a target method one at a time. This operation is _explicit_ because you are adding the attribute. 
+In the previous sections,  <xref:adding-aspects-custom-attribute> and <xref:adding-aspects-context-menu> you have seen how aspects can be added to a target method one at a time. This operation is _explicit_ because you are adding the attribute. 
 
 However, sometimes you shall discover that CodeLense shows some aspects that are applied on some targets even though there is no explicit attribute given. This is like _implicit_ aspect application. 
 

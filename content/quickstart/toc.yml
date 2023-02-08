@@ -1,0 +1,28 @@
+items:
+- name: Quick Start Guide
+  topicUid: quickstart
+  items:
+  - name: Using Metalama 
+    topicUid: quickstart-using-aspects
+    items:
+      - name: Installing Metalama
+        topicUid:  install-vsx
+      - name: Getting aspects   
+        topicUid: sample-aspects
+      - name: Adding aspects to code
+        topicUid: quickstart-adding-aspects
+      - name: Understanding your code with aspects
+        topicUid: understanding-your-code-with-aspects
+      - name: Debugging aspect oriented code 
+        topicUid: debugging-aspect-oriented-code
+      - name: Adding many aspects at once
+        topicUid: adding-aspects-in-bulk
+       
+     
+  - name: Creating Simple Aspects 
+    topicUid: creating-simple-aspects
+    items:
+      - name: Overriding Methods 
+        topicUid: override-method-aspects
+      - name: Blocking Obsolete Method Calls
+        topicUid: obsolete-method-blocker

@@ -25,4 +25,4 @@ To create new aspects, we suggest that you use Visual Studio 2022 and install [M
 
 ## What's Next?
 
-You are now ready for real meta-programming. Go to <xref:getting-started> to see the next steps.
+You are now ready for real meta-programming. Go to <xref:quickstart> to see the next steps.

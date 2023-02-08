@@ -1,19 +1,29 @@
 ---
-uid: get-using-aspects
+uid: quickstart-using-aspects
 ---
 
 # Using Metalama
-Welcome to the Getting started guide for Metalama. The objective of these articles is to get you started with using Metalama.
+
+If you want to learn how to _use_ aspects but do not need to learn how to _create_ new ones, this chapter is for you and you may want to stop reading after this one. If you want to learn how to create aspects, it's still a good idea to start with this chapter to get accustomed with the core principles.
 
 After finishing this guide you should be comfortable using aspects in your codebase. 
 
-Here is a nutshell of what you should be expecting from each chapter in this guide. 
+## Who should read this chapter?
 
-|Chapter | Description
+If you should read this chapter if:
+
+* you have just arrived on a team that already uses Metalama,
+* you are planning to use ready-made aspects but don't plan to build your own,
+* you want to create your own aspects in the future, but don't want ti put  the cart before the horse.
+
+
+## In this chapter
+
+|Article | Description
 |--------|-------------
-|<xref:get-metalama-vsx> | Shows steps to install Metalama Visual Studio plugin. 
+|<xref:install-vsx> | Shows steps to install Metalama Visual Studio plugin. 
 |<xref:sample-aspects> | Lists sample aspects that will be used for demonstrations across this guide.
-|<xref:adding-aspects-custom-attr> | Shows steps to use an aspect on a target by adding attribute manually. 
+|<xref:adding-aspects-custom-attribute> | Shows steps to use an aspect on a target by adding attribute manually. 
 |<xref:adding-aspects-context-menu>| Shows how the Context Menu of Visual Studio offers help to add contextual aspects. Thanks to Metalama Visual Studio Extension. 
 |<xref:understanding-your-code-with-aspects>| Shows how results from Metalama Visual Studio extension is shown on CodeLense in different contexts. 
 |<xref:debugging-aspect-oriented-code> | Aspects transform code. This article shows how you can debug this transformed code as you would do otherwise in Visual Studio. 

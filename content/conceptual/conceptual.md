@@ -6,7 +6,7 @@ uid: conceptual
 
 | Chapter              | Description                                                                                                              |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------|
-| <xref:getting-started> | This chapter puts you on the fast track to learn the most common usage scenarios of Metalama. |
+| <xref:quickstart> | This chapter puts you on the fast track to learn the most common usage scenarios of Metalama. |
 | <xref:requirements> | This article describes the requirements of Metalama on the development environment and its compatibility with project types and platforms.
 | <xref:deployment>    | This chapter describes the components that make Metalama, how to install them, and how to configure Metalama before use. |
 | <xref:fundamentals>    | This chapter explains the fundamental concepts of Metalama.   |

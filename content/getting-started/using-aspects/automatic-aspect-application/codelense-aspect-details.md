@@ -1,3 +1,0 @@
----
-uid: codelense-aspect-details
----
