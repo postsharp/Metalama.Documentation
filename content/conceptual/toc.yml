@@ -133,13 +133,6 @@ items:
           topicUid: validating-declarations
         - name: Validating References
           topicUid: validating-references
-    - name: Interacting with the IDE
-      topicUid: ide
-      items:                
-      - name: Using Live Templates
-        topicUid: applying-live-templates
-      - name: Previewing the generated code
-        topicUid: preview
     - name: Extending Metalama
       topicUid: sdk
       items:

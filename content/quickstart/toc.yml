@@ -15,6 +15,8 @@ items:
         topicUid: understanding-your-code-with-aspects
       - name: Debugging aspect oriented code 
         topicUid: debugging-aspect-oriented-code
+      - name: Applying live templates
+        topicUid:  applying-live-templates
       - name: Adding many aspects at once
         topicUid: adding-aspects-in-bulk
        
