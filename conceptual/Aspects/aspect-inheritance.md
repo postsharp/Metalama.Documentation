@@ -37,7 +37,7 @@ Aspect inheritance also works across project boundaries, that is, even when the 
 
 To make this possible, the aspect instance in the project containing the base class is _serialized_ into a binary buffer and stored as a managed resource in the assembly. When compiling the project containing the derived class, the aspect is _deserialized_ from the binary buffer, and its <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method can be called.
 
-Serialization is done using a custom formatter whose semantics are close to the legacy <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter> of the now obsolete `[Serializable]`. To mark a field or property as non-serializable, use the <xref:Metalama.Framework.Serialization.LamaNonSerializedAttribute> custom attribute.
+Serialization is done using a custom formatter whose semantics are close to the legacy <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter> of the now obsolete `[Serializable]`. To mark a field or property as non-serializable, use the <xref:Metalama.Framework.Serialization.NonCompileTimeSerializedAttribute> custom attribute.
 
 ## Eligibility of inherited aspects
 
