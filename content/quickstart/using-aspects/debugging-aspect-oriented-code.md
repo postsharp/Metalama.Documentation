@@ -64,3 +64,22 @@ Once it shows all files in your solution explorer, locate the file under `LamaDe
 ![](../../images/../using-aspects/images/../../quickstart/using-aspects/images/debug_transformed_code.png)
 
 As you can see you can put breakpoint on this transformed code and it will be hit because for this is the code that got compiled. 
+
+## Debugging using step-in and forceful break  
+[!code-csharp[](~\code\DebugDemo\Program.cs)]
+
+When you debug this by Step-Into you shall see that the actual code being _debugged_ is the transformed code
+
+
+
+[!code-csharp[](~code\DebugDemo\obj\LamaDebug\net6.0\metalama\Program.cs)] 
+
+## Breaking forcefully using `Debugger.Break`
+
+You can put `Debugger.Break` to break the program forcefully. The following screenshot shows its usage. 
+
+![](../../images/../using-aspects/images/../../getting-started/using-aspects/images/debug_break.png)
+
+> [!NOTE] 
+> Notice that it is the same code that you see before. Just the `Debugger.Break` has been added for breaking the debugger at that location forcefully. 
+
