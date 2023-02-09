@@ -1,8 +1,10 @@
 ---
-uid: reviewing
+uid: overview
 ---
 
-# Reviewer's Guide to Metalama
+# Metalama Overview
+
+The objective of this book, when it will be written, will be to guide you in the _evaluation_ of Metalama. You will not learn _how_ to deploy and use it, but _why_ and _whether_ it is for you.
 
 
 
@@ -20,7 +22,7 @@ Metalama has the following principal features:
 ```mermaid
 graph TD
 
-Aspects[Aspect &<br>Fabrics] -- report and supress --> Diagnostics
+Aspects[Aspect &<br>Fabrics] -- report and suppress --> Diagnostics
 Aspects -- suggest --> CodeFixes[Code Fixes &<br>Refactorings]
 CodeFixes -- transform<br>at design time --> SourceCode[Source Code] 
 Aspects -- transform<br>at compile time --> TransformedCode[Compiled Code]

@@ -6,8 +6,14 @@ uid: understanding-your-code-with-aspects
 
 Now that you have aspects in your code, you may wonder with some anxiety: what will my code do? How will it execute? Worry no more: Metalama offers several tools to let you know what _exactly_ happens with your code when you hit the Run button.
 
+These tools are:
 
-## Code lens details
+* Code Lens
+* Diff Preview
+* Debug Transformed Code
+
+
+## Code Lens details
 
 The first tool that can help you understand your code is one we have already met before: Code Lens. It shows you, inside the editor, how many aspects have been applied to your code. When you click on the summary, it gives you more details:
 

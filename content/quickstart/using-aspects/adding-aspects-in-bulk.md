@@ -18,9 +18,9 @@ There are three different types of fabrics:
 
 | Fabric type | Abstract class | Main method | Purpose
 |------------|---------|--|--|
-| Project Fabric| <xref:Metalama.Framework.Fabrics.ProjectFabric>  | <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> | To add aspects to different targets in a given project.
-| Namespace Fabric| <xref:Metalama.Framework.Fabrics.NamespaceFabric>  | <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> | To add aspects to different targets in a given namespace.
-| Type Fabric | <xref:Metalama.Framework.Fabrics.TypeFabric> | <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> | To add aspects to different members of a type.
+| Project Fabric| <xref:Metalama.Framework.Fabrics.ProjectFabric>  | <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> | To add aspects to different declarations in the current project.
+| Namespace Fabric| <xref:Metalama.Framework.Fabrics.NamespaceFabric>  | <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> | To add aspects to different declarations in the namespace that contains the fabric type.
+| Type Fabric | <xref:Metalama.Framework.Fabrics.TypeFabric> | <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> | To add aspects to different members of the type that contains the nested fabric type.
 
 ## Adding aspects using fabrics
 
@@ -28,7 +28,9 @@ To add aspects using fabrics:
 
 1. Create a fabric class and derive it from <xref:Metalama.Framework.Fabrics.ProjectFabric>,  <xref:Metalama.Framework.Fabrics.NamespaceFabric>  or <xref:Metalama.Framework.Fabrics.TypeFabric>.
 
-    > [!WARNING] Type fabrics must be nested classes. They apply to their declaring type.
+    > [!WARNING] 
+    > Type fabrics must be nested classes and apply to their nesting type.
+    > Namespace fabrics apply to their namespace.
 
 2. Add an <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>, <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method.
 
@@ -37,9 +39,12 @@ To add aspects using fabrics:
    * To select the type itself, simply use <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> property.
    * To select type members (methods, fields, nested types, ...), call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> or <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> method and provide a lambda expression that selects the relevant type members.
 
-    The reason for this design is that the <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> method will not only select members declared in source code, but also members introduced by other aspects and that are unknown when your  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed.
 
 4. Call to the  <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> method.
+
+> [!NOTE]
+> The <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> method will not only select members declared in source code, but also members introduced by other aspects and that are unknown when your  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed. This is why the _Amend_ method does not directly expose the code model.
+
 
 ## Example: Adding aspect to all public methods of a type
 

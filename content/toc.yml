@@ -1,7 +1,7 @@
 items:
-- name: Reviewer Guide
-  href: reviewing/toc.yml
-- name: Quick Start Guide
+- name: Overview
+  href: overview/toc.yml
+- name: Quick Start
   href: quickstart/toc.yml
 - name: Conceptual Documentation
   href: conceptual/toc.yml

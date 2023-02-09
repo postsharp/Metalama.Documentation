@@ -1,5 +1,5 @@
 items:
-- name: Quick Start Guide
+- name: Quick Start
   topicUid: quickstart
   items:
   - name: Using Metalama 
@@ -8,7 +8,7 @@ items:
       - name: Installing Metalama
         topicUid:  install-vsx
       - name: Getting aspects   
-        topicUid: sample-aspects
+        topicUid: getting-aspects
       - name: Adding aspects to code
         topicUid: quickstart-adding-aspects
       - name: Understanding your code with aspects
