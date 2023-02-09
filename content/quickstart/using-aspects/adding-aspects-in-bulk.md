@@ -52,42 +52,18 @@ In this section, you shall learn how to add `[Log]` attribute to all public meth
 
 To add aspect to all public methods add the following Fabric to your project.
 
-```csharp
-
-using Metalama.Framework.Aspects;
-using Metalama.Framework.Fabrics;
-using System;
-using System.Linq;
-using AspectsLib;
-
-namespace Doc.ProjectFabric_
-{
-    internal class Fabric : ProjectFabric
-    {
-        public override void AmendProject(IProjectAmender project)
-        {
-            //Locating all types 
-            var allTypes = project.Outbound.SelectMany
-                            (p => p.Types);
-
-            //Finding all public methods from all types
-            var allPublicMethods = allTypes
-                                    .SelectMany(t => t.Methods)
-                                    .Where(z => z.Accessibility == Metalama.Framework.Code.Accessibility.Public);
-
-            //Adding Log aspect 
-            allPublicMethods.AddAspectIfEligible<LogAttribute>();
-        }
-    }
-}
-```
+[!code-csharp[](~\code\Metalama.Documentation.QuickStart.Fabrics\Fabric.cs)]
 
 > [!NOTE]
 > Fabrics need not be applied. They are triggered because of their presence in the project.
 
-The following screenshot shows aspect application of this Fabric across all methods in the `Program.cs` file
+When this fabric is added to a project with the following types, 
 
-![](../images/../using-aspects/images/fabric_application_01.png)
+[!code-csharp[](~code\DebugDemo\Entities.cs)]
+
+It will show that `[Log]` aspect is applied to all of the public method as shown below
+
+![](../../images/../using-aspects/images/../../quickstart/using-aspects/images/aspects_added_to_many_types.png)
 
 > [!NOTE]
 > Note that although there is no explicit attribute on the public methods of this type, you can see that all public methods `Main` and `TryDoThat` got the aspect applied.  
@@ -99,47 +75,20 @@ CodeLense comes in particularly handy in such situations where you have to enqui
 ![](../images/../using-aspects/images/fabric_application_02.png)
 
 ## Adding another aspect
+For each project, it is recommended to have only one project fabric. 
 
-(TODO)
+> [!WARNING]
+> Having many project fabric makes it difficult to decide the aspect application order and it is complicated. 
 
-To add another aspect you can add another Fabric. This time the Fabric will add the aspect `Retry` to all public methods that start with the word `Try`.
+To add another aspect we have to alter the project Fabric. This time we will add the capability to add the aspect `Retry` to all public methods that start with the word `Try`.
 
-To do this add the following Fabric
+To do this alter the Fabric like this. 
 
-```csharp
+[!code-csharp[](~code\DebugDemo2\Fabric.cs)]
 
-using System;
-using System.Linq;
-using AspectsLib;
 
-namespace DebugDemo
-{
-    internal class Fabric2 : ProjectFabric
-    {
-        public override void AmendProject(IProjectAmender project)
-        {
-            //Locating all types 
-            var allTypes = project.Outbound.SelectMany
-                            (p => p.Types);
+(WIP)
 
-            //Finding all public methods from all types
-            //that starts with the prefix "Try" 
-            var allPublicMethods = allTypes
-                                    .SelectMany(t => t.Methods)
-                                    .Where(z => z.Accessibility == Metalama.Framework.Code.Accessibility.Public
-                                         && z.Name.StartsWith("Try"));
-
-            //Adding Log attribute 
-            allPublicMethods.AddAspectIfEligible<RetryAttribute>();
-        }
-    }
-}
-
-```
-
-After adding this Fabric to the project, it is expected to have 2 aspects (`[Log]` and `[Retry]`) on the method `TryDoThat`. The following screenshot proves that
-
-![](../images/../using-aspects/images/fabric_application_03.png)
 
 > [!WARNING]
 > Sometimes CodeLense misses the aspects to show. For that time it is required to rebuild the project.  

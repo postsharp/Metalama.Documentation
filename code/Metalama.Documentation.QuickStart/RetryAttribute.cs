@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace DebugDemo
 {
-    internal class RetryAttribute : OverrideMethodAspect
+    public class RetryAttribute : OverrideMethodAspect
     {
         public int MaxAttempts { get; set; } = 5;
 
