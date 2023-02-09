@@ -2,7 +2,7 @@
 using System;
 using System.Threading;
 
-namespace DebugDemo
+namespace Metalama.Documentation.QuickStart
 {
     public class RetryAttribute : OverrideMethodAspect
     {

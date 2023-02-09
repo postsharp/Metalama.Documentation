@@ -8,14 +8,17 @@ Now that you have aspects in your code, you may wonder with some anxiety: what w
 
 These tools are:
 
-* Code Lens
+* CodeLens
 * Diff Preview
 * Debug Transformed Code
 
 
-## Code Lens details
+## CodeLens details
 
-The first tool that can help you understand your code is one we have already met before: Code Lens. It shows you, inside the editor, how many aspects have been applied to your code. When you click on the summary, it gives you more details:
+The first tool that can help you understand your code is one we have already met before:
+
+`CodeLens`:
+It shows you, inside the editor, how many aspects have been applied to your code. When you click on the summary, it gives you more details:
 
 ![](./images/log_aspect_applied_on_flakymethod.png)
 
@@ -23,14 +26,19 @@ As you can see that CodeLense shows the following details
 
 |Detail | Purpose 
 |-------|---------
-|Aspect Class | The name of the aspect applied on this target 
-|Aspect Target |The fully qualified name of the target 
-|Aspect Origin |How the aspect is applied.
-|Transformation|This is a default message showing that the aspect changes the behavior of the target method
+|`Aspect Class` | The name of the aspect applied on this target. 
+|`Aspect Target` |The fully qualified name of the target. 
+|`Aspect Origin` |How the aspect is applied.
+|`Transformation`|This is a default message showing that the aspect changes the behavior of the target method.
 
-At the moment you may wonder why this could be useful, but it will become clear when you will see that _many_ aspects can be added to your code, and when aspects are _implicitly_ applied.
+At the moment, you may wonder why this could be useful, but it will become clear when you will see that _many_ aspects can be added to your code, and when aspects are _implicitly_ applied.
 
-[comment]: # (TODO: Show an example with many aspects so we can discuss ordering here.
+
+Here is an example of a method with a couple of aspects applied.
+
+[!code-csharp[](~\code\DebugDemo3\Program.cs)]
+
+the example shows a method that is designed to get customer details from the database in the form of a XML string. There can be many problems connecting to a database and therefore a `Retry` aspect makes sense and it is better to log these. So `Log` aspect also makes sense. However, the order in which these aspects will be applied is determined by the aspect author. As a user of these aspects, you need not worry about them.
 
 Another interesting thing that CodeLense shows is a clickable link to show the transformed code and original code side by side. 
 
@@ -43,7 +51,7 @@ To preview the change click on the link `Preview Transformed` Code` It will show
 > [!NOTE]
 > This preview dialog can also be opened by pressing `Ctrl + K` followed by `0` 
 
-The screenshot shows just the original source of `FlakyMethod` and the modified code by the `[Log]` aspect. However, you can see that the command shows the entire file in its original and modified version side by side. 
+The screenshot shows just the source of `FlakyMethod` and the modified code by the `[Log]` aspect. However, you can see that the command shows the entire file in its original and modified version side by side. 
 
 To see changes for a particular section of the code, select that part of the code from the dropdown as shown below. 
 
@@ -61,17 +69,24 @@ However, sometimes you shall discover that CodeLense shows some aspects that are
 
 This sort of thing is possible because some of the aspects can be designed as <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> aspects and these aspects are inherited from the base class to the children classes. 
 
-### Intercepting all methods in derived classes
-Consider the following example aspect. 
+### Implementing `INotifyPropertyChanged` 
+In the following code example, it is shown how `INotifyPropertyChanged` event is fired for all members of derived classes when `NotificationPropertyChanged` aspect is applied. 
 
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/InheritedTypeLevel.cs name="Type-level inherited aspect"]
+[!code-csharp[](~code\DebugDemo4\Program.cs)]
 
+When run this program prints the following output
 
-### Implementing `INotifyPropertyChanged` on all derived class properties 
-When this aspect is applied to the following target 
+```
+X has changed
+Y has changed
+----------
+X has changed
+Y has changed
+Z has changed
+```
 
-It implicitly adds the `NotifyPropertyChanged` to all the public fields as visible via the CodeLense in the screenshot below. 
-
+> [!NOTE]
+> Note that there is no **explicit** application of aspects and the inheritable type aspect `[NotifyPropertyChanged]` applied on the base type is inherited by all the members of the derived type. 
 
 
