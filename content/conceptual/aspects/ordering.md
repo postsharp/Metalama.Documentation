@@ -10,9 +10,9 @@ When there are several aspect classes in the project, their order of execution i
 
 ### Per-project ordering
 
-In Metalama, the order of execution is _static_. It is principally a concern of the aspect library author, not one of the user of the aspect library.
+In Metalama, the order of execution is _static_. It is principally a concern of the aspect library author, not one of the users of the aspect library.
 
-Each aspect library should define the order of execution of the aspect it defines, not only with regards to other aspects of the same library, but also to the aspects defined in the referenced aspect libraries.
+Each aspect library should define the order of execution of the aspect it defines, not only in relation to other aspects of the same library, but also to the aspects defined in the referenced aspect libraries.
 
 When a project uses two unrelated aspect libraries, or when a project defines its own aspects, it has to define the ordering in the project itself.
 
@@ -20,9 +20,9 @@ When a project uses two unrelated aspect libraries, or when a project defines it
 
 Metalama follows what we call the "matryoshka" model: your source code is the innermost doll, and aspects are added _around_ it. The fully compiled code, with all aspects, is like the fully assembled matryoshka. Executing a method is like disassembling the matryoshka: you start with the outermost shell, and you continue to the original implementation.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Matryoshka_transparent.png" width="480px" style="padding: 40px" title="CC BY-SA 3.0 by Wikipedia user Fanghong.">
+![](matryoshka.png "CC BY-SA 3.0 by Wikipedia user Fanghong")
 
-It is important to remember that Metalama builds the matryoshka from the inside to the outside, but the code is executed is from the outside to the inside, i.e. the source code is executed _last_.
+It is important to remember that Metalama builds the matryoshka from the inside to the outside, but the code is executed from the outside to the inside, i.e. the source code is executed _last_.
 
 Therefore, the aspect application order and the aspect execution order are _opposite_.
 
@@ -47,7 +47,7 @@ using Metalama.Framework.Aspects;
 
 This is like in mathematics: if we have `a < b` and `b < c`, then we have `a < c` and the ordered sequence is `{a, b, c}`. 
 
-If you specify conflicting relationships, or import aspect library that define conflicting ordering, Metalama will emit a compilation error.
+If you specify conflicting relationships or import aspect library that defines a conflicting ordering, Metalama will emit a compilation error.
 
 > [!NOTE]
 > Metalama will merge all `[assembly: AspectOrder(...)]` attributes that it finds not only in the current project, but also in all referenced projects or libraries. Therefore, you don't need to repeat the `[assembly: AspectOrder(...)]` attributes in all projects that use aspects. It is sufficient to define them projects that define aspects.
@@ -64,7 +64,7 @@ The following code snippet shows two aspects that both add a method to the targe
 When there are several instances of the same aspect type on the same declaration, a single instance of the aspect, named the primary instance, gets applied to the target. The other instances are exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances?text=IAspectInstance.SecondaryInstances> property, which you can access from <xref:Metalama.Framework.Aspects.meta.AspectInstance?meta.AspectInstance> or <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectInstance?builder.AspectInstance>. It is the responsibility of the aspect implementation to decide what to do with the secondary aspect instances.
 
 The primary aspect instance is the instance that has been applied to the "closest" to the target declaration. The sorting criteria are the following:
-    1. Aspects defined using a *custom attribute*.
+    1. Aspects defined using a _custom attribute_.
     2. Aspects added by another aspect (child aspects).
     3. Aspects inherited from another declaration.
     4. Aspects added by a fabric.
