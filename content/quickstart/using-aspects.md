@@ -23,8 +23,7 @@ If you should read this chapter if:
 |--------|-------------
 |<xref:install-vsx> | Shows steps to install Metalama Visual Studio plugin. 
 |<xref:sample-aspects> | Lists sample aspects that will be used for demonstrations across this guide.
-|<xref:adding-aspects-custom-attribute> | Shows steps to use an aspect on a target by adding attribute manually. 
-|<xref:adding-aspects-context-menu>| Shows how the Context Menu of Visual Studio offers help to add contextual aspects. Thanks to Metalama Visual Studio Extension. 
+|<xref:quickstart-adding-aspects> | Shows steps to use an aspect on a target by adding attribute manually and the screwdriver menu.  
 |<xref:understanding-your-code-with-aspects>| Shows how results from Metalama Visual Studio extension is shown on CodeLense in different contexts. 
 |<xref:debugging-aspect-oriented-code> | Aspects transform code. This article shows how you can debug this transformed code as you would do otherwise in Visual Studio. 
 |<xref:adding-aspects-in-bulk>| Adding aspects by hand or by context menu always is not possible or viable. Sometimes we need a programmatic way to add aspects to different targets. This article shows how you can use `Fabrics` to add aspects to different targets programmatically.  
