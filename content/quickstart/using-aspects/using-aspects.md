@@ -14,7 +14,7 @@ If you should read this chapter if:
 
 * you have just arrived on a team that already uses Metalama,
 * you are planning to use ready-made aspects but don't plan to build your own,
-* you want to create your own aspects in the future, but don't want ti put  the cart before the horse.
+* you want to create your aspects in the future, but don't want to put the cart before the horse.
 
 
 ## In this chapter
