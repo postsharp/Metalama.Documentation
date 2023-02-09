@@ -13,7 +13,7 @@ namespace Doc.PrintFieldValues
             {
                 if ( !fieldOrProperty.IsImplicitlyDeclared && fieldOrProperty.IsAutoPropertyOrField == true )
                 {
-                    var value = fieldOrProperty.Invokers.Final.GetValue( fieldOrProperty.IsStatic ? null : meta.This );
+                    var value = fieldOrProperty.Value;
                     Console.WriteLine( $"{fieldOrProperty.Name}={value}" );
                 }
             }

@@ -8,6 +8,14 @@
         <LangVersion>9.0</LangVersion>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <NoWarn>1701;1702;169;649;67;8618</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <NoWarn>1701;1702;169;649;67;8618</NoWarn>
+    </PropertyGroup>
+
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />

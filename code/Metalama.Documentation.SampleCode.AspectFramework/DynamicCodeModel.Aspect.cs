@@ -14,7 +14,7 @@ namespace Doc.DynamicCodeModel
             var loggerField = meta.Target.Type.FieldsAndProperties.Where( x => x.Type.Is( typeof(TextWriter) ) )
                 .Single();
 
-            loggerField.Invokers.Final.GetValue( meta.This ).WriteLine( $"Executing {meta.Target.Method}." );
+            loggerField.Value!.WriteLine( $"Executing {meta.Target.Method}." );
 
             return meta.Proceed();
         }

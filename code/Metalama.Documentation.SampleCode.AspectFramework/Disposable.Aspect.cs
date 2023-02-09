@@ -31,7 +31,7 @@ namespace Doc.Disposable
             // Disposes the current field or property.
             foreach ( var field in disposableFields )
             {
-                field.ToExpression().Value?.Dispose();
+                field.Value?.Dispose();
             }
         }
 

@@ -37,7 +37,7 @@ namespace Doc.UpdateMethod
             {
                 var field = meta.Target.Type.FieldsAndProperties.OfName( parameter.Name ).Single();
 
-                field.ToExpression().Value = meta.Target.Parameters[index].Value;
+                field.Value = meta.Target.Parameters[index].Value;
                 index++;
             }
         }

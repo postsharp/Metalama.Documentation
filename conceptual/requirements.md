@@ -35,7 +35,7 @@ This includes:
 | Framework | Versions | 
 |-----------|-----------|
 | .NET and .NET Core	| 2.0 or later
-| .NET Framework | 4.7.2 
+| .NET Framework | 4.7.2  or later
 | Mono |	5.4 or later 
 | Xamarin.iOS	 | 10.14 or later
 | Xamarin.Mac |	3.8 or later

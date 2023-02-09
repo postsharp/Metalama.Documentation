@@ -69,22 +69,22 @@ namespace Doc.DeepClone
                      fieldType.Enhancements().HasAspect<DeepCloneAttribute>() )
                 {
                     // If yes, call the method without a cast.
-                    ExpressionFactory.Capture( field.Invokers.Base!.GetValue( meta.This )?.Clone(), out callClone );
+                    callClone = field.Value?.Clone()!;
                 }
                 else
                 {
                     // If no, explicitly cast to the interface.
-                    ExpressionFactory.Capture( ((ICloneable) field.Invokers.Base!.GetValue( meta.This ))?.Clone(), out callClone );
+                    callClone = (IExpression) ((ICloneable) field.Value)?.Clone()!;
                 }
 
                 if ( cloneMethod == null || !cloneMethod.ReturnType.ToNullableType().Is( fieldType ) )
                 {
                     // If necessary, cast the return value of Clone to the field type.
-                    ExpressionFactory.Capture( meta.Cast( fieldType, callClone.Value )!, out callClone );
+                    callClone = (IExpression) meta.Cast( fieldType, callClone.Value );
                 }
 
                 // Finally, set the field value.
-                field.Invokers.Base!.SetValue( clone, callClone.Value );
+                field.With( (IExpression) clone ).Value = callClone.Value;
             }
 
             return clone;
