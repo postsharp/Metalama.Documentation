@@ -9,7 +9,7 @@ You can achieve this thanks to the <xref:Metalama.Framework.Aspects.OverrideMeth
 
 ## The simple way: deriving the OverrideMethod abstract class
 
-1. Add Metalama to your project as described in <xref:installing>.
+1. Add the `Metalama.Framework` package to your project.
    
 2. Create a new class derived from the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
 

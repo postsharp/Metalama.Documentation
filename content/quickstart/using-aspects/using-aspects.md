@@ -21,7 +21,7 @@ If you should read this chapter if:
 
 |Article | Description
 |--------|-------------
-|<xref:install> | Shows steps to install Metalama Visual Studio plugin. 
+|<xref:install> | Shows steps to install Metalama. 
 |<xref:getting-aspects> | Lists sample aspects that will be used for demonstrations across this guide.
 |<xref:quickstart-adding-aspects> | Shows steps to use an aspect on a target by adding attribute manually or using the refactoring menu. 
 |<xref:understanding-your-code-with-aspects>| Shows how results from Metalama Visual Studio extension is shown on CodeLense in different contexts. 

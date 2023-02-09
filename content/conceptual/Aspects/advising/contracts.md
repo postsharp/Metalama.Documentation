@@ -16,7 +16,7 @@ Technically speaking, a contract is a piece of code that you inject after _recei
 
 ## The simple way: overriding the ContractAspect class
 
-1. Add Metalama to your project as described in <xref:installing>.
+1. Add the `Metalama.Framework` package to your project.
    
 2. Create a new class derived from the <xref:Metalama.Framework.Aspects.ContractAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
 

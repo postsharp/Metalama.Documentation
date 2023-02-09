@@ -6,7 +6,7 @@ items:
     topicUid: quickstart-using-aspects
     items:
       - name: Installing Metalama
-        topicUid:  install-vsx
+        topicUid:  install
       - name: Getting aspects   
         topicUid: getting-aspects
       - name: Adding aspects to code

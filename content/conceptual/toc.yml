@@ -7,7 +7,7 @@ items:
     - name: Deployment
       topicUid: deployment
       items:
-        - name: Quick Start
+        - name: Installing Metalama
           topicUid: installing
         - name: NuGet Packages
           topicUid: packages
