@@ -32,7 +32,7 @@ items:
           topicUid: aspect-abilities
         - name: Abilities of Fabrics
           topicUid: fabric-abilities
-    - name: Creating Aspects
+    - name: Aspects
       topicUid: aspects
       items:
         - name: T# Templates
@@ -109,13 +109,6 @@ items:
           items:
             - name: Pipeline
               topicUid: pipeline
-    - name: Using Aspects
-      topicUid: using-aspects
-      items:
-        - name: Adding Aspects to Code
-          topicUid: applying-aspects
-        - name: Debugging Code With Aspects
-          topicUid: debugging
     - name: Fabrics
       topicUid: fabrics
       items:
