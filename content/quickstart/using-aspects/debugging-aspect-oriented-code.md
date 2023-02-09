@@ -78,7 +78,7 @@ When you debug this by Step-Into you shall see that the actual code being _debug
 
 You can put `Debugger.Break` to break the program forcefully. The following screenshot shows its usage. 
 
-![](../../images/../using-aspects/images/../../getting-started/using-aspects/images/debug_break.png)
+![](../../images/../using-aspects/images/../../quickstart/using-aspects/images/debug_break.png)
 
 > [!NOTE] 
 > Notice that it is the same code that you see before. Just the `Debugger.Break` has been added for breaking the debugger at that location forcefully. 
