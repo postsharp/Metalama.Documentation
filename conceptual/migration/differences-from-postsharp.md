@@ -1,6 +1,3 @@
----
-uid: differences-from-postsharp
----
 
 # Differences Between Metalama and PostSharp
 
@@ -11,11 +8,12 @@ This article covers the major architectural differences between Metalama and Pos
 
 A major difference between Metalama and PostSharp is that while PostSharp is a post-compiler, i.e. a process that runs after the compiler and post-processes the output of the compiler, Metalama is a compiler add-in, and gets executed _both_ at design- and at compile-time.
 
+
 So how does Metalama execute aspects? Metalama creates a sub-project from your main project, and this sub-project contains only compile-time code, e.g. aspects, fabrics, and their dependencies. Only this sub-project is compiled and executed at design- or compile-time.
 
 While PostSharp loads the whole project (compiled as an assembly) in the .NET runtime, Metalama only loads the sub-project that contains compile-time code.
 
-### Illustrations 
+### Illustrations
 
 #### PostSharp Architecture
 
@@ -52,14 +50,14 @@ flowchart LR
   Metalama2 <--> compiledAspects
   Compiler <--> Metalama
   Metalama <--> compiledAspects>Compiled Aspects]
-  
+
   subgraph compile-time
     Compiler
     Metalama[Compile-Time\nMetalama]
   end
 
   subgraph design-time
-    IDE 
+    IDE
     Metalama2[Design-Time\nMetalama]
   end
 
@@ -106,7 +104,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-   
+
     instantiated --> executed  -->|generates| code>code advised\nwith inlined templates]
 
     subgraph compile-time
@@ -125,7 +123,7 @@ The difference in aspect lifetime has major implications for the way aspects are
 
 * **Metalama templates should generate succinct code.**  In PostSharp, advice methods could be long and complex because they were actually independent C# methods, compiled and JIT-compiled just once, and executed at run time. However, in Metalama, advice methods are templates. They can be long, but it is important that the code they are generating is short. This code will need to be compiled and JIT-compiled as many times as the advice is applied, so potentially thousands of times. Any logic that may repeat itself should be moved into run-time helper classes.
 
-* **Aspects can no longer "hold" run-time state**. In PostSharp, aspect fields could hold any run-time state required by the aspect. In Metalama, if an aspect needs a run-time state, it has to _introduce_ a field into the target class (see <xref:introducing-members> for details). 
+* **Aspects can no longer "hold" run-time state**. In PostSharp, aspect fields could hold any run-time state required by the aspect. In Metalama, if an aspect needs a run-time state, it has to _introduce_ a field into the target class (see <xref:introducing-members> for details).
 
 ## Aspect instances in Metalama can be shared by several declarations
 
@@ -208,7 +206,7 @@ flowchart BT
 
 
     DerivedAspect1 -->|reuses| BaseAspect
-    
+
 
   end
 
@@ -226,7 +224,7 @@ flowchart BT
     DerivedAspect3 --> |reuses| DeserializedAspect
     end
 
-   
+
   end
 
   DependentAssembly --> BaseAssembly
@@ -235,5 +233,5 @@ flowchart BT
 
 
 ### Implications
-
 * **In Metalama, aspect classes must be written in an immutable style.** Since aspect instances may be reused among several declarations, they cannot store state that is specific to a target declaration. For details, see <xref:sharing-state-with-advice>.
+

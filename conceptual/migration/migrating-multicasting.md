@@ -4,7 +4,6 @@ uid: migrating-multicasting
 
 # Migrating PostSharp Attribute Multicasting to Metalama
 
-
 Multicasting, in PostSharp, is a feature of all aspects that allows you to target several declarations using a single custom attribute or a single XML in the `postsharp.config` configuration file. Multicasting, in PostSharp, is exposed by `MulticastAttribute`, the ultimate base type of all aspect classes.
 
 Multicasting is not implemented as a core feature in Metalama but as an extension. The reason for that decision is that the goal of adding an aspect to several declarations is better achieved in Metalama using _fabrics_. For details, see <xref:fabrics-aspects>.
@@ -24,7 +23,7 @@ Here are general instructions to add the multicasting feature to any aspect. You
 
 ### Step 1. Derive your class from MulticastAspect and implement IAspect<T> as appropriate
 
-The easiest approach is for your aspect to derive from <xref:Metalama.Extensions.Multicast.MulticastAspect> instead of any other class. 
+The easiest approach is for your aspect to derive from <xref:Metalama.Extensions.Multicast.MulticastAspect> instead of any other class.
 
 The <xref:Metalama.Extensions.Multicast.MulticastAspect> class defines:
 
@@ -54,7 +53,6 @@ Example:
             builder,
             b => b.Advice.Override( b.Target, nameof(this.TheTemplate) ) );
     }
-
 ```
 
 ### Step 3. Implement eligibility
@@ -79,8 +77,6 @@ public void BuildEligibility( IEligibilityBuilder<IMethod> builder )
     builder.MustNotBeAbstract();
 }
 ```
-
-
 
 
 

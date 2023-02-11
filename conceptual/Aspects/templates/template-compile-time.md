@@ -1,8 +1,5 @@
----
-uid: template-compile-time
----
-
 # Writing compile-time code
+
 
 Compile-time expressions are expressions that either contain a call to a compile-time method, or contain a reference to a compile-time local variable or a compile-time aspect member. Compile-time expressions are executed at compile time, when the aspect is applied to a target.
 
@@ -64,6 +61,7 @@ If the expression of a `foreach` statement is a compile-time expression, the `fo
 
 The following aspect uses a `foreach` loop to print the value of each parameter of the method to which it is applied.
 
+
 [!include[Compile-Time If](../../../code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeForEach.cs)]
 
 ### No compile-time for, while and goto
@@ -105,7 +103,7 @@ The following example shows a simple _Retry_ aspect. The maximum number of attem
 
 ## Custom compile-time types and methods
 
-If you want to share compile-time code between aspects or aspect methods, you can create your own types and methods that execute at compile time. 
+If you want to share compile-time code between aspects or aspect methods, you can create your own types and methods that execute at compile time.
 
 * Compile-time code must be annotated with the [<xref:Metalama.Framework.Aspects.CompileTimeAttribute?text=CompileTime>] custom attribute. You would typically use this attribute on:
   * a method or field of an aspect;
@@ -138,3 +136,4 @@ When this configuration is done, `MyPackage` can be used both in run-time and co
 
 > [!WARNING]
 > You must also specify `MetalamaCompileTimePackage` in each project that _uses_ the aspects.
+

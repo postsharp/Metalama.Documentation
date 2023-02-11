@@ -6,18 +6,17 @@ uid: dependency-injection
 
 Many aspects need to consume services that must be injected from a dependency injection container. For instance, a caching aspect may depend on the `IMemoryCache` service. If you are using the [Microsoft.Extensions.DependencyInjection](https://learn.microsoft.com/dotnet/core/extensions/dependency-injection) framework, your aspect will need to pull this service from the constructor. If the target type of the aspect does not already accept this service from the constructor, the aspect will have to append this parameter to the constructor.
 
-However, the code pattern that must be implemented to pull any dependency depends on the dependency injection framework in use for that project. As we have seen, the default .NET Core framework requires a constructor parameter, but other frameworks may use an `[Import]` or `[Inject]` custom attribute. 
+However, the code pattern that must be implemented to pull any dependency depends on the dependency injection framework in use for that project. As we have seen, the default .NET Core framework requires a constructor parameter, but other frameworks may use an `[Import]` or `[Inject]` custom attribute.
 
 In some cases, you as the author of the aspect do not know which dependency injection framework will be used for the classes to which your aspect is applied.
 
-Enter the <xref:Metalama.Extensions.DependencyInjection> project. Thanks to this namespace, your aspect can consume and pull a dependency with a single custom attribute. The code pattern to pull the dependency is implemented by the implementation of the <xref:Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework> interface, which is chosen by the _user_ project. 
+Enter the <xref:Metalama.Extensions.DependencyInjection> project. Thanks to this namespace, your aspect can consume and pull a dependency with a single custom attribute. The code pattern to pull the dependency is implemented by the implementation of the <xref:Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework> interface, which is chosen by the _user_ project.
 
 The <xref:Metalama.Extensions.DependencyInjection> namespace is open source and hosted on [GitHub](https://github.com/postsharp/Metalama.Framework.Extensions). It currently has implementations for the following dependency injection frameworks:
 * <xref:Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionFramework> implements the default .NET Core pattern  (see [Dependency injection in .NET](https://learn.microsoft.com/dotnet/core/extensions/dependency-injection)).
 * <xref:Metalama.Extensions.DependencyInjection.ServiceLocator.ServiceLocatorDependencyInjectionFramework> can be used by classes or projects that are not instantiated by a dependency injection framework thanks a simple _service locator_ pattern.
 
 The <xref:Metalama.Extensions.DependencyInjection> project is designed to make it easy to implement other dependency injection frameworks.
-
 
 ## Consuming dependencies from your aspect
 
@@ -29,6 +28,7 @@ To consume a dependency from an aspect:
   * <xref:Metalama.Extensions.DependencyInjection.IntroduceDependencyAttribute.IsLazy> resolves the dependency upon first use, instead of upon initialization, and
   * <xref:Metalama.Extensions.DependencyInjection.IntroduceDependencyAttribute.IsRequired> throws an exception if the dependency is not available.
 4. Use this field or property from any template member of your aspect.
+
 
 ### Example: default dependency injection patterns
 
@@ -49,7 +49,7 @@ By default, Metalama generates code for the default .NET dependency injection fr
 
 If you want to select a different framework for a project, it is generally sufficient to add a reference to the package implementing this dependency framework i.e. for instance `Metalama.Extensions.DependencyInjection.ServiceLocator`. These packages generally include a <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric> that registers itself. This works well when there is a single dependency injection framework in the project.
 
-When there are several dependency injection frameworks in a project, Metalama will call the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptions.Selector?text=DependencyInjectionOptions.Selector> delegate. Its default implementation is to return the first eligible framework in the input list, i.e. the topmost in the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptions.RegisteredFrameworks> list. 
+When there are several dependency injection frameworks in a project, Metalama will call the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptions.Selector?text=DependencyInjectionOptions.Selector> delegate. Its default implementation is to return the first eligible framework in the input list, i.e. the topmost in the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptions.RegisteredFrameworks> list.
 
 To customize the selection strategy of the dependency injection framework for a specific aspect and dependency:
 
@@ -57,7 +57,7 @@ To customize the selection strategy of the dependency injection framework for a 
 2. From the <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method, call the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.DependencyInjectionOptions*?text=amender.Project.DependencyInjectionOptions()> method to access the options.
 3. Set the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptions.Selector?text=DependencyInjectionOptions.Selector> property.
 
- 
+
  ## Implementing an adaptor for a new dependency injection framework
 
  If you need to support a dependency injection framework or pattern for which no ready-made implementation exists, you can implement an adapter yourself.
@@ -79,3 +79,4 @@ Our implementation of <xref:Metalama.Extensions.DependencyInjection.Implementati
 
 
 [!include[Custom Adapter](../../code/Metalama.Documentation.SampleCode.DependencyInjection/LogCustomFramework.cs)]
+

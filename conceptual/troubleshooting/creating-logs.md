@@ -4,12 +4,11 @@ uid: creating-logs
 
 # Enabling logging
 
-If you report a Metalama bug, you may be asked to send Metalama logs. Here is how to produce them.
-
+If you report a Metalama bug, you may be asked to send Metalama log files. These instructions teach you how to produce them.
 
 ## Step 1. Install the metalama tool
 
-Install `metalama` .NET tool as described in <xref:dotnet-tool>.
+Install the `metalama` .NET Tool as described in <xref:dotnet-tool>.
 
 ## Step 2. Edit diagnostics.json
 
@@ -66,7 +65,6 @@ To restart background compiler processes, do:
 
 ```
 metalama kill
-
 ```
 To restart IDE processes, if you want to change logging of the IDE processes, restart your IDE manually.
 
@@ -81,3 +79,4 @@ Execute the sequence of actions to be logged.
 ## Step 5. Open the log file
 
 You will find the log under the `%TEMP%\Metalama\Logs` directory.
+

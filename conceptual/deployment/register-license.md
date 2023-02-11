@@ -21,7 +21,7 @@ To switch to the Metalama Free license:
 
 ## Registering a license key
 
-To register a license for the current user:
+To register a license key for the current user:
 
 1. Install Metalama Command Line Tools as described in <xref:dotnet-tool>.
 2. Execute the following command:
@@ -43,7 +43,7 @@ To register a license manually for the current user:
    }
    ```
 
-## Registering a license key via an environment variable or MSBuild
+## Registering a license key using an environment variable or MSBuild
 
 The license key can be stored as the value of the `MetalamaLicense` MSBuild property. This allows for:
 

@@ -4,17 +4,17 @@ uid: fabrics
 
 # Fabrics
 
-Fabrics are classes that are executed at compile time. Unlike aspects, fabrics do not need to be explicitly _added_ to a declaration. Fabrics are executed just because they exist in the code.
+Fabrics are classes that are executed at compile time. Unlike aspects, fabrics do not need to be explicitly added to a declaration. Fabrics are executed automatically.
 
-Fabrics are implemented in the <xref:Metalama.Framework.Fabrics> namespace. See the namespace documentation for a class diagram.
+Fabrics are defined in the <xref:Metalama.Framework.Fabrics> namespace. See [the class diagram of the Metalama.Framework.Fabrics namespace](https://doc.postsharp.net/7.0.20/html/01dbb455-861c-440e-a2ef-84d1bf581eef.htm).
 
 ## Benefits
 
 You can use fabrics in the following situations:
 
-* **Add aspects in bulk**. Instead of adding aspects to each individual declaration with a custom attribute, you can add them programmatically in bulk. See <xref:fabrics-aspects> for details.
+* **Add aspects in bulk**. Instead of adding an aspect to each individual declaration with a custom attribute, you can programmatically add that aspect to multiple targets. See <xref:fabrics-aspects> for details.
 * **Validate code.** You can add validation rules to your project or namespace using fabrics. See <xref:fabrics-validation> for details.
-* **Configure an aspect library**. When an aspect library exposes a configuration API, you can set the options from a project fabric.
+* **Configure an aspect library**. When an aspect library exposes a configuration API, you can configure the aspect library from a project fabric.
 
 ## In this chapter
 
@@ -29,3 +29,4 @@ This chapter contains the following articles:
 | <xref:fabrics-configuring> | This article explains how to use a project fabric to configure an aspect library. |
 | <xref:fabrics-multiple-projects> | This article explains how to target multiple projects with fabrics, either by using a shared fabric in the root directory of your repo, or by using transitive project fabrics.
 | <xref:fabrics-execution-order> | This article explains in which order fabrics and aspects execute in a project.
+

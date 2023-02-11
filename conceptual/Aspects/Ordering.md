@@ -4,13 +4,13 @@ uid: ordering-aspects
 
 # Ordering Aspects
 
-When there are several aspect classes in the project, their order of execution is significant.
+When several aspect classes are defined, their order of execution is important.
 
 ## Concepts
 
 ### Per-project ordering
 
-In Metalama, the order of execution is _static_. It is principally a concern of the aspect library author, not one of the user of the aspect library.
+In Metalama, the order of execution is _static_. It is principally a concern of the aspect library author, not a concern of the users of the aspect library.
 
 Each aspect library should define the order of execution of aspects it defines, not only with regards to other aspects of the same library, but also to aspects defined in referenced aspect libraries.
 
@@ -22,7 +22,7 @@ Metalama follows what we call the "matryoshka" model: your source code is the in
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Matryoshka_transparent.png" width="480px" style="padding: 40px" title="CC BY-SA 3.0 by Wikipedia user Fanghong.">
 
-It is important to remember that Metalama builds the matryoshka from the inside to the outside, but the code is executed is from the outside to the inside, i.e. the source code is executed _last_.
+It is important to remember that Metalama builds the matryoshka from the inside to the outside, but the code is executed from the outside to the inside; in other words, the source code is executed _last_.
 
 Therefore, the aspect application order and the aspect execution order are _opposite_.
 
@@ -35,7 +35,7 @@ using Metalama.Framework.Aspects;
 [assembly: AspectOrder( typeof(Aspect1), typeof(Aspect2), typeof(Aspect3))]
 ```
 
-You can specify _partial_ order relationships. The aspect framework will merge all partial relationships and determine the global order for the current project. 
+You can specify _partial_ order relationships. The aspect framework will merge all partial relationships and determine the global order for the current project.
 
 For instance, the following code snippet is equivalent to the previous one:
 
@@ -45,7 +45,7 @@ using Metalama.Framework.Aspects;
 [assembly: AspectOrder( typeof(Aspect2), typeof(Aspect3))]
 ```
 
-This is like in mathematics: if we have `a < b` and `b < c`, then we have `a < c` and the ordered sequence is `{a, b, c}`. 
+This is like in mathematics: if we have `a < b` and `b < c`, then we have `a < c` and the ordered sequence is `{a, b, c}`.
 
 If you specify conflicting relationships, or import aspect library that define conflicting ordering, Metalama will emit a compilation error.
 
@@ -74,3 +74,4 @@ The primary aspect instance is the instance that has been applied the "closest" 
 Within these individual categories, the ordering is currently undefined, which means that the build may be nondeterministic if the aspect implementation relies on that ordering.
 
 [comment]: # (TODO: Example of handling secondary instances)
+

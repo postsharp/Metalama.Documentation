@@ -1,7 +1,7 @@
 ---
 uid: diagnostics
 ---
-# Reporting and Suppressing Diagnostics
+# Reporting and suppressing diagnostics
 
 This article explains how to report a diagnostic (error, warning or information message) from an aspect, or to _suppress_ a diagnostic reported by the C# compiler or another aspect.
 
@@ -58,9 +58,9 @@ The following logging aspect requires a `_logger` field to exist, but it is like
 [!include[Suppress Warning](../../code/Metalama.Documentation.SampleCode.AspectFramework/SuppressWarning.cs)]
 
 
-## Advanced Example
+## Advanced example
 
-The following aspect can be added to a field or property. It overrides the getter so that its value is retrieved from a service locator. This aspect assumes that the target class has a field named `_serviceProvider` and of type `IServiceProvider`. The aspect reports errors if this field is absent or of a wrong type. The C# compiler may report a warning `CS0169` because it looks from source code that the `_serviceProvider` field is unused. Therefore, the aspect must suppress this diagnostic.
+The following aspect can be added to a field or property. It overrides the getter so that its value is retrieved from a service locator. This aspect assumes that the target class has a field named `_serviceProvider` and of type `IServiceProvider`. The aspect reports errors if this field is absent or of a wrong type. The C# compiler may report a warning `CS0169` because it appears from source code that the `_serviceProvider` field is unused. Therefore, the aspect must suppress this diagnostic.
 
 [!include[Import Service](../../code/Metalama.Documentation.SampleCode.AspectFramework/LocalImport.cs)]
 
@@ -68,4 +68,5 @@ The following aspect can be added to a field or property. It overrides the gette
 
 When the `BuildAspect` method of your aspect is executed, it sees the code model as it was _before_ the aspect was applied.
 
-If you need to validate the code after all aspects have been applied, see <xref:validation>.
+If you need to validate the code after all aspects have been applied see <xref:validation>.
+

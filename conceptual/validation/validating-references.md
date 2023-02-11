@@ -2,7 +2,7 @@
 uid: validating-references
 ---
 
-# Validating References
+# Validating references
 
 It is often useful to validate how a declaration is _used_ outside of its parent type or namespace. With Metalama, you can analyze _code references_ and:
 
@@ -18,16 +18,16 @@ Additionally or instead of transforming the code of the target declaration, an a
 
 To create an aspect that validates references:
 
-1. Create an aspect class by inheriting one of the following classes, according to the kind of declarations you want to validate: <xref:Metalama.Framework.Aspects.CompilationAspect>, 
+1. Create an aspect class by inheriting one of the following classes, according to the kind of declarations you want to validate: <xref:Metalama.Framework.Aspects.CompilationAspect>,
 <xref:Metalama.Framework.Aspects.ConstructorAspect>, <xref:Metalama.Framework.Aspects.EventAspect>,
-<xref:Metalama.Framework.Aspects.FieldAspect>, <xref:Metalama.Framework.Aspects.FieldOrPropertyAspect>, 
-<xref:Metalama.Framework.Aspects.MethodAspect>, <xref:Metalama.Framework.Aspects.ParameterAspect>, 
+<xref:Metalama.Framework.Aspects.FieldAspect>, <xref:Metalama.Framework.Aspects.FieldOrPropertyAspect>,
+<xref:Metalama.Framework.Aspects.MethodAspect>, <xref:Metalama.Framework.Aspects.ParameterAspect>,
 <xref:Metalama.Framework.Aspects.PropertyAspect>, <xref:Metalama.Framework.Aspects.TypeAspect> or <xref:Metalama.Framework.Aspects.TypeParameterAspect>. If you want to validate several kinds of declarations, you can inherit your class from <xref:System.Attribute> and implement as many generic constructions of the <xref:Metalama.Framework.Aspects.IAspect`1> interface as needed.
 2. In the aspect class, define one or more static fields of type <xref:Metalama.Framework.Diagnostics.DiagnosticDefinition> as explained in <xref:diagnostics>.
 3. Create a method of arbitrary name with the signature `void ValidateReference( ReferenceValidationContext context )`. Implement the validation logic in this method. All the data you need is in the <xref:Metalama.Framework.Validation.ReferenceValidationContext> object. When you detect a rule violation, report a diagnostic as described in <xref:diagnostics>.
 4. Override the <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>, <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method of your fabric.
 5. From the `Amend*` method, access the <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> property, select the declarations to be validated using the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> and <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> methods, then chain with a call to <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ValidateReferences*>. Pass two parameters:
-   - The name of the new method that you have defined in the previous step. *It must be a method. It cannot be a delegate, lambda, or a local function.*
+   - The name of the new method that you have defined in the previous step. *It must be a method. It cannot be a delegate, lambda, or a local function*.
    - The kinds of references that you want to validate for instance `All` to validate all references, `TypeOf` to validate references in a `typeof` expression, and so on.
 
 
@@ -43,8 +43,8 @@ The following example implements a custom attribute `[ForTestOnly]` that enforce
 To validate code from a fabric, the steps are almost the same as from an aspect. The difference is that you do not create an aspect class but a fabric class.
 
 
-1. Create a fabric class by inheriting one of the following classes, according to the kind of declarations you want to validate: 
-   * <xref:Metalama.Framework.Fabrics.TypeFabric> (the fabric class must be a nested class) to validate the nesting class;
+1. Create a fabric class by inheriting one of the following classes, according to the kind of declarations you want to validate:
+   * <xref:Metalama.Framework.Fabrics.TypeFabric> (the fabric class must be a nested class) to validate the containing class;
    * <xref:Metalama.Framework.Fabrics.NamespaceFabric> to validate the containing namespace;
    * <xref:Metalama.Framework.Fabrics.ProjectFabric> to validate the current project;
    * <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric> to validate any project referencing the current project.
@@ -74,3 +74,4 @@ The cross-project scenario and the need for serialization are the reasons why th
 ## Passing state to the validation method
 
 You must use <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState?text=builder.AspectState>. Do not store in an aspect field state that depends on the target of the aspect.
+

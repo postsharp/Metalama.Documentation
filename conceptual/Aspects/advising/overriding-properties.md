@@ -3,12 +3,12 @@ uid: overriding-fields-or-properties
 ---
 # Overriding Fields or Properties
 
-In <xref:overriding-methods>, you have learned how to wrap an existing method with additional, automatically-generated model. You can do the same with fields and properties thanks to the  <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class. 
+In <xref:overriding-methods>, you have learned how to wrap an existing method with additional, automatically-generated model. You can do the same with fields and properties thanks to the  <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class.
 
 ## The simple way: deriving the OverrideFieldOrPropertyAspect abstract class
 
 1. Add Metalama to your project as described in <xref:installing>.
-   
+
 2. Create a new class derived from the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
 
 3. Implement the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect.OverrideProperty> property in plain C#. The accessors of this property will serve as <xref:templates?text=templates> defining the way the aspect overrides the accessors of the hand-written field or property.
@@ -86,8 +86,7 @@ The following aspect overrides properties so that they are written to and read f
 
 This example illustrates a strongly-typed property template with a single accessor that uses the `meta.Target.FieldOrProperty.Value` expression to access the underlying field or property.
 
-The following aspect can be applied to fields of properties of type `string`. It overrides the setter to trim and lower case the assigned value. 
-
+The following aspect can be applied to fields of properties of type `string`. It overrides the setter to trim and lower case the assigned value.
 [!include[Normalize](../../../code/Metalama.Documentation.SampleCode.AspectFramework/Normalize.cs)]
 
 ### Using an accessor template
@@ -107,3 +106,4 @@ The templates must fulfill the following conditions:
 * The setter template must be of signature `void Setter(T value)`, where the name `value` of the first parameter is mandatory.
 
 [comment]: # (TODO: example)
+

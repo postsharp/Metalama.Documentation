@@ -4,15 +4,16 @@ uid: sdk
 
 # Extending Metalama with the Roslyn API
 
-_Metalama.Framework.Sdk_ offers direct access to Metalama's underlying code-modifying capabilities through [Roslyn-based APIs](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/compiler-api-model). 
+`Metalama.Framework.Sdk` offers direct, low-level access to Metalama by using [Roslyn-based APIs](https://docs.microsoft.com/dotnet/csharp/roslyn-sdk/compiler-api-model).
 
-Unlike _Metalama.Framework_, our high-level API, aspects built with _Metalama.Framework.Sdk_ must be in their own project, separate from
-the code they transform. _Metalama.Framework.Sdk_ is much more complex to use and less safe than _Metalama.Framework_, and does not allow for a good design-time experience. You should use _Metalama.Framework.Sdk_ only when necessary.
+Unlike `Metalama.Framework`, our high-level API, aspects built with `Metalama.Framework.Sdk` must be in their own project, separate from
+the code they transform. `Metalama.Framework.Sdk` is much more complex to use and less safe than `Metalama.Framework`, and does not allow for a good design-time experience. You should use `Metalama.Framework.Sdk` only when necessary.
 
 This chapter contains the following articles:
 
-* <xref:sdk-scaffolding>
-* <xref:aspect-weavers>
-* <xref:custom-metrics>
-* <xref:services>
+* [Scaffolding a SDK project](chapter-extending-sdk-scaffolding.md)
+* [Weaving with aspect weavers](chapter-extending-sdk-aspect-weavers.md)
+* [Logic](chapter-extending-sdk-logic.md)
+* [Creating custom metrics](chapter-extending-sdk-custom-metrics.md)
+* [Creating custom services](chapter-extending-sdk-services.md)
 

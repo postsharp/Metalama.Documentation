@@ -4,7 +4,9 @@ uid: templates
 
 ## T# Templates
 
-Code templates in Metalama are written in a dialect of C# called T#. The syntax of T# is 100% compatible with C#, but T# is compiled differently.
+Aspects and aspect attributes are implemented using a templating language. Their unobtrusive syntax does not come straight from the compiler, but rather from the "aspect compiler". We call this language T#, because its is syntactically a superset of C#.
+
+However, templates are compiled differently, therefore the T# language has very specific requirements in order to obtain predictable results. While any snippet of code can be imported from C# and will compile and execute, this compilation is somewhat obscure. For example, generic types must be fully parameterized and cannot be inferred.
 
 This chapter contains the following articles:
 
@@ -18,23 +20,23 @@ This chapter contains the following articles:
             <xref:template-overview>
         </td>
         <td>
-             This article is an introduction to T#, the template language of Metalama.
+            This article introduces T#, the template language for Metalama.
         </td>
-    </tr>    
+    </tr>
     <tr>
         <td>
             <xref:template-compile-time>
         </td>
         <td>
-             This article describes which subset of the C# language can be used as compile-time code, and how to build templates with rich compile-time logic.             
+            This article describes which subset of the C# language can be used as compile-time code, and how templates with rich compile-time logic can be built.
         </td>
-    </tr>    
+    </tr>
     <tr>
         <td>
             <xref:template-dynamic-code>
         </td>
         <td>
-            This article explains different techniques to generate run-time code dynamically
+            This article explains different techniques to generate run-time code dynamically.
         </td>
     </tr>
     <tr>
@@ -61,4 +63,5 @@ This chapter contains the following articles:
             This article explains how to debug templates.
         </td>
     </tr>
-</table>   
+</table>
+

@@ -4,7 +4,7 @@ uid: installing
 
 # Installing Metalama: Quick Start
 
-## 1. Install main the NuGet package
+## 1. Install the NuGet package
 
 To start working with Metalama, add the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) NuGet package to your project.
 
@@ -29,7 +29,7 @@ For details of all possible NuGet packages and their dependencies, see <xref:pac
 > Metalama requires [a target framework that supports .NET Standard 2.0](xref:requirements#target-frameworks).
 
 
-To create new aspects, we suggest that you use Visual Studio 2022 and install [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama). This extension adds syntax highlighting to aspect code (as seen in the examples in this documentation) and can be of great help, especially if you are just getting started with Metalama.
+To create new aspects, we suggest that you use Visual Studio 2022 and install [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama). This extension adds syntax highlighting for aspect code (as shown in the examples in this documentation) and can be of great help, especially if you are just getting started with Metalama.
 
 ## What's next?
 

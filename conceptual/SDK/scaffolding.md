@@ -1,4 +1,5 @@
 ---
+title: Creating a Metalama SDK solution structure
 uid: sdk-scaffolding
 ---
 
@@ -9,7 +10,7 @@ A Metalama SDK solution typically contains the following projects:
 * The _public_ project (`MyExtension` in the diagram below) contains the classes exposed to the consumers of your solution. This project is a standard class library and it must target _at least_ .NET Standard 2.0.
 * The _weaver_ project (`MyExtension.Weaver` in the diagram below) contains the implementation of the public API thanks to the Metalama SDK and Roslyn APIs. This project is deployed as a _Roslyn analyzer_. It must target _only_ .NET Standard 2.0.
 * The _test_ project (`MyExtension.UnitTests` in the diagram below)  is optional but recommended. It contains the test suite.
-* Consumer projects (`MyProject` in the diagram below) may be a part of the same solution, or may reference the Metalana extension as a NuGet package.
+* Consumer projects (`MyProject` in the diagram below) may be a part of the same solution, or may reference the Metalama extension as a NuGet package.
 
 ## Dependency diagram
 
@@ -29,11 +30,11 @@ graph BT
     MyProject --> MyExtension
     MyProject -- analyzer --> MyExtension.Weaver
     Metalama.Framework.Sdk --> Metalama.Framework.Redist
-    
+
     Metalama.Framework.Sdk([Metalama.Framework.Sdk<br/>package])
     Roslyn([Roslyn<br/>packages])
     Metalama.Framework.Redist([Metalama.Framework.Redist<br/>package])
-    Metalama.Testing.AspectTesting([Metalama.Testing.AspectTesting<br/>package]) 
+    Metalama.Testing.AspectTesting([Metalama.Testing.AspectTesting<br/>package])
     MyExtension[MyExtension<br/>project]
     MyExtension.Weaver[MyExtension.Weaver<br/>project]
     MyExtension.UnitTests[MyExtension.UnitTests<br/>project]
@@ -92,7 +93,7 @@ The weaver project:
 * targets exclusively `netstandard2.0`;
 * is typically the main project of the NuGet package;
 * redefines the `PackageId` to the real package name, i.e. removes the `.Weaver` suffix from the package name.
-  
+
 ### Example
 
 ```xml
@@ -172,3 +173,4 @@ If the consuming projects are a part of the same solution as the Metalama extens
 
 </Project>
 ```
+
