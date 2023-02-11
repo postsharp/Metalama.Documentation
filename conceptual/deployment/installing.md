@@ -6,33 +6,32 @@ uid: installing
 
 ## 1. Install main the NuGet package
 
-Before you start developing aspects, you must add the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) package to your project.
+To start working with Metalama, add the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) NuGet package to your project.
 
-You can do that from your IDE or from the command line:
+You can add the package directly from Visual Studio or using the .NET CLI:
 
 ```
 dotnet add package Metalama.Framework --prerelease
 ```
 
-Or by editing your project file:
+Alternatively, simply paste the following line inside your .csproj file:
 
-[comment]: # (TODO: Change the following to the latest stable version once 1.0 is released)
 
 ```xml
 <ItemGroup>
     <PackageReference Include="Metalama.Framework" Version="0.*-*" />
-</ItemGroup>    
+</ItemGroup>
 ```
 
-For details of all NuGet packages and their dependencies, see <xref:packages>.
+For details of all possible NuGet packages and their dependencies, see <xref:packages>.
 
->[!NOTE]
->Metalama requires [a target framework that supports .NET Standard 2.0](xref:requirements#target-frameworks).
+> [!NOTE]
+> Metalama requires [a target framework that supports .NET Standard 2.0](xref:requirements#target-frameworks).
 
-## 2. Install Metalama Tools for Visual Studio (optional)
 
 To create new aspects, we suggest that you use Visual Studio 2022 and install [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama). This extension adds syntax highlighting to aspect code (as seen in the examples in this documentation) and can be of great help, especially if you are just getting started with Metalama.
 
-## What's Next?
+## What's next?
 
 You are now ready for real meta-programming. Go to <xref:getting-started> to see the next steps.
+
