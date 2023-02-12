@@ -4,9 +4,7 @@ uid: templates
 
 ## T# Templates
 
-Aspects and aspect attributes are implemented using a templating language. Their unobtrusive syntax does not come straight from the compiler, but rather from the "aspect compiler". We call this language T#, because its is syntactically a superset of C#.
-
-However, templates are compiled differently, therefore the T# language has very specific requirements in order to obtain predictable results. While any snippet of code can be imported from C# and will compile and execute, this compilation is somewhat obscure. For example, generic types must be fully parameterized and cannot be inferred.
+Code templates in Metalama are written in a dialect of C# called T#. The syntax of T# is 100% compatible with C#, but T# is compiled differently.
 
 This chapter contains the following articles:
 

@@ -41,7 +41,7 @@ graph TD
     classDef runTime fill:lightgreen;
 
     classDef framework fill:red;
-    f[Metalama]
+    f[Core]
     class f framework
 
     u[Your Code]

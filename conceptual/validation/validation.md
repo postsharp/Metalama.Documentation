@@ -30,8 +30,8 @@ This chapter contains the following articles:
 
 | Article | Description |
 |--|--|
-| <xref:aspects:validating-declarations> | This article explains how an aspect or a fabric can validate a declaration. It also shows how to validate the state of the code model after all aspects have been applied.
-| <xref:aspects:validating-references> | This article describes how to validate the way a declaration is being _used_, i.e. to validate every reference instead of the declaration itself.
+| <xref:validating-declarations> | This article explains how an aspect or a fabric can validate a declaration. It also shows how to validate the state of the code model after all aspects have been applied.
+| <xref:validating-references> | This article describes how to validate the way a declaration is being _used_, i.e. to validate every reference instead of the declaration itself.
 
 
 

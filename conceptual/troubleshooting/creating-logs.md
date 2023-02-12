@@ -8,7 +8,7 @@ If you report a Metalama bug, you may be asked to send Metalama log files. These
 
 ## Step 1. Install the metalama tool
 
-Install the `metalama` .NET Tool as described in <xref:dotnet-tool>.
+Install the `metalama` .NET tool as described in <xref:dotnet-tool>.
 
 ## Step 2. Edit diagnostics.json
 

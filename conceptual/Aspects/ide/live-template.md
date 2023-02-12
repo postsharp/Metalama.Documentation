@@ -24,6 +24,3 @@ Live templates are built with the Metalama Aspect Framework. Instead of being ex
 2. Make sure that the aspect class has a default constructor.
 3. Annotate the class with `[EditorExperience(SuggestAsLiveTemplate = true)]`.
 4. Make sure that you properly define the aspect eligibility, so the code refactoring will only be suggested for relevant declarations. See <xref:eligibility> for details.
-
-[SETUP.EXE and POSTSHARP6.MSI Copyrights](https://github.com/postsharp/postsharp-6/blob/master/src/Tools.MsiBuilder/Resource/Readme.txt)
-

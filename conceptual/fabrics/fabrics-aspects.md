@@ -21,7 +21,7 @@ To add an aspect from a fabric:
 
    The reason behind this design is that the <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> property not only selects members declared in source code but also members introduced by other aspects, and that are unknown at the time <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed.
 
-3. Call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> method, with the aspect and its configuration as arguments.
+3. Call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> method.
 
 ## Example: Adding an aspect to all methods in a project
 

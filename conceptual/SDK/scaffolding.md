@@ -1,5 +1,4 @@
 ---
-title: Creating a Metalama SDK solution structure
 uid: sdk-scaffolding
 ---
 

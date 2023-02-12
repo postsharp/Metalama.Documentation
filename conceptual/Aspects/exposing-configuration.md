@@ -3,7 +3,7 @@ uid: exposing-configuration
 ---
 # Exposing Configuration
 
-Some widely-used aspects need a central, project-wide way to configure their compile-time behavior.
+Some complex and widely-used aspects need a central, project-wide way to configure their compile-time behavior.
 
 There are two complementary configuration mechanisms: MSBuild properties and the configuration API.
 
@@ -18,7 +18,9 @@ There are two complementary configuration mechanisms: MSBuild properties and the
 
 ## Consuming MSBuild properties
 
-The simplest way for an aspect to accept a configuration property is to read an MSBuild property using the <xref:Metalama.Framework.Project.IProject.TryGetProperty*?text=IProject.TryGetProperty> method. However, MSBuild properties are not visible to aspects by default. We recommend the following approach to consume a configuration property:
+The simplest way for an aspect to accept a configuration property is to read an MSBuild property using the <xref:Metalama.Framework.Project.IProject.TryGetProperty*?text=IProject.TryGetProperty> method. MSBuild properties are not visible to aspects by default: you have to instruct MSBuild to pass it to the compiler using the `CompilerVisibleProperty` item.
+
+We recommend the following approach to consume a configuration property:
 
 1. Create a file named `YourProject.targets` (the actual name of the file does not matter but the extension does):
 

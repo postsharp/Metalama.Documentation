@@ -7,7 +7,7 @@ uid: services
 > [!WARNING]
 > This feature is not completed and does not work as documented.
 
-Aspects generally do not get access to the underlying <xref:Roslyn code model of the current project. The most serious consequence of this limitation is that aspects have no access to the syntax tree of method implementations – indeed, the <xref:Metalama.Framework.Code> namespace only exposes declarations, but not implementation syntax.
+Aspects generally do not get access to the underlying Roslyn code model of the current project. The most serious consequence of this limitation is that aspects have no access to the syntax tree of method implementations -- indeed, the <xref:Metalama.Framework.Code> namespace only exposes declarations, but not implementation syntax.
 
 If your aspect needs to read the syntax tree, it can do it through an _SDK service_. An SDK service is an interface that is defined in a normal project (and is therefore usable by the aspect) but is implemented in a weaver project (and can therefore access the Roslyn API).
 
@@ -15,7 +15,7 @@ If your aspect needs to read the syntax tree, it can do it through an _SDK servi
 
 ### Step 1. Create the solution scaffolding
 
-This step is described in <xref:SDK Scaffolding>.
+This step is described in <xref:sdk-scaffolding>.
 
 ### Step 2. Define the interface
 

@@ -11,9 +11,8 @@ the code they transform. `Metalama.Framework.Sdk` is much more complex to use an
 
 This chapter contains the following articles:
 
-* [Scaffolding a SDK project](chapter-extending-sdk-scaffolding.md)
-* [Weaving with aspect weavers](chapter-extending-sdk-aspect-weavers.md)
-* [Logic](chapter-extending-sdk-logic.md)
-* [Creating custom metrics](chapter-extending-sdk-custom-metrics.md)
-* [Creating custom services](chapter-extending-sdk-services.md)
+* <xref:sdk-scaffolding>
+* <xref:aspect-weavers>
+* <xref:custom-metrics>
+* <xref:services>
 

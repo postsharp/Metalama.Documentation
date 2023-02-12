@@ -25,8 +25,7 @@ In the following example, the aspect introduces an `Id` property of type `Guid`,
 
 #### Example: initializing with a template
 
-You can also use the T# template language inside field and property analyzers.
-The following example introduces a property that is initialized to the build configuration and target framework.
+You can also use the T# template language inside field and property analyzers. The aspect in the following example introduces a property that is initialized to the build configuration and target framework.
 
 [!include[Introduce Build Info](../../../code/Metalama.Documentation.SampleCode.AspectFramework/BuildInfo.cs)]
 
@@ -53,7 +52,7 @@ If the type does not contain any constructor, a default constructor will be crea
 
 ### Example: registering live instances
 
-The following example registers any new instance of the target class in a registry of live instances. When an instance is garbage-collected, it is automatically removed from the registry. The aspect injects the registration logic into the constructor of the target class.
+The aspect in the following aspect registers any new instance of the target class in a registry of live instances. When an instance is garbage-collected, it is automatically removed from the registry. The aspect injects the registration logic into the constructor of the target class.
 
 [!include[Register Instance](../../../code/Metalama.Documentation.SampleCode.AspectFramework/RegisterInstance.cs)]
 

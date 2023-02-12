@@ -1,3 +1,7 @@
+---
+uid: template-compile-time
+---
+
 # Writing compile-time code
 
 

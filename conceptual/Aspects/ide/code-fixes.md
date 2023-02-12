@@ -23,7 +23,7 @@ The aspect uses the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest
 
 ## Building multi-step code fixes
 
-To create a custom code fix, instantiate the <xref:Metalama.Framework.CodeFixes.CodeFix> class using the constructor, instead of the **CodeFixFactory** class.
+To create a custom code fix, instantiate the <xref:Metalama.Framework.CodeFixes.CodeFix> class using the constructor instead of the <xref:Metalama.Framework.CodeFixes.CodeFixFactory> class.
 
 The <xref:Metalama.Framework.CodeFixes.CodeFix> constructor accepts two arguments:
 
