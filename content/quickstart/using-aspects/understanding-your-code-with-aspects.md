@@ -72,8 +72,8 @@ This sort of thing is possible because some of the aspects can be designed as <x
 ### Implementing `INotifyPropertyChanged` 
 In the following code example, it is shown how `INotifyPropertyChanged` event is fired for all members of derived classes when `NotificationPropertyChanged` aspect is applied. 
 
+[!code-csharp[](../../../code/DebugDemo4/Program.cs)]
 
-[!code-csharp[](~code\DebugDemo4\Program.cs)]
 
 When run this program prints the following output
 
@@ -87,6 +87,7 @@ Z has changed
 ```
 
 > [!NOTE]
-> Note that there is no **explicit** application of aspects and the inheritable type aspect `[NotifyPropertyChanged]` applied on the base type is inherited by all the members of the derived type. 
+> Notice that members of `MovingVertex3D` type doesn't have `NotifyPropertyChanged` explicitly. But that aspect is inherited because `NotifyPropertyChanged` is an inhertiable aspect.  
+Note that there is no **explicit** application of aspects and the inheritable type aspect `[NotifyPropertyChanged]` applied on the base type is inherited by all the members of the derived type. 
 
 

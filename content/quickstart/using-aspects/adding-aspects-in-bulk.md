@@ -59,7 +59,7 @@ To add aspect to all public methods add the following Fabric to your project.
 
 When this fabric is added to a project with the following types, 
 
-[!code-csharp[](~code\DebugDemo\Entities.cs)]
+[!code-csharp[](../../../code/DebugDemo/Entities.cs)]
 
 It will show that `[Log]` aspect is applied to all of the public method as shown below
 
@@ -84,7 +84,7 @@ To add another aspect we have to alter the project Fabric. This time we will add
 
 To do this alter the Fabric like this. 
 
-[!code-csharp[](~code\DebugDemo2\Fabric.cs)]
+[!code-csharp[](../../../code/ DebugDemo2/Fabric.cs)]
 
 
 (WIP)

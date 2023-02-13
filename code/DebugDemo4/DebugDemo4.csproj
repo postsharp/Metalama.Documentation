@@ -8,11 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Metalama.Framework" Version="2023.0.101-rc" />
+    <PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Metalama.Documentation.QuickStart\Metalama.Documentation.QuickStart.csproj" />
+    <Reference Include="Metalama.Documentation.QuickStart">
+      <HintPath>..\Metalama.Documentation.QuickStart\bin\Debug\net6.0\Metalama.Documentation.QuickStart.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
