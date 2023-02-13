@@ -67,7 +67,7 @@ It will show that `[Log]` aspect is applied to all of the public method as shown
 
 
 
-## Adding another aspect
+## Example: Adding more aspects using the same Fabric
 For each project, it is recommended to have only one project fabric. 
 
 > [!WARNING]
@@ -87,3 +87,9 @@ Inside the `AmendProject` method, we get all the public methods and add _logging
 
 > [!WARNING]
 > Sometimes CodeLense misses the aspects to show. For that time it is required to rebuild the project.  
+
+## Example: Adding aspects to all methods in a given namespace
+
+To add the Logging aspect (`LogAttribute`) to all the methods of a given namespace 'Outer.Inner' and all the child types located in any descendent namespace use the following fabric 
+
+[!code-csharp[](../../../code/DebugDemo2/Fabric2.cs)]
