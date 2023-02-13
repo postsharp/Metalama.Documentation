@@ -86,7 +86,10 @@ To do this alter the Fabric like this.
 
 [!code-csharp[](../../../code/DebugDemo2/Fabric.cs)]
 
-(WIP)
+There are a few things to note in this example. The first point to consider is the `AmendPoject` method. We are trying to add aspects to different members of a project. So essentially we are trying to _amend_ the project. Thus the name. 
+
+Inside the `AmendProject` method, we get all the public methods and add _logging_ and _retrying_ aspect to these methods. 
+
 
 
 > [!WARNING]
