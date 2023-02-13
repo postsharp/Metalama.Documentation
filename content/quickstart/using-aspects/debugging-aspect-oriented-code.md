@@ -66,13 +66,10 @@ Once it shows all files in your solution explorer, locate the file under `LamaDe
 As you can see you can put breakpoint on this transformed code and it will be hit because for this is the code that got compiled. 
 
 ## Debugging using step-in and forceful break  
-[!code-csharp[](~\code\DebugDemo\Program.cs)]
+
+[!code-csharp[](../../../code/DebugDemo/Program.cs)]
 
 When you debug this by Step-Into you shall see that the actual code being _debugged_ is the transformed code
-
-
-
-[!code-csharp[](~code\DebugDemo\obj\LamaDebug\net6.0\metalama\Program.cs)] 
 
 ## Breaking forcefully using `Debugger.Break`
 

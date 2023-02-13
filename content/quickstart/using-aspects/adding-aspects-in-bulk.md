@@ -84,8 +84,7 @@ To add another aspect we have to alter the project Fabric. This time we will add
 
 To do this alter the Fabric like this. 
 
-[!code-csharp[](../../../code/ DebugDemo2/Fabric.cs)]
-
+[!code-csharp[](../../../code/DebugDemo2/Fabric.cs)]
 
 (WIP)
 
