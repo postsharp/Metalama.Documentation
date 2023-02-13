@@ -65,14 +65,7 @@ It will show that `[Log]` aspect is applied to all of the public method as shown
 
 ![](../../images/../using-aspects/images/../../quickstart/using-aspects/images/aspects_added_to_many_types.png)
 
-> [!NOTE]
-> Note that although there is no explicit attribute on the public methods of this type, you can see that all public methods `Main` and `TryDoThat` got the aspect applied.  
 
-## Viewing applied aspects via CodeLense
-
-CodeLense comes in particularly handy in such situations where you have to enquire about aspects and they are not present as an explicit attribute. To see which aspect got applied, click on the text `1 aspect` and you can see this
-
-![](../images/../using-aspects/images/fabric_application_02.png)
 
 ## Adding another aspect
 For each project, it is recommended to have only one project fabric. 
