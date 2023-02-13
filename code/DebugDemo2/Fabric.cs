@@ -10,14 +10,12 @@ namespace DebugDemo
     {
         public override void AmendProject(IProjectAmender project)
         {
-            //Locating all public methods 
-
             //1. Get all the types
             var allPublicMethods = project.Outbound.SelectMany(p => p.Types)
                                              //2. Get all methods of all these types
-                                             .SelectMany(t => t.Methods);
-                                              //3. Find only the public ones  
-                                             .Where(t => t.Accessibility == Accessibility.Public)
+                                             .SelectMany(t => t.Methods)
+                                             //3. Find only the public ones  
+                                             .Where(t => t.Accessibility == Accessibility.Public);
             AddLoggingAspect(allPublicMethods);
             AddRetryAspect(allPublicMethods);
         }
