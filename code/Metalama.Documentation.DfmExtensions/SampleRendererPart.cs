@@ -251,12 +251,13 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
 
             AppendTab( "target", "Target Code", targetHtml );
 
+            string additionalCs = null;
+
             if ( File.Exists( additionalHtmlPath ) )
             {
-                var programHtml = File.ReadAllText( additionalHtmlPath );
-                AppendTab( "additional", "Additional Code", programHtml );
-
-                // TODO: we should add this to the TryMetalama link, but TryMetalama does not support 3 buffers. 
+                var additionalHtml = File.ReadAllText( additionalHtmlPath );
+                AppendTab( "additional", "Additional Code", additionalHtml );
+                additionalCs = Html2Text( additionalHtml );
             }
 
             AppendTab( "transformed", "Transformed Code", transformedHtml );
@@ -270,7 +271,7 @@ public class SampleRendererPart : DfmCustomizedRendererPartBase<IMarkdownRendere
             var gitUrl = gitHubProjectPath + "/" + sourceDirectoryRelativeToGitDir + "/" +
                          shortFileNameWithoutExtension + gitUrlExtension;
 
-            var tryPayloadJson = JsonConvert.SerializeObject( new { a = aspectCs, p = targetCs } );
+            var tryPayloadJson = JsonConvert.SerializeObject( new { a = aspectCs, p = targetCs, e = additionalCs == null ? null : new[] { new { n = "Additional.cs", c = additionalCs } } } );
             var tryPayloadHash = LZString.CompressToEncodedURIComponent( tryPayloadJson );
             var tryUrl = tryBaseUrl + tryPayloadHash;
 
