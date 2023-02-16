@@ -6,7 +6,7 @@ uid: quickstart-adding-aspects
 
 Most aspects are custom attributes that have to be applied to some target declaration. Some aspects can target methods, other properties, or classes.
 
-In this section, you shall see how you can use custom attributes to add aspects.
+In this section, you'll learn how to use custom attributes to add aspects.
 
 ## Adding aspects as custom attributes
 
@@ -20,30 +20,30 @@ To apply the `Retry` aspect, add it as a normal custom attribute, i.e., type `[L
 
 ![](images/applying_retry_attribute.png)
 
-Code Lens now shows `1 aspect`. When you hover your cursor on that text, it will show the following tooltip:
+CodeLens now shows `1 aspect`. When you hover your cursor on that text, it will show the following tooltip:
 
 ![](images/retry_aspect_applied.png)
 
-If you want to see further details from CodeLens, click on the text `1 aspect`:
+If you want to see the details, click on the text `1 aspect`:
 
 ![Retry_Aspect_Code_Lense](images/showing_retry_aspect_code_lense.png)
 
-The details displayed by Code Lens may seem trivial in this example, but this feature will prove itself very useful when you have several aspects on the same methods on when aspects are implicitly applied instead of being explicitly applied using a custom attribute.
+The displayed details are trivial in this example, but this feature will prove itself very useful when you have several aspects on the same methods when aspects are implicitly applied instead of being explicitly applied using a custom attribute.
 
 ## Adding more than one attribute
 
-You can choose to use as many aspects as you need on a target method. In this example, you may want to log each retry attempt and then you have the option to use the `Log` aspect.
+You can choose to add as many aspects as you need on a target method. In this example, if you want to log each retry attempt, you have the option to use the `Log` aspect.
 
 ![Retry_and_Log_Aspect_Together](images/retry_and_log_aspect_together.png)
 
-CodeLense now shows that there are two aspects being applied to this method `FlakyMethod` and if you click on the text `2 aspects` you can see the details as offered by CodeLense like this
+CodeLens now shows that two aspects are applied to the method `FlakyMethod`. If you click on the text `2 aspects`, you can see the details that CodeLens offers:
 
 ![Retry_Log_Applied_CodeLense](images/retry_log_code_lense_details.png)
 
 
 ## Adding aspects via the refactoring menu
 
-Instead of adding attributes manually, you can also see them via the refactoring menu. You can call this menu by clicking on the _lightbulb_ or _screwdriver_ icon, or by pressing `Ctrl + .`.
+Instead of adding attributes manually, you can also do it via the refactoring menu. You can call this menu by clicking on the _lightbulb_ or _screwdriver_ icon, or by pressing `Ctrl + .`.
 
 ![Context_menu_offers_aspects](images/add_aspect_via_context_menu.png)
 

@@ -3,9 +3,9 @@ uid: preview-metalama-diff
 ---
 
 # Metalama Diff
-Aspects transform your code. You can see how the modified code differs from your source code by the Metalama Diff option from the context menu.
+Aspects transform your code. You can see how modified code differs from your source code by the Metalama Diff option from the context menu in Visual Studio.
 
-To see this diff version, simply right click on the code. This will pull up the menu like this
+To see the diff version, simply right click on the code. This will pull up the menu like this.
 
 ![Metalama_Diff_Menu_Option](../images/../using-aspects/images/showing_metalama_diff_option.png)
 

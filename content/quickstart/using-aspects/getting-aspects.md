@@ -5,8 +5,6 @@ uid: getting-aspects
 
 As promised, this chapter will not cover the art of creating aspects. We will assume that you already have pre-built aspects that you can use in your projects. These aspects can be provided by your colleagues, by our team, or by the community.
 
-
-
 ## Demo aspects
 
 In the examples of this chapter, we shall use the following pre-built aspects:
@@ -19,7 +17,7 @@ In the examples of this chapter, we shall use the following pre-built aspects:
 
 You can download the Nuget package with these aspects at [TO_Be_Filled_URL](here).
 
-These aspects, when applied will change the behavior of your source code without modifying it at the source level. These will transform the code before the generated code is given to the compiler.
+These aspects, when applied, change the behavior of your source code without modifying it at the source level. These will transform the code before the generated code is given to the compiler.
 
 > [!NOTE]
 > Again, you need not worry about their implementation as of now because in this chapter you shall only consume them.

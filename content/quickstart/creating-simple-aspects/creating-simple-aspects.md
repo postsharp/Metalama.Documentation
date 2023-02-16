@@ -7,7 +7,7 @@ uid: creating-simple-aspects
 > ![WARNING]
 > This chapter has not been written yet.
 
-You have seen how aspects can modify your program before it is compiled. In this chapter you shall learn how to create your own aspects targeting several parts of the code
+You have seen how aspects can modify your program before it is compiled. In this chapter you learn how to create your own aspects targeting several parts of the code.
 
 
 ## Different aspect types
@@ -24,8 +24,6 @@ classDiagram
     IAspect <|-- EventAspect
     EventAspect <|-- OverrideEventAspect
 ```
-
-As you can see, the `IAspect` interface is implemented across many different types to deliver overrides for different parts of the code.
 
 ## What can aspects do
 

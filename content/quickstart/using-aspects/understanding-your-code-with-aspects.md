@@ -22,7 +22,7 @@ It shows you, inside the editor, how many aspects have been applied to your code
 
 ![](./images/log_aspect_applied_on_flakymethod.png)
 
-As you can see that CodeLense shows the following details
+CodeLense shows the following details:
 
 |Detail | Purpose
 |-------|---------
@@ -31,7 +31,7 @@ As you can see that CodeLense shows the following details
 |`Aspect Origin` |How the aspect is applied.
 |`Transformation`|This is a default message showing that the aspect changes the behavior of the target method.
 
-At the moment, you may wonder why this could be useful, but it will become clear when you will see that _many_ aspects can be added to your code, and when aspects are _implicitly_ applied.
+At the moment, you may wonder why this could be useful, but it will become clear when you see that many aspects can be added to your code, and when aspects are applied implicitly.
 
 
 Here is an example of a method with a couple of aspects applied.
