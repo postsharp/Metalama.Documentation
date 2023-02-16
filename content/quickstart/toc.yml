@@ -3,7 +3,7 @@ items:
   topicUid: quickstart
   items:
   - name: Using Metalama 
-    topicUid: quickstart-using-aspects
+    topicUid: quickstart-using-metalama
     items:
       - name: Installing Metalama
         topicUid:  install

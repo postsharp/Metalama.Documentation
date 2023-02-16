@@ -7,12 +7,8 @@ items:
     - name: Deployment
       topicUid: deployment
       items:
-        - name: Installing Metalama
-          topicUid: installing
         - name: NuGet Packages
           topicUid: packages
-        - name: Metalama Tools for Visual Studio
-          topicUid: install-vs-tools
         - name: Metalama Command Line Tools
           topicUid: dotnet-tool
         - name: Register a License

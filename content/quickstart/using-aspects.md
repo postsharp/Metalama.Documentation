@@ -1,5 +1,5 @@
 ---
-uid: quickstart-using-aspects
+uid: quickstart-using-metalama
 ---
 
 # Using Metalama

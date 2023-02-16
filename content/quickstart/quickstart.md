@@ -18,6 +18,6 @@ This book is composed of the following chapters:
 
 | Chapter | Description |
 |--------|----|
-| <xref:quickstart-using-aspects> | If you want to learn how to _use_ aspects but do not need to learn how to create new ones, this chapter is for you and you may want to stop reading after this one. |
+| <xref:quickstart-using-metalama> | If you want to learn how to _use_ aspects but do not need to learn how to create new ones, this chapter is for you and you may want to stop reading after this one. |
 | <xref:creating-simple-aspects> | This chapter explains how to create your own aspects. |
 | TODO | This chapter explains how to validate your code against architecture rules. |
