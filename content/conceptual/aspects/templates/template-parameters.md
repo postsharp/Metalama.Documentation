@@ -7,34 +7,34 @@ uid: template-parameters
 Thanks to _compile-time parameters_, your `BuildAspect` implementation can pass arguments to the template. There are two kinds of template parameters: standard parameters, and type parameters aka generic parameters.
 
 Unlike run-time parameters:
-* Compile-time parameters must receive a value at compile time from `BuildAspect` method.
+* Compile-time parameters must receive a value at compile time from the `BuildAspect` method.
 * Compile-time parameters are not visible in generated code, i.e. they are removed from the parameter list when the template is expanded.
 
 
 ## Parameters
 
-Compile-time parameters are especially useful when the same template is used several times by the aspect -- for instance when you introduce a method for each field of a type, and the method needs to know which field it must handle. 
+Compile-time parameters are especially useful when the same template is used several times by the aspect -- for instance when you introduce a method for each field of a type, and the method needs to know which field it must handle.
 
 To define and use a compile-time parameter in a template method:
 
 1. Add one or more parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The parameter type must not be run-time-only. If the parameter type is compile-time-only (e.g. `IField`), the custom attribute is redundant.
-  
-2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { a = "", b = 3, c = field }` where `a`, `b` and `c` and the exact names of the template parameters (the name matching is case sensitive).
-  
+
+2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { a = "", b = 3, c = field }` where `a`, `b` and `c` are the exact names of the template parameters (the name matching is case sensitive).
+
 
 ### Alternative
 
-When you cannot use compile-time parameters (typically because you have a field, property or event template instead of a method template), you can replace them by tags. For details about tags, see <xref:sharing-state-with-advice>. The only advantage of compile-time parameters over tags is that the later are easier to read from the template. Tags need a more cumbersome syntax.
+When you cannot use compile-time parameters (typically because you have a field, property or event template instead of a method template), you can replace them by tags. For details about tags, see <xref:sharing-state-with-advice>. The only advantage of compile-time parameters over tags is that the latter are easier to read from the template. Tags need a more cumbersome syntax.
 
 ## Type parameters
 
-_Compile-time type parameters_, aka compile-time generic parameters, are generic parameters whose value is specified at compile time by the `BuildAspect` method. Compile-time type parameters are a type-safe alternative to dynamic typing in templates. With compile-time type parameters, it is more convenient to reference a type from a template since a type can be referenced as a type, instead of using more a cumbersome syntax like `meta.Cast`.
+_Compile-time type parameters_, aka compile-time generic parameters, are generic parameters whose value is specified at compile time by the `BuildAspect` method. Compile-time type parameters are a type-safe alternative to dynamic typing in templates. With compile-time type parameters, it is more convenient to reference a type from a template since a type can be referenced as a type, instead of using a more cumbersome syntax like `meta.Cast`.
 
-To define and use a compile-time type parameter in a template method, follow almost the same steps as for a normal compile-time parameter:
+To define and use a compile-time type parameter in a template method follow the similar steps as for a normal compile-time parameter:
 
-1. Add one or more parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The type parameter can have arbitrary constraints, but the current version of Metalama will ignore them when expanding the template.
-  
-2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { T1 = typeof(int), T2 = field.Type }` where `T1` and `T2` and the exact names of the template parameters (the name matching is case sensitive).
+1. Add one or more type parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The type parameter can have arbitrary constraints. The current version of Metalama will ignore them when expanding the template.
+
+2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { T1 = typeof(int), T2 = field.Type }` where `T1` and `T2` are the exact names of the template parameters (note that the name matching is case sensitive).
 
 ### Alternative
 

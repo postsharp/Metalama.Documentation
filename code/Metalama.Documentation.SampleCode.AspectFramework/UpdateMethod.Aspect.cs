@@ -11,7 +11,7 @@ namespace Doc.UpdateMethod
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            var updateMethodBuilder = builder.Advice.IntroduceMethod(
+            builder.Advice.IntroduceMethod(
                 builder.Target,
                 nameof(this.Update),
                 buildMethod:
@@ -37,7 +37,7 @@ namespace Doc.UpdateMethod
             {
                 var field = meta.Target.Type.FieldsAndProperties.OfName( parameter.Name ).Single();
 
-                field.ToExpression().Value = meta.Target.Parameters[index].Value;
+                field.Value = meta.Target.Parameters[index].Value;
                 index++;
             }
         }

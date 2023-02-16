@@ -33,7 +33,7 @@ namespace Doc.GenerateResetMethods
         [Template]
         public void Reset<[CompileTime] T>( IFieldOrProperty field )
         {
-            field.ToExpression().Value = default(T);
+            field.Value = default(T);
         }
     }
 }

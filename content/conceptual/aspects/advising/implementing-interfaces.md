@@ -3,11 +3,11 @@ uid: implementing-interfaces
 ---
 # Implementing Interfaces
 
-Many aspects need to modify the target type so it implements a new interface. This can be done only using the programmatic advising API.
+Some aspects need to modify the target type so that it implements a new interface. This can be done only using the programmatic advising API.
 
 ## Step 1. Call IAdviceFactory.ImplementInterface
 
-In your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, call the <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> method.
+In your implementation of the <xref:Metalama.Framework.Aspects.IAspect.BuildAspect*> method, call the <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> method.
 
 ## Step 2. Add interface members to the aspect class
 
@@ -15,11 +15,11 @@ Add all interface members to the aspect class and mark them with the <xref:Metal
 
 The following rules apply to interface members:
 
-- The name and signature of all interface members must exactly match.
-- The accessibility of introduced members have no importance.
-- The aspect framework will generate public members unless the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute.IsExplicit> property is set to `true`. In this case, an explicit implementation is generated.
+- The name and the signature of all template interface members must match exactly those of the introduced interface.
+- The accessibility of introduced members is irrelevant.
+- The aspect framework will generate public members unless the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute.IsExplicit> property is set to true. In this case, an explicit implementation is created.
 
-Implementing an interface in a complete dynamic manner, when the interface itself is not known by the aspect, is not yet supported.
+Implementing an interface in a complete dynamic manner, when the interface is not already known by the aspect, is not yet supported.
 
 ## Example: IDisposable
 
@@ -27,14 +27,14 @@ The aspect in the next example introduces the `IDisposable` interface. The imple
 
 [!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Disposable.cs name="Disposable"]
 
-## Example: deep cloning
+## Example: Deep cloning
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/DeepClone.cs name="Deep Clone"]
 
 
 ## Referencing interface members in other templates
 
-When you introduce an interface member to a type, your will often want to access it from templates. Unless the member is an explicit implementation, you have two options:
+When you introduce an interface member to the type, you often want to access it from templates. Unless the member is an explicit implementation, you have two options:
 
 [comment]: # (TODO: better code examples)
 
@@ -54,12 +54,13 @@ meta.This.Dispose();
 
 ## Accessing explicit implementations
 
-The following strategies are possible:
+The following strategies are possible to access explicit implementations:
 
-- cast the instance to the interface and access the member, e.g.
+- Cast the instance to the interface and access the member:
 
     ```cs
     ((IDisposable)meta.This).Dispose();
     ```
 
-- introduce a private method with the real method implementation, and call this private member both from the interface member and from other templates.
+- Introduce a private method with the real method implementation, and call this private member both from the interface member and from other templates.
+

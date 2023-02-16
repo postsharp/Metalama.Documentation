@@ -11,9 +11,9 @@ namespace Doc.PrintFieldValues
         {
             foreach ( var fieldOrProperty in meta.Target.Type.FieldsAndProperties )
             {
-                if ( !fieldOrProperty.IsImplicitlyDeclared && fieldOrProperty.IsAutoPropertyOrField.GetValueOrDefault() )
+                if ( !fieldOrProperty.IsImplicitlyDeclared && fieldOrProperty.IsAutoPropertyOrField == true )
                 {
-                    var value = fieldOrProperty.Invokers.Final.GetValue( fieldOrProperty.IsStatic ? null : meta.This );
+                    var value = fieldOrProperty.Value;
                     Console.WriteLine( $"{fieldOrProperty.Name}={value}" );
                 }
             }

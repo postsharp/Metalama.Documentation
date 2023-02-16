@@ -11,13 +11,13 @@
 
     <!-- Versions of dependencies -->
     <PropertyGroup>
-        <PostSharpEngineeringVersion>1.0.116-preview</PostSharpEngineeringVersion>
-        <MetalamaVersion>2023.0.101-rc</MetalamaVersion>
-        <MetalamaCompilerVersion>2023.0.101-rc</MetalamaCompilerVersion>
-        <MetalamaMigrationVersion>2023.0.101-rc</MetalamaMigrationVersion>
-        <MetalamaExtensionsVersion>2023.0.101-rc</MetalamaExtensionsVersion>
-        <MetalamaLinqPadVersion>2023.0.101-rc</MetalamaLinqPadVersion>
-        <NuGetCommandLineVersion>6.2.2</NuGetCommandLineVersion>
+        <PostSharpEngineeringVersion>1.0.126-preview</PostSharpEngineeringVersion>
+        <MetalamaVersion>2023.0.102-rc</MetalamaVersion>
+        <MetalamaCompilerVersion>2023.0.102-rc</MetalamaCompilerVersion>
+        <MetalamaMigrationVersion>2023.0.102-rc</MetalamaMigrationVersion>
+        <MetalamaExtensionsVersion>2023.0.102-rc</MetalamaExtensionsVersion>
+        <MetalamaLinqPadVersion>2023.0.102-rc</MetalamaLinqPadVersion>
+        <NuGetCommandLineVersion>6.4.0</NuGetCommandLineVersion>
     </PropertyGroup>
 
     <!-- Import overrides for the local build -->

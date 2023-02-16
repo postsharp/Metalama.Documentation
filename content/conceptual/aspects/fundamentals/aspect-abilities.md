@@ -4,15 +4,16 @@ uid: aspect-abilities
 
 # Abilities of Aspects
 
-An aspect is, by definition, a class that implements the <xref:Metalama.Framework.Aspects.IAspect`1> generic interface. The generic parameter of this interface is the type of declaration to which that aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
+[comment]: # (TODO: what is the relationship between aspects and attributes)
+[comment]: # (TODO: what is the Aspect base class)
 
-Aspects have different abilities which are expounded below. The aspect author can use or configure these abilities in the following method <!--- as you only list one method this should be singular -->inherited from the <xref:Metalama.Framework.Aspects.IAspect`1> interface:
+An aspect is, by definition, a class that implements the <xref:Metalama.Framework.Aspects.IAspect`1> generic interface. The generic parameter of this interface is the type of declaration to which the aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
 
-* <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> builds the aspect _instance_ applied on a specific _target declaration_, thanks to a <xref:Metalama.Framework.Aspects.IAspectBuilder`1>;
+The aspect author can use the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, inherited from the <xref:Metalama.Framework.Aspects.IAspect`1> interface, to build the aspect _instance_ applied on a specific _target declaration_, thanks to a <xref:Metalama.Framework.Aspects.IAspectBuilder`1>;
 
 ```mermaid
 classDiagram
-    
+
     class IAspect {
         BuildAspect(IAspectBuilder)
     }
@@ -50,18 +51,18 @@ Aspects can perform the following transformations to code:
 * Introduce a new generated member to an existing type.
 * Implement an interface into a type.
 
-For details, see <xref:advising-code>
+For details, see <xref:advising-code>.
 
 
 ## Reporting and suppressing diagnostics
 
-Aspects can report diagnostics (a single word for errors, warnings and information messages), and can suppress diagnostics reported by the C# compiler, analyzers, or other aspects.
+Aspects can report diagnostics (a single word for errors, warnings, and information messages), and can suppress diagnostics reported by the C# compiler, analyzers, or other aspects.
 
 For details about this feature, see <xref:diagnostics>.
 
-## Suggest code fixes
+## Suggesting code fixes
 
-Aspects can suggest code fixes to any diagnostic it reports, or suggest code refactorings.
+Aspects can suggest code fixes to any diagnostic they report, or suggest code refactorings.
 
 
 ## Validating the code that references the target declaration
@@ -91,7 +92,7 @@ If an aspect instance decides that it cannot be applied to the target to which i
 
 The aspect may or may not report a diagnostic before calling <xref:Metalama.Framework.Aspects.IAspectBuilder.SkipAspect>. Calling this method does not report any diagnostic.
 
-## Customize its appearance in the IDE.
+## Customizing its appearance in the IDE
 
 By default, an aspect class is represented in the IDE by the name of this class without the `Attribute` suffix, if any. To override the default name, annotate the aspect class with the <xref:System.ComponentModel.DisplayNameAttribute> annotation.
 
@@ -107,4 +108,6 @@ The following example shows an aspect that targets methods, fields and propertie
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/LogMethodAndProperty.cs name="Aspect Targeting Methods, Fields and Properties"]
 
-## Code model versioning
+
+[comment]: # (TODO: Code model versioning)
+

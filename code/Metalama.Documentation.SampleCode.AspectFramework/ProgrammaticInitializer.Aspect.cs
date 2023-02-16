@@ -11,31 +11,20 @@ namespace Doc.ProgrammaticInitializer
     {
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
-            // Create an expression that contains the an array with all method names.
-            var expressionBuilder = new ExpressionBuilder();
-            expressionBuilder.AppendVerbatim( "new string[] {" );
-            var i = 0;
+            // Create an expression that contains the array with all method names.
+            var arrayBuilder = new ArrayBuilder(typeof(string));
 
             foreach ( var methodName in builder.Target.Methods.Select( m => m.Name ).Distinct() )
             {
-                if ( i > 0 )
-                {
-                    expressionBuilder.AppendVerbatim( ", " );
-                }
-
-                expressionBuilder.AppendLiteral( methodName );
-
-                i++;
+                arrayBuilder.Add( ExpressionFactory.Literal( methodName ) );
             }
-
-            expressionBuilder.AppendVerbatim( "}" );
 
             // Introduce a field and initialize it to that array.
             builder.Advice.IntroduceField(
                 builder.Target,
                 "_methodNames",
                 typeof(string[]),
-                buildField: f => f.InitializerExpression = expressionBuilder.ToExpression() );
+                buildField: f => f.InitializerExpression = arrayBuilder.ToExpression() );
         }
     }
 }

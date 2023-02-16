@@ -64,7 +64,7 @@ namespace Doc.ToStringWithComplexCodeFix
 
                 stringBuilder.AddText( field.Name );
                 stringBuilder.AddText( "=" );
-                stringBuilder.AddExpression( field.ToExpression().Value );
+                stringBuilder.AddExpression( field.Value );
 
                 i++;
             }

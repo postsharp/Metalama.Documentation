@@ -4,13 +4,13 @@
 
 ## Introduction
 
-Metalama.Framework is an [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) framework based on templates written in pure C#.
+Metalama is an [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) framework based on templates written in pure C#.
 
-These templates make it easy to write code that combines compile-time information (such as names and types of parameters of a method) and run-time information (such as parameter values) in a natural way, without having to learn another language or having to combine C# with some special templating language.
+These templates make it easy to write code that combines compile-time information (such as names and types of parameters of a method) and run-time information (such as parameter values) in a natural way, without having to learn yet another language or having to combine C# with some special templating language.
 
 ## Example
 
-For example, consider this simple aspect, which logs the name of a method and information about its parameters to the console and then lets it execute as usual:
+For example, consider this simple aspect, which logs the name of a method and information about its parameters to the console before letting the method execute.
 
 ```c#
 class Log : OverrideMethodAspect
@@ -106,3 +106,4 @@ These members are:
 ## Packaging an aspect
 
 There is nothing special about creating a NuGet package for a project that contains Metalama.Framework aspects, it works the same as creating a NuGet package for a regular .NET library.
+

@@ -2,11 +2,11 @@
 uid: code-fixes
 ---
 
-# Offering Code Fixes & Refactorings
+# Offering Code Fixes and Refactorings
 
 ## Attaching code fixes to diagnostics
 
-Whenever an aspect or fabric reports a diagnostic, it can attach a set of code fixes to this diagnostic by calling the <xref:Metalama.Framework.Diagnostics.IDiagnostic.WithCodeFixes*?text=IDiagnostic.WithCodeFixes> method. To create one-step code fixes, you can use the <xref:Metalama.Framework.CodeFixes.CodeFixFactory> class.
+Whenever an aspect or fabric reports a diagnostic, it can attach a set of code fixes to this diagnostic by calling the <xref:Metalama.Framework.Diagnostics.IDiagnostic.WithCodeFixes*?text=IDiagnostic.WithCodeFixes> method. To create single-step code fixes, you can use the <xref:Metalama.Framework.CodeFixes.CodeFixFactory> class.
 
 
 ## Suggesting code refactorings without diagnostics
@@ -32,7 +32,7 @@ The <xref:Metalama.Framework.CodeFixes.CodeFix> constructor accepts two argument
 
 The title must be globally unique for the target declaration. Even two different aspects cannot provide two code fixes of the same title to the same declaration.
 
-The delegate will typically use one of following methods of the <xref:Metalama.Framework.CodeFixes.ICodeActionBuilder> interface:
+The delegate will typically use one of the following methods of the <xref:Metalama.Framework.CodeFixes.ICodeActionBuilder> interface:
 
 | Method | Description |
 |------|----|
@@ -44,7 +44,7 @@ The delegate will typically use one of following methods of the <xref:Metalama.F
 
 We are continuing the previous example, but instead of a single-step code fix, we want to offer the user the ability to switch from an aspect-oriented implementation of `ToString` to source code. That is, apply the aspect to the source code itself.
 
-The custom code action does the following:
+The custom code fix does the following:
 
 * Apply the aspect itself using <xref:Metalama.Framework.CodeFixes.ICodeActionBuilder.ApplyAspectAsync*>.
 * Remove the `[ToString]` custom attribute.
@@ -57,9 +57,8 @@ The custom code action does the following:
 * Code fixes and refactorings are only useful at design time. At compile time, all code fixes will be ignored. If you want to avoid generating code fixes at compile time, you can make your logic conditional to the `MetalamaExecutionContext.Current.ExecutionScenario.CapturesCodeFixTitles` expression.
 
 * The `Func<ICodeActionBuilder, Task>`  delegate is only executed when the code fix or refactoring is selected by the user. However, the whole aspect will be executed again which has two implications:
-  *  The logic that _creates_ the delegate must be very fast because it is rarely useful. Any expensive logic should be moved to the _implementation_ of the delegate itself.
-  *  If you want to avoid generating the delegate, you can make it conditional to the `MetalamaExecutionContext.Current.ExecutionScenario.CapturesCodeFixImplementations` expression.
+  * The logic that _creates_ the delegate must be very fast because it is rarely useful. Any expensive logic should be moved to the _implementation_ of the delegate itself.
+  * If you want to avoid generating the delegate, you can make it conditional to the `MetalamaExecutionContext.Current.ExecutionScenario.CapturesCodeFixImplementations` expression.
 
 * At design time, all code fix titles, including those added by the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method, are cached for the whole solution. Therefore, you should avoid adding a large number of suggestions. The current Metalama design is not suited for this scenario.
-
 

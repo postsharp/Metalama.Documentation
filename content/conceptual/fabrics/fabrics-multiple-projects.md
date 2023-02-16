@@ -3,17 +3,16 @@ uid: fabrics-multiple-projects
 ---
 
 
-# Targeting Multiple Projects with Fabrics
+# Targeting multiple projects with fabrics
 
-## Transitive Project Fabrics
+## Transitive project fabrics
 
-Transitive project fabrics are compile-time types that can amend any project _referencing_ the containing project by adding aspects and validators, and by setting configuration options.
-
+Transitive project Fabrics are compile-time types that can add aspects, validators and configuration to projects _referencing_ the current project. 
 Transitive project fabrics work exactly like project fabrics, but they execute on referencing projects instead of on the current project.
-
 
 ## Shared Fabrics
 
 This is currently not implemented.
 
-(the idea is that any file named `MetalamaFabric.cs` in any ancestor directory of the current project would be added to the compile-time project and therefore could define a fabric)
+(The idea is that any file named `MetalamaFabric.cs` in any ancestor directory of the current project would be added to the compile-time project and thus could define a fabric.)
+

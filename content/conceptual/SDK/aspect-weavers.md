@@ -6,11 +6,11 @@ uid: aspect-weavers
 
 Normal aspects are implemented by the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, which provide advice thanks to the advice factory exposed on the <xref:Metalama.Framework.Aspects.IAspectBuilder> interface. Therefore, normal aspects are limited to the abilities of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface.
 
-By contrast, aspect weavers allow you to perform _completely arbitrary_ transformations on  C# code using the low-level Roslyn API.
+By contrast, aspect weavers allow you to perform _completely arbitrary_ transformations on C# code using the low-level Roslyn API.
 
 When you assign an aspect weaver to an aspect class, Metalama no longer calls the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method to implement the aspect, but instead calls the aspect weaver.
 
-Unlike normal aspect, weaver-based aspects:
+Unlike normal aspects, weaver-based aspects:
 
 * are more complex to implement by one or two orders of magnitude;
 * are not executed at design time;
@@ -21,7 +21,7 @@ Unlike normal aspect, weaver-based aspects:
 
 The following steps guide you to the process of creating a weaver-based aspect and its weaver:
 
-### Step 1. Create the solution scaffolding 
+### Step 1. Create the solution scaffolding
 
 This step is described in <xref:sdk-scaffolding>.
 
@@ -37,7 +37,7 @@ public class AutoCancellationAttribute : TypeAspect { }
 
 In the _weaver project_ created in Step 1:
 
-1. Add a class that implements the <xref:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver> interface. 
+1. Add a class that implements the <xref:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver> interface.
 2. Make sure the class is `public`.
 3. Add the <xref:Metalama.Compiler.MetalamaPlugInAttribute> custom attributes to this class.
 
@@ -51,10 +51,9 @@ using Metalama.Framework.Engine.AspectWeavers;
 namespace Metalama.Open.AutoCancellationToken;
 
 [MetalamaPlugIn]
-[AspectWeaver( typeof(AutoCancellationTokenAttribute) )]
 internal partial class AutoCancellationTokenWeaver : IAspectWeaver
 {
-    public void Transform( AspectWeaverContext context )
+    public Task TransformAsync( AspectWeaverContext context )
     {
         throw new NotImplementedException();
     }
@@ -75,13 +74,13 @@ public class AutoCancellationAttribute : TypeAspect { }
 
 <xref:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync*> has a parameter of type <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext>. The <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation> property of this object contains the input compilation, and your implementation must set this property to the new compilation.
 
-The type of the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation> property is <xref:Metalama.Framework.Engine.CodeModel.IPartialCompilation>. Compilations are immutable objects. This interface, as well as the extension class <xref:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions>, offer different methods to transform the compilation. For instance, the <xref:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTrees*> will apply a rewriter to the input compilation and return the resulting compilation.
+The type of the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation> property is <xref:Metalama.Framework.Engine.CodeModel.IPartialCompilation>. Compilations are immutable objects. This interface, as well as the extension class <xref:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions>, offer different methods to transform the compilation. For instance, the <xref:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions.RewriteSyntaxTreesAsync*> method will apply a rewriter to the input compilation and return the resulting compilation.
 
-Do not forget to write back the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation?context.Compilation> property.
+Do not forget to write back the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation?text=context.Compilation> property.
 
 Each weaver will be invoked a single time per project, regardless of the number of aspect instances in the project.
 
-The list of aspect instances that need to be handled by your weaver is given by the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation?context.AspectInstances> property.
+The list of aspect instances that need to be handled by your weaver is given by the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances?text=context.AspectInstances> property.
 
 To map the Metalama code model to an `ISymbol`, use the extension methods in <xref:Metalama.Framework.Engine.CodeModel.SymbolExtensions>.
 
@@ -103,4 +102,6 @@ Available examples of Metalama.Framework.Sdk weavers are:
 * [Metalama.Open.AutoCancellationToken](https://github.com/postsharp/Metalama.Open.AutoCancellationToken): automatically propagates `CancellationToken` parameter.
 * [Metalama.Open.DependencyEmbedder](https://github.com/postsharp/Metalama.Open.DependencyEmbedder): bundles .NET Framework applications into a single executable file.
 
+
 The Metalama.Open.Virtuosity repository contains very little logic, so it can be used as a template for your own weavers.
+

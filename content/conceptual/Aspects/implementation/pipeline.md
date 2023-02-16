@@ -14,7 +14,7 @@ uid: pipeline
 
 2. Initialization of aspect classes.
     1. A prototype instance of each aspect class is created using `FormatterServices.GetUninitializedObject`.
-    2. The <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method is executed executed. Aspect layers are discovered.
+    2. The <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method is executed. Aspect layers are discovered.
     3. Aspect ordering relationships are discovered in the current project and all referenced assemblies.
     4. Aspects layers are ordered.
 
@@ -51,3 +51,4 @@ What happens next depends on whether the pipeline runs at design time or compile
 
 At design time, non-observable transformations are ignored, and partial files are created for observable transformations.
 Templates are never executed at design time.
+

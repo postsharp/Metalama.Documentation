@@ -15,7 +15,7 @@ Create the scaffolding as described in <xref:sdk-scaffolding>.
 
 ### Step 2. Create the metric public API
 
-In the public project, create a `struct` that implements the <xref:Metalama.Framework.Metrics.IMetric`1> generic interface, where the type parameter is the type of declaration to which the metric applies (e.g. `IMethod` or `IField`). Your metric `struct` can implement several generic instances of the <xref:Metalama.Framework.Metrics.IMetric`1> interface.
+In the public project, create a `struct` that implements the <xref:Metalama.Framework.Metrics.IMetric`1> generic interface, where the type parameter is the type of declaration to which the metric applies (e.g. `IMethod` or `IField`). Your metric `struct` can implement several generic instances of the <xref:Metalama.Framework.Metrics.IMetric`1> interface at the same time.
 
 Your metric `struct` will typically have at least one public property. Additionally, it will have internal members to update the values, which will be used by the metric implementation.
 
@@ -40,7 +40,7 @@ A metric requires several implementation classes. All must be contained in the w
 
 2. Create a public class that derives from <xref:Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1>, where `T` is again the same metric type. In the class constructor, pass an instance of the visitor created in the previous step.
 
-3. Implement the <xref:<xref:Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1.Aggregate*?text=SyntaxMetricProvider.Aggregate> method. This method is used to aggregate the metric from the level of members to the level of types, namespaces, or the whole project.
+3. Implement the <xref:Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate*> method. This method is used to aggregate the metric from the level of members to the level of types, namespaces, or the whole project.
 
 4. Annotate this class with the <xref:Metalama.Compiler.MetalamaPlugInAttribute> custom attribute.
 
@@ -74,12 +74,13 @@ The following example implements a metric that counts the number of nodes in a m
             }
         }
     }
-```    
+```
 
 ## Consuming a custom metric
 
 Custom metrics can be consumed just as usual.
 
-## Testing a custom metric
+[comment]: # (TODO: what does "as usual" mean? a link or a short explanation would be useful)
 
-TODO
+[comment]: # (TODO: Testing a custom metric)
+

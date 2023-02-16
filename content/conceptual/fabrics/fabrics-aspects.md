@@ -17,23 +17,23 @@ To add an aspect from a fabric:
 2. Call one of the following methods from <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>, or
 
    * To select the type itself, simply use <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> property.
-   * To select type members (methods, fields, nested types, ...), call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> or <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> method and provide a lambda expression that selects the relevant type members.
-   
+   * To select type members (methods, fields, nested types, and others), call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> or <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> method and, finally, provide a lambda expression that selects the relevant type members.
 
-    The reason for this design is that the <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> method will not only select members declared in source code, but also members introduced by other aspects and that are unknown when your  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed.
+   The reason behind this design is that the <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> property not only selects members declared in source code but also members introduced by other aspects, and that are unknown at the time <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed.
 
-3. Call to the  <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> method.
+3. Call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> method.
 
-## Example: adding an aspect to all methods in a project
+## Example: Adding an aspect to all methods in a project
 
-In the following example, a type fabric adds a logging aspect to all public methods in the type.
+In the following example, a project fabric adds a logging aspect to all methods in a project.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric.cs name="Type Fabric Adding Aspects"]
 
 
-## Example: adding an aspect from a type fabric
+## Example: Adding an aspect from a type fabric
 
-In the following example, a type fabric adds a logging aspect to all public methods in the type.
+In the following example, a type fabric adds a logging aspect to all public methods.
 
-<!--- TODO: make class partial and split into different file -->
+[comment]: # (TODO: make class partial and split into different file)
+
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/TypeFabric.cs name="Type Fabric Adding Aspects"]

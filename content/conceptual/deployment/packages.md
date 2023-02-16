@@ -27,11 +27,11 @@ Metalama is composed of many NuGet packages. Some are used only for testing or t
 
 ```mermaid
 graph TD
-  
+
     t[Test and introspection]
     class t testing
     classDef testing fill:orange;
-    
+
     c[Compile-time]
     class c compileTime
     classDef compileTime fill:yellow;
@@ -45,7 +45,7 @@ graph TD
     class f framework
 
     u[Your Code]
-    classDef userCode fill:white    
+    classDef userCode fill:white
     class u userCode
 
 ```
@@ -53,7 +53,7 @@ graph TD
 ### Building, executing and testing
 
 ```mermaid
-graph TD
+graph BT
     YourCode -- references --> Metalama.Framework
     YourTests -- references --> YourCode
     Metalama.Framework -- references --> Metalama.Framework.Redist
@@ -67,10 +67,10 @@ graph TD
     YourTests -- references --> Metalama.Testing.AspectTesting
     IDE -- loads --> analyzers
     Metalama.Compiler -- loads --> analyzers
-    
+
     YourCode[Your Aspects]
     YourTests[Your Aspect Tests]
-    
+
     Metalama.Compiler -- contains --> compiler((full compiler))
 
     classDef testing fill:orange;
@@ -79,7 +79,7 @@ graph TD
     class Metalama.Framework.Introspection testing;
     class Metalama.Framework.Workspaces testing;
     class Metalama.LinqPad testing;
-    
+
     classDef compileTime fill:yellow;
     class Metalama.Compiler compileTime;
     class Metalama.Compiler.Sdk compileTime;
@@ -96,14 +96,15 @@ graph TD
     classDef framework fill:red;
     class Metalama.Framework.Redist framework;
     class Metalama.Framework framework;
-    
+
 
 ```
+
 
 ### Introspection
 
 ```mermaid
-graph TD
+graph BT
     Metalama.Framework.Introspection -- references --> Metalama.Framework
     Metalama.Framework.Workspaces -- references --> Metalama.Framework.Engine
     Metalama.Framework.Workspaces -- references --> Metalama.Framework.Introspection
@@ -114,7 +115,7 @@ graph TD
     LinqPad -- references --> Metalama.LinqPad
     LinqPad -- references --> Metalama.Framework.Workspaces
     YourApp -- references --> Metalama.Framework.Workspaces
-    
+
     LinqPad[LinqPad Queries]
     YourApp[Your Introspection App]
 
@@ -124,7 +125,7 @@ graph TD
     class Metalama.Framework.Introspection testing;
     class Metalama.Framework.Workspaces testing;
     class Metalama.LinqPad testing;
-    
+
     classDef compileTime fill:yellow;
     class Metalama.Compiler compileTime;
     class Metalama.Compiler.Sdk compileTime;
@@ -136,7 +137,7 @@ graph TD
 
     classDef framework fill:red;
     class Metalama.Framework framework;
-    
+
 
 ```
 
@@ -145,17 +146,17 @@ graph TD
 
 
 ```mermaid
-graph TD
+graph BT
 
   YourPackage -- contains --> YourCode
   YourPackage -- contains --> YourWeaver
-  
+
    YourCode -- references --> Metalama.Framework
 
     Metalama.Compiler -. loads .-> YourWeaver
     YourWeaver -- references --> Metalama.Framework.Sdk
-    
-    
+
+
     YourCode[Your Attributes]
     YourWeaver[Your Weavers]
     YourWeaver -- references --> YourCode
@@ -165,8 +166,8 @@ graph TD
     Metalama.Framework -- references-->  Metalama.Compiler
     Metalama.Compiler.Sdk -- references --> Roslyn
     Metalama.Framework.Sdk -- references --> Metalama.Compiler.Sdk
-    
-   
+
+
 
     classDef testing fill:orange;
     class Metalama.Testing.AspectTesting testing;
@@ -174,12 +175,12 @@ graph TD
     class Metalama.Framework.Introspection testing;
     class Metalama.Framework.Workspaces testing;
     class Metalama.LinqPad testing;
-    
+
     classDef compileTime fill:yellow;
     class Metalama.Compiler compileTime;
     class Metalama.Compiler.Sdk compileTime;
     class Metalama.Framework.Sdk compileTime;
-    
+
     classDef runTime fill:lightgreen;
     class Metalama.Framework.Redist runTime;
 
@@ -195,5 +196,7 @@ graph TD
 
 ```
 
-    
+
+
+
 

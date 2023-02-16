@@ -4,16 +4,17 @@ uid: process-dump
 
 # Creating a process dump
 
-If you report a Metalama bug, when logs are not enough to understand the issue, our team may ask you to send a process dump of the compiler or IDE process.
+In case of any problem in Metalama, our support team may ask you to provide a process dump of the compiler or IDE process.
 
 > [!WARNING]
+> **Process dumps contain possibly confidential information**
+>
 > Process dumps may contain a copy of your source code. Although we will handle process dumps as confidential material, your company may not allow you to send us a process dump.
 
-If you are using Metalama on a build server, the process of enabling process dumps is described in <xref:troubleshooting-unattended-build>.
 
-## Step 1. Install the Metalama global tools
+## Step 1. Install the Metalama Command-Line Tool
 
-Install the `metalama` global tool as described in <xref:dotnet-tool>.
+Install the `metalama` command-line tool as described in <xref:dotnet-tool>.
 
 ## Step 2. Edit diagnostics.json
 
@@ -50,8 +51,7 @@ In the next example, Metalama is configured to capture a process dump for the co
       "DotNetTool": false,
       "Compiler": false
     }
-// ...
-    }
+//...
 }
 ```
 
@@ -59,22 +59,22 @@ In the next example, Metalama is configured to capture a process dump for the co
 
 Restart the logged processes:
 
- * If you are logging the `Compiler` process, restart the Roslyn compiler processes.
- * If you are logging any design-time process, restart the IDE.
+ * If you are logging the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
+ * If you are logging any design-time process, restart your IDE.
 
-Execute the sequence of actions to be logged.
+Execute the sequence of actions that triggers the issue.
 
 > [!WARNING]
-> Do not forget to disable the setting after you are done.
+> Do not forget to disable the diagnostic setting after you are done.
 
 ## Step 4. Upload the process dump to an online drive
 
-You will find the process dumps under the `%TEMP%\Metalama\CrashReports` directory, with extension `*.dmp.gz`.
+You will find process dumps under the `%TEMP%\Metalama\CrashReports` directory with extension `*.dmp.gz`.
 Upload this file to an online storage service like OneDrive.
 
 ## Step 5. Send us the URL through a private channel
 
-NEVER share the process dump URL publicly on a service like GitHub Issues.
+**NEVER** share the process dump URL publicly on a service like GitHub Issues.
 
-Instead, send us the hyperlink by email.
+Instead, send us the hyperlink by [email](mailto:hello@postsharp.net).
 

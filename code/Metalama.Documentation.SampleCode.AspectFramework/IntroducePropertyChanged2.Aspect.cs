@@ -27,10 +27,7 @@ namespace Doc.IntroducePropertyChanged2
         [Template]
         protected virtual void OnPropertyChanged( string propertyName, IEvent theEvent )
         {
-            theEvent.Invokers.Final.Raise(
-                meta.This,
-                meta.This,
-                new PropertyChangedEventArgs( propertyName ) );
+            theEvent.Raise( meta.This, new PropertyChangedEventArgs( propertyName ) );
         }
     }
 }

@@ -2,7 +2,7 @@
 uid: advising-code
 ---
 
-# Transforming Code
+# Transforming code
 
 <xref:advising-concepts>
 
@@ -23,3 +23,4 @@ uid: advising-code
 <xref:introducing-constructor-parameters>
 
 <xref:sharing-state-with-advice>
+

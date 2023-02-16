@@ -55,7 +55,7 @@ namespace Doc.ToStringWithSimpleToString
 
                 stringBuilder.AddText( field.Name );
                 stringBuilder.AddText( "=" );
-                stringBuilder.AddExpression( field.ToExpression() );
+                stringBuilder.AddExpression( field );
 
                 i++;
             }

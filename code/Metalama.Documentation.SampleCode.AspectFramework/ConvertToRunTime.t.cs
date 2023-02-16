@@ -8,7 +8,7 @@ namespace Doc.ConvertToRunTime
     private void Bar(string a, int c, DateTime e)
     {
       var parameterNames = new List<string>{"a", "c", "e"};
-      var buildTime = new Guid("13c139ea-42f5-4726-894d-550406357978");
+      var buildTime = new Guid(331430378, 17141, 18214, 137, 77, 85, 4, 6, 53, 121, 120);
       var parameterType = typeof(string);
       return;
     }

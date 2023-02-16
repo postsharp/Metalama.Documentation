@@ -2,9 +2,9 @@
 uid: templates
 ---
 
-## T# Template
+## T# Templates
 
-Code templates in Metalama are written in a dialect of C# called T#. The syntax of T# of 100% compatible with C#, but T# is compiled differently.
+Code templates in Metalama are written in a dialect of C# called T#. The syntax of T# is 100% compatible with C#, but T# is compiled differently.
 
 This chapter contains the following articles:
 
@@ -18,23 +18,23 @@ This chapter contains the following articles:
             <xref:template-overview>
         </td>
         <td>
-             This article is an introduction to T#, the template language of Metalama.
+            This article introduces T#, the template language for Metalama.
         </td>
-    </tr>    
+    </tr>
     <tr>
         <td>
             <xref:template-compile-time>
         </td>
         <td>
-             This article describes which subset of the C# language can be used as compile-time code, and how to build templates with rich compile-time logic.             
+            This article describes which subset of the C# language can be used as compile-time code, and how templates with rich compile-time logic can be built.
         </td>
-    </tr>    
+    </tr>
     <tr>
         <td>
             <xref:template-dynamic-code>
         </td>
         <td>
-            This article explains different techniques to generate run-time code dynamically
+            This article explains different techniques to generate run-time code dynamically.
         </td>
     </tr>
     <tr>
@@ -61,4 +61,5 @@ This chapter contains the following articles:
             This article explains how to debug templates.
         </td>
     </tr>
-</table>   
+</table>
+

@@ -51,9 +51,9 @@ classDiagram
     }
 
     YourAspect <|-- IEligible~T~ : implements
-    IEligible~T~ --> IEligibilityBuilder~T~ : uses
-    IEligible~T~ --> EligibilityExtensions : uses
-    EligibilityExtensions --> IEligibilityBuilder~T~ : populates
+    IEligibilityBuilder~T~ <-- IEligible~T~ : uses
+    EligibilityExtensions <-- IEligible~T~ : uses
+    IEligibilityBuilder~T~ <-- EligibilityExtensions : populates
     IEligibilityBuilder~T~ *-- IEligibilityRule~T~
 
 ```

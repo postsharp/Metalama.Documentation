@@ -4,15 +4,15 @@ uid: ordering-aspects
 
 # Ordering Aspects
 
-When there are several aspect classes in the project, their order of execution is significant.
+When several aspect classes are defined, their order of execution is important.
 
 ## Concepts
 
 ### Per-project ordering
 
-In Metalama, the order of execution is _static_. It is principally a concern of the aspect library author, not one of the users of the aspect library.
+In Metalama, the order of execution is _static_. It is principally a concern of the aspect library author, not a concern of the users of the aspect library.
 
-Each aspect library should define the order of execution of the aspect it defines, not only in relation to other aspects of the same library, but also to the aspects defined in the referenced aspect libraries.
+Each aspect library should define the order of execution of aspects it defines, not only with regards to other aspects of the same library, but also to aspects defined in referenced aspect libraries.
 
 When a project uses two unrelated aspect libraries, or when a project defines its own aspects, it has to define the ordering in the project itself.
 
@@ -22,20 +22,20 @@ Metalama follows what we call the "matryoshka" model: your source code is the in
 
 ![](matryoshka.png "CC BY-SA 3.0 by Wikipedia user Fanghong")
 
-It is important to remember that Metalama builds the matryoshka from the inside to the outside, but the code is executed from the outside to the inside, i.e. the source code is executed _last_.
+It is important to remember that Metalama builds the matryoshka from the inside to the outside, but the code is executed from the outside to the inside; in other words, the source code is executed _last_.
 
 Therefore, the aspect application order and the aspect execution order are _opposite_.
 
 ## Specifying the execution order
 
-Aspects must be ordered using the <xref:Metalama.Framework.Aspects.AspectOrderAttribute> assembly-level custom attribute. The order in which the aspect classes in the constructor correspond to their order of _execution_.
+Aspects must be ordered using the <xref:Metalama.Framework.Aspects.AspectOrderAttribute> assembly-level custom attribute. The order of the aspect classes in the attribute corresponds to their order of _execution_.
 
 ```cs
 using Metalama.Framework.Aspects;
 [assembly: AspectOrder( typeof(Aspect1), typeof(Aspect2), typeof(Aspect3))]
 ```
 
-You can specify _partial_ order relationships. The aspect framework will merge all partial relationships and determine the global order for the current project. 
+You can specify _partial_ order relationships. The aspect framework will merge all partial relationships and determine the global order for the current project.
 
 For instance, the following code snippet is equivalent to the previous one:
 
@@ -45,12 +45,14 @@ using Metalama.Framework.Aspects;
 [assembly: AspectOrder( typeof(Aspect2), typeof(Aspect3))]
 ```
 
-This is like in mathematics: if we have `a < b` and `b < c`, then we have `a < c` and the ordered sequence is `{a, b, c}`. 
+This is like in mathematics: if we have `a < b` and `b < c`, then we have `a < c` and the ordered sequence is `{a, b, c}`.
 
 If you specify conflicting relationships or import aspect library that defines a conflicting ordering, Metalama will emit a compilation error.
 
 > [!NOTE]
-> Metalama will merge all `[assembly: AspectOrder(...)]` attributes that it finds not only in the current project, but also in all referenced projects or libraries. Therefore, you don't need to repeat the `[assembly: AspectOrder(...)]` attributes in all projects that use aspects. It is sufficient to define them projects that define aspects.
+> Metalama will merge all `[assembly: AspectOrder(...)]` attributes that it finds not only in the current project, but also in all referenced projects or libraries. Therefore, you don't need to repeat the `[assembly: AspectOrder(...)]` attributes in all projects that use aspects. It is sufficient to define them in projects that define aspects.
+
+[comment]: # (TODO: mention what happens when the ordering is not fully specified?)
 
 ### Example
 
@@ -61,7 +63,7 @@ The following code snippet shows two aspects that both add a method to the targe
 
 ## Several instances of the same aspect type on the same declaration
 
-When there are several instances of the same aspect type on the same declaration, a single instance of the aspect, named the primary instance, gets applied to the target. The other instances are exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances?text=IAspectInstance.SecondaryInstances> property, which you can access from <xref:Metalama.Framework.Aspects.meta.AspectInstance?meta.AspectInstance> or <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectInstance?builder.AspectInstance>. It is the responsibility of the aspect implementation to decide what to do with the secondary aspect instances.
+When there are several instances of the same aspect type on the same declaration, a single instance of the aspect, named the primary instance, gets applied to the target. The other instances are exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.SecondaryInstances?text=IAspectInstance.SecondaryInstances> property, which you can access from <xref:Metalama.Framework.Aspects.meta.AspectInstance?text=meta.AspectInstance> or <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectInstance?text=builder.AspectInstance>. It is the responsibility of the aspect implementation to decide what to do with the secondary aspect instances.
 
 The primary aspect instance is the instance that has been applied to the "closest" to the target declaration. The sorting criteria are the following:
     1. Aspects defined using a _custom attribute_.
@@ -71,4 +73,6 @@ The primary aspect instance is the instance that has been applied to the "closes
 
 Within these individual categories, the ordering is currently undefined, which means that the build may be nondeterministic if the aspect implementation relies on that ordering.
 
-> TODO: Example of handling secondary instances
+[comment]: # (TODO: Example of handling secondary instances)
+
+

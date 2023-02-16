@@ -1,7 +1,7 @@
 ---
 uid: diagnostics
 ---
-# Reporting and Suppressing Diagnostics
+# Reporting and suppressing diagnostics
 
 This article explains how to report a diagnostic (error, warning or information message) from an aspect, or to _suppress_ a diagnostic reported by the C# compiler or another aspect.
 
@@ -29,9 +29,9 @@ To report a diagnostic:
     > [!WARNING]
     > The aspect framework relies on the fact that diagnostics are defined as static fields of aspect classes. You will not be able to report a diagnostic that has not been declared on an aspect class of the current project.
 
-3. To report a diagnostic, use the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Report*?text=builder.Diagnostics.Report> method.
+3. To report a diagnostic, use the <xref:Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Report*?text=builder.Diagnostics.Report> method.
 
-    The first parameter of the `Report` method is optional: it specifies the declaration to which the diagnostic relates. The aspect framework computes the file, line and column of the diagnostic based on this declaration. If you don't give a value for this parameter, the diagnostic will be reported for the target declaration of the aspect.
+    The second parameter of the `Report` method is optional: it specifies the declaration to which the diagnostic relates. The aspect framework computes the file, line and column of the diagnostic based on this declaration. If you don't give a value for this parameter, the diagnostic will be reported for the target declaration of the aspect.
 
 ### Example
 
@@ -58,9 +58,9 @@ The following logging aspect requires a `_logger` field to exist, but it is like
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/SuppressWarning.cs name="Suppress Warning"]
 
 
-## Advanced Example
+## Advanced example
 
-The following aspect can be added to a field or property. It overrides the getter so that its value is retrieved from a service locator. This aspect assumes that the target class has a field named `_serviceProvider` and of type `IServiceProvider`. The aspect reports errors if this field is absent or of a wrong type. The C# compiler may report an error `CS0169` because it looks from source code that the `_serviceProvider` field is unused. Therefore, the aspect must suppress this diagnostic.
+The following aspect can be added to a field or property. It overrides the getter so that its value is retrieved from a service locator. This aspect assumes that the target class has a field named `_serviceProvider` and of type `IServiceProvider`. The aspect reports errors if this field is absent or of a wrong type. The C# compiler may report a warning `CS0169` because it appears from source code that the `_serviceProvider` field is unused. Therefore, the aspect must suppress this diagnostic.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/LocalImport.cs name="Import Service"]
 
@@ -68,4 +68,5 @@ The following aspect can be added to a field or property. It overrides the gette
 
 When the `BuildAspect` method of your aspect is executed, it sees the code model as it was _before_ the aspect was applied.
 
-If you need to validate the code after all aspects have been applied, see <xref:validation>.
+If you need to validate the code after all aspects have been applied see <xref:validation>.
+
