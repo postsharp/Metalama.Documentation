@@ -6,7 +6,7 @@ uid: adding-aspects-in-bulk
 
 In <xref:quickstart-adding-aspects>, you learned how to apply aspects one at a time using custom attributes. While this approach is appropriate for aspects like caching or auto-retry, it can be overwhelming for other aspects like logging or profiling.
 
-In this article, you will learn how to use _fabrics_ to add aspects to your targets programmatically.
+In this article, you will learn how to use _fabrics_ to add aspects to your targets _programmatically_.
 
 ## Fabrics
 
@@ -46,11 +46,9 @@ To add aspects using fabrics:
 > The <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> method will not only select members declared in source code, but also members introduced by other aspects and that are unknown when your  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed. This is why the _Amend_ method does not directly expose the code model.
 
 
-## Example: Adding aspect to all public methods of a type
+## Example 1: Adding aspect to all public methods of a type
 
-In this section, you shall learn how to add `[Log]` attribute to all public methods of a given project.
-
-To add aspect to all public methods add the following Fabric to your project.
+In this section, you shall learn how to add `[Log]` attribute to all public methods of a given project. To add an aspect to all public methods add the following Fabric to your project.
 
 [!code-csharp[](~\code\Metalama.Documentation.QuickStart.Fabrics\Fabric.cs)]
 
@@ -61,13 +59,13 @@ When this fabric is added to a project with the following types,
 
 [!code-csharp[](../../../code/DebugDemo/Entities.cs)]
 
-It will show that `[Log]` aspect is applied to all of the public method as shown below
+It will show that `[Log]` aspect is applied to all of the public methods as shown below
 
 ![](../../images/../using-aspects/images/../../quickstart/using-aspects/images/aspects_added_to_many_types.png)
 
 
 
-## Example: Adding more aspects using the same Fabric
+## Example 2: Adding more aspects using the same Fabric
 For each project, it is recommended to have only one project fabric. 
 
 > [!WARNING]
@@ -88,8 +86,32 @@ Inside the `AmendProject` method, we get all the public methods and add _logging
 > [!WARNING]
 > Sometimes CodeLense misses the aspects to show. For that time it is required to rebuild the project.  
 
-## Example: Adding aspects to all methods in a given namespace
+## Example 3: Adding aspects to all methods in a given namespace
 
-To add the Logging aspect (`LogAttribute`) to all the methods of a given namespace 'Outer.Inner' and all the child types located in any descendent namespace use the following fabric 
+To add the Logging aspect (`LogAttribute`) to all the methods of a given namespace `Outer.Inner` and all the child types located in any descendent namespace use the following fabric 
 
 [!code-csharp[](../../../code/DebugDemo2/Fabric2.cs)]
+
+In this fabric, we use `GlobalNamespace.GetDecendant` method to get all the children's namespace of the given namespace (In this case `Outer.Inner`). The first `SelectMany` calls get all the types in these namespaces and the inner `SelectMany` call gets all the methods in these types. This results in an `IAspectReceiver<IMethod>`. So the final call <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspectIfEligible> adds the `Log` aspect to all eligible methods. 
+
+## Example 4: Adding `NotifyPropertyChanged` aspect to all types 
+
+In this example, you shall learn how `NamespaceFabric` can be used to add an inheritable aspect `NotifyProperyChanged` to all the public types in the namespace. 
+
+[!code-csharp[](../../../code/Metalama.Documentation.QuickStart.Fabrics/NPCFabric.cs)]
+
+
+## Example 5: Adding `Log` aspect only to derived classes of a given class 
+Sometimes you may not need or want to add aspects to all the types but only to a class and its derived types. The following fabric shows how you can add those. In this example fabric you see how to get the derived types of a given type and how to add aspects to them. 
+
+[!code-csharp[](../../../code/Metalama.Documentation.QuickStart.Fabrics.2/AddLoggingToChildrenFabric.cs)]
+
+
+## Example 6: Making sure no strings remain null
+
+[!code-csharp[](../../../code/Metalama.Documentation.QuickStart.Fabrics.3/NoNullStringFabric.cs)]
+
+
+## The common pattern 
+So you may have noticed a common pattern among these examples. Whenever you need to add an aspect to a batch of methods, types etc; you need to create an <xref:Metalama.Framework.Aspects.IAspectReceiver`1> for that type. So if you want to add aspects to many methods, you need to create an instance of `IAspectReceiver` of <xref:Metalama.Framework.Code.IMethod> If you want to add aspects to many types you need to create an `IAspectReceiver` instance of <xref:Metalama.Framework.Code.IType>
+ 

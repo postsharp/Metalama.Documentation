@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metalama.Documentation.QuickStart.Fabrics
 {
-    public class Demo
+    internal class Demo
     {
-        public void M()
-        {
-
-        }
     }
 }

@@ -5,7 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
+	<ItemGroup>
+		<PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)" />
+	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Metalama.Documentation.QuickStart\Metalama.Documentation.QuickStart.csproj" />
   </ItemGroup>

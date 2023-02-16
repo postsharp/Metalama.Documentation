@@ -20,10 +20,10 @@ For details of all NuGet packages and their dependencies, see <xref:packages>.
 This extension helps you write aspects and understand your aspect-oriented code thanks to the following features:
 
 * syntax highlighting of aspect codes (you will need it if you will be writing aspects later on),
-* Code Lens additions,
+* CodeLens additions,
 * diffing your source code against the transformed code.
 
-It is highly recommended that you download and install this extension for a better experience. However, it is important to note that  this extension is optional and Metalama will work without it too.
+It is highly recommended that you download and install this extension for a better development experience. However, it is important to note that  this extension is optional and Metalama will work without it too.
 
 > [!WARNING]
 > This Metalama Visual Studio Plugin requires Visual Studio 2022
