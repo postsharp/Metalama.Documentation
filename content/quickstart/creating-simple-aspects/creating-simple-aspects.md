@@ -3,6 +3,10 @@ uid: creating-simple-aspects
 ---
 
 # Creating simple aspects 
+
+> ![WARNING]
+> This chapter has not been written yet.
+
 You have seen how using aspects you can modify your program before it is compiled. In this chapter you shall learn how to create your own aspects targetting several parts of the code
 
 
