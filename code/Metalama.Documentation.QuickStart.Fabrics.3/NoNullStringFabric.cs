@@ -2,16 +2,16 @@
 using Metalama.Framework.Fabrics;
 using Metalama.Framework.Code;
 
-namespace DebugDemo2
+namespace Metalama.Documentation.QuickStart.Fabrics
 {
-    internal class AddNoNullsToPublicStringProperties : TypeFabric
+    public class AddNoNullsToPublicStringProperties : ProjectFabric
     {
-        public override void AmendType(ITypeAmender amender)
+        public override void AmendProject(IProjectAmender amender)
         {
-            amender.Outbound.SelectMany(type => 
-                                        type.FieldsAndProperties.Where(fieldOrProp => fieldOrProp.Accessibility == Accessibility.Public))
-                            .Where(publicPropOrField => publicPropOrField.Type.Is(SpecialType.String) && publicPropOrField.IsRequired)
-                            .AddAspectIfEligible<NoNullStringAttribute>(); 
+            amender.Outbound.SelectMany(type => type.Types)
+                            .SelectMany(z => z.FieldsAndProperties.Where(fieldOrProp => fieldOrProp.Accessibility == Accessibility.Public))
+                            .Where(publicPropOrField => publicPropOrField.Type.Is(SpecialType.String))
+                            .AddAspectIfEligible<NoNullStringAttribute>();
         }
     }
 }

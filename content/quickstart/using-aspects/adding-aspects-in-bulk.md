@@ -108,8 +108,12 @@ Sometimes you may not need or want to add aspects to all the types but only to a
 
 
 ## Example 6: Making sure no strings remain null
+So far you have seen how `NamespaceFabric` and `ProjectFabric` can be used to add aspects to your types and methods. In this example, you shall see how you can use `ProjectFabric` to add a special capability to all public string fields and properties. 
+
+Uninitialized null strings in C# can cause accidental failures. Wouldn't it be nice if you could assign empty strings to all the public string fields and properties of a type. That's exactly what the following fabric does. 
 
 [!code-csharp[](../../../code/Metalama.Documentation.QuickStart.Fabrics.3/NoNullStringFabric.cs)]
+
 
 
 ## The common pattern 
