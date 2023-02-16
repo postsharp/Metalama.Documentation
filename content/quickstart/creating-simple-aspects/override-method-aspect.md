@@ -15,6 +15,7 @@ Metalama provides an abstract class called `OverrideMethodAspect` that makes it 
 |Override only methods that return `IEnumerator<T>`| `OverrideEnumeratorMethod` | `public override IEnumerator<dynamic?> OverrideEnumeratorMethod()`
 
 ## The `async` variations
+
 All of these methods have `Async` versions. So if you are trying to override a method that returns `IEnumerable<T>` asynchronously then you have to use `OverrideAsyncEnumerableMethod` The following table shows the async functions side by side.
 
 |Virtual Method  | Async Variation
@@ -37,6 +38,7 @@ Metalama Aspects can have expressions that can be either _compile time_ or _run 
 > T# is **not** a programming language. It is a variation of C# that allows you to use _compile time_ and _runtime_ expressions in a single expression.
 
 ## Syntax highlighting for _runtime_ and _compile-time_
+
 Metalama Visual Studio plugin makes it easy to identify which parts of your aspect code will execute in compile time and which part will execute at runtime. The following screenshot shows an aspect.
 
 ![compile_and_runtime_syntax_coloring](images/compile_run_time_syntax_color.png)
@@ -61,6 +63,7 @@ Showing how Metalama shows the runtime code parts when hovered.
 
 
 ## Going Deep on Method Logging aspect
+
 To log a method is to log its path or calls to it. In the aspect that we shall create the name of the target method and then use it to print statements to console.
 
 To create a simple Method logging aspect,
@@ -89,9 +92,10 @@ do before that and then let the method do its own thing and maybe you can log at
 
 Add the following code to the overridden `OverloadMethod` method as shown below.
 
-[!include[Simple Logging](../../../code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs)]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs tabs="target"]
 
 ## Accessing different parts of a method from the aspect
+
 The call `meta.Target.Method` gets the target method on which the aspect will need to be applied. `meta` is a special class. There are several properties of `meta` to get to different parts of a code.
 
 |meta property| Part of the code

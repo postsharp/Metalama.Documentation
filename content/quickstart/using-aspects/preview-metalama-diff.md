@@ -3,6 +3,7 @@ uid: preview-metalama-diff
 ---
 
 # Metalama Diff
+
 Aspects transform your code. You can see how modified code differs from your source code by the Metalama Diff option from the context menu in Visual Studio.
 
 To see the diff version, simply right click on the code. This will pull up the menu like this.
@@ -18,4 +19,3 @@ The screenshot shows just the original source of `FlakyMethod` and the modified 
 To see changes for a particular section of the code, select that part of the code from the dropdown as shown below.
 
 ![Diff_change_selector](../images/../using-aspects/images/metalama_diff_change_view_selector.png)
-

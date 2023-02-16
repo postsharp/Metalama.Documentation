@@ -4,6 +4,7 @@
 
         <Nullable>enable</Nullable>
         <DebugMetalama>False</DebugMetalama>
+        <MetalamaWriteHtml>True</MetalamaWriteHtml>
 
     </PropertyGroup>
 </Project>

@@ -12,7 +12,6 @@ These tools are:
 * Diff Preview
 * Debug Transformed Code
 
-
 ## CodeLens details
 
 The first tool that can help you understand your code is one we have already met before:
@@ -32,7 +31,6 @@ CodeLense shows the following details:
 |`Transformation`|This is a default message showing that the aspect changes the behavior of the target method.
 
 At the moment, you may wonder why this could be useful, but it will become clear when you see that many aspects can be added to your code, and when aspects are applied implicitly.
-
 
 Here is an example of a method with a couple of aspects applied.
 
@@ -61,19 +59,19 @@ You can also see this from the Context menu that is popped when you right-click 
 
 ![Metalama_Diff_Menu_Option](../images/../using-aspects/images/showing_metalama_diff_option.png)
 
-
 ## Implicit aspect addition
-In the previous sections,  <xref:adding-aspects-custom-attribute> and <xref:adding-aspects-context-menu> you have seen how aspects can be added to a target method one at a time. This operation is _explicit_ because you are adding the attribute.
+
+In the previous sections, <xref:adding-aspects-custom-attribute> and <xref:adding-aspects-context-menu> you have seen how aspects can be added to a target method one at a time. This operation is _explicit_ because you are adding the attribute.
 
 However, sometimes you shall discover that CodeLense shows some aspects that are applied on some targets even though there is no explicit attribute given. This is like _implicit_ aspect application.
 
 This sort of thing is possible because some of the aspects can be designed as <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> aspects and these aspects are inherited from the base class to the children classes.
 
 ### Implementing `INotifyPropertyChanged`
+
 In the following code example, it is shown how `INotifyPropertyChanged` event is fired for all members of derived classes when `NotificationPropertyChanged` aspect is applied.
 
-[!code-csharp[](../../../code/DebugDemo4/Program.cs)]
-
+> TODO: Add code.
 
 When run this program prints the following output
 
@@ -89,5 +87,3 @@ Z has changed
 > [!NOTE]
 > Notice that members of `MovingVertex3D` type doesn't have `NotifyPropertyChanged` explicitly. But that aspect is inherited because `NotifyPropertyChanged` is an inhertiable aspect.
 Note that there is no **explicit** application of aspects and the inheritable type aspect `[NotifyPropertyChanged]` applied on the base type is inherited by all the members of the derived type.
-
-

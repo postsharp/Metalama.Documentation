@@ -9,14 +9,17 @@ You have seen how aspects change your code and you have also seen the transforme
 This section shows you how to debug the code using the Visual Studio debugger.
 
 ## Steps to debug aspect-oriented code
+
 Follow these steps to debug your code with aspects.
 
 ### **Step 1** Open Build Configuration Manager
+
 Click on the `Configuration Manager` from the debug setting dropdown as shown below
 
 ![](../images/../using-aspects/images/config_manager.png)
 
 ### **Step 2** Create a debug configuration called `LamaDebug`
+
 The configuration manager will present the following dialog.
 
 ![](../../images/../using-aspects/images/../../quickstart/using-aspects/images/config_manager_dialog.png)
@@ -39,6 +42,7 @@ The configuration manager will present the following dialog.
 Now you are ready to debug your aspect transformed code.
 
 ## Breakpoints and Step-Into
+
 As of now, if you put breakpoint in your code that is being modified by aspect, those breakpoints will not be hit. However you can use `F11` to Step-Into like you do otherwise.
 
 You can, however, put breakpoints into the transformed code. In the following sections, you shall learn how to locate the transformed code and how to debug this.
@@ -56,7 +60,6 @@ The logging aspect just adds a line at the beginning of the method that it inter
 
 To locate the transformed code click on the `Show all files` button as shown below.
 
-
 ![Show_All_Files](../../images/../using-aspects/images/../../quickstart/using-aspects/images/show_all_files.png)
 
 Once it shows all files in your solution explorer, locate the file under `LamaDebug\net6.0\metalama`  as shown in the solution explorer screenshot below.
@@ -67,7 +70,7 @@ As you can see you can put breakpoint on this transformed code and it will be hi
 
 ## Debugging using step-in and forceful break
 
-[!code-csharp[](../../../code/DebugDemo/Program.cs)]
+[!metalama-sample ~/code/DebugDemo/Program.cs]
 
 When you debug this by Step-Into you shall see that the actual code being _debugged_ is the transformed code
 
@@ -79,4 +82,3 @@ You can put `Debugger.Break` to break the program forcefully. The following scre
 
 > [!NOTE]
 > Notice that it is the same code that you see before. You can add `Debugger.Break` to break the debugger at that location forcefully.
-

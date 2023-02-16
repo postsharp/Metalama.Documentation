@@ -7,7 +7,7 @@ uid: creating-simple-aspects
 > ![WARNING]
 > This chapter has not been written yet.
 
-You have seen how aspects can modify your program before it is compiled. In this chapter you learn how to create your own aspects targeting several parts of the code.
+You have seen how aspects can modify your program before it is compiled. In this chapter, you learn how to create your own aspects targeting several parts of the code.
 
 
 ## Different aspect types
@@ -28,6 +28,7 @@ classDiagram
 ## What can aspects do
 
 An aspect can do the following things:
+
 * _Transform_ a method
 * _Modify_ a field or property
 * _Introduce_ a property or a field
@@ -37,6 +38,7 @@ An aspect can do the following things:
 Basically aspects are one of the building blocks of Metalama.
 
 ## Selection of Aspect type
+
 The following table summarizes what aspect class you might need to build a simple aspect based on your target
 
 

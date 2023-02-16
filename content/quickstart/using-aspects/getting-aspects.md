@@ -22,15 +22,12 @@ These aspects, when applied, change the behavior of your source code without mod
 > [!NOTE]
 > Again, you need not worry about their implementation as of now because in this chapter you shall only consume them.
 
-
 ## Metalama ready-made aspects
 
 Our plan is to port the `PostSharp.Patterns` aspect suite to Metalama and to open source them. It will take us a few months. Once it will be done, you will be able to use professionally-built aspects without having to create them yourself.
-
 
 ## Community aspects
 
 We also plan to build a list of maintained third-party Metalama aspect libraries.
 
-In the meantime, you can (search GitHub)[https://github.com/search?p=1&q=metalama&type=Repositories].
-
+In the meantime, you can [search GitHub](https://github.com/search?p=1&q=metalama&type=Repositories).
