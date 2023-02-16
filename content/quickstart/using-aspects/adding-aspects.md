@@ -6,17 +6,17 @@ uid: quickstart-adding-aspects
 
 Most aspects are custom attributes that have to be applied to some target declaration. Some aspects can target methods, other properties, or classes.
 
-In this section, you shall see how you can use the attribute to add the aspect. 
+In this section, you shall see how you can use the attribute to add the aspect.
 
-## Adding an aspect as a custom attribute 
+## Adding an aspect as a custom attribute
 
 Imagine you have a method like this that occasionally fails:
 
 ![](images/flaky_method_no_aspect.png)
 
-At the moment, Code Lens shows `no aspect`: it means that no aspect has been applied to this method yet. 
+At the moment, Code Lens shows `no aspect`: it means that no aspect has been applied to this method yet.
 
-To apply the `Retry` aspect, just add it as a normal custom attribute, i.e. type `[Log]`:
+To apply the `Retry` aspect, just add it as a normal custom attribute, i.e., type `[Log]`:
 
 ![](images/applying_retry_attribute.png)
 
@@ -32,11 +32,11 @@ The details displayed by Code Lens may seem trivial in this example, but this fe
 
 ## Adding more than one attribute
 
-You can choose to use as many aspects as you need on a target method. In this example, you may want to log each retry attempt and then you have the option to use the `Log` aspect. 
+You can choose to use as many aspects as you need on a target method. In this example, you may want to log each retry attempt and then you have the option to use the `Log` aspect.
 
 ![Retry_and_Log_Aspect_Together](images/retry_and_log_aspect_together.png)
 
-CodeLense now shows that there are two aspects being applied to this method `FlakyMethod` and if you click on the text `2 aspects` you can see the details as offered by CodeLense like this 
+CodeLense now shows that there are two aspects being applied to this method `FlakyMethod` and if you click on the text `2 aspects` you can see the details as offered by CodeLense like this
 
 ![Retry_Log_Applied_CodeLense](images/retry_log_code_lense_details.png)
 
@@ -54,4 +54,5 @@ The refactoring menu is smart enough to know which aspect has already been appli
 ![Sucecssive_application_of_aspects_via_context_menu](images/successive_application_aspects_via_context_menu.png)
 
 > [!NOTE]
-> The refactoring menu only displays aspects that are _eligible_ for your code. The eligibility of an aspect is defined by the aspect's author. For instance, it does not make sense to add a caching aspect to a method returning `void`, so the author of this aspect may make it eligible for non-void methods only. 
+> The refactoring menu only displays aspects that are _eligible_ for your code. The eligibility of an aspect is defined by the aspect's author. For instance, it does not make sense to add a caching aspect to a method returning `void`, so the author of this aspect may make it eligible for non-void methods only.
+

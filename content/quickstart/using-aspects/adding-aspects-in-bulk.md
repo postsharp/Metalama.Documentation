@@ -12,7 +12,7 @@ In this article, you will learn how to use _fabrics_ to add aspects to your targ
 
 _Fabrics_ are special classes in your code that execute at compile time, within the compiler, and at design time, within your IDE. Unlike aspects, fabrics do not need to be _applied_ to any declaration, nor do they need to be _called_ from anywhere. Their main method will be called at the right time just because it exists in your code.
 
-Fabrics are really helpful when you need to add aspects to different targets programmatically.  
+Fabrics are really helpful when you need to add aspects to different targets programmatically.
 
 There are three different types of fabrics:
 
@@ -28,7 +28,7 @@ To add aspects using fabrics:
 
 1. Create a fabric class and derive it from <xref:Metalama.Framework.Fabrics.ProjectFabric>,  <xref:Metalama.Framework.Fabrics.NamespaceFabric>  or <xref:Metalama.Framework.Fabrics.TypeFabric>.
 
-    > [!WARNING] 
+    > [!WARNING]
     > Type fabrics must be nested classes and apply to their nesting type.
     > Namespace fabrics apply to their namespace.
 
@@ -55,7 +55,7 @@ In this section, you shall learn how to add `[Log]` attribute to all public meth
 > [!NOTE]
 > Fabrics need not be applied. They are triggered because of their presence in the project.
 
-When this fabric is added to a project with the following types, 
+When this fabric is added to a project with the following types,
 
 [!code-csharp[](../../../code/DebugDemo/Entities.cs)]
 
@@ -66,56 +66,57 @@ It will show that `[Log]` aspect is applied to all of the public methods as show
 
 
 ## Example 2: Adding more aspects using the same Fabric
-For each project, it is recommended to have only one project fabric. 
+For each project, it is recommended to have only one project fabric.
 
 > [!WARNING]
-> Having many project fabric makes it difficult to decide the aspect application order and it is complicated. 
+> Having many project fabric makes it difficult to decide the aspect application order and it is complicated.
 
 To add another aspect we have to alter the project Fabric. This time we will add the capability to add the aspect `Retry` to all public methods that start with the word `Try`.
 
-To do this alter the Fabric like this. 
+To do this alter the Fabric like this.
 
 [!code-csharp[](../../../code/DebugDemo2/Fabric.cs)]
 
-There are a few things to note in this example. The first point to consider is the `AmendPoject` method. We are trying to add aspects to different members of a project. So essentially we are trying to _amend_ the project. Thus the name. 
+There are a few things to note in this example. The first point to consider is the `AmendPoject` method. We are trying to add aspects to different members of a project. So essentially we are trying to _amend_ the project. Thus the name.
 
-Inside the `AmendProject` method, we get all the public methods and add _logging_ and _retrying_ aspect to these methods. 
+Inside the `AmendProject` method, we get all the public methods and add _logging_ and _retrying_ aspect to these methods.
 
 
 
 > [!WARNING]
-> Sometimes CodeLense misses the aspects to show. For that time it is required to rebuild the project.  
+> Sometimes CodeLense misses the aspects to show. For that time it is required to rebuild the project.
 
 ## Example 3: Adding aspects to all methods in a given namespace
 
-To add the Logging aspect (`LogAttribute`) to all the methods of a given namespace `Outer.Inner` and all the child types located in any descendent namespace use the following fabric 
+To add the Logging aspect (`LogAttribute`) to all the methods of a given namespace `Outer.Inner` and all the child types located in any descendent namespace use the following fabric
 
 [!code-csharp[](../../../code/DebugDemo2/Fabric2.cs)]
 
-In this fabric, we use `GlobalNamespace.GetDecendant` method to get all the children's namespace of the given namespace (In this case `Outer.Inner`). The first `SelectMany` calls get all the types in these namespaces and the inner `SelectMany` call gets all the methods in these types. This results in an `IAspectReceiver<IMethod>`. So the final call <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspectIfEligible> adds the `Log` aspect to all eligible methods. 
+In this fabric, we use `GlobalNamespace.GetDecendant` method to get all the children's namespace of the given namespace (In this case `Outer.Inner`). The first `SelectMany` calls get all the types in these namespaces and the inner `SelectMany` call gets all the methods in these types. This results in an `IAspectReceiver<IMethod>`. So the final call <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspectIfEligible> adds the `Log` aspect to all eligible methods.
 
-## Example 4: Adding `NotifyPropertyChanged` aspect to all types 
+## Example 4: Adding `NotifyPropertyChanged` aspect to all types
 
-In this example, you shall learn how `NamespaceFabric` can be used to add an inheritable aspect `NotifyProperyChanged` to all the public types in the namespace. 
+In this example, you shall learn how `NamespaceFabric` can be used to add an inheritable aspect `NotifyProperyChanged` to all the public types in the namespace.
 
 [!code-csharp[](../../../code/Metalama.Documentation.QuickStart.Fabrics/NPCFabric.cs)]
 
 
-## Example 5: Adding `Log` aspect only to derived classes of a given class 
-Sometimes you may not need or want to add aspects to all the types but only to a class and its derived types. The following fabric shows how you can add those. In this example fabric you see how to get the derived types of a given type and how to add aspects to them. 
+## Example 5: Adding `Log` aspect only to derived classes of a given class
+Sometimes you may not need or want to add aspects to all the types but only to a class and its derived types. The following fabric shows how you can add those. In this example fabric you see how to get the derived types of a given type and how to add aspects to them.
 
 [!code-csharp[](../../../code/Metalama.Documentation.QuickStart.Fabrics.2/AddLoggingToChildrenFabric.cs)]
 
 
 ## Example 6: Making sure no strings remain null
-So far you have seen how `NamespaceFabric` and `ProjectFabric` can be used to add aspects to your types and methods. In this example, you shall see how you can use `ProjectFabric` to add a special capability to all public string fields and properties. 
+So far you have seen how `NamespaceFabric` and `ProjectFabric` can be used to add aspects to your types and methods. In this example, you shall see how you can use `ProjectFabric` to add a special capability to all public string fields and properties.
 
-Uninitialized null strings in C# can cause accidental failures. Wouldn't it be nice if you could assign empty strings to all the public string fields and properties of a type. That's exactly what the following fabric does. 
+Uninitialized null strings in C# can cause accidental failures. Wouldn't it be nice if you could assign empty strings to all the public string fields and properties of a type. That's exactly what the following fabric does.
 
 [!code-csharp[](../../../code/Metalama.Documentation.QuickStart.Fabrics.3/NoNullStringFabric.cs)]
 
 
 
-## The common pattern 
+## The common pattern
 So you may have noticed a common pattern among these examples. Whenever you need to add an aspect to a batch of methods, types etc; you need to create an <xref:Metalama.Framework.Aspects.IAspectReceiver`1> for that type. So if you want to add aspects to many methods, you need to create an instance of `IAspectReceiver` of <xref:Metalama.Framework.Code.IMethod> If you want to add aspects to many types you need to create an `IAspectReceiver` instance of <xref:Metalama.Framework.Code.IType>
- 
+
+
