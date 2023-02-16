@@ -80,5 +80,5 @@ To check that the installation had been successfull go to the same visual studio
 
 ## Installing Metalama Command-Line Tool
 
-Although you won't probably need it during your first days with Metalama, it's good to know what there a Metalama command-line tool exists. For details, see <xref:dotnet-tool>. No worry, we will remind you  when it when you will need it.
+Although you won't probably need it during your first days with Metalama, it's good to know what a Metalama command-line tool exists. For details, see <xref:dotnet-tool>. No worry, we will remind you  when it when you will need it.
 

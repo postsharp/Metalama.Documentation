@@ -3,12 +3,13 @@ uid: getting-aspects
 ---
 # Getting aspects
 
-As promised, this chapter will not cover the art of creating aspects. We will assume that you already have aspects that you can use in your projects: aspects written by your team, Metalama ready-made aspects, or community aspects.
+As promised, this chapter will not cover the art of creating aspects. We will assume that you already have pre-built aspects that you can use in your projects. These aspects can be provided by your colleagues, by our team, or by the community.
+
 
 
 ## Demo aspects
 
-In the examples of this chapter, we shall use the following prebuilt aspects:
+In the examples of this chapter, we shall use the following pre-built aspects:
 
 |Aspect | Purpose |
 |-------|----------|

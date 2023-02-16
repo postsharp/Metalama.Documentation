@@ -4,7 +4,7 @@ uid: understanding-your-code-with-aspects
 
 # Understanding your aspect-oriented code
 
-Now that you have aspects in your code, you may wonder with some anxiety: What will my code do? How will it execute? Worry no more: Metalama offers several tools to let you know what _exactly_ happens with your code when you hit the Run button.
+Now that you have aspects in your code, you may wonder: What will my code do? How will it execute? Worry no more: Metalama offers several tools to let you know what _exactly_ happens with your code when you hit the Run button.
 
 These tools are:
 

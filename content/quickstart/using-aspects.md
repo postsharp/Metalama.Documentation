@@ -22,9 +22,9 @@ If you should read this chapter if:
 |Article | Description
 |--------|-------------
 |<xref:install> | Shows steps to install Metalama Visual Studio plugin.
-|<xref:getting-aspects> | Lists sample aspects that will be used for demonstrations across this guide.
-|<xref:quickstart-adding-aspects> | Shows steps to use an aspect on a target by adding attribute manually or using the refactoring menu.
-|<xref:understanding-your-code-with-aspects>| Shows how results from Metalama Visual Studio extension is shown on CodeLense in different contexts.
+|<xref:getting-aspects> | Shows how to get the sample aspects that will be used for demonstrations in this guide.
+|<xref:quickstart-adding-aspects> | Shows steps to use an aspect on a target by adding attribute by hand or using the refactoring menu.
+|<xref:understanding-your-code-with-aspects>| Describes how to use features of the Metalama plugin for Visual Studio to better understand your aspect-oriented code.
 |<xref:debugging-aspect-oriented-code> | Aspects transform code. This article shows how you can debug this transformed code as you would do otherwise in Visual Studio.
-|<xref:adding-aspects-in-bulk>| Adding individual aspects by hand or by context menu is not always possible or viable. Sometimes we need a programmatic way to add aspects to target types. This article shows how you can use `Fabrics` to add aspects to different target types programmatically.
+|<xref:adding-aspects-in-bulk>| Adding individual aspects by hand or by context menu is not always possible or viable. Sometimes you need a programmatic way to add aspects to target types. This article shows how you can use `Patterns` to add aspects to different target types programmatically.
 

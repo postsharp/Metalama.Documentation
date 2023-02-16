@@ -6,17 +6,17 @@ uid: quickstart-adding-aspects
 
 Most aspects are custom attributes that have to be applied to some target declaration. Some aspects can target methods, other properties, or classes.
 
-In this section, you shall see how you can use the attribute to add the aspect.
+In this section, you shall see how you can use custom attributes to add aspects.
 
-## Adding an aspect as a custom attribute
+## Adding aspects as custom attributes
 
-Imagine you have a method like this that occasionally fails:
+Suppose you have a method like this one, which occasionally fails:
 
 ![](images/flaky_method_no_aspect.png)
 
-At the moment, Code Lens shows `no aspect`: it means that no aspect has been applied to this method yet.
+At the moment, CodeLens displays `No aspect`. This means that no aspect has been applied to this method yet.
 
-To apply the `Retry` aspect, just add it as a normal custom attribute, i.e., type `[Log]`:
+To apply the `Retry` aspect, add it as a normal custom attribute, i.e., type `[Log]`:
 
 ![](images/applying_retry_attribute.png)
 

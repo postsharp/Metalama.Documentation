@@ -2,9 +2,8 @@
 uid: get-metalama-nuget
 ---
 
-# Getting Metalama framework from Nuget
-Only if you want to create your own custom aspect, you shall need to get the Metalama package from Nuget.
-It is not needed if you just want to use some ready-made aspects.
+# Getting Metalama from NuGet
+The `Metalama.Framework` package is needed only if you want to create your own custom aspect. It is not needed if you just want to use some ready-made aspects.
 
 
 >[!NOTE]

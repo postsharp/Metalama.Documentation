@@ -7,11 +7,12 @@ uid: creating-simple-aspects
 > ![WARNING]
 > This chapter has not been written yet.
 
-You have seen how using aspects you can modify your program before it is compiled. In this chapter you shall learn how to create your own aspects targeting several parts of the code
+You have seen how aspects can modify your program before it is compiled. In this chapter you shall learn how to create your own aspects targeting several parts of the code
 
 
 ## Different aspect types
-The following diagram shows the relationship between several types available in `Metalama.Framework.Aspects` namespace to create simple aspects easily.
+
+The diagram below shows the relationship between several types available in the `Metalama.Framework.Aspects` namespace to create simple aspects easily.
 
 ```mermaid
 classDiagram
@@ -24,11 +25,11 @@ classDiagram
     EventAspect <|-- OverrideEventAspect
 ```
 
-As you can see, at the top there is the `IAspect` interface the is implemented across many different types to offer overriding functionality for different parts of the code.
+As you can see, the `IAspect` interface is implemented across many different types to deliver overrides for different parts of the code.
 
 ## What can aspects do
-An aspect can do the following things
 
+An aspect can do the following things:
 * _Transform_ a method
 * _Modify_ a field or property
 * _Introduce_ a property or a field
