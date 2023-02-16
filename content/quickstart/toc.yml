@@ -24,7 +24,13 @@ items:
   - name: Creating Simple Aspects 
     topicUid: creating-simple-aspects
     items:
-      - name: Overriding Methods 
-        topicUid: override-method-aspects
-      - name: Blocking Obsolete Method Calls
-        topicUid: obsolete-method-blocker
+      - name: Knowing Parts of an Aspect 
+        topicUid: parts-of-an-aspect
+      - name: Creating Simple Method Aspects
+        topicUid: creating-simple-method-aspect
+      - name: Creating Simple Field/Property Aspects
+        topicUid: create-field-prop-aspects
+      - name: Creating Eligibility Constraints 
+        topicUid: create-eligibility
+      - name: Differnt types in Metalama for creating aspects
+        topicUid: aspect-types-class-diag  
