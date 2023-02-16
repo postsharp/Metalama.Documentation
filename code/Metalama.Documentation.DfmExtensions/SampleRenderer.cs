@@ -147,6 +147,18 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
                 "net6.0",
                 Path.ChangeExtension( targetPathRelativeToProjectDir, ".out.cs.html" ) ) );
 
+        if ( !File.Exists( transformedHtmlPath ) )
+        {
+            // Try an alternate extension.
+            transformedHtmlPath = Path.GetFullPath(
+                Path.Combine(
+                    projectDir,
+                    "obj",
+                    "html",
+                    "net6.0",
+                    Path.ChangeExtension( targetPathRelativeToProjectDir, ".cs.out.html" ) ) );
+        }
+
         var currentFile = ( (ImmutableStack<string>)context.Variables["FilePathStack"] ).Peek();
         const string conceptualPrefix = "../conceptual/";
 

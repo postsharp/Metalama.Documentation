@@ -9,15 +9,9 @@ internal static class AttributeMatcher
 {
     private static readonly Regex _oneAttributeRegex = new( @"(?<name>\w+)=(""(?<quoted_value>[^""]*)""|(?<unquoted_value>\w+))" );
 
-    public static Matcher AttributeListMatcher { get; } = ( Matcher.AnyWordCharacter.RepeatAtLeast( 1 ) + Matcher.WhiteSpacesOrEmpty + Matcher.Char( '=' )
-                                                            + Matcher.WhiteSpacesOrEmpty + Matcher.Char( '"' ) + Matcher.AnyCharNot( '"' ).RepeatAtLeast( 0 )
-                                                            + Matcher.Char( '"' )
-                                                            + Matcher.WhiteSpacesOrEmpty ).Repeat( 0, 32  ).ToGroup( "attributes" )
-        .RepeatAtLeast( 0 );
 
-    public static Dictionary<string, string> ParseAttributes( MatchResult match )
+    public static Dictionary<string, string> ParseAttributes( string attributes )
     {
-        var attributes = match["attributes"].GetValue();
         var dictionary = new Dictionary<string, string>( StringComparer.OrdinalIgnoreCase );
 
         foreach (Match attributeMatch in _oneAttributeRegex.Matches( attributes ))

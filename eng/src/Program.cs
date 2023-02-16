@@ -21,9 +21,13 @@ var product = new Product( Dependencies.MetalamaDocumentation )
     Solutions = new Solution[]
     {
         new DotNetSolution( "code\\Metalama.Documentation.Prerequisites.sln" ) { CanFormatCode = true },
-        new DotNetSolution( "code\\Metalama.Documentation.SampleCode.sln" )
+        new DotNetSolution( "code\\Metalama.Documentation.Snippets.TestBased.sln" )
         {
             CanFormatCode = true, BuildMethod = BuildMethod.Test,
+        },
+        new DotNetSolution( "code\\Metalama.Documentation.Snippets.ProjectBased.sln" )
+        {
+            CanFormatCode = true, BuildMethod = BuildMethod.Build,
         },
         new DotNetSolution( "source-dependencies\\Metalama.Samples\\Metalama.Samples.sln") { BuildMethod = BuildMethod.Test },
         new DocFxSolution( "docfx.json" )

@@ -15,7 +15,7 @@ public class SampleTokenRuleTests
     {
         var rule = new SampleTokenRule();
         var context = new MarkdownParsingContext(SourceInfo.Create( text, "file.md", 0, 1 ));
-        var token = (SampleToken) rule.TryMatch( new TestParser( ), context );
+        var token = (SampleToken?) rule.TryMatch( new TestParser( ), context );
         
         if (token != null)
         {

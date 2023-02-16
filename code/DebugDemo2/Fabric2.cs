@@ -14,11 +14,14 @@ namespace DebugDemo2
             //Adding Log attribute to all mehtods of all types 
             //that are available inside "Outer.Inner" namespace 
             
+            /*
             project.Outbound.SelectMany(p => p.GlobalNamespace.GetDescendant("Outer.Inner")
                                             .DescendantsAndSelf()
                                             .SelectMany(p => p.Types.SelectMany(m => m.Methods)))
                             .AddAspectIfEligible<LogAttribute>();
+            */
 
+            // TODO: Fix that code.
             
         }
     }

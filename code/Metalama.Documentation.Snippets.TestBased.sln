@@ -14,12 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.Samp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.SampleCode.DependencyInjection.ServiceLocator", "Metalama.Documentation.SampleCode.DependencyInjection.ServiceLocator\Metalama.Documentation.SampleCode.DependencyInjection.ServiceLocator.csproj", "{2C10AD9B-09B7-4C1C-8CF3-F3086DEBD7BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.QuickStart", "Metalama.Documentation.QuickStart\Metalama.Documentation.QuickStart.csproj", "{3BC34F98-D332-4894-9CD7-11B69EE116AE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.QuickStart.Fabrics", "Metalama.Documentation.QuickStart.Fabrics\Metalama.Documentation.QuickStart.Fabrics.csproj", "{2BBCC7A2-E5CA-4F68-B003-96FDB81773B9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.QuickStart.Fabrics.2", "Metalama.Documentation.QuickStart.Fabrics.2\Metalama.Documentation.QuickStart.Fabrics.2.csproj", "{72B0979A-AFE8-45B6-BDFE-9B332F201D81}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,18 +32,6 @@ Global
 		{2C10AD9B-09B7-4C1C-8CF3-F3086DEBD7BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C10AD9B-09B7-4C1C-8CF3-F3086DEBD7BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C10AD9B-09B7-4C1C-8CF3-F3086DEBD7BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3BC34F98-D332-4894-9CD7-11B69EE116AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BC34F98-D332-4894-9CD7-11B69EE116AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BC34F98-D332-4894-9CD7-11B69EE116AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BC34F98-D332-4894-9CD7-11B69EE116AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2BBCC7A2-E5CA-4F68-B003-96FDB81773B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BBCC7A2-E5CA-4F68-B003-96FDB81773B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2BBCC7A2-E5CA-4F68-B003-96FDB81773B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2BBCC7A2-E5CA-4F68-B003-96FDB81773B9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{72B0979A-AFE8-45B6-BDFE-9B332F201D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72B0979A-AFE8-45B6-BDFE-9B332F201D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72B0979A-AFE8-45B6-BDFE-9B332F201D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72B0979A-AFE8-45B6-BDFE-9B332F201D81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

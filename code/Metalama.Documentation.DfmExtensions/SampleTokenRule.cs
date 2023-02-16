@@ -1,35 +1,24 @@
 ﻿using Microsoft.DocAsCode.MarkdownLite;
 using Microsoft.DocAsCode.MarkdownLite.Matchers;
+using System.Text.RegularExpressions;
 
 namespace Metalama.Documentation.DfmExtensions;
 
 public sealed class SampleTokenRule : IMarkdownRule
 {
-    private static readonly Matcher _matcher =
-        Matcher.WhiteSpacesOrEmpty +
-        "[!" +
-        Matcher.CaseInsensitiveString( "metalama-sample" ) +
-        Matcher.WhiteSpacesOrEmpty +
-        Matcher.AnyCharNotIn( ' ', ']' ).RepeatAtLeast( 1 ).ToGroup( "path" ) +
-        Matcher.WhiteSpacesOrEmpty +
-        AttributeMatcher.AttributeListMatcher
-        +
-        Matcher.WhiteSpacesOrEmpty +
-        ']' +
-        Matcher.WhiteSpacesOrEmpty +
-        ( Matcher.NewLine.RepeatAtLeast( 1 ) | Matcher.EndOfString );
+    private static readonly Regex _regex = new Regex( @"^\s*\[!metalama-sample +(?<path>\S+)\s*(?<attributes>[^\]]*)]" );
 
     public IMarkdownToken? TryMatch( IMarkdownParser parser, IMarkdownParsingContext context )
     {
-        var match = context.Match( _matcher );
+        var match = _regex.Match( context.CurrentMarkdown );
 
-        if (match?.Length > 0)
+        if (match.Success )
         {
             var sourceInfo = context.Consume( match.Length );
 
-            var path = match["path"].GetValue();
+            var path = match.Groups["path"].Value;
 
-            var attributes = AttributeMatcher.ParseAttributes( match );
+            var attributes = AttributeMatcher.ParseAttributes( match.Groups["attributes"].Value );
 
             attributes.TryGetValue( "name", out var name );
             attributes.TryGetValue( "title", out var title );
