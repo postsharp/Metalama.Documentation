@@ -4,9 +4,9 @@
 
 ## Introduction
 
-Metalama is an [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) framework based on templates written in pure C#.
+Metalama is an [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) framework where aspects are written as pure C# templates.
 
-These templates make it easy to write code that combines compile-time information (such as names and types of parameters of a method) and run-time information (such as parameter values) in a natural way, without having to learn yet another language or having to combine C# with some special templating language.
+These templates make it easy to write code that combines compile-time information (such as names and types of parameters of a method) and run-time information (such as parameter values) in a natural way, without having to learn yet another language, or having to combine C# with some special templating language.
 
 ## Example
 

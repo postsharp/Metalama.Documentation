@@ -4,9 +4,7 @@ uid: live-template
 
 # Exposing an Aspect as a Live Template
 
-A _live template_ is a custom Quick Action available in the code editor in the lightbulb or screwdriver menu along other code fixes or refactoring actions offered by the IDE.
-For details about using live templates, see <xref:applying-live-templates>.
-
+A _live template_ is a custom Code Action available in the code editor menu like other code suggestions or refactoring actions offered by the IDE. For details about using live templates, see <xref:applying-live-templates>.
 
 Live templates are built with the Metalama Aspect Framework. Instead of being executed at compile time by the compiler, they are interactively applied by the user in the editor and modify the source code.
 

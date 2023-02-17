@@ -16,7 +16,7 @@ Suppose you have a method like this one, which occasionally fails:
 
 At the moment, CodeLens displays `No aspect`. This means that no aspect has been applied to this method yet.
 
-To apply the `Retry` aspect, add it as a normal custom attribute, i.e., type `[Log]`:
+To apply the `Retry` aspect, add it as a normal custom attribute, i.e., type `[Retry]`:
 
 ![](images/applying_retry_attribute.png)
 

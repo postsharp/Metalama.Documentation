@@ -30,11 +30,11 @@ For each aspect layer, by order of application (i.e., inverse order of execution
     * Advice is added to the next steps of the pipeline.
 
 * For all aspect layers, and for all target declarations visited in breadth-first order:
-  * Advice is executed. Advice can provide observable or non-observable transformations (or both), defined as follows:
+  * Advice is executed. The advice can provide observable or non-observable transformations (or both), defined as follows:
     * _observable transformations_ are transformations that affect _declarations_, i.e. they are visible from the code model or from the source code (for instance: introducing a method);
     * _non-observable transformations_ are transformations that only affect the _implementation_ of declarations (for instance: overriding a method).
 
-* Before we execute the next aspect layer or the next visiting depth, a new code model version is created incrementally from the previous version, including any observable transformation added by an advice before.
+* Before we execute the next aspect layer or the next visiting depth, a new code model version is created incrementally from the previous version, including any observable transformation added by advice.
 
 ### Step 3. Transforming the compilation
 

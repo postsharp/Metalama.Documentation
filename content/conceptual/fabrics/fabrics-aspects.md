@@ -2,7 +2,7 @@
 uid: fabrics-aspects
 ---
 
-# Adding Aspects in Bulk from a Fabric
+# Adding aspects programmatically from a fabric
 
 You can use a fabric to programmatically add aspects to any declaration that is "under" the target of the fabric. Thanks to fabrics, you do not need to add aspects one by one using custom attributes.
 

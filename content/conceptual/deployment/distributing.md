@@ -8,7 +8,7 @@ When your project uses aspects, you need to consider whether the projects that _
 
 ## Flowing the use of aspects
 
-Your project may _flow_ the necessity to use the aspect framework to consuming projects for one of the following reasons:
+Your project may _flow_ the necessity to use aspects and the aspect framework to consumers of your project for one of the following reasons:
 
 * Your project exposes public aspects that can be used by the referencing projects.
 * Your project has non-sealed, public classes that have _inherited_ aspects.

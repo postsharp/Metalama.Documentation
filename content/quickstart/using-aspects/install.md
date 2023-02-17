@@ -53,12 +53,12 @@ at the bottom of this screen.
 
 ### **Step 6**: Give consent to install the extension
 
-As soon as you close the Visual Studio, the installer will start installing the extension.
+As soon as you close Visual Studio, the installer will start installing the extension.
 
 ![wizard_init](../../images/ext_manage_6.png)
 The installer initializing
 
-The installation wizard will work indepedently and will require your consent at the following stage
+The installation wizard will work independently and will require your consent at the following stage
 
 ![wizard_asking_consent](../../images/ext_manage_consent.png)
 

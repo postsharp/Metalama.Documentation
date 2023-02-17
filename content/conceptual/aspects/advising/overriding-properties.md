@@ -86,7 +86,7 @@ The following aspect overrides properties so that they are written to and read f
 
 This example illustrates a strongly-typed property template with a single accessor that uses the `meta.Target.FieldOrProperty.Value` expression to access the underlying field or property.
 
-The following aspect can be applied to fields of properties of type `string`. It overrides the setter to trim and lower case the assigned value. 
+The following aspect can be applied to fields of properties of type `string`. It overrides the setter to trim and lower case the assigned value.
 
 [!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Normalize.cs name="Normalize"]
 

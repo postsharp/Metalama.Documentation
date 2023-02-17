@@ -4,7 +4,12 @@ uid: dotnet-tool
 
 # Installing the Metalama Command Line Tool
 
-In order to register a license key or access notifications, you need to install the Metalama Command Line Tool.
+The Metalama Command Line Tool offers the following features:
+
+* install a license or switch to Metalama Free,
+* configure different settings,
+* kill Metalama processes,
+* clean up Metalama temporary files.
 
 To install Metalama Command Line Tool:
 
@@ -16,7 +21,7 @@ To install Metalama Command Line Tool:
     ```
 
 
-    where `<VERSION>` is the version found in the first step.
+    where `<VERSION>` is the version number you found in the first step.
 
-Metalama Command Line Tool is now available through the `metalama` command.
+The Metalama Command Line Tool is now available through the `metalama` command.
 

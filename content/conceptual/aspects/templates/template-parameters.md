@@ -4,7 +4,7 @@ uid: template-parameters
 
 # Template Parameters and Type Parameters
 
-Thanks to _compile-time parameters_, your `BuildAspect` implementation can pass arguments to the template. There are two kinds of template parameters: standard parameters, and type parameters aka generic parameters.
+Thanks to _compile-time parameters_, your `BuildAspect` implementation can pass arguments to the template. There are two kinds of template parameters: standard parameters and type parameters (also known as generic parameters).
 
 Unlike run-time parameters:
 * Compile-time parameters must receive a value at compile time from the `BuildAspect` method.
@@ -17,14 +17,14 @@ Compile-time parameters are especially useful when the same template is used sev
 
 To define and use a compile-time parameter in a template method:
 
-1. Add one or more parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The parameter type must not be run-time-only. If the parameter type is compile-time-only (e.g. `IField`), the custom attribute is redundant.
+1. Add one or more parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The type of the parameter must not be run-time-only. If the parameter type is compile-time-only (for example, `IField`), the use of the custom attribute is redundant.
 
 2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { a = "", b = 3, c = field }` where `a`, `b` and `c` are the exact names of the template parameters (the name matching is case sensitive).
 
 
 ### Alternative
 
-When you cannot use compile-time parameters (typically because you have a field, property or event template instead of a method template), you can replace them by tags. For details about tags, see <xref:sharing-state-with-advice>. The only advantage of compile-time parameters over tags is that the latter are easier to read from the template. Tags need a more cumbersome syntax.
+When you cannot use compile-time parameters (typically because you have a field, property, or event template instead of a method template), you can replace them by tags. For details about tags, see <xref:sharing-state-with-advice>. The advantage of compile-time parameters over tags is that using template parameters makes the code more readable. Tags require cumbersome syntax.
 
 ## Type parameters
 

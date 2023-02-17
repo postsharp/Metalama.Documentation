@@ -6,15 +6,15 @@ uid: fabrics
 
 Fabrics are classes that are executed at compile time. Unlike aspects, fabrics do not need to be explicitly added to a declaration. Fabrics are executed automatically.
 
-Fabrics are defined in the <xref:Metalama.Framework.Fabrics> namespace. See [the class diagram of the Metalama.Framework.Fabrics namespace](https://doc.postsharp.net/7.0.20/html/01dbb455-861c-440e-a2ef-84d1bf581eef.htm).
+Fabrics are defined in the <xref:Metalama.Framework.Fabrics> namespace. See the class diagram of this namespace.
 
 ## Benefits
 
-You can use fabrics in the following situations:
+You can use fabrics in the following circumstances:
 
-* **Add aspects in bulk**. Instead of adding an aspect to each individual declaration with a custom attribute, you can programmatically add that aspect to multiple targets. See <xref:fabrics-aspects> for details.
+* **Add aspects in bulk**. Instead of adding an aspect to each individual declaration with a custom attribute, you can programmatically add aspects to multiple targets. See <xref:fabrics-aspects> for details.
 * **Validate code.** You can add validation rules to your project or namespace using fabrics. See <xref:fabrics-validation> for details.
-* **Configure an aspect library**. When an aspect library exposes a configuration API, you can configure the aspect library from a project fabric.
+* **Configure an aspect library**. When an aspect library exposes a configuration API, you can configure the aspect library from a project fabric. See <xref:fabrics-configuring> for details.
 
 ## In this chapter
 

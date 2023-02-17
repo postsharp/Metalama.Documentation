@@ -10,7 +10,7 @@ A fundamental concept in Metalama is that every type in your source code belongs
 
 ### Run-time code
 
-_Run-time code_ is the code that you are used to: it compiles to a binary assembly and typically executes on the end user's device. In a project that does not reference the `Metalama.Framework` package, all code is considered run-time.
+_Run-time code_ is the code that you are used to: it compiles to a binary assembly and typically executes on the end user's device. In a project that does not reference the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) package, all code is considered run-time.
 
 The entry point of run-time code is typically the _Program.Main_ method.
 

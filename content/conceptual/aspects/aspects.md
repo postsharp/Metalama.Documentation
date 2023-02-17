@@ -4,7 +4,7 @@ uid: aspects
 
 # Aspects
 
-This chapter explains how to build your own aspects. If you only want to use aspects written by others, you can skip this chapter. However, we suggest that you come back later if you want to understand better how Metalama works.
+This chapter explains how to build your own aspects. If you only want to use aspects written by others, you can skip this chapter. However, we suggest that you revisit this chapter later if you want to understand better how Metalama works.
 
 ## Benefits
 
@@ -16,7 +16,7 @@ This chapter explains how to build your own aspects. If you only want to use asp
     * **Deduplication**. Cross-cutting patterns are defined in one place, so if you need to change or fix them, you do not need to fix all occurrences in your code base.
 
 * **Code validation**. You can use aspects to create custom attributes that validate code. For details and benefits, see <xref:validation>.
-* **Code fixes and refactorings**. You can use aspects to offer code fixes and refactorings. For details, see<xref:building-ide-interactions>.
+* **Code fixes and refactorings**. You can use aspects to offer code fixes and refactorings. For details, see <xref:building-ide-interactions>.
 
 ## In this chapter
 

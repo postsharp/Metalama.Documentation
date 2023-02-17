@@ -9,7 +9,7 @@ This article describes how to enable logging and process dumps in an unattended 
 
 ## Step 1. Create diagnostics.json on your local machine
 
-You can follow the other articles in this chapter to learn how to create a `diagnostics.json` file for the scenario you want to troubleshoot.
+You can follow the other articles in this chapter to learn how to create a `diagnostics.json` file for troubleshooting a specific scenario.
 
 ### Example: enabling logging
 

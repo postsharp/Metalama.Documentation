@@ -42,7 +42,7 @@ You will know that you will be done with the migration when your projects will c
 * Create a new branch for this work in your source repository.
 * Verify that the projects build without error. If possible, address any warnings in your code.
 * Verify that all unit tests are successful.
-* When your projects are free of errors, warnings, and failed tests, commit and push.
+* When your projects are free of errors, warnings, and failed tests, commit and push your branch.
 
 
 ## Step 4. Change PostSharp package references to Metalama.Migration and check errors

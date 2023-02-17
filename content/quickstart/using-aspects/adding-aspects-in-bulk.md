@@ -1,4 +1,4 @@
----
+﻿---
 uid: adding-aspects-in-bulk
 ---
 
@@ -112,3 +112,4 @@ Uninitialized null strings in C# can cause accidental failures. Wouldn't it be n
 ## The common pattern
 
 So you may have noticed a common pattern among these examples. Whenever you need to add an aspect to a batch of methods, types etc; you need to create an <xref:Metalama.Framework.Aspects.IAspectReceiver`1> for that type. So if you want to add aspects to many methods, you need to create an instance of `IAspectReceiver` of <xref:Metalama.Framework.Code.IMethod> If you want to add aspects to many types you need to create an `IAspectReceiver` instance of <xref:Metalama.Framework.Code.IType>
+

@@ -32,3 +32,4 @@ The call to `meta.Proceed()` means that the original method body should be injec
 ### Comparison with Razor
 
 You can compare T# to [Razor](https://learn.microsoft.com/aspnet/core/mvc/views/razor). Razor allows you to create dynamic web pages by mixing two languages: C# for server-side code (the _meta_ code), and HTML for client-side code. With T#, you also have two kinds of code: _compile-time_ and _run-time_ code. The compile-time code generates the _run-time_ code. The difference with Razor is that in T# both the compile-time and run-time code is the same language: C#. Metalama interprets every expression or statement in a template as having _either_ run-time scope _or_ compile-time scope. Compile-time expressions are generally initiated by calls to the <xref:Metalama.Framework.Aspects.meta> API.
+

@@ -13,7 +13,7 @@ Before we begin, it's important to understand the concept of an _aspect_. An asp
 
 Now, let's get started!
 
-This book is composed of the following chapters:
+This book has the following chapters:
 
 | Chapter | Description |
 |--------|----|

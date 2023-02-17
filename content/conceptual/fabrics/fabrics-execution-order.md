@@ -13,7 +13,7 @@ Fabrics are executed in the following order:
     3. Fabric type name.
 
 
-2. **Transitive project fabrics**. Transitive project fabrics are ordered by the following criteria:
+2. **Transitive project fabrics** are ordered based on the following criteria:
 
      1. Depth in the dependency graph: dependencies with lower depth (i.e. "nearer" to the main project) are processed first.
      2. Assembly name (alphabetical order).

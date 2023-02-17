@@ -4,13 +4,14 @@ uid: quickstart-using-metalama
 
 # Using Metalama
 
-If you want to learn how to _use_ aspects (and don't need to learn how to _create_ them), this chapter is for you; you may want to stop reading after this one. If you want to learn how to _create_ aspects, it's still a good idea to start with this chapter to get acquainted with the core principles.
+If you want to learn how to _use_ aspects (and don't need to learn how to _create_ them), this chapter is for you. You may want to stop reading after this one.
+If you want to learn how to _create_ aspects, it's still a good idea to start with this chapter to get acquainted with the core principles.
 
 After you finish this guide, you should be comfortable using aspects in your codebase.
 
 ## Who should read this chapter?
 
-If you should read this chapter if:
+You should read this chapter if:
 
 * you have just joined a team that is already using Metalama,
 * you are planning to use ready-made aspects but don't plan to build your own,

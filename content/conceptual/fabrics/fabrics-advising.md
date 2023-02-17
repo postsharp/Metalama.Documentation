@@ -2,7 +2,7 @@
 uid: fabrics-advising
 ---
 
-# Advising the Current Type
+# Advising the current type
 
 
 

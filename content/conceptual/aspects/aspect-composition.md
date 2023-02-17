@@ -27,7 +27,7 @@ Aspects and advice in the same layer and applied to declarations of the same dep
 
 ## 2. Code model versioning
 
-Since the code model only represents declarations but does not give access to implementations such as method bodies or initializers, the only kinds of advice that affects the code model are introductions and interface implementations. Overriding an existing method does not affect the code model because it only overrides its implementation.
+Since the code model only represents declarations but does not give access to implementations such as method bodies or initializers, the only kinds of advice that affect the code model are introductions and interface implementations. Overriding an existing method does not affect the code model because it only overrides its implementation.
 
 For each aspect layer and depth level, Metalama will create a new version of the code model that reflects the changes done by the previous aspect layer or depth level.
 
@@ -37,7 +37,7 @@ To ensure the consistency of this model, aspects cannot provide outputs to previ
 
 ## 3. Safe composition of advice
 
-When several aspects that are not aware of each other add an advice to the same declaration, Metalama guarantees that the resulting code will be correct.
+When several aspects that are not aware of each other add advice on the same declaration, Metalama guarantees that the resulting code will be correct.
 
 For instance, if two aspects override the same method, both aspects are guaranteed to compose correctly. This is a very hard problem, but it is solved by Metalama, so you don't have to bother about it.
 
