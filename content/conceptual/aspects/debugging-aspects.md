@@ -4,7 +4,7 @@ uid: debugging-aspects
 
 # Debugging Aspects
 
-Debugging the compile-time logic of an aspect is currently difficult because the compiler does not execute your source code, but the transformed code produced from your source code and stored under an unpredictable path.
+Debugging the compile-time logic of an aspect is currently difficult because the compiler does not execute your source code, but the transformed code is produced from your source code and stored under an unpredictable path.
 
 ## Debugging compile-time logic
 
@@ -68,6 +68,6 @@ To attach a debugger to the design-time compiler process:
 4. Restart your IDE.
 
 > [!div class="see-also"]
-> <xref:debugging>
+> <xref:debugging-aspect-oriented-code>
 
 

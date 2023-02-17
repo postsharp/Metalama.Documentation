@@ -36,7 +36,7 @@ Here is an example of a method with a couple of aspects applied.
 
 [!code-csharp[](~\code\DebugDemo3\Program.cs)]
 
-the example shows a method that is designed to get customer details from the database in the form of a XML string. There can be many problems connecting to a database and therefore a `Retry` aspect makes sense and it is better to log these. So `Log` aspect also makes sense. However, the order in which these aspects will be applied is determined by the aspect author. As a user of these aspects, you need not worry about them.
+the example shows a method that is designed to get customer details from the database in the form of an XML string. There can be many problems connecting to a database and therefore a `Retry` aspect makes sense and it is better to log these. So `Log` aspect also makes sense. However, the order in which these aspects will be applied is determined by the aspect author. As a user of these aspects, you need not worry about them.
 
 Another interesting thing that CodeLense shows is a clickable link to show the transformed code and original code side by side.
 
@@ -61,15 +61,15 @@ You can also see this from the Context menu that is popped when you right-click 
 
 ## Implicit aspect addition
 
-In the previous sections, <xref:adding-aspects-custom-attribute> and <xref:adding-aspects-context-menu> you have seen how aspects can be added to a target method one at a time. This operation is _explicit_ because you are adding the attribute.
+In <xref:quickstart-adding-aspects> you have seen how aspects can be added to a target method one at a time. This operation is _explicit_ because you are adding the attribute.
 
-However, sometimes you shall discover that CodeLense shows some aspects that are applied on some targets even though there is no explicit attribute given. This is like _implicit_ aspect application.
+However, sometimes you shall discover that CodeLense shows some aspects that are applied to some targets even though there is no explicit attribute given. This is like _implicit_ aspect application.
 
 This sort of thing is possible because some of the aspects can be designed as <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> aspects and these aspects are inherited from the base class to the children classes.
 
 ### Implementing `INotifyPropertyChanged`
 
-In the following code example, it is shown how `INotifyPropertyChanged` event is fired for all members of derived classes when `NotificationPropertyChanged` aspect is applied.
+In the following code example, it is shown how the `PropertyChanged` event is fired for all members of derived classes when the `NotificationPropertyChanged` aspect is applied.
 
 > TODO: Add code.
 

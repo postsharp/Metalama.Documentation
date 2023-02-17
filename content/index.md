@@ -6,13 +6,13 @@ uid: index
 
 Welcome to the documentation of Metalama, a code quality and productivity improvement framework for C#.
 
-If you don't know Metalama yet and want to have an understanding, it's best to start with the <xref:reviewing>.
+If you don't know Metalama yet and want to have an understanding, it's best to start with the <xref:overview>.
 
 ## Documentation Structure
 
 | Book | Description |
 |------|-------------|
-| <xref:reviewing> | Read this book if you are considering using Metalama in a project and want to have an overview of features, requirements and limitations. Some articles are dedicated to security, deployment and privacy aspects of the product. |
+| <xref:overview> | Read this book if you are considering using Metalama in a project and want to have an overview of features, requirements and limitations. Some articles are dedicated to security, deployment and privacy aspects of the product. |
 | <xref:quickstart> | This book gives you a quick start to Metalama. It is written for two audiences: developers who want to use _existing_ aspects in their projects, and developers who want to create _new_ aspects. |
 | <xref:conceptual> | This is the exhaustive and precise developer's documentation. |
 | <xref:api> | This book contains the API documentation generated from the source code. |

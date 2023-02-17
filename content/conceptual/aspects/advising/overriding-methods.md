@@ -45,7 +45,7 @@ The following code writes a message to the system console before and after the m
 
 When you call `meta.Proceed`, the aspect framework generates a call to the overridden method and passes the parameters it received. If the parameter value has been changed thanks to a statement like `meta.Target.Parameters["a"].Value = 5`, the modified value will be passed.
 
-If you want to invoke the method with a totally different set of arguments, you can do it using <xref:Metalama.Framework.Code.Advised.IAdvisedMethod.Invoke*?text=meta.Target.Method.Invoke>.
+If you want to invoke the method with a totally different set of arguments, you can do it using <xref:Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke*?text=meta.Target.Method.Invoke>.
 
 > [!NOTE]
 > Invoking a method with `ref` or `out` parameters is not yet supported.

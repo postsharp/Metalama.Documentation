@@ -16,7 +16,7 @@
 		{
             "label": "refresh content",
             "type": "shell",
-            "command": ".\\Build.ps1 build --solution 3",
+            "command": ".\\update.ps1",
             "problemMatcher": [],
             "group": {
                 "kind": "build",

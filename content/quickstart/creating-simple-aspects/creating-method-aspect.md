@@ -1,5 +1,5 @@
 ---
-uid:creating-simple-method-aspect
+uid: creating-simple-method-aspect
 ---
 
 # Creating Method aspects
