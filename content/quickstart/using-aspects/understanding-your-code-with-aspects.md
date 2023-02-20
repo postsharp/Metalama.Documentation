@@ -42,7 +42,7 @@ Another interesting thing that CodeLense shows is a clickable link to show the t
 
 ## Previewing generated code
 
-To preview the change click on the link `Preview Transformed` Code` It will show the result like this
+To preview the change click on the link `Preview Transformed Code` It will show the result like this
 
 ![Metalama_Diff_Side_by_Side](../images/../using-aspects/images/lama_diff_side_by_side.png)
 
@@ -63,7 +63,7 @@ You can also see this from the Context menu that is popped when you right-click 
 
 In <xref:quickstart-adding-aspects> you have seen how aspects can be added to a target method one at a time. This operation is _explicit_ because you are adding the attribute.
 
-However, sometimes you shall discover that CodeLense shows some aspects that are applied to some targets even though there is no explicit attribute given. This is like _implicit_ aspect application.
+However, sometimes you shall discover that CodeLense shows some aspects that are applied to some targets even though there is no explicit attribute given. This is _implicit_ aspect application.
 
 This sort of thing is possible because some of the aspects can be designed as <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> aspects and these aspects are inherited from the base class to the children classes.
 
@@ -71,7 +71,7 @@ This sort of thing is possible because some of the aspects can be designed as <x
 
 In the following code example, it is shown how the `PropertyChanged` event is fired for all members of derived classes when the `NotificationPropertyChanged` aspect is applied.
 
-> TODO: Add code.
+[!code-csharp[](~\code\DebugDemo4\Program.cs)]
 
 When run this program prints the following output
 
