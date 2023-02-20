@@ -23,6 +23,6 @@ This chapter is composed of the following articles:
 
 | Article | Description |
 |---------|-------------|
-| <xref:live-template> | This article shows how to expose an aspect as a code refactoring that can be applied directly to _source_ code instead of being applied in the background to the executable code.
+| <xref:live-template> | This article shows how to expose an aspect as a code refactoring that can be applied directly to _source_ code instead of being applied in the background to the executable code. |
 | <xref:code-fixes> | This article describes how aspects and validators can suggest code fixes and refactorings. |
 

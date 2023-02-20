@@ -2,7 +2,7 @@
 uid: differences-from-postsharp
 ---
 
-# Differences Between Metalama and PostSharp
+# Differences between Metalama and PostSharp
 
 This article covers the major architectural differences between Metalama and PostSharp in a rather theoretical style. You can probably skip it on first reading.
 

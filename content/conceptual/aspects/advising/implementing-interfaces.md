@@ -3,7 +3,7 @@ uid: implementing-interfaces
 ---
 # Implementing Interfaces
 
-Some aspects need to modify the target type so that it implements a new interface. This can be done only using the programmatic advising API.
+Some aspects need to modify the target type so that it implements a new interface. This can be done only by using the programmatic advising API.
 
 ## Step 1. Call IAdviceFactory.ImplementInterface
 

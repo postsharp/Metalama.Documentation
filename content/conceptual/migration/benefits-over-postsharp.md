@@ -5,7 +5,7 @@ uid: benefits-over-postsharp
 # Benefits of Metalama over PostSharp
 
 
-## Higher run-time performance
+## Higher runtime performance
 
 In Metalama, aspects are _inlined_ into your source code: aspects provide code templates that are expanded into your source code at compile time.
 
@@ -21,9 +21,9 @@ PostSharp, by contrast, is a post-compiler. PostSharp is a .NET Framework or .NE
 
 This necessity for PostSharp to load assemblies into the CLR meant that it could not process projects that were not compatible with .NET Framework or .NET Core and with the processor of the compiler itself. This limitation does not exist in Metalama.
 
-So, how does Metalama execute aspects, if it does not load the assembly into the compiler process? Metalama splits the user code into two subsets: the _compile-time_ code, and the _run-time_ code. Metalama compiles the compile-time separately as an assembly targeting .NET Standard 2.0, and loads this assembly into the compiler process. The user code, which may be written for any platform, is never executed in the compiler process.
+So, how does Metalama execute aspects, if it does not load the assembly into the compiler process? Metalama splits the user code into two subsets: the _compile-time_ code and the _run-time_ code. Metalama compiles the compile-time separately as an assembly targeting .NET Standard 2.0, and loads this assembly into the compiler process. The user code, which may be written for any platform, is never executed in the compiler process.
 
-This new architecture makes Metalama future-proof: Metalama will support any platform that can be coded in C# because Metalama is essentially a compiler or IDE plug-in, and the compiler and IDE are maintained by Microsoft
+This new architecture makes Metalama future-proof: Metalama will support any platform that can be coded in C# because Metalama is essentially a compiler or IDE plug-in and the compiler and IDE are maintained by Microsoft.
 
 
 ## Declarations introduced by aspects are visible from the source code

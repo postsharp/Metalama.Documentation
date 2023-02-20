@@ -11,9 +11,7 @@ If you are experiencing issues with Metalama, our support team may ask you to pr
 >
 > Process dumps may contain a copy of your source code. Although we will handle process dumps as confidential material, your company may not allow you to send us a process dump.
 
-
-## Step 1. Install the Metalama Command-Line Tool
-
+## Step 1. Install the PostSharp Command-Line Tool
 Install the `metalama` command-line tool as described in <xref:dotnet-tool>.
 
 ## Step 2. Edit diagnostics.json
@@ -26,7 +24,7 @@ metalama config edit diagnostics
 
 This should open a `diagnostics.json` file in your default editor.
 
-The `miniDump/processes` section lists processes for which process dumps should be collected. The values are `false` by default. Set the values to `true` if you want to collect the process dumps of the following processes, should they crash.
+The `miniDump/processes` section lists processes for which process dumps need to be collected. The values are `false` by default. Set the values to `true` if you want to collect the process dumps of the following processes if they crash:
 
 * `Compiler`: the compile-time process.
 * `Rider`: the design-time Roslyn process running under Rider.

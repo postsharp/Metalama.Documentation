@@ -4,7 +4,7 @@ uid: register-license
 
 # Registering a license
 
-When you use Metalama for the first time, it will automatically activate the trial mode, which will work for a period of 45 days. To use Metalama beyond this period, you will need to switch to Metalama Free or register a license key.
+When you use Metalama for the first time, it will automatically activate trial mode, which will work for a period of 45 days. To use Metalama beyond this period, you need to switch to Metalama Free or register a license key.
 
 You can use all features of any preview of Metalama for up to 45 days after its release without registering a license.
 
@@ -45,7 +45,7 @@ To register a license manually for the current user:
 
 ## Registering a license key using an environment variable or MSBuild
 
-The license key can be stored as the value of the `MetalamaLicense` MSBuild property. This allows for:
+The license key can be stored as the value of the `MetalamaLicense` MSBuild property. This allows for the following:
 
 - Configuring the license as a value of the `MetalamaLicense` environment variable.
 - Configuring the license in the source code repository using [Directory.Build.props](https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2022#directorybuildprops-and-directorybuildtargets) file.

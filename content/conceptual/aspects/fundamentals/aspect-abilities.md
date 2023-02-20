@@ -94,7 +94,7 @@ The aspect may or may not report a diagnostic before calling <xref:Metalama.Fram
 
 ## Customizing its appearance in the IDE
 
-By default, an aspect class is represented in the IDE by the name of this class without the `Attribute` suffix, if any. To override the default name, annotate the aspect class with the <xref:System.ComponentModel.DisplayNameAttribute> annotation.
+By default, an aspect class is represented in the IDE by the name of the class trimmed of its `Attribute` suffix, if any. To override the default name, annotate the aspect class with the <xref:System.ComponentModel.DisplayNameAttribute> annotation.
 
 
 

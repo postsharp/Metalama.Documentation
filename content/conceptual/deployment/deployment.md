@@ -4,7 +4,7 @@ uid: deployment
 
 # Deployment and Configuration
 
-The following articles describe the components that make Metalama, how to install them, and how to configure Metalama before use.
+The following articles describe the components that make Metalama and how to install them, plus how to configure Metalama before use.
 
 | Article | Description |
 |---------|-------------|

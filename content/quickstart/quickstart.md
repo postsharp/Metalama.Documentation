@@ -6,7 +6,9 @@ uid: quickstart
 
 Welcome to the Quick Start Guide for Metalama!
 
+
 Metalama is a powerful tool that improves your code quality and productivity, as well as that of your entire development team. It is a meta-programming framework, meaning it allows you to program the act of programming itself.
+
 
 Before we begin, it's important to understand the concept of an _aspect_. An aspect is a reusable unit of meta-programming that can be applied to a method, class, property, or to any other C# declaration. They add features to the source code at compile time, validate the code and its usage and trigger customizations in an IDE by suggesting code refactorings.
 

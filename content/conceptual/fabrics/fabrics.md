@@ -14,7 +14,7 @@ You can use fabrics in the following circumstances:
 
 * **Add aspects in bulk**. Instead of adding an aspect to each individual declaration with a custom attribute, you can programmatically add aspects to multiple targets. See <xref:fabrics-aspects> for details.
 * **Validate code.** You can add validation rules to your project or namespace using fabrics. See <xref:fabrics-validation> for details.
-* **Configure an aspect library**. When an aspect library exposes a configuration API, you can configure the aspect library from a project fabric. See <xref:fabrics-configuring> for details.
+* **Configure an aspect library.** When an aspect library exposes a configuration API, you can configure the aspect library from a project fabric. See <xref:fabrics-configuring> for details.
 
 ## In this chapter
 

@@ -7,9 +7,9 @@
         2. Expressions `nameof` and `typeof` are transformed to make them independent from run-time references.
 2. Initialization of aspect classes.
     1. A prototype instance of each aspect class is created using `FormatterServices.GetUninitializedObject`.
-    2. The <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method is executed. Aspect layers are discovered.
+    2. The <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method is executed. The aspect layers are discovered.
     3. Aspect ordering relationships are discovered in the current project and all referenced assemblies.
-    4. Aspects layers are ordered.
+    4. Aspect layers are ordered.
 
 ### Step 2. Applying aspects
 
@@ -19,11 +19,11 @@ For each aspect layer, by order of application (i.e., inverse order of execution
   * Aspect sources are evaluated for this aspect type, resulting in a set of _target declarations_.
   * Target declarations are visited in [breadth-first order](https://en.wikipedia.org/wiki/Breadth-first_search) of _depth level_, as defined above. For each target declaration:
     * The aspect is instantiated.
-    * <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> is invoked.
+    * The <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method is invoked.
     * Advice is added to the next steps of the pipeline.
 
 * For all aspect layers, and for all target declarations visited in breadth-first order:
-  * Advice is executed. The advice can provide observable or non-observable transformations (or both), defined as follows: 
+  * Advice is executed. The advice can provide observable or non-observable transformations (or both), defined as follows:
     * _observable transformations_ are transformations that are observable from outside, for instance adding a new type member or adding a method parameter;
     * _non-observable transformations_ are transformations that only affect the _implementation_ of declarations (for instance: overriding a method).
 

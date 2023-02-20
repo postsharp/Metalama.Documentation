@@ -14,7 +14,7 @@ In Metalama, the order of execution is _static_. It is principally a concern of 
 
 Each aspect library should define the order of execution of aspects it defines, not only with regards to other aspects of the same library, but also to aspects defined in referenced aspect libraries.
 
-When a project uses two unrelated aspect libraries, or when a project defines its own aspects, it has to define the ordering in the project itself.
+When a project uses two unrelated aspect libraries or when a project defines its own aspects, it has to define the ordering in the project itself.
 
 ### Order of application versus order of execution
 

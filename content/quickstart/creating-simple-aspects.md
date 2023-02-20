@@ -8,7 +8,7 @@ You have seen how using aspects you can modify your program while it is being co
 
 ## What aspects can do
 
-Aspects can enhance your program in several ways. An aspect can do the following thing
+Aspects can enhance your program in several ways. An aspect can do the following:
 
 * _Transform_ a method
 * _Modify_ a field or property
@@ -25,3 +25,4 @@ Here is the outline of this chapter:
 |<xref:creating-simple-prop-aspects>| Shows how to create aspects that alter, amend, or introduce fields or properties
 |<xref:aspect-types-class-diag>| Shows relationships among several types that are involved in the creation of aspects
 |TBD| TODO
+

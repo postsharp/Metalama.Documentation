@@ -27,7 +27,7 @@ The following type-level aspect is applied to a base class and is implicitly inh
 
 ## Conditional inheritance
 
-The <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> custom attribute causes _all_ instances of the aspect class to be inheritable, regardless of their fields of properties. If you want to make this decision dependent on fields or properties of the aspect, your aspect must implement the <xref:Metalama.Framework.Aspects.IConditionallyInheritableAspect>.
+The <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> custom attribute causes _all_ instances of the aspect class to be inheritable, regardless of their fields or properties. If you want to make the inheritance decision dependent on fields or properties of the aspect, then your aspect must implement the <xref:Metalama.Framework.Aspects.IConditionallyInheritableAspect>.
 
 Note that when the <xref:Metalama.Framework.Aspects.IConditionallyInheritableAspect> interface is implemented, the refactoring menu will always suggest adding the aspect to a declaration, even if the aspect is eligible for inheritance only on the target declaration.
 

@@ -2,7 +2,7 @@
 uid: fabrics-validation
 ---
 
-# Validating Code with Fabrics
+# Validating code with fabrics
 
 [comment]: # (TODO)
 

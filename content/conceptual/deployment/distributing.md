@@ -4,7 +4,7 @@ uid: distributing
 
 # Distributing projects that use aspects
 
-When your project uses aspects, you need to consider whether the projects that _reference_ your projects will also need to use aspects just because of this reference.
+When your project uses aspects, you need to consider whether the projects that _reference_ your project will also need to use aspects just because of this reference.
 
 ## Flowing the use of aspects
 

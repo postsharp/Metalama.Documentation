@@ -2,7 +2,7 @@
 uid: template-overview
 ---
 
-# T# templates: Overview
+# T# templates: overview
 
 T# is the template language used by Metalama. The syntax of T# is 100% compatible with C#.
 
@@ -18,7 +18,7 @@ Metalama analyzes T# and separates the compile-time part from the run-time part 
 
 Before moving forward, let's illustrate this concept with an example. The following aspect writes some text to the console before and after the execution of a method.
 
-In the below code, compile-time code is highlighted <span class="metalamaClassification_CompileTime">differently</span>, so you can see which part of the code executes at compile time and which part executes at run time. In the different tabs on the example, you can see the aspect code (with the template), the target code (to which the aspect is applied) and the transformed code, i.e. the target code transformed by the aspect.
+In the code below, compile-time code is highlighted <span class="metalamaClassification_CompileTime">differently</span> so you can see which part of the code executes at compile time and which at run time. In the different tabs on the example, you can see the aspect code (with the template), the target code (to which the aspect is applied), and the transformed code, which is the target code transformed by the aspect.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs name="Simple Logging"]
 

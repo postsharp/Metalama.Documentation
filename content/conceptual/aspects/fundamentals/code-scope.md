@@ -37,7 +37,7 @@ Scope-neutral code is annotated with the <xref:Metalama.Framework.Aspects.RunTim
 
 Aspect classes are scope-neutral because aspects are a special kind of class. Aspects are typically represented as custom attributes, and these attributes can be accessed at run time using _System.Reflection_, but they are also instantiated at compile time by Metalama. Therefore, it is important that the constructors and public properties of the aspects are both run-time and compile-time.
 
-However, some methods of aspect classes are purely compile-time. They cannot be executed at run time because they access APIs that exist only at compile time. These methods are annotated with <xref:Metalama.Framework.Aspects.CompileTimeAttribute> or one of the other derived attribute classes.
+However, some methods of aspect classes are purely compile-time. They cannot be executed at run time because they access APIs that exist only at compile time. These methods must be annotated with <xref:Metalama.Framework.Aspects.CompileTimeAttribute>.
 
 
 ## Compilation process

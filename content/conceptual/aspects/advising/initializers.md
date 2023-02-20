@@ -59,7 +59,7 @@ The following aspect registers any new instance of the target class in a registr
 
 ## Before a specific object constructor
 
-If you want to insert logic into a specific constructor, you can also call the <xref:Metalama.Framework.Advising.IAdviceFactory.AddInitializer*> method and pass an <xref:Metalama.Framework.Code.IConstructor>. With this method overload, you can also advise constructors that are chained to another constructor of the same type through the `this` keyword.
+If you want to insert logic into a specific constructor, call the <xref:Metalama.Framework.Advising.IAdviceFactory.AddInitializer*> method and pass an <xref:Metalama.Framework.Code.IConstructor>. With this method overload, you can also advise the constructors that are chained to another constructor of the same type through the `this` keyword.
 
 
 ## Before type constructor

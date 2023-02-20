@@ -10,7 +10,7 @@ Live templates are built with the Metalama Aspect Framework. Instead of being ex
 
 
 > [!NOTE]
-> A fundamental characteristic of an aspect is that it is applied at compile time and does not affect the source code. Therefore, a live template cannot be named an aspect, even if it is built with the aspect framework. To avoid confusion, we suggest not to refer to live templates as aspects in your communication.
+> A fundamental characteristic of an aspect is that it is applied at compile time and does not affect the source code. Therefore, a live template cannot be called an aspect, even if it is built with the aspect framework. To avoid confusion, we suggest not referring to live templates as aspects in your communication.
 
 ## To write a live template
 

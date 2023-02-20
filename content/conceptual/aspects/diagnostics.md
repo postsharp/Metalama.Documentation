@@ -8,7 +8,7 @@ This article explains how to report a diagnostic (error, warning or information 
 ## Benefits
 
 * **Avoid non-intuitive error messages**. Aspects that are applied to unexpected or untested kinds of declarations can throw very confusing exceptions or cause errors while compiling the transformed code. This confusion can be avoided by reporting clear error messages when the target of the aspect does not meet expectations. See also <xref:eligibility> for this use case.
-* **Avoid confusing warnings**. The C# compiler and other analyzers are not aware that the code is being transformed by your aspect and they may, therefore, report irrelevant warnings. If you suppress these warnings from your aspects, developers using your aspect will be less confused and will not lose time suppressing the warnings manually.
+* **Avoid confusing warnings**. The C# compiler and other analyzers are not aware that the code is being transformed by your aspect and they may, therefore, report irrelevant warnings. If your aspect suppresses those warnings, developers using your aspect will be less confused and will not lose time suppressing the warnings manually.
 * **Improve the productivity of the users of your aspect**. Overall, reporting and suppressing relevant diagnostics greatly improves the productivity of people using your aspect.
 * **Diagnostic-only aspects**. You can also create aspects that _only_ report or suppress diagnostics, without transforming source code. See <xref:validation> for details and benefits.
 
@@ -41,7 +41,7 @@ The following aspect needs a field named `_logger` to exist in the target type. 
 
 ## Suppressing a diagnostic
 
-Sometimes the C# compiler or other analyzers may report warnings to the target code of your aspects. Since neither the C# compiler nor the analyzers know about your aspect, some of these warnings may be irrelevant. As an aspect author, it is a good practice to prevent the report of irrelevant warnings.
+Sometimes the C# compiler or other analyzers may report warnings to the target code of your aspects. Since neither the C# compiler nor the analyzers know about your aspect, some of these warnings may be irrelevant. As an aspect author, it is a good practice to prevent the reporting of irrelevant warnings.
 
 To suppress a diagnostic:
 
@@ -53,14 +53,14 @@ To suppress a diagnostic:
 
 ### Example
 
-The following logging aspect requires a `_logger` field to exist, but it is likely that this field will never be used in user code but only in generated code. Because the IDE does not see the generated code, it will report the `CS0169` warning, which is misleading and annoying to the user. The aspect suppresses this warning.
+The following logging aspect requires a `_logger` field to exist, but it may be used in generated code but never in user code. Because the IDE does not see the generated code, it will report the `CS0169` warning, which is misleading and annoying to the user. The aspect suppresses this warning.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/SuppressWarning.cs name="Suppress Warning"]
 
 
 ## Advanced example
 
-The following aspect can be added to a field or property. It overrides the getter so that its value is retrieved from a service locator. This aspect assumes that the target class has a field named `_serviceProvider` and of type `IServiceProvider`. The aspect reports errors if this field is absent or of a wrong type. The C# compiler may report a warning `CS0169` because it appears from the source code that the `_serviceProvider` field is unused. Therefore, the aspect must suppress this diagnostic.
+The following aspect can be added to a field or property. It overrides the getter so that its value is retrieved from a service locator. This aspect assumes that the target class has a field named `_serviceProvider` and of type `IServiceProvider`. The aspect reports errors if this field is absent or does not match the expected type. The C# compiler may report a warning `CS0169` because it appears from the source code that the `_serviceProvider` field is unused. Therefore, the aspect must suppress this diagnostic.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/LocalImport.cs name="Import Service"]
 ## Validating the target code after all aspects have been applied

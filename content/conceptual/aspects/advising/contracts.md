@@ -53,7 +53,7 @@ The following aspect normalizes the received value by calling the `string.Trim` 
 
 ### Contract directions
 
-By default, the <xref:Metalama.Framework.Aspects.ContractAspect> aspect applies the contract to the _default data flow_ of the target parameter, field, or property. 
+By default, the <xref:Metalama.Framework.Aspects.ContractAspect> aspect applies the contract to the _default data flow_ of the target parameter, field, or property.
 
 The default direction is as follows:
 

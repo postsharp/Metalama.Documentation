@@ -60,7 +60,7 @@ To learn more about the support policies of Visual Studio, see [Visual Studio Pr
 The reasons behind these suggestions are:
 
 * By policy, we are adding support for new Roslyn versions not later than 3 weeks after their stable release, and remove support for obsolete versions no sooner than 3 months after they fall out of mainstream support by Microsoft.
-* The `Metalama.Framework` package always replaces the compiler, so your code will build against the version of Roslyn that Metalama was built for regardless of the installed version of your IDE or the .NET SDK.
+* The `Metalama.Framework` package always replaces the compiler. Your code will build against the version of Roslyn that Metalama was built for regardless of the installed version of your IDE or the .NET SDK.
 * Metalama includes design-time support for several versions of Visual Studio. Many Metalama implementation assemblies have to be compiled for each targeted version of Roslyn. To keep our packages small, we need to remove support for unsupported Roslyn versions.
 
 
