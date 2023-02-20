@@ -2,7 +2,7 @@
 uid: packages
 ---
 
-# List of NuGet Packages
+# List of NuGet packages
 
 Metalama is composed of many NuGet packages. Some are used only for testing or troubleshooting and will never be included in your public packages.
 

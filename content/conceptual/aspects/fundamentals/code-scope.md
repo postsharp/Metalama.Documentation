@@ -2,7 +2,7 @@
 uid: code-scope
 ---
 
-# Compile-Time vs Run-Time Code
+# Compile-time vs run-time code
 
 ## Scopes of code
 

@@ -1,7 +1,8 @@
 ---
 uid: overriding-fields-or-properties
 ---
-# Overriding Fields or Properties
+
+# Overriding fields or properties
 
 In <xref:overriding-methods>, you have learned how to wrap an existing method with additional, automatically-generated model. You can do the same with fields and properties thanks to the  <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class.
 

@@ -3,9 +3,9 @@ items:
   href: overview/toc.yml
 - name: Quick Start
   href: quickstart/toc.yml
-- name: Conceptual Documentation
+- name: Conceptual documentation
   href: conceptual/toc.yml
-- name: Commented Examples
+- name: Commented examples
   href: examples/toc.yml
 - name: API Documentation          
   topicUid: api
@@ -18,5 +18,5 @@ items:
       topicUid: introspection-api      
     - name: Advanced API
       topicUid: advanced-api      
-    - name: PostSharp API Migration
+    - name: PostSharp API migration
       topicUid: migration-api      

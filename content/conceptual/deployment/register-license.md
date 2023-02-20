@@ -15,7 +15,7 @@ To switch to the Metalama Free license:
 1. Install Metalama Command Line Tools as described in <xref:dotnet-tool>.
 2. Execute the following command:
 
-   ```
+   ```powershell
    metalama license free
    ```
 
@@ -26,7 +26,7 @@ To register a license key for the current user:
 1. Install Metalama Command Line Tools as described in <xref:dotnet-tool>.
 2. Execute the following command:
 
-   ```
+   ```powershell
    metalama license register <LICENSE KEY>
    ```
 

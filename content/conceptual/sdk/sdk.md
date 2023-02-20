@@ -1,3 +1,6 @@
+---
+uid: sdk
+---
 
 # Extending Metalama with the Roslyn API
 

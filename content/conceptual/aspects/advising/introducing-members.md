@@ -1,7 +1,8 @@
 ---
 uid: introducing-members
 ---
-# Introducing Members
+
+# Introducing members
 
 In the previous articles, you have learned how to override the implementation of existing type members. In this article, you will learn how to add new members to an existing type.
 

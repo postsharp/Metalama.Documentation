@@ -2,9 +2,7 @@
 uid: when-migrate
 ---
 
-
-
-## When to migrate from PostSharp to Metalama
+# When to migrate from PostSharp to Metalama
 
 > [!WARNING]
 > It is not a good idea for you to migrate your existing projects from PostSharp to Metalama now. You should consider this decision carefully.
@@ -25,7 +23,6 @@ As a team or company, you can use both PostSharp and Metalama at the same time. 
 
 You may decide to keep using PostSharp for one product but migrate to Metalama for another product. As long as these products have no dependencies that would result in a single C# project using both Metalama and PostSharp, this may be a sound decision.
 
-
 ## When to migrate to Metalama
 
 Consider migrating to Metalama if:
@@ -37,10 +34,10 @@ DO NOT migrate to Metalama at the moment if:
 
 * your project relies on a platform that is supported by PostSharp, but _not_ by Metalama (for instance, a pre-2020 platform):
 
-    * Visual Studio 2019 or earlier
-    * .NET Standard 1.6 or earlier
-    * .NET Framework 4.6 or earlier
-    * Visual Basic (Metalama is available for C# projects only)
+  * Visual Studio 2019 or earlier
+  * .NET Standard 1.6 or earlier
+  * .NET Framework 4.6 or earlier
+  * Visual Basic (Metalama is available for C# projects only)
+
 * your project relies on PostSharp features that have not yet been ported to Metalama. For details, see <xref:migration-feature-status>.
 * your company has a large team on a business-critical mission with a tight deadline, and therefore prefers the production-honed PostSharp (2008) over the relatively new Metalama (2023).
-

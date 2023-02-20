@@ -2,7 +2,7 @@
 uid: ordering-aspects
 ---
 
-# Ordering Aspects
+# Ordering aspects
 
 When several aspect classes are defined, their order of execution is important.
 

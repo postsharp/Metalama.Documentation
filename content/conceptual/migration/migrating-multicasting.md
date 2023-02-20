@@ -2,7 +2,7 @@
 uid: migrating-multicasting
 ---
 
-# Migrating PostSharp Attribute Multicasting to Metalama
+# Migrating PostSharp attribute multicasting to Metalama
 
 Multicasting, in PostSharp, is a feature of all aspects that allows you to target several declarations using a single custom attribute or a single XML element in the `postsharp.config` configuration file. Multicasting, in PostSharp, is exposed by `MulticastAttribute`, the ultimate base type of all aspect classes.
 

@@ -1,5 +1,5 @@
 items:
-- name: Conceptual Documentation
+- name: Conceptual documentation
   topicUid: conceptual
   items:
     - name: Requirements
@@ -7,98 +7,98 @@ items:
     - name: Deployment
       topicUid: deployment
       items:
-        - name: NuGet Packages
+        - name: NuGet packages
           topicUid: packages
-        - name: Metalama Command Line Tools
+        - name: Metalama command line tool
           topicUid: dotnet-tool
         - name: Register a License
           topicUid: register-license
         - name: Telemetry
           topicUid: telemetry
-        - name: Distributing Projects That Use Aspects
+        - name: Distributing projects that use aspects
           topicUid: distributing
-        - name: MSBuild Properties
+        - name: MSBuild properties and items
           topicUid: msbuild-properties
-    - name: Fundamental Concepts
+    - name: Fundamental concepts
       topicUid: fundamentals
       items:  
-        - name: Compile-Time vs Run-Time Code
+        - name: Compile-time vs run-time code
           topicUid:  code-scope
-        - name: Abilities of Aspects
+        - name: Abilities of aspects
           topicUid: aspect-abilities
-        - name: Abilities of Fabrics
+        - name: Abilities of fabrics
           topicUid: fabric-abilities
     - name: Aspects
       topicUid: aspects
       items:
-        - name: T# Templates
+        - name: T# templates
           topicUid: templates
           items:
             - name: Overview
               topicUid: template-overview
-            - name: Writing Compile-Time Code
+            - name: Writing compile-time code
               topicUid: template-compile-time
-            - name:  Generating Run-Time Code
+            - name:  Generating run-time code
               topicUid: template-dynamic-code
-            - name: Template Parameters and Type Parameters
+            - name: Template parameters and type parameters
               topicUid: template-parameters
-            - name: Generating System.Reflection Objects
+            - name: Generating System.Reflection objects
               topicUid: reflection
-        - name: Transforming Code
+        - name: Transforming code
           topicUid: advising-code
           items:
           - name: Concepts
             topicUid: advising-concepts
-          - name: Overriding Methods
+          - name: Overriding methods
             topicUid: overriding-methods
-          - name: Overriding Fields or Properties
+          - name: Overriding fields or properties
             topicUid: overriding-fields-or-properties
-          - name: Overriding Events
+          - name: Overriding events
             topicUid: overriding-events          
-          - name: Validating Parameters, Fields and Properties
+          - name: Validating parameters, fields and properties
             topicUid: contracts
-          - name: Introducing Members
+          - name: Introducing members
             topicUid: introducing-members
-          - name: Implementing Interfaces
+          - name: Implementing interfaces
             topicUid: implementing-interfaces
-          - name: Adding Initializers
+          - name: Adding initializers
             topicUid: initializers
-          - name: Introducing Constructor Parameters
+          - name: Introducing constructor parameters
             topicUid: introducing-constructor-parameters
-          - name: Sharing State With Advice
+          - name: Sharing state with advice
             topicUid: sharing-state-with-advice
-        - name: Reporting and Suppressing Diagnostics
+        - name: Reporting and suppressing diagnostics
           topicUid: diagnostics
-        - name: Injecting Dependencies Into Aspects
+        - name: Injecting dependencies into aspects
           topicUid: dependency-injection
-        - name: Defining Aspect Eligibility
+        - name: Defining aspect eligibility
           topicUid: eligibility
-        - name: Building IDE Interactions
+        - name: Building IDE interactions
           topicUid: building-ide-interactions
           items:
-          - name: Exposing an Aspect as a Live Template
+          - name: Exposing an aspect as a live template
             topicUid: live-template
-          - name: Offering Code Fixes & Refactorings
+          - name: Offering code fixes & refactorings
             topicUid: code-fixes
-        - name: Adding Child Aspects
+        - name: Adding child aspects
           topicUid: child-aspects
-        - name: Aspect Inheritance
+        - name: Aspect inheritance
           topicUid: aspect-inheritance
-        - name: Ordering Aspects
+        - name: Ordering aspects
           topicUid: ordering-aspects
           items:
-          - name: Aspect Composition
+          - name: Aspect composition
             topicUid: aspect-composition
-        - name: Exposing Configuration
+        - name: Exposing configuration
           topicUid: exposing-configuration
-        - name: Debugging Aspects
+        - name: Debugging aspects
           topicUid: debugging-aspects
-        - name: Testing Aspects
+        - name: Testing aspects
           topicUid: testing
           items:
-          - name: Compile-Time Testing
+          - name: Compile-time testing
             topicUid: aspect-testing        
-          - name: Run-Time Testing
+          - name: Run-time testing
             topicUid: run-time-testing
         - name: Implementation notes
           topicUid: implementation
@@ -108,37 +108,37 @@ items:
     - name: Fabrics
       topicUid: fabrics
       items:
-        - name: Kinds of Fabrics
+        - name: Kinds of fabrics
           topicUid: fabric-kinds
-        - name: Adding Aspects in Bulk
+        - name: Adding aspects in bulk
           topicUid: fabrics-aspects
-        - name: Validating Code
+        - name: Validating code
           topicUid: fabrics-validation
-        - name: Advising a Type
+        - name: Advising a type
           topicUid: fabrics-advising
-        - name: Configuring a Project
+        - name: Configuring a project
           topicUid: fabrics-configuring
-        - name: Targeting Multiple Projects
+        - name: Targeting multiple projects
           topicUid: fabrics-multiple-projects
-        - name: Execution Order
+        - name: Execution order
           topicUid: fabrics-execution-order
-    - name: Validating Code
+    - name: Validating code
       topicUid: validation
       items:  
-        - name: Validating Declarations
+        - name: Validating declarations
           topicUid: validating-declarations
-        - name: Validating References
+        - name: Validating references
           topicUid: validating-references
     - name: Extending Metalama
       topicUid: sdk
       items:
         - name: Creating the project structure
           topicUid: sdk-scaffolding
-        - name: Aspect Weavers
+        - name: Aspect weavers
           topicUid: aspect-weavers
         - name: Services
           topicUid: services
-        - name: Custom Metrics
+        - name: Custom metrics
           topicUid: custom-metrics
     - name: Troubleshooting
       topicUid: troubleshooting 
@@ -152,18 +152,18 @@ items:
     - name: Migrating from PostSharp
       topicUid: migration
       items:
-        - name: Migrating your Custom Aspects to Metalama
+        - name: Migrating your custom aspects to Metalama
           topicUid: migrating-aspects
-        - name: Why Migrate
+        - name: Why migrate
           topicUid: benefits-over-postsharp
-        - name: When Migrate
+        - name: When migrate
           topicUid: when-migrate
-        - name: Feature Status
+        - name: Feature status
           topicUid: migration-feature-status
-        - name: Architectural Differences from PostSharp
+        - name: Architectural differences from PostSharp
           topicUid: differences-from-postsharp
-        - name: Migrating Attribute Multicasting
+        - name: Migrating attribute multicasting
           topicUid: migrating-multicasting
-        - name: Migrating Configuraiton
+        - name: Migrating configuraiton
           topicUid: migrating-configuration
           

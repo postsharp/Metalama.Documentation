@@ -2,7 +2,7 @@
 uid: code-fixes
 ---
 
-# Offering Code Fixes and Refactorings
+# Offering code fixes and refactorings
 
 ## Attaching code fixes to diagnostics
 

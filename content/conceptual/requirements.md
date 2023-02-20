@@ -4,7 +4,7 @@ uid: requirements
 
 # Requirements
 
-## Build Environment
+## Build environment
 
 * [.NET SDK](https://dotnet.microsoft.com/download) 6.0 needs to be installed.
 * Metalama has been tested on Windows (x64), Ubuntu (x64) and MacOS (ARM).
@@ -24,7 +24,7 @@ Metalama integrates with Roslyn, so it will integrate with any Roslyn-based IDE.
 > [!NOTE]
 > When using Visual Studio, the use of Metalama Tools for Visual Studio is not required but is highly recommended.
 
-## Target Frameworks
+## Target frameworks
 
 Only SDK-style projects are supported.
 
@@ -62,14 +62,3 @@ The reasons behind these suggestions are:
 * By policy, we are adding support for new Roslyn versions not later than 3 weeks after their stable release, and remove support for obsolete versions no sooner than 3 months after they fall out of mainstream support by Microsoft.
 * The `Metalama.Framework` package always replaces the compiler. Your code will build against the version of Roslyn that Metalama was built for regardless of the installed version of your IDE or the .NET SDK.
 * Metalama includes design-time support for several versions of Visual Studio. Many Metalama implementation assemblies have to be compiled for each targeted version of Roslyn. To keep our packages small, we need to remove support for unsupported Roslyn versions.
-
-
-The following table shows the correlation between Visual Studio and Metalama versions and their support status:
-
-| Visual Studio | Roslyn | C# Version | Release Date | End of Support | Min Metalama Version | Max Metalama Version |
-|--|--|--|--|--|--|--|
-| 2022 version 17.0 | 4.0.1 | 10.0 | November 8, 2021 | October 11, 2023
-| 2022 version 17.1 | 4.1.0 | 10.0 | February 15, 2022 | August 9, 2022
-| 2022 version 17.2 | 4.2.0 | 11.0 | May 10, 2022 | April 9, 2024 | 0.5.23
-
-

@@ -2,7 +2,7 @@
 uid: template-parameters
 ---
 
-# Template Parameters and Type Parameters
+# Template parameters and type parameters
 
 Thanks to _compile-time parameters_, your `BuildAspect` implementation can pass arguments to the template. There are two kinds of template parameters: standard parameters and type parameters (also known as generic parameters).
 

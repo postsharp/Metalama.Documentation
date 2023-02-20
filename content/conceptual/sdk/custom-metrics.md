@@ -2,7 +2,7 @@
 uid: custom-metrics
 ---
 
-# Custom Metrics
+# Custom metrics
 
 > [!WARNING]
 > This feature is not completed and does not work as documented.

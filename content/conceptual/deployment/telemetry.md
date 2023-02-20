@@ -46,6 +46,7 @@ Metalama Telemetry uses a randomly generated GUID to uniquely identify your devi
 
 1. Install Metalama Command Line Tools as described in <xref:dotnet-tool>.
 2. Execute the following commands:
+
    ```powershell
    metalama telemetry reset-device-id
    ```

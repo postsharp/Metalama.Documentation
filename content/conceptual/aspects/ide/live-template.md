@@ -2,7 +2,7 @@
 uid: live-template
 ---
 
-# Exposing an Aspect as a Live Template
+# Exposing an aspect as a live template
 
 A _live template_ is a custom Code Action available in the code editor menu like other code suggestions or refactoring actions offered by the IDE. For details about using live templates, see <xref:applying-live-templates>.
 

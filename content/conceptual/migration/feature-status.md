@@ -2,7 +2,7 @@
 uid: migration-feature-status
 ---
 
-# Status of the Migration of PostSharp Features to Metalama
+# Status of the migration of PostSharp features to Metalama
 
 
 ## PostSharp Framework (PostSharp.dll)

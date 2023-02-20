@@ -2,7 +2,7 @@
 uid: aspect-weavers
 ---
 
-# Aspect Weavers
+# Aspect weavers
 
 Normal aspects are implemented by the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, which provides advice thanks to the advice factory exposed by the <xref:Metalama.Framework.Aspects.IAspectBuilder> interface. Therefore, normal aspects are limited to the abilities of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface.
 

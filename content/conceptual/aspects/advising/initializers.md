@@ -2,8 +2,7 @@
 uid: initializers
 ---
 
-# Adding Initializers
-
+# Adding initializers
 
 ## Initialization of fields and properties
 

@@ -2,7 +2,7 @@
 uid: services
 ---
 
-# SDK Services
+# SDK services
 
 > [!WARNING]
 > This feature is not completed and does not work as documented.

@@ -2,7 +2,7 @@
 uid: aspect-inheritance
 ---
 
-# Aspect Inheritance
+# Aspect inheritance
 
 Many aspects, such as `INotifyPropertyChanged` implementation or thread synchronization aspects, need to be _inherited_ from the base class to which the aspect is applied, to all derived classes. That is, if a base class has a `[NotifyPropertyChanged]` aspect that adds calls to `OnPropertyChanged` to all property setters, it is logical that the aspect also affects the property setters of the _derived_ classes.
 

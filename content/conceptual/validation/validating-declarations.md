@@ -2,7 +2,7 @@
 uid: validating-declarations
 ---
 
-# Validating Declarations
+# Validating declarations
 
 Aspects generally validate their target declaration in the state in which it is before the aspect is applied. However, sometimes it is necessary to validate the state after all aspects have been applied. You can achieve this by registering a _final validator_.
 

@@ -2,7 +2,7 @@
 uid: msbuild-properties
 ---
 
-# MSBuild Configuration Properties and Items
+# MSBuild configuration properties and items
 
 ## Properties
 

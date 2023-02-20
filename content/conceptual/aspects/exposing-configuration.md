@@ -1,7 +1,7 @@
 ---
 uid: exposing-configuration
 ---
-# Exposing Configuration
+# Exposing configuration
 
 Some complex and widely-used aspects need a central, project-wide way to configure their compile-time behavior.
 

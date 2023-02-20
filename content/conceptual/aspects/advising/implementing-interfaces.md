@@ -1,7 +1,7 @@
 ---
 uid: implementing-interfaces
 ---
-# Implementing Interfaces
+# Implementing interfaces
 
 Some aspects need to modify the target type so that it implements a new interface. This can be done only by using the programmatic advising API.
 

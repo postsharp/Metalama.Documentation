@@ -1,7 +1,7 @@
 ---
 uid: conceptual
 ---
-# Conceptual Documentation
+# Conceptual documentation
 
 
 | Chapter              | Description                                                                                                              |

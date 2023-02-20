@@ -2,7 +2,7 @@
 uid: building-ide-interactions
 ---
 
-# Building IDE Interactions
+# Building IDE interactions
 
 You will almost certainly be aware of the code fixes and refactorings offered by your IDE via the screwdriver or lightbulb icons in the editor. These code actions have been programmed by the manufacturer of your IDE.
 

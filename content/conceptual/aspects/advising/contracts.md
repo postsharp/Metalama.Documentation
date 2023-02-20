@@ -2,7 +2,7 @@
 uid: contracts
 ---
 
-# Validating Parameters, Fields, and Property Values
+# Validating parameters, fields, and property values
 
 One of the most popular use cases of aspect-oriented programming is to create a custom attribute to validate the field, property, or parameter to which it is applied. Typical examples are `[NotNull]` or `[NotEmpty]`.
 
@@ -74,7 +74,7 @@ Just as any advice, you can add a contract to a parameter, field, or property fr
 > [!NOTE]
 > When possible, provide all contracts to the same method from a single aspect. It has better compile-time performance than using several aspects.
 
-### Example: Automatic NotNull
+### Example: automatic NotNull
 
 The following snippet shows how to automatically add precondition checks for all situations in the public API where a non-nullable parameter could receive a null value from a consumer.
 

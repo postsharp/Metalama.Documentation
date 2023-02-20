@@ -2,7 +2,7 @@
 uid: sharing-state-with-advice
 ---
 
-# Sharing State with Advice
+# Sharing state with advice
 
 When you need to share _compile-time_ state between different pieces of advice, or between your implementation of the `BuildAspect` method and the advice, you have a few strategies to choose from.
 

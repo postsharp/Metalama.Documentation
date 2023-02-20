@@ -1,7 +1,8 @@
 ---
 uid: overriding-methods
 ---
-# Overriding Methods
+
+# Overriding methods
 
 The simplest and most common aspect is to wrap the hand-written body of a method with some automatically-generated code, but without modifying the method body itself. 
 

@@ -50,6 +50,7 @@ Typically, the `csproj` project file of a compile-time test project would have t
 
 </Project>
 ```
+
 ### Dependency graph
 
 The following diagram illustrates the typical dependencies between your projects and our packages.

@@ -4,11 +4,9 @@ uid: template-compile-time
 
 # Writing compile-time code
 
-
 Compile-time expressions are expressions that either contain a call to a compile-time method, or contain a reference to a compile-time local variable or a compile-time aspect member. Compile-time expressions are executed at compile time, when the aspect is applied to a target.
 
 Compile-time statements are statements, such as `if`, `foreach` or `meta.DebugBreak();`, that are executed at compile time.
-
 
 ## The meta pseudo-keyword
 
@@ -39,14 +37,12 @@ Examples:
 > [!NOTE]
 > You cannot assign a compile-time variable from a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, `switch`, `catch` or `finally`.
 
-
 ### Compile-time if
 
 If the condition of an `if` statement is a compile-time expression, the `if` statement will be interpreted at compile-time.
 
 > [!NOTE]
 > You may not have a compile-time `if` inside a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, `switch`, `catch` or `finally`.
-
 
 #### Example
 
@@ -85,8 +81,6 @@ If the approach above is not possible, you can try to move your logic to a compi
 
 When `typeof(Foo)` is used with a run-time-only type `Foo`, a mock `System.Type` object is returned. This object can be used in run-time expressions or as an argument of Metalama compile-time methods. However, the members of this fake `System.Type`, for instance `Type.Name`, _cannot_ be evaluated at design time. You may sometimes need to call the <xref:Metalama.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method to tip the T# compiler that you want a run-time expression instead of a compile-time one.
 
-
-
 ## Accessing aspect members
 
 Aspect members are compile-time and can be accessed from templates. For instance, an aspect custom attribute can define a property that can be set when the custom attribute is applied to a target declaration and then read from the aspect compile-time code.
@@ -103,28 +97,28 @@ The following example shows a simple _Retry_ aspect. The maximum number of attem
 
 [!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Retry.cs name="Retry"]
 
-
 ## Custom compile-time types and methods
 
 If you want to share compile-time code between aspects or aspect methods, you can create your own types and methods that execute at compile time.
 
-* Compile-time code must be annotated with the [<xref:Metalama.Framework.Aspects.CompileTimeAttribute?text=CompileTime>] custom attribute. You would typically use this attribute on:
-  * a method or field of an aspect;
-  * a type (`class`, `struct`, `record`, ...);
-  * an assembly, using `[assembly: CompileTime]`.
-* Code that can run either at compile time or at run time must be annotated with the [<xref:Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute?text=RunTimeOrCompileTime>] custom attribute.
+- Compile-time code must be annotated with the [<xref:Metalama.Framework.Aspects.CompileTimeAttribute?text=CompileTime>] custom attribute. You would typically use this attribute on:
+  - a method or field of an aspect;
+  - a type (`class`, `struct`, `record`, ...);
+  - an assembly, using `[assembly: CompileTime]`.
+- Code that can run either at compile time or at run time must be annotated with the [<xref:Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute?text=RunTimeOrCompileTime>] custom attribute.
 
 ## Calling other packages from compile-time code
 
 By default, compile-time code can call only the following APIs:
-* .NET Standard 2.0 (all libraries)
-* Metalama.Framework
+- .NET Standard 2.0 (all libraries)
+- Metalama.Framework
 
 For advanced scenarios, the following packages are also included by default:
-* Metalama.Framework.Sdk
-* Microsoft.CodeAnalysis.CSharp
+- Metalama.Framework.Sdk
+- Microsoft.CodeAnalysis.CSharp
 
 To make another package available in compile-time code:
+
 1. Make sure that this package targets .NET Standard 2.0.
 2. Make sure that the package is included in the project.
 3. Edit your `.csproj` or `Directory.Build.props` file and add the following:
@@ -139,4 +133,3 @@ When this configuration is done, `MyPackage` can be used both in run-time and co
 
 > [!WARNING]
 > You must also specify `MetalamaCompileTimePackage` in each project that _uses_ the aspects.
-

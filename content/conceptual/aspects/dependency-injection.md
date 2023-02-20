@@ -2,7 +2,7 @@
 uid: dependency-injection
 ---
 
-# Injecting Dependencies Into Aspects
+# Injecting dependencies into aspects
 
 Many aspects need to consume services that must be injected from a dependency injection container. For instance, a caching aspect may depend on the `IMemoryCache` service. If you are using the [Microsoft.Extensions.DependencyInjection](https://learn.microsoft.com/dotnet/core/extensions/dependency-injection) framework, your aspect will need to pull this service from the constructor. If the target type of the aspect does not already accept this service from the constructor, the aspect will have to append this parameter to the constructor.
 

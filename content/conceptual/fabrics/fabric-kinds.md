@@ -2,7 +2,7 @@
 uid: fabric-kinds
 ---
 
-# Kinds of Fabrics
+# Kinds of fabrics
 
 There are four kinds of fabrics. Each kind applies to a different scope. All fabric kinds can add aspects and validators within their scope. Type fabrics can additionally add advice to their scope, and project fabrics can set configuration options.
 

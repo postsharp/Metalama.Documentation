@@ -2,7 +2,7 @@
 uid: advising-concepts
 ---
 
-# Transforming Code: Concepts
+# Transforming code: concepts
 
 Aspects can transform the target code by providing _advice_. An advice is a primitive transformation of code. Advice is safely composable: several aspects that do not know about each other can add advice to the same declaration.
 

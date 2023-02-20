@@ -2,7 +2,7 @@
 uid: aspect-abilities
 ---
 
-# Abilities of Aspects
+# Abilities of aspects
 
 [comment]: # (TODO: what is the relationship between aspects and attributes)
 [comment]: # (TODO: what is the Aspect base class)
