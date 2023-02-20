@@ -4,7 +4,7 @@ uid: creating-simple-aspects
 
 # Creating simple aspects
 
-You have seen how using aspects you can modify your program while it is being compiled. In this chapter, you shall learn how to create your own simple aspects targetting several parts of the code.
+You have seen how using aspects you can modify your program while it is being compiled. In this chapter, you shall learn how to create your own simple aspects targeting several parts of the code.
 
 ## What aspects can do
 

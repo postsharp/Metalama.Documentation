@@ -11,13 +11,13 @@ Most aspects are designed and implemented for specific kinds of target declarati
 Defining the eligibility of an aspect has the following benefits:
 
 * **Predictable behavior**. Applying an aspect to a declaration for which it was not designed or tested can be a very confusing experience for your users because of error messages they may not understand. It is your responsibility, as the author of the aspect, to ensure that using your aspect is easy and predictable.
-* **Standard error messages**. All eligibility error messages are standard. It is easier for aspect users.
+* **Standard error messages**. All eligibility error messages are standard. It is easier for aspect users. >>> Concretely, how does this benefit users? Does it help them read those error messages, find out what those messages mean, or fix the problems? <<<
 * **Relevant suggestions in the IDE**. The IDE will only propose code action in the refactoring menu for eligible declarations.
 
 
 ## Defining eligibility
 
-To define the eligibility of your aspect, implement or override the <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method of the aspect. Use the `builder` parameter, which is of type <xref:Metalama.Framework.Eligibility.IEligibilityBuilder`1>, to specify the requirements of your aspect. For instance, use <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract*?text=builder.MustNotBeAbstract()> to require a non-abstract method.
+To define the eligibility of your aspect, implement or override the <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method of the aspect. Use the `builder` parameter, which is of type <xref:Metalama.Framework.Eligibility.IEligibilityBuilder`1>, to specify the requirements of your aspect. For instance, use <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustNotBeAbstract*?text=builder.MustNotBeAbstract()> to require a non-abstract method. >>> Why do you give two separate examples, one for .NET and the other for .NET Core? <<<
 
 A number of predefined eligibility conditions are implemented by the <xref:Metalama.Framework.Eligibility.EligibilityExtensions> static class. You can add a custom eligibility condition by calling <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy*> and by providing your own lambda expression. This method also expects the user-readable string that should be included in the error message when the user attempts to add the aspect to an ineligible declaration.
 
@@ -49,3 +49,4 @@ Adding a dependency injection aspect to an `int` or `string` field does not make
 The following example expands the previous one, reporting custom errors when the target class does not define a field `logger` of type `TextWriter`.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/EligibilityAndValidation.cs name="Eligibility and Validation"]
+

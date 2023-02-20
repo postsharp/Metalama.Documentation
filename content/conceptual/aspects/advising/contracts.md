@@ -11,7 +11,7 @@ In Metalama, you can achieve this using a _contract_. With a contract, you can:
 * throw an exception when the value does not fulfill a condition of your choice, or
 * normalize the received value (for instance, trimming the whitespace of a string).
 
-Technically speaking, a contract is a piece of code that you inject after _receiving_ or before _sending_ a value. You can actually do more than throwing an exception or normalizing the value.
+Technically speaking, a contract is a piece of code that you inject after _receiving_ or before _sending_ a value. You can do more than throw an exception or normalize the value.
 
 
 ## The simple way: overriding the ContractAspect class
@@ -53,7 +53,9 @@ The following aspect normalizes the received value by calling the `string.Trim` 
 
 ### Contract directions
 
-By default, the <xref:Metalama.Framework.Aspects.ContractAspect> aspect applies the contract to the _default data flow direction_ of the target parameter, field, or property. The default direction is:
+By default, the <xref:Metalama.Framework.Aspects.ContractAspect> aspect applies the contract to the _default data flow_ of the target parameter, field, or property. 
+
+The default direction is as follows:
 
 * for input and `ref` parameters: the _input_ value,
 

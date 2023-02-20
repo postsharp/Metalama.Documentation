@@ -13,7 +13,7 @@ In the examples of this chapter, we'll use the following pre-built aspects:
 |-------|----------|
 |`Log` | To log calls to a method.
 |`Retry` | To retry a method a certain number of times.
-|`NotifyingPropertyChanged` | To implement the `INotifyPropertyChanged` interface in an easy way..
+|`NotifyingPropertyChanged` | To implement the `INotifyPropertyChanged` interface in an easy way.
 
 You can download the NuGet package with these aspects at [TO_Be_Filled_URL](here).
 

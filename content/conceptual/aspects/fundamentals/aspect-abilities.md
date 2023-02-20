@@ -9,7 +9,7 @@ uid: aspect-abilities
 
 An aspect is, by definition, a class that implements the <xref:Metalama.Framework.Aspects.IAspect`1> generic interface. The generic parameter of this interface is the type of declaration to which the aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
 
-The aspect author can use the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, inherited from the <xref:Metalama.Framework.Aspects.IAspect`1> interface, to build the aspect _instance_ applied on a specific _target declaration_, thanks to a <xref:Metalama.Framework.Aspects.IAspectBuilder`1>;
+The aspect author can use the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, inherited from the <xref:Metalama.Framework.Aspects.IAspect`1> interface, to build the aspect _instance_ applied on a specific _target declaration_, thanks to an <xref:Metalama.Framework.Aspects.IAspectBuilder`1>.
 
 ```mermaid
 classDiagram

@@ -2,7 +2,8 @@
 uid: creating-simple-method-aspect
 ---
 
-# Creating Method aspects
+# Creating method aspects
+
 In this chapter, you shall learn how to use building blocks in Metalama to create aspects that target Methods. 
 
 

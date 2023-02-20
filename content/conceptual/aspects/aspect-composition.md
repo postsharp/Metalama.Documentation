@@ -4,7 +4,7 @@ uid: aspect-composition
 
 # Aspect composition
 
-What happens when multiple aspects are applied to the same class? This problem is called _aspect composition_. This problem is very hard to solve. Metalama solves this problem by providing a consistent and deterministic model for aspect composition.
+What happens when multiple aspects are applied to the same class? This problem is called _aspect composition_. This is a non-trivial problem. Metalama solves this problem by providing a consistent and deterministic model for aspect composition.
 
 There are three major points of interest.
 
@@ -16,7 +16,7 @@ There are three major points of interest.
 
 Aspects are things that receive a code model as input, and provide outputs such as advice, diagnostics, validators, and child aspects. The only relevant output for this discussion is *advice* because other outputs do not modify the code. Most aspects have a single layer of advice, but it is possible to define multiple layers.
 
-To ensure the order of execution of aspects and advice is consistent, Metalama uses two ordering criteria.
+To make the order of execution of aspects and advice consistent, Metalama uses two ordering criteria.
 
 1. _Aspect layer_. The order of execution of aspect layers _must_ be specified by the aspect author or user. To learn how to specify the order of aspect classes and layers, see <xref:ordering-aspects>.
 
@@ -33,7 +33,7 @@ For each aspect layer and depth level, Metalama will create a new version of the
 
 Therefore, if an aspect introduces a member into a type, the next aspects will see that new member in the code model and will be able to advise it.
 
-To ensure the consistency of this model, aspects cannot provide outputs to previous aspects or to declarations that are not "under" the current target.
+To ensure the consistency of this model, aspects cannot provide outputs to previous aspects, or to declarations that are not "under" the current target.
 
 ## 3. Safe composition of advice
 
@@ -42,4 +42,3 @@ When several aspects that are not aware of each other add advice on the same dec
 For instance, if two aspects override the same method, both aspects are guaranteed to compose correctly. This is a very hard problem, but it is solved by Metalama, so you don't have to bother about it.
 
 [comment]: # (TODO: example log and cache)
-

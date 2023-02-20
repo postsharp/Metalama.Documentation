@@ -66,7 +66,7 @@ Showing how Metalama shows the runtime code parts when hovered.
 
 To log a method is to log its path or calls to it. In the aspect that we shall create the name of the target method and then use it to print statements to console.
 
-To create a simple Method logging aspect,
+To create a simple Method logging aspect:
 
 **Step 1** Adding the type.
 
@@ -84,6 +84,7 @@ Change the type public` and inherit from `OverrideMethodAspect` as shown below
  ```
 
 **Step 3** Decide what you want to do when this method is called
+
 You may just want to log to console, maybe in a different color.
 
 > [!NOTE]

@@ -4,7 +4,7 @@ uid: migrating-multicasting
 
 # Migrating PostSharp Attribute Multicasting to Metalama
 
-Multicasting, in PostSharp, is a feature of all aspects that allows you to target several declarations using a single custom attribute or a single XML in the `postsharp.config` configuration file. Multicasting, in PostSharp, is exposed by `MulticastAttribute`, the ultimate base type of all aspect classes.
+Multicasting, in PostSharp, is a feature of all aspects that allows you to target several declarations using a single custom attribute or a single XML element in the `postsharp.config` configuration file. Multicasting, in PostSharp, is exposed by `MulticastAttribute`, the ultimate base type of all aspect classes.
 
 Multicasting is not implemented as a core feature in Metalama but as an extension. The reason for that decision is that the goal of adding an aspect to several declarations is better achieved in Metalama using _fabrics_. For details, see <xref:fabrics-aspects>.
 
@@ -32,7 +32,7 @@ The <xref:Metalama.Extensions.Multicast.MulticastAspect> class defines:
 
 Your aspect must also implement the <xref:Metalama.Framework.Aspects.IAspect`1> interface for all relevant kinds of declarations:
 * on the _final_ declarations on which the aspect is actually applied (i.e. does some actual work), and
-* on any _intermediate_ declaration where the aspect does no other work than multicasting itself to select children declarations.
+* on any _intermediate_ declaration where the aspect does no other work than multicasting itself to select child declarations.
 
 The <xref:Metalama.Extensions.Multicast.MulticastAspect> class already implements the `IAspect<ICompilation>` and  `IAspect<INamedType>` interfaces and properly implements the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method. For the interfaces that you implement yourself, you also have to implement `BuildAspect`.
 

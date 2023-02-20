@@ -2,4 +2,5 @@
 uid: api
 ---
 
-# Metalama API Documentation
+# Metalama API documentation
+

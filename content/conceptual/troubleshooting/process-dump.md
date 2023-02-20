@@ -4,7 +4,7 @@ uid: process-dump
 
 # Creating a process dump
 
-In case of any problem in Metalama, our support team may ask you to provide a process dump of the compiler or IDE process.
+If you are experiencing issues with Metalama, our support team may ask you to provide a process dump of the compiler or IDE process.
 
 > [!WARNING]
 > **Process dumps contain possibly confidential information**
@@ -26,7 +26,8 @@ metalama config edit diagnostics
 
 This should open a `diagnostics.json` file in your default editor.
 
-In the `miniDump/processes` section, set to `true` the processes for which logging should be enabled:
+The `miniDump/processes` section lists processes for which process dumps should be collected. The values are `false` by default. Set the values to `true` if you want to collect the process dumps of the following processes, should they crash.
+
 * `Compiler`: the compile-time process.
 * `Rider`: the design-time Roslyn process running under Rider.
 * `DevEnv`: the UI process of Visual Studio (note that there is no aspect code running in this process).
@@ -40,29 +41,31 @@ In the next example, Metalama is configured to capture a process dump for the co
  // ...
 "crashDumps": {
     "processes": {
-      "Rider": false,
-      "RoslynCodeAnalysisService": false,
+     "DotNetTool": false,
+      "BackstageWorker": false,
+      "OmniSharp": false,
+      "Compiler": true,
+      "TestHost": false,
       "CodeLensService": false,
       "Other": false,
-      "TestHost": false,
+      "ResharperTestRunner": false,
       "DevEnv": false,
-      "OmniSharp": false,
-      "BackstageWorker": false,
-      "DotNetTool": false,
-      "Compiler": false
+      "Rider": false,
+      "RoslynCodeAnalysisService": false
     }
 //...
 }
+
 ```
 
 ## Step 3. Execute Metalama
 
 Restart the logged processes:
 
- * If you are logging the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
- * If you are logging any design-time process, restart your IDE.
+ * If you decided to log the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
+ * If you decided to log any design-time processes, restart your IDE.
 
-Execute the sequence of actions that triggers the issue.
+Execute the actions that trigger the issue.
 
 > [!WARNING]
 > Do not forget to disable the diagnostic setting after you are done.

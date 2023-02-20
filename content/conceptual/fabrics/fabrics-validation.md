@@ -7,10 +7,10 @@ uid: fabrics-validation
 [comment]: # (TODO)
 
 
-## Adding validators from a fabric
+## Adding validators with a fabric
 
-The article <xref:validation> explains how to validate code from an aspect.
-Validating code from a fabric is exactly the same, but you use the _amender_ parameter instead of the _aspectBuilder_.
+The article <xref:validation> explains how to validate code with an aspect.
+Validating code with a fabric is exactly the same, except that you use the _amender_ parameter instead of the _aspectBuilder_.
 
 ## Using validation API
 

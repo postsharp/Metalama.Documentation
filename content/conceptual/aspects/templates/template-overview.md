@@ -25,7 +25,7 @@ In the below code, compile-time code is highlighted <span class="metalamaClassif
 > [!NOTE]
 > To benefit from syntax highlighting in Visual Studio, install the [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama). Syntax highlighting is not supported in other IDEs.
 
-The expression `meta.Target.Method` (with an implicit trailing `.ToString()`) is a compile-time expression. It is replaced at compile time by the name and signature of the method to which the aspect is applied.
+The expression `meta.Target.Method` (with an implicit trailing `.ToString()`) is a compile-time expression. At compile time, it is replaced by the name and signature of the method to which the aspect is applied.
 
 The call to `meta.Proceed()` means that the original method body should be injected at that point.
 

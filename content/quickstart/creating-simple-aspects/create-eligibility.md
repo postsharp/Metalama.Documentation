@@ -2,4 +2,5 @@
 uid: create-eligibility
 ---
 
-# Creating Eligiblity Constraints
+# Creating Eligibility Constraints
+

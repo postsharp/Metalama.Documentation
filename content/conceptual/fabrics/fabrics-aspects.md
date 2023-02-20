@@ -4,7 +4,7 @@ uid: fabrics-aspects
 
 # Adding aspects programmatically from a fabric
 
-You can use a fabric to programmatically add aspects to any declaration that is "under" the target of the fabric. Thanks to fabrics, you do not need to add aspects one by one using custom attributes.
+You can use a fabric to add aspects programmatically to any declaration that is "under" the target of the fabric. Thanks to fabrics, you do not need to add aspects one by one using custom attributes.
 
 * From a type fabric, you can add aspects to any member of this type or to the type itself.
 * From a namespace fabric, you can add aspects to any type of that namespace, or to any member of one of these types.
@@ -37,3 +37,4 @@ In the following example, a type fabric adds a logging aspect to all public meth
 [comment]: # (TODO: make class partial and split into different file)
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/TypeFabric.cs name="Type Fabric Adding Aspects"]
+

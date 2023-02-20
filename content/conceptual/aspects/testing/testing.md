@@ -2,9 +2,9 @@
 uid: testing
 ---
 
-# Testing Aspects
+# Testing aspects
 
-There are two complementary ways to test your aspects:
+There are two complementary ways to test your aspects.
 
 <table>
     <tr>

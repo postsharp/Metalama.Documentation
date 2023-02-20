@@ -79,3 +79,4 @@ Our implementation of <xref:Metalama.Extensions.DependencyInjection.Implementati
 
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.DependencyInjection/LogCustomFramework.cs name="Custom Adapter"]
+

@@ -4,7 +4,7 @@ uid: install
 
 # Installing Metalama
 
-The core features of Metalama are implemented in a set of NuGet packages and don't need to be installed on you machine. However, if you are working on a project that uses Metalama, it is a good idea to install Metalama Tools for Visual Studio.
+The core features of Metalama are implemented in a set of NuGet packages and don't need to be installed on your machine. However, if you are working on a project that uses Metalama, it is a good idea to install Metalama Tools for Visual Studio.
 
 ## Adding the NuGet package to your project
 

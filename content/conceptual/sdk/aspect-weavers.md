@@ -4,7 +4,7 @@ uid: aspect-weavers
 
 # Aspect Weavers
 
-Normal aspects are implemented by the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, which provide advice thanks to the advice factory exposed on the <xref:Metalama.Framework.Aspects.IAspectBuilder> interface. Therefore, normal aspects are limited to the abilities of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface.
+Normal aspects are implemented by the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, which provides advice thanks to the advice factory exposed by the <xref:Metalama.Framework.Aspects.IAspectBuilder> interface. Therefore, normal aspects are limited to the abilities of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface.
 
 By contrast, aspect weavers allow you to perform _completely arbitrary_ transformations on C# code using the low-level Roslyn API.
 
@@ -12,10 +12,10 @@ When you assign an aspect weaver to an aspect class, Metalama no longer calls th
 
 Unlike normal aspects, weaver-based aspects:
 
-* are more complex to implement by one or two orders of magnitude;
+* are one or two orders of magnitude more complex to implement;
 * are not executed at design time;
 * require their own implementation project;
-* may have a larger impact on compilation performance when there are many of them.
+* may have a significant impact on compilation performance, especially when there are many of them.
 
 ## Creating a weaver-based aspect
 

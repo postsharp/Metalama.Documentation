@@ -2,8 +2,9 @@
 uid: aspect-types-class-diag
 ---
 
-## Different types invloved in aspect creation  
-The following diagram shows the relationship between several types available in `Metalama.Framework.Aspects` namespace to create simple aspects easily. 
+## Different types involved in aspect creation
+
+The following diagram shows the relationship between several types available in the `Metalama.Framework.Aspects` namespace to create simple aspects easily.
 
 ```mermaid
 classDiagram
@@ -26,7 +27,8 @@ The following table summarizes what aspect class you might need to build a simpl
 
 |Target | Aspect class | Purpose
 |-------|-------------|------------
-| Method | `OverrideMethodAspect` | To override a target method 
-| Field  | `OverrideFieldOrPropertyAspect` | To override the getter/setter of a field or property 
-| Constructor | `ConstructorAspect` | To override a constructor  
-| Events | `OverrideEventsAspect` | To override the target event  
+| Method | `OverrideMethodAspect` | To override a target method
+| Field  | `OverrideFieldOrPropertyAspect` | To override a field or property getter/setter
+| Constructor | `ConstructorAspect` | To override a constructor
+| Events | `OverrideEventsAspect` | To override the target event
+

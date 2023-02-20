@@ -6,7 +6,7 @@ uid: migrating-aspects
 
 ## Step 0. Learn Metalama on some sandbox project
 
-Porting your PostSharp aspects to Metalama should not be your first contact with Metalama. We suggest that you learn the new product on a new project. Even better: write a prototype of aspects in a test project that has no history with PostSharp. You will probably not be able to run your application or even run all your unit tests while migrating the aspects, so it is far better to do the learning in a sandbox project.
+Porting your PostSharp aspects to Metalama should not be your first contact with Metalama. We suggest that you learn the new product on a new project. Even better: write a prototype of aspects in a test project that has no history with PostSharp. You will probably not be able to run your application or even run all your unit tests while migrating aspects, so it is far better to do the learning in a sandbox project.
 
 
 ## Step 1. Create a list of aspects and assess their importance

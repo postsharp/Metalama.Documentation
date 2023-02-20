@@ -1,9 +1,3 @@
----
-uid: pipeline
----
-
-# Compilation pipeline
-
 ### Step 1. Initialization
 
 1. Generation of the compile-time compilation:
@@ -11,7 +5,6 @@ uid: pipeline
     2. Compile-time code is identified in the current compilation and a separate compile-time compilation is created.
         1. Templates are transformed into code generating Roslyn syntax trees.
         2. Expressions `nameof` and `typeof` are transformed to make them independent from run-time references.
-
 2. Initialization of aspect classes.
     1. A prototype instance of each aspect class is created using `FormatterServices.GetUninitializedObject`.
     2. The <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method is executed. Aspect layers are discovered.
@@ -30,17 +23,17 @@ For each aspect layer, by order of application (i.e., inverse order of execution
     * Advice is added to the next steps of the pipeline.
 
 * For all aspect layers, and for all target declarations visited in breadth-first order:
-  * Advice is executed. The advice can provide observable or non-observable transformations (or both), defined as follows:
-    * _observable transformations_ are transformations that affect _declarations_, i.e. they are visible from the code model or from the source code (for instance: introducing a method);
+  * Advice is executed. The advice can provide observable or non-observable transformations (or both), defined as follows: 
+    * _observable transformations_ are transformations that are observable from outside, for instance adding a new type member or adding a method parameter;
     * _non-observable transformations_ are transformations that only affect the _implementation_ of declarations (for instance: overriding a method).
 
-* Before we execute the next aspect layer or the next visiting depth, a new code model version is created incrementally from the previous version, including any observable transformation added by advice.
+* Before we execute the next aspect layer or the next visiting depth, a new code model version is created incrementally from the previous version, which includes all observable transformations added by advice.
 
 ### Step 3. Transforming the compilation
 
 Before this step, the algorithm collected transformations, but the compilation was never modified.
 
-What happens next depends on whether the pipeline runs at design time or compile time.
+What happens next depends on whether the pipeline runs at design time or at compile time.
 
 #### Compile time
 

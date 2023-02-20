@@ -10,11 +10,11 @@ In this section, you'll learn how to use custom attributes to add aspects.
 
 ## Adding aspects as custom attributes
 
-Suppose you have a method like this one, which occasionally fails:
+Suppose you have a method that occasionally fails. 
 
 ![](images/flaky_method_no_aspect.png)
 
-At the moment, CodeLens displays `No aspect`. This means that no aspect has been applied to this method yet.
+At the moment, CodeLens is displaying `No aspect`. This means that no aspect has been applied to this method yet.
 
 To apply the `Retry` aspect, add it as a normal custom attribute, i.e., type `[Retry]`:
 

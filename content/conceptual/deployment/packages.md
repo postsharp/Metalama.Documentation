@@ -3,10 +3,11 @@ uid: packages
 ---
 
 # List of NuGet Packages
-Metalama is composed of many NuGet packages. Some are used only for testing or troubleshooting (using the _introspection_ APIs) and will never be included in your public packages.
+
+Metalama is composed of many NuGet packages. Some are used only for testing or troubleshooting and will never be included in your public packages.
 
 
-## Package list
+## Package list 
 
 | Package Name | Scenarios | Description |
 |--|--|--|

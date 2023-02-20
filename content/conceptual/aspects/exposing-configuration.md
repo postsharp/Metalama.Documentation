@@ -36,32 +36,32 @@ We recommend the following approach to consume a configuration property:
 2. Include `YourProject.targets` in your project and mark it for inclusion under the `build` directory of your NuGet package. This ensures that the property will be visible to the aspect for all projects referencing your package. Your `csproj` file should look like this:
 
     ```xml
-    <Project  Sdk="Microsoft.NET.Sdk">
+    <Project Sdk="Microsoft.NET.Sdk">
         <!-- ... -->
-            <ItemGroup>
-                <None Include="YourProject.targets">
-                    <Pack>true</Pack>
-                    <PackagePath>build</PackagePath>
-                </None>
-            </ItemGroup>
+        <ItemGroup>
+            <None Include="YourProject.targets">
+                <Pack>true</Pack>
+                <PackagePath>build</PackagePath>
+            </None>
+        </ItemGroup>
         <!-- ... -->
     </Project>
     ```
 
-3. Instruct the user of your aspect to set this property in their own `csproj` file, like this:
+3. To configure the aspect, users should set this property in the `csproj` file, like in the following snippet:
 
    ```xml
-    <Project  Sdk="Microsoft.NET.Sdk">
+    <Project Sdk="Microsoft.NET.Sdk">
         <!-- ... -->
-            <PropertyGroup>
-                <YourProperty>TheValue</YourProperty>
-           </PropertyGroup>
+        <PropertyGroup>
+            <YourProperty>TheValue</YourProperty>
+        </PropertyGroup>
         <!-- ... -->
     </Project>
     ```
 
      > [!WARNING]
-     > The value of compiler-visible properties must not contain line breaks or semicolons. Otherwise, your aspect will receive an incorrect value.
+     > Neither line breaks nor semicolons are allowed in values of compiler-visible properties: they will cause your aspect to receive an incorrect value.
 
 
 ### Example
@@ -86,3 +86,4 @@ To create a configuration API:
 ### Example
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/AspectConfiguration.cs name="Consuming Property"]
+

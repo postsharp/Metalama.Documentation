@@ -99,11 +99,11 @@ Inside a template method, extra operations are available through members of the 
 
 These members are:
 
-- `dynamic Proceed()`: Gives control to the original code of the method the template is being applied to. When multiple advice methods per method are supported, this will instead give control to the next template in line, if there are any left.
-- `ITemplateContext Target { get; }`: Gives access to information about the code element the template is being applied to.
-- `T CompileTime<T>( T expression )`: Informs the templating engine that this expression should be considered to be compile-time, even when it normally would not. Other than that, the input value is returned unchanged.
+- `dynamic Proceed()`: Gives control to the original code of the method that the template is being applied to. When multiple advice methods per method are supported, this will instead give control to the next template in line, if there are any left.
+- `ITemplateContext Target { get; }`: Gives access to information about the code element that the template is being applied to.
+- `T CompileTime<T>( T expression )`: Informs the templating engine that this expression should be considered to be compile-time, even when it would not be normally. Other than that, the input value is returned unchanged.
 
 ## Packaging an aspect
 
-There is nothing special about creating a NuGet package for a project that contains Metalama.Framework aspects, it works the same as creating a NuGet package for a regular .NET library.
+There is nothing special about creating a NuGet package for a project that contains Metalama.Framework aspects; it works the same as creating a NuGet package for a regular .NET library.
 

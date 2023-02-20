@@ -70,6 +70,6 @@ The following table shows the correlation between Visual Studio and Metalama ver
 |--|--|--|--|--|--|--|
 | 2022 version 17.0 | 4.0.1 | 10.0 | November 8, 2021 | October 11, 2023
 | 2022 version 17.1 | 4.1.0 | 10.0 | February 15, 2022 | August 9, 2022
-| 2022 version 17.2 | 4.2.0 | 11.0 | May 10, 2022 | April 9, 2024 | 0.5.23 |
+| 2022 version 17.2 | 4.2.0 | 11.0 | May 10, 2022 | April 9, 2024 | 0.5.23
 
 

@@ -4,7 +4,7 @@ uid: sharing-state-with-advice
 
 # Sharing State with Advice
 
-When you need to share _compile-time_ state between different pieces of advice, or between your implementation of the `BuildAspect` method and between advice, you have a few strategies to choose from.
+When you need to share _compile-time_ state between different pieces of advice, or between your implementation of the `BuildAspect` method and the advice, you have a few strategies to choose from.
 
 > [!NOTE]
 > When you need to share _run-time_ state with advice, you have to choose another strategy, for example by introducing a field in the target type and using it from several advice methods.
@@ -18,7 +18,7 @@ This is the most straightforward way to pass values from your `BuildAspect` meth
 
 ## Sharing state with the Tags property
 
-For event, property, or field templates, compile-time template parameters are not available. The simplest alternative is to use tags. Tags are arbitrary values assigned to an arbitrary name.
+For event, property, or field templates, compile-time template parameters are not available. The simplest alternative is to use tags. Tags are arbitrary name-value pairs.
 
 To define and use tags:
 
@@ -32,5 +32,5 @@ To define and use tags:
 
 ## Sharing state with the AspectState property
 
-You can use the <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState?text=IAspectBuilder.AspectState> property to store any aspect state that depends on the target declaration. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.AspectState?text=IAspectInstance.AspectState> property and is therefore also visible to child aspects and on aspects that inherit them.
+You can use the <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState?text=IAspectBuilder.AspectState> property to store any aspect state that depends on the target declaration. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.AspectState?text=IAspectInstance.AspectState> property and is therefore also visible to child aspects and aspects that inherit them.
 
