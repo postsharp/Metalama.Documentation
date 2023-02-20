@@ -2,6 +2,8 @@
 uid: pipeline
 ---
 
+# Compilation pipeline
+
 ### Step 1. Initialization
 
 1. Generation of the compile-time compilation:
