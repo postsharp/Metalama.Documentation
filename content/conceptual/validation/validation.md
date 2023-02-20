@@ -2,7 +2,7 @@
 uid: validation
 ---
 
-# Validating code
+# Validating architecture
 
 This chapter describes how to validate your source code against the architecture, design patterns, and other team conventions.
 

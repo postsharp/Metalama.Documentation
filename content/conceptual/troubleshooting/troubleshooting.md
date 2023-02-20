@@ -2,7 +2,7 @@
 uid: troubleshooting
 ---
 
-# Troubleshooting
+# Troubleshooting Metalama
 
 This chapter explains procedures that are useful while troubleshooting Metalama.
 

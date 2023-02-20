@@ -2,7 +2,7 @@
 uid: aspects
 ---
 
-# Aspects
+# Creating aspects
 
 This chapter explains how to build your own aspects. If you only want to use aspects written by others, you can skip this chapter. However, we suggest that you revisit this chapter later if you want to understand better how Metalama works.
 

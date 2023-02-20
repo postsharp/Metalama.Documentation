@@ -19,18 +19,37 @@ items:
           topicUid: distributing
         - name: MSBuild properties and items
           topicUid: msbuild-properties
-    - name: Fundamental concepts
-      topicUid: fundamentals
-      items:  
-        - name: Compile-time vs run-time code
-          topicUid:  code-scope
-        - name: Abilities of aspects
-          topicUid: aspect-abilities
-        - name: Abilities of fabrics
-          topicUid: fabric-abilities
-    - name: Aspects
+    - name: Using Metalama 
+      topicUid: quickstart-using-metalama
+      items:
+        - name: Installing Metalama
+          topicUid:  install
+        - name: Getting aspects   
+          topicUid: getting-aspects
+        - name: Adding aspects to code
+          topicUid: quickstart-adding-aspects
+        - name: Understanding your code with aspects
+          topicUid: understanding-your-code-with-aspects
+        - name: Debugging aspect oriented code 
+          topicUid: debugging-aspect-oriented-code
+        - name: Applying live templates
+          topicUid:  applying-live-templates
+        - name: Adding many aspects at once
+          topicUid: adding-aspects-in-bulk
+    - name: Creating aspects
       topicUid: aspects
       items:
+        - name: Fundamental concepts
+          topicUid: fundamentals
+          items:  
+            - name: Compile-time vs run-time code
+              topicUid:  code-scope
+            - name: Abilities of aspects
+              topicUid: aspect-abilities
+            - name: Abilities of fabrics
+              topicUid: fabric-abilities
+        - name: Enhancing a method [101]
+          topicUid: creating-simple-method-aspect
         - name: T# templates
           topicUid: templates
           items:
@@ -82,7 +101,7 @@ items:
             topicUid: code-fixes
         - name: Adding child aspects
           topicUid: child-aspects
-        - name: Aspect inheritance
+        - name: Applying aspects to derived types
           topicUid: aspect-inheritance
         - name: Ordering aspects
           topicUid: ordering-aspects
@@ -122,7 +141,7 @@ items:
           topicUid: fabrics-multiple-projects
         - name: Execution order
           topicUid: fabrics-execution-order
-    - name: Validating code
+    - name: Validating architecture
       topicUid: validation
       items:  
         - name: Validating declarations
@@ -140,7 +159,7 @@ items:
           topicUid: services
         - name: Custom metrics
           topicUid: custom-metrics
-    - name: Troubleshooting
+    - name: Troubleshooting Metalama
       topicUid: troubleshooting 
       items: 
         - name: Enabling logging
