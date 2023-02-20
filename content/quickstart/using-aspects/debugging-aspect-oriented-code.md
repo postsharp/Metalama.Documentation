@@ -72,7 +72,8 @@ As you can see you can put breakpoint on this transformed code and it will be hi
 
 [!metalama-sample ~/code/DebugDemo/Program.cs]
 
-When you debug this by Step-Into you shall see that the actual code being _debugged_ is the transformed code
+> [!NOTE]
+> When you debug this by Step-Into you shall see that the actual code being _debugged_ is the transformed code
 
 ## Breaking forcefully using `Debugger.Break`
 

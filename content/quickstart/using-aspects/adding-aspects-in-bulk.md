@@ -89,25 +89,13 @@ To add the Logging aspect (`LogAttribute`) to all the methods of a given namespa
 
 In this fabric, we use `GlobalNamespace.GetDecendant` method to get all the children's namespace of the given namespace (In this case `Outer.Inner`). The first `SelectMany` calls get all the types in these namespaces and the inner `SelectMany` call gets all the methods in these types. This results in an `IAspectReceiver<IMethod>`. So the final call <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspectIfEligible*> adds the `Log` aspect to all eligible methods.
 
-## Example 4: Adding `NotifyPropertyChanged` aspect to all types
-
-In this example, you shall learn how `NamespaceFabric` can be used to add an inheritable aspect `NotifyProperyChanged` to all the public types in the namespace.
-
-[!metalama-sample ~/code/Metalama.Documentation.QuickStart.Fabrics/NPCFabric.cs tabs="target"]
-
-## Example 5: Adding `Log` aspect only to derived classes of a given class
+## Example 4: Adding `Log` aspect only to derived classes of a given class
 
 Sometimes you may not need or want to add aspects to all the types but only to a class and its derived types. The following fabric shows how you can add those. In this example fabric you see how to get the derived types of a given type and how to add aspects to them.
 
 [!metalama-sample ~/code/Metalama.Documentation.QuickStart.Fabrics.2/AddLoggingToChildrenFabric.cs tabs="target"]
 
-## Example 6: Making sure no strings remain null
 
-So far you have seen how `NamespaceFabric` and `ProjectFabric` can be used to add aspects to your types and methods. In this example, you shall see how you can use `ProjectFabric` to add a special capability to all public string fields and properties.
-
-Uninitialized null strings in C# can cause accidental failures. Wouldn't it be nice if you could assign empty strings to all the public string fields and properties of a type. That's exactly what the following fabric does.
-
-[!metalama-sample ~/code/Metalama.Documentation.QuickStart.Fabrics.3/NoNullStringFabric.cs tabs="target"]
 
 ## The common pattern
 

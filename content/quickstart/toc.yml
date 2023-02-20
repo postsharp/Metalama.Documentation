@@ -24,13 +24,9 @@ items:
   - name: Creating Simple Aspects 
     topicUid: creating-simple-aspects
     items:
-      - name: Knowing Parts of an Aspect 
-        topicUid: parts-of-an-aspect
-      - name: Creating Simple Method Aspects
+      - name: Ehancing a method
         topicUid: creating-simple-method-aspect
-      - name: Creating Simple Field/Property Aspects
+      - name: Writing templates with T#
+        topicUid: tsharp-tempaltes
+      - name: Overriding fields or properties
         topicUid: create-field-prop-aspects
-      - name: Creating Eligibility Constraints 
-        topicUid: create-eligibility
-      - name: Differnt types in Metalama for creating aspects
-        topicUid: aspect-types-class-diag  
