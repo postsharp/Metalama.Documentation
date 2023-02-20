@@ -18,6 +18,7 @@ Aspects can enhance your program in several ways. An aspect can do the following
 
 Here is the outline of this chapter:
 
+<<<<<<< HEAD
 |Chapter | Description
 |--------|---------------
 |<xref:parts-of-an-aspect>| Discusses the building blocks of an aspect
@@ -26,3 +27,10 @@ Here is the outline of this chapter:
 |<xref:aspect-types-class-diag>| Shows relationships among several types that are involved in the creation of aspects
 |TBD| TODO
 
+=======
+|Chapter| Description
+|-------|-------------
+|<xref:creating-simple-method-aspect>| This chapter shows how to create your first method aspects from the very first steps.
+|<xref:tsharp-tempaltes> | This chapter shows how to create different types of templates using T# for creating aspects
+|<xref:create-field-prop-aspects>| This chapter shows how to create different field and property aspects
+>>>>>>> 3012a86 (template and creating method aspect parts)

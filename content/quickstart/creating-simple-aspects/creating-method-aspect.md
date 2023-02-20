@@ -21,11 +21,52 @@ to create the first aspect.
 
 [!metalama-sample ~/code/Metalama.Documentation.SimpleAspects/SimpleLogAttribute.cs tabs="target"]
 
-This is a dummy text 
 
 
 > [!NOTE]
-> To use `OverrideMethodAspect` you need to install Metalama Nuget package. Follow the steps at 
-  <xref:install> to install it in your project. 
+> To use `<xref:Metalama.Framework.Aspects.OverrideMethodAspect>` you need to install Metalama Nuget package. Follow the steps at 
+  <xref:install> to install it in your project if you don't already have it installed. 
   
-**Step 4**: 
+**Step 4**: Build your project. 
+
+If the build is successful  Congratulations! you have successfully created your first method aspect. I would agree, that the aspect doesn't do much yet but you shall learn how to enhance it to be more useful in the next few sections in this chapter.  
+
+
+## Making the `SimpleLog` aspect more specific 
+
+`OverrideMethodAspect` lets you do exactly what the name suggests. Override the method. So if you put your aspect on a method then the method will first execute the code from the aspect 
+
+`Console.WriteLine($"Simply logging a method..." );`
+
+and then it will be invoked. The magic, if you will is being done by the call to `meta.Proceed`. meta is a special class. 
+it can almost be thought of as a keyword that lets you tap into the meta-model of the code you are dealing with. In this case, you are dealing with a method. So the target of the aspect is a the method. 
+
+You can get to the target by a call to the `Target` property of the `meta` class like `meta.Target`. 
+Names of the properties are really clear. So if you want to get to the name of the method you are targetting from the aspect code, you can do so by calling <xref:Metalama.Framework.Aspects.IMetaTarget.Method.Name>
+
+`meta.Target.Method.Name` . This will give you just the name of the method. You can get the fully qualified name of the method by calling `meta.Target.Method.ToDisplayString()` method. 
+
+Now let's see how this information can be used to enhance the log aspect that is already created.  
+
+The following code shows how this can be used 
+
+[!metalama-sample ~/code/Metalama.Documentation.SimpleAspects/SpecificLogAttribute.cs tabs="target"]
+
+> [!NOTE]
+> This is the prelude of how you can create several custom template method for your aspect using the T# language. The next chapter <xref:tsharp-tempaltes> will show several cases of templates. 
+
+## Meet the Retry aspect. 
+In the previous chapter, you have used the built-in aspect `Retry`. In this section, you shall learn to create it from scratch. 
+
+**Step 1** Create a class called `RetryFewTimes`
+
+**Step 2** Implement `OverrideMethod` from `OverrideMethodAspect` as shown below. 
+
+[!metalama-sample ~/code/Metalama.Documentation.SimpleAspects/RetryFewTimes.cs tabs="target"]
+
+Note how the overridden implementation in the aspect retries the method being overridden. In this example, the number of retries is hard coded. 
+
+
+
+
+
