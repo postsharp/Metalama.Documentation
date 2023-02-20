@@ -25,16 +25,24 @@ var product = new Product( Dependencies.MetalamaDocumentation )
         {
             CanFormatCode = true, BuildMethod = BuildMethod.Test,
         },
-        new DocFxSolution( "docfx\\docfx.json" )
+        new DotNetSolution( "source-dependencies\\Metalama.Samples\\Metalama.Samples.sln") { BuildMethod = BuildMethod.Test },
+        new DocFxSolution( "docfx.json" )
     },
+
     PublicArtifacts = Pattern.Create(
         docPackageFileName ),
-        // Metalama is a a transitive dependency.
-    Dependencies = new[] { Dependencies.PostSharpEngineering,
+    
+    Dependencies = new[] { 
+         Dependencies.PostSharpEngineering,
          Dependencies.MetalamaMigration,
-         Dependencies.MetalamaExtensions,
          Dependencies.MetalamaLinqPad },
-    AdditionalDirectoriesToClean = new[] { "docfx\\obj", "docfx\\_site" },
+
+    SourceDependencies = new[]
+    {
+        Dependencies.MetalamaSamples
+    },
+
+    AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
 
     // Disable automatic build triggers.
     Configurations = Product.DefaultConfigurations

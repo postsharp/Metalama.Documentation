@@ -25,3 +25,4 @@ artifacts/
 *.g.props
 eng/tools
 packages/
+source-dependencies/

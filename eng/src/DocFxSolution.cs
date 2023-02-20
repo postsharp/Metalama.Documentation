@@ -1,10 +1,12 @@
 ﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
+using System.Collections.Immutable;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
 using PostSharp.Engineering.BuildTools.Utilities;
 using System.IO;
 using System.IO.Compression;
+using System.Text.RegularExpressions;
 
 namespace BuildMetalamaDocumentation
 {
@@ -18,21 +20,35 @@ namespace BuildMetalamaDocumentation
 
         public override bool Build( BuildContext context, BuildSettings settings )
         {
-            if ( !RunDocFx( context, "" ) )
+        
+            var options = new ToolInvocationOptions()
             {
-                return false;
-            }
+                ErrorPatterns = ToolInvocationOptions.Default.ErrorPatterns.Add( new Regex(@"Markup failed") ),
+                WarningPatterns = ToolInvocationOptions.Default.WarningPatterns,
+                SilentPatterns = settings.Verbosity == Verbosity.Detailed ? ImmutableArray<Regex>.Empty : ImmutableArray.Create(new Regex(@": info :"), new Regex(@"\]Info:")),
+                ReplacePatterns = ImmutableArray.Create(
+                    
+                    // Replace pattern when the path is present but not the line
+                    new ReplacePattern(new Regex(@"(?<time>\[[^\]]*\])(?<severity>\w+):(?<component>\[[^\]]*\])\((~\/)?(?<path>[^\)#]+)\)(?<message>.*)$"), 
+                    match => $"{match.Groups["path"]}: {match.Groups["severity"].Value.ToLowerInvariant()}: {match.Groups["message"]}"),
+                    
+                    // Replace pattern when the path is present including the line.
+                    new ReplacePattern(new Regex(@"(?<time>\[[^\]]*\])(?<severity>\w+):(?<component>\[[^\]]*\])\((~\/)?(?<path>[^\)#]+)#L(?<line>\d+)\)(?<message>.*)$"), 
+                        match => $"{match.Groups["path"]}({match.Groups["line"]}): {match.Groups["severity"].Value.ToLowerInvariant()}: {match.Groups["message"]}"),
+                    
+                    // Replace pattern without the path
+                    new ReplacePattern(new Regex(@"(?<time>\[[^\]]*\])(?<severity>\w+):(?<component>\[[^\]]*\])\((~\/)?(?<message>.*)$"), 
+                    match => $"{this.SolutionPath}: {match.Groups["severity"].Value.ToLowerInvariant()}: {match.Groups["message"]}")
 
-            return true;
-        }
-
-        private static bool RunDocFx( BuildContext context, string command )
-        {
+                    )
+            };
+            
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
                 Path.Combine( context.RepoDirectory, "docfx\\packages\\docfx.console.2.59.0\\tools\\docfx.exe" ),
-                Path.Combine( context.RepoDirectory, "docfx\\docfx.json" ) + " " + command,
-                context.RepoDirectory );
+                Path.Combine( context.RepoDirectory, this.SolutionPath ),
+                context.RepoDirectory,
+                options );
         }
 
         public override bool Pack( BuildContext context, BuildSettings settings )
@@ -42,9 +58,16 @@ namespace BuildMetalamaDocumentation
                 return false;
             }
 
+            var zipPath = Path.Combine( context.RepoDirectory, "artifacts\\publish\\private\\Metalama.Doc.zip" );
+
+            if (File.Exists(zipPath))
+            {
+                File.Delete(zipPath);
+            }
+            
             ZipFile.CreateFromDirectory(
                 Path.Combine( context.RepoDirectory, "docfx\\_site" ),
-                Path.Combine( context.RepoDirectory, "artifacts\\publish\\private\\Metalama.Doc.zip" ) );
+                zipPath );
 
             return true;
         }

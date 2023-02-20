@@ -1,0 +1,81 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+              "Metalama.Framework.dll",
+              "Metalama.Testing.AspectTesting.dll",
+              "Metalama.Testing.UnitTesting.dll",
+              "Metalama.Framework.Sdk.dll",
+              "Metalama.Framework.Introspection.dll",
+              "Metalama.Framework.Workspaces.dll",
+              "Metalama.LinqPad.dll",
+              "Metalama.Compiler.Interface.dll",
+              "Metalama.Migration.dll",
+              "Metalama.Extensions.DependencyInjection.dll",
+              "Metalama.Extensions.DependencyInjection.ServiceLocator.dll",
+              "Metalama.Extensions.Multicast.dll",
+              "Metalama.Extensions.Metrics.dll",
+              "Metalama.Extensions.Architecture.dll"
+              ],
+          "src": "code/Metalama.Documentation.Consolidated/bin/Debug/net6.0-windows"
+        }
+      ],
+      "dest": "obj/api",
+      "disableGitFeatures": true,
+      "disableDefaultFilter": false
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "api/**.yml",
+          "api/index.md"
+        ],
+        "src": "obj"
+      },
+      {
+        "files": [
+          "**.md",
+          "toc.yml"
+        ],
+        "src": "content"
+      }
+     
+    ],
+    "resource": [
+      {
+        "files": [
+          "**.png",
+          "api.xml",
+          "redirect.xml"
+        ],
+        "src": "content"
+      }
+    ],
+    "overwrite": [
+      {
+        "files": [
+          "overwrite/**.md"
+        ]
+      }
+    ],
+    "xrefService": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ],
+    "dest": "docfx/_site",
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "template":[ 
+      "default", 
+      "docfx/packages/memberpage.2.59.0/content",
+      "code/Metalama.Documentation.DfmExtensions/bin/Debug"],
+    "postProcessors": [],
+    "markdownEngineName": "dfm",
+    "noLangKeyword": false,
+    "keepFileLink": false,
+    "cleanupCacheHistory": false
+  }
+}
