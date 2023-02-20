@@ -22,7 +22,7 @@ You should read this chapter if:
 
 |Article | Description
 |--------|-------------
-|<xref:install> | Shows steps to install Metalama Visual Studio plugin.
+|<xref:installing> | Shows steps to install different components of Metalama.
 |<xref:getting-aspects> | Shows how to get the sample aspects that will be used for demonstrations in this guide.
 |<xref:quickstart-adding-aspects> | Shows steps to use an aspect on a target by adding attribute by hand or using the refactoring menu.
 |<xref:understanding-your-code-with-aspects>| Describes how to use features of the Metalama plugin for Visual Studio to better understand your aspect-oriented code.

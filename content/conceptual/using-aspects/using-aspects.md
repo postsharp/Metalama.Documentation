@@ -21,7 +21,6 @@ Read this chapter if:
 
 |Article | Description
 |--------|-------------
-|<xref:install> | This article explains how to install Metalama.
 |<xref:getting-aspects> | This article describes where to get aspects, and lists the sample aspects that will be used for demonstrations across this guide.
 |<xref:quickstart-adding-aspects> | This article explains how to use an aspect on a target by adding attribute manually or by using the refactoring menu.
 |<xref:understanding-your-code-with-aspects>| This article explains how to use Code Lens and Code Diff to understand your code.

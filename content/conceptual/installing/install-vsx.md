@@ -1,29 +1,17 @@
 ---
-uid: install
+uid: install-vsx
 ---
 
-# Installing Metalama
+# Installing Metalama Tools for Visual Studio
 
-The core features of Metalama are implemented in a set of NuGet packages and don't need to be installed on your machine. However, if you are working on a project that uses Metalama, it is a good idea to install Metalama Tools for Visual Studio.
 
-## Adding the NuGet package to your project
-
-If you are using existing aspects, all you have to do is to add a reference to the project or package defining these aspects, as with any other library. Metalama's main package, [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework), will come as a dependency.
-
-For details of all NuGet packages and their dependencies, see <xref:packages>.
-
->[!NOTE]
->Metalama requires a target framework that supports .NET Standard 2.0.
-
-## Installing Metalama Tools for Visual Studio
-
-This extension helps you write aspects and understand your aspect-oriented code thanks to the following features:
+Metalama Tools for Visual Studio is an extension to Visual Studio that helps you write aspects and understand your aspect-oriented code thanks to the following features:
 
 * syntax highlighting of aspect codes (you will need it if you will be writing aspects later on),
 * CodeLens additions,
 * diffing your source code against the transformed code.
 
-It is highly recommended that you download and install this extension for a better development experience. However, it is important to note that  this extension is optional and Metalama will work without it too.
+It is highly recommended that you download and install this extension for a better development experience. However, it is important to note that this extension is optional and Metalama will work without it too.
 
 > [!WARNING]
 > This Metalama Visual Studio Plugin requires Visual Studio 2022

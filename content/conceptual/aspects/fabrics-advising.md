@@ -2,9 +2,7 @@
 uid: fabrics-advising
 ---
 
-# Advising the current type
-
-
+# Advising a single type with a fabric
 
 Instead of using aspects, you can advise the current type using a type fabric. A type fabric is a compile-time nested class that works as a type-level aspect added to the target type.
 

@@ -4,26 +4,18 @@ items:
   items:
     - name: Requirements
       topicUid: requirements
-    - name: Deployment
-      topicUid: deployment
+    - name: Installing Metalama
+      topicUid: installing
       items:
-        - name: NuGet packages
-          topicUid: packages
-        - name: Metalama command line tool
+        - name: Installing Metalama Tools for Visual Studio
+          topicUid:  install-vsx
+        - name: Installing Metalama command line tool
           topicUid: dotnet-tool
-        - name: Register a License
-          topicUid: register-license
-        - name: Telemetry
-          topicUid: telemetry
-        - name: Distributing projects that use aspects
-          topicUid: distributing
-        - name: MSBuild properties and items
-          topicUid: msbuild-properties
+        - name: Registering a License
+          topicUid: register-license    
     - name: Using Metalama 
       topicUid: quickstart-using-metalama
       items:
-        - name: Installing Metalama
-          topicUid:  install
         - name: Getting aspects   
           topicUid: getting-aspects
         - name: Adding aspects to code
@@ -39,18 +31,9 @@ items:
     - name: Creating aspects
       topicUid: aspects
       items:
-        - name: Fundamental concepts
-          topicUid: fundamentals
-          items:  
-            - name: Compile-time vs run-time code
-              topicUid:  code-scope
-            - name: Abilities of aspects
-              topicUid: aspect-abilities
-            - name: Abilities of fabrics
-              topicUid: fabric-abilities
-        - name: Enhancing a method [101]
+        - name: Enhancing a method
           topicUid: creating-simple-method-aspect
-        - name: T# templates
+        - name: Writing T# templates
           topicUid: templates
           items:
             - name: Overview
@@ -63,6 +46,8 @@ items:
               topicUid: template-parameters
             - name: Generating System.Reflection objects
               topicUid: reflection
+        - name: Understanding the framework design
+          topicUid: aspect-design
         - name: Transforming code
           topicUid: advising-code
           items:
@@ -110,8 +95,6 @@ items:
             topicUid: aspect-composition
         - name: Exposing configuration
           topicUid: exposing-configuration
-        - name: Debugging aspects
-          topicUid: debugging-aspects
         - name: Testing aspects
           topicUid: testing
           items:
@@ -119,28 +102,12 @@ items:
             topicUid: aspect-testing        
           - name: Run-time testing
             topicUid: run-time-testing
-        - name: Implementation notes
-          topicUid: implementation
-          items:
-            - name: Pipeline
-              topicUid: pipeline
-    - name: Fabrics
-      topicUid: fabrics
-      items:
-        - name: Kinds of fabrics
-          topicUid: fabric-kinds
-        - name: Adding aspects in bulk
-          topicUid: fabrics-aspects
-        - name: Validating code
-          topicUid: fabrics-validation
-        - name: Advising a type
+          - name: Debugging aspects
+            topicUid: debugging-aspects            
+        - name: Advising a single type with a fabric
           topicUid: fabrics-advising
-        - name: Configuring a project
-          topicUid: fabrics-configuring
-        - name: Targeting multiple projects
-          topicUid: fabrics-multiple-projects
-        - name: Execution order
-          topicUid: fabrics-execution-order
+        - name: Distributing projects that use aspects
+          topicUid: distributing
     - name: Validating architecture
       topicUid: validation
       items:  
@@ -159,15 +126,20 @@ items:
           topicUid: services
         - name: Custom metrics
           topicUid: custom-metrics
-    - name: Troubleshooting Metalama
-      topicUid: troubleshooting 
+    - name: Configuring and troubleshooting
+      topicUid: configuration 
       items: 
+        - name: MSBuild properties and items
+          topicUid: msbuild-properties
         - name: Enabling logging
           topicUid: creating-logs
         - name: Capturing process dumps
           topicUid: process-dump
         - name: Troubleshooting a build server
           topicUid: troubleshooting-unattended-build
+        - name: Telemetry
+          topicUid: telemetry
+                  
     - name: Migrating from PostSharp
       topicUid: migration
       items:
@@ -186,3 +158,12 @@ items:
         - name: Migrating configuraiton
           topicUid: migrating-configuration
           
+    - name: Under the hood
+      topicUid: implementation
+      items:
+        - name: NuGet packages
+          topicUid: packages
+        - name: Pipeline
+          topicUid: pipeline
+        - name: Execution order of fabrics
+          topicUid: fabrics-execution-order

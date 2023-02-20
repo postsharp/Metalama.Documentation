@@ -24,8 +24,7 @@ to create the first aspect.
 
 
 > [!NOTE]
-> To use `<xref:Metalama.Framework.Aspects.OverrideMethodAspect>` you need to install Metalama Nuget package. Follow the steps at 
-  <xref:install> to install it in your project if you don't already have it installed. 
+> To use `<xref:Metalama.Framework.Aspects.OverrideMethodAspect>` you need to add the `Metalama.Framework` NuGet package to your project.
   
 **Step 4**: Build your project. 
 

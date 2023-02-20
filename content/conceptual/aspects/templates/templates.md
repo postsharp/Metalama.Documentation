@@ -2,7 +2,7 @@
 uid: templates
 ---
 
-# T# templates
+# Writing T# templates
 
 Code templates in Metalama are written in a dialect of C# called T#. The syntax of T# is 100% compatible with C#, but T# is compiled differently.
 

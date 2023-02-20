@@ -5,19 +5,19 @@ summary: *content
 
 This namespace allows you to add fabrics to your code. Like aspects, fabrics are executed at compile time. Unlike aspects, you do not need a custom attribute to add the fabric to your code. The only existence of the fabric in your code applies it to your code.
 
-Fabrics can be applied to:
 
-* the current project: a _project fabric_ is a type in the project that implements the <xref:Metalama.Framework.Fabrics.ProjectFabric> class,
-* all projects that reference the current project: a _transitive project fabric_ is a type in the current project that implements the <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric> class,
-* a namespace: a _namespace fabric_ is a type in that namespace that implements the <xref:Metalama.Framework.Fabrics.NamespaceFabric> class,
-* a type: a _type fabric_ is a _nested_ type that implements the <xref:Metalama.Framework.Fabrics.TypeFabric> class,
+There are four kinds of fabrics. Each kind applies to a different scope. All fabric kinds can add aspects and validators within their scope. Type fabrics can additionally add advice to their scope, and project fabrics can set configuration options.
 
-Fabrics can:
+| Kind | Base Class | Scope | Abilities |
+|-------|-|---------|--|
+| Type Fabrics | <xref:Metalama.Framework.Fabrics.TypeFabric> | The containing type (type fabrics are nested types) and any member. | Add aspects, advice, and validators.
+| Namespace Fabrics | <xref:Metalama.Framework.Fabrics.NamespaceFabric> | Any type in the namespace that contains the fabric type. | Add aspects and validators.
+| Project Fabrics | <xref:Metalama.Framework.Fabrics.ProjectFabric> | Any type in the project that contains the fabric type or in any project. | Add aspects and validators, and set configuration options. Project fabrics can be inherited from parent directories.
+| Transitive Project Fabrics | <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric> | Any type in  any project _referencing_ the containing project. | Add aspects and validators, and set configuration options.
 
-* add aspects to code,
-* register validators,
-* configure aspects (project fabrics only),
-* add advice to the current type (type fabrics only)
+
+> [!NOTE]
+> For design-time performance and usability, it is highly recommended to implement type fabrics in a separate file, and mark the parent class as `partial`.
 
 
 ## Class diagrams

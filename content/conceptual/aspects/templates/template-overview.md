@@ -8,13 +8,45 @@ T# is the template language used by Metalama. The syntax of T# is 100% compatibl
 
 The difference between T# and C# is that the T# compiler executes within the compiler or the IDE and generates C# code, while the C# compiler generates IL (binary) files.
 
-## Introduction
+## Scopes of code
 
-T# templates are a mix of [_compile-time_ and _run-time_](xref:code-scope) expressions and statements. Compile-time expressions and statements are evaluated at compile time in the compiler (or at design time in the IDE when you use the [Preview feature](xref:preview)), and result in the generation of other run-time expressions.
+T# templates are a mix of _compile-time_ and _run-time_ expressions and statements. Compile-time expressions and statements are evaluated at compile time in the compiler (or at design time in the IDE when you use the [Preview feature](xref:preview)), and result in the generation of other run-time expressions.
 
 Metalama analyzes T# and separates the compile-time part from the run-time part by applying a set of inference rules. Compile-time expressions and statements often start with the `meta` pseudo-keyword. <xref:Metalama.Framework.Aspects.meta> is actually a static class, but it is useful to think of it as a kind of magic keyword that means that it starts a compile-time expression or statement.
 
-### Initial example
+
+A fundamental concept in Metalama is that every type in your source code belongs to one of the following _scopes_:
+
+### Run-time code
+
+_Run-time code_ is the code that you are used to: it compiles to a binary assembly and typically executes on the end user's device. In a project that does not reference the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) package, all code is considered run-time.
+
+The entry point of run-time code is typically the _Program.Main_ method.
+
+### Compile-time code
+
+_Compile-time code_ is code that is executed either at compile time by the compiler, or at design time by the IDE.
+
+Metalama recognizes compile-time-only code thanks to the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. It will look for the attribute not only on the member but also on the declaring type, and at the base types and interfaces. Most classes and interfaces of the _Metalama.Framework_ assembly are compile-time-only.
+
+You can create compile-time classes by annotating them with <xref:Metalama.Framework.Aspects.CompileTimeAttribute>.
+
+All compile-time code _must_ be strictly compatible with .NET Standard 2.0, even if the containing project targets a richer platform. We will explain why in the next section.
+
+
+### Scope-neutral code
+
+_Scope-neutral code_ is code that can execute either at run time or at compile time.
+
+Scope-neutral code is annotated with the <xref:Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute> custom attribute.
+
+Aspect classes are scope-neutral because aspects are a special kind of class. Aspects are typically represented as custom attributes, and these attributes can be accessed at run time using _System.Reflection_, but they are also instantiated at compile time by Metalama. Therefore, it is important that the constructors and public properties of the aspects are both run-time and compile-time.
+
+However, some methods of aspect classes are purely compile-time. They cannot be executed at run time because they access APIs that exist only at compile time. These methods must be annotated with <xref:Metalama.Framework.Aspects.CompileTimeAttribute>.
+
+
+
+## Initial example
 
 Before moving forward, let's illustrate this concept with an example. The following aspect writes some text to the console before and after the execution of a method.
 
@@ -32,4 +64,20 @@ The call to `meta.Proceed()` means that the original method body should be injec
 ### Comparison with Razor
 
 You can compare T# to [Razor](https://learn.microsoft.com/aspnet/core/mvc/views/razor). Razor allows you to create dynamic web pages by mixing two languages: C# for server-side code (the _meta_ code), and HTML for client-side code. With T#, you also have two kinds of code: _compile-time_ and _run-time_ code. The compile-time code generates the _run-time_ code. The difference with Razor is that in T# both the compile-time and run-time code is the same language: C#. Metalama interprets every expression or statement in a template as having _either_ run-time scope _or_ compile-time scope. Compile-time expressions are generally initiated by calls to the <xref:Metalama.Framework.Aspects.meta> API.
+
+
+
+
+## Compilation process
+
+When Metalama compiles your project, one of the first steps is to separate the compile-time code from the run-time code. From your initial project, Metalama creates two compilations:
+
+1. The _compile-time_ compilation contains only compile-time code. It is compiled against .NET Standard 2.0. It is then loaded within the compiler or IDE process, and executed at compile or design time.
+2. The _run-time_ compilation contains the run-time code. It also contains the compile-time _declarations_, but their implementation is replaced by `throw new NotSupportedException()`.
+
+During compilation, Metalama compiles the [T# templates](xref:templates) into standard C# code that generates the run-time code using the Roslyn API. This generated code, as well as any non-template compile-time code, is then zipped and embedded in the run-time assembly as a managed resource.
+
+> [!WARNING]
+> *Intellectual property alert.* The _source_ of your compile-time code is embedded in clear text, without any obfuscation, in the run-time binary assemblies as a managed resource.
+
 
