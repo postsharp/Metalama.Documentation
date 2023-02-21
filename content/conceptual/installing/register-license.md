@@ -1,5 +1,6 @@
 ---
 uid: register-license
+level: 200
 ---
 
 # Registering a license

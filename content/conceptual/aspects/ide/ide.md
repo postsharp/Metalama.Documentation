@@ -1,5 +1,6 @@
 ---
 uid: building-ide-interactions
+level: 200
 ---
 
 # Building IDE interactions

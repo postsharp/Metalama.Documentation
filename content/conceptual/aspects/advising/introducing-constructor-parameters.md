@@ -1,5 +1,6 @@
 ---
 uid: introducing-constructor-parameters
+level: 400
 ---
 
 # Introducing constructor parameters

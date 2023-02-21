@@ -1,5 +1,6 @@
 ---
 uid: introducing-members
+level: 300
 ---
 
 # Introducing members

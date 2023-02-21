@@ -1,5 +1,6 @@
 ---
 uid: telemetry
+level: 200
 ---
 
 # Telemetry

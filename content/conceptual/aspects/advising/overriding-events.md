@@ -1,5 +1,6 @@
 ---
 uid: overriding-events
+level: 300
 ---
 
 # Overriding events

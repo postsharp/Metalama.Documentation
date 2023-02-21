@@ -1,5 +1,6 @@
 ---
 uid: adding-aspects-in-bulk
+level: 200
 ---
 
 # Adding many aspects at once

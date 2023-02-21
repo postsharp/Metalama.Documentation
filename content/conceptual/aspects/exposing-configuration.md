@@ -1,5 +1,6 @@
 ---
 uid: exposing-configuration
+level: 300
 ---
 # Exposing configuration
 

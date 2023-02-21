@@ -1,5 +1,6 @@
 ---
 uid: applying-live-templates
+level: 100
 ---
 
 # Using live templates

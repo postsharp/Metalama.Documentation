@@ -1,5 +1,6 @@
 ---
 uid: debugging-aspect-oriented-code
+level: 100
 ---
 
 # Debugging aspect-oriented code

@@ -1,5 +1,6 @@
 ﻿---
 uid: template-compile-time
+level: 200
 ---
 
 # Writing compile-time code
@@ -21,6 +22,13 @@ The <xref:Metalama.Framework.Aspects.meta> static class exposes to the following
 - The <xref:Metalama.Framework.Aspects.meta.Tags?text=meta.Tags> property gives access to an arbitrary dictionary that has been passed to the advice factory method, see <xref:sharing-state-with-advice#sharing-state-with-the-tags-property>.
 - The <xref:Metalama.Framework.Aspects.meta.CompileTime*?text=meta.CompileTime> method coerces a neutral expression into a compile-time expression.
 - The <xref:Metalama.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method converts the result of a compile-time expression into a run-time value (see below).
+
+
+### Example: simple logging
+
+The following code writes a message to the system console before and after the method execution. The text includes the name of the target method.
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs name="Simple Logging"]
 
 ## Compile-time language constructs
 
@@ -110,10 +118,12 @@ If you want to share compile-time code between aspects or aspect methods, you ca
 ## Calling other packages from compile-time code
 
 By default, compile-time code can call only the following APIs:
+
 - .NET Standard 2.0 (all libraries)
 - Metalama.Framework
 
 For advanced scenarios, the following packages are also included by default:
+
 - Metalama.Framework.Sdk
 - Microsoft.CodeAnalysis.CSharp
 

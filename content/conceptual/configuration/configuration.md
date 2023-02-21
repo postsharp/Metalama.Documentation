@@ -1,5 +1,6 @@
 ---
 uid: configuration
+level: 300
 ---
 
 # Configuration and troubleshooting

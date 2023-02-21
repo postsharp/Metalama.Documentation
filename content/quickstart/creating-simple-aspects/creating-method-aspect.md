@@ -1,5 +1,5 @@
 ---
-uid: creating-simple-method-aspect
+uid: simple-override-method
 ---
 
 # Enhancing a method 

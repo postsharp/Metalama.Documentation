@@ -1,5 +1,6 @@
 ---
 uid: initializers
+level: 300
 ---
 
 # Adding initializers

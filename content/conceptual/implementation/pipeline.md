@@ -1,5 +1,6 @@
 ---
 uid: pipeline
+level: 400
 ---
 
 # Compilation pipeline

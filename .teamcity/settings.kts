@@ -221,7 +221,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaExtensions_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -229,7 +229,7 @@ object PublicBuild : BuildType({
 
             artifacts {
                 cleanDestination = true
-                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Extensions"
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama"
             }
 
         }
@@ -247,7 +247,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_MetalamaExtensions_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -255,7 +255,7 @@ object PublicBuild : BuildType({
 
             artifacts {
                 cleanDestination = true
-                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama"
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Extensions"
             }
 
         }

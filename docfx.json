@@ -71,7 +71,9 @@
     "template":[ 
       "default", 
       "docfx/packages/memberpage.2.59.0/content",
-      "code/Metalama.Documentation.DfmExtensions/bin/Debug"],
+      "code/Metalama.Documentation.DfmExtensions/bin/Debug",
+      "templates"
+    ],
     "postProcessors": [],
     "markdownEngineName": "dfm",
     "noLangKeyword": false,

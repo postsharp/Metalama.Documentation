@@ -20,7 +20,7 @@ Here is the outline of this chapter:
 
 |Chapter| Description
 |-------|-------------
-|<xref:creating-simple-method-aspect>| This chapter shows how to create your first method aspects from the very first steps.
+|<xref:simple-override-method>| This chapter shows how to create your first method aspects from the very first steps.
 |<xref:tsharp-tempaltes> | This chapter shows how to create different types of templates using T# for creating aspects
 |<xref:create-field-prop-aspects>| This chapter shows how to create different field and property aspects
 

@@ -1,5 +1,6 @@
 ---
 uid: msbuild-properties
+level: 300
 ---
 
 # MSBuild configuration properties and items
@@ -28,3 +29,14 @@ uid: msbuild-properties
 | `MetalamaTransformedCodeAnalyzer` | List of analyzers that must execute on the transformed code instead of the source code. Items can be set to a namespace or a full type name.
 | `MetalamaCompileTimePackage` | List of packages that are made accessible from the compile-time code. These packages must explicitly target .NET Standard 2.0 and must be included in the project as a `ProjectReference`.
 
+## Build configurations
+
+When you import the `Metalama.Framework` a new build configuration named `LamaDebug` is defined. It assigns the following properties:
+
+```xml
+    <PropertyGroup Condition="'$(Configuration)'=='LamaDebug'">
+        <MetalamaFormatOutput>True</MetalamaFormatOutput>
+        <MetalamaDebugTransformedCode>True</MetalamaDebugTransformedCode>
+        <MetalamaEmitCompilerTransformedFiles>True</MetalamaEmitCompilerTransformedFiles>
+    </PropertyGroup>
+```

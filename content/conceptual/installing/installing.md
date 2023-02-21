@@ -1,5 +1,6 @@
 ---
 uid: installing
+level: 100
 ---
 
 # Installing Metalama

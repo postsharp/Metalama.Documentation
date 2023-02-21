@@ -1,5 +1,6 @@
 ---
 uid: custom-metrics
+level: 400
 ---
 
 # Custom metrics

@@ -1,46 +1,24 @@
 ---
 uid: overriding-methods
+level: 300
 ---
 
 # Overriding methods
 
-The simplest and most common aspect is to wrap the hand-written body of a method with some automatically-generated code, but without modifying the method body itself. 
+In <xref: simple-override-method>, you have learned the basic technique to replace the implementation of a method by some code defined by the aspect. You have achieved this thanks to the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class, aspect-oriented implementation of the [decorator design pattern](https://en.wikipedia.org/wiki/Decorator_pattern) for methods.
 
-You can achieve this thanks to the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class. <xref:Metalama.Framework.Aspects.OverrideMethodAspect> is the aspect-oriented implementation of the [decorator design pattern](https://en.wikipedia.org/wiki/Decorator_pattern) for methods.
+In this article, we will assume that you have read  <xref: simple-override-method> and will expose more techniques related to overriding methods.
 
-## The simple way: deriving the OverrideMethod abstract class
+## Accessing the method details
 
-1. Add the `Metalama.Framework` package to your project.
-   
-2. Create a new class derived from the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
-
-3. Implement the <xref:Metalama.Framework.Aspects.OverrideMethodAspect.OverrideMethod> method in plain C#. This method will serve as a <xref:templates?text=template> defining the way the aspect overrides the hand-written target method.
-   - To insert code or expressions that depend on the target method of the aspect (such as the method name or the parameter type), use the <xref:Metalama.Framework.Aspects.meta> API.
-   - Where the original implementation must be invoked, call the <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed> method.
-
-4. The aspect is a custom attribute. To transform a method using the aspect, just add the aspect custom attribute to the method.
-
-### Example: an empty OverrideMethod aspect
-
-The following code shows an empty <xref:Metalama.Framework.Aspects.OverrideMethodAspect>, which does not do anything:
-
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/EmptyOverrideMethodAttribute.cs name="Empty OverrideMethodAttribute"]
-
-## Accessing the metadata and parameters of the overridden method
-
-The metadata of the method being overridden is available from the template method on the <xref:Metalama.Framework.Aspects.IMetaTarget.Method?text=meta.Target.Method> property. This property gives you all information about the name, type, parameters and custom attributes of the method. For instance, the metadata of method parameters is exposed on `meta.Target.Method.Parameters`. But note that only _metadata_ are exposed there.
+The details of the method being overridden are available from the template method on the <xref:Metalama.Framework.Aspects.IMetaTarget.Method?text=meta.Target.Method> property. This property gives you all information about the name, type, parameters and custom attributes of the method. For instance, the metadata of method parameters is exposed on `meta.Target.Method.Parameters`. 
 
 To access the parameter _values_, you need to access <xref:Metalama.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters>. For instance:
 
 - `meta.Target.Parameters[0].Value` gives you the value of the first parameter,
-- `meta.Target.Parameters.Values.ToArray()` creates an `object[]` array with all parameter values,
 - `meta.Target.Parameters["a"].Value = 5` sets the `a` parameter to `5`.
+- `meta.Target.Parameters.ToValueArray()` creates an `object[]` array with all parameter values,
 
-### Example: simple logging
-
-The following code writes a message to the system console before and after the method execution. The text includes the name of the target method.
-
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs name="Simple Logging"]
 
 ## Invoking the method with different arguments
 

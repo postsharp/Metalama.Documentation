@@ -1,5 +1,6 @@
 ---
 uid: install-vsx
+level: 100
 ---
 
 # Installing Metalama Tools for Visual Studio

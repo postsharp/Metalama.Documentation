@@ -1,5 +1,6 @@
 ---
 uid: reflection
+level: 300
 ---
 
 # Generating System.Reflection objects
