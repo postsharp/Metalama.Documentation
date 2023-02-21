@@ -1,30 +1,27 @@
-﻿using Metalama.Documentation.QuickStart;
+﻿using Metalama.Framework.Code;
 using Metalama.Framework.Fabrics;
-using Metalama.Framework.Code;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Metalama.Documentation.QuickStart;
+
 
 namespace DebugDemo3
 {
-    public class Fabric : ProjectFabric
+    public class AddLogAspectInGivenNamespaceFabric : ProjectFabric
     {
+        /// <summary>
+        /// Amends the project by adding Log aspect 
+        /// to many eligible methods inside given namespace.
+        /// </summary>
+        /// <param name="project"></param>
         public override void AmendProject(IProjectAmender project)
         {
-
             //Adding Log attribute to all mehtods of all types 
             //that are available inside "Outer.Inner" namespace 
 
-
-            project.Outbound.Select(t => t.GlobalNamespace)
-                                    .Where(z => z.Name == "Outer.Inner")
-                                    .SelectMany(ns => ns.DescendantsAndSelf())
-                                    .SelectMany(ns => ns.Types)
-                                    .SelectMany(currentType => currentType.Methods)
-                                    .AddAspectIfEligible<LogAttribute>();
-            
+            project.Outbound.SelectMany(t => t.GlobalNamespace
+                                              .DescendantsAndSelf()
+                                              .Where(z => z.FullName.StartsWith("Outer.Inner")))
+                            .SelectMany(ns => ns.Types.SelectMany(t => t.Methods))
+                            .AddAspectIfEligible<LogAttribute>();
         }
     }
 }

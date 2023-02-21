@@ -83,9 +83,9 @@ Inside the `AmendProject` method, we get all the public methods and add _logging
 
 ## Example 3: Adding aspects to all methods in a given namespace
 
-To add the Logging aspect (`LogAttribute`) to all the methods of a given namespace `Outer.Inner` and all the child types located in any descendent namespace use the following fabric
+To add the Logging aspect (`LogAttribute`) to all the methods that appear in types within namespaces that starts with the prefix `Outer.Inner` and all the child types located in any descendent namespace use the following fabric
 
-[!metalama-sample ~/code/DebugDemo3/Fabric.cs tabs="target"]
+[!metalama-sample  ~/code/DebugDemo3/Fabric.cs tabs="target"]
 
 In this fabric, we use `GlobalNamespace.GetDecendant` method to get all the children's namespace of the given namespace (In this case `Outer.Inner`). The first `SelectMany` calls get all the types in these namespaces and the inner `SelectMany` call gets all the methods in these types. This results in an `IAspectReceiver<IMethod>`. So the final call <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspectIfEligible*> adds the `Log` aspect to all eligible methods.
 
