@@ -1,17 +1,20 @@
 ﻿using Metalama.Documentation.QuickStart;
-
-public class Demo
+using Metalama.Framework;
+namespace DebugDemo3
 {
-    public static void Main(string[] args)
+    public class Demo
     {
-        string detailXML = GetCustomerDetailsXML("CUST001");
-    }
+        public static void Main(string[] args)
+        {
+            string detailXML = GetCustomerDetailsXML("CUST001");
+        }
 
-    [Retry]
-    [Log]
-    public static string GetCustomerDetailsXML(string customerID)
-    {
-        //TODO
-        return string.Empty;
+        [Retry]
+        [Log]
+        public static string GetCustomerDetailsXML(string customerID)
+        {
+            //TODO
+            return string.Empty;
+        }
     }
 }
