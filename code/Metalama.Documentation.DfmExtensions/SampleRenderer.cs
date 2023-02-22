@@ -210,13 +210,35 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
 
             void AppendTab( string tabId, string header, string content )
             {
-                if (IsTabEnabled( tabId ))
+                // Ignore the tab if it is not enabled.
+                if ( !IsTabEnabled( tabId ) )
                 {
-                    tabHeaders.Append( $"<li><a href=\"#tabpanel_{snippetId}_{tabId}\">{header}</a></li>" );
-                    tabBodies.Append( $"<div id=\"tabpanel_{snippetId}_{tabId}\">{content}</div>" );
-                    lastContent = content;
-                    tabCount++;
+                    return;
                 }
+
+                // Ignore any empty tab.
+                if ( string.IsNullOrWhiteSpace( content ) )
+                {
+                    return;
+                }
+
+                // Ignore any tab that has only comments.
+                var code = Html2Text( content ).Split( new[] { '\r', '\n' } );
+                if ( code.All( line =>
+                {
+                    var trimmed = line.TrimStart();
+                    return string.IsNullOrWhiteSpace( trimmed ) || trimmed.StartsWith( "//" );
+                } ))
+                {
+                    return;
+                }
+
+
+                // Append the tab if it is not ignored.
+                tabHeaders.Append( $"<li><a href=\"#tabpanel_{snippetId}_{tabId}\">{header}</a></li>" );
+                tabBodies.Append( $"<div id=\"tabpanel_{snippetId}_{tabId}\">{content}</div>" );
+                lastContent = content;
+                tabCount++;
             }
 
             string aspectCs;
@@ -247,10 +269,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
                 // TODO: we should add this to the TryMetalama link, but TryMetalama does not support 3 buffers. 
             }
 
-            if (IsTabEnabled( "transformed" ))
-            {
-                AppendTab( "transformed", "Transformed Code", transformedHtml );
-            }
+            AppendTab( "transformed", "Transformed Code", transformedHtml );
 
             if (File.Exists( programOutputPath ))
             {
