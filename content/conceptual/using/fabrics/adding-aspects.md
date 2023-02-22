@@ -9,20 +9,6 @@ In <xref:quickstart-adding-aspects>, you learned how to apply aspects one at a t
 
 In this article, you will learn how to use _fabrics_ to add aspects to your targets _programmatically_.
 
-## Fabrics
-
-_Fabrics_ are special classes in your code that execute at compile time, within the compiler, and at design time, within your IDE. Unlike aspects, fabrics do not need to be _applied_ to any declaration, nor do they need to be _called_ from anywhere. Their main method will be called at the right time just because it exists in your code.
-
-Fabrics are really helpful when you need to add aspects to different targets programmatically.
-
-There are three different types of fabrics:
-
-| Fabric type | Abstract class | Main method | Purpose
-|------------|---------|--|--|
-| Project Fabric| <xref:Metalama.Framework.Fabrics.ProjectFabric>  | <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> | To add aspects to different declarations in the current project.
-| Namespace Fabric| <xref:Metalama.Framework.Fabrics.NamespaceFabric>  | <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> | To add aspects to different declarations in the namespace that contains the fabric type.
-| Type Fabric | <xref:Metalama.Framework.Fabrics.TypeFabric> | <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> | To add aspects to different members of the type that contains the nested fabric type.
-
 ## Adding aspects using fabrics
 
 To add aspects using fabrics:

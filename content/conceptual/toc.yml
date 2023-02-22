@@ -26,8 +26,13 @@ items:
           topicUid: debugging-aspect-oriented-code
         - name: Applying live templates
           topicUid:  applying-live-templates
-        - name: Adding many aspects at once
-          topicUid: adding-aspects-in-bulk
+        - name: Using fabrics
+          topicUid: using-fabrics
+          items:
+          - name: Adding aspects
+            topicUid: adding-aspects-in-bulk
+          - name: Configuring many projects at once
+            topicUid: configuring-many-projects
     - name: Creating aspects
       topicUid: aspects
       items:

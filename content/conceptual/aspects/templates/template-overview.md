@@ -32,7 +32,8 @@ Metalama recognizes compile-time-only code thanks to the <xref:Metalama.Framewor
 
 You can create compile-time classes by annotating them with <xref:Metalama.Framework.Aspects.CompileTimeAttribute>.
 
-All compile-time code _must_ be strictly compatible with .NET Standard 2.0, even if the containing project targets a richer platform. We will explain why in the next section.
+> [!WARNING]
+> All compile-time code _must_ be strictly compatible with .NET Standard 2.0, even if the containing project targets a richer platform. Any code that is not strictly .NET Standard 2.0 will be considered run-time code.
 
 
 ### Scope-neutral code
