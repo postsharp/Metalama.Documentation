@@ -1,5 +1,6 @@
 ---
 uid: diagnostics
+level: 300
 ---
 # Reporting and suppressing diagnostics
 

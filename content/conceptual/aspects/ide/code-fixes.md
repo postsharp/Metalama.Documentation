@@ -1,5 +1,6 @@
 ---
 uid: code-fixes
+level: 300
 ---
 
 # Offering code fixes and refactorings

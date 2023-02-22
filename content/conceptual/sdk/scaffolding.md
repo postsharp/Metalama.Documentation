@@ -1,5 +1,6 @@
 ---
 uid: sdk-scaffolding
+level: 400
 ---
 
 # Creating a Metalama SDK solution structure

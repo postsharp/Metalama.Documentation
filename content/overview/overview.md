@@ -4,7 +4,7 @@ uid: overview
 
 # Metalama Overview
 
-> ![WARNING]
+> [!WARNING]
 > This chapter has not been written yet.
 
 The objective of this book, when it will be written, will be to guide you in the _evaluation_ of Metalama. You will not learn _how_ to deploy and use it, but _why_ and _whether_ it is for you.

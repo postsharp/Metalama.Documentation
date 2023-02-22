@@ -14,7 +14,7 @@ items:
         - name: Registering a License
           topicUid: register-license    
     - name: Using Metalama 
-      topicUid: quickstart-using-metalama
+      topicUid: quickstart-using-aspects
       items:
         - name: Getting aspects   
           topicUid: getting-aspects
@@ -26,13 +26,26 @@ items:
           topicUid: debugging-aspect-oriented-code
         - name: Applying live templates
           topicUid:  applying-live-templates
-        - name: Adding many aspects at once
-          topicUid: adding-aspects-in-bulk
+        - name: Using fabrics
+          topicUid: using-fabrics
+          items:
+          - name: Adding aspects
+            topicUid: adding-aspects-in-bulk
+          - name: Configuring many projects at once
+            topicUid: configuring-many-projects
     - name: Creating aspects
       topicUid: aspects
       items:
-        - name: Enhancing a method
-          topicUid: creating-simple-method-aspect
+        - name: Creating simple aspects
+          topicUid: simple-aspects
+          items:
+          - name: Overriding methods
+            topicUid: simple-override-method
+          - name: Overriding fields or properties
+            topicUid: simple-override-property
+          - name: Validating parameters, fields and properties
+            topicUid: simple-contracts
+      
         - name: Writing T# templates
           topicUid: templates
           items:
@@ -48,7 +61,7 @@ items:
               topicUid: reflection
         - name: Understanding the framework design
           topicUid: aspect-design
-        - name: Transforming code
+        - name: Advising code
           topicUid: advising-code
           items:
           - name: Concepts
@@ -90,20 +103,19 @@ items:
           topicUid: aspect-inheritance
         - name: Ordering aspects
           topicUid: ordering-aspects
-          items:
-          - name: Aspect composition
-            topicUid: aspect-composition
         - name: Exposing configuration
           topicUid: exposing-configuration
-        - name: Testing aspects
+        - name: Testing and debugging aspects
           topicUid: testing
           items:
-          - name: Compile-time testing
+          - name: Testing aspects
             topicUid: aspect-testing        
-          - name: Run-time testing
+          - name: Testing run-time behavior
             topicUid: run-time-testing
           - name: Debugging aspects
             topicUid: debugging-aspects            
+          - name: Unit-testing compile-time code
+            topicUid: compile-time-testing
         - name: Advising a single type with a fabric
           topicUid: fabrics-advising
         - name: Distributing projects that use aspects
@@ -165,5 +177,7 @@ items:
           topicUid: packages
         - name: Pipeline
           topicUid: pipeline
+        - name: Aspect composition
+          topicUid: aspect-composition
         - name: Execution order of fabrics
           topicUid: fabrics-execution-order

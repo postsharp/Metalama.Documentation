@@ -1,5 +1,6 @@
 ---
 uid: implementation
+level: 400
 ---
 
 # Under the hood
@@ -7,3 +8,5 @@ uid: implementation
 <xref:pipeline> 
 
 <xref:fabrics-execution-order>
+
+<xref:aspect-composition>

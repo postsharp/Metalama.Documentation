@@ -1,5 +1,6 @@
 ---
 uid: quickstart-adding-aspects
+level: 100
 ---
 
 # Adding aspects to your code

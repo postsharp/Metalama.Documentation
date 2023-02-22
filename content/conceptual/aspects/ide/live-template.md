@@ -1,5 +1,6 @@
 ---
 uid: live-template
+level: 200
 ---
 
 # Exposing an aspect as a live template

@@ -1,5 +1,6 @@
 ---
 uid: quickstart-using-aspects
+level: 100
 ---
 
 # Using Metalama

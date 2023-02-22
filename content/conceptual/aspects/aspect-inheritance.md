@@ -1,5 +1,6 @@
 ---
 uid: aspect-inheritance
+level: 300
 ---
 
 # Applying aspects to derived types

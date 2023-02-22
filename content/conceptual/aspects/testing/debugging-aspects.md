@@ -1,6 +1,8 @@
 ---
 uid: debugging-aspects
+level: 300
 ---
+
 # Debugging aspects
 
 Debugging the compile-time logic of an aspect is currently difficult because the compiler does not execute your source code.  Instead, the transformed code is produced from your source code and stored under an unpredictable path.

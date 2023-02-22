@@ -1,5 +1,6 @@
 ---
 uid: template-dynamic-code
+level: 200
 ---
 
 # Generating run-time code

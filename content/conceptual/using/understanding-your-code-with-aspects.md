@@ -1,5 +1,6 @@
 ---
 uid: understanding-your-code-with-aspects
+level: 100
 ---
 
 # Understanding your aspect-oriented code

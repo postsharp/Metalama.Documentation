@@ -1,5 +1,6 @@
 ---
 uid: templates
+level: 200
 ---
 
 # Writing T# templates

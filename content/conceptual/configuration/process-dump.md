@@ -1,5 +1,6 @@
 ---
 uid: process-dump
+level: 200
 ---
 
 # Creating a process dump
@@ -12,13 +13,22 @@ If you are experiencing issues with Metalama, our support team may ask you to pr
 > Process dumps may contain a copy of your source code. Although we will handle process dumps as confidential material, your company may not allow you to send us a process dump.
 
 ## Step 1. Install the PostSharp Command-Line Tool
+
 Install the `metalama` command-line tool as described in <xref:dotnet-tool>.
 
-## Step 2. Edit diagnostics.json
+## Step 2. Install the `dotnet dump` tool
+
+Execute the following command:
+
+```powershell
+dotnet tool install --global dotnet-dump
+```
+
+## Step 3. Edit diagnostics.json
 
 Execute the command:
 
-```
+```powershell
 metalama config edit diagnostics
 ```
 
@@ -56,7 +66,7 @@ In the next example, Metalama is configured to capture a process dump for the co
 
 ```
 
-## Step 3. Execute Metalama
+## Step 4. Execute Metalama
 
 Restart the logged processes:
 
@@ -68,14 +78,15 @@ Execute the actions that trigger the issue.
 > [!WARNING]
 > Do not forget to disable the diagnostic setting after you are done.
 
-## Step 4. Upload the process dump to an online drive
+## Step 5. Upload the process dump to an online drive
 
 You will find process dumps under the `%TEMP%\Metalama\CrashReports` directory with extension `*.dmp.gz`.
 Upload this file to an online storage service like OneDrive.
 
-## Step 5. Send us the URL through a private channel
+## Step 6. Send us the URL through a private channel
 
-**NEVER** share the process dump URL publicly on a service like GitHub Issues.
+> [!WARNING]
+> **NEVER** share the process dump URL publicly on a service like GitHub Issues.
 
 Instead, send us the hyperlink by [email](mailto:hello@postsharp.net).
 

@@ -6,11 +6,12 @@ uid: conceptual
 
 | Chapter              | Description                                                                                                              |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------|
-| <xref:quickstart> | This chapter puts you on the fast track to learn the most common usage scenarios of Metalama. |
 | <xref:requirements> | This article describes the requirements of Metalama on the development environment and its compatibility with project types and platforms.
-| <xref:deployment>    | This chapter describes the components that make Metalama, how to install them, and how to configure Metalama before use. |
-| <xref:fundamentals>    | This chapter explains the fundamental concepts of Metalama.   |
-| <xref:aspects>       | This chapter explains how to create your own aspects. You can skip this section if only plan to use aspects.                                                                   |
+| <xref:installing>   | This chapter describes how to install the different components of Metalama. |
+| <xref:quickstart-using-aspects> | This chapter explains how to use Metalama with prebuilt aspects, but does not explain how to create your own aspects.
+| <xref:aspects>      | This chapter explains how to create your own aspects.
 | <xref:validation>    | This section explains how to programmatically validate code with our without aspects.
 | <xref:sdk> | This chapter describes how to extend Metalama with the Roslyn API.
-
+| <xref:configuration>    | This chapter describes how to configure Metalama for specific situations or for troubleshooting. |
+| <xref:migration> | This chapter explains why, when and how to migrate your projects from PostSharp to Metalama.
+| <xref:implementation> | This chapter explains a few implementation details.

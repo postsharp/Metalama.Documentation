@@ -1,5 +1,6 @@
 ---
 uid: aspect-design
+level: 300
 ---
 
 # Understanding the aspect framework design

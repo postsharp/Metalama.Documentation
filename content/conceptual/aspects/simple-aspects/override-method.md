@@ -1,15 +1,16 @@
 ---
-uid: creating-simple-method-aspect
+uid: simple-override-method
+level: 200
 ---
 
-# Enhancing a method 
+# Getting started: overriding a method 
 
 
-So far you have used the prebuilt aspects. If you were thinking to get your feet wet, by creating simple aspects that could enhance the behaviour of your methods, then you shall learn how to do that in this chapter. 
+So far you have used the prebuilt aspects. If you were thinking to get your feet wet, by creating simple aspects that could enhance the behavior of your methods, then you shall learn how to do that in this chapter. 
 
-# Creating your first method aspect 
-In this section you shall create your first ever method aspect. Follow the following steps 
-to create the first aspect. 
+## Creating your first method aspect 
+
+In this section, you shall create your first-ever method aspect. Follow the following steps to create the first aspect. 
 
 
 **Step 1**: To create the simplest possible method aspect, create a class in your project.
@@ -47,7 +48,7 @@ Names of the properties are really clear. So if you want to get to the name of t
 
 Now let's see how this information can be used to enhance the log aspect that is already created.  
 
-The following code shows how this can be used 
+The following code shows how this can be used:
 
 [!metalama-sample ~/code/Metalama.Documentation.SimpleAspects/SpecificLogAttribute.cs tabs="target"]
 
@@ -55,6 +56,7 @@ The following code shows how this can be used
 > This is the prelude of how you can create several custom template method for your aspect using the T# language. The next chapter <xref:tsharp-tempaltes> will show several cases of templates. 
 
 ## Meet the Retry aspect. 
+
 In the previous chapter, you have used the built-in aspect `Retry`. In this section, you shall learn to create it from scratch. 
 
 **Step 1** Create a class called `RetryFewTimes`

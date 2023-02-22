@@ -1,5 +1,6 @@
 ---
 uid: eligibility
+level: 300
 ---
 
 # Defining the eligibility of aspects
@@ -11,7 +12,7 @@ Most aspects are designed and implemented for specific kinds of target declarati
 Defining the eligibility of an aspect has the following benefits:
 
 * **Predictable behavior**. Applying an aspect to a declaration for which it was not designed or tested can be a very confusing experience for your users because of error messages they may not understand. It is your responsibility, as the author of the aspect, to ensure that using your aspect is easy and predictable.
-* **Standard error messages**. All eligibility error messages are standard. It is easier for aspect users. >>> Concretely, how does this benefit users? Does it help them read those error messages, find out what those messages mean, or fix the problems? <<<
+* **Standard error messages**. All eligibility error messages are standard. They are easier to understand for aspect users. 
 * **Relevant suggestions in the IDE**. The IDE will only propose code action in the refactoring menu for eligible declarations.
 
 

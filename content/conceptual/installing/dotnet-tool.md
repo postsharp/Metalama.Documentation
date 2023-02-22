@@ -1,5 +1,6 @@
 ---
 uid: dotnet-tool
+level: 200
 ---
 
 # Installing the Metalama Command Line Tool
