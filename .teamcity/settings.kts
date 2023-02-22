@@ -388,6 +388,22 @@ object PublicDeployment : BuildType({
 
         }
 
+        dependency(AbsoluteId("Metalama_MetalamaLinqPad_PublicDeployment")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+        }
+
+        dependency(AbsoluteId("Metalama_MetalamaSamples_PublicDeployment")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+        }
+
         dependency(AbsoluteId("Metalama_Migration_MetalamaMigration_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
@@ -398,6 +414,14 @@ object PublicDeployment : BuildType({
                 cleanDestination = true
                 artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
             }
+
+        }
+
+        dependency(AbsoluteId("Metalama_Migration_MetalamaMigration_PublicDeployment")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
 
         }
 
