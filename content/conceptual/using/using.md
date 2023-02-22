@@ -27,5 +27,5 @@ Read this chapter if:
 |<xref:understanding-your-code-with-aspects>| This article explains how to use Code Lens and Code Diff to understand your code.
 |<xref:debugging-aspect-oriented-code> | This article explains how you can debug this transformed code as you would otherwise do with Visual Studio.
 |<xref:applying-live-templates> | Live templates are special kinds of aspects that directly modify your source code in the editor. This article explains how to use them.
-|<xref:adding-aspects-in-bulk>| Adding aspects by hand or by context menu is not always possible or viable. Sometimes a programmatic way is needed to add aspects to different targets. This article shows how you can use `Fabrics` to add aspects to different targets programmatically.
+|<xref:fabrics-adding-aspects>| Adding aspects by hand or by context menu is not always possible or viable. Sometimes a programmatic way is needed to add aspects to different targets. This article shows how you can use `Fabrics` to add aspects to different targets programmatically.
 

@@ -30,9 +30,9 @@ items:
           topicUid: using-fabrics
           items:
           - name: Adding aspects
-            topicUid: adding-aspects-in-bulk
+            topicUid: fabrics-adding-aspects
           - name: Configuring many projects at once
-            topicUid: configuring-many-projects
+            topicUid: fabrics-many-projects
     - name: Creating aspects
       topicUid: aspects
       items:

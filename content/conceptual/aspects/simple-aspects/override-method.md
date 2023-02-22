@@ -44,7 +44,7 @@ it can almost be thought of as a keyword that lets you tap into the meta-model o
 You can get to the target by a call to the `Target` property of the `meta` class like `meta.Target`. 
 Names of the properties are really clear. So if you want to get to the name of the method you are targetting from the aspect code, you can do so by calling <xref:Metalama.Framework.Aspects.IMetaTarget.Method.Name>
 
-`meta.Target.Method.Name` . This will give you just the name of the method. You can get the fully qualified name of the method by calling `meta.Target.Method.ToDisplayString()` method. 
+`meta.Target.Method.Name` . This will give you just the name of the method. You can get the fully qualified name of the method by calling the `meta.Target.Method.ToDisplayString()` method. 
 
 Now let's see how this information can be used to enhance the log aspect that is already created.  
 

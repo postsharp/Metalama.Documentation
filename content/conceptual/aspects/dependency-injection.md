@@ -54,7 +54,7 @@ When there are several dependency injection frameworks in a project, Metalama wi
 
 To customize the selection strategy of the dependency injection framework for a specific aspect and dependency:
 
-1. Add a <xref:Metalama.Framework.Fabrics.ProjectFabric> to your project as described in <xref:fabrics-configuring>.
+1. Add a <xref:Metalama.Framework.Fabrics.ProjectFabric> to your project as described in <xref:fabrics-configuration>.
 2. From the <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method, call the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.DependencyInjectionOptions*?text=amender.Project.DependencyInjectionOptions()> method to access the options.
 3. Set the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptions.Selector?text=DependencyInjectionOptions.Selector> property.
 

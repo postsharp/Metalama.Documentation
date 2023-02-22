@@ -23,10 +23,10 @@ The first step is to add the aspect library to your project using a `<ProjectRef
 
 1. Position the caret on the name of the declaration on which you want to apply the aspect.
 2. Click on the lightbulb or refactoring icon, and choose to _Apply live template_.
-    ![Screenshot](../images/../using-aspects/images/LiveTemplate1.png)
+    ![Screenshot](images/LiveTemplate1.png)
 
 3. Choose the aspect that you want to apply
-    ![Screenshot](../images/../using-aspects/images/LiveTemplate2.png)
+    ![Screenshot](images/LiveTemplate2.png)
 
 > [!NOTE]
 > The author of the live template can customize the appearance of the live template in the refactoring menu. It may be under a different menu item than _Apply live template_.

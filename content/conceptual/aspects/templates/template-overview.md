@@ -11,7 +11,7 @@ The difference between T# and C# is that the T# compiler executes within the com
 
 ## Scopes of code
 
-T# templates are a mix of _compile-time_ and _run-time_ expressions and statements. Compile-time expressions and statements are evaluated at compile time in the compiler (or at design time in the IDE when you use the [Preview feature](xref:preview)), and result in the generation of other run-time expressions.
+T# templates are a mix of _compile-time_ and _run-time_ expressions and statements. Compile-time expressions and statements are evaluated at compile time in the compiler (or at design time in the IDE when you use the Diff Preview feature), and result in the generation of other run-time expressions.
 
 Metalama analyzes T# and separates the compile-time part from the run-time part by applying a set of inference rules. Compile-time expressions and statements often start with the `meta` pseudo-keyword. <xref:Metalama.Framework.Aspects.meta> is actually a static class, but it is useful to think of it as a kind of magic keyword that means that it starts a compile-time expression or statement.
 

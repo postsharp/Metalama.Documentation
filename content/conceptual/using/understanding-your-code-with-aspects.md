@@ -45,7 +45,7 @@ Another interesting thing that CodeLense shows is a clickable link to show the t
 
 To preview the change click on the link `Preview Transformed Code` It will show the result like this
 
-![Metalama_Diff_Side_by_Side](../images/../using-aspects/images/lama_diff_side_by_side.png)
+![Metalama_Diff_Side_by_Side](images/lama_diff_side_by_side.png)
 
 > [!NOTE]
 > This preview dialog can also be opened by pressing `Ctrl + K` followed by `0`
@@ -54,11 +54,11 @@ The screenshot shows just the source of `FlakyMethod` and the modified code by t
 
 To see changes for a particular section of the code, select that part of the code from the dropdown as shown below.
 
-![Diff_change_selector](../images/../using-aspects/images/metalama_diff_change_view_selector.png)
+![Diff_change_selector](images/metalama_diff_change_view_selector.png)
 
 You can also see this from the Context menu that is popped when you right-click on the method. The following screenshots show the highlighted option `Show Metalama Diff`.
 
-![Metalama_Diff_Menu_Option](../images/../using-aspects/images/showing_metalama_diff_option.png)
+![Metalama_Diff_Menu_Option](images/showing_metalama_diff_option.png)
 
 ## Implicit aspect addition
 

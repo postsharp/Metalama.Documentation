@@ -1,5 +1,5 @@
 ---
-uid: configuring-many-projects
+uid: fabrics-many-projects
 level: 300
 ---
 

@@ -8,6 +8,5 @@ Metalama does not support XML configuration files like `postsharp.config` or `My
 
 See the following articles for details:
 
-* <xref:fabrics-aspects>
-* <xref:fabrics-configuring>
+* <xref:using-fabrics>
 

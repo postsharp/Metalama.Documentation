@@ -28,5 +28,6 @@ There are four different types of fabrics:
 
 | Article | Description |
 |----|-----|
-| <xref:adding-aspects-in-bulk> | This article describes how to add aspects using fabrics. |
-| <xref:configuring-many-projects> | This article describes how to add aspects to many projects at once. |
+| <xref:fabrics-adding-aspects> | This article describes how to add aspects using fabrics. |
+| <xref:fabrics-configuration> | This article explains how to configure aspect libraries using fabrics. |
+| <xref:fabrics-many-projects> | This article describes how to add aspects to many projects at once. |

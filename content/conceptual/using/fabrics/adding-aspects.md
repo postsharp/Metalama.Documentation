@@ -1,5 +1,5 @@
 ---
-uid: adding-aspects-in-bulk
+uid: fabrics-adding-aspects
 level: 200
 ---
 

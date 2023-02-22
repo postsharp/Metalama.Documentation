@@ -6,7 +6,7 @@ uid: migrating-multicasting
 
 Multicasting, in PostSharp, is a feature of all aspects that allows you to target several declarations using a single custom attribute or a single XML element in the `postsharp.config` configuration file. Multicasting, in PostSharp, is exposed by `MulticastAttribute`, the ultimate base type of all aspect classes.
 
-Multicasting is not implemented as a core feature of Metalama but as an extension. We took that decision because the goal of adding an aspect to several declarations is better achieved in Metalama using _fabrics_, so you may eventually decide not to use multicasting. For details, see <xref:fabrics-aspects>.
+Multicasting is not implemented as a core feature of Metalama but as an extension. We took that decision because the goal of adding an aspect to several declarations is better achieved in Metalama using _fabrics_, so you may eventually decide not to use multicasting. For details, see <xref:fabrics-adding-aspects>.
 
 Multicasting is provided in Metalama for backward compatibility with PostSharp because of our objective _not_ to require PostSharp users to change their _business code_ when they migrate to Metalama, but only their _aspect code_. Multicasting in Metalama is implemented by the <xref:Metalama.Extensions.Multicast> namespace. The implementation of this namespace is [open source](https://github.com/postsharp/Metalama.Extensions/tree/master/src/Metalama.Extensions.Multicast).
 

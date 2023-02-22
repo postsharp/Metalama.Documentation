@@ -25,7 +25,7 @@ Then sort the aspects by importance. You will later use this list to decide in w
 
 For each aspect, determine if _attribute multicasting_ is used, and how. All PostSharp aspects implicitly inherit from the `MulticastAttribute`, so all aspects _can_ be multicast, but not all actually are. To determine for which aspects the multicasting feature is used, do a "Find in Files" for the following substrings: `AttributeTarget` or `AttributeExclude`.
 
-If you only find that an aspect is multicast from assembly-level custom attributes, it does not mean that your Metalama aspect will have to implement multicasting. Indeed, it is more elegant to use fabrics than assembly-level multicasting. See <xref:fabrics-aspects> for details. If the source code uses multicasting from classes or structs, your Metalama aspect will need to implement multicasting.
+If you only find that an aspect is multicast from assembly-level custom attributes, it does not mean that your Metalama aspect will have to implement multicasting. Indeed, it is more elegant to use fabrics than assembly-level multicasting. See <xref:using-fabrics> for details. If the source code uses multicasting from classes or structs, your Metalama aspect will need to implement multicasting.
 
 
 ## Step 2. Verify that it's a good time to migrate
@@ -81,14 +81,14 @@ If you have identified in Step 1 that the aspect should support multicasting, se
 
 ## Step 7. Migrate usages of multicasting
 
-The best way to migrate assembly multicasting is to use a project fabric as described in <xref:fabrics-aspects>.
+The best way to migrate assembly multicasting is to use a project fabric as described in <xref:fabrics-adding-aspects>.
 
 For type-level multicasting, if you have built multicasting into your Metalama aspects as described in <xref:migrating-multicasting>, it should be enough to do a big "Replace in Files" to replace the namespace `PostSharp.Extensibility` to `Metalama.Extensions.Multicast`.
 
 
 ## Step 8. Migrate configuration
 
-If you have configuration or multicasting in a PostSharp file like `postsharp.config` or `MyProject.psproj`, they should be migrated to project fabrics as described in <xref:fabrics-configuring>.
+If you have configuration or multicasting in a PostSharp file like `postsharp.config` or `MyProject.psproj`, they should be migrated to project fabrics as described in <xref:fabrics-configuration>.
 
 For details, see <xref:migrating-configuration>.
 
