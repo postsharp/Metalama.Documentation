@@ -39,4 +39,14 @@ If you have only worked with methods so far, you may be already used to using th
 
 If you need to get the property value from the setter, or if you need to set the property value to something else than the `value` parameter, you can do it by getting or setting the `meta.Target.FieldOrProperty.Value` property.
 
-[comment]: # (TODO: example)
+
+
+## Example 1: Creating a fullname from First and last name
+
+The following aspect shows how you can create a fullname from two settable properties (`FirstName` and `LastName` in this case). This template method shows how `meta.This` is used to get to the `this` which represents the target type. 
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/Name.cs name="Creating fullname from first and last name"]
+
+## Example 2: Changing case of string properties
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/UpperCase.cs name="Creating fullname from first and last name"]
