@@ -1,0 +1,8 @@
+﻿Customer #1 details
+Name = Dr. Sam
+Email = someone@somedomain.com
+Phone = +1-123-4567-890
+Customer #2 details
+Name = Mrs. Jennifer
+Email = jenni10110@yahoo.com
+Phone = +1-123-4567-890

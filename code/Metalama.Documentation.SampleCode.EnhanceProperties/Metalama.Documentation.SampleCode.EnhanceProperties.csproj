@@ -16,6 +16,12 @@
       <NoWarn>1701;1702;169;649;67;8618</NoWarn>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Include="MB.t.cs" />
+      <Compile Include="PhoneNumberUSA.t.cs" />
+      <Compile Include="ToMoney.t.cs" />
+    </ItemGroup>
+
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />

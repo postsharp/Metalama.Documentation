@@ -50,3 +50,20 @@ The following aspect shows how you can create a fullname from two settable prope
 ## Example 2: Changing case of string properties
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/UpperCase.cs name="Creating fullname from first and last name"]
+
+## Example 3: Setting a default value to string properties
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/DefaultStringValue.cs name="Creating fullname from first and last name"]
+
+## Example 4: Converting raw byte numbers to MB on the fly 
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/MB.cs name="Converting bytes to MB"]
+
+## Example 5: Using a format for strings that represent Money. 
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/ToMoney.cs name="Formatting strings like Money"]
+
+## Example 6: Formatting USA phone numbers 
+
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/PhoneNumberUSA.cs name="Formatting strings like USA phones"]
