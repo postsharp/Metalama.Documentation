@@ -1,11 +1,5 @@
 ﻿using Metalama.Framework.Aspects;
-using Metalama.Framework.Code;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+
 
 namespace Doc.PhoneNumber
 {
@@ -16,14 +10,12 @@ namespace Doc.PhoneNumber
             get => meta.Proceed();
             set
             {
-                meta.Proceed();
-                if (meta.Target.Property.Type.Is(SpecialType.String))
+                if (value != null)
                 {
-                    var phone = meta.Target.Property.Value?.ToString();
-                    if (phone != null && Regex.Match(phone, "[0-9]{10}").Success)
-                    {
-                        meta.Target.Property.Value = phone.Insert(3, "-").Insert(7, "-");
-                    }
+                    var areaCode = value.Substring(0, 3);
+                    var part1 = value.Substring(3, 3);
+                    var part2 = value.Substring(6);
+                    meta.Target.Property.Value = $"({areaCode})-{part1}-{part2}";
                 }
             }
         }

@@ -48,22 +48,16 @@ The following aspect shows how you can create a fullname from two settable prope
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/Name.cs name="Creating fullname from first and last name"]
 
 ## Example 2: Changing case of string properties
+Let's say you have a class that is used to represent shipment details between two airports. 
+Generally airport services require the airport code in uppercases but it is not always guranteed to 
+get the airport codes in uppercase. The following property aspect shows how you can change the case of the assigned airport code to Upper case. 
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/UpperCase.cs name="Creating fullname from first and last name"]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/UpperCase.cs name="Changing case to Upper case"]
 
-## Example 3: Setting a default value to string properties
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/DefaultStringValue.cs name="Creating fullname from first and last name"]
+## Example 3: Formatting USA phone numbers 
 
-## Example 4: Converting raw byte numbers to MB on the fly 
-
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/MB.cs name="Converting bytes to MB"]
-
-## Example 5: Using a format for strings that represent Money. 
-
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/ToMoney.cs name="Formatting strings like Money"]
-
-## Example 6: Formatting USA phone numbers 
-
+Phone numbers are saved in many different formats. However, it is required to have a normalization scheme for all phone numbers. The following property aspect shows how you can use a common format for USA phone numbers
+like (XXX)-XXX-XXXX. 
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/PhoneNumberUSA.cs name="Formatting strings like USA phones"]

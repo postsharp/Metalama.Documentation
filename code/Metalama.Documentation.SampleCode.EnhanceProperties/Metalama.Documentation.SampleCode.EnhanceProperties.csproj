@@ -17,6 +17,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="DefaultStringValue.Aspect.cs" />
+      <Compile Remove="DefaultStringValue.cs" />
+      <Compile Remove="MB.Aspect.cs" />
+      <Compile Remove="MB.cs" />
+      <Compile Remove="ToMoney.Aspect.cs" />
+      <Compile Remove="ToMoney.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Compile Include="MB.t.cs" />
       <Compile Include="PhoneNumberUSA.t.cs" />
       <Compile Include="ToMoney.t.cs" />

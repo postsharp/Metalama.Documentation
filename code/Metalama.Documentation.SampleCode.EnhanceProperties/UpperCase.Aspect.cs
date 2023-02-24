@@ -1,10 +1,5 @@
 ﻿using Metalama.Framework.Aspects;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Doc.UpperCase
 {
@@ -18,10 +13,15 @@ namespace Doc.UpperCase
             get => meta.Proceed();
             set
             {
-                //Get the value and set it with what's given 
-                meta.Proceed();
                 //Now change the case to UpperCase.
-                meta.Target.Property.Value = meta.Target.Property.Value?.ToString().ToUpper();
+                if (value != null)
+                {
+                    meta.Target.Property.Value = value.ToUpper();
+                }
+                else
+                {
+                    meta.Target.Property.Value = value;
+                }
             }
         }
     }

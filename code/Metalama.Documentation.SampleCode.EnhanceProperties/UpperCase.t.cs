@@ -1,43 +1,54 @@
-using Microsoft.CodeAnalysis.Operations;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 namespace Doc.UpperCase
 {
     public class Shipment
     {
-        public string CustomerName { get; set; }
-        private string _from;
+        private string? _from;
         [UpperCase]
-        public string From
+        public string? From
         {
             get
             {
                 return _from;
             }
+
             set
             {
-                this._from = value;
-                this._from = this._from?.ToString().ToUpper();
+                if (value != null)
+                {
+                    this._from = value.ToUpper();
+                }
+                else
+                {
+                    this._from = value;
+                }
             }
         }
-        private string _to;
+
+        private string? _to;
         [UpperCase]
-        public string To
+        public string? To
         {
             get
             {
                 return _to;
             }
+
             set
             {
-                this._to = value;
-                this._to = this._to?.ToString().ToUpper();
+                if (value != null)
+                {
+                    this._to = value.ToUpper();
+                }
+                else
+                {
+                    this._to = value;
+                }
             }
         }
     }
+
     public class UpperCase
     {
         public static void Main(string[] args)
