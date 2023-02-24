@@ -40,14 +40,15 @@ If you need to get the property value from the setter, or if you need to set the
 
 
 ### Example: Trimming string fields and properties
-In this aspect, you shall see how you can trim string values. There can be situations when there could be strict limits on the length of strings. The aspect demonstrates a case where code is trimmed and the code is expected to be exactly 7 characters to be valid. 
+In this aspect, you shall see how you can trim string values. There can be situations when there could be strict limits on the length of strings. The aspect demonstrates a case where code is trimmed, and the code is expected to be exactly 7 characters to be valid. 
 
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/Trimmed.cs name="Trimming string fields and properties"]
 
 ### Example: Turning string field and property value to upper case.
 Let's say you have a class that is used to represent shipment details between two airports. 
-Generally, airport services require the airport code in uppercases but it is not always guaranteed to get the airport codes in uppercase. The following property aspect shows how you can change the case of the assigned airport code to Upper case. 
+
+Generally, airport services require the airport code in uppercases, but it is not always guaranteed to get the airport codes in uppercase. The following property aspect shows how you can change the case of the assigned airport code to Upper case.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/UpperCase.cs name="Changing case to Upper case"]
 
@@ -56,7 +57,7 @@ Generally, airport services require the airport code in uppercases but it is not
 
 ### Example: Formatting USA phone numbers 
 
-Phone numbers are saved in many different formats. However, it is required to have a normalization scheme for all phone numbers. The following property aspect shows how you can use a common format for USA phone numbers
+Phone numbers are saved in many formats. However, it is required to have a normalization scheme for all phone numbers. The following property aspect shows how you can use a common format for the USA phone numbers,
 like (XXX)-XXX-XXXX. 
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/PhoneNumberUSA.cs name="Formatting strings like USA phones"]
