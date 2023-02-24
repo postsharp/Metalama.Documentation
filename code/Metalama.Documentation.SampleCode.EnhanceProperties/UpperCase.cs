@@ -6,7 +6,7 @@ namespace Doc.UpperCase
     public class Shipment
     {
         [UpperCase]
-        public string? From { get; set; }
+        public string? From;
 
         [UpperCase]
         public string? To { get; set; }

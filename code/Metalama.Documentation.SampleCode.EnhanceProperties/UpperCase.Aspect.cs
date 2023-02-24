@@ -16,11 +16,11 @@ namespace Doc.UpperCase
                 //Now change the case to UpperCase.
                 if (value != null)
                 {
-                    meta.Target.Property.Value = value.ToUpper();
+                    meta.Target.FieldOrProperty.Value = value.ToUpper();
                 }
                 else
                 {
-                    meta.Target.Property.Value = value;
+                    meta.Target.FieldOrProperty.Value = value;
                 }
             }
         }
