@@ -73,4 +73,6 @@ hard-coded.
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/TimeItAttribute.cs name="Converting bytes to MB"]
 
 
-## Example: Block
+## Example: Blocking a method from being called. 
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/ThrowOnCall.cs name="Blocking calls to some methods based on condition."]
