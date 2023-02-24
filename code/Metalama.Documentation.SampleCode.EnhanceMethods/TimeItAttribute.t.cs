@@ -1,10 +1,7 @@
-using Metalama.Framework.Aspects;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+
 namespace Doc.TimeIt
 {
     public class TimeItDemo
@@ -16,13 +13,15 @@ namespace Doc.TimeIt
             Stopwatch sw = new Stopwatch();
             sw.Start();
             int result;
-            System.Threading.Thread.Sleep(2000);
+            //Simulating a random delay between 500 ms to 2 secs
+            Thread.Sleep(new Random().Next(500, 2000));
             result = 0;
             sw.Stop();
             Console.WriteLine("Finished executing TimeItDemo.SimulatedDelay1()");
             Console.WriteLine($"Time taken :{sw.ElapsedMilliseconds} ms");
             return result;
         }
+
         [TimeIt]
         public static int SimulatedDelay2()
         {
@@ -30,13 +29,15 @@ namespace Doc.TimeIt
             Stopwatch sw = new Stopwatch();
             sw.Start();
             int result;
-            System.Threading.Thread.Sleep(3000);
+            //Simulating a random delay of 3 secs
+            Thread.Sleep(3000);
             result = 0;
             sw.Stop();
             Console.WriteLine("Finished executing TimeItDemo.SimulatedDelay2()");
             Console.WriteLine($"Time taken :{sw.ElapsedMilliseconds} ms");
             return result;
         }
+
         public static void Main(string[] args)
         {
             SimulatedDelay1();
