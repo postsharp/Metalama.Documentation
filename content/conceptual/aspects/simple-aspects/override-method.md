@@ -69,5 +69,4 @@ Note how the overridden implementation in the aspect retries the method being ov
 
 
 
-
-
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/TimeItAttribute.cs name="Converting bytes to MB"]
