@@ -29,6 +29,7 @@
       <Compile Include="MB.t.cs" />
       <Compile Include="PhoneNumberUSA.t.cs" />
       <Compile Include="ToMoney.t.cs" />
+      <Compile Include="Trimmed.t.cs" />
     </ItemGroup>
 
 

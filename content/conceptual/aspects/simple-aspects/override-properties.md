@@ -24,8 +24,6 @@ In <xref:simple-override-method>, you have learned how to change the implementat
 > [!WARNING]
 > When you apply an aspect to a field, Metalama will automatically transform the field into a property. If the field is used by reference using `ref`, `out` and `in` keywords, it will result in a compile-time error.
 
-[comment]: # (TODO: #28909)
-
 ### Example: An empty OverrideFieldOrPropertyAspect aspect
 
 The next example shows an empty implementation of <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> applied to a property and to a field.
@@ -41,20 +39,22 @@ If you need to get the property value from the setter, or if you need to set the
 
 
 
-## Example 1: Trimming string fields and properties
+### Example: Trimming string fields and properties
 In this aspect, you shall see how you can trim string values. There can be situations when there could be strict limits on the length of strings. The aspect demonstrates a case where code is trimmed and the code is expected to be exactly 7 characters to be valid. 
 
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/Trimmed.cs name="Trimming string fields and properties"]
 
-## Example 2: Turning string field and property value to upper case.
+### Example: Turning string field and property value to upper case.
 Let's say you have a class that is used to represent shipment details between two airports. 
 Generally, airport services require the airport code in uppercases but it is not always guaranteed to get the airport codes in uppercase. The following property aspect shows how you can change the case of the assigned airport code to Upper case. 
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/UpperCase.cs name="Changing case to Upper case"]
 
+> [!NOTE]
+> Notice that `From` is a public field and `To` is a public property. They are deliberately kept that way to show that the aspect actually works on both because <xref:Metalama.Framework.Code.IFieldOrProperty> is used in the aspect. If you want to aspect to be applicable only on properties and not on fields you have to use <xref:Metalama.Framework.Code.IProperty> 
 
-## Example 3: Formatting USA phone numbers 
+### Example: Formatting USA phone numbers 
 
 Phone numbers are saved in many different formats. However, it is required to have a normalization scheme for all phone numbers. The following property aspect shows how you can use a common format for USA phone numbers
 like (XXX)-XXX-XXXX. 
