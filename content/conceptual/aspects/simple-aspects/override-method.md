@@ -63,16 +63,19 @@ In the previous chapter, you have used the built-in aspect `Retry`. In this sect
 
 **Step 2** Implement `OverrideMethod` from `OverrideMethodAspect` as shown below. 
 
-[!metalama-sample ~/code/Metalama.Documentation.SimpleAspects/RetryFewTimes.cs tabs="target"]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/RetryFewTimes.cs]
 
 Note how the overridden implementation in the aspect retries the method being overridden. In this example, the number of retries is 
 hard-coded. 
 
 ## Example: Checking how much time a method takes. 
+When you need to find out which method call is taking time, the first thing you generally do is to decorate the method with print statements to find out how much time each call takes. The following aspect lets you wrap that in an aspect. And whenever you need to track the calls to a method, you just have to place this aspect (in the form of the attribute) on the method as shown in the Target code. 
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/TimeItAttribute.cs name="Converting bytes to MB"]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/TimeItAttribute.cs name="Finding how much time a call takes"]
 
 
 ## Example: Blocking a method from being called. 
+
+Sometimes, it is needed to block calls to some particular methods based on some condition. You can see, in the following aspect, how the call is blocked if the given condition is not met.  
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/ThrowOnCall.cs name="Blocking calls to some methods based on condition."]
