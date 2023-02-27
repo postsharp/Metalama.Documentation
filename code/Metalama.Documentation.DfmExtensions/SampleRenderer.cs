@@ -4,6 +4,7 @@ using Microsoft.DocAsCode.MarkdownLite;
 using Newtonsoft.Json;
 using PKT.LZStringCSharp;
 using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
@@ -189,6 +190,11 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
 
             var targetCs = Html2Text( targetHtml );
 
+            var tryFiles = new List<TryPayloadFile>
+            {
+                new( "Program.cs", targetCs, TryFileKind.TargetCode )
+            };
+
             var snippetId = Interlocked.Increment( ref _nextId ).ToString();
 
             var tabHeaders = new StringBuilder();
@@ -207,7 +213,6 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
                 }
             }
 
-            string aspectCs;
             string gitUrlExtension;
             var canTryOnline = true;
 
@@ -215,25 +220,25 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
             {
                 var aspectHtml = File.ReadAllText( aspectHtmlPath );
                 AppendTab( "aspect", "Aspect Code", aspectHtml );
-                aspectCs = Html2Text( aspectHtml );
+                var aspectCs = Html2Text( aspectHtml );
                 gitUrlExtension = ".Aspect.cs";
+
+                tryFiles.Add( new( "Aspect.cs", aspectCs, TryFileKind.AspectCode ) );
             }
             else
             {
-                aspectCs = "";
                 gitUrlExtension = ".cs";
-                canTryOnline = false;
             }
 
             AppendTab( "target", "Target Code", targetHtml );
-
-            string additionalCs = null;
 
             if ( File.Exists( additionalHtmlPath ) )
             {
                 var additionalHtml = File.ReadAllText( additionalHtmlPath );
                 AppendTab( "additional", "Additional Code", additionalHtml );
-                additionalCs = Html2Text( additionalHtml );
+                var additionalCs = Html2Text( additionalHtml );
+
+                tryFiles.Add( new( "Additional.cs", additionalCs, TryFileKind.ExtraCode ) );
             }
 
             if (IsTabEnabled( "transformed" ))
@@ -258,7 +263,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
 
             if (canTryOnline)
             {
-                var tryPayloadJson = JsonConvert.SerializeObject( new { a = aspectCs, p = targetCs, e = additionalCs == null ? null : new[] { new { n = "Additional.cs", c = additionalCs } } } );
+                var tryPayloadJson = JsonConvert.SerializeObject( new TryPayload( tryFiles ) );
                 var tryPayloadHash = LZString.CompressToEncodedURIComponent( tryPayloadJson );
                 var tryUrl = tryBaseUrl + tryPayloadHash;
 
