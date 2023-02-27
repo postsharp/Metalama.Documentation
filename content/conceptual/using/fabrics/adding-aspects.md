@@ -9,6 +9,14 @@ In <xref:quickstart-adding-aspects>, you learned how to apply aspects one at a t
 
 In this article, you will learn how to use _fabrics_ to add aspects to your targets _programmatically_.
 
+## When to use fabrics
+
+Fabrics allow you to add all aspects from a central place. You should use fabrics instead of custom attributes when the decision to add an aspect to a declaration can be easily expressed as a _rule_, and when this rule only depends on the metadata of the declaration, like its name, signature, parent type, implemented interfaces, custom attributes, or any other detail exposed by the [code model](xref:xref:Metalama.Framework.Code).
+
+For instance, if you want to add logging to all public methods of all public types of a namespace, it is better to do it using a fabric.
+
+Conversely, it may not be a good idea to use a fabric to add caching to all methods that start with the word _Get_ because you may end up creating more problems than you solve. Caching is typically an aspect that you would hand-pick, and custom attributes are a better approach in this case.
+
 ## Adding aspects using fabrics
 
 To add aspects using fabrics:
