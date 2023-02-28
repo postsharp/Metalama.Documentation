@@ -20,8 +20,7 @@ In this section, you shall create your first-ever method aspect. Follow the foll
 **Step 3**: Inherit `OverrideMethodAspect` as shown in the code.
 
 
-[!metalama-sample ~/code/Metalama.Documentation.SimpleAspects/SimpleLogAttribute.cs tabs="target"]
-
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods\SimpleLogging.cs]
 
 
 > [!NOTE]
@@ -50,7 +49,7 @@ Now let's see how this information can be used to enhance the log aspect that is
 
 The following code shows how this can be used:
 
-[!metalama-sample ~/code/Metalama.Documentation.SimpleAspects/SpecificLogAttribute.cs tabs="target"]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/SpecificLog.cs]
 
 > [!NOTE]
 > This is the prelude of how you can create several custom template methods for your aspect using the T# language. The next chapter <xref:tsharp-tempaltes> will show several cases of templates. 

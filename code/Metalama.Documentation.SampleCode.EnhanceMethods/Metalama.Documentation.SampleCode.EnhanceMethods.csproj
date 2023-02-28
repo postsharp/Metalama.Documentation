@@ -17,6 +17,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Include="SimpleLogging.t.cs" />
       <Compile Include="TimeItAttribute.t.cs" />
     </ItemGroup>
 
