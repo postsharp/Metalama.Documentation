@@ -18,7 +18,7 @@ To install Metalama Command Line Tool:
 2. Execute the following at the command prompt, replacing `<VERSION>` with the version number you found in the first step.
 
     ```powershell
-    dotnet tool install -g metalama.tool -version <VERSION>
+    dotnet tool install -g metalama.tool --version <VERSION>
     ```
 
     
