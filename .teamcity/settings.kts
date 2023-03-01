@@ -445,7 +445,7 @@ object PublicDeployment : BuildType({
 
 object PublicDeploymentNoDependency : BuildType({
 
-    name = "Deploy [Public]"
+    name = "Standalone Deploy [Public]"
 
     type = Type.DEPLOYMENT
 
@@ -455,7 +455,7 @@ object PublicDeploymentNoDependency : BuildType({
 
     steps {
         powerShell {
-            name = "Deploy [Public]"
+            name = "Standalone Deploy [Public]"
             scriptMode = file {
                 path = "Build.ps1"
             }
