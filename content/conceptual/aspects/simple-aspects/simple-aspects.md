@@ -5,7 +5,7 @@ level: 200
 
 # Creating simple aspects
 
-In <xref:using-metalama>, you learned how to use pre-built aspects in your project. In this section, you will learn to create your first aspect. For this section, we will focus on simple tasks and features, and later sections in this chapter will dive into further details.
+In <xref:using-metalama>, you learned how to use pre-built aspects in your project. In this section you're about to start writing your first aspect. We will focus on simple tasks and features, and later sections in this chapter will dive into further details.
 
 
 ## In this section
