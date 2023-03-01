@@ -18,6 +18,7 @@
 
     <ItemGroup>
       <Compile Include="SimpleLogging.t.cs" />
+      <Compile Include="SpecificLog.t.cs" />
       <Compile Include="TimeItAttribute.t.cs" />
     </ItemGroup>
 

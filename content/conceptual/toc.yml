@@ -59,6 +59,8 @@ items:
               topicUid: template-parameters
             - name: Generating System.Reflection objects
               topicUid: reflection
+            - name: Template examples
+              topicUid: template-examples
         - name: Understanding the framework design
           topicUid: aspect-design
         - name: Advising code

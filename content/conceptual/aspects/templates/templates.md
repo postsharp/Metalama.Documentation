@@ -62,5 +62,13 @@ This chapter contains the following articles:
             This article explains how to debug templates.
         </td>
     </tr>
+     <tr>
+        <td>
+            <xref:template-examples>
+        </td>
+        <td>
+            This article shows some template examples.
+        </td>
+    </tr>
 </table>
 

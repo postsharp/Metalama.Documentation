@@ -29,3 +29,19 @@ Technically speaking, a contract is a piece of code that you inject after _recei
 
 4. The aspect is a custom attribute. You can add it to any field, property, or parameter. To validate the return value of a method, use this syntax: `[return: MyAspect]`.
 
+## Creating `NotNull` aspect 
+You can use <xref:Metalama.Framework.Aspects.ContractAspect> to create a checker that can be used to determine if the parameters of a method is null or not.
+
+
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/NotNull.cs] 
+
+> [!NOTE]
+> Notice how the name of the parameter is obtained by calling `nameof(value)` 
+
+
+
+## Creating `NotEmpty` aspect 
+If you want to protect methods from working on empty strings resulting in annoying failures, then you can create a `[NotEmpty]` aspect like this. 
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/NotEmpty.cs] 
