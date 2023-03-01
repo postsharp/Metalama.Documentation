@@ -1,29 +1,29 @@
-﻿using System;
+using System;
 namespace Doc.Trimmed
 {
-    public class Details
+  public class Details
+  {
+    private string? _code;
+    [Trim]
+    public string? Code
     {
-        private string? _code;
-        [Trim]
-        public string? Code
-        {
-            get
-            {
-                return _code;
-            }
-            set
-            {
-                this._code = value?.Trim();
-            }
-        }
+      get
+      {
+        return _code;
+      }
+      set
+      {
+        this._code = value?.Trim();
+      }
     }
-    public class Program
+  }
+  public class Program
+  {
+    public static void Main(string[] args)
     {
-        public static void Main( string[] args )
-        {
-            Details detail1 = new()
-            { Code = "   GW12345  " };
-            Console.WriteLine( $"Code='{detail1.Code}'" );
-        }
+      Details detail1 = new()
+      {Code = "   GW12345  "};
+      Console.WriteLine($"Code='{detail1.Code}'");
     }
+  }
 }

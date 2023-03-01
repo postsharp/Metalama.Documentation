@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Doc
 {
-    internal class ValidityAttribute
-    {
-    }
+  internal class ValidityAttribute
+  {
+  }
 }

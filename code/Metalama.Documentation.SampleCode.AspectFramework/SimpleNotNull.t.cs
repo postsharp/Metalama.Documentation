@@ -5,48 +5,48 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Doc.SimpleNotNull
 {
-    public class TheClass
+  public class TheClass
+  {
+    private string _field = "Field";
+    [NotNull]
+    public string Field
     {
-        private string _field;
-        [NotNull]
-        public string Field
+      get
+      {
+        return this._field;
+      }
+      set
+      {
+        if (value == null !)
         {
-            get
-            {
-                return this._field;
-            }
-            set
-            {
-                if ( value == null! )
-                {
-                    throw new ArgumentNullException( nameof( value ) );
-                }
-                this._field = value;
-            }
+          throw new ArgumentNullException(nameof(value));
         }
-        private string _property;
-        [NotNull]
-        public string Property
-        {
-            get
-            {
-                return this._property;
-            }
-            set
-            {
-                if ( value == null! )
-                {
-                    throw new ArgumentNullException( nameof( value ) );
-                }
-                this._property = value;
-            }
-        }
-        public void Method( [NotNull] string parameter )
-        {
-            if ( parameter == null! )
-            {
-                throw new ArgumentNullException( nameof( parameter ) );
-            }
-        }
+        this._field = value;
+      }
     }
+    private string _property = "Property";
+    [NotNull]
+    public string Property
+    {
+      get
+      {
+        return this._property;
+      }
+      set
+      {
+        if (value == null !)
+        {
+          throw new ArgumentNullException(nameof(value));
+        }
+        this._property = value;
+      }
+    }
+    public void Method([NotNull] string parameter)
+    {
+      if (parameter == null !)
+      {
+        throw new ArgumentNullException(nameof(parameter));
+      }
+    }
+  }
 }
