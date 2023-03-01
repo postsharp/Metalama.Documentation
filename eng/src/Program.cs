@@ -53,6 +53,7 @@ var product = new Product( Dependencies.MetalamaDocumentation )
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
         .WithValue( BuildConfiguration.Public, new BuildConfigurationInfo(
             MSBuildName: "Release",
+            ExportsToTeamCityDeployWithoutDependencies: true,
             PublicPublishers: new Publisher[]
             {
                 new MergePublisher(),

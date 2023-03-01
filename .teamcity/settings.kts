@@ -16,7 +16,8 @@ project {
    buildType(DebugBuild)
    buildType(PublicBuild)
    buildType(PublicDeployment)
-   buildTypesOrder = arrayListOf(DebugBuild,PublicBuild,PublicDeployment)
+   buildType(PublicDeploymentNoDependency)
+   buildTypesOrder = arrayListOf(DebugBuild,PublicBuild,PublicDeployment,PublicDeploymentNoDependency)
 }
 
 object DebugBuild : BuildType({
@@ -422,6 +423,139 @@ object PublicDeployment : BuildType({
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
 
+
+        }
+
+        dependency(PublicBuild) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/public/**/*=>artifacts/publish/public\n+:artifacts/publish/private/**/*=>artifacts/publish/private\n+:artifacts/testResults/**/*=>artifacts/testResults\n+:source-dependencies/**/*=>source-dependencies"
+            }
+
+        }
+
+     }
+
+})
+
+object PublicDeploymentNoDependency : BuildType({
+
+    name = "Deploy [Public]"
+
+    type = Type.DEPLOYMENT
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        powerShell {
+            name = "Deploy [Public]"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "publish --configuration Public")
+        }
+    }
+
+    requirements {
+        equals("env.BuildAgentType", "caravela04")
+    }
+
+    features {
+        swabra {
+            lockingProcesses = Swabra.LockingProcessPolicy.KILL
+            verbose = true
+        }
+        sshAgent {
+            // By convention, the SSH key name is always PostSharp.Engineering for all repositories using SSH to connect.
+            teamcitySshKey = "PostSharp.Engineering"
+        }
+    }
+
+    dependencies {
+
+        dependency(AbsoluteId("Metalama_Metalama_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_MetalamaBackstage_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Backstage"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_MetalamaCompiler_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/packages/Release/Shipping/**/*=>dependencies/Metalama.Compiler"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_MetalamaExtensions_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Extensions"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_MetalamaLinqPad_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.LinqPad"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_Migration_MetalamaMigration_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
+            }
 
         }
 
