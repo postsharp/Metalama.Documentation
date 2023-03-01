@@ -1,5 +1,4 @@
 using System;
-
 namespace Doc.UpperCase
 {
     public class Shipment
@@ -12,20 +11,11 @@ namespace Doc.UpperCase
             {
                 return _from;
             }
-
             set
             {
-                if (value != null)
-                {
-                    this._from = value.ToUpper();
-                }
-                else
-                {
-                    this._from = value;
-                }
+                this._from = value?.ToUpper();
             }
         }
-
         private string? _to;
         [UpperCase]
         public string? To
@@ -34,29 +24,20 @@ namespace Doc.UpperCase
             {
                 return _to;
             }
-
             set
             {
-                if (value != null)
-                {
-                    this._to = value.ToUpper();
-                }
-                else
-                {
-                    this._to = value;
-                }
+                this._to = value?.ToUpper();
             }
         }
     }
-
     public class UpperCase
     {
-        public static void Main(string[] args)
+        public static void Main( string[] args )
         {
             Shipment package = new Shipment();
             package.From = "lhr";
             package.To = "jfk";
-            Console.WriteLine($"Package is booked from {package.From} to {package.To}");
+            Console.WriteLine( $"Package is booked from {package.From} to {package.To}" );
         }
     }
 }

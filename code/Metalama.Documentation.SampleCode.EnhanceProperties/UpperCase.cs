@@ -11,6 +11,7 @@ namespace Doc.UpperCase
         [UpperCase]
         public string? To { get; set; }
     }
+
     public class UpperCase
     {
         public static void Main(string[] args)

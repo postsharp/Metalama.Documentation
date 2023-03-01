@@ -5,76 +5,84 @@ level: 200
 
 # Getting started: overriding a method 
 
-
-So far, you have used the prebuilt aspects. If you were considering getting your feet wet, by creating simple aspects that could enhance the behaviour of your methods, then you shall learn how to do that in this chapter. 
+Overriding a method is the most straightforward aspect you can imagine. The implementation of your aspect will simply replace the original implementation of the aspect. Let's see how it works.
 
 ## Creating your first method aspect 
 
-In this section, you shall create your first-ever method aspect. Follow the following steps to create the first aspect. 
+To create an aspect that overrides methods:
+
+1. Add the `Metalama.Framework` package to your project.
+
+2. Create a class and make it inherit the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> class.  This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
+
+3. Override the <xref:Metalama.Framework.Aspects.OverrideMethodAspect.OverrideMethod*> method.
+
+4. In your <xref:Metalama.Framework.Aspects.OverrideMethodAspect.OverrideMethod*> implementation, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed> where the original method should be invoked.
+
+    > [!NOTE]
+    > <xref:Metalama.Framework.Aspects.meta> is a special class.  It can almost be thought of as a keyword that lets you tap into the meta-model of the code you are dealing with. In this case, calling <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed> is equivalent to calling the method that your aspect is overriding.
+
+5. Apply your new aspect to any relevant method as a custom attribute.
 
 
-**Step 1**:To create the simplest possible method aspect, create a class in your project.
+### Example: trivial logging
 
-**Step 2**: Call it `SimpleLogAttribute` and make it `public`
-
-**Step 3**: Inherit `OverrideMethodAspect` as shown in the code.
-
+The following aspect overrides the target method and adds a call to `Console.WriteLine` to write a message before the method is executed.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods\SimpleLogging.cs]
 
+To see the effect of the aspect on the code in this documentation, switch to the _Transformed Code_ tab here above. In Visual Studio, you can preview the transformed code thanks to the _Diff Preview_ feature. See <xref:understanding-your-code-with-aspects> for details.
+ 
+As you can see, <xref:Metalama.Framework.Aspects.OverrideMethodAspect> does exactly what the name suggests: to override the method. So if you put your aspect on a method, the aspect code will be executed _instead_ of the code of the target method. Therefore, the following line of code gets executed first:
 
-> [!NOTE]
-> To use `<xref:Metalama.Framework.Aspects.OverrideMethodAspect>` you need to add the `Metalama.Framework` package to your project. 
-  
-**Step 4**: Build your project. 
+```csharp
+Console.WriteLine($"Simply logging a method..." );
+```
 
-If the build is successful, Congratulations! You have successfully created your first method aspect. I would agree that the aspect doesn't do much yet, but you shall learn how to enhance it to be more useful in the upcoming sections in this chapter.  
+Then, thanks to the call to <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed>, the original method code is executed.
+
+Arguably, this aspect does not do much yet, so let's make it more useful.
+
+### Example: retrying upon exception
+
+In the previous chapter, you have used the built-in aspect `Retry`. Here is how it is implemented.
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/RetryFewTimes.cs]
+
+Note how the overridden implementation in the aspect retries the method being overridden. In this example, the number of retries is hard-coded. 
+
+### Example: authorizing the current user
+
+Sometimes, it is needed to block calls to some particular methods based on some condition. You can see, in the following aspect, how the call is blocked if the given condition is not met.  
+
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/ThrowOnCall.cs name="Blocking calls to some methods based on condition."]
 
 
-## Making the `SimpleLog` aspect more specific 
+## Adding context from the target method
 
-`OverrideMethodAspect` lets you do exactly what the name suggests. Override the method. So if you put your aspect on a method, then the method will first execute the code from the aspect. 
+None of the examples above contained anything that was specific to the method to which the aspect was applied. Even the logging aspect was trivial and wrote a generic message.
 
-`Console.WriteLine($"Simply logging a method..." );`
+Instead of writing a generic message to the console, we will now write a text that includes the name of target the method.
 
-And then it will be invoked. The magic will be done by the call to `meta.Proceed`. meta is a special class. 
-It can almost be thought of as a keyword that lets you tap into the meta-model of the code you are dealing with. In this case, you are dealing with a method. So, the target of the aspect is the method. 
+You can get to the target of the aspect by calling the <xref:Metalama.Framework.Aspects.IMetaTarget.Method?text=meta.Target.Method> property, which exposes all relevant information about the current method: its name, its list of parameters and their types, and so on.
 
-You can get to the target by a call to the `Target` property of the `meta` class like `meta.Target`. 
-The names of the properties are obvious. So if you want to get to the name of the method you are targetting from the aspect code, you can do so by calling <xref:Metalama.Framework.Aspects.IMetaTarget.Method.Name>
-
-`meta.Target.Method.Name`. This will give you just the name of the method. You can get the fully qualified name of the method by calling the `meta.Target.Method.ToDisplayString()` method. 
+So if you want to get to the name of the method you are targeting from the aspect code, you can do so by calling <xref:Metalama.Framework.Code.IMethod.Name?text=meta.Target.Method.Name>. You can get the qualified name of the method by calling the `meta.Target.Method.ToDisplayString()` method. 
 
 Now let's see how this information can be used to enhance the log aspect that is already created.  
 
 The following code shows how this can be used:
 
+### Example: including the method name in the log
+
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/SpecificLog.cs]
 
-> [!NOTE]
-> This is the prelude of how you can create several custom template methods for your aspect using the T# language. The next chapter <xref:tsharp-tempaltes> will show several cases of templates. 
 
-## Meet the Retry aspect. 
+### Example: profiling a method
 
-In the previous chapter, you have used the built-in aspect `Retry`. In this section, you shall learn to create it from scratch. 
-
-**Step 1** Create a class called `RetryFewTimes`
-
-**Step 2** Implement `OverrideMethod` from `OverrideMethodAspect` as shown below. 
-
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/RetryFewTimes.cs]
-
-Note how the overridden implementation in the aspect retries the method being overridden. In this example, the number of retries is 
-hard-coded. 
-
-## Example: Checking how much time a method takes. 
 When you need to find out which method call is taking time, the first thing you generally do is to decorate the method with print statements to find out how much time each call takes. The following aspect lets you wrap that in an aspect. And whenever you need to track the calls to a method, you just have to place this aspect (in the form of the attribute) on the method as shown in the Target code. 
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/TimeItAttribute.cs name="Finding how much time a call takes"]
 
+## Writing more complex code templates
 
-## Example: Blocking a method from being called. 
-
-Sometimes, it is needed to block calls to some particular methods based on some condition. You can see, in the following aspect, how the call is blocked if the given condition is not met.  
-
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/ThrowOnCall.cs name="Blocking calls to some methods based on condition."]
+So far, you have seen how to use `meta.Proceed` and `meta.Target.Method.Name` in your templates. You can write much more complex and powerful templates, even doing compile-time `if` and `foreach` blocks. To see how, you can jump directly to <xref:templates>.

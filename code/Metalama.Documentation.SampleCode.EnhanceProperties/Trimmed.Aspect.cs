@@ -7,18 +7,12 @@ using System.Threading.Tasks;
 
 namespace Doc.Trimmed
 {
-    public class TrimmedAttribute : OverrideFieldOrPropertyAspect
+    public class TrimAttribute : OverrideFieldOrPropertyAspect
     {
         public override dynamic? OverrideProperty 
         {
             get => meta.Proceed();
-            set
-            {
-                if (value != null)
-                {
-                    meta.Target.FieldOrProperty.Value = value.Trim();
-                }
-            } 
+            set => meta.Target.FieldOrProperty.Value = value?.Trim();
         }
     }
 }

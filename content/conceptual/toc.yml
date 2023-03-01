@@ -14,7 +14,7 @@ items:
         - name: Registering a License
           topicUid: register-license    
     - name: Using Metalama 
-      topicUid: quickstart-using-aspects
+      topicUid: using-metalama
       items:
         - name: Getting aspects   
           topicUid: getting-aspects

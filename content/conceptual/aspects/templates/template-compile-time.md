@@ -7,7 +7,7 @@ level: 200
 
 Compile-time expressions are expressions that either contain a call to a compile-time method, or contain a reference to a compile-time local variable or a compile-time aspect member. Compile-time expressions are executed at compile time, when the aspect is applied to a target.
 
-Compile-time statements are statements, such as `if`, `foreach` or `meta.DebugBreak();`, that are executed at compile time.
+Compile-time statements are statements, such as `if`, `foreach` or `meta.DebugBreak()`, that are executed at compile time.
 
 ## The meta pseudo-keyword
 

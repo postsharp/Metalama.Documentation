@@ -11,18 +11,7 @@ namespace Doc.UpperCase
         public override dynamic? OverrideProperty
         {
             get => meta.Proceed();
-            set
-            {
-                //Now change the case to UpperCase.
-                if (value != null)
-                {
-                    meta.Target.FieldOrProperty.Value = value.ToUpper();
-                }
-                else
-                {
-                    meta.Target.FieldOrProperty.Value = value;
-                }
-            }
+            set => meta.Target.FieldOrProperty.Value = value?.ToUpper();
         }
     }
 }

@@ -74,7 +74,7 @@ namespace Doc.DeepClone
                 else
                 {
                     // If no, explicitly cast to the interface.
-                    callClone = (IExpression) ((ICloneable) field.Value)?.Clone()!;
+                    callClone = (IExpression) ((ICloneable?) field.Value)?.Clone()!;
                 }
 
                 if ( cloneMethod == null || !cloneMethod.ReturnType.ToNullableType().Is( fieldType ) )

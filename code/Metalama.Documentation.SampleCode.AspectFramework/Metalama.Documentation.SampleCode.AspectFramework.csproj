@@ -16,6 +16,17 @@
       <NoWarn>1701;1702;169;649;67;8618</NoWarn>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="NotNull - Copy.t.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="NormalizeIdContract.t.cs">
+        <SubType>Code</SubType>
+        <DependentUpon>NormalizeIdContract.cs</DependentUpon>
+      </None>
+    </ItemGroup>
+
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
@@ -28,6 +39,13 @@
 
         <PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)" />
         <PackageReference Include="Metalama.Testing.AspectTesting" Version="$(MetalamaVersion)" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Compile Update="NormalizeIdContract.Aspect.cs">
+        <DependentUpon>NormalizeIdContract.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

@@ -6,7 +6,7 @@ namespace Metalama.Documentation.DfmExtensions;
 
 public sealed class SampleTokenRule : IMarkdownRule
 {
-    private static readonly Regex _regex = new Regex( @"^\s*\[!metalama-sample +(?<path>\S+)\s*(?<attributes>[^\]]*)]" );
+    private static readonly Regex _regex = new Regex( @"^\s*\[!metalama-sample +(?<path>[^\s\]]+)\s*(?<attributes>[^\]]*)\]" );
 
     public IMarkdownToken? TryMatch( IMarkdownParser parser, IMarkdownParsingContext context )
     {

@@ -26,6 +26,22 @@ Technically speaking, a contract is a piece of code that you inject after _recei
 
     In this template, the incoming value is represented by the parameter name `value`, regardless of the real name of the field or parameter.
 
+    By magic, the `nameof(value)` expression will be replaced by the name of the _target_ parameter.
+
 
 4. The aspect is a custom attribute. You can add it to any field, property, or parameter. To validate the return value of a method, use this syntax: `[return: MyAspect]`.
 
+
+### Example: null check
+
+The most common use of contracts is to check nullability. Here is the simplest example.
+
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleNotNull.cs]
+
+Notice how the `nameof(value)` expression is replaced by `nameof(parameter)` when the contract is applied to a parameter.
+
+### Example: normalizing a string
+
+You can do more with a contract than throwing an exception. In the following example, the aspect normalizes a string by trimming whitespace and changing to uppercase. We add the same aspect to properties and parameters.
+
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/NormalizeIdContract.cs]

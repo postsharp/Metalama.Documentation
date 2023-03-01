@@ -1,5 +1,5 @@
 ---
-uid: quickstart-using-aspects
+uid: using-metalama
 level: 100
 ---
 
