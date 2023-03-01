@@ -20,19 +20,6 @@ Your template code can access its context using the following meta APIs:
 * `meta.Target.ContractDirection` returns `Input` or `Output` according to the data flow being validated ([see below](#contract-directions)). Typically, it is `Input` for input parameters and property setters, and `Output` for output parameters and return values.
 
 
-### Example: NotNull
-
-The following aspect throws an exception if the field, property, or parameter to which it is applied receives a null value, or if a null value is assigned to an `out` parameter or to the return value.
-
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/NotNull.cs name="NotNull"]
-
-### Example: Trim
-
-The following aspect normalizes the received value by calling the `string.Trim` method. The only difficulty is that it needs to choose between `value.Trim` and the null-conditional `value?.Trim` according to the nullability of the target.
-
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Trim.cs name="Trim"]
-
-
 ### Contract directions
 
 By default, the <xref:Metalama.Framework.Aspects.ContractAspect> aspect applies the contract to the _default data flow_ of the target parameter, field, or property.
@@ -48,6 +35,14 @@ The default direction is as follows:
 To change the filter direction, set the <xref:Metalama.Framework.Aspects.ContractAspect.Direction> property of the <xref:Metalama.Framework.Aspects.ContractAspect> class in the constructor.
 
 To learn about customizing eligibility for different contract directions than the default one, see the remarks on the documentation of the <xref:Metalama.Framework.Aspects.ContractAspect> class. To learn about eligibility, see <xref:eligibility>.
+
+### Example: NotNull for output parameters and return values
+
+We have already met this aspect in <xref:simple-contracts>. This example refines the behavior: for the _input_ data flow, an `ArgumentNullException` is thrown, but for the output flow, we throw a `PostConditionFailedException`. Notice how we apply the aspect to 'out' parameters and to return values.
+
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/NotNull.cs name="NotNull"]
+
+
 
 ## Adding contract advice programmatically
 

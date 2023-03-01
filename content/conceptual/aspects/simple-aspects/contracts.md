@@ -40,9 +40,15 @@ The most common use of contracts is to check nullability. Here is the simplest e
 
 Notice how the `nameof(value)` expression is replaced by `nameof(parameter)` when the contract is applied to a parameter.
 
-### Example: normalizing a string
+### Example: trimming
 
-You can do more with a contract than throwing an exception. In the following example, the aspect normalizes a string by trimming whitespace and changing to uppercase. We add the same aspect to properties and parameters.
+You can do more with a contract than throwing an exception. In the following example, the aspect trims whitespace from strings. We add the same aspect to properties and parameters.
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/NormalizeIdContract.cs]
+[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/trim.cs]
 
+## Going deeper
+
+If you want to go deeper with contracts, consider jumping to the following articles:
+
+* In this article, we limited ourselves to very simple contract implementations. To learn how to write more code templates, you can jump directly to <xref:templates>.
+* In this article, we have only applied contracts to the _default direction_ of fields, properties or parameters. To learn about the concept of contract direction, jump to <xref:contracts>.

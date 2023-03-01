@@ -67,3 +67,11 @@ We apply the aspect to a class that represents a shipment between two airports.
 
 Note that, in this example, `From` is a public field and `To` is a public property. They are deliberately kept that way to show that the aspect actually works on both because <xref:Metalama.Framework.Code.IFieldOrProperty> is used in the aspect. If you want to aspect to be applicable only on properties and not on fields you have to use <xref:Metalama.Framework.Code.IProperty>
 
+
+## Going deeper
+
+If you want to go deeper with field/property overrides, consider jumping to the following articles:
+
+* In this article, you have seen how to use `meta.Proceed` and `meta.Target.Method.Name` in your templates. You can write much more complex and powerful templates, even doing compile-time `if` and `foreach` blocks. To see how, you can jump directly to <xref:templates>.
+
+* To learn how to override several fields and properties from a single type-level aspect, jump to <xref:overriding-methods>.

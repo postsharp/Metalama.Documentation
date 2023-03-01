@@ -83,7 +83,11 @@ When you need to find out which method call is taking time, the first thing you 
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/TimeItAttribute.cs name="Finding how much time a call takes"]
 
-## Writing more complex code templates
+## Going deeper
 
-So far, you have seen how to use `meta.Proceed` and `meta.Target.Method.Name` in your templates. You can write much more complex and powerful templates, even doing compile-time `if` and `foreach` blocks. To see how, you can jump directly to <xref:templates>.
+If you want to go deeper with method overrides, consider jumping to the following articles:
+
+* In this article, you have seen how to use `meta.Proceed` and `meta.Target.Method.Name` in your templates. You can write much more complex and powerful templates, even doing compile-time `if` and `foreach` blocks. To see how, you can jump directly to <xref:templates>.
+
+* To learn how to have different templates for `async` or iterator methods, or to learn how to override several methods from a single type-level aspect, jump to <xref:overriding-methods>.
 
