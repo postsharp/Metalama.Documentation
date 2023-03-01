@@ -5,24 +5,24 @@ level: 200
 
 # Getting started: overriding fields and properties
 
-In <xref:simple-override-method>, you have learned how to change the implementation of a method with an aspect. You can do the same with fields and properties thanks to the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class.
+In <xref:simple-override-method>, you have learned how to change the implementation of a method with an aspect. You can do the same with fields and properties by extending <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect>.
 
 ## Overriding a field or property
 
-To create an aspect that can override a field or a property, the simplest approach is the following.
+To create an aspect that can override a field or a property, follow these steps.
 
 1. Add Metalama the `Metalama.Framework` package to your project.
 
 2. Create a new class derived from the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
 
-3. Implement the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect.OverrideProperty> property in plain C#. To call the original implementation, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed>. 
+3. Implement the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect.OverrideProperty> property in plain C#. To call the original implementation, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed>.
 
 4. The aspect is a custom attribute. To transform a field or property using the aspect, just add the aspect custom attribute to the field or property.
 
 > [!WARNING]
 > When you apply an aspect to a field, Metalama will automatically transform the field into a property. If the field is used by reference using `ref`, `out` and `in` keywords, it will result in a compile-time error.
 
-### Example: an empty OverrideFieldOrPropertyAspect aspect
+### Trick: an empty OverrideFieldOrPropertyAspect aspect
 
 The next example shows an empty implementation of <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> applied to a property and to a field.
 
@@ -49,7 +49,7 @@ The aspect does not need to modify the getter, so it only calls `meta.Proceed()`
 The setter is modified to call the `Trim` method on the input `value`. The most shortest and simplest code is `set => meta.Target.PropertyOrField.Value = value?.Trim`. Alternatively, we could have written the following code.
 
 ```cs
-set 
+set
 {
     value = value?.Trim();
     meta.Proceed();
@@ -65,5 +65,5 @@ We apply the aspect to a class that represents a shipment between two airports.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/UpperCase.cs name="Changing case to Upper case"]
 
-Note that, in this example, `From` is a public field and `To` is a public property. They are deliberately kept that way to show that the aspect actually works on both because <xref:Metalama.Framework.Code.IFieldOrProperty> is used in the aspect. If you want to aspect to be applicable only on properties and not on fields you have to use <xref:Metalama.Framework.Code.IProperty> 
+Note that, in this example, `From` is a public field and `To` is a public property. They are deliberately kept that way to show that the aspect actually works on both because <xref:Metalama.Framework.Code.IFieldOrProperty> is used in the aspect. If you want to aspect to be applicable only on properties and not on fields you have to use <xref:Metalama.Framework.Code.IProperty>
 

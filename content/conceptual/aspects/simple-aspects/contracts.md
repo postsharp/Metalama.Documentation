@@ -19,14 +19,14 @@ Technically speaking, a contract is a piece of code that you inject after _recei
 
 1. Add the `Metalama.Framework` package to your project.
 
-2. Create a new class derived from the <xref:Metalama.Framework.Aspects.ContractAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
+2. Create a new class derived from the <xref:Metalama.Framework.Aspects.ContractAspect> abstract class. This class will be a custom attribute. It is a common practice to name it with the `Attribute` suffix.
 
 
 3. Implement the <xref:Metalama.Framework.Aspects.ContractAspect.Validate*> method in plain C#. This method will serve as a <xref:templates?text=template> defining the way the aspect overrides the hand-written target method.
 
     In this template, the incoming value is represented by the parameter name `value`, regardless of the real name of the field or parameter.
 
-    By magic, the `nameof(value)` expression will be replaced by the name of the _target_ parameter.
+    The `nameof(value)` expression will be replaced with the name of the _target_ parameter.
 
 
 4. The aspect is a custom attribute. You can add it to any field, property, or parameter. To validate the return value of a method, use this syntax: `[return: MyAspect]`.
@@ -45,3 +45,4 @@ Notice how the `nameof(value)` expression is replaced by `nameof(parameter)` whe
 You can do more with a contract than throwing an exception. In the following example, the aspect normalizes a string by trimming whitespace and changing to uppercase. We add the same aspect to properties and parameters.
 
 [!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/NormalizeIdContract.cs]
+
