@@ -1,15 +1,15 @@
-﻿namespace Doc.SpecificLog
+﻿namespace Doc.Logging
 {
-    public class SpecificLogDemo
+    public class Program
     {
-        [SpecificLog]
+        [Log]
         public static void SayHello(string name)
         {
             System.Console.WriteLine($"Hello {name}");
         }
         public static void Main(string[] args)
         {
-            SayHello("Gael");
+            SayHello("Your Majesty");
         }
     }
 }

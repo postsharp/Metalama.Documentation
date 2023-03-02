@@ -16,7 +16,7 @@ namespace Doc.UpperCase
     {
         public static void Main(string[] args)
         {
-            Shipment package = new Shipment();
+            var package = new Shipment();
             package.From = "lhr";
             package.To = "jfk";
 

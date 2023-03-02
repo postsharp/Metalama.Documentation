@@ -2,16 +2,17 @@
 
 namespace Doc.SimpleLog
 {
-    public class SimpleLoggingDemo
+    public class Program
     {
-        [SimpleLog]
+        [Log]
         public static void SayHello(string name)
         {
             Console.WriteLine($"Hello {name}");
         }
+
         public static void Main(string[] args)
         {
-            SayHello("Gael");
+            SayHello("Your Majesty");
         }
     }
 }

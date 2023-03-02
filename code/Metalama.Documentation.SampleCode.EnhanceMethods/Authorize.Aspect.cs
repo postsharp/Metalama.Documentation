@@ -1,20 +1,21 @@
-﻿using System;
+﻿using System.Security;
 using Metalama.Framework.Aspects;
 
-namespace Doc.ThrowOnCall
+namespace Doc.Authorize
 {
-    public class ThrowOnCallAttribute : OverrideMethodAspect
+    public class AuthorizeAttribute : OverrideMethodAspect
     {
         public override dynamic OverrideMethod()
         {
             var currentUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            if (currentUser == "gael")
+
+            if (currentUser == "MrAllmighty")
             {
                 return meta.Proceed();
             }
             else
             {
-                throw new NotSupportedException($"This method can only be called by the current user : {currentUser}");
+                throw new SecurityException("This method can only be called by MrAllmighty.");
             }
         }
     }

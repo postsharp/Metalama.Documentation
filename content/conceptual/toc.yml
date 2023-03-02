@@ -11,7 +11,7 @@ items:
           topicUid:  install-vsx
         - name: Installing Metalama command line tool
           topicUid: dotnet-tool
-        - name: Registering a License
+        - name: Registering a license
           topicUid: register-license    
     - name: Using Metalama 
       topicUid: using-metalama

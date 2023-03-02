@@ -1,4 +1,5 @@
-﻿using Microsoft.DocAsCode.MarkdownLite;
+﻿
+using Microsoft.DocAsCode.MarkdownLite;
 using Microsoft.DocAsCode.MarkdownLite.Matchers;
 using System.Text.RegularExpressions;
 
@@ -6,13 +7,13 @@ namespace Metalama.Documentation.DfmExtensions;
 
 public sealed class SampleTokenRule : IMarkdownRule
 {
-    private static readonly Regex _regex = new Regex( @"^\s*\[!metalama-sample +(?<path>[^\s\]]+)\s*(?<attributes>[^\]]*)\]" );
+    private static readonly Regex _regex = new( @"^\s*\[!metalama-sample +(?<path>[^\s\]]+)\s*(?<attributes>[^\]]*)\]" );
 
     public IMarkdownToken? TryMatch( IMarkdownParser parser, IMarkdownParsingContext context )
     {
         var match = _regex.Match( context.CurrentMarkdown );
 
-        if (match.Success )
+        if ( match.Success )
         {
             var sourceInfo = context.Consume( match.Length );
 

@@ -16,9 +16,6 @@
       <NoWarn>1701;1702;169;649;67;8618</NoWarn>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Compile Remove="NotNull - Copy.t.cs" />
-    </ItemGroup>
 
 
     <ItemGroup>
@@ -34,4 +31,6 @@
         <PackageReference Include="Metalama.Testing.AspectTesting" Version="$(MetalamaVersion)" />
     </ItemGroup>
 
+
+  
 </Project>

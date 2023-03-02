@@ -47,7 +47,7 @@ Arguably, this aspect does not do much yet, so let's make it more useful.
 
 In the previous chapter, you have used the built-in aspect `Retry`. Here is how it is implemented.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/RetryFewTimes.cs]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Retry.cs]
 
 Note how the overridden implementation in the aspect retries the method being overridden. In this example, the number of retries is hard-coded.
 
@@ -55,7 +55,7 @@ Note how the overridden implementation in the aspect retries the method being ov
 
 Sometimes, it is needed to block calls to some particular methods based on some condition. You can see, in the following aspect, how the call is blocked if the given condition is not met.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/ThrowOnCall.cs name="Blocking calls to some methods based on condition."]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Authorize.cs]
 
 
 ## Adding context from the target method
@@ -66,7 +66,7 @@ Instead of writing a generic message to the console, we will now write a text th
 
 You can get to the target of the aspect by calling the <xref:Metalama.Framework.Aspects.IMetaTarget.Method?text=meta.Target.Method> property, which exposes all relevant information about the current method: its name, its list of parameters and their types, and so on.
 
-So if you want to get to the name of the method you are targeting from the aspect code, you can do so by calling <xref:Metalama.Framework.Code.IMethod.Name?text=meta.Target.Method.Name>. You can get the qualified name of the method by calling the `meta.Target.Method.ToDisplayString()` method.
+So if you want to get to the name of the method you are targeting from the aspect code, you can do so by calling <xref:Metalama.Framework.Code.INamedDeclaration.Name?text=meta.Target.Method.Name>. You can get the qualified name of the method by calling the `meta.Target.Method.ToDisplayString()` method.
 
 Now let's see how this information can be used to enhance the log aspect that is already created.
 
@@ -74,14 +74,14 @@ The following code shows how this can be used:
 
 ### Example: including the method name in the log
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/SpecificLog.cs]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Log.cs]
 
 
 ### Example: profiling a method
 
 When you need to find out which method call is taking time, the first thing you generally do is to decorate the method with print statements to find out how much time each call takes. The following aspect lets you wrap that in an aspect. And whenever you need to track the calls to a method, you just have to place this aspect (in the form of the attribute) on the method as shown in the Target code.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/TimeItAttribute.cs name="Finding how much time a call takes"]
+[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Profile.cs]
 
 ## Going deeper
 

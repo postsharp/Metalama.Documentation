@@ -34,7 +34,7 @@ namespace Doc.UpperCase
   {
     public static void Main(string[] args)
     {
-      Shipment package = new Shipment();
+      var package = new Shipment();
       package.From = "lhr";
       package.To = "jfk";
       Console.WriteLine($"Package is booked from {package.From} to {package.To}");

@@ -4,7 +4,7 @@ using Metalama.Framework.Aspects;
 
 namespace Doc.RetryFew
 {
-    public class RetryFewTimes : OverrideMethodAspect
+    public class RetryAttribute : OverrideMethodAspect
     {
         public override dynamic OverrideMethod()
         {

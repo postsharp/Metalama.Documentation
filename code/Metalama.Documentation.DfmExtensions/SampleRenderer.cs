@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿
+using HtmlAgilityPack;
 using Microsoft.DocAsCode.Dfm;
 using Microsoft.DocAsCode.MarkdownLite;
 using Newtonsoft.Json;
@@ -27,9 +28,9 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
     {
         var stringBuilder = new StringBuilder( s.Length );
 
-        foreach (var c in s)
+        foreach ( var c in s )
         {
-            switch (c)
+            switch ( c )
             {
                 case '<':
                     stringBuilder.Append( "&lt;" );
@@ -58,7 +59,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
 
     private static string FindParentDirectory( string directory, Predicate<string> predicate )
     {
-        if (predicate( directory ))
+        if ( predicate( directory ) )
         {
             return directory;
         }
@@ -66,7 +67,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
         {
             var parentDirectory = Path.GetDirectoryName( directory );
 
-            if (parentDirectory == null)
+            if ( parentDirectory == null )
             {
                 throw new InvalidOperationException( $"Cannot get the directory of '{directory}'." );
             }
@@ -80,7 +81,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
         SampleToken token,
         MarkdownBlockContext context )
     {
-        var baseDirectory = (string)context.Variables["BaseFolder"];
+        var baseDirectory = (string) context.Variables["BaseFolder"];
         var path = token.Src.Replace( "~", baseDirectory );
         var id = "code-" + Path.GetFileNameWithoutExtension( path ).ToLowerInvariant();
 
@@ -99,7 +100,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
         // Find the directories.
         var targetDirectory = Path.GetDirectoryName( targetPath );
 
-        if (targetDirectory == null)
+        if ( targetDirectory == null )
         {
             throw new InvalidOperationException( $"Cannot get the directory of '{targetPath}'." );
         }
@@ -130,6 +131,14 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
                 "html",
                 "net6.0",
                 Path.ChangeExtension( targetPathRelativeToProjectDir, ".Additional.cs.html" ) ) );
+        
+        var fabricHtmlPath = Path.GetFullPath(
+            Path.Combine(
+                projectDir,
+                "obj",
+                "html",
+                "net6.0",
+                Path.ChangeExtension( targetPathRelativeToProjectDir, ".Fabric.cs.html" ) ) );
 
         var targetHtmlPath = Path.GetFullPath(
             Path.Combine(
@@ -159,10 +168,10 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
                     Path.ChangeExtension( targetPathRelativeToProjectDir, ".cs.out.html" ) ) );
         }
 
-        var currentFile = ( (ImmutableStack<string>)context.Variables["FilePathStack"] ).Peek();
-        const string conceptualPrefix = "../conceptual/";
+        var currentFile = ((ImmutableStack<string>) context.Variables["FilePathStack"]).Peek();
+        const string conceptualPrefix = "content/";
 
-        if (currentFile.StartsWith( conceptualPrefix ))
+        if ( currentFile.StartsWith( conceptualPrefix ) )
         {
             currentFile = currentFile.Substring( conceptualPrefix.Length );
         }
@@ -182,7 +191,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
         const string gitHubProjectPath = "https://github.com/postsharp/Metalama.Documentation/blob/" + gitBranch;
         const string tryBaseUrl = "https://try.metalama.net/#";
 
-        if (File.Exists( transformedHtmlPath ))
+        if ( File.Exists( transformedHtmlPath ) )
         {
             // Create the tab group with the aspect, target, and transformed code.
 
@@ -224,15 +233,17 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
 
                 // Ignore any tab that has only comments.
                 var code = Html2Text( content ).Split( new[] { '\r', '\n' } );
-                if ( code.All( line =>
-                {
-                    var trimmed = line.TrimStart();
-                    return string.IsNullOrWhiteSpace( trimmed ) || trimmed.StartsWith( "//" );
-                } ))
+
+                if ( code.All(
+                        line =>
+                        {
+                            var trimmed = line.TrimStart();
+
+                            return string.IsNullOrWhiteSpace( trimmed ) || trimmed.StartsWith( "//" );
+                        } ) )
                 {
                     return;
                 }
-
 
                 // Append the tab if it is not ignored.
                 tabHeaders.Append( $"<li><a href=\"#tabpanel_{snippetId}_{tabId}\">{header}</a></li>" );
@@ -244,8 +255,16 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
             string aspectCs;
             string gitUrlExtension;
             var canTryOnline = true;
+            
+            if ( File.Exists( fabricHtmlPath ) )
+            {
+                var fabricHtml = File.ReadAllText( fabricHtmlPath );
+                AppendTab( "fabric", "Fabric Code", fabricHtml );
 
-            if (File.Exists( aspectHtmlPath ))
+                // TODO: we should add this to the TryMetalama link, but TryMetalama does not support 3 buffers. 
+            }
+
+            if ( File.Exists( aspectHtmlPath ) )
             {
                 var aspectHtml = File.ReadAllText( aspectHtmlPath );
                 AppendTab( "aspect", "Aspect Code", aspectHtml );
@@ -261,7 +280,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
 
             AppendTab( "target", "Target Code", targetHtml );
 
-            if (File.Exists( additionalHtmlPath ))
+            if ( File.Exists( additionalHtmlPath ) )
             {
                 var programHtml = File.ReadAllText( additionalHtmlPath );
                 AppendTab( "additional", "Additional Code", programHtml );
@@ -271,7 +290,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
 
             AppendTab( "transformed", "Transformed Code", transformedHtml );
 
-            if (File.Exists( programOutputPath ))
+            if ( File.Exists( programOutputPath ) )
             {
                 AppendTab(
                     "output",
@@ -286,7 +305,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
             var gitUrl = gitHubProjectPath + "/" + sourceDirectoryRelativeToGitDir + "/" +
                          shortFileNameWithoutExtension + gitUrlExtension;
 
-            if (canTryOnline)
+            if ( canTryOnline )
             {
                 var tryPayloadJson = JsonConvert.SerializeObject( new { a = aspectCs, p = targetCs } );
                 var tryPayloadHash = LZString.CompressToEncodedURIComponent( tryPayloadJson );
@@ -324,7 +343,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
     <a class=""permalink"" href=""{permalink}"" target=""doc"">Permalink</a>
 </div>";
 
-            if (File.Exists( targetHtmlPath ))
+            if ( File.Exists( targetHtmlPath ) )
             {
                 // Write the syntax-highlighted HTML instead.
 
