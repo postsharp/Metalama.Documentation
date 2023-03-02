@@ -20,7 +20,7 @@ The following rules apply to interface members:
 - The accessibility of introduced members is irrelevant.
 - The aspect framework will generate public members unless the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute.IsExplicit> property is set to true. In this case, an explicit implementation is created.
 
-Implementing an interface in a complete dynamic manner, when the interface is not already known by the aspect, is not yet supported.
+Implementing an interface in a completely dynamic manner, when the interface is not already known by the aspect, is not yet supported.
 
 ## Example: IDisposable
 

@@ -8,6 +8,7 @@ level: 200
 Thanks to _compile-time parameters_, your `BuildAspect` implementation can pass arguments to the template. There are two kinds of template parameters: standard parameters and type parameters (also known as generic parameters).
 
 Unlike run-time parameters:
+
 * Compile-time parameters must receive a value at compile time from the `BuildAspect` method.
 * Compile-time parameters are not visible in generated code, i.e. they are removed from the parameter list when the template is expanded.
 
@@ -23,7 +24,7 @@ To define and use a compile-time parameter in a template method:
 2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { a = "", b = 3, c = field }` where `a`, `b` and `c` are the exact names of the template parameters (the name matching is case sensitive).
 
 
-### Alternative
+### Alternative: tags
 
 When you cannot use compile-time parameters (typically because you have a field, property, or event template instead of a method template), you can replace them by tags. For details about tags, see <xref:sharing-state-with-advice>. The advantage of compile-time parameters over tags is that using template parameters makes the code more readable. Tags require cumbersome syntax.
 
@@ -37,7 +38,7 @@ To define and use a compile-time type parameter in a template method follow the 
 
 2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { T1 = typeof(int), T2 = field.Type }` where `T1` and `T2` are the exact names of the template parameters (note that the name matching is case sensitive).
 
-### Alternative
+### Alternative: dynamic typing
 
 The alternative to compile-time type parameters is dynamic typing and the use of methods like `meta.Cast` or abstractions like <xref:Metalama.Framework.Code.IExpression>. For details about generating run-time code, see <xref:template-dynamic-code>.
 

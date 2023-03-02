@@ -21,7 +21,7 @@ If this is the case, you do not need to take any action. Your package reference 
 
 If consumers of your project will _not_ need to use aspects just because of your project, you can prevent [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) from flowing to its consumers by setting the `PrivateAssets="all"` property of the `PackageReference`.
 
-Additionally, you need to include the [Metalama.Framework.Redist](https://www.nuget.org/packages/Metalama.Framework.Redist) package, the only package that needs to flow to consumers.
+Additionally, you need to include the [Metalama.Framework.Redist](https://www.nuget.org/packages/Metalama.Framework.Redist) package, which is the only package that needs to flow to consumers.
 
 This is achieved by the following code snippet in your `.csproj` file:
 

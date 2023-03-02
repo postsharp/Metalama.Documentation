@@ -45,7 +45,7 @@ Arguably, this aspect does not do much yet, so let's make it more useful.
 
 ### Example: retrying upon exception
 
-In the previous chapter, you have used the built-in aspect `Retry`. Here is how it is implemented.
+In the previous chapter, you used the built-in aspect `Retry`. Here is how it is implemented.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Retry.cs]
 
@@ -68,7 +68,7 @@ You can get to the target of the aspect by calling the <xref:Metalama.Framework.
 
 So if you want to get to the name of the method you are targeting from the aspect code, you can do so by calling <xref:Metalama.Framework.Code.INamedDeclaration.Name?text=meta.Target.Method.Name>. You can get the qualified name of the method by calling the `meta.Target.Method.ToDisplayString()` method.
 
-Now let's see how this information can be used to enhance the log aspect that is already created.
+Now let's see how this information can be used to enhance the logging aspect that is already created.
 
 The following code shows how this can be used:
 
@@ -87,7 +87,7 @@ When you need to find out which method call is taking time, the first thing you 
 
 If you want to go deeper with method overrides, consider jumping to the following articles:
 
-* In this article, you have seen how to use `meta.Proceed` and `meta.Target.Method.Name` in your templates. You can write much more complex and powerful templates, even doing compile-time `if` and `foreach` blocks. To see how, you can jump directly to <xref:templates>.
+* In this article, you have seen how to use `meta.Proceed` and `meta.Target.Method.Name` in your templates. You can write much more complex and powerful templates, even doing compile-time `if` and `foreach` blocks. To see how you can jump directly to <xref:templates>.
 
 * To learn how to have different templates for `async` or iterator methods, or to learn how to override several methods from a single type-level aspect, jump to <xref:overriding-methods>.
 

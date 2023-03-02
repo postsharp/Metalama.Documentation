@@ -8,7 +8,6 @@ uid: migrating-aspects
 
 Porting your PostSharp aspects to Metalama should not be your first contact with Metalama. We suggest that you learn the new product on a new project. Even better: write a prototype of aspects in a test project that has no history with PostSharp. You will probably not be able to run your application or even run all your unit tests while migrating aspects, so it is far better to do the learning in a sandbox project.
 
-
 ## Step 1. Create a list of aspects and assess their importance
 
 Go through all projects and identify all used aspects.
@@ -27,13 +26,11 @@ For each aspect, determine if _attribute multicasting_ is used, and how. All Pos
 
 If you only find that an aspect is multicast from assembly-level custom attributes, it does not mean that your Metalama aspect will have to implement multicasting. Indeed, it is more elegant to use fabrics than assembly-level multicasting. See <xref:using-fabrics> for details. If the source code uses multicasting from classes or structs, your Metalama aspect will need to implement multicasting.
 
-
 ## Step 2. Verify that it's a good time to migrate
 
 Read <xref:when-migrate> and verify that the target frameworks of your projects are supported by Metalama. Chances are that they are unless the projects still target obsolete platforms.
 
 Verify in <xref:migration-feature-status> if your projects are using a feature of PostSharp that has not been ported to Metalama. If your project is using ready-made aspects from the `PostSharp.Patterns` namespace, verify that these aspects have been ported.
-
 
 ## Step 3. Verify that your projects are in a clean state
 
@@ -43,7 +40,6 @@ You will know that you will be done with the migration when your projects will c
 * Verify that the projects build without error. If possible, address any warnings in your code.
 * Verify that all unit tests are successful.
 * When your projects are free of errors, warnings, and failed tests, commit and push your branch.
-
 
 ## Step 4. Change PostSharp package references to Metalama.Migration and check errors
 
@@ -57,14 +53,11 @@ In case your code is using APIs that have not been ported to PostSharp yet, you 
 
 Do not run your application or your unit tests at this point. This is not going to work until you port all critical aspects.
 
-
 ## Step 5. Create a separate project for aspect tests
 
 Since your current test base is probably going to be broken for a long time now -- until all your critical aspects will be ported -- it's a good idea to set up an infrastructure where you will be able to test your aspects one by one.
 
 For details, see <xref:aspect-testing>.
-
-
 
 ## Step 6. Implement the individual aspects
 
@@ -78,20 +71,17 @@ We strongly recommend writing aspect tests for each aspect that you are implemen
 
 If you have identified in Step 1 that the aspect should support multicasting, see <xref:migrating-multicasting>.
 
-
 ## Step 7. Migrate usages of multicasting
 
 The best way to migrate assembly multicasting is to use a project fabric as described in <xref:fabrics-adding-aspects>.
 
 For type-level multicasting, if you have built multicasting into your Metalama aspects as described in <xref:migrating-multicasting>, it should be enough to do a big "Replace in Files" to replace the namespace `PostSharp.Extensibility` to `Metalama.Extensions.Multicast`.
 
-
 ## Step 8. Migrate configuration
 
 If you have configuration or multicasting in a PostSharp file like `postsharp.config` or `MyProject.psproj`, they should be migrated to project fabrics as described in <xref:fabrics-configuration>.
 
 For details, see <xref:migrating-configuration>.
-
 
 ## Step 9. Last project clean up
 
@@ -102,4 +92,3 @@ If your Metalama aspects have been properly implemented, all your tests should n
 When this is the case, replace the reference to the `Metalama.Migration` package to `Metalama.Framework`.
 
 You are done.
-

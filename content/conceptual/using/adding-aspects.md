@@ -33,7 +33,7 @@ The displayed details are trivial in this example, but this feature will prove i
 
 ## Adding more than one attribute
 
-You can choose to add as many aspects as you need on a target method. In this example, if you want to log each retry attempt, you have the option to use the `Log` aspect.
+You can choose to add as many aspects as you need to a target method. In this example, if you want to log each retry attempt, you have the option to use the `Log` aspect.
 
 ![Retry_and_Log_Aspect_Together](images/retry_and_log_aspect_together.png)
 
@@ -50,7 +50,7 @@ Instead of adding attributes manually, you can also do it via the refactoring me
 
 As you can see, the refactoring menu shows that three different aspects can be applied to this method. If you hover your mouse cursor over a menu item, you will see a preview of your code with the aspect custom attribute.
 
-The refactoring menu is smart enough to know which aspect has already been applied and it changes the recommendations accordingly. The following screenshot shows that after the application of the `Retry` aspect, the refactoring menu only shows the remaining aspects from the project.
+The refactoring menu is smart enough to know which aspect has already been applied and it changes the recommendations accordingly. The following screenshot shows that after the application of the `Retry` aspect, the refactoring menu only shows the available but unused aspects.
 
 ![Sucecssive_application_of_aspects_via_context_menu](images/successive_application_aspects_via_context_menu.png)
 

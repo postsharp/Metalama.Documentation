@@ -21,7 +21,4 @@ To install Metalama Command Line Tool:
     dotnet tool install -g metalama.tool -version <VERSION>
     ```
 
-    
-
 The Metalama Command Line Tool is now available through the `metalama` command.
-

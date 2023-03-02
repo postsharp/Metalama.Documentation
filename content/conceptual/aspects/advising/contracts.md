@@ -9,28 +9,26 @@ In <xref:simple-contracts>, you have learned to create simple contracts by imple
 
 In this article, we will cover more advanced scenarios.
 
-### Accessing the metadata of the field, property, or parameter being validated
-
+## Accessing the metadata of the field, property, or parameter being validated
 
 Your template code can access its context using the following meta APIs:
 
 - `meta.Target.Declaration` returns the target parameter, property, or field.
-- `meta.Target.FieldOrProperty` returns the target property or field, but will throw an exception if the contract is applied to a parameter.
+- `meta.Target.FieldOrProperty` returns the target property or field but will throw an exception if the contract is applied to a parameter.
 - `meta.Target.Parameter` returns the parameter (including the parameter representing the return value), but will throw an exception if the contract is applied to a field or property.
-* `meta.Target.ContractDirection` returns `Input` or `Output` according to the data flow being validated ([see below](#contract-directions)). Typically, it is `Input` for input parameters and property setters, and `Output` for output parameters and return values.
+- `meta.Target.ContractDirection` returns `Input` or `Output` according to the data flow being validated ([see below](#contract-directions)). Typically, it is `Input` for input parameters and property setters, and `Output` for output parameters and return values.
 
-
-### Contract directions
+## Contract directions
 
 By default, the <xref:Metalama.Framework.Aspects.ContractAspect> aspect applies the contract to the _default data flow_ of the target parameter, field, or property.
 
 The default direction is as follows:
 
-* for input and `ref` parameters: the _input_ value,
+- for input and `ref` parameters: the _input_ value,
 
-* for fields and properties: the _assigned_ value (i.e. the `value` parameter of the setter),
+- for fields and properties: the _assigned_ value (i.e. the `value` parameter of the setter),
 
-* for `out` parameters and return value parameters, the _output_ value.
+- for `out` parameters and return value parameters, the _output_ value.
 
 To change the filter direction, set the <xref:Metalama.Framework.Aspects.ContractAspect.Direction> property of the <xref:Metalama.Framework.Aspects.ContractAspect> class in the constructor.
 
@@ -41,8 +39,6 @@ To learn about customizing eligibility for different contract directions than th
 We have already met this aspect in <xref:simple-contracts>. This example refines the behavior: for the _input_ data flow, an `ArgumentNullException` is thrown, but for the output flow, we throw a `PostConditionFailedException`. Notice how we apply the aspect to 'out' parameters and to return values.
 
 [!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/NotNull.cs name="NotNull"]
-
-
 
 ## Adding contract advice programmatically
 
@@ -57,6 +53,4 @@ The following snippet shows how to automatically add precondition checks for all
 
 The [fabric](xref:using-fabrics) adds a method-level aspect to all exposed methods. Then, the aspect adds individual contracts using the <xref:Metalama.Framework.Advising.IAdviceFactory.AddContract*> method.
 
-
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/NotNullFabric.cs name="NotNull Fabric"]
-

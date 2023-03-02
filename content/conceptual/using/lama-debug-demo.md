@@ -1,3 +1,0 @@
----
-uid: lama-debug-demo
----

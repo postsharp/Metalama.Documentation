@@ -12,8 +12,8 @@ However, we appreciate that many customers have tens of thousands to millions of
 
 So we took the following decisions:
 
- * You will need to rewrite your _aspects_ completely_.
- * The _business code_ that only _uses_ the aspects _should not normally need any changes_, except for find-and-replace-in-files and replacements of namespace imports replacements.
+* You will need to rewrite your _aspects_ completely_.
+* The _business code_ that only _uses_ the aspects _should not normally need any changes_, except for find-and-replace-in-files and replacements of namespace imports replacements.
 
 We hope this is an acceptable compromise.
 
@@ -28,4 +28,3 @@ Article | Description
 <xref:differences-from-postsharp> | This article explains the major differences between the architecture of PostSharp and the architecture of Metalama from a theoretical angle.
 <xref:migrating-multicasting> | This article explains how to migrate PostSharp attribute multicasting to Metalama.
 <xref:migrating-configuration> | This article explains how to migrate PostSharp configuration files like `postsharp.config` to Metalama.
-

@@ -45,7 +45,7 @@ A metric requires several implementation classes. All must be contained in the w
 
 4. Annotate this class with the <xref:Metalama.Compiler.MetalamaPlugInAttribute> custom attribute.
 
-#### Example
+#### Example: counting syntax nodes
 
 The following example implements a metric that counts the number of nodes in a member.
 

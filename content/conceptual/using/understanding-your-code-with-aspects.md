@@ -64,7 +64,7 @@ You can also see this from the Context menu that is popped when you right-click 
 
 In <xref:quickstart-adding-aspects> you have seen how aspects can be added to a target method one at a time. This operation is _explicit_ because you are adding the attribute.
 
-However, sometimes you shall discover that CodeLense shows some aspects that are applied to some targets even though there is no explicit attribute given. This is _implicit_ aspect application.
+However, sometimes you shall discover that CodeLense shows some aspects that are applied to some targets even though there is no explicit attribute given. These are _implicit_ aspect applications.
 
 This sort of thing is possible because some of the aspects can be designed as <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> aspects and these aspects are inherited from the base class to the children classes.
 

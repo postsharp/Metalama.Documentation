@@ -10,7 +10,7 @@ Aspects, as you already know, modify the code during compilation, but let your s
 You can use live templates from the refactoring menu, also named the _lightbulb_ or _screwdriver_ menu.
 
 
-## Step 1. Add a project or package reference.
+## Step 1. Add a project or package reference
 
 Like aspects, live templates are declared in projects or NuGet packages that you add as references to your project.
 

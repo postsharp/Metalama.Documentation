@@ -45,7 +45,7 @@ Adding a caching aspect to a `void` method does not make sense and should be add
 
 Adding a dependency injection aspect to an `int` or `string` field does not make sense and this condition should therefore be expressed using the eligibility API. However, the fact that your implementation of the aspect requires the field to be non-read-only is a contingency and should be reported as an error.
 
-### Example
+### Example 3
 
 The following example expands the previous one, reporting custom errors when the target class does not define a field `logger` of type `TextWriter`.
 

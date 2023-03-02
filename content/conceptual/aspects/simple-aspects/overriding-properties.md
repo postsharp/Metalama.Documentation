@@ -44,9 +44,9 @@ In this aspect, you shall see how you can trim whitespace before and after strin
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/Trimmed.cs name="Trimming string fields and properties"]
 
-The aspect does not need to modify the getter, so it only calls `meta.Proceed()` and Metalama replaces this call by the original implementation of the property. We could have written `get => meta.Target.PropertyOrField.Value` instead, with the same effect.
+The aspect does not need to modify the getter, so it only calls `meta.Proceed()` and Metalama replaces this call with the original implementation of the property. We could have written `get => meta.Target.PropertyOrField.Value` instead, with the same effect.
 
-The setter is modified to call the `Trim` method on the input `value`. The most shortest and simplest code is `set => meta.Target.PropertyOrField.Value = value?.Trim`. Alternatively, we could have written the following code.
+The setter is modified to call the `Trim` method on the input `value`. The shortest and simplest code is `set => meta.Target.PropertyOrField.Value = value?.Trim`. Alternatively, we could have written the following code.
 
 ```cs
 set

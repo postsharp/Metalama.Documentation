@@ -13,7 +13,6 @@ Fabrics are executed in the following order:
     2. Fabric namespace.
     3. Fabric type name.
 
-
 2. **Transitive project fabrics** are ordered based on the following criteria:
 
      1. Depth in the dependency graph: dependencies with lower depth (i.e. "nearer" to the main project) are processed first.
@@ -28,5 +27,3 @@ Fabrics are executed in the following order:
 5. **Type fabrics**.
    Note that type fabrics can provide advice. This advice is executed before any aspect.
 6. **Aspects**. For the execution order of explicitly ordered and unordered aspects, see <xref:ordering-aspects>.
-
-

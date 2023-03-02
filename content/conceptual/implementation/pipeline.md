@@ -5,7 +5,7 @@ level: 400
 
 # Compilation pipeline
 
-### Step 1. Initialization
+## Step 1. Initialization
 
 1. Generation of the compile-time compilation:
     1. Referenced compile-time projects are identified and loaded.
@@ -18,7 +18,7 @@ level: 400
     3. Aspect ordering relationships are discovered in the current project and all referenced assemblies.
     4. Aspect layers are ordered.
 
-### Step 2. Applying aspects
+## Step 2. Applying aspects
 
 For each aspect layer, by order of application (i.e., inverse order of execution, see <xref:ordering-aspects>):
 
@@ -36,18 +36,18 @@ For each aspect layer, by order of application (i.e., inverse order of execution
 
 * Before we execute the next aspect layer or the next visiting depth, a new code model version is created incrementally from the previous version, which includes all observable transformations added by advice.
 
-### Step 3. Transforming the compilation
+## Step 3. Transforming the compilation
 
 Before this step, the algorithm collected transformations, but the compilation was never modified.
 
 What happens next depends on whether the pipeline runs at design time or at compile time.
 
-#### Compile time
+### Compile time
 
 1. All transformations (observable and non-observable) are introduced into a new compilation. Templates are expanded at this moment.
 2. The code is linked together and inlined where possible.
 
-#### Design time
+### Design time
 
 At design time, non-observable transformations are ignored, and partial files are created for observable transformations.
 Templates are never executed at design time.

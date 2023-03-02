@@ -31,6 +31,7 @@ The <xref:Metalama.Extensions.Multicast.MulticastAspect> class defines:
 * a protected property <xref:Metalama.Extensions.Multicast.MulticastAspect.Implementation> that you can call from your derived classes to implement multicasting.
 
 Your aspect must also implement the <xref:Metalama.Framework.Aspects.IAspect`1> interface for all relevant kinds of declarations:
+
 * on the _final_ declarations on which the aspect is actually applied (i.e. does some actual work), and
 * on any _intermediate_ declaration where the aspect does no other work than multicasting itself to select child declarations.
 

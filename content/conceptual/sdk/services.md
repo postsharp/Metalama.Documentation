@@ -40,6 +40,3 @@ In your aspect class, you can get your service implementation from the <xref:Met
 
 > [!WARNING]
 > SDK services are not available at design time.
-
-
-

@@ -15,7 +15,7 @@ There are three major points of interest.
 
 ## 1. Strong ordering of aspects and advice
 
-Aspects are "things" that receive a code model as input, and provide outputs such as advice, diagnostics, validators, and child aspects. The only relevant output for this discussion is *advice* because other outputs do not modify the code. Most aspects have a single layer of advice, but it is possible to define multiple layers.
+Aspects are "things" that receive a code model as input, and provide outputs such as advice, diagnostics, validators, and child aspects. The only relevant output for this discussion is the _advice_ because other outputs do not modify the code. Most aspects have a single layer of advice, but it is possible to define multiple layers.
 
 To make the order of execution of aspects and advice consistent, Metalama uses two ordering criteria.
 
@@ -24,7 +24,6 @@ To make the order of execution of aspects and advice consistent, Metalama uses t
 2. _Depth Level_ of target declarations. Every declaration in the compilation is assigned a _depth level_. Within the same aspect layer, declarations are processed by order of increasing depth, i.e. base classes are visited before derived classes, types before their members, and so on.
 
 Aspects and advice in the same layer and applied to declarations of the same depth are executed in an undetermined order and may be executed concurrently on several threads.
-
 
 ## 2. Code model versioning
 
