@@ -10,16 +10,16 @@ There are two complementary configuration mechanisms: MSBuild properties and the
 
 ## Benefits
 
-* **Central options of aspects**. When you provide a configuration API, the whole project can be configured at once. Without a configuration API, the user of the aspect needs to supply the configuration every time a custom attribute is used.
+* **Central options of aspects**. When you provide a configuration API, the whole project can be configured from a single place. Without a configuration API, the aspect user must supply the configuration whenever a custom attribute is used.
 
-* **Debug/Release-aware options**. Without a configuration API, it can be very impractical to set options according to the `Debug`/`Release` build configuration.
+* **Debug/Release-aware options**. Without a configuration API, setting options according to the `Debug`/`Release` build configuration can be impractical.
 
 * **Run-time performance**. When decisions are taken at compile time and optimal run-time code is generated accordingly, the run-time execution of your app is faster.
 
 
 ## Consuming MSBuild properties
 
-The simplest way for an aspect to accept a configuration property is to read an MSBuild property using the <xref:Metalama.Framework.Project.IProject.TryGetProperty*?text=IProject.TryGetProperty> method. MSBuild properties are not visible to aspects by default: you have to instruct MSBuild to pass it to the compiler using the `CompilerVisibleProperty` item.
+The simplest way for an aspect to accept a configuration property is to read an MSBuild property using the <xref:Metalama.Framework.Project.IProject.TryGetProperty*?text=IProject.TryGetProperty> method. MSBuild properties are not visible to aspects by default: you must instruct MSBuild to pass it to the compiler using the `CompilerVisibleProperty` item.
 
 We recommend the following approach to consume a configuration property:
 

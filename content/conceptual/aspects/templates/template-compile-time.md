@@ -5,9 +5,9 @@ level: 200
 
 # Writing compile-time code
 
-Compile-time expressions are expressions that either contain a call to a compile-time method, or contain a reference to a compile-time local variable or a compile-time aspect member. Compile-time expressions are executed at compile time, when the aspect is applied to a target.
+Compile-time expressions are expressions that either contain a call to a compile-time method or a reference to a compile-time local variable or a compile-time aspect member. Compile-time expressions are executed at compile time when the aspect is applied to a target.
 
-Compile-time statements are statements, such as `if`, `foreach` or `meta.DebugBreak()`, that are executed at compile time.
+Compile-time statements are statements that are executed at compile time, such as `if`, `foreach`, or `meta.DebugBreak()`.
 
 ## The meta pseudo-keyword
 
@@ -113,7 +113,7 @@ If you want to share compile-time code between aspects or aspect methods, you ca
   - a method or field of an aspect;
   - a type (`class`, `struct`, `record`, ...);
   - an assembly, using `[assembly: CompileTime]`.
-- Code that can run either at compile time or at run time must be annotated with the [<xref:Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute?text=RunTimeOrCompileTime>] custom attribute.
+- Code that can either execute at compile or run time must be annotated with the [<xref:Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute?text=RunTimeOrCompileTime>] custom attribute.
 
 ## Calling other packages from compile-time code
 

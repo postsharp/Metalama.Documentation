@@ -7,9 +7,9 @@ level: 300
 
 (This article is just a sketch.)
 
-The idea of this approach is to apply the aspect to some target code and to create normal unit tests that verify that the resulting code has the desired behavior.
+This approach aims to apply the aspect to some target code and create regular unit tests that verify that the resulting code has the desired behavior.
 
-For instance, if you want to test a logging aspect, you can make your logging aspect log to an in-memory `StringWriter`, and use a standard unit test to verify that some logged method, when called from the test method, produces the expected result in the `StringWriter`. This idea is drafted in the following code snippet.
+For instance, if you want to test a logging aspect, you can make your logging aspect log to an in-memory `StringWriter` and use a standard unit test to verify that some logged method, when called from the test method, produces the expected result in the `StringWriter`. This idea is drafted in the following code snippet.
 
 
 

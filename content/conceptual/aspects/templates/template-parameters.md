@@ -5,7 +5,7 @@ level: 200
 
 # Template parameters and type parameters
 
-Thanks to _compile-time parameters_, your `BuildAspect` implementation can pass arguments to the template. There are two kinds of template parameters: standard parameters and type parameters (also known as generic parameters).
+Thanks to _compile-time parameters_, your `BuildAspect` implementation can pass arguments to the template. There are two kinds of template parameters: standard and type parameters (also known as generic parameters).
 
 Unlike run-time parameters:
 
@@ -19,18 +19,18 @@ Compile-time parameters are especially useful when the same template is used sev
 
 To define and use a compile-time parameter in a template method:
 
-1. Add one or more parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The type of the parameter must not be run-time-only. If the parameter type is compile-time-only (for example, `IField`), the use of the custom attribute is redundant.
+1. Add one or more parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The type of the parameter must not be run-time-only. If the parameter type is compile-time-only (for example, `IField`), the custom attribute is redundant.
 
 2. In your implementation of the `BuildAspect` method, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument like this: `args: new { a = "", b = 3, c = field }` where `a`, `b` and `c` are the exact names of the template parameters (the name matching is case sensitive).
 
 
 ### Alternative: tags
 
-When you cannot use compile-time parameters (typically because you have a field, property, or event template instead of a method template), you can replace them by tags. For details about tags, see <xref:sharing-state-with-advice>. The advantage of compile-time parameters over tags is that using template parameters makes the code more readable. Tags require cumbersome syntax.
+When you cannot use compile-time parameters (typically because you have a field, property, or event template instead of a method template), you can replace them with tags. For details about tags, see <xref:sharing-state-with-advice>. The advantage of compile-time parameters over tags is that template parameters make the code more readable. Tags require cumbersome syntax.
 
 ## Type parameters
 
-_Compile-time type parameters_, aka compile-time generic parameters, are generic parameters whose value is specified at compile time by the `BuildAspect` method. Compile-time type parameters are a type-safe alternative to dynamic typing in templates. With compile-time type parameters, it is more convenient to reference a type from a template since a type can be referenced as a type, instead of using a more cumbersome syntax like `meta.Cast`.
+_Compile-time type parameters_, aka compile-time generic parameters, are generic parameters whose value is specified at compile time by the `BuildAspect` method. Compile-time type parameters are a type-safe alternative to dynamic typing in templates. With compile-time type parameters, it is more convenient to reference a type from a template since it can be referenced as a type, instead of using a more cumbersome syntax like `meta.Cast`.
 
 To define and use a compile-time type parameter in a template method follow the similar steps as for a normal compile-time parameter:
 
@@ -40,7 +40,7 @@ To define and use a compile-time type parameter in a template method follow the 
 
 ### Alternative: dynamic typing
 
-The alternative to compile-time type parameters is dynamic typing and the use of methods like `meta.Cast` or abstractions like <xref:Metalama.Framework.Code.IExpression>. For details about generating run-time code, see <xref:template-dynamic-code>.
+The alternative to compile-time type parameters is dynamic typing and using methods like `meta.Cast` or abstractions like <xref:Metalama.Framework.Code.IExpression>. For details about generating run-time code, see <xref:template-dynamic-code>.
 
 ## Example
 

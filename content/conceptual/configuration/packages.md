@@ -7,7 +7,6 @@ level: 300
 
 Metalama is composed of many NuGet packages. Some are used only for testing or troubleshooting and will never be included in your public packages.
 
-
 ## Package list
 
 | Package Name | Scenarios | Description |
@@ -21,7 +20,6 @@ Metalama is composed of many NuGet packages. Some are used only for testing or t
 | Metalama.Framework.Engine | Testing, Introspection | An opaque implementation assembly required by the testing and introspection packages. |
 | Metalama.Framework.Introspection | Introspection | Allows to query the code model representing the output of the Metalama process.
 | Metalama.Framework.Workspaces | Introspection | Allows any application to load a Visual Studio project or solution and to represent its code model and the Introspection of the Metalama process.
-
 
 ## Package diagrams
 
@@ -102,7 +100,6 @@ graph BT
 
 ```
 
-
 ### Introspection
 
 ```mermaid
@@ -143,9 +140,7 @@ graph BT
 
 ```
 
-
 ### SDK
-
 
 ```mermaid
 graph BT
@@ -197,8 +192,3 @@ graph BT
 
 
 ```
-
-
-
-
-

@@ -43,7 +43,6 @@ The `miniDump/processes` section lists processes for which process dumps need to
 
 In the next example, Metalama is configured to capture a process dump for the compiler process.
 
-
 ```json
 {
  // ...
@@ -70,8 +69,8 @@ In the next example, Metalama is configured to capture a process dump for the co
 
 Restart the logged processes:
 
- * If you decided to log the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
- * If you decided to log any design-time processes, restart your IDE.
+* If you decided to log the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
+* If you decided to log any design-time processes, restart your IDE.
 
 Execute the actions that trigger the issue.
 
@@ -89,4 +88,3 @@ Upload this file to an online storage service like OneDrive.
 > **NEVER** share the process dump URL publicly on a service like GitHub Issues.
 
 Instead, send us the hyperlink by [email](mailto:hello@postsharp.net).
-

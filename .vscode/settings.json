@@ -18,8 +18,9 @@
     "DOCSMD041": false,
     "DOCSMD009": false,
     "MD013": false,
-    "DOCSMD010": false
-},
+    "DOCSMD010": false,
+    "MD033": false
+    },
 "grammarly.config.documentDomain": "business",
 "grammarly.config.suggestions.ConjunctionAtStartOfSentence": true,
 "grammarly.config.documentDialect": "american",

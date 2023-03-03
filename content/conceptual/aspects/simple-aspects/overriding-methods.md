@@ -13,14 +13,14 @@ To create an aspect that overrides methods:
 
 1. Add the `Metalama.Framework` package to your project.
 
-2. Create a class and make it inherit the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> class.  This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
+2. Create a class and make it inherit the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> class.  This class will be a custom attribute, so naming it with the `Attribute` suffix is a good idea.
 
 3. Override the <xref:Metalama.Framework.Aspects.OverrideMethodAspect.OverrideMethod*> method.
 
 4. In your <xref:Metalama.Framework.Aspects.OverrideMethodAspect.OverrideMethod*> implementation, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed> where the original method should be invoked.
 
     > [!NOTE]
-    > <xref:Metalama.Framework.Aspects.meta> is a special class.  It can almost be thought of as a keyword that lets you tap into the meta-model of the code you are dealing with. In this case, calling <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed> is equivalent to calling the method that your aspect is overriding.
+    > <xref:Metalama.Framework.Aspects.meta> is a special class.  It can almost be considered a keyword that lets you tap into the meta-model of the code you are dealing with. In this case, calling <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed> is equivalent to calling the method that your aspect is overriding.
 
 5. Apply your new aspect to any relevant method as a custom attribute.
 
@@ -31,7 +31,7 @@ The following aspect overrides the target method and adds a call to `Console.Wri
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods\SimpleLogging.cs]
 
-To see the effect of the aspect on the code in this documentation, switch to the _Transformed Code_ tab here above. In Visual Studio, you can preview the transformed code thanks to the _Diff Preview_ feature. See <xref:understanding-your-code-with-aspects> for details.
+To see the effect of the aspect on the code in this documentation, switch to the _Transformed Code_ tab above. In Visual Studio, you can preview the transformed code thanks to the _Diff Preview_ feature. See <xref:understanding-your-code-with-aspects> for details.
 
 As you can see, <xref:Metalama.Framework.Aspects.OverrideMethodAspect> does exactly what the name suggests: to override the method. So if you put your aspect on a method, the aspect code will be executed _instead_ of the code of the target method. Therefore, the following line of code gets executed first:
 
@@ -53,16 +53,16 @@ Note how the overridden implementation in the aspect retries the method being ov
 
 ### Example: authorizing the current user
 
-Sometimes, it is needed to block calls to some particular methods based on some condition. You can see, in the following aspect, how the call is blocked if the given condition is not met.
+The following example shows how to verify the current user's identity before executing a method.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Authorize.cs]
 
 
 ## Adding context from the target method
 
-None of the examples above contained anything that was specific to the method to which the aspect was applied. Even the logging aspect wrote a generic message.
+None of the examples above contained anything specific to the method to which the aspect was applied. Even the logging aspect wrote a generic message.
 
-Instead of writing a generic message to the console, we will now write a text that includes the name of target the method.
+Instead of writing a generic message to the console, we will now write a text that includes the name of the target method.
 
 You can get to the target of the aspect by calling the <xref:Metalama.Framework.Aspects.IMetaTarget.Method?text=meta.Target.Method> property, which exposes all relevant information about the current method: its name, its list of parameters and their types, and so on.
 

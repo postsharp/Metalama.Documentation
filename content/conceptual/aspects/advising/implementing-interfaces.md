@@ -4,7 +4,7 @@ level: 300
 ---
 # Implementing interfaces
 
-Some aspects need to modify the target type so that it implements a new interface. This can be done only by using the programmatic advising API.
+Some aspects need to modify the target type to implement a new interface. This can be done only by using the programmatic advising API.
 
 ## Step 1. Call IAdviceFactory.ImplementInterface
 
@@ -20,11 +20,11 @@ The following rules apply to interface members:
 - The accessibility of introduced members is irrelevant.
 - The aspect framework will generate public members unless the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute.IsExplicit> property is set to true. In this case, an explicit implementation is created.
 
-Implementing an interface in a completely dynamic manner, when the interface is not already known by the aspect, is not yet supported.
+Implementing an interface in a completely dynamic manner, i.e., when the aspect does not already know the interface, is not yet supported.
 
 ## Example: IDisposable
 
-The aspect in the next example introduces the `IDisposable` interface. The implementation of the `Dispose` method disposes of all fields or properties that implement the `IDisposable` interface.
+The aspect in the following example introduces the `IDisposable` interface. The implementation of the `Dispose` method disposes of all fields or properties that implement the `IDisposable` interface.
 
 [!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Disposable.cs name="Disposable"]
 
@@ -35,7 +35,7 @@ The aspect in the next example introduces the `IDisposable` interface. The imple
 
 ## Referencing interface members in other templates
 
-When you introduce an interface member to the type, you often want to access it from templates. Unless the member is an explicit implementation, you have two options:
+When introducing an interface member to the type, you often want to access it from templates. Unless the member is an explicit implementation, you have two options:
 
 [comment]: # (TODO: better code examples)
 
@@ -63,5 +63,5 @@ The following strategies are possible to access explicit implementations:
     ((IDisposable)meta.This).Dispose();
     ```
 
-- Introduce a private method with the real method implementation, and call this private member both from the interface member and from other templates.
+- Introduce a private method with the concrete method implementation, and call this private member both from the interface member and the templates.
 

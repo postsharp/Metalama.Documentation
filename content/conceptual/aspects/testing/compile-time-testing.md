@@ -11,7 +11,7 @@ When you build complex aspects, it is a good idea to move the complex compile-ti
 
 The benefit of unit-testing compile-time classes are:
 
-* it is generally simpler to create unit tests than full aspect tests (see <xref:aspect-testing>),
+* it is generally simpler to create a complete test coverage with unit tests than with aspect tests (see <xref:aspect-testing>),
 * it is easier to debug unit tests than aspect tests.
 
 ## To create unit tests for your compile-time code

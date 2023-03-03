@@ -6,7 +6,7 @@ uid: creating-logs
 
 If you report a Metalama bug, you may be asked to send Metalama log files. These instructions teach you how to produce them.
 
-## Step 1. Install the metalama tool
+## Step 1. Install the Metalama CLI tool
 
 Install the `metalama` .NET tool as described in <xref:dotnet-tool>.
 
@@ -22,12 +22,12 @@ This should open a `diagnostics.json` file in your default editor. Edit this fil
 
 1. In the `logging/processes` section, set to `true` the processes for which logging should be enabled:
     * `Compiler`: the compile-time process.
-    * `Rider`: the design-time Roslyn process running under Rider.
+    * `Rider`: the design-time Roslyn process of the Rider IDE.
     * `DevEnv`: the UI process of Visual Studio (note that there is no aspect code running in this process).
     * `RoslynCodeAnalysisService`: the design-time Roslyn process running under Visual Studio (this is where the aspect code runs).
-2. In the `logging/trace` section, set to `true` the categories for which logging should be enabled. To enable logging for everything, enable the `*` category.
+2. In the `logging/trace` section, set to `true` the categories for which logging should be enabled. To enable logging for everything, allow the `*` category.
 
-<<< In the next example, logging is enabled for the compiler process for all categories.
+<<< In the following example, logging is enabled for the compiler process for all categories.
 
 
 ```json
@@ -74,7 +74,7 @@ To restart IDE processes, if you want to change logging of the IDE processes, re
 Execute the sequence of actions to be logged.
 
 > [!WARNING]
-> Logging is automatically disabled after a specified number of hours since the last modification of `diagnostics.json`. The time value is taken from the `stopLoggingAfterHours` property set in the `logging` section and defaults to 2 hours. You can edit `diagnostics.json` to change the value.
+> Logging is automatically disabled after a specified number of hours since the last modification of `diagnostics.json`. The time value is taken from the `stopLoggingAfterHours` property in the `logging` section and defaults to 2 hours. You can edit `diagnostics.json` to change the value.
 
 ## Step 5. Open the log file
 

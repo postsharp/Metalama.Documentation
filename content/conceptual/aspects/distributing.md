@@ -4,14 +4,14 @@ uid: distributing
 
 # Distributing projects that use aspects
 
-When your project uses aspects, you need to consider whether the projects that _reference_ your project will also need to use aspects just because of this reference.
+When your project uses aspects, you must consider whether the projects that _reference_ your project will also need to use aspects just because of this reference.
 
 ## Flowing the use of aspects
 
 Your project may _flow_ the necessity to use aspects and the aspect framework to consumers of your project for one of the following reasons:
 
-* Your project exposes public aspects that can be used by the referencing projects.
-* Your project has non-sealed, public classes that have _inherited_ aspects.
+* Your project exposes public aspects that the other projects can use.
+* Your project has non-sealed, public classes with _inheritable_ aspects.
 * Your project has public classes that have _reference validators_.
 * Your project contains a _transitive project fabric_ or references a project that contains one.
 

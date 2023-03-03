@@ -10,12 +10,12 @@ In <xref:simple-override-property>, you have learned the basics of the <xref:Met
 
 ## Accessing the metadata of the overridden field or property
 
-The metadata of the field or property being overridden are available from the template accessors on the <xref:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty?text=meta.Target.FieldOrProperty> property. This property gives you all information about the name, type and custom attributes of the field or property. For instance, the member name is available on `meta.Target.FieldOrProperty.Name` and its type on `meta.Target.FieldOrProperty.Type`.
+The metadata of the field or property being overridden are available from the template accessors on the <xref:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty?text=meta.Target.FieldOrProperty> property. This property gives you all information about the field or property's name, type, and custom attributes. For instance, the member name is available on `meta.Target.FieldOrProperty.Name` and its type on `meta.Target.FieldOrProperty.Type`.
 
 - `meta.Target.FieldOrProperty` exposes the current field or property as an <xref:Metalama.Framework.Code.IFieldOrProperty>, which exposes characteristics that are common to fields and properties.
 - `meta.Target.Field` exposes the current field as an <xref:Metalama.Framework.Code.IField> but will throw an exception if the target is not a field.
 - `meta.Target.Property` exposes the current field as an <xref:Metalama.Framework.Code.IProperty> but will throw an exception if the target is not a field.
-- `meta.Target.Method` exposes the current accessor method. Note that this works even if the target is a field, because Metalama creates pseudo methods to represent field accessors.
+- `meta.Target.Method` exposes the current accessor method. This works even if the target is a field because Metalama creates pseudo methods to represent field accessors.
 
 To access the _value_ of the field or property, you can use the `meta.Target.FieldOrProperty.Value` expression both in reading and writing. In the setter template, `meta.Target.Parameters[0].Value` gives you the value of the `value` parameter.
 
@@ -44,12 +44,12 @@ Alternatively, you can call the <xref:Metalama.Framework.Advising.IAdviceFactory
 
 ### Using a property template
 
-The _first argument_ of `Override` is the <xref:Metalama.Framework.Code.IFieldOrProperty> that you want to override. This field or property must be in the type being targeted by the current aspect instance.
+The _first argument_ of `Override` is the <xref:Metalama.Framework.Code.IFieldOrProperty> that you want to override. This field or property must be in the type targeted by the current aspect instance.
 
 The _second argument_ of `Override` is the name of the template property. This property must exist in the aspect class and, additionally:
 
 * the template property must be annotated with the `[Template]` attribute,
-* the template property must be of type `dynamic?` (_dynamically-typed_ template), or a type that is compatible with the type of the overridden property (_strongly-typed_ template).
+* the template property must be of type `dynamic?` (_dynamically-typed_ template), or a type compatible with the type of the overridden property (_strongly-typed_ template).
 * the template property can have a setter, a getter, or both. If one accessor is not specified in the template, the corresponding accessor in the target code will not be overridden.
 
 
@@ -64,7 +64,7 @@ The following aspect overrides properties so that they are written to and read f
 
 This example illustrates a strongly-typed property template with a single accessor that uses the `meta.Target.FieldOrProperty.Value` expression to access the underlying field or property.
 
-The following aspect can be applied to fields of properties of type `string`. It overrides the setter to trim and lower case the assigned value.
+The following aspect can be applied to fields of properties of type `string`. It overrides the setter to trim and lowercase the assigned value.
 
 [!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Normalize.cs name="Normalize"]
 

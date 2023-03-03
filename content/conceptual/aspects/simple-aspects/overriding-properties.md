@@ -9,18 +9,18 @@ In <xref:simple-override-method>, you have learned how to change the implementat
 
 ## Overriding a field or property
 
-To create an aspect that can override a field or a property, follow these steps.
+Follow these steps to create an aspect that can override a field or property.
 
 1. Add Metalama the `Metalama.Framework` package to your project.
 
-2. Create a new class derived from the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class. This class will be a custom attribute, so it is a good idea to name it with the `Attribute` suffix.
+2. Create a new class derived from the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> abstract class. This class will be a custom attribute, so naming it with the `Attribute` suffix is a good idea.
 
 3. Implement the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect.OverrideProperty> property in plain C#. To call the original implementation, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed>.
 
 4. The aspect is a custom attribute. To transform a field or property using the aspect, just add the aspect custom attribute to the field or property.
 
 > [!WARNING]
-> When you apply an aspect to a field, Metalama will automatically transform the field into a property. If the field is used by reference using `ref`, `out` and `in` keywords, it will result in a compile-time error.
+> When applying an aspect to a field, Metalama will automatically transform the field into a property. If the field is used by reference using `ref`, `out`, and `in` keywords, it will result in a compile-time error.
 
 ### Trick: an empty OverrideFieldOrPropertyAspect aspect
 
@@ -33,7 +33,7 @@ This aspect does not do anything useful, but, as you can see, it transforms the 
 
 ## Getting or setting the underlying property
 
-If you have only worked with methods so far, you may be already used to using the `meta.Proceed()` method in your template. This method also works in a property template: when called from the getter, it returns the field or property value; when called from the setter, it sets the field or property to the value of the `value` parameter.
+If you have only worked with methods so far, you may already be used to using the `meta.Proceed()` method in your template. This method also works in a property template: when called from the getter, it returns the field or property value; when called from the setter, it sets the field or property to the value of the `value` parameter.
 
 If you need to get the property value from the setter, or if you need to set the property value to something else than the `value` parameter, you can do it by getting or setting the <xref:Metalama.Framework.Code.IExpression.Value?text=meta.Target.FieldOrProperty.Value> property.
 
@@ -59,9 +59,9 @@ set
 
 ### Example: turning the value to upper case
 
-The following example is very similar to the previous one: instead of trimming a string, we normalize it to upper case.
+The following example is similar to the previous one: instead of trimming a string, we normalize it to upper case.
 
-We apply the aspect to a class that represents a shipment between two airports.
+We apply the aspect to a class representing a shipment between two airports.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/UpperCase.cs name="Changing case to Upper case"]
 

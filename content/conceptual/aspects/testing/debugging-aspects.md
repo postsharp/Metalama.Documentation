@@ -39,7 +39,7 @@ To attach a debugger to the design-time compiler process:
    metalama config edit diagnostics
    ```
 
-3. In the `diagnostics.json` file, edit the `debugging/processes` section and enable debugging for the proper process. If you are using Visual Studio, this process is named `RoslynCodeAnalysisService`.
+3. In the `diagnostics.json` file, edit the `debugging/processes` section and enable debugging for the proper process. If you use Visual Studio, this process is named `RoslynCodeAnalysisService`.
 
     ```json
      {

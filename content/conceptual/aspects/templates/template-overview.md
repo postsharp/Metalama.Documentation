@@ -11,16 +11,16 @@ The difference between T# and C# is that the T# compiler executes within the com
 
 ## Scopes of code
 
-T# templates are a mix of _compile-time_ and _run-time_ expressions and statements. Compile-time expressions and statements are evaluated at compile time in the compiler (or at design time in the IDE when you use the Diff Preview feature) and result in the generation of other run-time expressions.
+T# templates mix _compile-time_ and _run-time_ expressions and statements. Compile-time expressions and statements are evaluated at compile time in the compiler (or at design time in the IDE when you use the Diff Preview feature) and result in the generation of other run-time expressions.
 
-Metalama analyzes T# and separates the compile-time part from the run-time part by applying a set of inference rules. Compile-time expressions and statements often start with the `meta` pseudo-keyword. <xref:Metalama.Framework.Aspects.meta> is actually a static class, but it is useful to think of it as a kind of magic keyword that means that it starts a compile-time expression or statement.
+Metalama analyzes T# and separates the compile-time part from the run-time part by applying inference rules. Compile-time expressions and statements often start with the `meta` pseudo-keyword. <xref:Metalama.Framework.Aspects.meta> is actually a static class, but it is useful to think of it as a kind of magic keyword that means that it starts a compile-time expression or statement.
 
 
 A fundamental concept in Metalama is that every type in your source code belongs to one of the following _scopes_:
 
 ### Run-time code
 
-_Run-time code_ is the code that you are used to: it compiles to a binary assembly and typically executes on the end user's device. In a project that does not reference the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) package, all code is considered run-time.
+_Run-time code_ is the code you are used to: it compiles to a binary assembly and typically executes on the end user's device. In a project that does not reference the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) package, all code is considered run-time.
 
 The entry point of run-time code is typically the _Program.Main_ method.
 
@@ -33,7 +33,7 @@ Metalama recognizes compile-time-only code thanks to the <xref:Metalama.Framewor
 You can create compile-time classes by annotating them with <xref:Metalama.Framework.Aspects.CompileTimeAttribute>.
 
 > [!WARNING]
-> All compile-time code _must_ be strictly compatible with .NET Standard 2.0, even if the containing project targets a richer platform. Any code that is not strictly .NET Standard 2.0 will be considered run-time code.
+> All compile-time code _must_ be strictly compatible with .NET Standard 2.0, even if the containing project targets a richer platform. Any call to an API that is not strictly .NET Standard 2.0 will be considered run-time code.
 
 
 ### Scope-neutral code
@@ -42,7 +42,7 @@ _Scope-neutral code_ is code that can execute either at run time or at compile t
 
 Scope-neutral code is annotated with the <xref:Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute> custom attribute.
 
-Aspect classes are scope-neutral because aspects are a special kind of class. Aspects are typically represented as custom attributes, and these attributes can be accessed at run time using _System.Reflection_, but they are also instantiated at compile time by Metalama. Therefore, it is important that the constructors and public properties of the aspects are both run-time and compile-time.
+Aspect classes are scope-neutral because aspects are a special kind of class. Aspects are typically represented as custom attributes, which can be accessed at run time using _System.Reflection_, but they are also instantiated at compile time by Metalama. Therefore, it is essential that the constructors and public properties of the aspects are both run-time and compile-time.
 
 However, some methods of aspect classes are purely compile-time. They cannot be executed at run time because they access APIs that exist only at compile time. These methods must be annotated with <xref:Metalama.Framework.Aspects.CompileTimeAttribute>.
 

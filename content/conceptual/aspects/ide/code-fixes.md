@@ -16,9 +16,9 @@ An aspect or fabric can also suggest a code refactoring without reporting a diag
 
 ### Example
 
-The following example shows an aspect that implements the `ToString` method. By default, it includes all public properties of the class in the `ToString` result. However, the developer using the aspect can opt out by adding `[NotToString]` to any property.
+The following example shows an aspect that implements the `ToString` method. By default, it includes all public properties of the class in the `ToString` result. However, the developer using the aspect can opt-out by adding `[NotToString]` to any property.
 
-The aspect uses the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method to add a code fix suggestion for all properties that are not yet annotated with `[NotToString]`.
+The aspect uses the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method to add a code fix suggestion for all properties not yet annotated with `[NotToString]`.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/ToStringWithSimpleCodeFix.cs name="ToString aspect with simple code fix"]
 
@@ -28,8 +28,8 @@ To create a custom code fix, instantiate the <xref:Metalama.Framework.CodeFixes.
 
 The <xref:Metalama.Framework.CodeFixes.CodeFix> constructor accepts two arguments:
 
-* The _title_ of the code fix, which will be displayed to the user, and
-* A _delegate_ of type `Func<ICodeActionBuilder, Task>`, which will apply the code fix when it is selected by the user.
+* the _title_ of the code fix, which will be displayed to the user, and
+* a _delegate_ of type `Func<ICodeActionBuilder, Task>` which will apply the code fix when the user selects it
 
 The title must be globally unique for the target declaration. Even two different aspects cannot provide two code fixes with the same title to the same declaration.
 
@@ -57,9 +57,9 @@ The custom code fix does the following:
 
 * Code fixes and refactorings are only useful at design time. At compile time, all code fixes will be ignored. If you want to avoid generating code fixes at compile time, you can make your logic conditional upon the `MetalamaExecutionContext.Current.ExecutionScenario.CapturesCodeFixTitles` expression.
 
-* The `Func<ICodeActionBuilder, Task>`  delegate is only executed when the code fix or refactoring is selected by the user. However, the entire aspect will be executed again which has two implications:
-  * The logic that _creates_ the delegate must be very efficient, because it is rarely used. Any expensive logic should be moved to the _implementation_ of the delegate itself.
+* The `Func<ICodeActionBuilder, Task>`  delegate is only executed when the user selects the code fix or refactoring. However, the entire aspect will be executed again, which has two implications:
+  * The logic that _creates_ the delegate must be very efficient because it is rarely used. Any expensive logic should be moved to the _implementation_ of the delegate itself.
   * If you want to avoid generating the delegate, you can make it conditional upon the `MetalamaExecutionContext.Current.ExecutionScenario.CapturesCodeFixImplementations` expression.
 
-* At design time, all code fix titles, including those added by the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method, are cached for the whole solution. Therefore, you should avoid adding a large number of suggestions. The current Metalama design is not suited for this scenario.
+* At design time, all code fix titles, including those added by the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method, are cached for the complete solution. Therefore, you should avoid adding a large number of suggestions. The current Metalama design is not suited for this scenario.
 
