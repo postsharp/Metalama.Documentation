@@ -5,7 +5,7 @@ level: 100
 
 # Adding aspects to your code
 
-Most aspects are custom attributes that have to be applied to some target declaration. Some aspects can target methods, other properties, or classes.
+Aspects are generally custom attributes and must be applied to some target declaration. Some aspects can target methods, other properties, or classes.
 
 In this section, you'll learn how to use custom attributes to add aspects.
 
@@ -29,11 +29,11 @@ If you want to see the details, click on the text `1 aspect`:
 
 ![Retry_Aspect_Code_Lense](images/showing_retry_aspect_code_lense.png)
 
-The displayed details are trivial in this example, but this feature will prove itself very useful when you have several aspects on the same methods when aspects are implicitly applied instead of being explicitly applied using a custom attribute.
+The displayed details are trivial in this example. Still, this feature will prove helpful when you have several aspects on the same methods when aspects are implicitly applied instead of being explicitly applied using a custom attribute.
 
 ## Adding more than one attribute
 
-You can choose to add as many aspects as you need to a target method. In this example, if you want to log each retry attempt, you have the option to use the `Log` aspect.
+You can choose to add as many aspects as you need to a target method. In this example, if you want to log each retry attempt, you can use the `Log` aspect.
 
 ![Retry_and_Log_Aspect_Together](images/retry_and_log_aspect_together.png)
 
@@ -44,13 +44,13 @@ CodeLens now shows that two aspects are applied to the method `FlakyMethod`. If 
 
 ## Adding aspects via the refactoring menu
 
-Instead of adding attributes manually, you can also do it via the refactoring menu. You can call this menu by clicking on the _lightbulb_ or _screwdriver_ icon, or by pressing `Ctrl + .`.
+Instead of adding attributes manually, you can do it via the refactoring menu. You can call this menu by clicking on the _lightbulb_ or _screwdriver_ icon, or by pressing `Ctrl + .`.
 
 ![Context_menu_offers_aspects](images/add_aspect_via_context_menu.png)
 
 As you can see, the refactoring menu shows that three different aspects can be applied to this method. If you hover your mouse cursor over a menu item, you will see a preview of your code with the aspect custom attribute.
 
-The refactoring menu is smart enough to know which aspect has already been applied and it changes the recommendations accordingly. The following screenshot shows that after the application of the `Retry` aspect, the refactoring menu only shows the available but unused aspects.
+The refactoring menu is smart enough to know which aspect has already been applied and it changes the recommendations accordingly. The following screenshot shows that after applying the `Retry` aspect, the refactoring menu only shows the available but unused aspects.
 
 ![Sucecssive_application_of_aspects_via_context_menu](images/successive_application_aspects_via_context_menu.png)
 

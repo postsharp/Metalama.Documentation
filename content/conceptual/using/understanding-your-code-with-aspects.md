@@ -26,31 +26,31 @@ CodeLense shows the following details:
 
 |Detail | Purpose
 |-------|---------
-|`Aspect Class` | The name of the aspect applied on this target.
+|`Aspect Class` | The name of the aspect applied to this target.
 |`Aspect Target` |The fully qualified name of the target.
 |`Aspect Origin` |How the aspect is applied.
 |`Transformation`|This is a default message showing that the aspect changes the behavior of the target method.
 
-At the moment, you may wonder why this could be useful, but it will become clear when you see that many aspects can be added to your code, and when aspects are applied implicitly.
+You may now wonder why this could be useful, but it will become apparent when you see that many aspects can be added to your code and when aspects are applied implicitly.
 
 Here is an example of a method with a couple of aspects applied.
 
 [!code-csharp[](~\code\DebugDemo3\Program.cs)]
 
-the example shows a method that is designed to get customer details from the database in the form of an XML string. There can be many problems connecting to a database and therefore a `Retry` aspect makes sense and it is better to log these. So `Log` aspect also makes sense. However, the order in which these aspects will be applied is determined by the aspect author. As a user of these aspects, you need not worry about them.
+the example shows a method that gets customer details from the database as an XML string. There can be many problems connecting to a database and therefore a `Retry` aspect makes sense and it is better to log these. So `Log` aspect also makes sense. However, the order in which these aspects will be applied is determined by the aspect author. As a user of these aspects, you need not worry about them.
 
-Another interesting thing that CodeLense shows is a clickable link to show the transformed code and original code side by side.
+CodeLense also displays a clickable link to show the transformed code and original code side by side.
 
 ## Previewing generated code
 
-To preview the change click on the link `Preview Transformed Code` It will show the result like this
+To preview the change click on the link `Preview Transformed Code` It will show the result like this:
 
 ![Metalama_Diff_Side_by_Side](images/lama_diff_side_by_side.png)
 
 > [!NOTE]
 > This preview dialog can also be opened by pressing `Ctrl + K` followed by `0`
 
-The screenshot shows just the source of `FlakyMethod` and the modified code by the `[Log]` aspect. However, you can see that the command shows the entire file in its original and modified version side by side.
+The screenshot shows the source of `FlakyMethod` and the modified code by the `[Log]` aspect. However, you can see that the command shows the entire file in its original and modified version side by side.
 
 To see changes for a particular section of the code, select that part of the code from the dropdown as shown below.
 
@@ -66,7 +66,7 @@ In <xref:quickstart-adding-aspects> you have seen how aspects can be added to a 
 
 However, sometimes you shall discover that CodeLense shows some aspects that are applied to some targets even though there is no explicit attribute given. These are _implicit_ aspect applications.
 
-This sort of thing is possible because some of the aspects can be designed as <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> aspects and these aspects are inherited from the base class to the children classes.
+This is possible because some aspects can be designed as <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> aspects and these aspects are inherited from the base class to the children classes.
 
 ### Implementing `INotifyPropertyChanged`
 

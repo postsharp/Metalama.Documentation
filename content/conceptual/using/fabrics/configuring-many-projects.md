@@ -5,13 +5,13 @@ level: 300
 
 # Adding aspects to many aspects
 
-If you have a repository or a solution composed of several projects, it is sometimes useful to add aspects from a central place. This article explains several approaches.
+If you have a repository or a solution composed of several projects, adding aspects from a central place is sometimes useful. This article explains several approaches.
 
-Note that the same approaches also work when you want to configure aspect libraries or add architecture rules.
+Note that the same approaches also work when configuring aspect libraries or adding architecture rules.
 
 ## Using transitive project fabrics
 
-_Transitive project fabrics_ are fabrics that are executed in any project that _references_ the assembly that contains the fabric, either as a project reference or as a package reference.
+_Transitive project fabrics_ are executed in any project that _references_ the assembly containing the fabric, either as a project or package reference.
 
 ### Execution order of transitive fabrics
 
@@ -19,7 +19,7 @@ Transitive project fabrics are executed after any _project fabric_ in the curren
 
 If several transitive project fabrics are active, they are executed in the following order:
 
-1. Depth in the dependency graph: dependencies with lower depth (i.e. "nearer" to the main project) are processed first.
+1. Depth in the dependency graph: dependencies with lower depth (i.e., "nearer" to the main project) are processed first.
 
 2. Assembly name (alphabetical order).
 
@@ -66,12 +66,12 @@ In `MySolution`, the following transitive project fabrics will be active:
 
 A second approach is to rely on the directory structure instead of the dependency graph. 
 
-The idea is to create a project fabric that is shared among many projects, and automatically include this file in each project using [Directory.Build.props](https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-your-build).
+The idea is to write a project fabric, store it in the root directory and the repo, and automatically include this file in each project using [Directory.Build.props](https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-your-build).
 
 
 #### Step 1. Create a project fabric
 
-In the parent directory that recursively contains all projects that you want to be affected by the shared fabric, create a project fabric deriving from <xref:Metalama.Framework.Fabrics.ProjectFabric> as you would do for a normal project fabric.
+In the parent directory that recursively contains all projects you want to be affected by the shared fabric, create a project fabric deriving from <xref:Metalama.Framework.Fabrics.ProjectFabric> as you would do for a regular project fabric.
 
 
 #### Step 2. Create Directory.Build.props

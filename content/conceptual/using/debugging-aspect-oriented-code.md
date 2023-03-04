@@ -40,11 +40,11 @@ The configuration manager will present the following dialog.
 * Save this configuration by clicking `OK` button
 * Now change the build configuration to `LamaDebug`
 
-Now you are ready to debug your aspect transformed code.
+Now you are ready to debug your aspect-transformed code.
 
 ## Breakpoints and Step-Into
 
-As of now, if you put breakpoint in your code that is being modified by aspect, those breakpoints will not be hit. However you can use `F11` to Step-Into like you do otherwise.
+If you put a breakpoint in your code that is being modified by aspect, those breakpoints will not be hit. However, you can use `F11` to Step-Into as you do otherwise.
 
 You can, however, put breakpoints into the transformed code. In the following sections, you shall learn how to locate the transformed code and how to debug this.
 
@@ -52,7 +52,7 @@ Consider the following code with the logging (`[Log]`) aspect
 
 ![](images/aspect_debug_01.png)
 
-The logging aspect just adds a line at the beginning of the method that it intercepts. It just add the name of the method that being intercepted. So when you step into this code by pressing `F11`, you should see the transformed code like this.
+The logging aspect just adds a line at the beginning of the method that it intercepts. It just adds the name of the method that is intercepted. So when you step into this code by pressing `F11`, you should see the transformed code like this.
 
 ![](images/aspect_debug_02.png)
 
@@ -67,7 +67,7 @@ Once it shows all files in your solution explorer, locate the file under `LamaDe
 
 ![](images/debug_transformed_code.png)
 
-As you can see you can put breakpoint on this transformed code and it will be hit, because this is the code that got compiled.
+As you can see you can put a breakpoint on this transformed code and it will be hit because this is the code that got compiled.
 
 ## Debugging using step-in and forceful break
 
@@ -83,4 +83,4 @@ You can put `Debugger.Break` to break the program forcefully. The following scre
 ![](images/debug_break.png)
 
 > [!NOTE]
-> Notice that it is the same code that you see before. You can add `Debugger.Break` to break the debugger at that location forcefully.
+> Notice that it is the same code that you see before. You can add `Debugger.Break` to forcefully break the debugger at that location.
