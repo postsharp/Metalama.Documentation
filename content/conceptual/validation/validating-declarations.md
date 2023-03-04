@@ -21,11 +21,11 @@ To validate the final state of the target declaration:
 
 ## Choosing which revision of the code model is validated
 
-Since aspects can modify the code model, it can be useful to be aware of which revision of the code model is validated.
+Since aspects can modify the code model, it can be useful to know which revision of the code model is validated.
 
-* The <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ValidateReferences*> method always validates the source code. References introduced by aspects cannot be validated.
+* The <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ValidateReferences*> method always validates the _source_ code. References introduced by aspects are not analyzed.
 
-* By default, fabrics validate the _source_ code. By calling <xref:Metalama.Framework.Validation.IValidatorReceiver`1.AfterAllAspects>, fabrics can validate the code model after all aspects have been applied.
+* By default, fabrics validate the _source_ code. By calling the <xref:Metalama.Framework.Validation.IValidatorReceiver`1.AfterAllAspects> methods, fabrics or aspects can validate the code model after all aspects have been applied.
 
-* By default, aspects validate the code as it is before they are executed (see <xref:aspect-composition>). Call <xref:Metalama.Framework.Validation.IValidatorReceiver`1.AfterAllAspects> to validate the code after all aspects have been applied or <xref:Metalama.Framework.Validation.IValidatorReceiver`1.BeforeAnyAspect> to validate the source code.
+* By default, aspects validate the code as it is before they are executed (see <xref:aspect-composition>), including any transformation performed by the aspects that were executed before. Call <xref:Metalama.Framework.Validation.IValidatorReceiver`1.AfterAllAspects> to validate the code after all aspects have been applied or <xref:Metalama.Framework.Validation.IValidatorReceiver`1.BeforeAnyAspect> to validate the source code.
 

@@ -37,18 +37,18 @@ Here is an example of a method with a couple of aspects applied.
 
 [!code-csharp[](~\code\DebugDemo3\Program.cs)]
 
-the example shows a method that gets customer details from the database as an XML string. There can be many problems connecting to a database and therefore a `Retry` aspect makes sense and it is better to log these. So `Log` aspect also makes sense. However, the order in which these aspects will be applied is determined by the aspect author. As a user of these aspects, you need not worry about them.
+The example shows a method that gets customer details from the database as an XML string. There can be many problems connecting to a database; therefore, a `Retry` aspect makes sense, and it is better to log these. So the `Log` aspect also makes sense. However, it is the role of the aspects' author to determine the order in which these aspects will be applied. As a user of these aspects, you need not worry about them.
 
 CodeLense also displays a clickable link to show the transformed code and original code side by side.
 
 ## Previewing generated code
 
-To preview the change click on the link `Preview Transformed Code` It will show the result like this:
+To preview the change, click on the link `Preview Transformed Code` It will show the result like this:
 
 ![Metalama_Diff_Side_by_Side](images/lama_diff_side_by_side.png)
 
 > [!NOTE]
-> This preview dialog can also be opened by pressing `Ctrl + K` followed by `0`
+> This preview dialog can also be opened by pressing `Ctrl + K` followed by `0`.
 
 The screenshot shows the source of `FlakyMethod` and the modified code by the `[Log]` aspect. However, you can see that the command shows the entire file in its original and modified version side by side.
 
@@ -64,17 +64,17 @@ You can also see this from the Context menu that is popped when you right-click 
 
 In <xref:quickstart-adding-aspects> you have seen how aspects can be added to a target method one at a time. This operation is _explicit_ because you are adding the attribute.
 
-However, sometimes you shall discover that CodeLense shows some aspects that are applied to some targets even though there is no explicit attribute given. These are _implicit_ aspect applications.
+However, sometimes you shall discover that CodeLense shows some aspects that are applied to some targets even though no explicit attribute is given. These are _implicit_ aspect applications.
 
-This is possible because some aspects can be designed as <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> aspects and these aspects are inherited from the base class to the children classes.
+This is possible because aspects marked as <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> are inherited from the base class to the children classes. Another reason is that fabrics or other aspects can programmatically apply aspects. In these cases, you will not see an aspect custom attribute on the target declaration.
 
-### Implementing `INotifyPropertyChanged`
+### Example: NotifyPropertyChanged
 
 In the following code example, it is shown how the `PropertyChanged` event is fired for all members of derived classes when the `NotificationPropertyChanged` aspect is applied.
 
 [!code-csharp[](~\code\DebugDemo4\Program.cs)]
 
-When run this program prints the following output
+This program prints the following output:
 
 ```
 X has changed
@@ -85,6 +85,5 @@ Y has changed
 Z has changed
 ```
 
-> [!NOTE]
-> Notice that members of `MovingVertex3D` type doesn't have `NotifyPropertyChanged` explicitly. But that aspect is inherited because `NotifyPropertyChanged` is an inhertiable aspect.
-Note that there is no **explicit** application of aspects and the inheritable type aspect `[NotifyPropertyChanged]` applied on the base type is inherited by all the members of the derived type.
+Notice that members of the `MovingVertex3D` type don't have an explicit `[NotifyPropertyChanged]` attribute. The aspect is inherited from the base class.
+

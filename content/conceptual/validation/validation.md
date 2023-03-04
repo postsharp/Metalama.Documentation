@@ -14,7 +14,7 @@ Validating code is especially important for projects developed by a large team o
 * **Immediate feedback**. Developers don't need to wait for the CI build to complete. Feedback is given within seconds.
 * **Smoother code reviews**. Petty rule violations are automatically detected so that code reviews can focus on flows and concepts.
 * **Better team alignment**. Automated code validation encourages the team to respect consistent patterns and practices.
-* **Lower complexity**. The resulting codebase is simpler for everyone when the whole team follows consistent patterns and practices.
+* **Lower complexity**. The resulting codebase is simpler when everyone on the team follows consistent patterns and practices.
 * **Reduced architecture erosion**. The gap between the initial architecture and its implementation in source code stays smaller.
 
 ## Aspects or Fabrics

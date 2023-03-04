@@ -5,7 +5,7 @@ level: 100
 
 # Using Metalama
 
-If you want to learn how to _use_ aspects, but do not need to learn how to _create_ new ones, this chapter is for you, and you may stop reading after this one. If you want to learn how to create aspects, it's still a good idea to start with this chapter to become accustomed to the core principles.
+If you want to learn how to _use_ aspects, but do not need to learn how to _create_ new ones, this chapter is for you, and you may stop reading after this one. If you want to learn how to create aspects, starting with this chapter is still a good idea because it introduces the core principles and techniques.
 
 After finishing this guide you should be comfortable using aspects in your codebase.
 
@@ -27,5 +27,5 @@ Read this chapter if:
 |<xref:understanding-your-code-with-aspects>| This article explains how to use Code Lens and Code Diff to understand your code.
 |<xref:debugging-aspect-oriented-code> | This article explains how you can debug this transformed code as you would otherwise do with Visual Studio.
 |<xref:applying-live-templates> | Live templates are special kinds of aspects that directly modify your source code in the editor. This article explains how to use them.
-|<xref:fabrics-adding-aspects>| Adding aspects by hand or by context menu is not always possible or viable. Sometimes a programmatic way is needed to add aspects to different targets. This article shows how you can programmatically use `Fabrics` to add aspects to different targets.
+|<xref:fabrics-adding-aspects>| Adding aspects by hand or using the refactoring menu is not always possible or viable. Sometimes a programmatic way is needed to add aspects to different targets. This article shows how you can programmatically use `Fabrics` to add aspects to different targets.
 
