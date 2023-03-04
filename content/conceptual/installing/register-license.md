@@ -5,7 +5,7 @@ level: 200
 
 # Registering a license
 
-When you use Metalama for the first time, it will automatically activate trial mode, which will work for a period of 45 days. To use Metalama beyond this period, you need to switch to Metalama Free or register a license key.
+When you use Metalama for the first time, it will automatically activate the trial mode, which will work for 45 days. To use Metalama beyond this period, switch to Metalama Free or register a license key.
 
 You can use all features of any preview of Metalama for up to 45 days after its release without registering a license.
 
@@ -35,7 +35,7 @@ To register a license key for the current user:
 
 To register a license manually for the current user:
 
-1. Open the Metalama licensing JSON configuration file `licensing.json`. It is located in `%appdata%\\.metalama` directory on Windows and in `~/.metalama` directory on Linux and Mac.
+1. Open the Metalama licensing JSON configuration file `licensing.json`. It is located in the `%appdata%\\.metalama` directory on Windows and in the `~/.metalama` directory on Linux and Mac.
 2. Set the license key as the `license` value. If the file doesn't exist, it should contain the following content. (`123-ABCDEFGHIJKLMNOPQRSTUVXYZ` is a placeholder for the actual license key.)
 
    ```json

@@ -10,11 +10,11 @@ It is often useful to validate how a declaration is _used_ outside its parent ty
 * suppress warnings reported by the C# compiler or by another analyzer for the code reference;
 * suggest a code fix for the code reference.
 
-You can validate references from an aspect or from a fabric, and both approaches are very similar.
+You can validate references from an aspect or a fabric; approaches are very similar.
 
 ## Validating references from an aspect
 
-Additionally or instead of transforming the code of the target declaration, an aspect can validate how the target declaration is being _used_, i.e. it can validate references to its target.
+Additionally, both, or instead of transforming the code of the target declaration, an aspect can validate how the target declaration is being _used_, i.e., it can validate references to its target.
 
 To create an aspect that validates references:
 
@@ -27,8 +27,8 @@ To create an aspect that validates references:
 3. Create a method of arbitrary name with the signature `void ValidateReference( ReferenceValidationContext context )`. Implement the validation logic in this method. All the data you need is in the <xref:Metalama.Framework.Validation.ReferenceValidationContext> object. When you detect a rule violation, report a diagnostic as described in <xref:diagnostics>.
 4. Override the <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>, <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method of your fabric.
 5. From the `Amend*` method, access the <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> property, select the declarations to be validated using the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> and <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> methods, then chain with a call to <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ValidateReferences*>. Pass two parameters:
-   - The name of the new method that you have defined in the previous step. *It must be a method. It cannot be a delegate, lambda, or a local function*.
-   - The kinds of references that you want to validate for instance `All` to validate all references, `TypeOf` to validate references in a `typeof` expression, and so on.
+   - The name of the new method you defined in the previous step. *It must be a method, not a delegate, lambda, or a local function*.
+   - The kinds of references you want to validate, for instance, `All` to validate all references, `TypeOf` to validate references in a `typeof` expression, and so on.
 
 
 ### Example: ForTestOnly, aspect implementation
@@ -40,10 +40,10 @@ The following example implements a custom attribute `[ForTestOnly]` that enforce
 
 ##  Validating references from a fabric
 
-To validate code from a fabric, the steps are almost the same as from an aspect. The difference is that you do not create an aspect class but a fabric class.
+The steps to validate code from a fabric are almost the same as from an aspect, but the difference is that you do not create an aspect class but a fabric class.
 
 
-1. Create a fabric class by inheriting one of the following classes, according to the kind of declarations you want to validate:
+1. Create a fabric class by inheriting one of the following classes according to the kind of declarations you want to validate:
    * <xref:Metalama.Framework.Fabrics.TypeFabric> (the fabric class must be a nested class) to validate the containing class;
    * <xref:Metalama.Framework.Fabrics.NamespaceFabric> to validate the containing namespace;
    * <xref:Metalama.Framework.Fabrics.ProjectFabric> to validate the current project;
@@ -53,11 +53,11 @@ To validate code from a fabric, the steps are almost the same as from an aspect.
 4. Override the <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>, <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method of your fabric.
 5. From the `Amend*` method, call <xref:Metalama.Framework.Validation.IValidatorReceiverSelector`1.With*?text=builder.With>, then chain with a call to <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ValidateReferences*>. Pass two parameters:
    - The new method that you have defined in the previous step. *It must be a method. It cannot be a delegate, lambda, or a local function.*
-   - The kinds of references that you want to validate for instance `All` to validate all references, `TypeOf` to validate references in a `typeof` expression, and so on. You can select multiple kinds of references using the `|` operator.
+   - The kinds of references you want to validate, for instance, `All` to validate all references, `TypeOf` to validate references in a `typeof` expression, and so on. You can select multiple kinds of references using the `|` operator.
 
 ### Example: ForTestOnly, fabric implementation
 
-The following example implements the same logic as above, but using a fabric.
+The following example implements the same logic as the previous one but uses a fabric instead of an aspect.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/ForTestOnly_Fabric.cs name="For Test Only"]
 
@@ -68,7 +68,7 @@ When a validator is added to a non-private member, the scope is not limited to t
 
 To implement this feature, the aspects are _serialized_ during the build and stored as an embedded resource in each binary assembly. This resource is then _deserialized_ when the assembly is referenced in another project.
 
-The cross-project scenario and the need for serialization are the reasons why the validation code must be in a stand-alone method of the aspect or fabric class.
+The cross-project scenario and the need for serialization are why the validation code must be in a stand-alone aspect or fabric class method.
 
 
 ## Passing state to the validation method

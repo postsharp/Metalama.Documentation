@@ -17,19 +17,19 @@ It is highly recommended that you download and install this extension for a bett
 > [!WARNING]
 > This Metalama Visual Studio Plugin requires Visual Studio 2022
 
-1. Go to `Extensions` > `Manage Extensions`
+1. Go to `Extensions` > `Manage Extensions`.
 
     ![step1](../../images/ext_manage_1.png)
 
-2. Click on `Manage Extensions`. This will show the prompt like this
+2. Click on `Manage Extensions`. This will show the prompt like this.
 
     ![step2](../../images/ext_manage_2.png)
 
-3. Type "Metalama" in the searchbox to the right of this prompt as shown below
+3. Type "Metalama" in the search box to the right of this prompt as shown below.
 
     ![step3](../../images/ext_manage_3.png)
 
-4. Click the `Download` button to initiate the download
+4. Click the `Download` button to initiate the download.
 
     ![step4](../../images/ext_manage_4.png)
 
@@ -38,9 +38,9 @@ at the bottom of this screen.
 
     ![step5](../../images/ext_manage_5.png)
 
-6. Give consent to install the extension
+6. Give consent to install the extension.
 
-    As soon as you close Visual Studio, the installer will start installing the extension.
+    When you close Visual Studio, the installer will start installing the extension.
 
     ![wizard_init](../../images/ext_manage_6.png)
 
@@ -49,23 +49,22 @@ at the bottom of this screen.
 
     ![wizard_asking_consent](../../images/ext_manage_consent.png)
 
-7. Click "Modify" to complete installation
+7. Click "Modify" to complete the installation.
 
     To continue installing the extension, click on the `Modify` button. Once clicked the wizard will start installing the extension as shown below.
 
     ![metalama_install_progress](../../images/metalama_install_progress.png)
 
-    Finally, when the wizard is done installing it will show the result as shown below.
+    Finally, when the wizard is installed, it will show the result below.
 
     ![metalama_install_done](../../images/metalama_install_done.png)
 
-## Checking that the extension is installed
 
-To check that the installation had been successfull go to the same visual studio marketplace again via the Extensions menu and then try to locate "Metalama". If the installation had been successful you should see the following screenshot with a green tick mark on the top right indicating that indeed the extension have been installed correctly!
+To check that the installation was successful, go to the Extensions Manager. If the installation had succeeded, you should see the following screenshot with a green tick mark on the top right indicating that the extension has been installed correctly!
 
 ![metalama_already_installed](../../images/metalama_already_installed.png)
 
 ## Installing Metalama Command-Line Tool
 
-Although you won't probably need it during your first days with Metalama, it's good to know what a Metalama command-line tool exists. For details, see <xref:dotnet-tool>. No worry, we will remind you  when it when you will need it.
+Although you won't probably need it during your first days with Metalama, it's good to know what a Metalama command-line tool exists. For details, see <xref:dotnet-tool>. No worry, we will remind you when you will need it.
 

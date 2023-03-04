@@ -51,7 +51,7 @@ This should open a `diagnostics.json` file in your default editor. Edit this fil
 }
 ```
 
-To verify that the JSON file is correct, you can run:
+To verify that the JSON file is correct, you can run the following:
 
 ```powershell
 metalama config verify diagnostics
@@ -61,12 +61,13 @@ metalama config verify diagnostics
 
 Diagnostic settings are cached in all processes, including background compiler processes and IDE helper processes.
 
-To restart background compiler processes, do:
+To restart background compiler processes, do the following:
 
 ```powershell
 metalama kill
 ```
-To restart IDE processes, if you want to change logging of the IDE processes, restart your IDE manually.
+
+If you want to change the logging configuration of the IDE processes, restart your IDE manually.
 
 
 ## Step 4. Execute Metalama

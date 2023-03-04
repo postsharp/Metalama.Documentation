@@ -34,14 +34,14 @@ metalama config edit diagnostics
 
 This should open a `diagnostics.json` file in your default editor.
 
-The `miniDump/processes` section lists processes for which process dumps need to be collected. The values are `false` by default. Set the values to `true` if you want to collect the process dumps of the following processes if they crash:
+The `miniDump/processes` section lists processes for which process dumps must be collected. The values are `false` by default. Set the values to `true` if you want to collect the process dumps of the following processes if they crash:
 
 * `Compiler`: the compile-time process.
 * `Rider`: the design-time Roslyn process running under Rider.
 * `DevEnv`: the UI process of Visual Studio (note that there is no aspect code running in this process).
 * `RoslynCodeAnalysisService`: the design-time Roslyn process running under Visual Studio (this is where the aspect code runs).
 
-In the next example, Metalama is configured to capture a process dump for the compiler process.
+In the following example, Metalama is configured to capture a process dump for the compiler process.
 
 ```json
 {
@@ -69,8 +69,8 @@ In the next example, Metalama is configured to capture a process dump for the co
 
 Restart the logged processes:
 
-* If you decided to log the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
-* If you decided to log any design-time processes, restart your IDE.
+* If you enabled dumps for the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
+* If you enabled dumps for any design-time processes, restart your IDE.
 
 Execute the actions that trigger the issue.
 
@@ -87,4 +87,4 @@ Upload this file to an online storage service like OneDrive.
 > [!WARNING]
 > **NEVER** share the process dump URL publicly on a service like GitHub Issues.
 
-Instead, send us the hyperlink by [email](mailto:hello@postsharp.net).
+Instead, please send us the hyperlink by [email](mailto:hello@postsharp.net) or by private message on [Slack](https://www.postsharp.net/slack).

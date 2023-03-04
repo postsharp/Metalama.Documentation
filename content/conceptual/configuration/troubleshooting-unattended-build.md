@@ -4,7 +4,7 @@ uid: troubleshooting-unattended-build
 
 # Troubleshooting an unattended build
 
-This article describes how to enable logging and process dumps in an unattended build on a build server without installing the `metalama` tool.
+This article describes enabling logging and processing dumps in an unattended build on a build server without installing the `metalama` tool.
 
 ## Step 1. Create diagnostics.json on your local machine
 
@@ -12,7 +12,7 @@ You can follow the other articles in this chapter to learn how to create a `diag
 
 ### Example: enabling logging
 
-In the next example, you can find the resulting `diagnostics.json` file after editing it.
+In the following example, you can find the resulting `diagnostics.json` file after editing it.
 
 Here, logging is enabled for the compiler process and all categories.
 
