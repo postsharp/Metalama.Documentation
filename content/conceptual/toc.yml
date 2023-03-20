@@ -101,6 +101,8 @@ items:
           topicUid: child-aspects
         - name: Applying aspects to derived types
           topicUid: aspect-inheritance
+        - name: Validating code
+          topicUid: aspect-validating
         - name: Ordering aspects
           topicUid: ordering-aspects
         - name: Exposing configuration

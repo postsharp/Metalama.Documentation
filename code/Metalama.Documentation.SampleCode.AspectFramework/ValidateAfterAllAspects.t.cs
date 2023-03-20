@@ -1,0 +1,1 @@
+// Error MY001 on `ErrorClass`: `The type ErrorClass must have a field named _logger.`
