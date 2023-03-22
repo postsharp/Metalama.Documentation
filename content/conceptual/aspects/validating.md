@@ -5,30 +5,30 @@ level: 300
 
 # Validating code from an aspect
 
-Validating source code and reporting meaningful error messages is an essential feature of most aspects, as failing to do so may result in error messages that would be difficult to understand for the user of the aspect or even invalid behavior at runtime.
+Validating source code and reporting meaningful error messages is an essential feature of most aspects, as failing to do so may result in confusing error messages for the aspect's user or even invalid behavior at run time.
 
-The first two techniques to validate code are defining eligibility (see <xref:eligibility>) and reporting errors from the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method (see <xref:diagnostics>). In this article, we introduce two more techniques:
+The first two techniques for validating code are defining eligibility (see <xref:eligibility>) and reporting errors from the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method (see <xref:diagnostics>). In this article, we introduce two more techniques:
 
-* Validating the code _before_ any aspect is applied, or _after_ all aspects have been applied.
+* Validating the code _before_ applying any aspect, or _after_ applying all aspects.
 * Validating _references_ to the target declaration of the aspect.
 
 ## Validating code before or after aspects
 
-By default, the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> gets the version of the code model _before_ the current aspect is applied. Sometimes, you may need to validate a different version of the code model. Metalama allows you to validate three versions: 
+By default, the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> gets the version of the code model _before_ applying the current aspect. Sometimes, you may need to validate a different version of the code model. Metalama allows you to validate three versions: 
 
-* before the current aspect has been applied, 
-* _before any_ aspect has been applied, or
-* _after all_ aspects have been applied.
+* Before the current aspect has been applied, 
+* _Before any_ aspect has been applied, or
+* _After all_ aspects have been applied.
 
-To validate a different version of the code model, follow the following steps:
+To validate a different version of the code model, follow these steps:
 
 1. Define one or more static fields of type <xref:Metalama.Framework.Diagnostics.DiagnosticDefinition> as explained in <xref:diagnostics>.
-2. Create a method of arbitrary name with the signature `void Validate(in DeclarationValidationContext context)`. Implement the validation logic in this method. All the data you need is in the <xref:Metalama.Framework.Validation.DeclarationValidationContext> object. When you detect a rule violation, report a diagnostic as described in <xref:diagnostics>. 
+2. Create a method with the signature `void Validate(in DeclarationValidationContext context)`. Implement the validation logic in this method. All the data you need is in the <xref:Metalama.Framework.Validation.DeclarationValidationContext> object. When you detect a rule violation, report a diagnostic as described in <xref:diagnostics>. 
 3. Override or implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method of your aspect. From this method:
-   1. access the <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound*?text=builder.Outbound> property,
-   2. call the <xref:Metalama.Framework.Validation.IValidatorReceiver`1.AfterAllAspects> or <xref:Metalama.Framework.Validation.IValidatorReceiver`1.BeforeAnyAspect> method to select the version of the code model,
-   3. select declarations to be validated using the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> and <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> methods,  
-   4. call the <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateReference*> method and pass a delegate to the validation method.
+   1. Access the <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound*?text=builder.Outbound> property,
+   2. Call the <xref:Metalama.Framework.Validation.IValidatorReceiver`1.AfterAllAspects> or <xref:Metalama.Framework.Validation.IValidatorReceiver`1.BeforeAnyAspect> method to select the version of the code model,
+   3. Select declarations to be validated using the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> and <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> methods,  
+   4. Call the <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateReference*> method and pass a delegate to the validation method.
 
 ### Example: requiring a later aspect to be applied
 
@@ -38,7 +38,7 @@ The following example demonstrates how to validate that the target type of the `
 
 ## Validating code references
 
-Not only can aspects validate the declaration to which they are applied, but also how this target declaration is being used. That is, aspects can validate _code references_.
+Not only can aspects validate the declaration to which they are applied, but also validate how this target declaration is being used. That is, aspects can validate _code references_.
 
 To create an aspect that validates references:
 

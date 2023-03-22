@@ -125,10 +125,8 @@ items:
     - name: Validating architecture
       topicUid: validation
       items:  
-        - name: Validating declarations
-          topicUid: validating-declarations
-        - name: Validating references
-          topicUid: validating-references
+        - name: Validating usage
+          topicUid: validating-usage
     - name: Extending Metalama
       topicUid: sdk
       items:
