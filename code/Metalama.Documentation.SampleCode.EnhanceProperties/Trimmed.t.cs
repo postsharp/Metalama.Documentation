@@ -22,7 +22,9 @@ namespace Doc.Trimmed
     public static void Main(string[] args)
     {
       Details detail1 = new()
-      {Code = "   GW12345  "};
+      {
+        Code = "   GW12345  "
+      };
       Console.WriteLine($"Code='{detail1.Code}'");
     }
   }

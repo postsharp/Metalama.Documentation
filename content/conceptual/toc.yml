@@ -127,6 +127,14 @@ items:
       items:  
         - name: Validating usage
           topicUid: validating-usage
+        - name: Enforcing naming conventions
+          topicUid: naming-conventions
+        - name: Restricting interface implementation
+          topicUid: internal-only-implement
+        - name: Marking an API as experimental
+          topicUid: experimental
+        - name: Extending the validation API
+          topicUid: validation-extending
     - name: Extending Metalama
       topicUid: sdk
       items:

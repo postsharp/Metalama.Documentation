@@ -1,1 +1,1 @@
-// TODO: Replace this file with the correct transformed code. See the test output for the actual transformed code.
+// Error CS1729 on ``: `'ReferencePredicate' does not contain a constructor that takes 0 arguments`

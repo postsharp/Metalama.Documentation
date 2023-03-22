@@ -125,22 +125,6 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
                 "net6.0",
                 Path.ChangeExtension( targetPathRelativeToProjectDir, ".Aspect.cs.html" ) ) );
 
-        var additionalHtmlPath = Path.GetFullPath(
-            Path.Combine(
-                projectDir,
-                "obj",
-                "html",
-                "net6.0",
-                Path.ChangeExtension( targetPathRelativeToProjectDir, ".Additional.cs.html" ) ) );
-        
-        var fabricHtmlPath = Path.GetFullPath(
-            Path.Combine(
-                projectDir,
-                "obj",
-                "html",
-                "net6.0",
-                Path.ChangeExtension( targetPathRelativeToProjectDir, ".Fabric.cs.html" ) ) );
-
         var targetHtmlPath = Path.GetFullPath(
             Path.Combine(
                 projectDir,
@@ -211,10 +195,7 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
 
             var targetCs = Html2Text( targetHtml );
 
-            var tryFiles = new List<TryPayloadFile>
-            {
-                new( "Program.cs", targetCs, TryFileKind.TargetCode )
-            };
+            var tryFiles = new List<TryPayloadFile> { new( "Program.cs", targetCs, TryFileKind.TargetCode ) };
 
             var snippetId = Interlocked.Increment( ref _nextId ).ToString();
 
@@ -258,16 +239,28 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
                 tabCount++;
             }
 
+            void AppendAdditionalTab( string suffix, string? header = null )
+            {
+                var additionalHtmlPath = Path.GetFullPath(
+                    Path.Combine(
+                        projectDir,
+                        "obj",
+                        "html",
+                        "net6.0",
+                        Path.ChangeExtension( targetPathRelativeToProjectDir, $".{suffix}.cs.html" ) ) );
+
+                if ( File.Exists( additionalHtmlPath ) )
+                {
+                    var additionalHtml = File.ReadAllText( additionalHtmlPath );
+                    AppendTab( suffix.ToLower(), header ?? $"{suffix} Code", additionalHtml );
+                    var additionalCs = Html2Text( additionalHtml );
+
+                    tryFiles.Add( new TryPayloadFile( $"{suffix}.cs", additionalCs, TryFileKind.ExtraCode ) );
+                }
+            }
+
             string gitUrlExtension;
             var canTryOnline = true;
-            
-            if ( File.Exists( fabricHtmlPath ) )
-            {
-                var fabricHtml = File.ReadAllText( fabricHtmlPath );
-                AppendTab( "fabric", "Fabric Code", fabricHtml );
-
-                // TODO: we should add this to the TryMetalama link, but TryMetalama does not support 3 buffers. 
-            }
 
             if ( File.Exists( aspectHtmlPath ) )
             {
@@ -276,24 +269,19 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
                 var aspectCs = Html2Text( aspectHtml );
                 gitUrlExtension = ".Aspect.cs";
 
-                tryFiles.Add( new( "Aspect.cs", aspectCs, TryFileKind.AspectCode ) );
+                tryFiles.Add( new TryPayloadFile( "Aspect.cs", aspectCs, TryFileKind.AspectCode ) );
             }
             else
             {
                 gitUrlExtension = ".cs";
             }
 
+            AppendAdditionalTab( "Fabric" );
+
             AppendTab( "target", "Target Code", targetHtml );
 
-            if ( File.Exists( additionalHtmlPath ) )
-            {
-                var additionalHtml = File.ReadAllText( additionalHtmlPath );
-                AppendTab( "additional", "Additional Code", additionalHtml );
-                var additionalCs = Html2Text( additionalHtml );
-
-                tryFiles.Add( new( "Additional.cs", additionalCs, TryFileKind.ExtraCode ) );
-            }
-
+            AppendAdditionalTab( "Additional" );
+            
             AppendTab( "transformed", "Transformed Code", transformedHtml );
 
             if ( File.Exists( programOutputPath ) )
@@ -302,6 +290,12 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
                     "output",
                     "Program Output",
                     "<pre class=\"program-output\">" + File.ReadAllText( programOutputPath ) + "</pre>" );
+            }
+            
+            // We cannot try online if there is a dependency.
+            if ( File.Exists( Path.ChangeExtension( targetPath, $".Dependency.cs" ) ) ) 
+            {
+                canTryOnline = false;
             }
 
             // Create the links

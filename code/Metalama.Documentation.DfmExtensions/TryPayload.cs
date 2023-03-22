@@ -5,20 +5,22 @@ using System.Runtime.Serialization;
 
 namespace Metalama.Documentation.DfmExtensions;
 
-[JsonConverter( typeof( StringEnumConverter ) )]
+[JsonConverter( typeof(StringEnumConverter) )]
 public enum TryFileKind
 {
-    [EnumMember(Value = "t")]
+    [EnumMember( Value = "t" )]
     TargetCode,
-    [EnumMember(Value = "a")]
+
+    [EnumMember( Value = "a" )]
     AspectCode,
-    [EnumMember(Value = "e")]
+
+    [EnumMember( Value = "e" )]
     ExtraCode
 }
 
 public class TryPayload
 {
-    [JsonProperty(PropertyName = "f")]
+    [JsonProperty( PropertyName = "f" )]
     public IReadOnlyList<TryPayloadFile> Files { get; }
 
     public TryPayload( IReadOnlyList<TryPayloadFile> files )
@@ -34,8 +36,8 @@ public class TryPayloadFile
 
     [JsonProperty( PropertyName = "c" )]
     public string Content { get; }
-    
-    [JsonProperty(PropertyName = "k")]
+
+    [JsonProperty( PropertyName = "k" )]
     public TryFileKind Kind { get; }
 
     public TryPayloadFile( string name, string content, TryFileKind kind )

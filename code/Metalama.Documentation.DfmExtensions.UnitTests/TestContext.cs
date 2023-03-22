@@ -21,7 +21,7 @@ internal class TestParser : IMarkdownParser
         throw new NotImplementedException();
     }
 
-    public IMarkdownContext Context => null;
+    public IMarkdownContext Context => null!;
 
     public Dictionary<string, LinkObj> Links => throw new NotImplementedException();
 

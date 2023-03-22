@@ -9,6 +9,10 @@ namespace Doc.ProgrammaticInitializer
     private void M2()
     {
     }
-    private string[] _methodNames = new string[]{"M1", "M2"};
+    private string[] _methodNames = new string[]
+    {
+      "M1",
+      "M2"
+    };
   }
 }
