@@ -24,7 +24,7 @@ Then sort the aspects by importance. You will later use this list to decide how 
 
 For each aspect, determine if _attribute multicasting_ is used, and how. All PostSharp aspects implicitly inherit from the `MulticastAttribute`, so all aspects _can_ be multicast, but not all actually are. To determine for which aspects the multicasting feature is used, do a "Find in Files" for the following substrings: `AttributeTarget` or `AttributeExclude`.
 
-If you only find that an aspect is multicast from assembly-level custom attributes, it does not mean that your Metalama aspect will have to implement multicasting. Indeed, it is more elegant to use fabrics than assembly-level multicasting. See <xref:using-fabrics> for details. If the source code uses multicasting from classes or structs, your Metalama aspect must implement multicasting.
+If you only find that an aspect is multicast from assembly-level custom attributes, it does not mean that your Metalama aspect will have to implement multicasting. Indeed, it is more elegant to use fabrics than assembly-level multicasting. See <xref:fabrics> for details. If the source code uses multicasting from classes or structs, your Metalama aspect must implement multicasting.
 
 ## Step 2. Verify that it's a good time to migrate
 

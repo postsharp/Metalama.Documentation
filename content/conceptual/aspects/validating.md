@@ -28,7 +28,7 @@ To validate a different version of the code model, follow these steps:
    1. Access the <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound*?text=builder.Outbound> property,
    2. Call the <xref:Metalama.Framework.Validation.IValidatorReceiver`1.AfterAllAspects> or <xref:Metalama.Framework.Validation.IValidatorReceiver`1.BeforeAnyAspect> method to select the version of the code model,
    3. Select declarations to be validated using the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> and <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> methods,  
-   4. Call the <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateReference*> method and pass a delegate to the validation method.
+   4. Call the <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateReferences*> method and pass a delegate to the validation method.
 
 ### Example: requiring a later aspect to be applied
 
@@ -47,7 +47,7 @@ To create an aspect that validates references:
 3. Override or implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method of your aspect. From this method:
    1. access the <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound*?text=builder.Outbound> property,
    2. select declarations to be validated using the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> and <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> methods,  
-   3. call the <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateReference*> method and pass a delegate to the validation method or an instance of the validator class.
+   3. call the <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateReferences*> method and pass a delegate to the validation method or an instance of the validator class.
 
 ### Example: ForTestOnly, aspect implementation
 

@@ -10,6 +10,17 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Architecture\Experimental - Copy.t.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="Architecture\Experimental_Fabric.t.cs">
+        <SubType>Code</SubType>
+        <DependentUpon>Experimental_Fabric.cs</DependentUpon>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
         <PackageReference Include="xunit" Version="2.4.1" />

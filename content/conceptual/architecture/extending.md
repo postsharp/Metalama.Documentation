@@ -16,7 +16,7 @@ Predicates are extension methods like <xref:Metalama.Extensions.Architecture.Pre
 
 To implement a new predicate, follow the following steps:
 
-1. Create a new class and derive it from <xref:Metalama.Extensions.Architecture.PredicatesReferencePredicate>. We recommend making this class `internal`.
+1. Create a new class and derive it from <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicate>. We recommend making this class `internal`.
 2. Add fields for all predicate parameters, and initialize these fields from the constructor.
 
     > [!NOTE]

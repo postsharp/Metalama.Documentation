@@ -16,7 +16,7 @@ This chapter explains how to build your own aspects. If you only want to use asp
   * **Fewer bugs**. Since there is less code and clearer code, there should be fewer bugs.
   * **Deduplication**. Cross-cutting patterns are defined in one place, so if you need to change or fix them, you do not need to fix all occurrences in your code base.
 
-* **Code validation**. You can use aspects to create custom attributes that validate code. For details and benefits, see <xref:aspect-validation>.
+* **Code validation**. You can use aspects to create custom attributes that validate code. For details and benefits, see <xref:aspect-validating>.
 * **Code fixes**. You can use aspects to offer code fixes that appear in the refactoring or lightbulb menu. For details, see <xref:building-ide-interactions>.
 
 ## In this chapter

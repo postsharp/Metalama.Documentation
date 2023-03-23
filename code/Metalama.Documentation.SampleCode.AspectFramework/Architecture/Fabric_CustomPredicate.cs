@@ -36,7 +36,7 @@ namespace Doc.Architecture.Fabric_CustomPredicate
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Verify().WithTypes( typeof( CofeeMachine ) ).CanOnlyBeUsedFrom( r => r.MethodNameEndsWith( "Politely" ) );
+            amender.Verify().SelectTypes( typeof( CofeeMachine ) ).CanOnlyBeUsedFrom( r => r.MethodNameEndsWith( "Politely" ) );
         }
     }
 

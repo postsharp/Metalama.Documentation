@@ -1,5 +1,5 @@
 ---
-uid: using-fabrics
+uid: fabrics
 level: 200
 ---
 

@@ -27,7 +27,7 @@ items:
         - name: Applying live templates
           topicUid:  applying-live-templates
         - name: Using fabrics
-          topicUid: using-fabrics
+          topicUid: fabrics
           items:
           - name: Adding aspects
             topicUid: fabrics-adding-aspects
@@ -122,10 +122,10 @@ items:
           topicUid: fabrics-advising
         - name: Distributing projects that use aspects
           topicUid: distributing
-    - name: Validating architecture
+    - name: Verifying architecture
       topicUid: validation
       items:  
-        - name: Validating usage
+        - name: Verifying usage
           topicUid: validating-usage
         - name: Enforcing naming conventions
           topicUid: naming-conventions

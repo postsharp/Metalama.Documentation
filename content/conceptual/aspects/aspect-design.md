@@ -70,7 +70,7 @@ Aspects can suggest code fixes to any diagnostic they report or suggest code ref
 
 Aspects can validate not only the target code but also any _reference_ to the target declaration.
 
-See <xref:aspect-validation>.
+See <xref:aspect-validating>.
 
 ### 5. Defining its eligibility
 

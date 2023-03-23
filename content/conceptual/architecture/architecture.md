@@ -2,15 +2,15 @@
 uid: validation
 ---
 
-# Validating architecture
+# Verifying architecture
 
-This chapter describes how to validate your source code against the architecture, design patterns, and other team conventions.
+This chapter describes how to verify your source code against the architecture, design patterns, and other team conventions.
 
-There are two ways to add validation rules to your code. You can do it declaratively by applying architecture custom attributes to your code or programmatically using a compile-time fluent API. Metalama comes with a set of ready-made custom attributes and compile-time methods, and you can easily create your own attributes or methods for rules specific to your project.
+There are two ways to add verification rules to your code. You can do it declaratively by applying architecture custom attributes to your code or programmatically using a compile-time fluent API. Metalama comes with a set of ready-made custom attributes and compile-time methods, and you can easily create your own attributes or methods for rules specific to your project.
 
 ## Benefits
 
-Validating code is especially important for projects developed by a large team or maintained over an extended period.
+Verifying code against architecture is especially important for projects developed by a large team or maintained over an extended period.
 
 * **Executable rules instead of paper guidelines**. Architectural guidelines can now be enforced in real-time within the code editor instead of only being written down and put on shelves.
 * **Immediate feedback**. Developers don't need to wait for the CI build to complete; feedback is given within seconds.

@@ -67,4 +67,4 @@ The following aspect can be added to a field or property. It overrides the gette
 
 When your aspect's  `BuildAspect` method is executed, it sees the code model as it was _before_ the aspect was applied.
 
-If you need to validate the code after all aspects have been applied, see <xref:aspect-validation>.
+If you need to validate the code after all aspects have been applied, see <xref:aspect-validating>.
