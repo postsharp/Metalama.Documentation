@@ -38,16 +38,16 @@ When you want to enforce naming conventions for a different scenario than the on
 
 4. Edit the  <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*>,  <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> of this method. Open the dance by calling [amender.Verify()](xref:Metalama.Extensions.Architecture.Fabrics.AmenderExtensions.Verify*).
 
-5. Select the APIs using the <xref:Metalama.Extensions.Architecture.Fabrics.ArchitectureVerifierExtensions.Select*>, <xref:Metalama.Extensions.Architecture.Fabrics.ArchitectureVerifierExtensions.SelectMany*> and <xref:Metalama.Extensions.Architecture.Fabrics.ArchitectureVerifierExtensions.Where*> methods. You may also find the <xref:Metalama.Extensions.Architecture.Fabrics.ITypeArchitectureVerifier`1.SelectTypesDerivedFrom*> method useful.
+5. Select the APIs using the <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.Select*>, <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.SelectMany*> and <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.Where*> methods. You may also find the <xref:Metalama.Extensions.Architecture.Fabrics.ITypeSetVerifier`1.SelectTypesDerivedFrom*> method useful.
 
-6. Call the <xref:Metalama.Extensions.Architecture.Fabrics.ArchitectureVerifierExtensions.MustRespectNamingConvention*> method.
+6. Call the <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.MustRespectNamingConvention*> method.
 
 
 > [!NOTE]
-> Unlike <xref:Metalama.Extensions.Architecture.Aspects.DerivedTypesMustRespectNamingConventionAttribute>, the naming convention added by the <xref:Metalama.Extensions.Architecture.Fabrics.ArchitectureVerifierExtensions.MustRespectNamingConvention*> is _neither_ inherited _nor_ cross-project. If you want the naming convention to apply to several projects, use the techniques described in <xref:fabrics-many-projects>.
+> Unlike <xref:Metalama.Extensions.Architecture.Aspects.DerivedTypesMustRespectNamingConventionAttribute>, the naming convention added by the <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.MustRespectNamingConvention*> is _neither_ inherited _nor_ cross-project. If you want the naming convention to apply to several projects, use the techniques described in <xref:fabrics-many-projects>.
 
 ### Example: Enforcing a naming convention on all types derived from a given system type
 
-Many teams require UI pages to be suffixed `Page`, controls `Control`, and so on. This cannot be achieved using a custom attribute because you don't own the source code of the base class. In the following example, we show how to implement this requirement: we require all classes derived from `TextReader` to be suffixed `Reader`. We use the <xref:Metalama.Extensions.Architecture.Fabrics.ITypeArchitectureVerifier`1.SelectTypesDerivedFrom*> method to select the relevant types.
+Many teams require UI pages to be suffixed `Page`, controls `Control`, and so on. This cannot be achieved using a custom attribute because you don't own the source code of the base class. In the following example, we show how to implement this requirement: we require all classes derived from `TextReader` to be suffixed `Reader`. We use the <xref:Metalama.Extensions.Architecture.Fabrics.ITypeSetVerifier`1.SelectTypesDerivedFrom*> method to select the relevant types.
 
 [!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/NamingConvention_Fabric.cs tabs="target"]

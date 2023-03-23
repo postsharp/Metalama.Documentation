@@ -2,7 +2,7 @@
 uid: validating-usage
 ---
 
-# Validating usage of a class, member, or namespace
+# Verifying usage of a class, member, or namespace
 
 When designing software, one of the most critical activities is defining _dependencies_ between components - i.e., defining who is allowed to call whom. In C#, this concept is called _accessibility_. To ensure optimal design, it is advisable always to grant the _least necessary_ accessibility. This idea is similar to the "need to know" principle in intelligence services and benefits software architecture by minimizing unintended _coupling_ between components and making it easier to change individual components in the future.
 
@@ -84,10 +84,10 @@ Follow these steps:
 
     | Attribute | Description |
     |-----------|-------------|
-    | <xref:Metalama.Extensions.Architecture.Fabrics.ArchitectureVerifierExtensions.CanOnlyBeUsedFrom*> | Reports a warning when the target declaration is accessed from outside the given scope.
-    | <xref:Metalama.Extensions.Architecture.Fabrics.ArchitectureVerifierExtensions.InternalsCanOnlyBeUsedFrom*> |  Reports a warning when any `internal` member of the type is accessed from outside of the given scope. 
-    | <xref:Metalama.Extensions.Architecture.Fabrics.ArchitectureVerifierExtensions.CannotBeUsedFrom*> | Reports a warning when the target declaration is accessed from the given scope.
-    | <xref:Metalama.Extensions.Architecture.Fabrics.ArchitectureVerifierExtensions.InternalsCannotBeUsedFrom*> | Reports a warning when any `internal` member of the type is accessed from the given scope.
+    | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.CanOnlyBeUsedFrom*> | Reports a warning when the target declaration is accessed from outside the given scope.
+    | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.InternalsCanOnlyBeUsedFrom*> |  Reports a warning when any `internal` member of the type is accessed from outside of the given scope. 
+    | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.CannotBeUsedFrom*> | Reports a warning when the target declaration is accessed from the given scope.
+    | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.InternalsCannotBeUsedFrom*> | Reports a warning when any `internal` member of the type is accessed from the given scope.
 
 6. Pass a delegate like `r => r.ScopeMethod()` where `ScopeMethod` is one of the following methods:
 
