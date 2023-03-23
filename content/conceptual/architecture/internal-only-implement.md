@@ -1,5 +1,6 @@
 ---
 uid: internal-only-implement
+level: 200
 ---
 
 # Restricting who can implement an interface

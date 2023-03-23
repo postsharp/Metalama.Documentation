@@ -1,5 +1,6 @@
 ---
 uid: validating-usage
+level: 200
 ---
 
 # Verifying usage of a class, member, or namespace
