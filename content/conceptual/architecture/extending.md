@@ -11,7 +11,7 @@ In this article, we will show how to extend the [Metalama.Extensions.Architectur
 
 ## Extending usage verification with custom predicates
 
-Predicates are extension methods like <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.CurrentNamespace*>, <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.NamespaceOf*> of the <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions> class. The role of predicates is to determine whether a given code reference should report a warning.
+Before we create rules from scratch, it's good to know that some of the existing rules can be extended. In <xref:validating-usage>, you have learned how to use methods like <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.CanOnlyBeUsedFrom*> or <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.CannotBeUsedFrom*>. These methods require a predicate parameter, which determine from which scope the declaration can or cannot be referenced. Examples of predicates are <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.CurrentNamespace*>, <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.NamespaceOf*> of the <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions> class. The role of predicates is to determine whether a given code reference should report a warning.
 
 To implement a new predicate, follow the following steps:
 

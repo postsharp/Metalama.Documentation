@@ -135,17 +135,6 @@ items:
           topicUid: experimental
         - name: Extending the validation API
           topicUid: validation-extending
-    - name: Extending Metalama
-      topicUid: sdk
-      items:
-        - name: Creating the project structure
-          topicUid: sdk-scaffolding
-        - name: Aspect weavers
-          topicUid: aspect-weavers
-        - name: Services
-          topicUid: services
-        - name: Custom metrics
-          topicUid: custom-metrics
     - name: Configuring and troubleshooting
       topicUid: configuration 
       items: 
@@ -159,7 +148,17 @@ items:
           topicUid: troubleshooting-unattended-build
         - name: Telemetry
           topicUid: telemetry
-                  
+    - name: Extending Metalama
+      topicUid: sdk
+      items:
+        - name: Creating the project structure
+          topicUid: sdk-scaffolding
+        - name: Aspect weavers
+          topicUid: aspect-weavers
+        - name: Services
+          topicUid: services
+        - name: Custom metrics
+          topicUid: custom-metrics                 
     - name: Migrating from PostSharp
       topicUid: migration
       items:
