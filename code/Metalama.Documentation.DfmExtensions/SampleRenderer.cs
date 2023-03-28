@@ -174,7 +174,6 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
 
         const string gitBranch = "master";
         const string gitHubProjectPath = "https://github.com/postsharp/Metalama.Documentation/blob/" + gitBranch;
-        const string tryBaseUrl = "https://try.metalama.net/#";
 
         if ( File.Exists( transformedHtmlPath ) )
         {
@@ -309,9 +308,8 @@ internal class SampleRenderer : DfmCustomizedRendererPartBase<IMarkdownRenderer,
             {
                 var tryPayloadJson = JsonConvert.SerializeObject( new TryPayload( tryFiles ) );
                 var tryPayloadHash = LZString.CompressToEncodedURIComponent( tryPayloadJson );
-                var tryUrl = tryBaseUrl + tryPayloadHash;
-
-                links.AppendLine( $@"  <a class=""try"" href=""{tryUrl}"" target=""try"">Try Online</a> |" );
+                
+                links.AppendLine( $@"  <a class=""try"" onclick=""openSandbox('{tryPayloadHash}');"" role=""button"">Open in sandbox</a> |" );
             }
 
             links.AppendLine(
