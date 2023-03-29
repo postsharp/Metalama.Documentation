@@ -54,13 +54,13 @@ Follow these steps:
 
 In the following example, the class `Foo` has two constructors, and one of them should only be used in tests. Tests are identified as any code in a namespace ending with the `.Tests` suffix. We define the <xref:Metalama.Extensions.Architecture.Aspects.BaseUsageValidationAttribute.Description> to improve the error message. You can also set the <xref:Metalama.Extensions.Architecture.Aspects.BaseUsageValidationAttribute.ReferenceKinds> to limit the kinds of references that are validated.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Attribute_ForTestOnly.cs  tabs="target"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Attribute_ForTestOnly.cs  tabs="target"]
 
 ### Example: Type internals reserved for the current namespace
 
 In the following example, the class `Foo` uses the <xref:Metalama.Extensions.Architecture.Aspects.InternalsCanOnlyBeUsedFromAttribute> constraint to verify that internal members are only accessed from the same namespace. A warning is reported when an internal method of `Foo` is accessed from a different method.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Attribute_CurrentNamespace.cs tabs="target"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Attribute_CurrentNamespace.cs tabs="target"]
 
 ## Validating usage programmatically
 
@@ -113,10 +113,10 @@ Follow these steps:
 
 In the following example, we use a namespace fabric to restrict the accessibility of internal members to this namespace. A warning is reported when this rule is violated, like in the `ForbiddenInheritor` class.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Fabric_InternalNamespace.cs tabs="target"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Fabric_InternalNamespace.cs tabs="target"]
 
 ### Example: Forbidding the use of floating-point arithmetic from the Invoicing namespace
 
 Using floating-point arithmetic in operations involving currencies is a common pitfall. Instead, `decimal` numbers should be used. In the following example, we use a project fabric to validate all references to the `float` and `double` types. We report a diagnostic when they are used from the `**.Invoicing` namespaces.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Fabric_ForbidFloat.cs tabs="target"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Fabric_ForbidFloat.cs tabs="target"]

@@ -21,7 +21,7 @@ To generate warnings when an experimental API is being used, the best is to use 
 
 In the following example, the `ExperimentalApi` class is explicitly marked as experimental.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Experimental.cs tabs="target"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Experimental.cs tabs="target"]
 
 ## Programmatically marking APIs as experimental 
 
@@ -44,4 +44,4 @@ If you want to mark several APIs as experimental using a programmatic rule inste
 
 In the following example, all public members of `ExperimentalNamespace` are programmatically marked as experimental.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Experimental_Fabric.cs tabs="target"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Experimental_Fabric.cs tabs="target"]

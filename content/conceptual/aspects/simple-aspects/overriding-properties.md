@@ -26,7 +26,7 @@ Follow these steps to create an aspect that can override a field or property.
 
 The next example shows an empty implementation of <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> applied to a property and to a field.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/EmptyOverrideFieldOrProperty.cs name="Empty OverrideFieldOrProperty"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/EmptyOverrideFieldOrProperty.cs name="Empty OverrideFieldOrProperty"]
 
 This aspect does not do anything useful, but, as you can see, it transforms the field into a property.
 
@@ -42,7 +42,7 @@ If you need to get the property value from the setter, or if you need to set the
 
 In this aspect, you shall see how you can trim whitespace before and after string values before they are assigned to the field or property.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/Trimmed.cs name="Trimming string fields and properties"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/Trimmed.cs name="Trimming string fields and properties"]
 
 The aspect does not need to modify the getter, so it only calls `meta.Proceed()` and Metalama replaces this call with the original implementation of the property. We could have written `get => meta.Target.PropertyOrField.Value` instead, with the same effect.
 
@@ -63,7 +63,7 @@ The following example is similar to the previous one: instead of trimming a stri
 
 We apply the aspect to a class representing a shipment between two airports.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/UpperCase.cs name="Changing case to Upper case"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.EnhanceProperties/UpperCase.cs name="Changing case to Upper case"]
 
 Note that, in this example, `From` is a public field and `To` is a public property. They are deliberately kept that way to show that the aspect actually works on both because <xref:Metalama.Framework.Code.IFieldOrProperty> is used in the aspect. If you want to aspect to be applicable only on properties and not on fields you have to use <xref:Metalama.Framework.Code.IProperty>
 

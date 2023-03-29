@@ -37,7 +37,7 @@ To report a diagnostic:
 
 The following aspect needs a field named `_logger` to exist in the target type. Its `BuildAspect` method checks that this field exists and reports an error if it does not.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/ReportError.cs name="Report Error"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/ReportError.cs name="Report Error"]
 
 ## Suppressing a diagnostic
 
@@ -55,13 +55,13 @@ To suppress a diagnostic:
 
 The following logging aspect requires a `_logger` field. This field will be used in generated code but never in user code. Because the IDE does not see the generated code, it will report the `CS0169` warning, which is misleading and annoying to the user. The aspect suppresses this warning.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/SuppressWarning.cs name="Suppress Warning"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/SuppressWarning.cs name="Suppress Warning"]
 
 ## Advanced example
 
 The following aspect can be added to a field or property. It overrides the getter implementation to retrieve the value from the service locator. This aspect assumes that the target class has a field named `_serviceProvider` and of type `IServiceProvider`. The aspect reports errors if this field is absent or does not match the expected type. The C# compiler may report a warning `CS0169` because it appears from the source code that the `_serviceProvider` field is unused. Therefore, the aspect must suppress this diagnostic.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/LocalImport.cs name="Import Service"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/LocalImport.cs name="Import Service"]
 
 ## Validating the target code after all aspects have been applied
 

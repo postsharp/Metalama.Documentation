@@ -54,7 +54,7 @@ Before moving forward, let's illustrate this concept with an example. The follow
 
 In the code below, compile-time code is highlighted <span class="metalamaClassification_CompileTime">differently</span> so you can see which part of the code executes at compile time and which at run time. In the different tabs on the example, you can see the aspect code (with the template), the target code (to which the aspect is applied), and the transformed code, which is the target code transformed by the aspect.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs name="Simple Logging"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs name="Simple Logging"]
 
 > [!NOTE]
 > To benefit from syntax highlighting in Visual Studio, install the [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama). Syntax highlighting is not supported in other IDEs.

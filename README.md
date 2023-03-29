@@ -44,7 +44,7 @@ From `c:\src\Metalama.Documentation`, do `.\Publish.ps1 -Incremental`.
 
 ### Include a sample (i.e. an aspect test)
 ```
-[!metalama-sample <path> [tabs="<tabs>"] ]
+[!metalama-test <path> [tabs="<tabs>"] ]
 
 ```
 where:

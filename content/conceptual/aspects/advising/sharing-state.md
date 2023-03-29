@@ -29,7 +29,7 @@ To define and use tags:
 
 ### Example
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Tags.cs name="Tags"]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Tags.cs name="Tags"]
 
 ## Sharing state with the AspectState property
 

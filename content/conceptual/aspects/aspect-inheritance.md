@@ -23,7 +23,7 @@ An aspect can be inherited along the following lines:
 
 The following type-level aspect is applied to a base class and is implicitly inherited by all derived classes.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/InheritedTypeLevel.cs name="Type-level inherited aspect"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/InheritedTypeLevel.cs name="Type-level inherited aspect"]
 
 
 ## Conditional inheritance

@@ -28,7 +28,7 @@ The <xref:Metalama.Framework.Aspects.meta> static class exposes to the following
 
 The following code writes a message to the system console before and after the method execution. The text includes the name of the target method.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs name="Simple Logging"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs name="Simple Logging"]
 
 ## Compile-time language constructs
 
@@ -56,7 +56,7 @@ If the condition of an `if` statement is a compile-time expression, the `if` sta
 
 In the following example, the aspect prints a different string for static methods than for instance ones.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeIf.cs name="Compile-Time If"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeIf.cs name="Compile-Time If"]
 
 ### Compile-time foreach
 
@@ -69,7 +69,7 @@ If the expression of a `foreach` statement is a compile-time expression, the `fo
 
 The following aspect uses a `foreach` loop to print the value of each parameter of the method to which it is applied.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeForEach.cs name="Compile-Time If"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeForEach.cs name="Compile-Time If"]
 
 ### No compile-time for, while and goto
 
@@ -103,7 +103,7 @@ There are a few exceptions to this rule:
 
 The following example shows a simple _Retry_ aspect. The maximum number of attempts can be configured by setting a property of the custom attribute. This property is compile-time.
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Retry.cs name="Retry"]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Retry.cs name="Retry"]
 
 ## Custom compile-time types and methods
 

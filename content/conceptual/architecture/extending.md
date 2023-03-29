@@ -29,7 +29,7 @@ To implement a new predicate, follow the following steps:
 
 In the following example, we create a custom predicate, `MethodNameEndsWith`, which verifies that the code reference occurs within a method whose name ends with a given prefix.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Fabric_CustomPredicate.cs tabs="target"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Fabric_CustomPredicate.cs tabs="target"]
 
 ## Creating new verification rules
 
@@ -68,7 +68,7 @@ Follow these steps.
     * If you need to validate the target declaration itself, or its members, you can inspect the code model under `builder.Target` and report diagnostics using `builder.Diagnostics.Report`.
     * If you need to validate the _references_ to the target declarations, see <xref:aspect-validating>.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/RequireDefaultConstructorAspect.cs tabs="aspect,target"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/RequireDefaultConstructorAspect.cs tabs="aspect,target"]
 
 ### Creating a programmatic rule
 
@@ -97,5 +97,5 @@ Follow this procedure
     * Register a reference validator using the <xref: Metalama.Framework.Validation.IValidatorReceiver`1.ValidateReferences*> method. Validating from fabrics is very similar to validating from aspects. See <xref:aspect-validating> for details.
 
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/RequireDefaultConstructorFabric.cs tabs="target"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/RequireDefaultConstructorFabric.cs tabs="target"]
   

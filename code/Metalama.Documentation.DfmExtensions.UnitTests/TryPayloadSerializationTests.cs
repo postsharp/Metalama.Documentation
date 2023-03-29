@@ -1,3 +1,5 @@
+// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
 using Newtonsoft.Json;
 using Xunit;
 
@@ -12,12 +14,12 @@ public class TryPayloadSerializationTests
             """{"f":[{"n":"Program.cs","c":"class Program {}","k":"t"},{"n":"Aspect.cs","c":"class Aspect {}","k":"a"},{"n":"Additional.cs","c":"class Helper {}","k":"e"}]}""";
 
         var actual = JsonConvert.SerializeObject(
-            new TryPayload(
+            new SandboxPayload(
                 new[]
                 {
-                    new TryPayloadFile( "Program.cs", "class Program {}", TryFileKind.TargetCode ),
-                    new TryPayloadFile( "Aspect.cs", "class Aspect {}", TryFileKind.AspectCode ),
-                    new TryPayloadFile( "Additional.cs", "class Helper {}", TryFileKind.ExtraCode )
+                    new SandboxFile( "Program.cs", "class Program {}", SandboxFileKind.TargetCode ),
+                    new SandboxFile( "Aspect.cs", "class Aspect {}", SandboxFileKind.AspectCode ),
+                    new SandboxFile( "Additional.cs", "class Helper {}", SandboxFileKind.ExtraCode )
                 } ) );
 
         Assert.Equal( expected, actual );

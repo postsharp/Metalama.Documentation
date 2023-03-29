@@ -29,7 +29,7 @@ To create an aspect that overrides methods:
 
 The following aspect overrides the target method and adds a call to `Console.WriteLine` to write a message before the method is executed.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods\SimpleLogging.cs]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.EnhanceMethods\SimpleLogging.cs]
 
 To see the effect of the aspect on the code in this documentation, switch to the _Transformed Code_ tab above. In Visual Studio, you can preview the transformed code thanks to the _Diff Preview_ feature. See <xref:understanding-your-code-with-aspects> for details.
 
@@ -47,7 +47,7 @@ Arguably, this aspect does not do much yet, so let's make it more useful.
 
 In the previous chapter, you used the built-in aspect `Retry`. Here is how it is implemented.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Retry.cs]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Retry.cs]
 
 Note how the overridden implementation in the aspect retries the method being overridden. In this example, the number of retries is hard-coded.
 
@@ -55,7 +55,7 @@ Note how the overridden implementation in the aspect retries the method being ov
 
 The following example shows how to verify the current user's identity before executing a method.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Authorize.cs]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Authorize.cs]
 
 
 ## Adding context from the target method
@@ -74,14 +74,14 @@ The following code shows how this can be used:
 
 ### Example: including the method name in the log
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Log.cs]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Log.cs]
 
 
 ### Example: profiling a method
 
 When you need to find out which method call is taking time, the first thing you generally do is to decorate the method with print statements to find out how much time each call takes. The following aspect lets you wrap that in an aspect. And whenever you need to track the calls to a method, you just have to place this aspect (in the form of the attribute) on the method as shown in the Target code.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Profile.cs]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.EnhanceMethods/Profile.cs]
 
 ## Going deeper
 
@@ -90,4 +90,6 @@ If you want to go deeper with method overrides, consider jumping to the followin
 * In this article, you have seen how to use `meta.Proceed` and `meta.Target.Method.Name` in your templates. You can write much more complex and powerful templates, even doing compile-time `if` and `foreach` blocks. To see how you can jump directly to <xref:templates>.
 
 * To learn how to have different templates for `async` or iterator methods, or to learn how to override several methods from a single type-level aspect, jump to <xref:overriding-methods>.
+
+
 

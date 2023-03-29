@@ -8,14 +8,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" Version="2022.3.1"/>
-        <PackageReference Include="Microsoft.DocAsCode.Dfm" Version="2.59.0"/>
-        <PackageReference Include="Microsoft.Composition" Version="1.0.31"/>
-        <PackageReference Include="PKT.LZStringCSharp" Version="2.1.0"/>
+        <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
+        <PackageReference Include="Microsoft.DocAsCode.Dfm" Version="2.59.0" />
+        <PackageReference Include="Microsoft.Composition" Version="1.0.31" />
+        <PackageReference Include="PKT.LZStringCSharp" Version="2.1.0" />
     </ItemGroup>
 
     <Target Name="CheckConfiguration">
-        <Error Text="This project can only be built in Debug configuration because its Debug output directory is specificially references. Check the sln file." Condition="'$(Configuration)'!='Debug'"/>
+        <Error Text="This project can only be built in Debug configuration because its Debug output directory is specificially references. Check the sln file." Condition="'$(Configuration)'!='Debug'" />
     </Target>
 
 </Project>

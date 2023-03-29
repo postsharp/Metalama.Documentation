@@ -71,7 +71,7 @@ As you can see you can put a breakpoint on this transformed code and it will be 
 
 ## Debugging using step-in and forceful break
 
-[!metalama-sample ~/code/DebugDemo/Program.cs]
+[!metalama-test ~/code/DebugDemo/Program.cs]
 
 > [!NOTE]
 > When you debug this by Step-Into you shall see that the actual code being _debugged_ is the transformed code

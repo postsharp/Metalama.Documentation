@@ -3,8 +3,8 @@ items:
 #   href: overview/toc.yml
 - name: Conceptual documentation
   href: conceptual/toc.yml
-# - name: Commented examples
-#   href: examples/toc.yml
+- name: Commented examples
+  href: ../source-dependencies/Metalama.Samples/toc.yml
 - name: API Documentation          
   topicUid: api
   items:

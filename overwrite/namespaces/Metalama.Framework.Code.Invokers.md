@@ -78,6 +78,6 @@ class IEventInvoker {
 
 The following aspect prints the value of all fields and automatic properties.
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/PrintFieldValues.cs name="Dynamic"]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/PrintFieldValues.cs name="Dynamic"]
 
 ## Namespace members

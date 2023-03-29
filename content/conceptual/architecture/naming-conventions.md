@@ -24,7 +24,7 @@ If you want to enforce a naming convention for any type that derives from a give
 
 In the following example, we require all types implementing `IFactory` to have a name that ends with the `Factory` suffix.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/NamingConvention.cs tabs="target"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/NamingConvention.cs tabs="target"]
 
 
 ## Enforcing naming conventions using fabrics
@@ -51,4 +51,4 @@ When you want to enforce naming conventions for a different scenario than the on
 
 Many teams require UI pages to be suffixed `Page`, controls `Control`, and so on. This cannot be achieved using a custom attribute because you don't own the source code of the base class. In the following example, we show how to implement this requirement: we require all classes derived from `TextReader` to be suffixed `Reader`. We use the <xref:Metalama.Extensions.Architecture.Fabrics.ITypeSetVerifier`1.SelectTypesDerivedFrom*> method to select the relevant types.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/NamingConvention_Fabric.cs tabs="target"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/NamingConvention_Fabric.cs tabs="target"]

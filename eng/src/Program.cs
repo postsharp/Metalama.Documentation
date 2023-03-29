@@ -28,7 +28,9 @@ var product = new Product( Dependencies.MetalamaDocumentation )
         {
             CanFormatCode = true, BuildMethod = BuildMethod.Build,
         },
-        new DotNetSolution( "source-dependencies\\Metalama.Samples\\Metalama.Samples.sln") { BuildMethod = BuildMethod.Test },
+        // For Metalama.Samples, we don't use the Test target because testing does not build all projects, but only
+        // projects with unit tests. However, we need, for all projects, the html files that are created during the build.
+        new DotNetSolution( "source-dependencies\\Metalama.Samples\\Metalama.Samples.sln") { BuildMethod = BuildMethod.Build },
         new DocFxSolution( "docfx.json" )
     },
 

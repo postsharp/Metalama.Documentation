@@ -38,7 +38,7 @@ To learn about customizing eligibility for different contract directions than th
 
 We have already met this aspect in <xref:simple-contracts>. This example refines the behavior: for the _input_ data flow, an `ArgumentNullException` is thrown, but for the output flow, we throw a `PostConditionFailedException`. Notice how we apply the aspect to 'out' parameters and to return values.
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/NotNull.cs name="NotNull"]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/NotNull.cs name="NotNull"]
 
 ## Adding contract advice programmatically
 
@@ -53,4 +53,4 @@ The following snippet shows how to automatically add precondition checks for all
 
 The [fabric](xref:fabrics) adds a method-level aspect to all exposed methods. Then, the aspect adds individual contracts using the <xref:Metalama.Framework.Advising.IAdviceFactory.AddContract*> method.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/NotNullFabric.cs name="NotNull Fabric"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/NotNullFabric.cs name="NotNull Fabric"]

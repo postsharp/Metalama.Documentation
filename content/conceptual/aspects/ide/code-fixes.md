@@ -20,7 +20,7 @@ The following example shows an aspect that implements the `ToString` method. By 
 
 The aspect uses the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method to add a code fix suggestion for all properties not yet annotated with `[NotToString]`.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/ToStringWithSimpleCodeFix.cs name="ToString aspect with simple code fix"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/ToStringWithSimpleCodeFix.cs name="ToString aspect with simple code fix"]
 
 ## Building multi-step code fixes
 
@@ -51,7 +51,7 @@ The custom code fix does the following:
 * Remove the `[ToString]` custom attribute.
 * Remove the `[NotToString]` custom attributes.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/ToStringWithComplexCodeFix.cs name="ToString aspect with complex code fix"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/ToStringWithComplexCodeFix.cs name="ToString aspect with complex code fix"]
 
 ## Performance considerations
 

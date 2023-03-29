@@ -79,7 +79,7 @@ Note that this aspect will replace any hand-written implementation of `ToString`
 
 [comment]: # (TODO: #28807)
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceMethod.cs name="ToString"]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceMethod.cs name="ToString"]
 
 ## Introducing members programmatically
 
@@ -111,7 +111,7 @@ To modify the name and signature of the introduced declaration, use the `buildMe
 
 The following aspect introduces an `Update` method that assigns all writable fields in the target type. The method signature is dynamic: there is one parameter per writable field or property.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/UpdateMethod.cs name="Update method"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/UpdateMethod.cs name="Update method"]
 
 ## Overriding existing implementations
 
@@ -141,11 +141,11 @@ When you introduce a member to a type, you will often want to access it from tem
 
 ### Option 1. Access the aspect template member
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged1.cs name="Introduce OnPropertyChanged"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged1.cs name="Introduce OnPropertyChanged"]
 
 ### Option 2. Use `meta.This` and write dynamic code
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged3.cs name="Introduce OnPropertyChanged"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged3.cs name="Introduce OnPropertyChanged"]
 
 ### Option 3. Use the invoker of the builder object
 
@@ -156,7 +156,7 @@ If none of the approaches above offer you the required flexibility (typically be
 
 For details, see <xref:Metalama.Framework.Code.Invokers>.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged2.cs name="Introduce OnPropertyChanged"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroducePropertyChanged2.cs name="Introduce OnPropertyChanged"]
 
 ## Referencing introduced members from source code
 

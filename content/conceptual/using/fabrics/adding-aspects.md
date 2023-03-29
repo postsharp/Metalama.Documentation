@@ -40,7 +40,7 @@ To add aspects using fabrics:
 
 In the following example, we use a fabric to apply a logging aspect to all methods in the current project.
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric.cs]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric.cs]
 
 There are a few things to note in this example. The first point to consider is the `AmendProject` method. We are trying to add aspects to different members of a project. So essentially, we are trying to _amend_ the project. Thus the name.
 
@@ -65,13 +65,13 @@ In the following example, we add two aspects: logging and profiling. We add prof
 
 For each project, it is recommended to have only one project fabric. Having several project fabrics makes it difficult to understand the aspect application order.
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric.cs]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric.cs]
 
 ### Example 3: Adding aspects to all methods in a given namespace
 
 To add the Logging aspect (`LogAttribute`) to all the methods that appear in types within namespaces that start with the prefix `Outer.Inner` and all the child types located in any descendent namespace, use the following fabric.
 
-[!metalama-sample  ~/code/DebugDemo2/Fabric2.cs tabs="target"]
+[!metalama-test  ~/code/DebugDemo2/Fabric2.cs tabs="target"]
 
 In this fabric, we use the `GlobalNamespace.GetDescendant` method to get all the children's namespace of the given namespace (in this case, `Outer.Inner`). The first `SelectMany` calls get all the types in these namespaces, and the inner `SelectMany` call gets all the methods in these types. This results in an `IAspectReceiver<IMethod>`. So the final call <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspectIfEligible*> adds the `Log` aspect to all eligible methods.
 
@@ -79,7 +79,7 @@ In this fabric, we use the `GlobalNamespace.GetDescendant` method to get all the
 
 Sometimes you may not need or want to add aspects to all the types but only to a class and its derived types. The following fabric shows how you can add those. In this example fabric, you see how to get the derived types of a given type and how to add aspects to them.
 
-[!metalama-sample ~/code/Metalama.Documentation.QuickStart.Fabrics.2/AddLoggingToChildrenFabric.cs tabs="target"]
+[!metalama-test ~/code/Metalama.Documentation.QuickStart.Fabrics.2/AddLoggingToChildrenFabric.cs tabs="target"]
 
 ## Adding fabrics to namespaces or types
 

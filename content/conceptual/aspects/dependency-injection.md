@@ -38,13 +38,13 @@ To consume a dependency from an aspect:
 
 The following example uses [Microsoft.Extensions.Hosting](https://learn.microsoft.com/dotnet/core/extensions/generic-host), typical to .NET Core applications, to build an application and inject services. The `Program.Main` method builds the host, and the host then instantiates our `Worker` class. We add a `[Log]` aspect to this class. The `Log` aspect class has a field of type `IMessageWriter` marked with the <xref:Metalama.Extensions.DependencyInjection.IntroduceDependencyAttribute> custom attribute. As you can see in the transformed code, this field is introduced into the `Worker` class and pulled from the constructor.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.DependencyInjection/LogDefaultFramework.cs name="Dependency Injection"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.DependencyInjection/LogDefaultFramework.cs name="Dependency Injection"]
 
 ### Example: ServiceLocator
 
 What follows is almost the same example as the previous one but uses the `ServiceLocator` pattern instead of pulling dependencies from the constructor.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.DependencyInjection.ServiceLocator/LogServiceLocator.cs name="Service Locator"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.DependencyInjection.ServiceLocator/LogServiceLocator.cs name="Service Locator"]
 
 
 ## Selecting a dependency injection framework
@@ -82,5 +82,5 @@ The following example shows how to implement the correct code generation pattern
 Our implementation of <xref:Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework> implements the <xref:Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionFramework.CanHandleDependency*> method and returns `true` only when the dependency is of type `ILogger`. The only difference in the default implementation strategy is the parameter type.
 
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.DependencyInjection/LogCustomFramework.cs name="Custom Adapter"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.DependencyInjection/LogCustomFramework.cs name="Custom Adapter"]
 

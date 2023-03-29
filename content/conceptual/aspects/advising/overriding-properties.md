@@ -28,13 +28,13 @@ The following example is a simplified implementation of the service locator patt
 The `Import` aspect overrides the getter of a property to make a call to a global service locator. The type of the service is determined from the type of the field or property, using `meta.Target.FieldOrProperty.Type`.
 The dependency is not stored, so the service locator must be called every time the property is evaluated.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/GlobalImport.cs name="Import Service"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/GlobalImport.cs name="Import Service"]
 
 ### Example: Resolving dependencies on the fly and storing the result
 
 This example builds over the previous one, but the dependency is stored in the field or property after it has been retrieved from the service provider for the first time.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/GlobalImportWithSetter.cs name="Import Service"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/GlobalImportWithSetter.cs name="Import Service"]
 
 ## Overriding several fields or properties from the same aspect
 
@@ -57,7 +57,7 @@ The _second argument_ of `Override` is the name of the template property. This p
 
 The following aspect overrides properties so that they are written to and read from the Windows registry.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/RegistryStorage.cs name="Registry Storage"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/RegistryStorage.cs name="Registry Storage"]
 
 
 #### Example: string normalization
@@ -66,7 +66,7 @@ This example illustrates a strongly-typed property template with a single access
 
 The following aspect can be applied to fields of properties of type `string`. It overrides the setter to trim and lowercase the assigned value.
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Normalize.cs name="Normalize"]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Normalize.cs name="Normalize"]
 
 ### Using an accessor template
 

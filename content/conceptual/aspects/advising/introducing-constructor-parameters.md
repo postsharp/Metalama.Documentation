@@ -17,4 +17,4 @@ The `pullAction` parameter of the <xref:Metalama.Framework.Advising.IAdviceFacto
 
 The following example shows an aspect that registers the current instance in a registry of type `IInstanceRegistry`. The aspect appends a parameter of type `IInstanceRegistry` to the target constructor and calls the `IInstanceRegistry.Register(this)` method.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceParameter.cs name="Introducing parameters"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceParameter.cs name="Introducing parameters"]

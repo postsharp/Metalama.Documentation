@@ -42,8 +42,14 @@
           "toc.yml"
         ],
         "src": "content"
+      },
+      {
+        "files": [
+          "toc.yml",
+          "examples/**.md"
+        ],
+        "src": "source-dependencies/Metalama.Samples"
       }
-     
     ],
     "resource": [
       {

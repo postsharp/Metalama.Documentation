@@ -21,13 +21,13 @@ That is if your aspects introduce a field `int f` and you want to initialize it 
 
 In the following example, the aspect introduces an `Id` property of type `Guid` and initializes it to a new unique value.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceId.cs name="Introduce Id"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceId.cs name="Introduce Id"]
 
 #### Example: initializing with a template
 
 You can also use the T# template language inside analyzers of fields or properties. The aspect in the following example introduces a property that is initialized to the build configuration and target framework.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/BuildInfo.cs name="Introduce Build Info"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/BuildInfo.cs name="Introduce Build Info"]
 
 ### Initialization of programmatic advice
 
@@ -37,7 +37,7 @@ If you use the programmatic advice <xref:Metalama.Framework.Advising.IAdviceFact
 
 The aspect in the following example introduces a field using the <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceField*> programmatic advice and sets its initializer expression to an array that contains the name of all methods in the target type.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/ProgrammaticInitializer.cs name="Programmatic Initializer"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/ProgrammaticInitializer.cs name="Programmatic Initializer"]
 
 ## Before any object constructor
 
@@ -54,7 +54,7 @@ A default constructor will be created automatically if the type does not contain
 
 The following aspect registers any new instance of the target class in a registry of live instances. After an instance has been garbage-collected, it is automatically removed from the registry. The aspect injects the registration logic into the constructor of the target class.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/RegisterInstance.cs name="Register Instance"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/RegisterInstance.cs name="Register Instance"]
 
 
 ## Before a specific object constructor

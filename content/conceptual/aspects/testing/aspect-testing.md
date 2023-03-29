@@ -103,11 +103,11 @@ Every test includes:
 
 For instance, suppose that we are testing the following aspect. This file would typically be included in a class library project.
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Testing.TheAspect.cs name="Main"]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Testing.TheAspect.cs name="Main"]
 
 To test this aspect, we create a test file with the following content:
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Testing.cs name="Main"]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Testing.cs name="Main"]
 
 ### Include other files
 
@@ -150,7 +150,7 @@ You can find the output code, transformed by your aspects, at two locations:
 
 For the example above, the test output is the following:
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Testing.t.cs name="Testing"]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Testing.t.cs name="Testing"]
 
 Verify that the output code matches your expectations. If necessary, fix your aspect and rerun the test. Repeat as many times as necessary.
 
@@ -246,7 +246,7 @@ JetBrains tools do not support the customized compile-time test framework. As a 
 
 If you have a large number of tests and want to see a hierarchical view, you can create, in each directory you want, a file named `_Runner.cs`, with the following content (in the namespace of your choice):
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/_Runner.cs name="Test Runner"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/_Runner.cs name="Test Runner"]
 
 The `[CurrentDirectory]` attribute will automatically provide test data for all files under the directory containing the `_Runner.cs` file and any child directory.
 

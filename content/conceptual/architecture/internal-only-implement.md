@@ -17,10 +17,10 @@ Metalama provides a way to protect your interface from being implemented by othe
 
 In the parent project, assume we have the following interface protected by the <xref:Metalama.Extensions.Architecture.Aspects.InternalOnlyImplementAttribute> attribute:
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/InternalOnlyImplement.Dependency.cs]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/InternalOnlyImplement.Dependency.cs]
 
 If we try to implement this interface in a child project, a warning is reported:
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/InternalOnlyImplement.cs tabs="target"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/InternalOnlyImplement.cs tabs="target"]
 
 

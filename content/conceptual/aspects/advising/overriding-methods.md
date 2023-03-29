@@ -136,7 +136,7 @@ As you can see, the buffering of iterators is performed by the <xref:Metalama.Fr
 
 The following example demonstrates the behavior of the default template when applied to different kinds of methods. Note that the output of iterators methods is buffered. This is visible in the program output.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodDefaultTemplateAllKinds.cs name="Default template applied to all kinds of methods"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodDefaultTemplateAllKinds.cs name="Default template applied to all kinds of methods"]
 
 ### Implementing a specific template for async or iterator methods
 
@@ -163,7 +163,7 @@ Note that there is no obligation to implement these methods as `async` methods o
 
 The following example derives from the previous one and implements all specific template methods instead of just the default ones. Note that now the output of iterators is no longer buffered because this new aspect version supports iterator streaming.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodSpecificTemplateAllKinds.cs name="Specific templates for all kinds of methods"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodSpecificTemplateAllKinds.cs name="Specific templates for all kinds of methods"]
 
 ### Using specific templates for non-async awaitable or non-yield enumerable methods
 
@@ -176,7 +176,7 @@ In the above sections, we have always derived our aspect class from the <xref:Me
 
 Here is the simplified source code of the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> class:
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs name="Main"]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs name="Main"]
 
 You will often want your aspect to override _many_ methods. For instance, a _synchronized object_ aspect has to override all public instance methods and wrap them with a `lock` statement.
 
@@ -200,7 +200,7 @@ The following aspect wraps all instance methods with a `lock( this )` statement.
 > [!NOTE]
 > In a production-ready implementation, you should not lock `this` but a private field. You can introduce this field as described in <xref:introducing-members>. A product-ready implementation should also wrap properties.
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Synchronized.cs name="Synchronized"]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Synchronized.cs name="Synchronized"]
 
 ### Specifying templates for async and iterator methods
 

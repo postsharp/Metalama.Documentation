@@ -1,13 +1,13 @@
-﻿
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
 using Microsoft.DocAsCode.MarkdownLite;
-using Microsoft.DocAsCode.MarkdownLite.Matchers;
 using System.Text.RegularExpressions;
 
 namespace Metalama.Documentation.DfmExtensions;
 
-public sealed class SampleTokenRule : IMarkdownRule
+public sealed class AspectTestTokenRule : IMarkdownRule
 {
-    private static readonly Regex _regex = new( @"^\s*\[!metalama-sample +(?<path>[^\s\]]+)\s*(?<attributes>[^\]]*)\]" );
+    private static readonly Regex _regex = new( @"^\s*\[!metalama-test +(?<path>[^\s\]]+)\s*(?<attributes>[^\]]*)\]" );
 
     public IMarkdownToken? TryMatch( IMarkdownParser parser, IMarkdownParsingContext context )
     {
@@ -25,7 +25,7 @@ public sealed class SampleTokenRule : IMarkdownRule
             attributes.TryGetValue( "title", out var title );
             attributes.TryGetValue( "tabs", out var tabs );
 
-            return new SampleToken(
+            return new AspectTestToken(
                 this,
                 parser.Context,
                 sourceInfo,
@@ -38,5 +38,5 @@ public sealed class SampleTokenRule : IMarkdownRule
         return null;
     }
 
-    public string Name => "MetalamaSample";
+    public string Name => "Metalama.Test";
 }

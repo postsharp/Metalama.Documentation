@@ -27,7 +27,7 @@ Several predefined eligibility conditions are implemented by the <xref:Metalama.
 
 ### Example
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Eligibility.cs name="Eligibility"]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Eligibility.cs name="Eligibility"]
 
 ## When to emit custom errors instead?
 
@@ -49,5 +49,5 @@ Adding a dependency injection aspect to an `int` or `string` field does not make
 
 The following example expands the previous one, reporting custom errors when the target class does not define a field `logger` of type `TextWriter`.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/EligibilityAndValidation.cs name="Eligibility and Validation"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/EligibilityAndValidation.cs name="Eligibility and Validation"]
 

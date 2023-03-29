@@ -36,7 +36,7 @@ Technically speaking, a contract is a piece of code that you inject after _recei
 
 The most common use of contracts is to check nullability. Here is the simplest example.
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleNotNull.cs]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleNotNull.cs]
 
 Notice how the `nameof(value)` expression is replaced by `nameof(parameter)` when the contract is applied to a parameter.
 
@@ -44,7 +44,7 @@ Notice how the `nameof(value)` expression is replaced by `nameof(parameter)` whe
 
 You can do more with a contract than throwing an exception. In the following example, the aspect trims whitespace from strings. We add the same aspect to properties and parameters.
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/trim.cs]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/trim.cs]
 
 ## Going deeper
 

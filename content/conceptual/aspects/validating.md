@@ -34,7 +34,7 @@ To validate a different version of the code model, follow these steps:
 
 The following example demonstrates how to validate that the target type of the `Log` aspect contains a field named `_logger`. The implementation allows the `_logger` field to be introduced _after_ the `Log` aspect has been applied, thanks to a call to <xref:Metalama.Framework.Validation.IValidatorReceiver`1.AfterAllAspects>.
 
-[!metalama-sample  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ValidateAfterAllAspects.cs]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ValidateAfterAllAspects.cs]
 
 ## Validating code references
 
@@ -53,4 +53,4 @@ To create an aspect that validates references:
 
 The following example implements a custom attribute `[ForTestOnly]` that enforces that the target of this attribute can be used only from a namespace that ends with `.Tests.`.
 
-[!metalama-sample ~/code/Metalama.Documentation.SampleCode.AspectFramework/ForTestOnly.cs name="For Test Only, Aspect Implementation"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/ForTestOnly.cs name="For Test Only, Aspect Implementation"]
