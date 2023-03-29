@@ -16,5 +16,6 @@ public class RendererProvider : IDfmCustomizedRendererPartProvider
         yield return new AspectTestRenderer();
         yield return new SingleFileRenderer();
         yield return new ProjectButtonsRenderer();
+        yield return new CompareFileRenderer();
     }
 }

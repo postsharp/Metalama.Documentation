@@ -20,6 +20,6 @@ public class DfmEngineCustomizer : IDfmEngineCustomizer
 
         var includePosition = builder.BlockRules.Select( ( r, i ) => (r, i) ).Single( x => x.r.Name == "DfmIncludeBlock" ).i;
 
-        builder.BlockRules = builder.BlockRules.InsertRange( includePosition, new IMarkdownRule[] { new AspectTestTokenRule(), new SingleFileTokenRule(), new ProjectButtonsTokenRule() } );
+        builder.BlockRules = builder.BlockRules.InsertRange( includePosition, new IMarkdownRule[] { new AspectTestTokenRule(), new SingleFileTokenRule(), new ProjectButtonsTokenRule(), new CompareFileTokenRule() } );
     }
 }

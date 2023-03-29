@@ -1,4 +1,6 @@
-﻿using Microsoft.DocAsCode.MarkdownLite;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using Microsoft.DocAsCode.MarkdownLite;
 using System;
 using System.IO;
 using System.Linq;
@@ -9,7 +11,6 @@ internal class ProjectButtonsRenderer : BaseRenderer<ProjectButtonsToken>
 {
     protected override StringBuffer RenderCore( ProjectButtonsToken token, MarkdownBlockContext context )
     {
-
         var directory = token.Src;
         var id = Path.GetFileNameWithoutExtension( directory ).ToLowerInvariant();
 
@@ -19,7 +20,30 @@ internal class ProjectButtonsRenderer : BaseRenderer<ProjectButtonsToken>
         {
             var lines = File.ReadAllLines( file );
 
-            var kind = lines.Any( l => l.StartsWith( "using Metalama.Framework" ) ) ? SandboxFileKind.AspectCode : SandboxFileKind.TargetCode;
+            var kind = lines.Any( l => l.StartsWith( "using Metalama.Framework" ) ) ? SandboxFileKind.AspectCode : SandboxFileKind.None;
+
+            if ( kind == SandboxFileKind.None )
+            {
+                // We need to try harder to find the good category.
+
+                var outHtmlPath = Path.GetFullPath(
+                    Path.Combine(
+                        directory,
+                        "obj",
+                        "html",
+                        "net6.0",
+                        Path.ChangeExtension( Path.GetFileName( file ), ".t.cs.html" ) ) );
+
+                if ( !File.Exists( outHtmlPath ) || !File.ReadAllText( outHtmlPath ).Contains( "cr-GeneratedCode" ) )
+                {
+                    kind = SandboxFileKind.ExtraCode;
+                }
+                else
+                {
+                    kind = SandboxFileKind.TargetCode;
+                }
+            }
+
             tabGroup.Tabs.Add( new CodeTab( Path.GetFileNameWithoutExtension( file ).ToLowerInvariant(), file, Path.GetFileName( file ), kind ) );
         }
 
@@ -30,9 +54,8 @@ internal class ProjectButtonsRenderer : BaseRenderer<ProjectButtonsToken>
             throw new InvalidOperationException( $"Cannot load '{directory}' into the sandbox." );
         }
 
-
         var gitUrl = tabGroup.GetGitUrl();
-        
+
         return $@"
 <div class=""project-buttons"">
     <a href=""{gitUrl}"" class=""github"">See on GitHub</a>
