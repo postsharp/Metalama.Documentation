@@ -28,7 +28,10 @@ object DebugBuild : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-    }
+
+  root(AbsoluteId("Metalama_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+
+        }
 
     steps {
         // Step to kill all dotnet or VBCSCompiler processes that might be locking files we delete in during cleanup.
@@ -161,7 +164,10 @@ object PublicBuild : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-    }
+
+  root(AbsoluteId("Metalama_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+
+        }
 
     steps {
         // Step to kill all dotnet or VBCSCompiler processes that might be locking files we delete in during cleanup.
@@ -294,7 +300,10 @@ object PublicDeployment : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-    }
+
+  root(AbsoluteId("Metalama_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+
+        }
 
     steps {
         powerShell {
@@ -451,7 +460,10 @@ object PublicDeploymentNoDependency : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-    }
+
+  root(AbsoluteId("Metalama_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+
+        }
 
     steps {
         powerShell {
