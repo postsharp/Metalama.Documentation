@@ -13,11 +13,11 @@ You can currently add the following kinds of members:
 - fields,
 - properties,
 - events.
+- operators,
+- conversions,
 
 However, the following kind of members are _not_ yet supported:
 
-- operators,
-- conversions,
 - constructors.
 
 ## Introducing members declaratively
