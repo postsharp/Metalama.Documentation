@@ -29,7 +29,7 @@ namespace Doc.NotNull
       }
       return returnValue;
     }
-    private string _property;
+    private string _property = default !;
     [NotNull]
     public string Property
     {
