@@ -102,6 +102,7 @@ static void OnPrepareCompleted( PrepareCompletedEventArgs args )
         matcher.AddInclude("**/*.html");
         var matches = matcher.Execute(new DirectoryInfoWrapper( new DirectoryInfo( htmlSourceDirectory ) ));
 
+        var count = 0;
         foreach (var match in matches.Files)
         {
             var sourceFile = Path.Combine( htmlSourceDirectory, match.Path );
@@ -109,9 +110,13 @@ static void OnPrepareCompleted( PrepareCompletedEventArgs args )
             var targetSubdirectory = Path.GetDirectoryName( targetFile );
             Directory.CreateDirectory( targetSubdirectory );
         
-        
+            args.Context.Console.WriteMessage( $"Copying '{sourceFile}' to '{targetFile}'." );
             File.Copy(sourceFile, targetFile, true);
+
+            count++;
         }
+        
+        args.Context.Console.WriteMessage( $"{count} files copied." );
         
     }
 }
