@@ -17,6 +17,7 @@
         <MetalamaMigrationVersion>2023.0.102-rc</MetalamaMigrationVersion>
         <MetalamaExtensionsVersion>2023.0.102-rc</MetalamaExtensionsVersion>
         <MetalamaLinqPadVersion>2023.0.102-rc</MetalamaLinqPadVersion>
+        <MetalamaSamplesVersion></MetalamaSamplesVersion>
         <NuGetCommandLineVersion>6.4.0</NuGetCommandLineVersion>
     </PropertyGroup>
 
