@@ -107,7 +107,7 @@ static void OnPrepareCompleted( PrepareCompletedEventArgs args )
         {
             var sourceFile = Path.Combine( htmlSourceDirectory, match.Path );
             var targetFile = Path.Combine( htmlTargetDirectory, match.Path );
-            var targetSubdirectory = Path.GetDirectoryName( targetFile );
+            var targetSubdirectory = Path.GetDirectoryName( targetFile )!;
             Directory.CreateDirectory( targetSubdirectory );
             File.Copy(sourceFile, targetFile, true);
 
