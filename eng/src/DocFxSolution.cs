@@ -44,6 +44,7 @@ namespace BuildMetalamaDocumentation
             
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
+                // TODO: Replace 2.59.0 by the only version number.
                 Path.Combine( context.RepoDirectory, "docfx\\packages\\docfx.console.2.59.0\\tools\\docfx.exe" ),
                 Path.Combine( context.RepoDirectory, this.SolutionPath ),
                 context.RepoDirectory,
