@@ -20,7 +20,7 @@ const string docPackageFileName = "Metalama.Doc.zip";
 var product = new Product( Dependencies.MetalamaDocumentation )
 {
     // Note that we don't build Metalama.Samples ourselves. We expect it to be built from the repo itself.
-    // HTML artifacts should be restored from artefacts.
+    // HTML artifacts should be restored from artifacts.
     
     Solutions = new Solution[]
     {
