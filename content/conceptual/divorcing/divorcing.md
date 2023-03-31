@@ -3,7 +3,7 @@ uid: divorcing
 level: 200
 ---
 
-# Removing Metalama from your codebase
+# Divorcing from Metalama
 
 A few years ago, while serenading an Israeli prospect with the sweet melodies of PostSharp, they curiously asked if this was like a Catholic marriage — you know, that "til death do us part" kind of commitment to the framework. At the time, we winked and said, "Fear not, there's a way out!"  Sure, it's possible to remove PostSharp, but you'd have to rewrite all that generated code by hand! And, in the process, you'd be wiping out all those precious time savings you have happily amassed over the years. Talk about a messy breakup with a costly aftermath!
 
