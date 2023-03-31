@@ -188,3 +188,6 @@ items:
           topicUid: aspect-composition
         - name: Execution order of fabrics
           topicUid: fabrics-execution-order
+
+    - name: Removing Metalama
+      topicUid: divorcing

@@ -15,3 +15,4 @@ uid: conceptual
 | <xref:configuration>    | This chapter describes how to configure Metalama for specific situations or for troubleshooting. |
 | <xref:migration> | This chapter explains why, when and how to migrate your projects from PostSharp to Metalama.
 | <xref:implementation> | This chapter explains a few implementation details.
+| <xref:divorcing> | This chapter explains how to remove Metalama from your codebase.
