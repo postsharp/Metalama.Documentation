@@ -5,7 +5,7 @@ level: 200
 
 # Divorcing from Metalama
 
-A few years ago, while serenading an Israeli prospect with the sweet melodies of PostSharp, they curiously asked if this was like a Catholic marriage — you know, that "til death do us part" kind of commitment to the framework. At the time, we winked and said, "Fear not, there's a way out!"  Sure, it's possible to remove PostSharp, but you'd have to rewrite all that generated code by hand! And, in the process, you'd be wiping out all those precious time savings you have happily amassed over the years. Talk about a messy breakup with a costly aftermath!
+A few years ago, while serenading an Israeli prospect with the sweet melodies of PostSharp, they curiously asked if this was like a Catholic marriage — you know, that "til death do us part" kind of commitment to the framework. At the time, we sheepishly scratched our heads, trying to come up with a reassuring answer.  Sure, it's possible to remove PostSharp, but you'd have to rewrite all that generated code by hand. And, in the process, you'd be wiping out all those precious time savings you have happily amassed over the years. Talk about a messy breakup with a costly aftermath!
 
 Enter Metalama, the humble spouse of the software world! Unlike that clingy ex-partner, Metalama gracefully accepts when it's time to part ways and makes the breakup process as smooth as possible. With the `metalama divorce` command, there's no need for a lengthy, handwritten code separation. It's like a considerate partner injecting the generated code right into your source code, preserving your sanity and your time.
 
