@@ -41,11 +41,27 @@ namespace BuildMetalamaDocumentation
 
                     )
             };
-            
+
+            const string docfxPackageName = "docfx.console";
+            var docfxPackagesDirectories = Directory.GetDirectories( Path.Combine( context.RepoDirectory, "docfx\\packages" ), $"{docfxPackageName}.*" );
+
+            if ( docfxPackagesDirectories.Length == 0 )
+            {
+                context.Console.WriteError( $"The {docfxPackageName} package has not been restored." );
+                return false;
+            }
+
+            if ( docfxPackagesDirectories.Length > 1 )
+            {
+                context.Console.WriteError( $"More than one version of the {docfxPackageName} package has been restored." );
+                return false;
+            }
+
+            var docfxPackageDirectory = docfxPackagesDirectories[0];
+
             return ToolInvocationHelper.InvokeTool(
                 context.Console,
-                // TODO: Replace 2.59.0 by the only version number.
-                Path.Combine( context.RepoDirectory, "docfx\\packages\\docfx.console.2.59.0\\tools\\docfx.exe" ),
+                Path.Combine( docfxPackageDirectory, "tools\\docfx.exe" ),
                 Path.Combine( context.RepoDirectory, this.SolutionPath ),
                 context.RepoDirectory,
                 options );
