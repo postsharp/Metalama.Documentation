@@ -19,16 +19,14 @@ The following graph illustrates the different projects and their dependencies.
 ```mermaid
 graph BT
 
-    MyExtension.UnitTests --> MyExtension
-    MyExtension.UnitTests -- analyzer --> MyExtension.Weaver
+    MyExtension.UnitTests --> MyExtension.Weaver
     MyExtension.UnitTests --> Metalama.Testing.AspectTesting
-    MyExtension.Weaver -. optional .-> MyExtension
+    MyExtension.Weaver --> MyExtension
     MyExtension.Weaver --> Metalama.Framework.Sdk
     Metalama.Framework.Sdk --> Roslyn
     Metalama.Testing.AspectTesting --> Metalama.Framework.Redist
     MyExtension --> Metalama.Framework.Redist
-    MyProject --> MyExtension
-    MyProject -- analyzer --> MyExtension.Weaver
+    MyProject --> MyExtension.Weaver
     Metalama.Framework.Sdk --> Metalama.Framework.Redist
 
     Metalama.Framework.Sdk([Metalama.Framework.Sdk<br/>package])
@@ -41,47 +39,21 @@ graph BT
     MyProject[MyProject<br/>project]
 ```
 
-## NuGet packaging
-
-Both the public assembly and the weaver assembly are typically deployed in a single NuGet package
-
-```text
-/lib/netstandard2.0/MyExtension.dll
-/lib/netstandard2.0/MyExtension.xml
-/analyzers/dotnet/cs/MyExtension.Weaver.dll
-```
-
-[comment]: # (TODO)
-
 ## 1. The public API project
 
 The public project:
 
-* references `Metalama.Framework.Redist`;
+* references `Metalama.Framework`;
 * targets at least `netstandard2.0`, but can target other frameworks too;
-* disables NuGet packaging; and nevertheless;
 * redefines the `PackageId` property to add the `.Redist` suffix to the assembly name;
 * typically makes internals visible to the weaver project.
 
+[comment]: # (TODO: If public API project targets something newer, then dependecy from Weaver to this project does not work.)
+[comment]: # (TODO: If the dependency from Weaver is not included (as in Costura), then packaging doesn't work.)
 
 ### Example
 
-```xml
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Metalama.Open.Virtuosity.Redist</PackageId>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Metalama.Framework.Redist" Version="$(MetalamaVersion)" />
-    <InternalsVisibleTo Include="Metalama.Open.Virtuosity.Weaver"/>
-  </ItemGroup>
-
-</Project>
-```
+[!code-xml[](~\source-dependencies\Metalama.Community\src\Metalama.Community.Virtuosity\Metalama.Community.Virtuosity\Metalama.Community.Virtuosity.csproj)]
 
 ## 2. The weaver project
 
@@ -96,21 +68,7 @@ The weaver project:
 
 ### Example
 
-```xml
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Metalama.Open.Virtuosity</PackageId>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Metalama.Framework.Sdk" Version="$(MetalamaVersion)" />
-    <ProjectReference Include="..\Metalama.Open.Virtuosity\Metalama.Open.Virtuosity.csproj" />
-  </ItemGroup>
-
-</Project>
-```
+[!code-xml[](~\source-dependencies\Metalama.Community\src\Metalama.Community.Virtuosity\Metalama.Community.Virtuosity.Weaver\Metalama.Community.Virtuosity.Weaver.csproj)]
 
 ## 3. The unit test project
 
@@ -127,33 +85,15 @@ The unit test project:
 
 ### Example
 
-```xml
-<Project Sdk="Microsoft.NET.Sdk">
+[!code-xml[](~\source-dependencies\Metalama.Community\src\Metalama.Community.Virtuosity\Metalama.Community.Virtuosity.UnitTests\Metalama.Community.Virtuosity.UnitTests.csproj)]
 
-    <PropertyGroup>
-        <OutputType>Library</OutputType>
-        <TargetFramework>net6.0</TargetFramework>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\Metalama.Open.Virtuosity.Weaver\Metalama.Open.Virtuosity.Weaver.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
-        <ProjectReference Include="..\Metalama.Open.Virtuosity\Metalama.Open.Virtuosity.csproj" OutputItemType="Analyzer"/>
-        <PackageReference Include="Metalama.Testing.AspectTesting" Version="$(MetalamaVersion)"/>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0"/>
-        <PackageReference Include="xunit" Version="2.4.1"/>
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5"/>
-    </ItemGroup>
-
-</Project>
-```
-
-## 4. The consuming projects
+## 4. Consuming projects in the same solution
 
 If the consuming projects are a part of the same solution as the Metalama extension projects, they need to:
 
 * reference the public project with `OutputItemType="Analyzer"` so that it is included both at run time and compile time;
 * reference the weaver project with both `OutputItemType="Analyzer"` and `ReferenceOutputAssembly="false"` so that it is included only at compile time.
-* reference the `Metalama.Framework` package (the indirect reference to `Metalama.Framework.Redist` is not sufficient).
+* reference the `Metalama.Framework` package.
 
 ### Example
 
@@ -163,14 +103,23 @@ If the consuming projects are a part of the same solution as the Metalama extens
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <IsPackable>False</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Metalama.Open.Virtuosity.Weaver\Metalama.Open.Virtuosity.Weaver.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\Metalama.Open.Virtuosity\Metalama.Open.Virtuosity.csproj" OutputItemType="Analyzer" />
+    <PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)" />
   </ItemGroup>
 
 </Project>
 ```
 
+## 5. Consuming projects in a different solution
+
+If the consuming projects are not part of the same solution as the Metalama extension projects, they need to:
+
+* reference the main package of the extension, produced from the weaver project.
+
+### Example
+
+[!code-xml[](~\source-dependencies\Metalama.Community\src\Metalama.Community.Virtuosity\Metalama.Community.Virtuosity.TestApp\Metalama.Community.Virtuosity.TestApp\Metalama.Community.Virtuosity.TestApp.csproj)]
