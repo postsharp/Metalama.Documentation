@@ -1,6 +1,6 @@
 ---
 uid: dependency-injection
-level: 400
+level: 300
 ---
 
 # Injecting dependencies into aspects
