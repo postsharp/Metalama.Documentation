@@ -1,1 +1,1 @@
-// Error LAMA0037 on `Log`: `The aspect 'Log' cannot be applied to 'SomeClass.StaticMethod()' because 'SomeClass.StaticMethod()' must not be static.`
+// Error LAMA0037 on `Log`: `The aspect 'Log' cannot be applied to the method 'SomeClass.StaticMethod()' because 'SomeClass.StaticMethod()' must not be static.`
