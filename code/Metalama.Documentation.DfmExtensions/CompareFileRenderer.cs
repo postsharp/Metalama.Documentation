@@ -18,12 +18,12 @@ internal class CompareFileRenderer : BaseRenderer<CompareFileToken>
         stringBuilder.AppendLine( $@"  <div class=""left"">" );
         stringBuilder.AppendLine( $@"  <div class=""compare-header"">Source Code</div>" );
         stringBuilder.AppendLine( sourceTab.GetTabContent( false ) );
-        stringBuilder.AppendLine( $@"  </div" );
+        stringBuilder.AppendLine( $@"  </div>" ); // <div class="left">
         stringBuilder.AppendLine( $@"  <div class=""right"">" );
         stringBuilder.AppendLine( $@"  <div class=""compare-header"">Transformed Code</div>" );
         stringBuilder.AppendLine( transformedTab.GetTabContent( false ) );
-        stringBuilder.AppendLine( $@"  </div" );
-        stringBuilder.AppendLine( $@"</div" );
+        stringBuilder.AppendLine( $@"  </div>" ); // <div class="right">
+        stringBuilder.AppendLine( $@"</div>" ); // top div
 
         return stringBuilder.ToString();
     }

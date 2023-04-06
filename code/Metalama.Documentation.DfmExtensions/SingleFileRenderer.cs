@@ -12,6 +12,6 @@ internal class SingleFileRenderer : BaseRenderer<SingleFileToken>
         var name = Path.GetFileNameWithoutExtension( token.Src );
         var tab = token.ShowTransformed ? new TransformedSingleFileCodeTab( token.Src ) : new CodeTab( name, token.Src, name, SandboxFileKind.ExtraCode );
 
-        return tab.GetTabContent( false );
+        return "<div class='single-file'>" +  tab.GetTabContent( false ) + "</div>";
     }
 }
