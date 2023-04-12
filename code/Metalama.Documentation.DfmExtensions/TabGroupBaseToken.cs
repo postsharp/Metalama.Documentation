@@ -7,14 +7,14 @@ namespace Metalama.Documentation.DfmExtensions;
 
 public abstract class TabGroupBaseToken : IMarkdownToken
 {
-    protected TabGroupBaseToken( IMarkdownRule rule, IMarkdownContext context, SourceInfo sourceInfo, string src, string name, string title, string tabs )
+    protected TabGroupBaseToken( IMarkdownRule rule, IMarkdownContext context, SourceInfo sourceInfo, string name, string title, string tabs, bool addLinks = true )
     {
         this.Rule = rule;
         this.Context = context;
         this.SourceInfo = sourceInfo;
-        this.Src = PathHelper.ResolveTokenPath( src, context, sourceInfo );
         this.Name = name;
         this.Title = title;
+        this.AddLinks = addLinks;
         this.Tabs = tabs.Split( ',' ).Select( x => x.Trim() ).Where( x => !string.IsNullOrEmpty( x ) ).ToArray();
     }
 
@@ -26,9 +26,9 @@ public abstract class TabGroupBaseToken : IMarkdownToken
 
     public SourceInfo SourceInfo { get; }
 
-    public string Src { get; }
-
     public string Name { get; }
 
     public string Title { get; }
+    
+    public bool AddLinks { get; }
 }

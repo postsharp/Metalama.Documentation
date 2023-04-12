@@ -19,13 +19,13 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
 
         var tabGroup = new AspectTestTabGroup( id );
 
-        void AddCodeTab( string id, string suffix, SandboxFileKind kind, string? name = null )
+        void AddCodeTab( string tabId, string suffix, SandboxFileKind kind, string? name = null )
         {
             var tabPath = suffix == "" ? token.Src : Path.ChangeExtension( token.Src, suffix + ".cs" );
 
             if ( File.Exists( tabPath ) )
             {
-                tabGroup.Tabs.Add( new CodeTab( id, tabPath, name ?? suffix, kind ) );
+                tabGroup.Tabs.Add( new CodeTab( tabId, tabPath, name ?? suffix, kind ) );
             }
         }
 

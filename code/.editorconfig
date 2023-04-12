@@ -4,4 +4,3 @@
 file_header_template = unset
 dotnet_diagnostic.CA1822.severity = silent
 
-max_line_length 

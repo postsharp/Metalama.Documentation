@@ -1,4 +1,5 @@
-﻿
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
 using Metalama.Compiler;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Engine.AspectWeavers;
@@ -9,7 +10,7 @@ using Metalama.LinqPad;
 Console.WriteLine( "Hello, World!" );
 
 // // This is to make sure that all packages are properly referenced.
-_ = new Type[]
+_ = new[]
 {
     typeof(IAspect),
     typeof(AspectWeaverContext),

@@ -1,6 +1,8 @@
-﻿using Microsoft.DocAsCode.MarkdownLite;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using Microsoft.DocAsCode.MarkdownLite;
 using System.IO;
-using System.Text;
+using System.Web.Hosting;
 
 namespace Metalama.Documentation.DfmExtensions;
 
@@ -9,22 +11,9 @@ internal class CompareFileRenderer : BaseRenderer<CompareFileToken>
     protected override StringBuffer RenderCore( CompareFileToken token, MarkdownBlockContext context )
     {
         var name = Path.GetFileNameWithoutExtension( token.Src ).ToLowerInvariant();
-        
-        var sourceTab =  new CodeTab( "source", token.Src, name, SandboxFileKind.TargetCode);
-        var transformedTab = new TransformedSingleFileCodeTab( token.Src );
 
-        var stringBuilder = new StringBuilder();
-        stringBuilder.AppendLine( $@"<div id=""compare-{name}"" class=""compare"">" );
-        stringBuilder.AppendLine( $@"  <div class=""left"">" );
-        stringBuilder.AppendLine( $@"  <div class=""compare-header"">Source Code</div>" );
-        stringBuilder.AppendLine( sourceTab.GetTabContent( false ) );
-        stringBuilder.AppendLine( $@"  </div>" ); // <div class="left">
-        stringBuilder.AppendLine( $@"  <div class=""right"">" );
-        stringBuilder.AppendLine( $@"  <div class=""compare-header"">Transformed Code</div>" );
-        stringBuilder.AppendLine( transformedTab.GetTabContent( false ) );
-        stringBuilder.AppendLine( $@"  </div>" ); // <div class="right">
-        stringBuilder.AppendLine( $@"</div>" ); // top div
+        var compareTab = new CompareTab( name, token.Src );
 
-        return stringBuilder.ToString();
+        return compareTab.GetTabContent();
     }
 }

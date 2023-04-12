@@ -17,5 +17,6 @@ public class RendererProvider : IDfmCustomizedRendererPartProvider
         yield return new SingleFileRenderer();
         yield return new ProjectButtonsRenderer();
         yield return new CompareFileRenderer();
+        yield return new MultipleFilesRenderer();
     }
 }

@@ -7,7 +7,7 @@ namespace Metalama.Documentation.DfmExtensions;
 
 public sealed class SingleFileTokenRule : IMarkdownRule
 {
-    private static readonly Regex _regex = new( @"^\s*\[!metalama-file +(?<path>[^\s\]]+)\s*(?<transformed>transformed)?\s*\]" );
+    private static readonly Regex _regex = new( @"^\s*\[!metalama-file +(?<path>[^\s\]]+)\s*(?<transformed>transformed)?\s*(?<attributes>[^\]]*)\]" );
 
     public IMarkdownToken? TryMatch( IMarkdownParser parser, IMarkdownParsingContext context )
     {
@@ -20,7 +20,12 @@ public sealed class SingleFileTokenRule : IMarkdownRule
             var path = match.Groups["path"].Value;
             var showTransformed = match.Groups["transformed"].Success;
 
-            return new SingleFileToken( this, parser.Context, sourceInfo, path, showTransformed );
+            var attributes = AttributeMatcher.ParseAttributes( match.Groups["attributes"].Value );
+
+            attributes.TryGetValue( "from", out var from );
+            attributes.TryGetValue( "to", out var to );
+
+            return new SingleFileToken( this, parser.Context, sourceInfo, path, showTransformed, from, to );
         }
 
         return null;

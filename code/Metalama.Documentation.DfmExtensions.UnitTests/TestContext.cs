@@ -1,16 +1,14 @@
-﻿
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using Microsoft.DocAsCode.MarkdownLite;
-using Microsoft.DocAsCode.MarkdownLite.Matchers;
 
 namespace Metalama.Documentation.DfmExtensions.UnitTests;
 
 internal class TestParser : IMarkdownParser
 {
-    public TestParser() { }
-
     public IMarkdownContext SwitchContext( IMarkdownContext context )
     {
         throw new NotImplementedException();
@@ -21,9 +19,18 @@ internal class TestParser : IMarkdownParser
         throw new NotImplementedException();
     }
 
-    public IMarkdownContext Context => null!;
+    public IMarkdownContext Context { get; } = new TestMarkdownContext();
 
     public Dictionary<string, LinkObj> Links => throw new NotImplementedException();
 
     public Options Options => throw new NotImplementedException();
+}
+
+internal class TestMarkdownContext : IMarkdownContext
+{
+    public IMarkdownContext CreateContext( ImmutableDictionary<string, object> variables ) => throw new NotImplementedException();
+
+    public ImmutableList<IMarkdownRule> Rules => throw new NotImplementedException();
+
+    public ImmutableDictionary<string, object> Variables { get; } = ImmutableDictionary<string, object>.Empty.Add( "BaseFolder", "c:\\src\\Foo" );
 }

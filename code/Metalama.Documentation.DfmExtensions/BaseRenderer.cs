@@ -2,9 +2,7 @@
 
 using Microsoft.DocAsCode.Dfm;
 using Microsoft.DocAsCode.MarkdownLite;
-using System;
 using System.Diagnostics;
-using System.IO;
 
 namespace Metalama.Documentation.DfmExtensions;
 

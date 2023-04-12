@@ -1,7 +1,6 @@
 // Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
 using Microsoft.DocAsCode.MarkdownLite;
-using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Metalama.Documentation.DfmExtensions.UnitTests;
@@ -54,6 +53,32 @@ public class RuleTests
             Assert.True( isMatch );
             Assert.Equal( path, token.Src );
             Assert.Equal( showTransformed, token.ShowTransformed );
+        }
+        else
+        {
+            Assert.False( isMatch );
+        }
+    }
+    
+    [Theory]
+    [InlineData( "not a match", false, 0 )]
+    [InlineData( "[!metalama-files a.cs]", true, 1)]
+    [InlineData( "[!metalama-files a.cs b.cs]", true, 2 )]
+    [InlineData( "[!metalama-files a.cs ]", true, 1 )]
+    [InlineData( "[!metalama-files a.cs b.cs ]", true, 2 )]
+    [InlineData( "[!metalama-files a.cs b.cs a=\"b\"]", true, 2 )]
+    [InlineData( "[!metalama-files a.cs b.cs a=\"b\" ]", true, 2 )]
+    public void MultipleFiles( string text, bool isMatch, int files )
+    {
+        var rule = new MultipleFilesTokenRule();
+
+        var context = new MarkdownParsingContext( SourceInfo.Create( text, "file.md", 0, 1 ) );
+        var token = (MultipleFilesToken?) rule.TryMatch( new TestParser(), context );
+
+        if ( token != null )
+        {
+            Assert.True( isMatch );
+            Assert.Equal( files, token.Files.Length );
         }
         else
         {

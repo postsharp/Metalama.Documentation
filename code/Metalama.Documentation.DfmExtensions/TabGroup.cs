@@ -11,7 +11,7 @@ internal abstract class TabGroup
     private string TabGroupId { get; }
 
     public List<BaseTab> Tabs { get; } = new();
-
+    
     public abstract string GetGitUrl();
 
     protected TabGroup( string tabGroupId )
@@ -28,26 +28,29 @@ internal abstract class TabGroup
         var divId = $"code-{this.TabGroupId}";
         stringBuilder.AppendLine( $"<div id={divId} class=\"anchor\">" );
 
-        // Start the links.
-        stringBuilder.AppendLine( $@"<div class=""sample-links {(tabs.Count == 1 ? "" : "tabbed")}"">" );
-
-        // Create the sandbox link.
-        var sandboxPayload = this.GetSandboxPayload( tabs );
-
-        if ( sandboxPayload != null )
+        if ( token.AddLinks )
         {
-            stringBuilder.AppendLine( $@"  <a class=""try"" onclick=""openSandbox('{sandboxPayload}');"" role=""button"">Open in sandbox</a> |" );
-        }
+            // Start the links.
+            stringBuilder.AppendLine( $@"<div class=""sample-links {(tabs.Count == 1 ? "" : "tabbed")}"">" );
 
-        // Finish the links.
-        var gitUrl = this.GetGitUrl();
+            // Create the sandbox link.
+            var sandboxPayload = this.GetSandboxPayload( tabs );
 
-        stringBuilder.AppendLine(
-            @$"
+            if ( sandboxPayload != null )
+            {
+                stringBuilder.AppendLine( $@"  <a class=""try"" onclick=""openSandbox('{sandboxPayload}');"" role=""button"">Open in sandbox</a> |" );
+            }
+
+            // Finish the links.
+            var gitUrl = this.GetGitUrl();
+
+            stringBuilder.AppendLine(
+                @$"
     <a class=""github"" href=""{gitUrl}"" target=""github"">See on GitHub</a>
 </div>" );
 
-        stringBuilder.AppendLine( "</div>" );
+            stringBuilder.AppendLine( "</div>" );
+        }
 
         // Write the tabs.
         if ( tabs.Count == 1 )

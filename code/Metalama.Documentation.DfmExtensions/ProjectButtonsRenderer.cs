@@ -11,7 +11,7 @@ internal class ProjectButtonsRenderer : BaseRenderer<ProjectButtonsToken>
 {
     protected override StringBuffer RenderCore( ProjectButtonsToken token, MarkdownBlockContext context )
     {
-        var directory = token.Src;
+        var directory = token.Directory;
         var id = Path.GetFileNameWithoutExtension( directory ).ToLowerInvariant();
 
         var tabGroup = new DirectoryTabGroup( id, directory );
