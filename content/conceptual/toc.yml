@@ -155,10 +155,6 @@ items:
           topicUid: sdk-scaffolding
         - name: Aspect weavers
           topicUid: aspect-weavers
-        - name: Services
-          topicUid: services
-        - name: Custom metrics
-          topicUid: custom-metrics                 
     - name: Migrating from PostSharp
       topicUid: migration
       items:

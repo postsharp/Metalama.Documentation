@@ -44,7 +44,7 @@ In the _weaver project_ created in Step 1:
 
 1. Add a class that implements the <xref:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver> interface.
 2. Make sure the class is `public`.
-3. Add the <xref:Metalama.Compiler.MetalamaPlugInAttribute> custom attributes to this class.
+3. Add the <xref:Metalama.Compiler.MetalamaPlugInAttribute> attribute to this class.
 
 At this point, the code will look like this:
 
@@ -52,7 +52,7 @@ At this point, the code will look like this:
 using Metalama.Compiler;
 using Metalama.Framework.Engine.AspectWeavers;
 
-namespace Metalama.Community.Virtuosity;
+namespace Metalama.Community.Virtuosity.Weaver;
 
 [MetalamaPlugIn]
 public class VirtuosityWeaver : IAspectWeaver
@@ -70,45 +70,27 @@ Go back to the aspect class and annotate it with a custom attribute of type <xre
 
 
 ```cs
-[RequireAspectWeaver( "Metalama.Community.Virtuosity.VirtuosityWeaver" )]
+[RequireAspectWeaver( "Metalama.Community.Virtuosity.Weaver.VirtuosityWeaver" )]
 public class VirtualizeAttribute : TypeAspect { }
 ```
 
 ### Step 5. Define eligibility of the aspect (optional)
 
-While the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method would be ignored, the <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method is still called. This means you can define eligibility in the aspect class as usual, see <xref:eligibility>. For example:
+While the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method is ignored for weaver aspects, the <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method is still called. This means you can define eligibility in the aspect class as usual, see <xref:eligibility>. For example:
 
-```csharp
-using Metalama.Framework.Aspects;
-using Metalama.Framework.Code;
-using Metalama.Framework.Eligibility;
-
-namespace Metalama.Community.Virtuosity;
-[RequireAspectWeaver( "Metalama.Community.Virtuosity.VirtuosityWeaver" )]
-public class VirtualizeAttribute : TypeAspect
-{
-    public override void BuildEligibility( IEligibilityBuilder<INamedType> builder )
-    {
-        base.BuildEligibility( builder );
-
-        builder.MustSatisfy(
-            t => t.TypeKind is TypeKind.Class or TypeKind.RecordClass,
-            t => $"{t} must be a class or a record class" );
-    }
-}
-```
+[!code-csharp[](~\source-dependencies\Metalama.Community\src\Metalama.Community.Virtuosity\Metalama.Community.Virtuosity\VirtualizeAttribute.cs#L3-L100)]
 
 ### Step 6. Implement the TransformAsync method
 
 <xref:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync*> has a parameter of type <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext>. This type contains methods for convenient manipulation of the input compilation, namely <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync*> and <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync*>.
+Both methods apply a <xref:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter> on the input compilation, the difference is that <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync*> only calls <xref:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter.Visit*> on declarations that have the aspect attribute, whereas <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync*> lets you modify anything in the whole compilation, but requires more work to identify the relevant declarations.
 
-[comment]: # (TODO: expand and add an example?)
+Note that all methods that apply a <xref:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter> operate in parallel, which means that your implementation needs to be thread-safe.
 
 For more advanced cases, the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation> property exposes the input compilation, and your implementation can set this property to the new compilation.
+The type of the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation> property is the immutable interface <xref:Metalama.Framework.Engine.CodeModel.IPartialCompilation>. This interface, as well as the extension class <xref:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions>, offer different methods to transform the compilation. For instance, the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync*> method will apply a <xref:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter> to the input compilation and return the resulting compilation.
 
-The type of the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation> property is <xref:Metalama.Framework.Engine.CodeModel.IPartialCompilation>. Compilations are immutable objects. This interface, as well as the extension class <xref:Metalama.Framework.Engine.CodeModel.PartialCompilationExtensions>, offer different methods to transform the compilation. For instance, the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync*> method will apply a <xref:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter> to the input compilation and return the resulting compilation.
-
-[comment]: # (TODO: I'm confused about the 4 RewriteSyntaxTreesAsync methods.)
+For full control of the resulting compilation, the method <xref:Metalama.Framework.Engine.CodeModel.IPartialCompilation.WithSyntaxTreeTransformations*> is available.
 
 Do not forget to write back the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.Compilation?text=context.Compilation> property if you're accessing it directly.
 
@@ -118,15 +100,60 @@ The list of aspect instances that need to be handled by your weaver is given by 
 
 To map the Metalama code model to an <xref:Microsoft.CodeAnalysis.ISymbol>, use the extension methods in <xref:Metalama.Framework.Engine.CodeModel.SymbolExtensions>.
 
-
 Your weaver does not need to format the output code itself. This is done by Metalama at the end of the pipeline, and only when necessary.
-
 However, your weaver is responsible for annotating the syntax nodes with the annotations declared in the  <xref:Metalama.Framework.Engine.Formatting.FormattingAnnotations> class.
 
+#### Example
+
+A simplified version of `VirtuosityWeaver` could look like this:
+
+```csharp
+using Metalama.Compiler;
+using Metalama.Framework.Engine.AspectWeavers;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Linq;
+using System.Threading.Tasks;
+using static Microsoft.CodeAnalysis.CSharp.SyntaxKind;
+
+namespace Metalama.Community.Virtuosity.Weaver;
+
+[MetalamaPlugIn]
+public sealed class VirtuosityWeaver : IAspectWeaver
+{
+    public Task TransformAsync( AspectWeaverContext context ) => context.RewriteAspectTargetsAsync( new Rewriter() );
+
+    private sealed class Rewriter : CSharpSyntaxRewriter
+    {
+        private static readonly SyntaxKind[] _forbiddenModifiers = { StaticKeyword, SealedKeyword, VirtualKeyword, OverrideKeyword };
+
+        private static readonly SyntaxKind[] _requiredModifiers = { PublicKeyword, ProtectedKeyword, InternalKeyword };
+
+        private static SyntaxTokenList ModifyModifiers( SyntaxTokenList modifiers )
+        {
+            // Add the virtual modifier.
+            if ( !_forbiddenModifiers.Any( modifier => modifiers.Any( modifier ) )
+                 && _requiredModifiers.Any( modifier => modifiers.Any( modifier ) ) )
+            {
+                modifiers = modifiers.Add(
+                    SyntaxFactory.Token( VirtualKeyword )
+                        .WithTrailingTrivia( SyntaxFactory.ElasticSpace ) );
+            }
+
+            return modifiers;
+        }
+
+        public override SyntaxNode VisitMethodDeclaration( MethodDeclarationSyntax node ) => node.WithModifiers( ModifyModifiers( node.Modifiers ) );
+    }
+}
+```
+
+The actual implementation is available [on the GitHub repo](https://github.com/postsharp/Metalama.Community/blob/master/src/Metalama.Community.Virtuosity/Metalama.Community.Virtuosity.Weaver/VirtuosityWeaver.cs).
 
 ### Step 6. Write unit tests
 
-If you have created a test project as described in <xref:sdk-scaffolding>, you can test your weaver-based aspect as any other aspect.
+If you have created a test project as described in <xref:sdk-scaffolding>, you can test your weaver-based aspect as any other aspect, see <xref:aspect-testing>.
 
 ## Examples
 
