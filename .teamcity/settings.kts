@@ -17,7 +17,9 @@ project {
    buildType(PublicBuild)
    buildType(PublicDeployment)
    buildType(PublicDeploymentNoDependency)
-   buildTypesOrder = arrayListOf(DebugBuild,PublicBuild,PublicDeployment,PublicDeploymentNoDependency)
+   buildType(PublicUpdateSearch)
+   buildType(PublicUpdateSearchNoDependency)
+   buildTypesOrder = arrayListOf(DebugBuild,PublicBuild,PublicDeployment,PublicDeploymentNoDependency,PublicUpdateSearch,PublicUpdateSearchNoDependency)
 }
 
 object DebugBuild : BuildType({
@@ -633,6 +635,112 @@ object PublicDeploymentNoDependency : BuildType({
                 cleanDestination = true
                 artifactRules = "+:artifacts/publish/public/**/*=>artifacts/publish/public\n+:artifacts/publish/private/**/*=>artifacts/publish/private\n+:artifacts/testResults/**/*=>artifacts/testResults"
             }
+
+        }
+
+     }
+
+})
+
+object PublicUpdateSearch : BuildType({
+
+    name = "Update Search [Public]"
+
+    type = Type.DEPLOYMENT
+
+    vcs {
+        root(DslContext.settingsRoot)
+
+  root(AbsoluteId("Metalama_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+
+        }
+
+    steps {
+        powerShell {
+            name = "Update Search [Public]"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools search update https://0fpg9nu41dat6boep.a1.typesense.net metalamadoc https://doc-production.metalama.net/sitemap.xml --ignore-tls")
+        }
+    }
+
+    requirements {
+        equals("env.BuildAgentType", "caravela04")
+    }
+
+    features {
+        swabra {
+            lockingProcesses = Swabra.LockingProcessPolicy.KILL
+            verbose = true
+        }
+        sshAgent {
+            // By convention, the SSH key name is always PostSharp.Engineering for all repositories using SSH to connect.
+            teamcitySshKey = "PostSharp.Engineering"
+        }
+    }
+
+    dependencies {
+
+        dependency(PublicDeployment) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+        }
+
+     }
+
+})
+
+object PublicUpdateSearchNoDependency : BuildType({
+
+    name = "Standalone Update Search [Public]"
+
+    type = Type.DEPLOYMENT
+
+    vcs {
+        root(DslContext.settingsRoot)
+
+  root(AbsoluteId("Metalama_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+
+        }
+
+    steps {
+        powerShell {
+            name = "Standalone Update Search [Public]"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools search update https://0fpg9nu41dat6boep.a1.typesense.net metalamadoc https://doc-production.metalama.net/sitemap.xml --ignore-tls")
+        }
+    }
+
+    requirements {
+        equals("env.BuildAgentType", "caravela04")
+    }
+
+    features {
+        swabra {
+            lockingProcesses = Swabra.LockingProcessPolicy.KILL
+            verbose = true
+        }
+        sshAgent {
+            // By convention, the SSH key name is always PostSharp.Engineering for all repositories using SSH to connect.
+            teamcitySshKey = "PostSharp.Engineering"
+        }
+    }
+
+    dependencies {
+
+        dependency(PublicDeploymentNoDependency) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
 
         }
 
