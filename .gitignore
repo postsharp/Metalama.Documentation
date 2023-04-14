@@ -26,3 +26,4 @@ artifacts/
 eng/tools
 packages/
 source-dependencies/
+.tools/
