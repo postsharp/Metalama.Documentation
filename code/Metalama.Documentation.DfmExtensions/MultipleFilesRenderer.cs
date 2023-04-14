@@ -27,7 +27,7 @@ internal class MultipleFilesRenderer : BaseRenderer<MultipleFilesToken>
 
                 case TabMode.Default:
                 case TabMode.Diff:
-                    tabGroup.Tabs.Add( new CompareTab( tabId, file ) );
+                    tabGroup.Tabs.Add( new CompareTab( tabId, tabName, file ) );
 
                     break;
 

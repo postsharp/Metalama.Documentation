@@ -19,13 +19,20 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
 
         var tabGroup = new AspectTestTabGroup( id );
 
-        void AddCodeTab( string tabId, string suffix, SandboxFileKind kind, string? name = null )
+        void AddCodeTab( string tabId, string suffix, SandboxFileKind kind )
         {
             var tabPath = suffix == "" ? token.Src : Path.ChangeExtension( token.Src, suffix + ".cs" );
 
             if ( File.Exists( tabPath ) )
             {
-                tabGroup.Tabs.Add( new CodeTab( tabId, tabPath, name ?? suffix, kind ) );
+                if ( kind == SandboxFileKind.TargetCode )
+                {
+                    tabGroup.Tabs.Add( new CompareTab( tabId, "Target Code", tabPath ) );
+                }
+                else
+                {
+                    tabGroup.Tabs.Add( new CodeTab( tabId, tabPath, suffix, kind ) );    
+                }
             }
         }
 
@@ -41,9 +48,8 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
 
         AddCodeTab( "aspect", "Aspect", SandboxFileKind.AspectCode );
         AddCodeTab( "fabric", "Fabric", SandboxFileKind.AspectCode );
-        AddCodeTab( "target", "", SandboxFileKind.TargetCode, "Target" );
+        AddCodeTab( "target", "", SandboxFileKind.TargetCode );
         AddCodeTab( "dependency", "Dependency", SandboxFileKind.Incompatible );
-        AddOtherTab( "t.cs", p => new TransformedTestCodeTab( p ) );
         AddOtherTab( ".t.txt", p => new ProgramOutputTab( p ) );
 
         var stringBuilder = new StringBuilder();

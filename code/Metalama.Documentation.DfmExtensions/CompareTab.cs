@@ -7,9 +7,9 @@ namespace Metalama.Documentation.DfmExtensions;
 
 internal class CompareTab : BaseTab
 {
-    public CompareTab( string tabId, string fullPath ) : base( tabId, fullPath )
+    public CompareTab( string tabId, string tabHeader, string fullPath ) : base( tabId, fullPath )
     {
-        this.TabHeader = Path.GetFileNameWithoutExtension( fullPath );
+        this.TabHeader = tabHeader;
     }
 
     public override string GetTabContent( bool fallbackToSource = true )
@@ -17,6 +17,11 @@ internal class CompareTab : BaseTab
         var sourceTab = new CodeTab( "source", this.FullPath, this.TabId, SandboxFileKind.TargetCode );
         var transformedTab = new TransformedSingleFileCodeTab( this.FullPath );
 
+        if ( !transformedTab.Exists() )
+        {
+            return sourceTab.GetTabContent( fallbackToSource );
+        }
+        
         var stringBuilder = new StringBuilder();
         stringBuilder.AppendLine( $@"<div id=""compare-{this.TabId}"" class=""compare"">" );
         stringBuilder.AppendLine( $@"  <div class=""left"">" );

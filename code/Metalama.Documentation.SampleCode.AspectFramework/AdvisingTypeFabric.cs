@@ -18,7 +18,7 @@ namespace Doc.AdvisingTypeFabric
             {
                 for ( var i = 0; i < 10; i++ )
                 {
-                    amender.Advices.IntroduceMethod(
+                    amender.Advice.IntroduceMethod(
                         amender.Type,
                         nameof(this.MethodTemplate),
                         args: new { index = i },

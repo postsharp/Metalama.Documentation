@@ -2,7 +2,6 @@
 
 using Microsoft.DocAsCode.MarkdownLite;
 using System.IO;
-using System.Web.Hosting;
 
 namespace Metalama.Documentation.DfmExtensions;
 
@@ -12,7 +11,7 @@ internal class CompareFileRenderer : BaseRenderer<CompareFileToken>
     {
         var name = Path.GetFileNameWithoutExtension( token.Src ).ToLowerInvariant();
 
-        var compareTab = new CompareTab( name, token.Src );
+        var compareTab = new CompareTab( name, name, token.Src );
 
         return compareTab.GetTabContent();
     }

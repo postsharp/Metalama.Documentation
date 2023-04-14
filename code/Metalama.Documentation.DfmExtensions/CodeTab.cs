@@ -49,6 +49,8 @@ internal class CodeTab : BaseTab
 
     protected virtual string HtmlExtension => ".cs.html";
 
+    public bool Exists() => File.Exists( this.GetHtmlPath() );
+
     public override string GetTabContent( bool fallbackToSource = true )
     {
         var htmlPath = this.GetHtmlPath();
