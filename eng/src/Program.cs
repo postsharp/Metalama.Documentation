@@ -48,7 +48,8 @@ var product = new Product( Dependencies.MetalamaDocumentation )
 
     SourceDependencies = new[]
     {
-        Dependencies.MetalamaSamples
+        Dependencies.MetalamaSamples,
+        Dependencies.MetalamaCommunity
     },
 
     AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
