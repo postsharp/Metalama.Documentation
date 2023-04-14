@@ -9,13 +9,13 @@ public class RuleTests
 {
     [Theory]
     [InlineData( "not a match", false, null, null )]
-    [InlineData( "[!metalama-test some/path/to/somewhere.cs]", true, "some/path/to/somewhere.cs", "" )]
-    [InlineData( "[!metalama-test ~/some/path/to/somewhere.cs]", true, "~/some/path/to/somewhere.cs", "" )]
-    [InlineData( "[!metalama-test ~/some/path/to/somewhere.cs name=\"the name\"]", true, "~/some/path/to/somewhere.cs", "the name" )]
+    [InlineData( "[!metalama-test some/path/to/somewhere.cs]", true, "c:\\src\\Foo\\some\\path\\to\\somewhere.cs", "" )]
+    [InlineData( "[!metalama-test ~/some/path/to/somewhere.cs]", true, "c:\\src\\Foo\\some\\path\\to\\somewhere.cs", "" )]
+    [InlineData( "[!metalama-test ~/some/path/to/somewhere.cs name=\"the name\"]", true, "c:\\src\\Foo\\some\\path\\to\\somewhere.cs", "the name" )]
     [InlineData(
         "[!metalama-test ~/some/path/to/somewhere.cs name=\"the name\" title=\"the title\"]",
         true,
-        "~/some/path/to/somewhere.cs",
+        "c:\\src\\Foo\\some\\path\\to\\somewhere.cs",
         "the name",
         "the title" )]
     public void AspectTest( string text, bool isMatch, string path = "", string name = "", string title = "" )
@@ -39,8 +39,8 @@ public class RuleTests
 
     [Theory]
     [InlineData( "not a match", false )]
-    [InlineData( "[!metalama-file some/path.cs]", true, "some/path.cs", false )]
-    [InlineData( "[!metalama-file some/path.cs transformed ]", true, "some/path.cs", true )]
+    [InlineData( "[!metalama-file some/path.cs]", true, "c:\\src\\Foo\\some\\path.cs", false )]
+    [InlineData( "[!metalama-file some/path.cs transformed ]", true, "c:\\src\\Foo\\some\\path.cs", true )]
     public void SingleFile( string text, bool isMatch, string path = "", bool showTransformed = false )
     {
         var rule = new SingleFileTokenRule();
