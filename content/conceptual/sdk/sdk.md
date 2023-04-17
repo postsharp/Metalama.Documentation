@@ -24,6 +24,4 @@ This chapter contains the following articles:
 
 * <xref:sdk-scaffolding>
 * <xref:aspect-weavers>
-* <xref:custom-metrics>
-* <xref:services>
 
