@@ -19,8 +19,10 @@ public sealed class SingleFileToken : IMarkdownToken
     public string? From { get; }
 
     public string? To { get; }
+    
+    public string? Member {get; }
 
-    public SingleFileToken( IMarkdownRule rule, IMarkdownContext context, SourceInfo sourceInfo, string src, bool showTransformed, string? from, string? to )
+    public SingleFileToken( IMarkdownRule rule, IMarkdownContext context, SourceInfo sourceInfo, string src, bool showTransformed, string? from, string? to, string? member )
     {
         this.Rule = rule;
         this.Context = context;
@@ -29,5 +31,6 @@ public sealed class SingleFileToken : IMarkdownToken
         this.ShowTransformed = showTransformed;
         this.From = from;
         this.To = to;
+        this.Member = member;
     }
 }

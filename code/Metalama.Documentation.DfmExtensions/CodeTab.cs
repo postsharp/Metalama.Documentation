@@ -11,21 +11,32 @@ namespace Metalama.Documentation.DfmExtensions;
 internal class CodeTab : BaseTab
 {
     private static readonly Regex _htmlMarkerRegex = new( """<span class="[^\"]*">\/\*\[([^\*]+)\]\*\/<\/span>""" );
+    private static readonly Regex _memberRegex = new( """<span class='line-number' data-member='([^']*)'>""" );
 
     public string Name { get; }
 
     public SandboxFileKind SandboxFileKind { get; }
 
+    public string? Member { get; }
+
     public string? FromMarker { get; }
 
     public string? ToMarker { get; }
 
-    public CodeTab( string tabId, string fullPath, string name, SandboxFileKind sandboxFileKind, string? fromMarker = null, string? toMarker = null ) : base(
+    public CodeTab(
+        string tabId,
+        string fullPath,
+        string name,
+        SandboxFileKind sandboxFileKind,
+        string? fromMarker = null,
+        string? toMarker = null,
+        string? member = null ) : base(
         tabId,
         fullPath )
     {
         this.Name = name;
         this.SandboxFileKind = sandboxFileKind;
+        this.Member = member;
         this.TabHeader = name + " Code";
         this.FromMarker = fromMarker ?? toMarker;
         this.ToMarker = toMarker ?? fromMarker;
@@ -57,7 +68,7 @@ internal class CodeTab : BaseTab
 
         if ( File.Exists( htmlPath ) )
         {
-            if ( !string.IsNullOrEmpty( this.FromMarker ) )
+            if ( !string.IsNullOrEmpty( this.FromMarker ) || !string.IsNullOrEmpty( this.Member ) )
             {
                 var output = new StringBuilder();
                 output.Append( @"<pre><code class=""nohighlight"">" );
@@ -65,6 +76,7 @@ internal class CodeTab : BaseTab
                 var isWithinMarker = false;
                 var foundStartMarker = false;
                 var foundEndMarker = false;
+                var foundMember = false;
 
                 foreach ( var htmlLine in File.ReadAllLines( htmlPath ) )
                 {
@@ -80,6 +92,16 @@ internal class CodeTab : BaseTab
                         {
                             isWithinMarker = true;
                             foundStartMarker = true;
+                        }
+                    }
+                    else if ( !string.IsNullOrEmpty( this.Member ) )
+                    {
+                        var matchMember = _memberRegex.Match( htmlLine );
+                        isWithinMarker = matchMember.Success && this.Member == matchMember.Groups[1].Value;
+
+                        if ( isWithinMarker )
+                        {
+                            foundMember = true;
                         }
                     }
 
@@ -98,21 +120,29 @@ internal class CodeTab : BaseTab
 
                 output.AppendLine( "</code></pre>" );
 
-                if ( !foundStartMarker )
+                if ( this.FromMarker != null && !foundStartMarker )
                 {
                     throw new InvalidOperationException( $"The 'from' marker '{this.FromMarker}' was not found." );
                 }
-                
-                if ( !foundEndMarker )
+
+                if ( this.ToMarker != null && !foundEndMarker )
                 {
                     throw new InvalidOperationException( $"The 'to' marker '{this.ToMarker}' was not found." );
+                }
+
+                if ( this.Member != null && !foundMember )
+                {
+                    throw new InvalidOperationException( $"The member '{this.Member}' was not found." );
                 }
 
                 return output.ToString();
             }
             else
             {
-                return File.ReadAllText( htmlPath );
+                var html = File.ReadAllText( htmlPath );
+                  var cleanHtml = _htmlMarkerRegex.Replace( html, "" );
+
+                  return cleanHtml;
             }
         }
         else if ( fallbackToSource )

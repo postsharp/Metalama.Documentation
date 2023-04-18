@@ -17,4 +17,6 @@ public sealed class MultipleFilesToken : TabGroupBaseToken
         this.Files = files.Select( f => PathHelper.ResolveTokenPath( f, context, sourceInfo ) ).ToArray();
         this.Mode = mode;
     }
+    
+    public override string ToString() => $"[!metalama-files {string.Join( " ", this.Files)}]";
 }

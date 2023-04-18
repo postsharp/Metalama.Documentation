@@ -1,5 +1,6 @@
 ﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ internal abstract class TabGroup
     {
         // Select tabs to render.
         var tabs = this.GetEnabledTabs( token );
+
+        if ( tabs.Count == 0 )
+        {
+            throw new InvalidOperationException( $"The tab group '{token}' has no tab." );
+        }
 
         // Define the wrapping div.
         var divId = $"code-{this.TabGroupId}";

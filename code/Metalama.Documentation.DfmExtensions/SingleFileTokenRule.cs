@@ -1,6 +1,7 @@
 ﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
 using Microsoft.DocAsCode.MarkdownLite;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Metalama.Documentation.DfmExtensions;
@@ -24,8 +25,17 @@ public sealed class SingleFileTokenRule : IMarkdownRule
 
             attributes.TryGetValue( "from", out var from );
             attributes.TryGetValue( "to", out var to );
+            attributes.TryGetValue( "member", out var member );
 
-            return new SingleFileToken( this, parser.Context, sourceInfo, path, showTransformed, from, to );
+            return new SingleFileToken(
+                this,
+                parser.Context,
+                sourceInfo,
+                path,
+                showTransformed,
+                from,
+                to,
+                member?.Trim() );
         }
 
         return null;

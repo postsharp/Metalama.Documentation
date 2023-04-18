@@ -19,4 +19,6 @@ public sealed class AspectTestToken : TabGroupBaseToken
     }
 
     public string Src { get; }
+
+    public override string ToString() => $"[!metalama-test {this.Src}]";
 }

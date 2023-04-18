@@ -13,7 +13,7 @@ internal class SingleFileRenderer : BaseRenderer<SingleFileToken>
 
         var tab = token.ShowTransformed
             ? new TransformedSingleFileCodeTab( token.Src )
-            : new CodeTab( name, token.Src, name, SandboxFileKind.ExtraCode, token.From, token.To );
+            : new CodeTab( name, token.Src, name, SandboxFileKind.ExtraCode, token.From, token.To, token.Member );
 
         return "<div class='single-file'>" + tab.GetTabContent( false ) + "</div>";
     }
