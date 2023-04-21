@@ -16,21 +16,25 @@ public sealed class SingleFileToken : IMarkdownToken
 
     public bool ShowTransformed { get; }
 
-    public string? From { get; }
+    public string? Marker { get; }
 
-    public string? To { get; }
-    
-    public string? Member {get; }
+    public string? Member { get; }
 
-    public SingleFileToken( IMarkdownRule rule, IMarkdownContext context, SourceInfo sourceInfo, string src, bool showTransformed, string? from, string? to, string? member )
+    public SingleFileToken(
+        IMarkdownRule rule,
+        IMarkdownContext context,
+        SourceInfo sourceInfo,
+        string src,
+        bool showTransformed,
+        string? marker,
+        string? member )
     {
         this.Rule = rule;
         this.Context = context;
         this.SourceInfo = sourceInfo;
         this.Src = PathHelper.ResolveTokenPath( src, context, sourceInfo );
         this.ShowTransformed = showTransformed;
-        this.From = from;
-        this.To = to;
+        this.Marker = marker;
         this.Member = member;
     }
 }

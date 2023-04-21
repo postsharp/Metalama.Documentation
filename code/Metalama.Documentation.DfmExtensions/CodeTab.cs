@@ -1,17 +1,20 @@
 ﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Metalama.Documentation.DfmExtensions;
 
 internal class CodeTab : BaseTab
 {
-    private static readonly Regex _htmlMarkerRegex = new( """<span class="[^\"]*">\/\*\[([^\*]+)\]\*\/<\/span>""" );
+    private static readonly Regex _htmlStartMarkerRegex = new( """<span class="[^\"]*">\/\*&lt;([\w+]+)&gt;\*\/<\/span>""" );
+    private static readonly Regex _htmlEndMarkerRegex = new( """<span class="[^\"]*">\/\*&lt;\/([\w+]+)&gt;\*\/<\/span>""" );
+    private static readonly Regex _anyMarkerRegex = new( """\/\*\<\/?([\w+]+)\>\*\/""" );
     private static readonly Regex _memberRegex = new( """<span class='line-number' data-member='([^']*)'>""" );
+    private static readonly Regex _emptyLineRegex = new( """<span class='line-number'[^>]*>\d+<\/span>\s*$""" );
 
     public string Name { get; }
 
@@ -19,17 +22,14 @@ internal class CodeTab : BaseTab
 
     public string? Member { get; }
 
-    public string? FromMarker { get; }
-
-    public string? ToMarker { get; }
+    public string? Marker { get; }
 
     public CodeTab(
         string tabId,
         string fullPath,
         string name,
         SandboxFileKind sandboxFileKind,
-        string? fromMarker = null,
-        string? toMarker = null,
+        string? marker = null,
         string? member = null ) : base(
         tabId,
         fullPath )
@@ -38,8 +38,7 @@ internal class CodeTab : BaseTab
         this.SandboxFileKind = sandboxFileKind;
         this.Member = member;
         this.TabHeader = name + " Code";
-        this.FromMarker = fromMarker ?? toMarker;
-        this.ToMarker = toMarker ?? fromMarker;
+        this.Marker = marker;
     }
 
     protected override bool IsContentEmpty( string[] lines ) => base.IsContentEmpty( lines ) || lines.All( l => l.TrimStart().StartsWith( "//" ) );
@@ -68,31 +67,24 @@ internal class CodeTab : BaseTab
 
         if ( File.Exists( htmlPath ) )
         {
-            if ( !string.IsNullOrEmpty( this.FromMarker ) || !string.IsNullOrEmpty( this.Member ) )
+            if ( !string.IsNullOrEmpty( this.Marker ) || !string.IsNullOrEmpty( this.Member ) )
             {
-                var output = new StringBuilder();
-                output.Append( @"<pre><code class=""nohighlight"">" );
+                var outputLines = new List<string>();
 
                 var isWithinMarker = false;
                 var foundStartMarker = false;
                 var foundEndMarker = false;
                 var foundMember = false;
 
+                // Read and filter lines.
                 foreach ( var htmlLine in File.ReadAllLines( htmlPath ) )
                 {
-                    var matchLine = _htmlMarkerRegex.Match( htmlLine );
+                    var matchStartMarker = _htmlStartMarkerRegex.Match( htmlLine );
 
-                    string? marker = null;
-
-                    if ( matchLine.Success )
+                    if ( matchStartMarker.Success && matchStartMarker.Groups[1].Value == this.Marker )
                     {
-                        marker = matchLine.Groups[1].Value;
-
-                        if ( marker == this.FromMarker )
-                        {
-                            isWithinMarker = true;
-                            foundStartMarker = true;
-                        }
+                        isWithinMarker = true;
+                        foundStartMarker = true;
                     }
                     else if ( !string.IsNullOrEmpty( this.Member ) )
                     {
@@ -107,10 +99,12 @@ internal class CodeTab : BaseTab
 
                     if ( isWithinMarker )
                     {
-                        var cleanedLine = _htmlMarkerRegex.Replace( htmlLine, "" );
-                        output.AppendLine( cleanedLine );
+                        var cleanedLine = _htmlStartMarkerRegex.Replace( _htmlEndMarkerRegex.Replace( htmlLine, "" ), "" );
+                        outputLines.Add( cleanedLine );
 
-                        if ( marker == this.ToMarker )
+                        var matchEndMarker = _htmlEndMarkerRegex.Match( htmlLine );
+
+                        if ( matchEndMarker.Success && matchEndMarker.Groups[1].Value == this.Marker )
                         {
                             isWithinMarker = false;
                             foundEndMarker = true;
@@ -118,31 +112,43 @@ internal class CodeTab : BaseTab
                     }
                 }
 
-                output.AppendLine( "</code></pre>" );
-
-                if ( this.FromMarker != null && !foundStartMarker )
+                // Check that we found the markers.
+                if ( this.Marker != null && !foundStartMarker )
                 {
-                    throw new InvalidOperationException( $"The 'from' marker '{this.FromMarker}' was not found." );
+                    throw new InvalidOperationException( $"The '/*<{this.Marker}>*/' marker was not found in '{htmlPath}'." );
                 }
 
-                if ( this.ToMarker != null && !foundEndMarker )
+                if ( this.Marker != null && !foundEndMarker )
                 {
-                    throw new InvalidOperationException( $"The 'to' marker '{this.ToMarker}' was not found." );
+                    throw new InvalidOperationException( $"The '/*</{this.Marker}>*/' marker was not found in '{htmlPath}'." );
                 }
 
                 if ( this.Member != null && !foundMember )
                 {
-                    throw new InvalidOperationException( $"The member '{this.Member}' was not found." );
+                    throw new InvalidOperationException( $"The member '{this.Member}' was not found in '{htmlPath}'." );
                 }
 
-                return output.ToString();
+                // Trim.
+                while ( outputLines.Count > 0 && _emptyLineRegex.IsMatch( outputLines[0] ) )
+                {
+                    outputLines.RemoveAt( 0 );
+                }
+
+                while ( outputLines.Count > 0 && _emptyLineRegex.IsMatch( outputLines[outputLines.Count - 1] ) )
+                {
+                    outputLines.RemoveAt( outputLines.Count - 1 );
+                }
+
+                // Return the final html.
+
+                return "<pre><code class=\"nohighlight\">" + string.Join( "\n", outputLines ) + "</code></pre>";
             }
             else
             {
                 var html = File.ReadAllText( htmlPath );
-                  var cleanHtml = _htmlMarkerRegex.Replace( html, "" );
+                var cleanHtml = _htmlStartMarkerRegex.Replace( _htmlEndMarkerRegex.Replace( html, "" ), "" );
 
-                  return cleanHtml;
+                return cleanHtml;
             }
         }
         else if ( fallbackToSource )
@@ -160,8 +166,10 @@ internal class CodeTab : BaseTab
 
     public string GetSandboxCode()
     {
-        var lines = File.ReadAllLines( this.FullPath );
+        var lines = File.ReadAllLines( this.FullPath )
+            .SkipWhile( l => l.TrimStart().StartsWith( "//" ) )
+            .Select( x => _anyMarkerRegex.Replace( x, "" ) );
 
-        return string.Join( Environment.NewLine, lines.SkipWhile( l => l.TrimStart().StartsWith( "//" ) ) );
+        return string.Join( Environment.NewLine, lines );
     }
 }

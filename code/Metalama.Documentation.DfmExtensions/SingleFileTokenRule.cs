@@ -23,8 +23,7 @@ public sealed class SingleFileTokenRule : IMarkdownRule
 
             var attributes = AttributeMatcher.ParseAttributes( match.Groups["attributes"].Value );
 
-            attributes.TryGetValue( "from", out var from );
-            attributes.TryGetValue( "to", out var to );
+            attributes.TryGetValue( "marker", out var marker );
             attributes.TryGetValue( "member", out var member );
 
             return new SingleFileToken(
@@ -33,8 +32,7 @@ public sealed class SingleFileTokenRule : IMarkdownRule
                 sourceInfo,
                 path,
                 showTransformed,
-                from,
-                to,
+                marker,
                 member?.Trim() );
         }
 

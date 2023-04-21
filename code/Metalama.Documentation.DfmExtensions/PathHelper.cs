@@ -23,7 +23,7 @@ internal static class PathHelper
         path = path.Replace( "~", baseDirectory ).Replace( "/", "\\" );
 
         var directory = Path.Combine( baseDirectory, Path.GetDirectoryName( sourceInfo.File )! );
-        path = Path.Combine( directory, path );
+        path = Path.GetFullPath( Path.Combine( directory, path ) );
 
         return path;
     }

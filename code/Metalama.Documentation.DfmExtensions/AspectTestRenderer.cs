@@ -15,6 +15,11 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
         AspectTestToken token,
         MarkdownBlockContext context )
     {
+        if ( !File.Exists( token.Src ) )
+        {
+            throw new FileNotFoundException( $"The file '{token.Src}' does not exist." );
+        }
+
         var id = Path.GetFileNameWithoutExtension( token.Src ).ToLowerInvariant();
 
         var tabGroup = new AspectTestTabGroup( id );
@@ -31,7 +36,7 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
                 }
                 else
                 {
-                    tabGroup.Tabs.Add( new CodeTab( tabId, tabPath, suffix, kind ) );    
+                    tabGroup.Tabs.Add( new CodeTab( tabId, tabPath, suffix, kind ) );
                 }
             }
         }

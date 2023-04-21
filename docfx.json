@@ -59,6 +59,12 @@
           "redirect.xml"
         ],
         "src": "content"
+      },
+      {
+        "files": [
+          "**.png"
+        ],
+        "src": "source-dependencies/Metalama.Samples"
       }
     ],
     "overwrite": [
