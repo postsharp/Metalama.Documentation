@@ -31,7 +31,9 @@ object DebugBuild : BuildType({
     vcs {
         root(DslContext.settingsRoot)
 
-  root(AbsoluteId("Metalama_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+  root(AbsoluteId("Metalama_Metalama20231_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+
+  root(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
 
         }
 
@@ -56,7 +58,7 @@ object DebugBuild : BuildType({
     }
 
     requirements {
-        equals("env.BuildAgentType", "caravela04")
+        equals("env.BuildAgentType", "caravela04cloud")
     }
 
     features {
@@ -68,7 +70,7 @@ object DebugBuild : BuildType({
 
     dependencies {
 
-        dependency(AbsoluteId("Metalama_Metalama_DebugBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_Metalama_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -81,7 +83,7 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaBackstage_ReleaseBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaBackstage_ReleaseBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -94,7 +96,15 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaCompiler_ReleaseBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity_DebugBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCompiler_ReleaseBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -107,7 +117,7 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaExtensions_DebugBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaExtensions_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -120,7 +130,7 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaLinqPad_DebugBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaLinqPad_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -133,7 +143,20 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaSamples_DebugBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaMigration_DebugBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -146,24 +169,11 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaSamples_DebugBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
 
-
-        }
-
-        dependency(AbsoluteId("Metalama_Migration_MetalamaMigration_DebugBuild")) {
-            snapshot {
-                     onDependencyFailure = FailureAction.FAIL_TO_START
-            }
-
-
-            artifacts {
-                cleanDestination = true
-                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
-            }
 
         }
 
@@ -180,7 +190,9 @@ object PublicBuild : BuildType({
     vcs {
         root(DslContext.settingsRoot)
 
-  root(AbsoluteId("Metalama_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+  root(AbsoluteId("Metalama_Metalama20231_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+
+  root(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
 
         }
 
@@ -205,7 +217,7 @@ object PublicBuild : BuildType({
     }
 
     requirements {
-        equals("env.BuildAgentType", "caravela04")
+        equals("env.BuildAgentType", "caravela04cloud")
     }
 
     features {
@@ -217,7 +229,7 @@ object PublicBuild : BuildType({
 
     dependencies {
 
-        dependency(AbsoluteId("Metalama_Metalama_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_Metalama_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -230,7 +242,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaBackstage_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaBackstage_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -243,7 +255,15 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaCompiler_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCompiler_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -256,7 +276,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaExtensions_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaExtensions_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -269,7 +289,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaLinqPad_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaLinqPad_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -282,7 +302,20 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaSamples_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaMigration_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -295,24 +328,11 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaSamples_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
 
-
-        }
-
-        dependency(AbsoluteId("Metalama_Migration_MetalamaMigration_PublicBuild")) {
-            snapshot {
-                     onDependencyFailure = FailureAction.FAIL_TO_START
-            }
-
-
-            artifacts {
-                cleanDestination = true
-                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
-            }
 
         }
 
@@ -329,7 +349,9 @@ object PublicDeployment : BuildType({
     vcs {
         root(DslContext.settingsRoot)
 
-  root(AbsoluteId("Metalama_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+  root(AbsoluteId("Metalama_Metalama20231_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+
+  root(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
 
         }
 
@@ -345,7 +367,7 @@ object PublicDeployment : BuildType({
     }
 
     requirements {
-        equals("env.BuildAgentType", "caravela04")
+        equals("env.BuildAgentType", "caravela04cloud")
     }
 
     features {
@@ -361,7 +383,7 @@ object PublicDeployment : BuildType({
 
     dependencies {
 
-        dependency(AbsoluteId("Metalama_Metalama_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_Metalama_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -374,7 +396,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaBackstage_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaBackstage_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -387,7 +409,15 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaCompiler_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity_PublicDeployment")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCompiler_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -400,7 +430,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaExtensions_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaExtensions_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -413,7 +443,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaLinqPad_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaLinqPad_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -426,7 +456,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaLinqPad_PublicDeployment")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaLinqPad_PublicDeployment")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -434,28 +464,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaSamples_PublicBuild")) {
-            snapshot {
-                     onDependencyFailure = FailureAction.FAIL_TO_START
-            }
-
-
-            artifacts {
-                cleanDestination = true
-                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Samples"
-            }
-
-        }
-
-        dependency(AbsoluteId("Metalama_MetalamaSamples_PublicDeployment")) {
-            snapshot {
-                     onDependencyFailure = FailureAction.FAIL_TO_START
-            }
-
-
-        }
-
-        dependency(AbsoluteId("Metalama_Migration_MetalamaMigration_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaMigration_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -468,7 +477,28 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Migration_MetalamaMigration_PublicDeployment")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaMigration_PublicDeployment")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Samples"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_PublicDeployment")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -502,7 +532,9 @@ object PublicDeploymentNoDependency : BuildType({
     vcs {
         root(DslContext.settingsRoot)
 
-  root(AbsoluteId("Metalama_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+  root(AbsoluteId("Metalama_Metalama20231_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+
+  root(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
 
         }
 
@@ -518,7 +550,7 @@ object PublicDeploymentNoDependency : BuildType({
     }
 
     requirements {
-        equals("env.BuildAgentType", "caravela04")
+        equals("env.BuildAgentType", "caravela04cloud")
     }
 
     features {
@@ -534,7 +566,7 @@ object PublicDeploymentNoDependency : BuildType({
 
     dependencies {
 
-        dependency(AbsoluteId("Metalama_Metalama_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_Metalama_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -547,7 +579,7 @@ object PublicDeploymentNoDependency : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaBackstage_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaBackstage_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -560,7 +592,7 @@ object PublicDeploymentNoDependency : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaCompiler_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCompiler_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -573,7 +605,7 @@ object PublicDeploymentNoDependency : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaExtensions_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaExtensions_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -586,7 +618,7 @@ object PublicDeploymentNoDependency : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaLinqPad_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaLinqPad_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -599,20 +631,7 @@ object PublicDeploymentNoDependency : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_MetalamaSamples_PublicBuild")) {
-            snapshot {
-                     onDependencyFailure = FailureAction.FAIL_TO_START
-            }
-
-
-            artifacts {
-                cleanDestination = true
-                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Samples"
-            }
-
-        }
-
-        dependency(AbsoluteId("Metalama_Migration_MetalamaMigration_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaMigration_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -621,6 +640,19 @@ object PublicDeploymentNoDependency : BuildType({
             artifacts {
                 cleanDestination = true
                 artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Samples"
             }
 
         }
@@ -651,7 +683,9 @@ object PublicUpdateSearch : BuildType({
     vcs {
         root(DslContext.settingsRoot)
 
-  root(AbsoluteId("Metalama_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+  root(AbsoluteId("Metalama_Metalama20231_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+
+  root(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
 
         }
 
@@ -667,7 +701,7 @@ object PublicUpdateSearch : BuildType({
     }
 
     requirements {
-        equals("env.BuildAgentType", "caravela04")
+        equals("env.BuildAgentType", "caravela04cloud")
     }
 
     features {
@@ -704,7 +738,9 @@ object PublicUpdateSearchNoDependency : BuildType({
     vcs {
         root(DslContext.settingsRoot)
 
-  root(AbsoluteId("Metalama_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+  root(AbsoluteId("Metalama_Metalama20231_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+
+  root(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
 
         }
 
@@ -720,7 +756,7 @@ object PublicUpdateSearchNoDependency : BuildType({
     }
 
     requirements {
-        equals("env.BuildAgentType", "caravela04")
+        equals("env.BuildAgentType", "caravela04cloud")
     }
 
     features {

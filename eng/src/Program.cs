@@ -13,7 +13,6 @@ using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
 using System.IO;
 using System.Diagnostics;
-using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Search;
 
 const string docPackageFileName = "Metalama.Doc.zip";
@@ -63,7 +62,8 @@ var product = new Product( Dependencies.MetalamaDocumentation )
             ExportsToTeamCityDeployWithoutDependencies: true,
             PublicPublishers: new Publisher[]
             {
-                new MergePublisher(),
+                // MergePublisher disabled for 2023.1.
+                //new MergePublisher(),
                 new DocumentationPublisher( new S3PublisherConfiguration[]
                 {
                     //TODO

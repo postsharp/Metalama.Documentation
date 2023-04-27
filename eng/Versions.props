@@ -11,12 +11,12 @@
 
     <!-- Versions of dependencies -->
     <PropertyGroup>
-        <PostSharpEngineeringVersion>1.0.142-preview</PostSharpEngineeringVersion>
-        <MetalamaVersion>2023.0.102-rc</MetalamaVersion>
-        <MetalamaCompilerVersion>2023.0.102-rc</MetalamaCompilerVersion>
-        <MetalamaMigrationVersion>2023.0.102-rc</MetalamaMigrationVersion>
-        <MetalamaExtensionsVersion>2023.0.102-rc</MetalamaExtensionsVersion>
-        <MetalamaLinqPadVersion>2023.0.102-rc</MetalamaLinqPadVersion>
+        <PostSharpEngineeringVersion>2023.1.6-preview</PostSharpEngineeringVersion>
+        <MetalamaVersion>2023.1.0-preview</MetalamaVersion>
+        <MetalamaCompilerVersion>2023.1.0-preview</MetalamaCompilerVersion>
+        <MetalamaMigrationVersion>2023.1.0-preview</MetalamaMigrationVersion>
+        <MetalamaExtensionsVersion>2023.1.0-preview</MetalamaExtensionsVersion>
+        <MetalamaLinqPadVersion>2023.1.0-preview</MetalamaLinqPadVersion>
         <MetalamaSamplesVersion></MetalamaSamplesVersion>
         <NuGetCommandLineVersion>6.4.0</NuGetCommandLineVersion>
     </PropertyGroup>
