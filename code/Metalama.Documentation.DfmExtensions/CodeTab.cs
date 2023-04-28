@@ -168,7 +168,19 @@ internal class CodeTab : BaseTab
     {
         var lines = File.ReadAllLines( this.FullPath )
             .SkipWhile( l => l.TrimStart().StartsWith( "//" ) )
-            .Select( x => _anyMarkerRegex.Replace( x, "" ) );
+            .Select( x => _anyMarkerRegex.Replace( x, "" ) )
+            .ToList();
+
+        // Trim.
+        while ( lines.Count > 0 && string.IsNullOrWhiteSpace( lines[0] ) )
+        {
+            lines.RemoveAt( 0 );
+        }
+
+        while ( lines.Count > 0 && string.IsNullOrWhiteSpace( lines[lines.Count - 1] ) )
+        {
+            lines.RemoveAt( lines.Count - 1 );
+        }
 
         return string.Join( Environment.NewLine, lines );
     }
