@@ -16,6 +16,8 @@ namespace Doc.ReportError
 
         public override void BuildAspect( IAspectBuilder<IMethod> builder )
         {
+            base.BuildAspect( builder );
+
             // Validation must be done in BuildAspect. In OverrideMethod, it's too late.
             if ( !builder.Target.DeclaringType.Fields.OfName( "_logger" ).Any() )
             {
