@@ -18,7 +18,7 @@ namespace Doc.SuppressWarning
 
             if ( loggerField != null )
             {
-                // Suppress "Field is necer read" warning from Intellisense warning for this field.
+                // Suppress "Field is never read" warning from Intellisense warning for this field.
                 builder.Diagnostics.Suppress( _suppression, loggerField );
             }
         }
