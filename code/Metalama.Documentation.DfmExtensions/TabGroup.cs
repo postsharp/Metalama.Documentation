@@ -103,24 +103,34 @@ internal abstract class TabGroup
         var sandboxFiles = new List<SandboxFile>();
         var canOpenInSandbox = true;
 
-        foreach ( var codeTab in tabs.OfType<CodeTab>() )
+        foreach ( var tab in tabs )
         {
-            if ( codeTab.SandboxFileKind == SandboxFileKind.Incompatible )
+            if ( tab is CodeTab codeTab )
             {
-                canOpenInSandbox = false;
-
-                break;
-            }
-
-            if ( codeTab.SandboxFileKind != SandboxFileKind.None )
-            {
-                var fileName = codeTab.Name;
-
-                if ( !fileName.EndsWith( ".cs" ) )
+                if ( codeTab.SandboxFileKind == SandboxFileKind.Incompatible )
                 {
-                    fileName += ".cs";
+                    canOpenInSandbox = false;
+
+                    break;
                 }
-                sandboxFiles.Add( new SandboxFile( fileName, codeTab.GetSandboxCode(), codeTab.SandboxFileKind ) );
+
+                if ( codeTab.SandboxFileKind != SandboxFileKind.None )
+                {
+                    var fileName = codeTab.Name;
+
+                    if ( !fileName.EndsWith( ".cs" ) )
+                    {
+                        fileName += ".cs";
+                    }
+                    sandboxFiles.Add( new( fileName, codeTab.GetSandboxCode(), codeTab.SandboxFileKind ) );
+                }
+            }
+            else if ( tab is CompareTab compareTab )
+            {
+                // Try currently requires that the code that is executed is in Program.cs.
+                var fileName = "Program.cs";
+
+                sandboxFiles.Add( new( fileName, compareTab.GetSandboxCode(), SandboxFileKind.TargetCode ) );
             }
         }
 
