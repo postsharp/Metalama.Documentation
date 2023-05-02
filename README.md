@@ -1,54 +1,32 @@
 # Metalama Documentation
 
-[![Documentation Snippets](https://github.com/postsharp/Metalama.Documentation/actions/workflows/main.yml/badge.svg)](https://github.com/postsharp/Metalama.Documentation/actions/workflows/main.yml) [![Metalama.Samples](https://github.com/postsharp/Metalama.Samples/actions/workflows/main.yml/badge.svg)](https://github.com/postsharp/Metalama.Samples/actions/workflows/main.yml)
+This repo contains the documentation of Metalama. It's best to read it online at https://doc.metalama.net.
 
-This repo contains the documentation of Metalama, including the testable code snippets under the `code` subdirectory.
+The code snippets of this documentation can be under the `code` subdirectory and are fully unit testable. Other examples stem from the [Metalama.Samples](https://github.com/postsharp/Metalama.Samples) and [Metalama.Community](https://github.com/postsharp/Metalama.Community) repos.
+
+
 
 ## Building everything
-
-> [!WARNING]
-> You must be a PostSharp employee to build the documentation.
 
 ```powershell
 .\Build.ps1 build
 ```
 
-## Building the code snippets
-
-```powershell
-cd code
-dotnet test
-```
-
-## Building the documentation
-
-## First build
-
-1. Clone the current repo in `c:\src\Metalama.Documentation`.
-2. Clone the `Metalama` repo in `c:\src\Metalama`.
-3. From `c:\src\Metalama.Documentation`, do `.\build.ps1`.
-
-## Incremental builds
-
-From `c:\src\Metalama.Documentation`, do `.\Publish.ps1 -Incremental`.
-
-## Publishing the documentation
-
-1. From `c:\src\Metalama.Documentation`, do `.\Publish.ps1 -Pack`.
-2. Upload `c:\src\Metalama.Documentation\docfx\output\Metalama.Documentation.zip` to `s3://doc.postsharp.net/Metalama.Documentation.zip`.
-3. Invalidate the cache of `https://doc.metalama.net` using the API key.
-
-
 
 ## Our Markdown extensions
 
-### Include a sample (i.e. an aspect test)
+### metalama-test
+
+This markup includes an aspect test in a tab group. The target code is displayed as a side-by-side diff.
+
 ```
 [!metalama-test <path> [tabs="<tabs>"] ]
 
 ```
+
 where:
 
+* `<path>` is a relative path, usually starting with `~`, where `~` is replaced by the root of the current repo.
 * `<tabs>` is a comma-separated list of one or more of the following values:
     
     * `aspect`
@@ -56,4 +34,60 @@ where:
     * `transformed`
     * `output`
 
-* `<path>` is a relative path, usually starting by `~`, where `~` is replaced by the root of the current repo.
+
+### metalama-compare
+
+This markup displayed source and transformed code side by side as a diff.
+
+```
+[!metalama-compare <path>]
+```
+
+where:
+
+* `<path>` is a relative path, usually starting with `~`, where `~` is replaced by the root of the current repo.
+
+
+### metalama-file
+
+This markup includes a source file or a portion of it.
+
+```
+[!metalama-file <path> [transformed] [marker='foo'] [member='<member>']]
+```
+
+where:
+
+* `<path>` is a relative path, usually starting with `~`, where `~` is replaced by the root of the current repo.
+* `transformed` means that the transformed code should be displayed instead of the source code.
+* `marker` means that only the code between lines with comments `/*<Foo>*/` and `/*</Foo>*/` should be included.
+* `member` means that only the the given member (given in form `TypeName.MemberName` without namespace) should be included.
+
+
+### metalama-files
+
+This markup creates a tab group with several files.
+
+
+```
+[!metalama-files <path1> <path2> ... <path_n> [links="true|false"]]
+```
+
+where:
+
+* `<path1>` ... `<path_n>` are relative paths, usually starting with `~`, where `~` is replaced by the root of the current repo.
+* `links` indicates whether GitHub links should be generated.
+
+
+
+### metalama-project-buttons
+
+This markup generates buttons that open the whole directory in GitHub or in the sandbox.
+
+```
+[!metalama-project-buttons <path>]
+```
+
+where:
+
+* `<path>` is a relative path to the directory.
