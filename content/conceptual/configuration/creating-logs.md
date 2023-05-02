@@ -15,7 +15,7 @@ Install the `metalama` .NET tool as described in <xref:dotnet-tool>.
 Execute the following command:
 
 ```
-metalama config edit diagnostics.
+metalama config edit diagnostics
 ```
 
 This should open a `diagnostics.json` file in your default editor. Edit this file as follows:
@@ -27,7 +27,7 @@ This should open a `diagnostics.json` file in your default editor. Edit this fil
     * `RoslynCodeAnalysisService`: the design-time Roslyn process running under Visual Studio (this is where the aspect code runs).
 2. In the `logging/trace` section, set to `true` the categories for which logging should be enabled. To enable logging for everything, allow the `*` category.
 
-<<< In the following example, logging is enabled for the compiler process for all categories.
+In the following example, logging is enabled for the compiler process for all categories.
 
 
 ```json
@@ -54,7 +54,7 @@ This should open a `diagnostics.json` file in your default editor. Edit this fil
 To verify that the JSON file is correct, you can run the following:
 
 ```powershell
-metalama config verify diagnostics
+metalama config validate diagnostics
 ```
 
 ## Step 3. Restart processes
