@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+
 <Project>
 
     <!-- Set the default version -->
@@ -12,12 +12,12 @@
     <!-- Versions of dependencies -->
     <PropertyGroup>
         <PostSharpEngineeringVersion>2023.0.144</PostSharpEngineeringVersion>
-        <MetalamaVersion>2023.0.102-rc</MetalamaVersion>
-        <MetalamaCompilerVersion>2023.0.102-rc</MetalamaCompilerVersion>
-        <MetalamaMigrationVersion>2023.0.102-rc</MetalamaMigrationVersion>
-        <MetalamaExtensionsVersion>2023.0.102-rc</MetalamaExtensionsVersion>
-        <MetalamaLinqPadVersion>2023.0.102-rc</MetalamaLinqPadVersion>
-        <MetalamaSamplesVersion></MetalamaSamplesVersion>
+        <MetalamaVersion>2023.0.114</MetalamaVersion>
+        <MetalamaCompilerVersion>2023.0.109</MetalamaCompilerVersion>
+        <MetalamaMigrationVersion>2023.0.114</MetalamaMigrationVersion>
+        <MetalamaExtensionsVersion>2023.0.114</MetalamaExtensionsVersion>
+        <MetalamaLinqPadVersion>2023.0.114</MetalamaLinqPadVersion>
+        <MetalamaSamplesVersion>0.5.12-preview</MetalamaSamplesVersion>
         <NuGetCommandLineVersion>6.4.0</NuGetCommandLineVersion>
     </PropertyGroup>
 
