@@ -44,10 +44,6 @@ class IIntrospectionCompilationDetails {
     GetDeclaration()
     }
 
-    class ICompilationSetResult {
-    
-    }
-
 IProjectSet --> ICompilationSet  : SourceCode
 ICompilationSetResult --|> IIntrospectionCompilationDetails
 ICompilationSetResult --> ICompilationSet  : TransformedCode
@@ -61,3 +57,5 @@ ICompilationSetResult --> ICompilationSet  : TransformedCode
     
     
     IProjectSet --* Project : Projects
+
+```
