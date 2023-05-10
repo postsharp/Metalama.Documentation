@@ -6,7 +6,7 @@ namespace Doc.CompileTimeIf
     [CompileTimeIf]
     public void InstanceMethod()
     {
-      Console.WriteLine($"Invoking Foo.InstanceMethod() on instance {base.ToString()}.");
+      Console.WriteLine($"Invoking Foo.InstanceMethod() on instance {this.ToString()}.");
       Console.WriteLine("InstanceMethod");
       return;
     }
