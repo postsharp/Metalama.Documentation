@@ -148,6 +148,8 @@ items:
           topicUid: troubleshooting-unattended-build
         - name: Telemetry
           topicUid: telemetry
+        - name: Inspecting projects using LINQPad
+          topicUid: linqpad
     - name: Extending Metalama
       topicUid: sdk
       items:

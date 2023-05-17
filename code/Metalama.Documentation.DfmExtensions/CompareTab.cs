@@ -1,6 +1,5 @@
 ﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
-using System.IO;
 using System.Text;
 
 namespace Metalama.Documentation.DfmExtensions;
@@ -12,16 +11,18 @@ internal class CompareTab : BaseTab
         this.TabHeader = tabHeader;
     }
 
+    private CodeTab GetSourceTab() => new( "source", this.FullPath, this.TabId, SandboxFileKind.TargetCode );
+
     public override string GetTabContent( bool fallbackToSource = true )
     {
-        var sourceTab = new CodeTab( "source", this.FullPath, this.TabId, SandboxFileKind.TargetCode );
+        var sourceTab = this.GetSourceTab();
         var transformedTab = new TransformedSingleFileCodeTab( this.FullPath );
 
         if ( !transformedTab.Exists() )
         {
             return sourceTab.GetTabContent( fallbackToSource );
         }
-        
+
         var stringBuilder = new StringBuilder();
         stringBuilder.AppendLine( $@"<div id=""compare-{this.TabId}"" class=""compare"">" );
         stringBuilder.AppendLine( $@"  <div class=""left"">" );
@@ -36,6 +37,8 @@ internal class CompareTab : BaseTab
 
         return stringBuilder.ToString();
     }
+
+    public string GetSandboxCode() => this.GetSourceTab().GetSandboxCode();
 
     protected override string TabHeader { get; }
 }

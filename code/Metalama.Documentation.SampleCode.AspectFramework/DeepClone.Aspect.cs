@@ -38,11 +38,11 @@ namespace Doc.DeepClone
 
             if ( meta.Target.Method.IsOverride )
             {
-                ExpressionFactory.Capture( meta.Base.Clone(), out baseCall );
+                baseCall = meta.Base.Clone();
             }
             else
             {
-                ExpressionFactory.Capture( meta.Base.MemberwiseClone(), out baseCall );
+                baseCall = meta.Base.MemberwiseClone();
             }
 
             // Define a local variable of the same type as the target type.

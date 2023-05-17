@@ -59,7 +59,6 @@ Here are a few examples of APIs that return a `dynamic`:
   * `meta.Target.Field.Value`, `meta.Target.Property.Value` or `meta.Target.FieldOrProperty.Value` allow to get or set the value of the target field or property.
   * `meta.Target.Parameter.Value` allows to get or set the value of the target parameter.
   * `meta.Target.Method.Parameters[*].Value` allows you to get or set the value of a target method's parameter.
-  * <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.ToExpression*?text=ExpressionFactory.ToExpression(*).Value> allows to get or set the value of an arbitrary <xref:Metalama.Framework.Code.IField>, <xref:Metalama.Framework.Code.IProperty>, or <xref:Metalama.Framework.Code.IParameter>
 
 
 ### Abilities

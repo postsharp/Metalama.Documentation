@@ -55,6 +55,7 @@
       {
         "files": [
           "**.png",
+          "**.svg",
           "api.xml",
           "redirect.xml"
         ],
