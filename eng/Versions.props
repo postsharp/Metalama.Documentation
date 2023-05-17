@@ -11,7 +11,7 @@
 
     <!-- Versions of dependencies -->
     <PropertyGroup>
-        <PostSharpEngineeringVersion>2023.1.7-preview</PostSharpEngineeringVersion>
+        <PostSharpEngineeringVersion>2023.1.9-preview</PostSharpEngineeringVersion>
         <MetalamaVersion>2023.1.0-preview</MetalamaVersion>
         <MetalamaCompilerVersion>2023.1.0-preview</MetalamaCompilerVersion>
         <MetalamaMigrationVersion>2023.1.0-preview</MetalamaMigrationVersion>
