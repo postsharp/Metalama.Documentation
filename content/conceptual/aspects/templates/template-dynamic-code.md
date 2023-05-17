@@ -175,11 +175,11 @@ IExpression baseCall;
 
 if (meta.Target.Method.IsOverride)
 {
-    ExpressionFactory.Capture(meta.Base.Clone(), out baseCall);
+    baseCall = ExpressionFactory.Capture(meta.Base.Clone());
 }
 else
 {
-    ExpressionFactory.Capture(meta.Base.MemberwiseClone(), out baseCall);
+    baseCall = ExpressionFactory.Capture(meta.Base.MemberwiseClone());
 }
 
 // Define a local variable of the same type as the target type.
@@ -189,9 +189,6 @@ var clone = meta.Cast(meta.Target.Type, baseCall);
 [comment]: # (TODO: Reference code snippets from the file by marked region)
 
 This template generates either `var clone = (TargetType) base.Clone();` or `var clone = (TargetType) this.MemberwiseClone();`.
-
-> [!NOTE] 
-> The weird syntax of Capture, which gives the result as an `out` parameter instead of a return value, is due to the viral nature of `dynamic`. In C#, the return type of `ExpressionFactory.Caputre(someDynamicExpression)` would be `dynamic`, while Metalama would require it to be `IExpression`.
 
 ## Converting custom objects from compile-time to run-time values
 
