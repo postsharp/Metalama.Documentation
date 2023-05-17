@@ -240,14 +240,19 @@ graph BT
     Foo -- references --> Foo.Dependency
 ```
 
-### Creating hierarchical test runners in Rider or ReSharper
+### Running tests in Rider or ReSharper
 
-JetBrains tools do not support the customized compile-time test framework. As a workaround, the Metalama testing framework registers a default test runner that discovers all tests in the current project and adds them as test cases for a `[Theory]`-based universal test method.
+> [!NOTE]
+> Running aspect tests in Rider and ReSharper is only supported starting with Metalama 2023.1.
 
-If you have a large number of tests and want to see a hierarchical view, you can create, in each directory you want, a file named `_Runner.cs`, with the following content (in the namespace of your choice):
+To run aspect tests in Rider, first go to File &#8594; Settings &#8594; Build, Execution, Deployment &#8594; Unit Testing &#8594; xUnit.net and select Test Discovery using Test Runner:
+
+![rider_test_runner_settings](../../../images/rider_test_runner_settings.png)
+
+For ReSharper, instead go to Extensions &#8594; ReSharper &#8594; Options &#8594; Tools &#8594; Unit Testing &#8594; Test Frameworks &#8594; xUnit.net and likewise select Test Discovery using Test Runner.
+
+If the above is not an option for you, you can alternatively create, in each directory you want, a file named `_Runner.cs`, with the following content (in the namespace of your choice):
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/_Runner.cs name="Test Runner"]
 
 The `[CurrentDirectory]` attribute will automatically provide test data for all files under the directory containing the `_Runner.cs` file and any child directory.
-
-Note that custom runners are only supported in ReSharper and Rider. They are ignored in other environments and replaced by the customized test framework.
