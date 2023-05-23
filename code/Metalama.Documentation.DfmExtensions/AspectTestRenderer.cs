@@ -54,6 +54,7 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
         AddCodeTab( "aspect", "Aspect", SandboxFileKind.AspectCode );
         AddCodeTab( "fabric", "Fabric", SandboxFileKind.AspectCode );
         AddCodeTab( "target", "", SandboxFileKind.TargetCode );
+        AddCodeTab( "additional", "Additional", SandboxFileKind.ExtraCode );
         AddCodeTab( "dependency", "Dependency", SandboxFileKind.Incompatible );
         AddOtherTab( ".t.txt", p => new ProgramOutputTab( p ) );
 
