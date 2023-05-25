@@ -150,6 +150,8 @@ items:
           topicUid: telemetry
         - name: Inspecting projects using LINQPad
           topicUid: linqpad
+        - name: Inspecting license credit consumption
+          topicUid: license-credits
     - name: Extending Metalama
       topicUid: sdk
       items:

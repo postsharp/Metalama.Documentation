@@ -15,4 +15,4 @@ The following articles describe how to configure Metalama.
 | <xref:process-dump> | This article describes how to cause Metalama to capture process dumps upon exception.
 | <xref:troubleshooting-unattended-build> | This article describes deploying diagnostics configuration to a build server. 
 | <xref:packages> | This article describes the list of NuGet packages that Metalama is made of and gives their dependency graphs. |
-
+| <xref:license-credits> | This article describes how to inspect license credit consumption data, which determines which Metalama edition you need for your projects. |
