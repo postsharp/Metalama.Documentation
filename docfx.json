@@ -23,8 +23,9 @@
         }
       ],
       "dest": "obj/api",
-      "disableGitFeatures": true,
-      "disableDefaultFilter": false
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false,
+      "memberLayout": "separatePages"
     }
   ],
   "build": {
@@ -83,7 +84,6 @@
     "fileMetadataFiles": [],
     "template":[ 
       "default", 
-      "docfx/packages/memberpage.2.59.0/content",
       "code/Metalama.Documentation.DfmExtensions/bin/Debug",
       "templates"
     ],

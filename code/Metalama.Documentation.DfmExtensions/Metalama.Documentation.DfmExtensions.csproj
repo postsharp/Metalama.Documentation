@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk" InitialTargets="CheckConfiguration">
 
     <PropertyGroup>
-        <TargetFramework>net472</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <OutDir>bin\$(Configuration)\plugins</OutDir>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
@@ -9,7 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
-        <PackageReference Include="Microsoft.DocAsCode.Dfm" Version="2.59.0" />
+        <PackageReference Include="Microsoft.DocAsCode.Dfm" Version="2.63.1" />
         <PackageReference Include="Microsoft.Composition" Version="1.0.31" />
         <PackageReference Include="PKT.LZStringCSharp" Version="2.1.0" />
     </ItemGroup>
