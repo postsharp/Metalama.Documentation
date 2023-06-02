@@ -1,4 +1,8 @@
-﻿using System;
+﻿#if TEST_OPTIONS
+// @DisableCompareProgramOutput
+#endif
+
+using System;
 using System.Threading;
 
 namespace Doc.Profile
