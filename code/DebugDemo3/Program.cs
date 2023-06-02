@@ -4,7 +4,7 @@ namespace DebugDemo3
 {
     public class Demo
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             string detailXML = GetCustomerDetailsXML("CUST001");
         }

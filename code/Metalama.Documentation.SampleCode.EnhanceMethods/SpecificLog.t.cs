@@ -17,7 +17,7 @@ namespace Doc.SpecificLog
         Console.WriteLine("Finished executing SpecificLogDemo.SayHello(string)");
       }
     }
-    public static void Main(string[] args)
+    public static void Main()
     {
       SayHello("Gael");
     }

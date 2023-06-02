@@ -8,7 +8,7 @@ namespace Doc.ThrowOnCall
     {
       throw new Exception("Method Foo.OldImplementation() is obsolete.");
     }
-    public static void Main(string[] args)
+    public static void Main()
     {
       OldImplementation();
     }

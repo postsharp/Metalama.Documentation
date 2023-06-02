@@ -1,2 +1,1 @@
-﻿Code 'GW12345' is valid : True
-Code 'XY123455' is valid : False
+Code='GW12345'

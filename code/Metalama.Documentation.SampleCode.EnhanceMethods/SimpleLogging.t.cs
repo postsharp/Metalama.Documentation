@@ -10,7 +10,7 @@ namespace Doc.SimpleLog
       Console.WriteLine($"Hello {name}");
       return;
     }
-    public static void Main(string[] args)
+    public static void Main()
     {
       SayHello("Your Majesty");
     }

@@ -15,7 +15,7 @@ namespace Doc.Profile
         }
 
        
-        public static void Main(string[] args)
+        public static void Main()
         {
             SimulatedDelay();
         }

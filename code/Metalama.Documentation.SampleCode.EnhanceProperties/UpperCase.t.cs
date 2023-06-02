@@ -32,7 +32,7 @@ namespace Doc.UpperCase
   }
   public class UpperCase
   {
-    public static void Main(string[] args)
+    public static void Main()
     {
       var package = new Shipment();
       package.From = "lhr";

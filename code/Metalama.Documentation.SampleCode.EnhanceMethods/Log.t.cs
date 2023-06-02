@@ -17,7 +17,7 @@ namespace Doc.Logging
         Console.WriteLine("Finished Program.SayHello(string)");
       }
     }
-    public static void Main(string[] args)
+    public static void Main()
     {
       SayHello("Your Majesty");
     }

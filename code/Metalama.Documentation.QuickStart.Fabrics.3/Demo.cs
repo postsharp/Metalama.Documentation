@@ -22,7 +22,7 @@ namespace Metalama.Documentation.QuickStart.Fabrics
     
     public class Demo 
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             var currentCode = new Code();
             Console.WriteLine($"Name length = {currentCode.Name.Length}");

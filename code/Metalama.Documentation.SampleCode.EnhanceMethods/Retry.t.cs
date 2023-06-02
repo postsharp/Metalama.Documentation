@@ -34,7 +34,7 @@ namespace Doc.RetryFew
   }
   public class Program
   {
-    public static void Main(string[] args)
+    public static void Main()
     {
       var x = new Exchange();
       var rate = x.GetExchangeRate();

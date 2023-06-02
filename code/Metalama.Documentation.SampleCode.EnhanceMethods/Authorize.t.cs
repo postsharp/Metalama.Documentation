@@ -21,9 +21,16 @@ namespace Doc.Authorize
         throw new SecurityException("This method can only be called by MrAllmighty.");
       }
     }
-    public static void Main(string[] args)
+    public static void Main()
     {
-      SaveIdentityDetails();
+      try
+      {
+        SaveIdentityDetails();
+      }
+      catch (Exception e)
+      {
+        Console.Error.WriteLine(e.ToString());
+      }
     }
   }
 }

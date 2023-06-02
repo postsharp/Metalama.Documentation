@@ -35,7 +35,7 @@ namespace Doc.TimeIt
       Console.WriteLine($"Time taken :{sw.ElapsedMilliseconds} ms");
       return result;
     }
-    public static void Main(string[] args)
+    public static void Main()
     {
       SimulatedDelay1();
       SimulatedDelay2();

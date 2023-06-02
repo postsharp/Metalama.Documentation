@@ -14,9 +14,16 @@ namespace Doc.Authorize
             Console.WriteLine("Saving identity details...");
         }
 
-        public static void Main(string[] args)
+        public static void Main()
         {
-             SaveIdentityDetails();
+            try
+            {
+                SaveIdentityDetails();
+            }
+            catch ( Exception e )
+            {
+                Console.Error.WriteLine( e.ToString() );
+            }
         }
     }
 }

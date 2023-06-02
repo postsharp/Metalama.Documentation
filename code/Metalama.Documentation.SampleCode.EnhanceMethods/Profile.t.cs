@@ -20,7 +20,7 @@ namespace Doc.Profile
         Console.WriteLine($"Program.SimulatedDelay() executed in {sw.ElapsedMilliseconds} ms.");
       }
     }
-    public static void Main(string[] args)
+    public static void Main()
     {
       SimulatedDelay();
     }
