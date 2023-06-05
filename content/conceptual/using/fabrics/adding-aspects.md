@@ -65,7 +65,7 @@ In the following example, we add two aspects: logging and profiling. We add prof
 
 For each project, it is recommended to have only one project fabric. Having several project fabrics makes it difficult to understand the aspect application order.
 
-[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric.cs]
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ProjectFabric_TwoAspects.cs]
 
 ### Example 3: Adding aspects to all methods in a given namespace
 

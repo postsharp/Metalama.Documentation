@@ -1,5 +1,6 @@
 ﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -164,6 +165,20 @@ internal class CodeTab : BaseTab
 
     protected override string TabHeader { get; }
 
+    public string GetCodeForComparison()
+    {
+        var document = new HtmlDocument();
+        document.Load( this.GetHtmlPath() );
+
+        var diagLines = document.DocumentNode.SelectNodes( "//span[@class='diagLines']" )?.ToList() ?? new List<HtmlNode>();
+        foreach ( var diag in diagLines )
+        {
+            diag.Remove();
+        }
+
+        return document.DocumentNode.InnerText;
+    }
+
     public string GetSandboxCode()
     {
         var lines = File.ReadAllLines( this.FullPath )
@@ -184,4 +199,6 @@ internal class CodeTab : BaseTab
 
         return string.Join( Environment.NewLine, lines );
     }
+    
 }
+
