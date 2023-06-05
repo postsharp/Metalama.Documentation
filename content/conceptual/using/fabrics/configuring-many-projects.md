@@ -73,14 +73,13 @@ The idea is to write a project fabric, store it in the root directory and the re
 
 In the parent directory that recursively contains all projects you want to be affected by the shared fabric, create a project fabric deriving from <xref:Metalama.Framework.Fabrics.ProjectFabric> as you would do for a regular project fabric.
 
-
 #### Step 2. Create Directory.Build.props
 
 In the same directory, create a file named `Directory.Build.props` with the following content:
 
 ```xml
 <Project>
-	<!-- Imports Directory.Build.props of the upper directory.  -->
+	<!-- Imports Directory.Build.props of the upper directory. -->
 	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" 
 			Condition="Exists('$([MSBuild]::GetPathOfFileAbove(`Directory.Build.props`, `$(MSBuildThisFileDirectory)../`))')"/>
 
@@ -90,6 +89,10 @@ In the same directory, create a file named `Directory.Build.props` with the foll
     </ItemGroup>
 </Project>
 ```
+
+#### Example
+
+See <xref:sample-shared-fabric>.
 
 ### Execution order of shared fabrics
 
