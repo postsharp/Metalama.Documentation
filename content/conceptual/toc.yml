@@ -80,6 +80,8 @@ items:
             topicUid: implementing-interfaces
           - name: Adding initializers
             topicUid: initializers
+          - name: Adding and removing attributes
+            topicUid: adding-attributes
           - name: Introducing constructor parameters
             topicUid: introducing-constructor-parameters
           - name: Sharing state with advice

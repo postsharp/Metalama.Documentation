@@ -18,6 +18,7 @@ In <xref:simple-aspects>, you have learned how to build simple aspects composed 
 | <xref:introducing-members> | This article explains how to add new members to an existing type using aspects. |
 | <xref:implementing-interfaces> | This article explains how to make an existing type implement a new interface using aspects. |
 | <xref:initializers> | This article explains how to add initialization logic to constructors. |
+| <xref:adding-attributes> | This article explains how to add or remove custom attributes. |
 | <xref:introducing-constructor-parameters> | This article explains how to append new parameters to constructors, and pull their value from constructors of derived classes.
 | <xref:sharing-state-with-advice> | This article discusses how the `BuildAspect` method can pass parameters or state to the templates.
 

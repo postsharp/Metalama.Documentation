@@ -10,10 +10,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="AddEditorBrowsableAttribute - Copy.t.cs" />
       <Compile Remove="Architecture\Experimental - Copy.t.cs" />
     </ItemGroup>
 
     <ItemGroup>
+      <None Include="AddEditorBrowsableAttribute_Introduced_Declarative.t.cs">
+        <SubType>Code</SubType>
+        <DependentUpon>AddEditorBrowsableAttribute_Introduced_Declarative.cs</DependentUpon>
+      </None>
       <None Include="Architecture\Experimental_Fabric.t.cs">
         <SubType>Code</SubType>
         <DependentUpon>Experimental_Fabric.cs</DependentUpon>
@@ -31,6 +36,12 @@
 
         <PackageReference Include="Metalama.Extensions.Architecture" Version="$(MetalamaExtensionsVersion)" />
         <PackageReference Include="Metalama.Testing.AspectTesting" Version="$(MetalamaVersion)" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="AddEditorBrowsableAttribute_Introduced_Programmatic.Aspect.cs">
+        <DependentUpon>$([System.String]::Copy('%(Filename)').Replace('.Aspect','')).cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 
