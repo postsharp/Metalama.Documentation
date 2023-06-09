@@ -23,7 +23,7 @@
         }
       ],
       "dest": "obj/api",
-      "disableGitFeatures": true,
+      "disableGitFeatures": false,
       "disableDefaultFilter": false
     }
   ],
