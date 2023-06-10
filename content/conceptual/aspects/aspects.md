@@ -30,6 +30,7 @@ This chapter is composed of the following articles:
 | <xref:diagnostics>                  | This section explains how to report errors, warnings, and information messages and suppress warnings, see <xref:diagnostics>.                                                             |
 | <xref:dependency-injection>         | This section describes how an aspect can use a dependency and pull it from the container.                                                             |
 | <xref:building-ide-interactions> | This article explains how to create live templates, code fixes, and refactorings.                                                    |
+| <xref:reusing-code>                 | This section describes how to reuse code among aspects and templates. |
 | <xref:child-aspects>                | This section explains how an aspect can add other aspects and how child aspects can know about their parents.          |
 | <xref:aspect-inheritance>            | This section explains how to automatically apply an aspect to all declarations derived from its direct targets.  |
 | <xref:ordering-aspects>       | This article describes how to order aspect classes so that the order of execution is correct when several aspects are applied to the same declaration. |

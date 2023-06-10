@@ -99,6 +99,8 @@ items:
             topicUid: live-template
           - name: Offering code fixes & refactorings
             topicUid: code-fixes
+        - name: Reusing code among aspects
+          topicUid: reusing-code
         - name: Adding child aspects
           topicUid: child-aspects
         - name: Applying aspects to derived types
