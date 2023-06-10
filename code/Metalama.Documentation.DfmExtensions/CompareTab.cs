@@ -20,7 +20,7 @@ internal class CompareTab : BaseTab
 
         string NormalizeCode( string s ) => s.Replace( " ", "" );
 
-        if ( !transformedTab.Exists()  || NormalizeCode( sourceTab.GetCodeForComparison() ) == NormalizeCode( transformedTab.GetCodeForComparison() ) )
+        if ( !transformedTab.Exists() || NormalizeCode( sourceTab.GetCodeForComparison() ) == NormalizeCode( transformedTab.GetCodeForComparison() ) )
         {
             return sourceTab.GetTabContent( fallbackToSource );
         }

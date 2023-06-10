@@ -36,7 +36,7 @@ public sealed class MultipleFilesTokenRule : IMarkdownRule
                 name ?? Path.GetFileName( (string) parser.Context.Variables["BaseFolder"] ),
                 paths,
                 mode == null ? TabMode.Default : (TabMode) Enum.Parse( typeof(TabMode), mode ),
-                addLinks: string.IsNullOrEmpty( links ) || XmlConvert.ToBoolean( links ));
+                addLinks: string.IsNullOrEmpty( links ) || XmlConvert.ToBoolean( links ) );
         }
 
         return null;

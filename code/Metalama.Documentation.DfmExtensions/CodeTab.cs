@@ -171,6 +171,7 @@ internal class CodeTab : BaseTab
         document.Load( this.GetHtmlPath() );
 
         var diagLines = document.DocumentNode.SelectNodes( "//span[@class='diagLines']" )?.ToList() ?? new List<HtmlNode>();
+
         foreach ( var diag in diagLines )
         {
             diag.Remove();
@@ -199,6 +200,4 @@ internal class CodeTab : BaseTab
 
         return string.Join( Environment.NewLine, lines );
     }
-    
 }
-

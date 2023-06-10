@@ -12,7 +12,7 @@ internal abstract class TabGroup
     private string TabGroupId { get; }
 
     public List<BaseTab> Tabs { get; } = new();
-    
+
     public abstract string GetGitUrl();
 
     protected TabGroup( string tabGroupId )
@@ -122,7 +122,8 @@ internal abstract class TabGroup
                     {
                         fileName += ".cs";
                     }
-                    sandboxFiles.Add( new( fileName, codeTab.GetSandboxCode(), codeTab.SandboxFileKind ) );
+
+                    sandboxFiles.Add( new SandboxFile( fileName, codeTab.GetSandboxCode(), codeTab.SandboxFileKind ) );
                 }
             }
             else if ( tab is CompareTab compareTab )
@@ -130,7 +131,7 @@ internal abstract class TabGroup
                 // Try currently requires that the code that is executed is in Program.cs.
                 var fileName = "Program.cs";
 
-                sandboxFiles.Add( new( fileName, compareTab.GetSandboxCode(), SandboxFileKind.TargetCode ) );
+                sandboxFiles.Add( new SandboxFile( fileName, compareTab.GetSandboxCode(), SandboxFileKind.TargetCode ) );
             }
         }
 

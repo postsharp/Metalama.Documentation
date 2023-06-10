@@ -59,10 +59,10 @@ public class RuleTests
             Assert.False( isMatch );
         }
     }
-    
+
     [Theory]
     [InlineData( "not a match", false, 0 )]
-    [InlineData( "[!metalama-files a.cs]", true, 1)]
+    [InlineData( "[!metalama-files a.cs]", true, 1 )]
     [InlineData( "[!metalama-files a.cs b.cs]", true, 2 )]
     [InlineData( "[!metalama-files a.cs ]", true, 1 )]
     [InlineData( "[!metalama-files a.cs b.cs ]", true, 2 )]

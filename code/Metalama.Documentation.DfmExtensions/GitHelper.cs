@@ -3,11 +3,14 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Metalama.Documentation.DfmExtensions;
 
 internal static class GitHelper
 {
+    private static Regex _gitSshRegex = new( "git@(?<server>[^:]+):" );
+
     public static string GetRepoUrl( string directory )
     {
         // Execute the git command to get the remote URL of the origin
@@ -22,14 +25,19 @@ internal static class GitHelper
         // Read the output of the command
         var output = process.StandardOutput.ReadToEnd().Trim( ' ', '\n', '\r' );
 
-        
         if ( !output.EndsWith( ".git" ) )
         {
             throw new InvalidOperationException( $"The git remote url '{output}' does not end with '.git." );
         }
 
-        return output.Substring( 0, output.Length - ".git".Length );
+        var gitSshMatch = _gitSshRegex.Match( output );
 
+        if ( gitSshMatch.Success )
+        {
+            output = _gitSshRegex.Replace( output, "https://$1/" );
+        }
+
+        return output.Substring( 0, output.Length - ".git".Length );
     }
 
     public static string GetGitDirectory( string path )
@@ -48,7 +56,7 @@ internal static class GitHelper
     public static string GetOnlineUrl( string path )
     {
         var gitDirectory = GetGitDirectory( path );
-        
+
         var relativePath = PathHelper.GetRelativePath( gitDirectory, path );
         var gitUrl = GetRepoUrl( gitDirectory );
 

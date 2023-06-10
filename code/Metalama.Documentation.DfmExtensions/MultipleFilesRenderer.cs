@@ -12,7 +12,7 @@ internal class MultipleFilesRenderer : BaseRenderer<MultipleFilesToken>
     {
         var directory = Path.GetDirectoryName( token.Files[0] )!;
         var tabGroup = new DirectoryTabGroup( token.Name, directory );
-        
+
         foreach ( var file in token.Files )
         {
             var tabId = Path.GetFileNameWithoutExtension( file );
