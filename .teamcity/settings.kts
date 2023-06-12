@@ -6,6 +6,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.Swabra
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.swabra
+import jetbrains.buildServer.configs.kotlin.v2019_2.failureConditions.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.*
 
@@ -17,9 +18,10 @@ project {
    buildType(PublicBuild)
    buildType(PublicDeployment)
    buildType(PublicDeploymentNoDependency)
+   buildType(VersionBump)
    buildType(PublicUpdateSearch)
    buildType(PublicUpdateSearchNoDependency)
-   buildTypesOrder = arrayListOf(DebugBuild,PublicBuild,PublicDeployment,PublicDeploymentNoDependency,PublicUpdateSearch,PublicUpdateSearchNoDependency)
+   buildTypesOrder = arrayListOf(DebugBuild,PublicBuild,PublicDeployment,PublicDeploymentNoDependency,VersionBump,PublicUpdateSearch,PublicUpdateSearchNoDependency)
 }
 
 object DebugBuild : BuildType({
@@ -30,12 +32,9 @@ object DebugBuild : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-
-  root(AbsoluteId("Metalama_Metalama20231_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
-
-  root(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
-
-        }
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
+    }
 
     steps {
         // Step to kill all dotnet or VBCSCompiler processes that might be locking files we delete in during cleanup.
@@ -55,6 +54,30 @@ object DebugBuild : BuildType({
             noProfile = false
             param("jetbrains_powershell_scriptArguments", "test --configuration Debug --buildNumber %build.number% --buildType %system.teamcity.buildType.id%")
         }
+
+        // Step to kill all dotnet or VBCSCompiler processes that might be locking files that Swabra deletes in the beginning of another build.
+        powerShell {
+            name = "Kill background processes after build"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools kill")
+            executionMode = BuildStep.ExecutionMode.ALWAYS
+        }
+    }
+
+    failureConditions {
+        failOnMetricChange {
+            metric = BuildFailureOnMetric.MetricType.BUILD_DURATION
+            threshold = 300
+            units = BuildFailureOnMetric.MetricUnit.DEFAULT_UNIT
+            comparison = BuildFailureOnMetric.MetricComparison.MORE
+            compareTo = build {
+                buildRule = lastSuccessful()
+            }
+            stopBuildOnFailure = true
+        }
     }
 
     requirements {
@@ -70,7 +93,7 @@ object DebugBuild : BuildType({
 
     dependencies {
 
-        dependency(AbsoluteId("Metalama_Metalama20231_Metalama_DebugBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_Metalama_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -83,7 +106,7 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaBackstage_ReleaseBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaBackstage_ReleaseBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -96,7 +119,7 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity_DebugBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaCommunity_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -104,7 +127,7 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCompiler_ReleaseBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaCompiler_ReleaseBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -117,7 +140,7 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaExtensions_DebugBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaExtensions_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -130,7 +153,7 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaLinqPad_DebugBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaLinqPad_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -143,7 +166,7 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaMigration_DebugBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaMigration_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -156,7 +179,7 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_DebugBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaSamples_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -169,7 +192,7 @@ object DebugBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_DebugBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaSamples_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -189,12 +212,9 @@ object PublicBuild : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-
-  root(AbsoluteId("Metalama_Metalama20231_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
-
-  root(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
-
-        }
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
+    }
 
     steps {
         // Step to kill all dotnet or VBCSCompiler processes that might be locking files we delete in during cleanup.
@@ -214,6 +234,30 @@ object PublicBuild : BuildType({
             noProfile = false
             param("jetbrains_powershell_scriptArguments", "test --configuration Public --buildNumber %build.number% --buildType %system.teamcity.buildType.id%")
         }
+
+        // Step to kill all dotnet or VBCSCompiler processes that might be locking files that Swabra deletes in the beginning of another build.
+        powerShell {
+            name = "Kill background processes after build"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools kill")
+            executionMode = BuildStep.ExecutionMode.ALWAYS
+        }
+    }
+
+    failureConditions {
+        failOnMetricChange {
+            metric = BuildFailureOnMetric.MetricType.BUILD_DURATION
+            threshold = 300
+            units = BuildFailureOnMetric.MetricUnit.DEFAULT_UNIT
+            comparison = BuildFailureOnMetric.MetricComparison.MORE
+            compareTo = build {
+                buildRule = lastSuccessful()
+            }
+            stopBuildOnFailure = true
+        }
     }
 
     requirements {
@@ -229,7 +273,7 @@ object PublicBuild : BuildType({
 
     dependencies {
 
-        dependency(AbsoluteId("Metalama_Metalama20231_Metalama_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_Metalama_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -242,7 +286,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaBackstage_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaBackstage_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -255,7 +299,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaCommunity_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -263,7 +307,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCompiler_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaCompiler_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -276,7 +320,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaExtensions_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaExtensions_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -289,7 +333,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaLinqPad_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaLinqPad_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -302,7 +346,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaMigration_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaMigration_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -315,7 +359,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaSamples_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -328,7 +372,7 @@ object PublicBuild : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaSamples_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -348,12 +392,9 @@ object PublicDeployment : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-
-  root(AbsoluteId("Metalama_Metalama20231_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
-
-  root(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
-
-        }
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
+    }
 
     steps {
         powerShell {
@@ -363,6 +404,30 @@ object PublicDeployment : BuildType({
             }
             noProfile = false
             param("jetbrains_powershell_scriptArguments", "publish --configuration Public")
+        }
+
+        // Step to kill all dotnet or VBCSCompiler processes that might be locking files that Swabra deletes in the beginning of another build.
+        powerShell {
+            name = "Kill background processes after build"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools kill")
+            executionMode = BuildStep.ExecutionMode.ALWAYS
+        }
+    }
+
+    failureConditions {
+        failOnMetricChange {
+            metric = BuildFailureOnMetric.MetricType.BUILD_DURATION
+            threshold = 300
+            units = BuildFailureOnMetric.MetricUnit.DEFAULT_UNIT
+            comparison = BuildFailureOnMetric.MetricComparison.MORE
+            compareTo = build {
+                buildRule = lastSuccessful()
+            }
+            stopBuildOnFailure = true
         }
     }
 
@@ -383,7 +448,7 @@ object PublicDeployment : BuildType({
 
     dependencies {
 
-        dependency(AbsoluteId("Metalama_Metalama20231_Metalama_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_Metalama_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -396,7 +461,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaBackstage_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaBackstage_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -409,7 +474,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity_PublicDeployment")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaCommunity_PublicDeployment")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -417,7 +482,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCompiler_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaCompiler_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -430,7 +495,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaExtensions_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaExtensions_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -443,7 +508,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaLinqPad_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaLinqPad_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -456,7 +521,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaLinqPad_PublicDeployment")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaLinqPad_PublicDeployment")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -464,7 +529,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaMigration_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaMigration_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -477,7 +542,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaMigration_PublicDeployment")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaMigration_PublicDeployment")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -485,7 +550,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaSamples_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -498,7 +563,7 @@ object PublicDeployment : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_PublicDeployment")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaSamples_PublicDeployment")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -531,12 +596,9 @@ object PublicDeploymentNoDependency : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-
-  root(AbsoluteId("Metalama_Metalama20231_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
-
-  root(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
-
-        }
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
+    }
 
     steps {
         powerShell {
@@ -546,6 +608,30 @@ object PublicDeploymentNoDependency : BuildType({
             }
             noProfile = false
             param("jetbrains_powershell_scriptArguments", "publish --configuration Public")
+        }
+
+        // Step to kill all dotnet or VBCSCompiler processes that might be locking files that Swabra deletes in the beginning of another build.
+        powerShell {
+            name = "Kill background processes after build"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools kill")
+            executionMode = BuildStep.ExecutionMode.ALWAYS
+        }
+    }
+
+    failureConditions {
+        failOnMetricChange {
+            metric = BuildFailureOnMetric.MetricType.BUILD_DURATION
+            threshold = 300
+            units = BuildFailureOnMetric.MetricUnit.DEFAULT_UNIT
+            comparison = BuildFailureOnMetric.MetricComparison.MORE
+            compareTo = build {
+                buildRule = lastSuccessful()
+            }
+            stopBuildOnFailure = true
         }
     }
 
@@ -566,7 +652,7 @@ object PublicDeploymentNoDependency : BuildType({
 
     dependencies {
 
-        dependency(AbsoluteId("Metalama_Metalama20231_Metalama_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_Metalama_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -579,7 +665,7 @@ object PublicDeploymentNoDependency : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaBackstage_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaBackstage_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -592,7 +678,7 @@ object PublicDeploymentNoDependency : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaCompiler_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaCompiler_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -605,7 +691,7 @@ object PublicDeploymentNoDependency : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaExtensions_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaExtensions_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -618,7 +704,7 @@ object PublicDeploymentNoDependency : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaLinqPad_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaLinqPad_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -631,7 +717,7 @@ object PublicDeploymentNoDependency : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaMigration_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaMigration_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -644,7 +730,7 @@ object PublicDeploymentNoDependency : BuildType({
 
         }
 
-        dependency(AbsoluteId("Metalama_Metalama20231_MetalamaSamples_PublicBuild")) {
+        dependency(AbsoluteId("Metalama_Metalama20232_MetalamaSamples_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
@@ -674,6 +760,70 @@ object PublicDeploymentNoDependency : BuildType({
 
 })
 
+object VersionBump : BuildType({
+
+    name = "Version Bump"
+
+    type = Type.DEPLOYMENT
+
+    vcs {
+        root(DslContext.settingsRoot)
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
+    }
+
+    steps {
+        powerShell {
+            name = "Version Bump"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "bump")
+        }
+
+        // Step to kill all dotnet or VBCSCompiler processes that might be locking files that Swabra deletes in the beginning of another build.
+        powerShell {
+            name = "Kill background processes after build"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools kill")
+            executionMode = BuildStep.ExecutionMode.ALWAYS
+        }
+    }
+
+    failureConditions {
+        failOnMetricChange {
+            metric = BuildFailureOnMetric.MetricType.BUILD_DURATION
+            threshold = 300
+            units = BuildFailureOnMetric.MetricUnit.DEFAULT_UNIT
+            comparison = BuildFailureOnMetric.MetricComparison.MORE
+            compareTo = build {
+                buildRule = lastSuccessful()
+            }
+            stopBuildOnFailure = true
+        }
+    }
+
+    requirements {
+        equals("env.BuildAgentType", "caravela04cloud")
+    }
+
+    features {
+        swabra {
+            lockingProcesses = Swabra.LockingProcessPolicy.KILL
+            verbose = true
+        }
+        sshAgent {
+            // By convention, the SSH key name is always PostSharp.Engineering for all repositories using SSH to connect.
+            teamcitySshKey = "PostSharp.Engineering"
+        }
+    }
+
+})
+
 object PublicUpdateSearch : BuildType({
 
     name = "Update Search [Public]"
@@ -682,12 +832,9 @@ object PublicUpdateSearch : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-
-  root(AbsoluteId("Metalama_Metalama20231_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
-
-  root(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
-
-        }
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
+    }
 
     steps {
         powerShell {
@@ -697,6 +844,30 @@ object PublicUpdateSearch : BuildType({
             }
             noProfile = false
             param("jetbrains_powershell_scriptArguments", "tools search update https://0fpg9nu41dat6boep.a1.typesense.net metalamadoc https://doc-production.metalama.net/sitemap.xml --ignore-tls")
+        }
+
+        // Step to kill all dotnet or VBCSCompiler processes that might be locking files that Swabra deletes in the beginning of another build.
+        powerShell {
+            name = "Kill background processes after build"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools kill")
+            executionMode = BuildStep.ExecutionMode.ALWAYS
+        }
+    }
+
+    failureConditions {
+        failOnMetricChange {
+            metric = BuildFailureOnMetric.MetricType.BUILD_DURATION
+            threshold = 300
+            units = BuildFailureOnMetric.MetricUnit.DEFAULT_UNIT
+            comparison = BuildFailureOnMetric.MetricComparison.MORE
+            compareTo = build {
+                buildRule = lastSuccessful()
+            }
+            stopBuildOnFailure = true
         }
     }
 
@@ -737,12 +908,9 @@ object PublicUpdateSearchNoDependency : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-
-  root(AbsoluteId("Metalama_Metalama20231_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
-
-  root(AbsoluteId("Metalama_Metalama20231_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
-
-        }
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+        root(AbsoluteId("Metalama_Metalama20232_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
+    }
 
     steps {
         powerShell {
@@ -752,6 +920,30 @@ object PublicUpdateSearchNoDependency : BuildType({
             }
             noProfile = false
             param("jetbrains_powershell_scriptArguments", "tools search update https://0fpg9nu41dat6boep.a1.typesense.net metalamadoc https://doc-production.metalama.net/sitemap.xml --ignore-tls")
+        }
+
+        // Step to kill all dotnet or VBCSCompiler processes that might be locking files that Swabra deletes in the beginning of another build.
+        powerShell {
+            name = "Kill background processes after build"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools kill")
+            executionMode = BuildStep.ExecutionMode.ALWAYS
+        }
+    }
+
+    failureConditions {
+        failOnMetricChange {
+            metric = BuildFailureOnMetric.MetricType.BUILD_DURATION
+            threshold = 300
+            units = BuildFailureOnMetric.MetricUnit.DEFAULT_UNIT
+            comparison = BuildFailureOnMetric.MetricComparison.MORE
+            compareTo = build {
+                buildRule = lastSuccessful()
+            }
+            stopBuildOnFailure = true
         }
     }
 
@@ -769,18 +961,6 @@ object PublicUpdateSearchNoDependency : BuildType({
             teamcitySshKey = "PostSharp.Engineering"
         }
     }
-
-    dependencies {
-
-        dependency(PublicDeploymentNoDependency) {
-            snapshot {
-                     onDependencyFailure = FailureAction.FAIL_TO_START
-            }
-
-
-        }
-
-     }
 
 })
 

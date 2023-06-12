@@ -8,16 +8,17 @@ using PostSharp.Engineering.BuildTools.Build.Solutions;
 using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
-using PostSharp.Engineering.BuildTools.Dependencies.Model;
+using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
 using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
 using System.IO;
 using System.Diagnostics;
 using PostSharp.Engineering.BuildTools.Search;
+using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2023_2;
 
 const string docPackageFileName = "Metalama.Doc.zip";
 
-var product = new Product( Dependencies.MetalamaDocumentation )
+var product = new Product( MetalamaDependencies.MetalamaDocumentation )
 {
     // Note that we don't build Metalama.Samples ourselves. We expect it to be built from the repo itself.
     // HTML artifacts should be restored from artifacts.
@@ -40,16 +41,16 @@ var product = new Product( Dependencies.MetalamaDocumentation )
         docPackageFileName ),
     
     Dependencies = new[] { 
-         Dependencies.PostSharpEngineering,
-         Dependencies.MetalamaMigration,
-         Dependencies.MetalamaLinqPad,
-         Dependencies.MetalamaSamples
+         DevelopmentDependencies.PostSharpEngineering,
+         MetalamaDependencies.MetalamaMigration,
+         MetalamaDependencies.MetalamaLinqPad,
+         MetalamaDependencies.MetalamaSamples
     },
 
     SourceDependencies = new[]
     {
-        Dependencies.MetalamaSamples,
-        Dependencies.MetalamaCommunity
+        MetalamaDependencies.MetalamaSamples,
+        MetalamaDependencies.MetalamaCommunity
     },
 
     AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
