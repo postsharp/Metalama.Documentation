@@ -1,0 +1,1 @@
+{"Dependencies":{"Metalama.Migration":"2023.2.0","Metalama.LinqPad":"2023.2.8","Metalama.Samples":"2023.2.0","Metalama.Community":"2023.2.0"}}
