@@ -18,10 +18,9 @@ project {
    buildType(PublicBuild)
    buildType(PublicDeployment)
    buildType(PublicDeploymentNoDependency)
-   buildType(VersionBump)
    buildType(PublicUpdateSearch)
    buildType(PublicUpdateSearchNoDependency)
-   buildTypesOrder = arrayListOf(DebugBuild,PublicBuild,PublicDeployment,PublicDeploymentNoDependency,VersionBump,PublicUpdateSearch,PublicUpdateSearchNoDependency)
+   buildTypesOrder = arrayListOf(DebugBuild,PublicBuild,PublicDeployment,PublicDeploymentNoDependency,PublicUpdateSearch,PublicUpdateSearchNoDependency)
 }
 
 object DebugBuild : BuildType({
@@ -757,70 +756,6 @@ object PublicDeploymentNoDependency : BuildType({
         }
 
      }
-
-})
-
-object VersionBump : BuildType({
-
-    name = "Version Bump"
-
-    type = Type.DEPLOYMENT
-
-    vcs {
-        root(DslContext.settingsRoot)
-        root(AbsoluteId("Metalama_Metalama20232_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
-        root(AbsoluteId("Metalama_Metalama20232_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
-    }
-
-    steps {
-        powerShell {
-            name = "Version Bump"
-            scriptMode = file {
-                path = "Build.ps1"
-            }
-            noProfile = false
-            param("jetbrains_powershell_scriptArguments", "bump")
-        }
-
-        // Step to kill all dotnet or VBCSCompiler processes that might be locking files that Swabra deletes in the beginning of another build.
-        powerShell {
-            name = "Kill background processes after build"
-            scriptMode = file {
-                path = "Build.ps1"
-            }
-            noProfile = false
-            param("jetbrains_powershell_scriptArguments", "tools kill")
-            executionMode = BuildStep.ExecutionMode.ALWAYS
-        }
-    }
-
-    failureConditions {
-        failOnMetricChange {
-            metric = BuildFailureOnMetric.MetricType.BUILD_DURATION
-            threshold = 300
-            units = BuildFailureOnMetric.MetricUnit.DEFAULT_UNIT
-            comparison = BuildFailureOnMetric.MetricComparison.MORE
-            compareTo = build {
-                buildRule = lastSuccessful()
-            }
-            stopBuildOnFailure = true
-        }
-    }
-
-    requirements {
-        equals("env.BuildAgentType", "caravela04cloud")
-    }
-
-    features {
-        swabra {
-            lockingProcesses = Swabra.LockingProcessPolicy.KILL
-            verbose = true
-        }
-        sshAgent {
-            // By convention, the SSH key name is always PostSharp.Engineering for all repositories using SSH to connect.
-            teamcitySshKey = "PostSharp.Engineering"
-        }
-    }
 
 })
 
