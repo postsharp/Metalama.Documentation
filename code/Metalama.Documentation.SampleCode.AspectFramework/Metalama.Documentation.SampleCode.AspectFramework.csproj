@@ -9,21 +9,8 @@
         <NoWarn>1701;1702;169;649;67;8618;8618</NoWarn>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Compile Remove="AddEditorBrowsableAttribute - Copy.t.cs" />
-      <Compile Remove="Architecture\Experimental - Copy.t.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Include="AddEditorBrowsableAttribute_Introduced_Declarative.t.cs">
-        <SubType>Code</SubType>
-        <DependentUpon>AddEditorBrowsableAttribute_Introduced_Declarative.cs</DependentUpon>
-      </None>
-      <None Include="Architecture\Experimental_Fabric.t.cs">
-        <SubType>Code</SubType>
-        <DependentUpon>Experimental_Fabric.cs</DependentUpon>
-      </None>
-    </ItemGroup>
+    
+    
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
@@ -42,6 +29,7 @@
       <Compile Update="AddEditorBrowsableAttribute_Introduced_Programmatic.Aspect.cs">
         <DependentUpon>$([System.String]::Copy('%(Filename)').Replace('.Aspect','')).cs</DependentUpon>
       </Compile>
+
     </ItemGroup>
 
 
