@@ -28,9 +28,8 @@ We assigned a _complexity level_ to each article, for instance, 100, 200, 300, a
 
 If you have any feedback, suggestions or questions regarding Metalama, don't hesitate to get in touch:
 
-* [open an issue](https://github.com/postsharp/Metalama/issues/new), 
-* [start a discussion](https://github.com/postsharp/Metalama/discussions/new), 
-* chat with us on [Slack](https://www.postsharp.net/slack),
+* [open an issue](https://github.com/postsharp/Metalama/issues/new) or [start a discussion](https://github.com/postsharp/Metalama/discussions/new) on GitHub,
+* chat with us on [Slack](https://www.postsharp.net/slack) or [Discord](https://www.postsharp.net/discord).
 * email us at hello@postsharp.net.
 
 The source code of this documentation (except the API documentation) is hosted at https://github.com/postsharp/Metalama.Documentation. You can suggest improvements and corrections using the discussions board, and even submit a pull request.

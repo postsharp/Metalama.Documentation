@@ -31,7 +31,7 @@ In the following example, we limit the eligibility of a logging aspect to non-st
 
 ## Validating the declaring type, parameter type, or return type
 
-The `Must*` methods of the <xref:Metalama.Framework.Eligibility.EligibilityExtensions> class apply to the direct aspect of the aspect. If you want to validate something else, e.g. the declaring type of the member or the method return type, use methods like <xref:Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType>, <xref:Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType>, or <xref:Metalama.Framework.Eligibility.EligibilityExtensions.Parameter> before calling the `Must*` method.
+The `Must*` methods of the <xref:Metalama.Framework.Eligibility.EligibilityExtensions> class apply to the direct aspect of the aspect. If you want to validate something else, e.g. the declaring type of the member or the method return type, use methods like <xref:Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType*>, <xref:Metalama.Framework.Eligibility.EligibilityExtensions.ReturnType*>, or <xref:Metalama.Framework.Eligibility.EligibilityExtensions.Parameter*> before calling the `Must*` method.
 
 The benefit of using these methods is that the error message is more informative when the user attempts to add the aspect to an ineligible condition.
 
@@ -42,7 +42,7 @@ In the following, we require the aspect to be used in static types only.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Eligibility_DeclaringType.cs name="Eligibility"]
 
-Notice how informative the error message in the target code is:  the use of <xref:Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType> tells Metalama to use this information in the error message for the user's benefit.
+Notice how informative the error message in the target code is:  the use of <xref:Metalama.Framework.Eligibility.EligibilityExtensions.DeclaringType*> tells Metalama to use this information in the error message for the user's benefit.
 
 ## Defining custom eligibility conditions
 
@@ -62,6 +62,18 @@ The <xref:Metalama.Framework.Eligibility.EligibilityExtensions> class defines th
 The following example demonstrates the use of <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy*> to mark record types as uneligible.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Eligibility_Custom.cs name="Eligibility"]
+
+
+## Adding "if" clauses to eligibility
+
+Sometimes the eligibility of aspects depends on a condition. For instance, your aspect may be eligible for all instance methods but only `void` static methods. One approach is to use <xref:Metalama.Framework.Eligibility.EligibilityExtensions.MustSatisfy*> to create a custom condition. A more straightforward approach is to use the <xref:Metalama.Framework.Eligibility.EligibilityExtensions.If*> method.
+
+
+## Converting eligibility builders
+
+To convert an <xref:Metalama.Framework.Eligibility.IEligibilityBuilder`1> of one declaration type to an <xref:Metalama.Framework.Eligibility.IEligibilityBuilder`1> for another type, use the `builder.Convert().To<T>()` method. This will implicitly add an eligibility condition that the declaration is a `T`.
+
+Alternatively, when you don't want this implicit condition, you can use `builder.Convert().When<T>()`. This is equivalent to using an <xref:Metalama.Framework.Eligibility.EligibilityExtensions.If*> followed by a `Convert().To<T>()`.
 
 
 ## When to emit custom errors instead?
