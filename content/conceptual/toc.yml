@@ -31,7 +31,9 @@ items:
           items:
           - name: Adding aspects
             topicUid: fabrics-adding-aspects
-          - name: Configuring many projects at once
+          - name: Configuring aspect libraries
+            topicUid: fabrics-configuration
+          - name: Amending many projects at once
             topicUid: fabrics-many-projects
     - name: Creating aspects
       topicUid: aspects

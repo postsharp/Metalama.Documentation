@@ -30,5 +30,6 @@
     "**/README.md",
     "**/*.txt",
     "**/*.md"
-]
+],
+"dotnet.defaultSolution": "disable"
 }
