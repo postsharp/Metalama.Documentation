@@ -14,10 +14,10 @@ The following example demonstrates a <xref:Metalama.Framework.Fabrics.ProjectFab
 ```cs
 public class Fabric : ProjectFabric
 {
-public override void AmendProject( IProjectAmender amender )
-{
-    amender.Project.DependencyInjectionOptions().RegisterFramework( new LoggerDependencyInjectionFramework() );
-}
+    public override void AmendProject( IProjectAmender amender )
+    {
+        amender.Project.DependencyInjectionOptions().RegisterFramework( new LoggerDependencyInjectionFramework() );
+    }
 }
 ```
 
