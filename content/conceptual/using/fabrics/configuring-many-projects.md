@@ -3,7 +3,7 @@ uid: fabrics-many-projects
 level: 300
 ---
 
-# Adding aspects to many aspects
+# Adding aspects to many projects
 
 If you have a repository or a solution composed of several projects, adding aspects from a central place is sometimes useful. This article explains several approaches.
 
