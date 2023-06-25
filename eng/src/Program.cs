@@ -1,28 +1,24 @@
-﻿
-using Amazon;
-using BuildMetalamaDocumentation;
+﻿using BuildMetalamaDocumentation;
 using Microsoft.Extensions.FileSystemGlobbing;
 using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
 using PostSharp.Engineering.BuildTools;
 using PostSharp.Engineering.BuildTools.Build.Solutions;
-using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
-using PostSharp.Engineering.BuildTools.Dependencies.Model;
 using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
 using System.IO;
 using System.Diagnostics;
-using PostSharp.Engineering.BuildTools.Build.Publishers;
-using PostSharp.Engineering.BuildTools.Search;
+using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
+using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2023_0;
 
 const string docPackageFileName = "Metalama.Doc.zip";
 
-var product = new Product( Dependencies.MetalamaDocumentation )
+var product = new Product( MetalamaDependencies.MetalamaDocumentation )
 {
     // Note that we don't build Metalama.Samples ourselves. We expect it to be built from the repo itself.
     // HTML artifacts should be restored from artifacts.
-    
+
     Solutions = new Solution[]
     {
         new DotNetSolution( "code\\Metalama.Documentation.Prerequisites.sln" ) { CanFormatCode = true },
@@ -36,49 +32,23 @@ var product = new Product( Dependencies.MetalamaDocumentation )
         },
         new DocFxSolution( "docfx.json" )
     },
-
     PublicArtifacts = Pattern.Create(
         docPackageFileName ),
-    
-    Dependencies = new[] { 
-         Dependencies.PostSharpEngineering,
-         Dependencies.MetalamaMigration,
-         Dependencies.MetalamaLinqPad,
-         Dependencies.MetalamaSamples
-    },
-
-    SourceDependencies = new[]
-    {
-        Dependencies.MetalamaSamples,
-        Dependencies.MetalamaCommunity
-    },
-
+    Dependencies =
+        new[]
+        {
+            DevelopmentDependencies.PostSharpEngineering, MetalamaDependencies.MetalamaMigration,
+            MetalamaDependencies.MetalamaLinqPad, MetalamaDependencies.MetalamaSamples
+        },
+    SourceDependencies = new[] { MetalamaDependencies.MetalamaSamples, MetalamaDependencies.MetalamaCommunity },
     AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
-
-    // Disable automatic build triggers.
-    Configurations = Product.DefaultConfigurations
-        .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
-        .WithValue( BuildConfiguration.Public, new BuildConfigurationInfo(
-            MSBuildName: "Release",
-            ExportsToTeamCityDeployWithoutDependencies: true,
-            PublicPublishers: new Publisher[]
-            {
-                new MergePublisher(),
-                new DocumentationPublisher( new S3PublisherConfiguration[]
-                {
-                    //TODO
-                    new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
-                } )
-            } ) ),
     
-    Extensions = new ProductExtension[]
-    {
-        new UpdateSearchProductExtension(
-            "https://0fpg9nu41dat6boep.a1.typesense.net",
-            "metalamadoc",
-            "https://doc-production.metalama.net/sitemap.xml",
-            true )
-    }
+    Configurations = Product.DefaultConfigurations
+        // Disable automatic build triggers.
+        .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
+
+        // Documentation 2023.0 is no longer published. See later versions for deployment configuration.
+        .WithValue( BuildConfiguration.Public, c => c with { ExportsToTeamCityDeploy = false } )
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
