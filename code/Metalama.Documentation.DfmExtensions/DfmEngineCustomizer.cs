@@ -28,7 +28,8 @@ public class DfmEngineCustomizer : IDfmEngineCustomizer
                 new SingleFileTokenRule(),
                 new ProjectButtonsTokenRule(),
                 new CompareFileTokenRule(),
-                new MultipleFilesTokenRule()
+                new MultipleFilesTokenRule(),
+                new VimeoTokenRule()
             } );
     }
 }

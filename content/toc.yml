@@ -1,7 +1,9 @@
 items:
 # - name: Overview
 #   href: overview/toc.yml
-- name: Conceptual Documentation
+- name: Video tutorials
+  href: videos/toc.yml
+- name: Conceptual documentation
   href: conceptual/toc.yml
 - name: Commented examples
   href: ../source-dependencies/Metalama.Samples/toc.yml

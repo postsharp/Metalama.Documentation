@@ -18,5 +18,6 @@ public class RendererProvider : IDfmCustomizedRendererPartProvider
         yield return new ProjectButtonsRenderer();
         yield return new CompareFileRenderer();
         yield return new MultipleFilesRenderer();
+        yield return new VimeoRenderer();
     }
 }
