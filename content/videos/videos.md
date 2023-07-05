@@ -4,6 +4,8 @@ uid: videos
 
 # Video tutorials
 
-* <xref:video-100>
-* <xref:video-101>
-* <xref:video-102>
+* <xref:video-short-introduction>
+* <xref:video-first-aspect>
+* <xref:video-other-aspect-types>
+* <xref:video-fabrics-and-inheritance>
+* <xref:video-debugging-enhanced-code>

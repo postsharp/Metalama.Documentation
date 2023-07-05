@@ -88,3 +88,7 @@ In all examples above, we have used the <xref:Metalama.Framework.Fabrics.Project
 Instead, or additionally, you can add fabrics to namespaces thanks to the <xref:Metalama.Framework.Fabrics.NamespaceFabric> class. This can be useful when you have large projects where different namespaces must follow architectural styles, requiring different aspects and validation rules.
 
 Finally, you can add a fabric to a type by adding a nested type derived from <xref:Metalama.Framework.Fabrics.TypeFabric>. This is useful when this type has so many members that using custom attributes is cumbersome or when a large part of this type is automatically generated.
+
+> [!div class="see-also"]
+> <xref:video-fabrics-and-inheritance>
+

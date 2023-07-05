@@ -3,8 +3,12 @@ items:
   topicUid: videos
   items:
     - name: 1. A short introduction
-      topicUid: video-100
+      topicUid: video-short-introduction
     - name: 2. Your first aspect
-      topicUid: video-101
+      topicUid: video-first-aspect
     - name: 3. More aspect types
-      topicUid: video-102
+      topicUid: video-other-aspect-types
+    - name: 4. Adding many aspects - inheritance and fabrics
+      topicUid: video-fabrics-and-inheritance
+    - name: 5. Debugging enhanced code
+      topicUid: video-debugging-enhanced-code      

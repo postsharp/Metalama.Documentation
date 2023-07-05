@@ -75,3 +75,7 @@ If you want to go deeper with field/property overrides, consider jumping to the 
 * In this article, you have seen how to use `meta.Proceed` and `meta.Target.Method.Name` in your templates. You can write much more complex and powerful templates, even doing compile-time `if` and `foreach` blocks. To see how, you can jump directly to <xref:templates>.
 
 * To learn how to override several fields and properties from a single type-level aspect, jump to <xref:overriding-methods>.
+
+> [!div class="see-also"]
+> <xref:video-other-aspect-types>
+
