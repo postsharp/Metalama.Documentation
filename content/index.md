@@ -11,9 +11,10 @@ Welcome to the documentation of Metalama, a code quality and productivity improv
 
 | Book | Description |
 |------|-------------|
-| <xref:conceptual> | This is the exhaustive and precise reference documentation. |
-| <xref:samples> | This book contains several examples of different degrees of complexity. |
-| <xref:api> | This book contains the API documentation generated from the source code. |
+| <xref:videos> | A collection of tutorial videos. |
+| <xref:conceptual> | The exhaustive and precise reference documentation. |
+| <xref:samples> | Several commented examples of with different steps of increasing complexity. |
+| <xref:api> | The API documentation generated from the source code. |
 
 ## How to read this documentation?
 

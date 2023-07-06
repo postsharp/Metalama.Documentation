@@ -7,7 +7,7 @@ items:
   href: conceptual/toc.yml
 - name: Commented examples
   href: ../source-dependencies/Metalama.Samples/toc.yml
-- name: API Documentation          
+- name: API documentation          
   topicUid: api
   items:
     - name: Aspect API
