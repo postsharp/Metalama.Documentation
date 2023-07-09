@@ -25,13 +25,18 @@ There are typically two kinds of people using Metalama:
 
 We assigned a _complexity level_ to each article, for instance, 100, 200, 300, as in the U.S. school system. Before you start an article of level 200, you should have a good understanding of level 100. We try not to add complex details to an article of a basic level. Sometimes, you will need to read several articles to read information about a given topic.
 
-## Give us your feedback
+## Getting help
 
-If you have any feedback, suggestions or questions regarding Metalama, don't hesitate to get in touch:
+If you have any question, don't hesitate to get in touch:
 
-* [open an issue](https://github.com/postsharp/Metalama/issues/new) or [start a discussion](https://github.com/postsharp/Metalama/discussions/new) on GitHub,
 * chat with us on [Slack](https://www.postsharp.net/slack) or [Discord](https://www.postsharp.net/discord).
-* email us at hello@postsharp.net.
+* [start a discussion](https://github.com/postsharp/Metalama/discussions/new) on GitHub,
 
-The source code of this documentation (except the API documentation) is hosted at https://github.com/postsharp/Metalama.Documentation. You can suggest improvements and corrections using the discussions board, and even submit a pull request.
+
+## Reporting documentation issues
+
+The source code of this documentation (except the API documentation) is open-source and hosted at https://github.com/postsharp/Metalama.Documentation. You can:
+
+* [open an issue](https://github.com/postsharp/Metalama.Documentation/issues/new) or
+* submit a PR with your improvements.
 

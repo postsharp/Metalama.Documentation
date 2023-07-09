@@ -91,3 +91,15 @@ This markup generates buttons that open the whole directory in GitHub or in the 
 where:
 
 * `<path>` is a relative path to the directory.
+
+### metalama-vimeo
+
+This markup embeds a Vimeo video.
+
+```
+[!metalama-vime <id>]
+``````
+
+where:
+
+* `<id>` is the video ID.
