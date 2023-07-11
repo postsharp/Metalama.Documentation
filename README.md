@@ -1,12 +1,12 @@
 # Metalama Documentation
 
-This repo contains the documentation of Metalama. It's best to read it online at https://doc.metalama.net.
+This repository contains the documentation for Metalama. It is recommended to read it online at https://doc.metalama.net.
 
-The code snippets of this documentation can be under the `code` subdirectory and are fully unit testable. Other examples stem from the [Metalama.Samples](https://github.com/postsharp/Metalama.Samples) and [Metalama.Community](https://github.com/postsharp/Metalama.Community) repos.
-
-
+The code snippets in this documentation are located under the `code` subdirectory and are fully unit testable. Other examples are derived from the [Metalama.Samples](https://github.com/postsharp/Metalama.Samples) and [Metalama.Community](https://github.com/postsharp/Metalama.Community) repositories.
 
 ## Building everything
+
+To build everything, use the following command:
 
 ```powershell
 .\Build.ps1 build
@@ -21,23 +21,21 @@ This markup includes an aspect test in a tab group. The target code is displayed
 
 ```
 [!metalama-test <path> [tabs="<tabs>"] ]
-
 ```
 
 where:
 
-* `<path>` is a relative path, usually starting with `~`, where `~` is replaced by the root of the current repo.
+* `<path>` represents a relative path, typically starting with `~`, where `~` is replaced by the root of the current repository.
 * `<tabs>` is a comma-separated list of one or more of the following values:
-    
+
     * `aspect`
-    * `target` 
+    * `target`
     * `transformed`
     * `output`
 
-
 ### metalama-compare
 
-This markup displayed source and transformed code side by side as a diff.
+This markup displays source and transformed code side by side as a diff.
 
 ```
 [!metalama-compare <path>]
@@ -45,8 +43,7 @@ This markup displayed source and transformed code side by side as a diff.
 
 where:
 
-* `<path>` is a relative path, usually starting with `~`, where `~` is replaced by the root of the current repo.
-
+* `<path>` represents a relative path, typically starting with `~`, where `~` is replaced by the root of the current repository.
 
 ### metalama-file
 
@@ -58,16 +55,14 @@ This markup includes a source file or a portion of it.
 
 where:
 
-* `<path>` is a relative path, usually starting with `~`, where `~` is replaced by the root of the current repo.
-* `transformed` means that the transformed code should be displayed instead of the source code.
-* `marker` means that only the code between lines with comments `/*<Foo>*/` and `/*</Foo>*/` should be included.
-* `member` means that only the the given member (given in form `TypeName.MemberName` without namespace) should be included.
-
+* `<path>` represents a relative path, typically starting with `~`, where `~` is replaced by the root of the current repository.
+* `transformed` indicates that the transformed code should be displayed instead of the source code.
+* `marker` indicates that only the code between lines with comments `/*<Foo>*/` and `/*</Foo>*/` should be included.
+* `member` indicates that only the given member (provided in the form `TypeName.MemberName` without namespace) should be included.
 
 ### metalama-files
 
 This markup creates a tab group with several files.
-
 
 ```
 [!metalama-files <path1> <path2> ... <path_n> [links="true|false"]]
@@ -75,14 +70,12 @@ This markup creates a tab group with several files.
 
 where:
 
-* `<path1>` ... `<path_n>` are relative paths, usually starting with `~`, where `~` is replaced by the root of the current repo.
+* `<path1>` ... `<path_n>` represent relative paths, typically starting with `~`, where `~` is replaced by the root of the current repository.
 * `links` indicates whether GitHub links should be generated.
-
-
 
 ### metalama-project-buttons
 
-This markup generates buttons that open the whole directory in GitHub or in the sandbox.
+This markup generates buttons that open the entire directory in GitHub or in the sandbox.
 
 ```
 [!metalama-project-buttons <path>]
@@ -90,16 +83,16 @@ This markup generates buttons that open the whole directory in GitHub or in the 
 
 where:
 
-* `<path>` is a relative path to the directory.
+* `<path>` represents a relative path to the directory.
 
 ### metalama-vimeo
 
 This markup embeds a Vimeo video.
 
 ```
-[!metalama-vime <id>]
-``````
+[!metalama-vimeo <id>]
+```
 
 where:
 
-* `<id>` is the video ID.
+* `<id>` represents the video ID.

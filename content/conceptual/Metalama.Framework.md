@@ -1,16 +1,16 @@
 # Metalama.Framework
 
-> You can try Metalama in your browser, without installing anything, at <https://try.metalama.net/>.
+> Try Metalama in your browser, without installing anything, at <https://try.metalama.net/>.
 
 ## Introduction
 
-Metalama is an [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) framework where aspects are written as pure C# templates.
+Metalama is an [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) framework wherein aspects are written as pure C# templates.
 
-These templates make it easy to write code that combines compile-time information (such as names and types of parameters of a method) and run-time information (such as parameter values) in a natural way, without having to learn yet another language, or having to combine C# with some special templating language.
+These templates facilitate the writing of code that seamlessly combines compile-time information (such as the names and types of a method's parameters) and run-time information (such as parameter values). This integration is achieved in a natural way, without the need to learn another language or combine C# with a special templating language.
 
 ## Example
 
-For example, consider this simple aspect, which logs the name of a method and information about its parameters to the console before letting the method execute.
+Consider this simple aspect, which logs a method's name and its parameters' information to the console before executing the method.
 
 ```c#
 class Log : OverrideMethodAspect
@@ -41,7 +41,7 @@ void CountDown(string format, int n)
 }
 ```
 
-This changes the method so that it behaves as if it was written like this:
+Applying this aspect modifies the method so that it behaves as if it was written like this:
 
 ```c#
 void CountDown(string format, int n)
@@ -56,11 +56,11 @@ void CountDown(string format, int n)
 }
 ```
 
-Notice that the compile-time `foreach` loop was unrolled, so that each parameter has its own statement and that the compile-time expressions `parameter.Type` and `parameter.Name` have been evaluated and even folded with the nearby constants. On the other hand, the run-time calls to `Console.WriteLine` have been preserved. The expression `parameter.Value` is special, and has been translated to accessing the values of the parameters.
+Observe that the compile-time `foreach` loop was unrolled, so that each parameter has its own statement. The compile-time expressions `parameter.Type` and `parameter.Name` have been evaluated and even folded with the nearby constants. Conversely, the run-time calls to `Console.WriteLine` have been preserved. The expression `parameter.Value` is special and has been translated to access the values of the parameters.
 
-## Aspects, advice and Initialize
+## Aspects, Advice, and Initialize
 
-While abstract aspects like `OverrideMethodAspect` work well for simple needs, more customization is required in more complex cases. For example, consider the situation where you want to apply an aspect attribute to a type and have it affect all its methods. In Metalama, you can do this by directly implementing the `IAspect<T>` interface and putting this logic into the `Initialize` method. For example:
+Abstract aspects like `OverrideMethodAspect` suffice for simple needs, but more complex cases require further customization. Consider the scenario where you want to apply an aspect attribute to a type and have it affect all its methods. In Metalama, this can be achieved by directly implementing the `IAspect<T>` interface and incorporating this logic into the `Initialize` method, as shown below:
 
 ```c#
 public class CountMethodsAspect : Attribute, IAspect<INamedType>
@@ -89,21 +89,20 @@ public class CountMethodsAspect : Attribute, IAspect<INamedType>
 }
 ```
 
-This aspect adds the `Override` *advice* to each method in a marked type. Here, "advice" is some kind of modification applied to a single element in your code.
+This aspect adds the `Override` *advice* to each method in a marked type. Here, "advice" refers to a modification applied to a single element in your code.
 
-As you can see, the `Initialize` method can also be used for other purposes, like initializing values shared by the advice methods of the aspect.
+As illustrated, the `Initialize` method can also serve other purposes, such as initializing values shared by the advice methods of the aspect.
 
-## Template context
+## Template Context
 
-Inside a template method, extra operations are available through members of the `TemplateContext` class. These members are intended to be used directly, which requires adding `using static Metalama.Framework.Aspects.TemplateContext;` to the top of your files. To make these members look like special operations, they use the camelCase naming convention, violating .NET naming conventions, which require PascalCase.
+Inside a template method, additional operations are available through the `TemplateContext` class members. These members are intended for direct use, which requires adding `using static Metalama.Framework.Aspects.TemplateContext;` at the beginning of your files. To make these members appear as special operations, they use the camelCase naming convention, in violation of .NET naming conventions, which require PascalCase.
 
-These members are:
+These members include:
 
-- `dynamic Proceed()`: Gives control to the original code of the method that the template is being applied to. When multiple advice methods per method are supported, this will instead give control to the next template in line, if there are any left.
-- `ITemplateContext Target { get; }`: Gives access to information about the code element that the template is being applied to.
-- `T CompileTime<T>( T expression )`: Informs the templating engine that this expression should be considered to be compile-time, even when it would not be normally. Other than that, the input value is returned unchanged.
+- `dynamic Proceed()`: Transfers control to the original code of the method to which the template is being applied. When multiple advice methods per method are supported, this will instead transfer control to the next template in line, if any remain.
+- `ITemplateContext Target { get; }`: Provides access to information about the code element to which the template is being applied.
+- `T CompileTime<T>( T expression )`: Informs the templating engine that this expression should be considered to be compile-time, even when it would not be normally. Besides this, the input value is returned unchanged.
 
-## Packaging an aspect
+## Packaging an Aspect
 
-There is nothing special about creating a NuGet package for a project that contains Metalama.Framework aspects; it works the same as creating a NuGet package for a regular .NET library.
-
+Creating a NuGet package for a project that contains Metalama.Framework aspects is straightforward; it works the same way as creating a NuGet package for a regular .NET library.

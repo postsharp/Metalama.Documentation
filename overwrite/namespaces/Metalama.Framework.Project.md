@@ -3,19 +3,19 @@ uid: Metalama.Framework.Project
 summary: *content
 ---
 
-This namespace fulfills the following purposes:
+This namespace serves the following purposes:
 
-* Gives read access to the project configuration, which includes the project references, preprocessor symbols, build properties, and other similar pieces of information. See the <xref:Metalama.Framework.Project.IProject> interface for details. This interface is accessible from any code element through the <xref:Metalama.Framework.Code.ICompilation.Project?text=ICompilation.Project> property.
+* It provides read access to the project configuration, which encompasses project references, preprocessor symbols, build properties, and other related information. Refer to the <xref:Metalama.Framework.Project.IProject> interface for more details. This interface can be accessed from any code element through the <xref:Metalama.Framework.Code.ICompilation.Project?text=ICompilation.Project> property.
 
-* Allows you to implement a configuration API for your aspect library. See <xref:exposing-configuration> for details.
+* It enables the implementation of a configuration API for your aspect library. Refer to <xref:exposing-configuration> for more details.
 
-* Exposes information about the current execution context on the <xref:Metalama.Framework.Project.MetalamaExecutionContext.Current?text=MetalamaExecutionContext.Current> property.
-  
-* Exposes the service provider, which gives access from high-level code to the low-level plug-ins.
+* It discloses information about the current execution context via the <xref:Metalama.Framework.Project.MetalamaExecutionContext.Current?text=MetalamaExecutionContext.Current> property.
+
+* It reveals the service provider, which facilitates access from high-level code to the low-level plugins.
 
 ## Conceptual documentation
 
-See <xref:exposing-configuration>.
+Refer to <xref:exposing-configuration>.
 
 ## Class diagram
 
@@ -67,7 +67,7 @@ classDiagram
         IsDesignTime
         CapturesCodeFixImplementations
         CapturesCodeFixTitles
-        CapturesNonObservableTransformations	
+        CapturesNonObservableTransformations
     }
 
     IProject <-- ICompilation : exposes
@@ -81,3 +81,4 @@ classDiagram
 ```
 
 ## Namespace members
+

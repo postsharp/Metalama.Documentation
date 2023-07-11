@@ -5,9 +5,9 @@ level: 300
 
 # Adding aspects to many projects
 
-If you have a repository or a solution composed of several projects, adding aspects from a central place is sometimes useful. This article explains several approaches.
+If you manage a repository or a solution composed of several projects, it can be beneficial to add aspects from a central location. This article outlines several methods for achieving this.
 
-Note that the same approaches also work when configuring aspect libraries or adding architecture rules.
+Please note that these approaches are also applicable when configuring aspect libraries or adding architectural rules.
 
 ## Using transitive project fabrics
 
@@ -17,18 +17,16 @@ _Transitive project fabrics_ are executed in any project that _references_ the a
 
 Transitive project fabrics are executed after any _project fabric_ in the current project.
 
-If several transitive project fabrics are active, they are executed in the following order:
+If multiple transitive project fabrics are active, they are executed in the following order:
 
-1. Depth in the dependency graph: dependencies with lower depth (i.e., "nearer" to the main project) are processed first.
+1. Depth in the dependency graph: dependencies with lower depth (i.e., "closer" to the main project) are processed first.
+2. Assembly name (in alphabetical order).
 
-2. Assembly name (alphabetical order).
-
-Transitive dependencies are intentionally executed after compilation dependencies, so compilation dependencies have a chance to configure transitive dependencies before they run.
-
+Transitive dependencies are intentionally executed after compilation dependencies, allowing the latter to configure transitive dependencies before they run.
 
 ### Example
 
-So consider the following dependency graph:
+Consider the following dependency graph:
 
 ```mermaid
 flowchart BT
@@ -64,14 +62,13 @@ In `MySolution`, the following transitive project fabrics will be active:
 
 ## Using common project fabrics
 
-A second approach is to rely on the directory structure instead of the dependency graph. 
+Another approach is to rely on the directory structure instead of the dependency graph.
 
-The idea is to write a project fabric, store it in the root directory and the repo, and automatically include this file in each project using [Directory.Build.props](https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-your-build).
-
+The concept is to write a project fabric, store it in the root directory of the repository, and automatically include this file in each project using [Directory.Build.props](https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-your-build).
 
 #### Step 1. Create a project fabric
 
-In the parent directory that recursively contains all projects you want to be affected by the shared fabric, create a project fabric deriving from <xref:Metalama.Framework.Fabrics.ProjectFabric> as you would do for a regular project fabric.
+In the parent directory that recursively contains all projects you want to be affected by the shared fabric, create a project fabric derived from <xref:Metalama.Framework.Fabrics.ProjectFabric> as you would do for a regular project fabric.
 
 #### Step 2. Create Directory.Build.props
 
@@ -80,7 +77,7 @@ In the same directory, create a file named `Directory.Build.props` with the foll
 ```xml
 <Project>
 	<!-- Imports Directory.Build.props of the upper directory. -->
-	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" 
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))"
 			Condition="Exists('$([MSBuild]::GetPathOfFileAbove(`Directory.Build.props`, `$(MSBuildThisFileDirectory)../`))')"/>
 
 	<!-- Include the shared fabric -->
@@ -96,7 +93,7 @@ See <xref:sample-shared-fabric>.
 
 ### Execution order of shared fabrics
 
- When you have several project fabrics in the same project, they are ordered by the following criteria:
+When you have multiple project fabrics in the same project, they are ordered by the following criteria:
 
 1. Distance of the source file from the root directory: fabrics closer to the root directory are processed first.
 2. Fabric namespace.
@@ -112,7 +109,7 @@ repo
 +--- dir1
 |     +-- subdir11
 |     |   +-- Project11.csproj
-|     |   +-- Project11Fabric.cs 
+|     |   +-- Project11Fabric.cs
 |     +-- subdir12
 |         + Project12.csproj
 +--- dir2

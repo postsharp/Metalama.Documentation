@@ -5,20 +5,20 @@ level: 400
 
 # Testing compile-time code
 
-When you build complex aspects, it is a good idea to move the complex compile-time logic, typically some code that queries the code model, to compile-time classes that are not aspects. It is possible to build unit tests for these compile-time classes. 
+When building complex aspects, it's advisable to shift the intricate compile-time logic, for instance, code that queries the code model, to compile-time classes that are not aspects. Unlike aspects, these compile-time classes can be subjected to unit tests.
 
-## Benefits 
+## Benefits
 
-The benefit of unit-testing compile-time classes are:
+Unit-testing compile-time classes offers the following advantages:
 
-* it is generally simpler to create a complete test coverage with unit tests than with aspect tests (see <xref:aspect-testing>),
-* it is easier to debug unit tests than aspect tests.
+* It's generally simpler to achieve comprehensive test coverage with unit tests than with aspect tests (see <xref:aspect-testing>),
+* Debugging unit tests is easier than debugging aspect tests.
 
-## To create unit tests for your compile-time code
+## Creating unit tests for your compile-time code
 
 ### Step 1. Disable pruning of compile-time code
 
-In the project that defines the compile-time code, set the `MetalamaRemoveCompileTimeOnlyCode` property to `False`:
+In the project defining the compile-time code, set the `MetalamaRemoveCompileTimeOnlyCode` property to `False`:
 
 ```xml
 <Project>
@@ -28,13 +28,13 @@ In the project that defines the compile-time code, set the `MetalamaRemoveCompil
 </Project>
 ```
 
-If you skip this step, calling any compile-time code from a unit test will throw an exception.
+Failing to follow this step will result in an exception whenever any compile-time code is called from a unit test.
 
-### Step 2. Create a Xunit test project
+### Step 2. Create an Xunit test project
 
-Create a Xunit test project as usual. 
+Proceed to create an Xunit test project as you usually would.
 
-It is highly recommended that you target .NET 6.0 because temporary files cannot be cleaned up automatically with lower .NET versions.
+It's strongly recommended to target .NET 6.0 as temporary files cannot be automatically cleaned up with lower .NET versions.
 
 ### Step 3. Add the Metalama.Testing.UnitTesting project
 
@@ -48,7 +48,7 @@ It is highly recommended that you target .NET 6.0 because temporary files cannot
 
 ### Step 4. Create a test class derived from UnitTestClass
 
-Create a new test class and make it derive from <xref:Metalama.Testing.UnitTesting.UnitTestClass>.
+Create a new test class that derives from <xref:Metalama.Testing.UnitTesting.UnitTestClass>.
 
 ```cs
  public class MyTests : UnitTestClass { }
@@ -59,7 +59,7 @@ Create a new test class and make it derive from <xref:Metalama.Testing.UnitTesti
 
 Each test method _must_ call the <xref:Metalama.Testing.UnitTesting.UnitTestClass.CreateTestContext> and _must_ dispose of the context at the end of the test method.
 
-Then, typically, your test would call the  <xref:Metalama.Testing.UnitTesting.TestContext.CreateCompilation*?text=context.CreateCompilation> method to get an <xref:Metalama.Framework.Code.ICompilation>.
+Your test would typically call the <xref:Metalama.Testing.UnitTesting.TestContext.CreateCompilation*?text=context.CreateCompilation> method to obtain an <xref:Metalama.Framework.Code.ICompilation>.
 
 ```cs
 
@@ -73,14 +73,14 @@ public class MyTests : UnitTestClass
 
         // Create a compilation
         var code = @"
-class C 
+class C
 {
     void M1 () {}
 
     void M2()
     {
         var x = 0;
-        x++; 
+        x++;
     }
 }
 
@@ -91,12 +91,13 @@ class C
         var type = compilation.Types.OfName( "C" ).Single();
 
         var m1 = type.Methods.OfName( "M1" ).Single();
-        
-        // Do any assertion. Typically call your compile-time code here.
+
+        // Perform any assertion. Typically, your compile-time code would be called here.
         Assert.Equal( 0, m1.Parameters.Count );
     }
 }
 ```
 
 > [!NOTE]
-> Some APIs require the execution context to be set and assigned to your compilation. There is currently no public API to change the execution context.
+> Some APIs require the execution context to be set and assigned to your compilation. Currently, there's no public API to modify the execution context.
+

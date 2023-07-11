@@ -4,19 +4,20 @@ uid: preview-metalama-diff
 
 # Metalama Diff
 
-Aspects transform your code. You can see how modified code differs from your source code by the Metalama Diff option from the context menu in Visual Studio.
+Aspects transform your code. You can observe the differences between your original source code and the transformed version using the Metalama Diff option. This option is accessible from the context menu in Visual Studio.
 
-To see the diff version, right-click on the code. This will pull up the menu like this.
+To view the diff version, right-click on the code. This action will display a menu as shown below.
 
 ![Metalama_Diff_Menu_Option](images/showing_metalama_diff_option.png)
 
-Once clicked, the difference between the source code and the changed code will be displayed side by side like this:
+Upon clicking, the differences between the source code and the transformed code will be displayed side by side, as depicted in the following image:
 
 ![Metalama_Diff_Side_by_Side](images/lama_diff_side_by_side.png)
 
-The screenshot shows the source code of `FlakyMethod` and the code after it has been modified by the `[Log]` aspect. However, you can see that the command shows the entire file in its original and modified version side by side.
+The screenshot illustrates the source code of `FlakyMethod` alongside the code after it has been transformed by the `[Log]` aspect. Note that the command displays the entire file in both its original and transformed versions side by side.
 
-To see changes for a particular section of the code, select that part of the code from the dropdown as shown below.
+To view changes for a specific section of the code, select that portion from the dropdown menu as shown below.
 
 ![Diff_change_selector](images/metalama_diff_change_view_selector.png)
+
 

@@ -5,50 +5,50 @@ level: 200
 
 # Verifying usage of a class, member, or namespace
 
-When designing software, one of the most critical activities is defining _dependencies_ between components - i.e., defining who is allowed to call whom. In C#, this concept is called _accessibility_. To ensure optimal design, it is advisable always to grant the _least necessary_ accessibility. This idea is similar to the "need to know" principle in intelligence services and benefits software architecture by minimizing unintended _coupling_ between components and making it easier to change individual components in the future.
+When designing software, one of the most critical activities is defining dependencies between components, that is, defining who is allowed to call whom. In C#, this concept is referred to as _accessibility_. For optimal design, it's advisable to always grant the least necessary accessibility. This principle, similar to the "need to know" concept in intelligence services, benefits software architecture by minimizing unintended coupling between components and facilitating changes to individual components in the future.
 
-In C#, accessibility is defined across two boundaries: _assemblies_ and _types_. As you know, `private` members are only accessible from the current type, `protected` members are accessible from the current and any child type, `public` members are universally visible, and `internal` members are only accessible from the current assembly unless an `InternalsVisibleTo` extends the accessibility of internal members to other assemblies.
+In C#, accessibility is defined across two boundaries: _assemblies_ and _types_. As you surely know, `private` members are only accessible from the current type, `protected` members are accessible from the current and any child type, `public` members are universally visible, and `internal` members are only accessible from the current assembly unless an `InternalsVisibleTo` extends the accessibility of internal members to other assemblies.
 
-Large projects, however, often require finer control over accessibility than what C# can provide out of the box. 
+However, large projects often require finer control over accessibility than what C# can provide out of the box.
 
-For instance, you might want to enforce one of the following rules:
+For instance, you might want to enforce rules such as:
 
-* Require a specific method or constructor to be called from unit tests only, based on the caller namespace.
-* Forbid a type from being accessed from outside its home namespace.
-* Require a whole namespace only to be used by a friend namespace.
-* Forbid internal members of a namespace from being accessed outside of their home namespace.
+* Requiring a specific method or constructor to be called from unit tests only, based on the caller namespace.
+* Forbidding a type from being accessed from outside its home namespace.
+* Requiring a whole namespace only to be used by a friend namespace.
+* Forbidding internal members of a namespace from being accessed outside of their home namespace.
 
-The traditional approach to enforcing such rules is to use code comments and then rely on manual code reviews to enforce the desired design intent. Yet, this has two significant weaknesses: it is prone to human errors and suffers from a lengthy feedback loop. Another approach is to split the codebase into a more fine-grained structure of projects, but this increases the build and deployment complexity and negatively affects the application start-up time.
+The traditional approach to enforcing such rules is to use code comments and then rely on manual code reviews to enforce the desired design intent. However, this approach has two significant weaknesses: it is prone to human errors and suffers from a lengthy feedback loop. Another approach is to split the codebase into a more fine-grained structure of projects, but this increases the build and deployment complexity and negatively affects the application start-up time.
 
 Thanks to Metalama, you can easily fine-tune the intended accessibility of your namespaces, types, or members using custom attributes or a compile-time API.
 
 ## Validating usage with custom attributes
 
-When you want to fine-tune the accessibility of hand-picked types or members, the easiest solution is to use custom attributes.
+When you want to fine-tune the accessibility of hand-picked types or members, using custom attributes is the easiest solution.
 
 Follow these steps:
 
 1. Add the `Metalama.Extensions.Architecture` package to your project.
 
-2. Apply one of the following custom attributes to the type or member for which you want to limit the accessibility. 
+2. Apply one of the following custom attributes to the type or member for which you want to limit the accessibility.
 
     | Attribute | Description |
     |-----------|-------------|
     | <xref:Metalama.Extensions.Architecture.Aspects.CanOnlyBeUsedFromAttribute> | Reports a warning when the target declaration is accessed from outside of the given scope.
-    | <xref:Metalama.Extensions.Architecture.Aspects.InternalsCanOnlyBeUsedFromAttribute> |  Reports a warning when any `internal` member of the type is accessed from outside the given scope. 
+    | <xref:Metalama.Extensions.Architecture.Aspects.InternalsCanOnlyBeUsedFromAttribute> |  Reports a warning when any `internal` member of the type is accessed from outside the given scope.
     | <xref:Metalama.Extensions.Architecture.Aspects.CannotBeUsedFromAttribute> | Reports a warning when the target declaration is accessed from the given scope.
     | <xref:Metalama.Extensions.Architecture.Aspects.InternalsCannotBeUsedFromAttribute> | Reports a warning when any `internal` member of the type is accessed from the given scope.
-    
-3. Set one or many of the following properties of the custom attribute, which control the scope, i.e. which declarations can or cannot access the target declaration:
-    
+
+3. Set one or many of the following properties of the custom attribute, which control the scope, that is, which declarations can or cannot access the target declaration:
+
     | Property  | Description  |
     |---------|---------|
     | <xref:Metalama.Extensions.Architecture.Aspects.BaseUsageValidationAttribute.CurrentNamespace>     |  Includes the current namespace in the scope.       |
     | <xref:Metalama.Extensions.Architecture.Aspects.BaseUsageValidationAttribute.Types> | Includes a list of types in the scope. |
     | <xref:Metalama.Extensions.Architecture.Aspects.BaseUsageValidationAttribute.Namespaces> | Includes a list of namespaces in the scope by identifying them with a string. One asterisk (`*`) matches any namespace component but not the dot (`.`). A double asterisk (`**`) matches any substring including the dot (`.`).
     | <xref:Metalama.Extensions.Architecture.Aspects.BaseUsageValidationAttribute.NamespaceOfTypes>     |  Includes a list of the namespaces in the scope by identifying them with arbitrary types of these namespaces.
-    
-4. Optionally set the <xref:Metalama.Extensions.Architecture.Aspects.BaseUsageValidationAttribute.Description> property. The value of this property will be appended to the standard error message.
+
+4. Optionally, set the <xref:Metalama.Extensions.Architecture.Aspects.BaseUsageValidationAttribute.Description> property. The value of this property will be appended to the standard error message.
 
 ### Example: Test-only constructor
 
@@ -64,7 +64,7 @@ In the following example, the class `Foo` uses the <xref:Metalama.Extensions.Arc
 
 ## Validating usage programmatically
 
-Custom attributes are adequate when the types or members to validate have to be hand-picked. However, when these types or members can be selected by _rule_, it is better to do it programmatically, with compile-time code and [fabrics](xref:fabrics).
+Custom attributes are adequate when the types or members to validate have to be hand-picked. However, when these types or members can be selected by a _rule_, it is more efficient to do it programmatically, with compile-time code and [fabrics](xref:fabrics).
 
 Follow these steps:
 
@@ -79,14 +79,14 @@ Follow these steps:
 
 3. Import the <xref:Metalama.Extensions.Architecture.Fabrics> and <xref:Metalama.Extensions.Architecture.Predicates> namespaces to benefit from extension methods.
 
-4. Edit the  <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*>,  <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> of this method. Open the dance by calling [amender.Verify()](xref:Metalama.Extensions.Architecture.Fabrics.AmenderExtensions.Verify*).
+4. Edit the  <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*>,  <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> of this method. Start by calling [amender.Verify()](xref:Metalama.Extensions.Architecture.Fabrics.AmenderExtensions.Verify*).
 
 5. Call one of the following methods:
 
     | Attribute | Description |
     |-----------|-------------|
     | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.CanOnlyBeUsedFrom*> | Reports a warning when the target declaration is accessed from outside the given scope.
-    | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.InternalsCanOnlyBeUsedFrom*> |  Reports a warning when any `internal` member of the type is accessed from outside of the given scope. 
+    | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.InternalsCanOnlyBeUsedFrom*> |  Reports a warning when any `internal` member of the type is accessed from outside of the given scope.
     | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.CannotBeUsedFrom*> | Reports a warning when the target declaration is accessed from the given scope.
     | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.InternalsCannotBeUsedFrom*> | Reports a warning when any `internal` member of the type is accessed from the given scope.
 

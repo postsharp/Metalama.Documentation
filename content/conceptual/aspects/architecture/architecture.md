@@ -17,6 +17,6 @@ flowchart  TB
     Validators -- provide & suppress--> Diagnostics
     Diagnostics -- contain --> CodeFixes
     CodeFixes[Code Fixes] -- apply --> Aspects
-
 ```
+
 

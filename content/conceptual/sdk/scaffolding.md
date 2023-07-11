@@ -7,14 +7,14 @@ level: 400
 
 A Metalama SDK solution typically contains the following projects:
 
-* The _public_ project (`MyExtension` in the diagram below) contains the classes exposed to the consumers of your solution. This project is a standard class library and it targets .NET Standard 2.0.
-* The _weaver_ project (`MyExtension.Weaver` in the diagram below) contains the implementation of the public API thanks to the Metalama SDK and Roslyn APIs. This project is deployed as a _Roslyn analyzer_. It must target _only_ .NET Standard 2.0.
-* The _test_ project (`MyExtension.UnitTests` in the diagram below)  is optional but recommended. It contains the test suite.
-* Consumer projects (`MyProject` in the diagram below) may be a part of the same solution or may reference the Metalama extension as a NuGet package.
+* The _public_ project (`MyExtension` in the diagram below) contains the classes exposed to the consumers of your solution. This project is a standard class library and targets .NET Standard 2.0.
+* The _weaver_ project (`MyExtension.Weaver` in the diagram below) contains the implementation of the public API, utilizing the Metalama SDK and Roslyn APIs. This project is deployed as a _Roslyn analyzer_ and must target _only_ .NET Standard 2.0.
+* The _test_ project (`MyExtension.UnitTests` in the diagram below) is optional but recommended as it contains the test suite.
+* Consumer projects (`MyProject` in the diagram below) can be part of the same solution or may reference the Metalama extension as a NuGet package.
 
 ## Dependency diagram
 
-The following graph illustrates the different projects and their dependencies.
+The graph below illustrates the different projects and their dependencies.
 
 ```mermaid
 graph BT
@@ -43,10 +43,10 @@ graph BT
 
 The public project:
 
-* references `Metalama.Framework`;
-* targets `netstandard2.0`;
-* redefines the `PackageId` property to add the `.Redist` suffix to the assembly name;
-* typically makes internals visible to the weaver project.
+* References `Metalama.Framework`.
+* Targets `netstandard2.0`.
+* Redefines the `PackageId` property to add the `.Redist` suffix to the assembly name.
+* Typically makes internals visible to the weaver project.
 
 ### Example
 
@@ -56,12 +56,12 @@ The public project:
 
 The weaver project:
 
-* typically has a name that ends with the `.Weaver` suffix, although not following this convention has no impact;
-* references `Metalama.Framework.Sdk`;
-* references the public project;
-* targets exclusively `netstandard2.0`;
-* is typically the main project of the NuGet package;
-* redefines the `PackageId` to the real package name, i.e. removes the `.Weaver` suffix from the package name.
+* Typically has a name that ends with the `.Weaver` suffix. However, not following this convention does not have any impact.
+* References `Metalama.Framework.Sdk`.
+* References the public project.
+* Targets exclusively `netstandard2.0`.
+* Is typically the main project of the NuGet package.
+* Redefines the `PackageId` to the real package name, i.e., removes the `.Weaver` suffix from the package name.
 
 ### Example
 
@@ -71,14 +71,14 @@ The weaver project:
 
 The unit test project:
 
-* references the public project;
-* references the weaver project with both `OutputItemType="Analyzer"` and `ReferenceOutputAssembly="false"`;
-* references the following packages:
+* References the public project.
+* References the weaver project with both `OutputItemType="Analyzer"` and `ReferenceOutputAssembly="false"`.
+* References the following packages:
   * `Metalama.Testing.AspectTesting`
   * `Microsoft.NET.Test.Sdk`
   * `xunit`
   * `xunit.runner.visualstudio`
-* can target any platform supported by the test framework.
+* Can target any platform supported by the test framework.
 
 ### Example
 
@@ -86,11 +86,11 @@ The unit test project:
 
 ## 4. Consuming projects in the same solution
 
-If the consuming projects are a part of the same solution as the Metalama extension projects, they need to:
+If the consuming projects are part of the same solution as the Metalama extension projects, they need to:
 
-* reference the public project;
-* reference the weaver project with both `OutputItemType="Analyzer"` and `ReferenceOutputAssembly="false"` so that it is included only at compile time;
-* reference the `Metalama.Framework` package.
+* Reference the public project.
+* Reference the weaver project with both `OutputItemType="Analyzer"` and `ReferenceOutputAssembly="false"` so that it is included only at compile time.
+* Reference the `Metalama.Framework` package.
 
 ### Example
 
@@ -115,7 +115,7 @@ If the consuming projects are a part of the same solution as the Metalama extens
 
 If the consuming projects are not part of the same solution as the Metalama extension projects, they need to:
 
-* reference the main package of the extension, produced from the weaver project.
+* Reference the main package of the extension, produced from the weaver project.
 
 ### Example
 

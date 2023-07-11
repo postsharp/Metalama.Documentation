@@ -5,50 +5,50 @@ level: 200
 
 # Getting started: contracts
 
-One of the most popular use cases of aspect-oriented programming is to create a custom attribute to validate the field, property, or parameter to which it is applied. Typical examples are `[NotNull]` or `[NotEmpty]`.
+One of the most prevalent use cases of aspect-oriented programming is the creation of a custom attribute for the validation of fields, properties, or parameters to which it is applied. Examples include `[NotNull]` or `[NotEmpty]`.
 
-In Metalama, you can achieve this using a _contract_. With a contract, you can:
+In Metalama, this can be achieved by using a _contract_. With a contract, you have the option to:
 
-* throw an exception when the value does not fulfill a condition of your choice, or
-* normalize the received value (for instance, trimming the whitespace of a string).
+* Throw an exception when the value does not meet a condition of your choosing, or
+* Normalize the received value (for instance, by trimming the whitespace of a string).
 
-Technically speaking, a contract is a piece of code that you inject after _receiving_ or before _sending_ a value. You can do more than throw an exception or normalize the value.
+A contract, technically, is a segment of code that is injected after _receiving_ or before _sending_ a value. It can be utilized for more than just throwing exceptions or normalizing values.
 
 
 ## The simple way: overriding the ContractAspect class
 
 1. Add the `Metalama.Framework` package to your project.
 
-2. Create a new class derived from the <xref:Metalama.Framework.Aspects.ContractAspect> abstract class. This class will be a custom attribute. It is common to name it with the `Attribute` suffix.
+2. Create a new class that derives from the <xref:Metalama.Framework.Aspects.ContractAspect> abstract class. This class will function as a custom attribute, and it is common practice to name it with the `Attribute` suffix.
 
+3. Implement the <xref:Metalama.Framework.Aspects.ContractAspect.Validate*> method in plain C#. This method will act as a <xref:templates?text=template> that defines how the aspect overrides the hand-written target method.
 
-3. Implement the <xref:Metalama.Framework.Aspects.ContractAspect.Validate*> method in plain C#. This method will serve as a <xref:templates?text=template> defining how the aspect overrides the hand-written target method.
+    In this template, the incoming value is represented by the parameter name `value`, irrespective of the actual name of the field or parameter.
 
-    In this template, the incoming value is represented by the parameter name `value`, regardless of the actual name of the field or parameter.
+    The `nameof(value)` expression will be substituted with the name of the _target_ parameter.
 
-    The `nameof(value)` expression will be replaced with the name of the _target_ parameter.
-
-
-4. The aspect is a custom attribute. You can add it to any field, property, or parameter. To validate the return value of a method, use this syntax: `[return: MyAspect]`.
+4. The aspect operates as a custom attribute. It can be added to any field, property, or parameter. To validate the return value of a method, use the following syntax: `[return: MyAspect]`.
 
 
 ### Example: null check
 
-The most common use of contracts is to check nullability. Here is the simplest example.
+The most frequent use of contracts is to verify nullability. Here is the simplest example.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleNotNull.cs]
 
-Notice how the `nameof(value)` expression is replaced by `nameof(parameter)` when the contract is applied to a parameter.
+Observe how the `nameof(value)` expression is replaced by `nameof(parameter)` when the contract is applied to a parameter.
 
 ### Example: trimming
 
-You can do more with a contract than throwing an exception. In the following example, the aspect trims whitespace from strings. We add the same aspect to properties and parameters.
+A contract can be used for more than just throwing an exception. In the subsequent example, the aspect trims whitespace from strings. The same aspect is added to properties and parameters.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/trim.cs]
 
 ## Going deeper
 
-If you want to go deeper with contracts, consider jumping to the following articles:
+If you wish to delve deeper into contracts, consider referring to the following articles:
 
-* In this article, we limited ourselves to very simple contract implementations. To learn how to write more code templates, you can jump directly to <xref:templates>.
-* In this article, we have only applied contracts to the _default direction_ of fields, properties, or parameters. To learn about the concept of contract direction, jump to <xref:contracts>.
+* In this article, we have restricted ourselves to very basic contract implementations. To learn how to write more complex code templates, you can directly refer to <xref:templates>.
+* In this article, we have only applied contracts to the _default direction_ of fields, properties, or parameters. To understand the concept of contract direction, refer to <xref:contracts>.
+
+

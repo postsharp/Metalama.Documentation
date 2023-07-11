@@ -4,27 +4,26 @@ level: 300
 ---
 # Implementing interfaces
 
-Some aspects need to modify the target type to implement a new interface. This can be done only by using the programmatic advising API.
+Certain aspects necessitate modifying the target type to implement a new interface. This can only be achieved by using the programmatic advising API.
 
 ## Step 1. Call IAdviceFactory.ImplementInterface
 
-In your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, call the <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> method.
+Within your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, invoke the <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> method.
 
 ## Step 2. Add interface members to the aspect class
 
-Add all interface members to the aspect class and mark them with the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute?text=[InterfaceMember]> custom attribute. There is no need to have the aspect class implement the introduced interface.
+Incorporate all interface members into the aspect class and label them with the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute?text=[InterfaceMember]> custom attribute. It is not necessary for the aspect class to implement the introduced interface.
 
-The following rules apply to interface members:
+The following rules pertain to interface members:
 
-- The name and the signature of all template interface members must match exactly those of the introduced interface.
-- The accessibility of introduced members is irrelevant.
-- The aspect framework will generate public members unless the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute.IsExplicit> property is set to true. In this case, an explicit implementation is created.
+- The name and signature of all template interface members must precisely match those of the introduced interface.
+- The accessibility of introduced members is inconsequential. The aspect framework will generate public members unless the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute.IsExplicit> property is set to true. In this scenario, an explicit implementation is created.
 
-Implementing an interface in a completely dynamic manner, i.e., when the aspect does not already know the interface, is not yet supported.
+Implementing an interface in an entirely dynamic manner, that is, when the aspect does not already recognize the interface, is currently unsupported.
 
 ## Example: IDisposable
 
-The aspect in the following example introduces the `IDisposable` interface. The implementation of the `Dispose` method disposes of all fields or properties that implement the `IDisposable` interface.
+In the subsequent example, the aspect introduces the `IDisposable` interface. The implementation of the `Dispose` method disposes of all fields or properties that implement the `IDisposable` interface.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Disposable.cs name="Disposable"]
 
@@ -55,7 +54,7 @@ meta.This.Dispose();
 
 ## Accessing explicit implementations
 
-The following strategies are possible to access explicit implementations:
+The following strategies can be employed to access explicit implementations:
 
 - Cast the instance to the interface and access the member:
 

@@ -5,7 +5,7 @@ level: 200
 
 # Writing T# templates
 
-Code templates in Metalama are written in a dialect of C# called T#. The syntax of T# is 100% compatible with C#, but T# is compiled differently.
+Code templates in Metalama are written in a dialect of C#, called T#. The syntax of T# is fully compatible with C#, but T# is compiled differently.
 
 This chapter contains the following articles:
 
@@ -13,7 +13,7 @@ This chapter contains the following articles:
     <tr>
         <th>Article</th>
         <th>Description</th>
-    <tr>
+    </tr>
     <tr>
         <td>
             <xref:template-overview>
@@ -27,7 +27,7 @@ This chapter contains the following articles:
             <xref:template-compile-time>
         </td>
         <td>
-            This article describes which subset of the C# language can be used as compile-time code, and how templates with rich compile-time logic can be built.
+            This article describes the subset of the C# language that can be used as compile-time code and how to build templates with rich compile-time logic.
         </td>
     </tr>
     <tr>
@@ -35,7 +35,7 @@ This chapter contains the following articles:
             <xref:template-dynamic-code>
         </td>
         <td>
-            This article explains different techniques to generate run-time code dynamically.
+            This article explains the different techniques for generating run-time code dynamically.
         </td>
     </tr>
     <tr>
@@ -43,7 +43,7 @@ This chapter contains the following articles:
             <xref:template-parameters>
         </td>
         <td>
-            This article explains how to pass parameters (including generic parameters) from the `BuildAspect` method to the template.
+            This article explains how to pass parameters, including generic parameters, from the `BuildAspect` method to the template.
         </td>
     </tr>
     <tr>
@@ -63,4 +63,5 @@ This chapter contains the following articles:
         </td>
     </tr>
 </table>
+
 

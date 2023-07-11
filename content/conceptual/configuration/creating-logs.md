@@ -4,31 +4,30 @@ uid: creating-logs
 
 # Enabling logging
 
-If you report a Metalama bug, you may be asked to send Metalama log files. These instructions teach you how to produce them.
+When reporting a Metalama bug, it is often helpful to attach Metalama log files. This document provides instructions on how to generate these logs.
 
 ## Step 1. Install the Metalama CLI tool
 
-Install the `metalama` .NET tool as described in <xref:dotnet-tool>.
+First, install the `metalama` .NET tool as outlined in <xref:dotnet-tool>.
 
 ## Step 2. Edit diagnostics.json
 
-Execute the following command:
+Run the following command:
 
 ```
 metalama config edit diagnostics
 ```
 
-This should open a `diagnostics.json` file in your default editor. Edit this file as follows:
+This command will open a `diagnostics.json` file in your default editor. Make the following changes to this file:
 
-1. In the `logging/processes` section, set to `true` the processes for which logging should be enabled:
-    * `Compiler`: the compile-time process.
-    * `Rider`: the design-time Roslyn process of the Rider IDE.
-    * `DevEnv`: the UI process of Visual Studio (note that there is no aspect code running in this process).
-    * `RoslynCodeAnalysisService`: the design-time Roslyn process running under Visual Studio (this is where the aspect code runs).
-2. In the `logging/trace` section, set to `true` the categories for which logging should be enabled. To enable logging for everything, allow the `*` category.
+1. In the `logging/processes` section, set the processes that should have logging enabled to `true`:
+    * `Compiler`: This refers to the compile-time process.
+    * `Rider`: This is the design-time Roslyn process of the Rider IDE.
+    * `DevEnv`: This is the UI process of Visual Studio. Note that no aspect code runs in this process.
+    * `RoslynCodeAnalysisService`: This is the design-time Roslyn process running under Visual Studio, where the aspect code runs.
+2. In the `logging/trace` section, set the categories that should have logging enabled to `true`. To enable logging for all categories, set the `*` category to `true`.
 
-In the following example, logging is enabled for the compiler process for all categories.
-
+The following example shows how to enable logging for the compiler process for all categories.
 
 ```json
 {
@@ -51,7 +50,7 @@ In the following example, logging is enabled for the compiler process for all ca
 }
 ```
 
-To verify that the JSON file is correct, you can run the following:
+To validate the correctness of the JSON file, run the following command:
 
 ```powershell
 metalama config validate diagnostics
@@ -61,23 +60,23 @@ metalama config validate diagnostics
 
 Diagnostic settings are cached in all processes, including background compiler processes and IDE helper processes.
 
-To restart background compiler processes, do the following:
+To restart background compiler processes, run the following command:
 
 ```powershell
 metalama kill
 ```
 
-If you want to change the logging configuration of the IDE processes, restart your IDE manually.
-
+If you need to alter the logging configuration of the IDE processes, you will need to manually restart your IDE.
 
 ## Step 4. Execute Metalama
 
-Execute the sequence of actions to be logged.
+Perform the sequence of actions that you wish to log.
 
 > [!WARNING]
-> Logging is automatically disabled after a specified number of hours since the last modification of `diagnostics.json`. The time value is taken from the `stopLoggingAfterHours` property in the `logging` section and defaults to 2 hours. You can edit `diagnostics.json` to change the value.
+> Logging is automatically disabled after a certain number of hours following the last modification of `diagnostics.json`. The duration is specified in the `stopLoggingAfterHours` property in the `logging` section and defaults to 2 hours. To change this duration, you can edit the `diagnostics.json` file.
 
 ## Step 5. Open the log file
 
-You will find the log under the `%TEMP%\Metalama\Logs` directory.
+You can find the log in the `%TEMP%\Metalama\Logs` directory.
+
 

@@ -4,17 +4,15 @@ uid: differences-from-postsharp
 
 # Differences between Metalama and PostSharp
 
-This article covers the major architectural differences between Metalama and PostSharp in a rather theoretical style. You can probably skip it on first reading.
-
+This article outlines the major architectural differences between Metalama and PostSharp. The content is presented in a theoretical style and may not be essential for first-time readers.
 
 ## Metalama is a compiler add-in
 
-A significant difference between Metalama and PostSharp is that while PostSharp is a post-compiler, i.e. a process that runs after the compiler and post-processes the output of the compiler, Metalama is a compiler add-in and gets executed _both_ at design- and compile-time.
+A key distinction between Metalama and PostSharp lies in their operation. PostSharp functions as a post-compiler, a process that runs following the compiler to post-process the compiler's output. On the other hand, Metalama works as a compiler add-in and operates both at design and compile time.
 
+Metalama executes aspects by creating a sub-project from your main project, which only contains compile-time code such as aspects, fabrics, and their dependencies. This sub-project is compiled and executed at design or compile time.
 
-So how does Metalama execute aspects? Metalama creates a sub-project from your main project, which contains only compile-time code, e.g., aspects, fabrics, and their dependencies. Only this sub-project is compiled and executed at design- or compile-time.
-
-While PostSharp loads the whole project (compiled as an assembly) in the .NET runtime, Metalama only loads the sub-project that contains compile-time code.
+Whereas PostSharp loads the entire project (compiled as an assembly) in the .NET runtime, Metalama only loads the sub-project that includes compile-time code.
 
 ### Illustrations
 
@@ -74,7 +72,7 @@ flowchart LR
 
 In PostSharp, aspect classes are instantiated at compile time, serialized, stored as a managed resource in the assembly being built, then deserialized at run time and executed. Therefore, in PostSharp, some aspect code is executed at compile time and some at run time.
 
-In Metalama, aspects are never executed at run time. Aspects provide code templates, and templates are expanded at compile time. Templates generate C# code the advice is applied; only this generated code is executed at run time.
+In contrast, Metalama aspects are never executed at run time. Aspects provide code templates, and these templates are expanded at compile time. The templates generate C# code when the advice is applied; only this generated code is executed at run time.
 
 ### Illustration
 
@@ -124,23 +122,23 @@ flowchart LR
 
 The difference in aspect lifetime has significant implications for how aspects are designed.
 
-* **Metalama templates should generate succinct code.**  In PostSharp, advice methods could be long and complex because they were independent C# methods, compiled and JIT-compiled just once, and executed at run time. However, in Metalama, advice methods are templates. They can be long, but the code they generate must preferably be short. This code must be compiled and JIT-compiled as often as the aspect is applied, so potentially thousands of times. Any logic that may repeat itself should be moved into run-time helper classes.
+* **Metalama templates should generate succinct code.** In PostSharp, advice methods could be long and complex as they were independent C# methods, compiled and JIT-compiled just once, and executed at run time. However, in Metalama, advice methods are templates. They can be long, but the code they generate must preferably be short. This code must be compiled and JIT-compiled as often as the aspect is applied, so potentially thousands of times. Any logic that may repeat itself should be moved into run-time helper classes.
 
-* **Aspects can no longer "hold" run-time state**. In PostSharp, aspect fields could hold any run-time state required by the aspect. In Metalama, if an aspect needs a run-time state, it has to _introduce_ a field into the target class (see <xref:introducing-members> for details).
+* **Aspects can no longer "hold" run-time state.** In PostSharp, aspect fields could hold any run-time state required by the aspect. In Metalama, if an aspect needs a run-time state, it has to _introduce_ a field into the target class (see <xref:introducing-members> for details).
 
 ## Aspect instances in Metalama can be shared by several declarations
 
 Some aspects are applied to a declaration in a project but affect other projects that reference the main project (as a project or as a package). For instance, an aspect may be applied to a base class in a project. If this aspect is inheritable, it will be automatically applied to all classes derived from this base class. For details, see <xref:aspect-inheritance>.
 
-The way how inheritance is implemented differs between Metalama and PostSharp.
+The implementation of inheritance differs between Metalama and PostSharp.
 
-In PostSharp, each inherited aspect instance is instantiated again from the custom attribute from which it stems (i.e., to be exact, it is deserialized from the custom attribute). This mechanism is used for intra-project inheritance as well as for cross-project inheritance.
+In PostSharp, each inherited aspect instance is instantiated again from the custom attribute from which it originates (i.e., to be exact, it is deserialized from the custom attribute). This mechanism is used for intra-project inheritance as well as for cross-project inheritance.
 
-In Metalama, the mechanism is different inside a project than across projects.
+In Metalama, the mechanism differs inside a project and across projects.
 
 Inside a project, the same aspect instance is _shared_ among all declarations that inherit this aspect. This is why aspect classes should be written in an immutable style.
 
-For cross-project inheritance or validators,  inheritable aspect instances are _serialized_ and stored as a managed resource using the <xref:Metalama.Framework.Serialization> namespace into the assembly is built. In child projects, one new aspect instance is created by deserializing the serialized aspect of the base declaration. This deserialized instance is then shared by all derived declarations inheriting the aspect.
+For cross-project inheritance or validators, inheritable aspect instances are _serialized_ and stored as a managed resource using the <xref:Metalama.Framework.Serialization> namespace into the assembly being built. In child projects, one new aspect instance is created by deserializing the serialized aspect of the base declaration. This deserialized instance is then shared by all derived declarations inheriting the aspect.
 
 ### Illustrations
 
@@ -234,8 +232,6 @@ flowchart BT
 
 ```
 
-
 ### Implications
 
 * **In Metalama, aspect classes must be written in an immutable style.** Since aspect instances may be reused among several declarations, they cannot store state that is specific to a target declaration. For details, see <xref:sharing-state-with-advice>.
-

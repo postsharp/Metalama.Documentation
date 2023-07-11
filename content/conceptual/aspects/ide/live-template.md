@@ -5,22 +5,20 @@ level: 200
 
 # Exposing an aspect as a live template
 
-A _live template_ is a custom Code Action available in the code editor menu like other code suggestions or refactoring actions offered by the IDE. For details about using live templates, see <xref:applying-live-templates>.
+A _live template_ is a custom Code Action that appears in the code editor menu alongside other code suggestions or refactoring actions offered by the Integrated Development Environment (IDE). For more information on using live templates, please refer to <xref:applying-live-templates>.
 
-Live templates are built with the Metalama Aspect Framework. Instead of being executed at compile time by the compiler, they are interactively applied by the user in the editor, and they modify the source code.
-
+Live templates are created using the Metalama Aspect Framework. Unlike traditional aspects that are executed at compile-time by the compiler, live templates are interactively applied by the user within the editor, thereby modifying the source code.
 
 > [!NOTE]
-> A fundamental characteristic of an aspect is that it is applied at compile time and does not affect the source code. Therefore, a live template cannot be called an aspect, even if it is built with the aspect framework. To avoid confusion, we suggest not referring to live templates as aspects in your communication.
+> A key characteristic of an aspect is that it is applied at compile time and does not alter the source code. Consequently, a live template, despite being built with the aspect framework, cannot be referred to as an aspect as it deviates from this fundamental principle. To prevent any confusion, we recommend avoiding the use of the term 'aspects' when discussing live templates.
 
 ## To write a live template
 
-1. Write an aspect class as usual, with the following differences:
-   - The aspect class does not need to be derived from `System.Attribute`.
-   - Pay attention to generating idiomatic C# code.
-   - Diagnostics reported by the aspect will be ignored.
-   - Aspect ordering and requirements will be ignored.
-2. Make sure that the aspect class has a default constructor.
+1. Begin by writing an aspect class as you normally would, but keep in mind the following differences:
+   - The aspect class does not need to inherit from `System.Attribute`.
+   - Strive to generate idiomatic C# code.
+   - Any diagnostics reported by the aspect will be disregarded.
+   - Aspect ordering and requirements will not be considered.
+2. Ensure that the aspect class is equipped with a default constructor.
 3. Annotate the class with `[EditorExperience(SuggestAsLiveTemplate = true)]`.
-4. Make sure that you properly define the aspect eligibility, so the code refactoring will only be suggested for relevant declarations. See <xref:eligibility> for details.
-
+4. Properly define the aspect eligibility to ensure that the code refactoring is suggested only for relevant declarations. For more details, refer to <xref:eligibility>.

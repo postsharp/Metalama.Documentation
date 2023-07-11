@@ -7,15 +7,13 @@ uid: migration-feature-status
 
 ## PostSharp Framework (PostSharp.dll)
 
-The PostSharp Framework has been ported entirely to Metalama, with a few notable differences:
+The PostSharp Framework has been entirely ported to Metalama, with a few notable differences:
 
-* You cannot intercept methods of an external assembly, but only of the current project.
-* You cannot advise the event of suspending and resuming an `async` state machine like in PostSharp. Specifically, you cannot advise the `await` keyword.
-* You cannot intercept the _raise_ semantic of an event, only the _add_ and _remove_ semantics.
-* The concrete architecture constraints under the `PostSharp.Constraints` namespace have not been ported yet, but the underlying features are available in Metalama.
-
+* Methods from an external assembly cannot be intercepted; only those from the current project can be.
+* The event of suspending and resuming an `async` state machine, as in PostSharp, cannot be advised. Specifically, the `await` keyword cannot be advised.
+* The _raise_ semantic of an event cannot be intercepted, only the _add_ and _remove_ semantics can be.
+* The specific architecture constraints under the `PostSharp.Constraints` namespace have yet to be ported. However, the underlying features are already available in Metalama.
 
 ## Patterns.*
 
-__NONE__ of the `PostSharp.Patterns.*` packages have been ported yet.
-
+__NONE__ of the `PostSharp.Patterns.*` packages have been ported as of this moment.

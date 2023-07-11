@@ -5,15 +5,15 @@ summary: *content
 
 ## Overview
 
-This namespace exposes some intermediate details of the compilation process, such as the list of aspect classes, aspect instances, advice, transformations, or diagnostics. 
+This namespace reveals intermediate details of the compilation process, such as the list of aspect classes, aspect instances, advice, transformations, and diagnostics.
 
-This namespace is helpful when you want to troubleshoot an aspect, a fabric, or a set of aspects. It gives you details that are not obvious from the compilation output. 
+This namespace proves useful when troubleshooting an aspect, a fabric, or a set of aspects. It provides details that are not readily apparent from the compilation output.
 
-To start with this namespace, you should load your C# project or solution using the <xref:Metalama.Framework.Workspaces> namespace or with the LINQPad driver. See <xref:linqpad> for details.
+To begin with this namespace, load your C# project or solution using the <xref:Metalama.Framework.Workspaces> namespace or with the LINQPad driver. Refer to <xref:linqpad> for more information.
 
 The entry point of this namespace is the <xref:Metalama.Framework.Introspection.IIntrospectionCompilationDetails> interface. This interface is implemented by the <xref:Metalama.Framework.Workspaces.Workspace> and <xref:Metalama.Framework.Workspaces.Project> classes.
 
-For instance, the following query returns all aspect instances in a project:
+For example, the following query returns all aspect instances in a project:
 
 ```cs
 workspace.GetProject("Metalama.Samples.Log4", "net6.0").AspectInstances
@@ -35,7 +35,7 @@ classDiagram
 
     IIntrospectionAspectClass "1" --* "0..*" IIntrospectionAspectInstance
     IIntrospectionAspectClass "1" --o "1..*" IIntrospectionAspectLayer
-    
+
     IIntrospectionAspectInstance  --* "0..*" IIntrospectionDiagnostic
     IIntrospectionAspectInstance --o "0..*" IIntrospectionAdvice
     IIntrospectionAspectInstance --* "0..*" IIntrospectionAspectInstance : SecondaryInstances
@@ -48,7 +48,7 @@ classDiagram
         Aspect: IAspect
         AspectState: IAspectState
     }
-    
+
     class IIntrospectionAspectLayer {
         Id
         LayerName
@@ -60,7 +60,7 @@ classDiagram
     class IIntrospectionAspectPredecessor {
      PredecessorDegree
      TargetDeclaration : IDeclaration
-    
+
     }
 
     class IIntrospectionAdvice {
@@ -77,9 +77,10 @@ classDiagram
         Order
     }
 
-    IIntrospectionAdvice "1" --* "0..*" IIntrospectionTransformation : Transformation 
+    IIntrospectionAdvice "1" --* "0..*" IIntrospectionTransformation : Transformation
 
     IIntrospectionAspectPredecessor "0..*" --* "0..*" IIntrospectionAspectPredecessor : Predecessors
     IIntrospectionAspectPredecessor "0..*" --* "0..*" IIntrospectionAspectPredecessor : Successors
 
 ```
+

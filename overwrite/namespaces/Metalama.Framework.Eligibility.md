@@ -2,17 +2,17 @@
 uid: Metalama.Framework.Eligibility
 summary: *content
 ---
-This is namespace allows you to define how your aspects can be used. 
+This namespace allows you to define how your aspects can be utilized.
 
 ## Conceptual Documentation
 
-See <xref:eligibility>.
+Refer to <xref:eligibility>.
 
 ## Overview
 
-Your aspect implements the <xref:Metalama.Framework.Eligibility.IEligible`1> interface, which has a single method <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*>. This method receives an <xref:Metalama.Framework.Eligibility.IEligibilityBuilder`1>. Typically, you would use the extension methods of this interface defined in the <xref:Metalama.Framework.Eligibility.EligibilityExtensions> class to specify the eligibility of your aspect. These extension methods add predefined implementations of the <xref:Metalama.Framework.Eligibility.IEligibilityRule`1> interface to the <xref:Metalama.Framework.Eligibility.IEligibilityBuilder`1>. However, you can also provide your own implementation of the <xref:Metalama.Framework.Eligibility.IEligibilityRule`1> interface.
+Your aspect should implement the <xref:Metalama.Framework.Eligibility.IEligible`1> interface, which contains a single method, <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*>. This method receives an <xref:Metalama.Framework.Eligibility.IEligibilityBuilder`1>. Typically, you would use the extension methods of this interface defined in the <xref:Metalama.Framework.Eligibility.EligibilityExtensions> class to specify the eligibility of your aspect. These extension methods add predefined implementations of the <xref:Metalama.Framework.Eligibility.IEligibilityRule`1> interface to the <xref:Metalama.Framework.Eligibility.IEligibilityBuilder`1>. However, you also have the option to provide your own implementation of the <xref:Metalama.Framework.Eligibility.IEligibilityRule`1> interface.
 
-For details and examples, see <xref:eligibility>.
+For more details and examples, refer to <xref:eligibility>.
 
 ## Class diagram
 

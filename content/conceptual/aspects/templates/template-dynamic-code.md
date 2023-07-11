@@ -5,25 +5,24 @@ level: 200
 
 # Generating run-time code
 
-
 ## Dynamic typing
 
-Templates use the `dynamic` type to represent types unknown to the template developer. For instance, an aspect may not know in advance the return type of the methods to which it is applied. The return type is represented by the `dynamic` type.
+Templates utilize the `dynamic` type to represent types unknown to the template developer. For example, an aspect may not know the return type of the methods to which it is applied in advance. The return type is represented by the `dynamic` type.
 
 ```cs
-dynamic? OverrideMethod() 
-{ 
+dynamic? OverrideMethod()
+{
     return default;
 }
 ```
 
 All `dynamic` compile-time code is transformed into strongly-typed run-time code. When the template is expanded, `dynamic` variables are transformed into `var` variables. Therefore, all `dynamic` variables must be initialized.
 
-In a template, it is not possible to generate code that uses `dynamic` typing at run time.
+In a template, it is not possible to generate code that employs `dynamic` typing at run time.
 
 ## Converting compile-time values to run-time values
 
-You can use `meta.RunTime( expression )` to convert the result of a compile-time expression into a run-time value. The compile-time expression will be evaluated at compile time, and its value will be converted into _syntax_ that represents that value. Conversions are possible for the following compile-time types:
+You can utilize `meta.RunTime(expression)` to convert the result of a compile-time expression into a run-time value. The compile-time expression will be evaluated at compile time, and its value will be converted into syntax representing that value. Conversions are possible for the following compile-time types:
 
 - Literals;
 - Enum values;
@@ -38,13 +37,13 @@ You can use `meta.RunTime( expression )` to convert the result of a compile-time
 
 ### Example
 
-The following aspect converts the following build-time values into a run-time expression: a `List<string>`, a `Guid`, and a `System.Type`.
+The following aspect converts the subsequent build-time values into a run-time expression: a `List<string>`, a `Guid`, and a `System.Type`.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ConvertToRunTime.cs name="Dynamic"]
 
 ## Dynamic code
 
-The `meta` API exposes some properties of `dynamic` type and some methods returning `dynamic` values. These members are compile-time, but they produce a _C# expression_ that can be used in the run-time code of the template. Because these members return a `dynamic` value, they can be used anywhere in your template. The code will not be validated when the template is compiled but when the template is applied.
+The `meta` API exposes some properties of `dynamic` type and some methods returning `dynamic` values. These members are compile-time, but they produce a _C# expression_ that can be used in the run-time code of the template. Because these members return a `dynamic` value, they can be utilized anywhere in your template. The code will not be validated when the template is compiled but when the template is applied.
 
 For instance, `meta.This` returns a `dynamic` object that represents the expression `this`. Because `meta.This` is `dynamic`, you can write `meta.This._logger` in your template, which will translate to `this._logger`. This will work even if your template does not contain a member named `_logger` because `meta.This` returns a `dynamic`, therefore any field or method referenced on the right hand of the `meta.This` expression will not be validated when the template is compiled (or in the IDE), but when the template is _expanded_, in the context of a specific target declaration.
 
@@ -60,7 +59,6 @@ Here are a few examples of APIs that return a `dynamic`:
   * `meta.Target.Parameter.Value` allows to get or set the value of the target parameter.
   * `meta.Target.Method.Parameters[*].Value` allows you to get or set the value of a target method's parameter.
 
-
 ### Abilities
 
 You can also write any dynamic code on the left of a dynamic expression. As with any dynamically typed code, the syntax of the code is validated, but not the existence of the invoked members.
@@ -70,7 +68,7 @@ You can also write any dynamic code on the left of a dynamic expression. As with
 meta.This.OnPropertyChanged( "X" );
 ```
 
-Some more complex expressions also expose `dynamic`. For instance, `meta.Target.Parameters["p"].Value` refers to the `p` parameter of the target method and compiles simply into the syntax `p`. 
+Some more complex expressions also expose `dynamic`. For instance, `meta.Target.Parameters["p"].Value` refers to the `p` parameter of the target method and compiles simply into the syntax `p`.
 
 ```cs
 // Translates into: Console.WriteLine( "p = " + p );
@@ -91,8 +89,8 @@ You can combine dynamic code and compile-time expressions:
 meta.This.OnPropertyChanged( meta.Property.Name );
 ```
 
-### Example 
-In the following aspect, the logging aspect uses `meta.This`, which returns a `dynamic` object, to access the type being enhanced. The aspect assumes that the target type defines a field named `_logger`he and that the type of this field has a method named `WriteLine`.
+### Example
+In the following aspect, the logging aspect uses `meta.This`, which returns a `dynamic` object, to access the type being enhanced. The aspect assumes that the target type defines a field named `_logger` and that the type of this field has a method named `WriteLine`.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/DynamicTrivial.cs name="meta.This"]
 
@@ -108,7 +106,6 @@ The following example is a variation of the previous one. The aspect no longer a
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/DynamicCodeModel.cs name="Invokers"]
 
-
 ## Generating run-time arrays
 
 The first way to generate a run-time array is to declare a variable of array type and to use a statement to set each element, for instance:
@@ -120,7 +117,7 @@ args[1] = DateTime.Now;
 MyRunTimeMethod( args );
 ```
 
-To generate an array of a variable length, you can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ArrayBuilder> class.
+To generate an array of variable length, you can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ArrayBuilder> class.
 
 For instance:
 

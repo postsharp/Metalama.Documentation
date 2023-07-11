@@ -5,7 +5,7 @@ summary: *content
 
 ## Overview
 
-This namespace allows you to load a C# project and solution into the <xref:Metalama.Framework.Code> code model from any application -- for instance from LinqPad.
+This namespace enables the loading of a C# project and solution into the <xref:Metalama.Framework.Code> code model from any application, such as LinqPad.
 
 The entry point of this namespace is the <xref:Metalama.Framework.Workspaces.WorkspaceCollection> class.
 
@@ -13,7 +13,6 @@ The entry point of this namespace is the <xref:Metalama.Framework.Workspaces.Wor
 
 ```mermaid
 classDiagram
-
     class ICompilationSet {
         Compilations
         Types
@@ -24,38 +23,35 @@ classDiagram
         Constructors
         Events
         TargetFrameworks
-    
     }
 
-class IIntrospectionCompilationDetails {
-    Diagnostics
-    AspectClasses
-    AspectLayers
-    AspectInstances
-    Advice
-    Transformations
-    IsMetalamaEnabled
-    HasMetalamaSucceeded
-}
+    class IIntrospectionCompilationDetails {
+        Diagnostics
+        AspectClasses
+        AspectLayers
+        AspectInstances
+        Advice
+        Transformations
+        IsMetalamaEnabled
+        HasMetalamaSucceeded
+    }
 
     class IProjectSet {
-    Projects
-    GetSubset()
-    GetDeclaration()
+        Projects
+        GetSubset()
+        GetDeclaration()
     }
 
-IProjectSet --> ICompilationSet  : SourceCode
-ICompilationSetResult --|> IIntrospectionCompilationDetails
-ICompilationSetResult --> ICompilationSet  : TransformedCode
-
+    IProjectSet --> ICompilationSet  : SourceCode
+    ICompilationSetResult --|> IIntrospectionCompilationDetails
+    ICompilationSetResult --> ICompilationSet  : TransformedCode
 
     IProjectSet --|>  ICompilationSet
     IProjectSet --|> ICompilationSetResult
     Project --|> IProjectSet
     Workspace  --|> IProjectSet
     WorkspaceCollection --* Workspace
-    
-    
-    IProjectSet --* Project : Projects
 
+    IProjectSet --* Project : Projects
 ```
+

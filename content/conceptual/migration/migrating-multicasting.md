@@ -4,46 +4,44 @@ uid: migrating-multicasting
 
 # Migrating PostSharp attribute multicasting to Metalama
 
-Multicasting, in PostSharp, is a feature of all aspects that allows you to target several declarations using a single custom attribute or XML element in the `postsharp.config` configuration file. Multicasting, in PostSharp, is exposed by `MulticastAttribute`, the ultimate base type of all aspect classes.
+Multicasting in PostSharp is a feature of all aspects that enables targeting several declarations using a single custom attribute or XML element in the `postsharp.config` configuration file. It is exposed by `MulticastAttribute`, the ultimate base type of all aspect classes.
 
-Multicasting is not implemented as a core feature of Metalama but as an extension. We took that decision because the goal of adding an aspect to several declarations is better achieved in Metalama using _fabrics_, so you may eventually decide not to use multicasting. For details, see <xref:fabrics-adding-aspects>.
+In Metalama, multicasting is not implemented as a core feature but as an extension. This decision was made because the goal of adding an aspect to multiple declarations is better achieved in Metalama using _fabrics_. Therefore, you might eventually decide not to use multicasting. For more details, see <xref:fabrics-adding-aspects>.
 
-Multicasting is provided in Metalama for backward compatibility with PostSharp because of our objective _not_ to require PostSharp users to change their _business code_ when they migrate to Metalama, but only their _aspect code_. Multicasting in Metalama is implemented by the <xref:Metalama.Extensions.Multicast> namespace. The implementation of this namespace is [open source](https://github.com/postsharp/Metalama.Extensions/tree/master/src/Metalama.Extensions.Multicast).
-
+Multicasting in Metalama is provided for backward compatibility with PostSharp. The objective is _not_ to require PostSharp users to change their _business code_ when migrating to Metalama, but only their _aspect code_. Multicasting in Metalama is implemented by the <xref:Metalama.Extensions.Multicast> namespace. The implementation of this namespace is [open source](https://github.com/postsharp/Metalama.Extensions/tree/master/src/Metalama.Extensions.Multicast).
 
 ## Enabling multicasting for a simple aspect
 
-If your aspect is based on <xref:Metalama.Framework.Aspects.OverrideMethodAspect> or <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect>, you can enable multicasting by changing the base class to <xref:Metalama.Extensions.Multicast.OverrideMethodMulticastAspect> or <xref:Metalama.Extensions.Multicast.OverrideFieldOrPropertyMulticastAspect> respectively. Nothing else should be required.
+If your aspect is based on <xref:Metalama.Framework.Aspects.OverrideMethodAspect> or <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect>, you can enable multicasting by changing the base class to <xref:Metalama.Extensions.Multicast.OverrideMethodMulticastAspect> or <xref:Metalama.Extensions.Multicast.OverrideFieldOrPropertyMulticastAspect> respectively. No other changes should be required.
 
-Things are a bit more complex if your aspect is derived from another base class.
+The process is slightly more complex if your aspect is derived from another base class.
 
 ## Enabling multicasting for a blank aspect
 
-Here are general instructions to add the multicasting feature to any aspect. You can check for yourself in the [source code](https://github.com/postsharp/Metalama.Extensions/tree/master/src/Metalama.Extensions.Multicast) of <xref:Metalama.Extensions.Multicast.OverrideMethodMulticastAspect> or <xref:Metalama.Extensions.Multicast.OverrideFieldOrPropertyMulticastAspect> that it follows these instructions.
+Below are general instructions to add the multicasting feature to any aspect. You can verify these instructions by examining the [source code](https://github.com/postsharp/Metalama.Extensions/tree/master/src/Metalama.Extensions.Multicast) of <xref:Metalama.Extensions.Multicast.OverrideMethodMulticastAspect> or <xref:Metalama.Extensions.Multicast.OverrideFieldOrPropertyMulticastAspect>.
 
 ### Step 1. Derive your class from MulticastAspect and implement IAspect<T> as appropriate
 
-The most straightforward approach is for your aspect to derive from <xref:Metalama.Extensions.Multicast.MulticastAspect> instead of any other class.
+The simplest approach is for your aspect to derive from <xref:Metalama.Extensions.Multicast.MulticastAspect> instead of any other class.
 
 The <xref:Metalama.Extensions.Multicast.MulticastAspect> class defines:
 
-* all the properties that simulate the `MulticastAttribute` class from PostSharp, such as <xref:Metalama.Extensions.Multicast.MulticastAspect.AttributeTargetTypes> or <xref:Metalama.Extensions.Multicast.MulticastAspect.AttributeTargetMemberAttributes>, and
+* all properties that simulate the `MulticastAttribute` class from PostSharp, such as <xref:Metalama.Extensions.Multicast.MulticastAspect.AttributeTargetTypes> or <xref:Metalama.Extensions.Multicast.MulticastAspect.AttributeTargetMemberAttributes>, and
 * a protected property <xref:Metalama.Extensions.Multicast.MulticastAspect.Implementation> that you can call from your derived classes to implement multicasting.
 
-Your aspect must also implement the <xref:Metalama.Framework.Aspects.IAspect`1> interface for all relevant kinds of declarations:
+Your aspect must also implement the <xref:Metalama.Framework.Aspects.IAspect`1> interface for all relevant types of declarations:
 
-* on the _final_ declarations on which the aspect is actually applied (i.e., does some actual work), and
+* on the _final_ declarations where the aspect is actually applied (i.e., performs some actual work), and
 * on any _intermediate_ declaration where the aspect does no work other than multicasting itself to select child declarations.
 
-The <xref:Metalama.Extensions.Multicast.MulticastAspect> class already implements the `IAspect<ICompilation>` and  `IAspect<INamedType>` interfaces and properly implements the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method. For the interfaces you implement yourself, you must implement `BuildAspect`.
-
+The <xref:Metalama.Extensions.Multicast.MulticastAspect> class already implements the `IAspect<ICompilation>` and  `IAspect<INamedType>` interfaces and correctly implements the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method. For the interfaces you implement yourself, you must implement `BuildAspect`.
 
 ### Step 2. Implement the BuildAspect methods
 
-The _only_ thing that your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method should do is calling the <xref:Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect*?text=this.Implementation.BuildAspect> method. The arguments you need to pass depend on the kind of declaration of the implemented <xref:Metalama.Framework.Aspects.IAspect`1> interface:
+Your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method should _only_ call the <xref:Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect*?text=this.Implementation.BuildAspect> method. The arguments you need to pass depend on the kind of declaration of the implemented <xref:Metalama.Framework.Aspects.IAspect`1> interface:
 
-* For the _intermediate_ declarations, you must pass a single argument: the <xref:Metalama.Framework.Aspects.IAspectBuilder`1>.
-* For the _final_ declarations, pass the <xref:Metalama.Framework.Aspects.IAspectBuilder`1> _and_ a delegate that does the actual work. This delegate will be called _unless_ the aspect is skipped because of <xref:Metalama.Extensions.Multicast.MulticastAspect.AttributeExclude>.
+* For _intermediate_ declarations, pass a single argument: the <xref:Metalama.Framework.Aspects.IAspectBuilder`1>.
+* For _final_ declarations, pass the <xref:Metalama.Framework.Aspects.IAspectBuilder`1> _and_ a delegate that performs the actual work. This delegate will be called _unless_ the aspect is skipped due to <xref:Metalama.Extensions.Multicast.MulticastAspect.AttributeExclude>.
 
 Example:
 
@@ -60,7 +58,7 @@ Example:
 
 If your aspect has eligibility requirements on the _type_ to which it is applied, override the <xref:Metalama.Extensions.Multicast.MulticastAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.INamedType})?text=BuildEligibility(INamedType)> method.
 
-Instead of repeating this eligibility condition in the `BuildEligibility` method for all final destinations of the aspect, you can call the `BuildEligibility(INamedType)` method like this:
+Instead of repeating this eligibility condition in the `BuildEligibility` method for all final destinations of the aspect, you can call the `BuildEligibility(INamedType)` method as follows:
 
 ```csharp
 public override void BuildEligibility( IEligibilityBuilder<INamedType> builder )
@@ -78,6 +76,5 @@ public void BuildEligibility( IEligibilityBuilder<IMethod> builder )
     builder.MustNotBeAbstract();
 }
 ```
-
 
 

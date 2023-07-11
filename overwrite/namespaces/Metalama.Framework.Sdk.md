@@ -2,6 +2,8 @@
 uid: Metalama.Framework.Sdk
 summary: *content
 ---
-This is namespace allows you to write low-level aspects that directly use the Roslyn API. 
+This namespace enables you to write low-level aspects that directly utilize the Roslyn API.
 
-See <xref:sdk> for details.
+Refer to <xref:sdk> for more details.
+
+

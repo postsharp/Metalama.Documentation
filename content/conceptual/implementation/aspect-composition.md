@@ -5,9 +5,9 @@ level: 400
 
 # Aspect composition
 
-What happens when multiple aspects are applied to the same class? This problem is called _aspect composition_. This is a non-trivial problem, and Metalama solves this problem by providing a consistent and deterministic model for aspect composition.
+Aspect composition refers to the situation where multiple aspects are applied to the same class. This is a complex issue, and Metalama addresses it by offering a consistent and deterministic model for aspect composition.
 
-There are three significant points of interest.
+There are three critical points to consider:
 
 1. Strong ordering of aspects and advice
 2. Code model versioning
@@ -15,31 +15,32 @@ There are three significant points of interest.
 
 ## 1. Strong ordering of aspects and advice
 
-Aspects are "things" that receive a code model as input and provide outputs such as advice, diagnostics, validators, and child aspects. The only relevant output for this discussion is the _advice_ because other outputs do not modify the code. Most aspects have a single layer of advice, but it is possible to define multiple layers.
+Aspects are entities that take a code model as input and produce outputs such as advice, diagnostics, validators, and child aspects. The only output relevant to this discussion is _advice_, as other outputs do not alter the code. While most aspects have a single layer of advice, it is possible to define multiple layers.
 
-To make the order of execution of aspects and advice consistent, Metalama uses two ordering criteria.
+To ensure a consistent order of execution for aspects and advice, Metalama employs two ordering criteria:
 
-1. _Aspect layer_. The order of execution of aspect layers _must_ be specified by the aspect author or user. To learn about aspect layer ordering, see <xref:ordering-aspects>.
+1. _Aspect layer_: The order of execution for aspect layers _must_ be specified by the aspect author or user. To learn more about aspect layer ordering, refer to <xref:ordering-aspects>.
 
-2. _Depth Level_ of target declarations. Every declaration in the compilation is assigned a _depth level_. Within the same aspect layer, declarations are processed by order of increasing depth, i.e., base classes are visited before derived classes, types before their members, and so on.
+2. _Depth Level_ of target declarations: Every declaration in the compilation is assigned a _depth level_. Within the same aspect layer, declarations are processed in order of increasing depth. For example, base classes are visited before derived classes, and types are processed before their members.
 
-Aspects and advice in the same layer and applied to declarations of the same depth are executed in an undetermined order and may be executed concurrently on several threads.
+Aspects and advice in the same layer, applied to declarations of the same depth, are executed in an unspecified order and may be executed concurrently on multiple threads.
 
 ## 2. Code model versioning
 
-Since the code model only represents declarations but does not give access to implementations such as method bodies or initializers, the only kinds of advice that affect the code model are introductions and interface implementations.  Overriding an existing method does not affect the code model because it merely overrides its implementation.
+As the code model only represents declarations and does not provide access to implementations such as method bodies or initializers, the only types of advice that affect the code model are introductions and interface implementations. Overriding an existing method does not impact the code model as it merely changes its implementation.
 
-For each aspect layer and depth level, Metalama will create a new version of the code model that reflects the changes done by the previous aspect layer or depth level.
+For each aspect layer and depth level, Metalama creates a new version of the code model that reflects the changes made by the previous aspect layer or depth level.
 
-Therefore, if an aspect introduces a member into a type, the following aspects will see that new member in the code model and may advise it.
+Therefore, if an aspect introduces a member into a type, subsequent aspects will see that new member in the code model and may advise it.
 
-To ensure the consistency of this model, aspects cannot provide outputs to previous aspects or to declarations that are not below the current target.
+To maintain the consistency of this model, aspects cannot provide outputs to previous aspects or to declarations that are not below the current target.
 
 ## 3. Safe composition of advice
 
-When several aspects are unaware of each other and add advice to the same declaration, Metalama guarantees that the resulting code will be correct.
+When several aspects, unaware of each other, add advice to the same declaration, Metalama ensures that the resulting code will be correct.
 
-For instance, if two aspects override the same method, both aspects are guaranteed to compose correctly.  This is a challenging problem, but Metalama solves it, so you don't have to worry about it.
+For instance, if two aspects override the same method, both aspects are guaranteed to compose correctly. This is a complex problem, but Metalama resolves it, eliminating the need for you to worry about it.
 
 [comment]: # (TODO: example log and cache)
+
 
