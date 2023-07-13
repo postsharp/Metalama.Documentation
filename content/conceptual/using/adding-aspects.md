@@ -56,3 +56,6 @@ The refactoring menu is intelligent enough to recognize which aspect has already
 
 > [!NOTE]
 > The refactoring menu only displays aspects that are _eligible_ for your code. The eligibility of an aspect is determined by the aspect's author. For instance, it would not make sense to add a caching aspect to a method returning `void`, so the author of this aspect may make it eligible for non-void methods only.
+
+> [!div class="see-also"]
+> <xref:video-first-aspect>

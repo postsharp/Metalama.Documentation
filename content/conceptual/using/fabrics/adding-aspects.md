@@ -90,5 +90,5 @@ Lastly, you can add a fabric to a type by adding a nested type derived from <xre
 
 > [!div class="see-also"]
 > <xref:video-fabrics-and-inheritance>
-
+> <xref:fabrics-adding-aspects>
 

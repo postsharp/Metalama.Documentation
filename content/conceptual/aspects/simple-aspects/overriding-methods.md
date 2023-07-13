@@ -89,6 +89,7 @@ If you want to delve deeper into method overrides, consider reading the followin
 * To learn how to have different templates for `async` or iterator methods, or to learn how to override several methods from a single type-level aspect, jump to <xref:overriding-methods>.
 
 > [!div class="see-also"]
+> <xref:simple-override-method>
 > <xref:video-first-aspect>
 
 

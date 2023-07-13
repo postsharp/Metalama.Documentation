@@ -7,3 +7,7 @@ level: 105
 
 [!metalama-vimeo 842538355]
 
+
+> [!div class="see-also"]
+> <xref:debugging-aspect-oriented-code>
+> <xref:debugging-aspects>

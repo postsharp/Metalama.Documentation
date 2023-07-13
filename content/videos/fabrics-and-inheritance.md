@@ -6,3 +6,7 @@ level: 103
 # Video tutorial: Adding many aspects with inheritance and fabrics
 
 [!metalama-vimeo 842520941]
+
+> [!div class="see-also"]
+> <xref:fabrics-adding-aspects>
+> <xref:aspect-inheritance>

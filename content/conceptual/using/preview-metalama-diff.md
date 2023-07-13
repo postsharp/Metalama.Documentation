@@ -21,3 +21,5 @@ To view changes for a specific section of the code, select that portion from the
 ![Diff_change_selector](images/metalama_diff_change_view_selector.png)
 
 
+> [!div class="see-also"]
+> <xref:video-first-aspect>
