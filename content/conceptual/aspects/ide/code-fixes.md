@@ -63,3 +63,6 @@ The custom code fix performs the following actions:
 * At design time, all code fix titles, including those added by the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method, are cached for the complete solution. Therefore, you should avoid adding a large number of suggestions. The current Metalama design is not suited for this scenario.
 
 
+> [!div class="see-also"]
+> <xref:video-code-fixes>
+> <xref:live-template>

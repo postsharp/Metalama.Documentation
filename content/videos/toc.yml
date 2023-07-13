@@ -16,3 +16,5 @@ items:
       topicUid: video-debugging      
     - name: 6. Reporting errors and warnings
       topicUid: video-reporting-errors-and-warnings
+    - name: 7. Offering code fixes and live templates
+      topicUid: video-code-fixes

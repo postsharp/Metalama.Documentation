@@ -22,3 +22,7 @@ Live templates are created using the Metalama Aspect Framework. Unlike tradition
 2. Ensure that the aspect class is equipped with a default constructor.
 3. Annotate the class with `[EditorExperience(SuggestAsLiveTemplate = true)]`.
 4. Properly define the aspect eligibility to ensure that the code refactoring is suggested only for relevant declarations. For more details, refer to <xref:eligibility>.
+
+> [!div class="see-also"]
+> <xref:video-code-fixes>
+> <xref:code-fixes>

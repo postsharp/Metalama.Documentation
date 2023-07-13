@@ -11,3 +11,4 @@ uid: videos
 5. <xref:video-testing>
 6. <xref:video-debugging>
 7. <xref:video-reporting-errors-and-warnings>
+8. <xref:video-code-fixes> 
