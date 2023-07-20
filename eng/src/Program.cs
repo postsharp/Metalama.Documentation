@@ -14,7 +14,7 @@ using Spectre.Console.Cli;
 using System.IO;
 using System.Diagnostics;
 using PostSharp.Engineering.BuildTools.Search;
-using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2023_2;
+using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2023_3;
 
 const string docPackageFileName = "Metalama.Doc.zip";
 
