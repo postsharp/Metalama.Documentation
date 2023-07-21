@@ -55,31 +55,21 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
 
     AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
 
-    // Disable automatic build triggers.
     Configurations = Product.DefaultConfigurations
+        // Disable automatic build triggers.
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
-        .WithValue( BuildConfiguration.Public, new BuildConfigurationInfo(
-            MSBuildName: "Release",
-            ExportsToTeamCityDeployWithoutDependencies: true,
-            PublicPublishers: new Publisher[]
-            {
-                // MergePublisher disabled for 2023.1.
-                //new MergePublisher(),
-                new DocumentationPublisher( new S3PublisherConfiguration[]
-                {
-                    //TODO
-                    new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
-                } )
-            } ) ),
+
+        // Documentation 2023.3 is not yet published. See earlier versions for deployment configuration.
+        .WithValue( BuildConfiguration.Public, c => c with { ExportsToTeamCityDeploy = false } ),
     
-    Extensions = new ProductExtension[]
-    {
-        new UpdateSearchProductExtension(
-            "https://0fpg9nu41dat6boep.a1.typesense.net",
-            "metalamadoc",
-            "https://doc-production.metalama.net/sitemap.xml",
-            true )
-    }
+    // Extensions = new ProductExtension[]
+    // {
+    //     new UpdateSearchProductExtension(
+    //         "https://0fpg9nu41dat6boep.a1.typesense.net",
+    //         "metalamadoc",
+    //         "https://doc-production.metalama.net/sitemap.xml",
+    //         true )
+    // }
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
