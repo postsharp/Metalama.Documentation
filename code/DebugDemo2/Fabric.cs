@@ -8,10 +8,10 @@ namespace DebugDemo
 {
     public class Fabric : ProjectFabric
     {
-        public override void AmendProject(IProjectAmender project)
+        public override void AmendProject(IProjectAmender amender)
         {
             //1. Get all the types
-            var allPublicMethods = project.Outbound.SelectMany(p => p.Types)
+            var allPublicMethods = amender.Outbound.SelectMany(p => p.Types)
                                              //2. Get all methods of all these types
                                              .SelectMany(t => t.Methods)
                                              //3. Find only the public ones  

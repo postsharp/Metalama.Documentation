@@ -5,7 +5,7 @@ namespace Doc.Authorize
 {
     public class AuthorizeAttribute : OverrideMethodAspect
     {
-        public override dynamic OverrideMethod()
+        public override dynamic? OverrideMethod()
         {
             var currentUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
 

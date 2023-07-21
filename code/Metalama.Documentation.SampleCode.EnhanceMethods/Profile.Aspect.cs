@@ -7,7 +7,7 @@ namespace Doc.Profile
 {
     public class ProfileAttribute : OverrideMethodAspect
     {
-        public override dynamic OverrideMethod()
+        public override dynamic? OverrideMethod()
         {
             var sw = Stopwatch.StartNew();
 

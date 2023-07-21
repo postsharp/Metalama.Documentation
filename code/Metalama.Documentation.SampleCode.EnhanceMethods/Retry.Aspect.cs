@@ -6,7 +6,7 @@ namespace Doc.RetryFew
 {
     public class RetryAttribute : OverrideMethodAspect
     {
-        public override dynamic OverrideMethod()
+        public override dynamic? OverrideMethod()
         {
             for (var i = 0; ; i++)
             {
