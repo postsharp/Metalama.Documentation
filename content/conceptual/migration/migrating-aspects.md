@@ -45,9 +45,11 @@ Before starting the migration, ensure that your projects are in a clean state:
 
 Replace all references to the `PostSharp` package with references to the `Metalama.Migration` package across all projects. This can likely be done with a "Replace in Files" operation. However, if you use `packages.config`, consider migrating your projects to the new `PackageReference` format. If you can't, use the NuGet Package Manager UI to uninstall the `PostSharp` package and install the `Metalama.Migration` package.
 
-The `Metalama.Migration` package contains the public API of PostSharp, but not its implementation. Instead, it contains documentation comments with indications about the equivalent class or method in Metalama.
+The `Metalama.Migration` package contains the public API of PostSharp, but not its implementation. Instead, it contains `[Obsolete]` annotations with indications about the equivalent class or method in Metalama.
 
-If your code uses APIs that haven't been ported to PostSharp, you may also encounter errors. If you see errors, look at the relevant documentation comment and consider possible workarounds. If none are available, you may need to delay the migration effort.
+Building these projects at this point will likely result in numerous warnings.
+
+If your code uses APIs that haven't been ported to PostSharp, you may also encounter errors. If you see errors, consider possible workarounds. If none are available, you may need to delay the migration effort.
 
 Do not attempt to run your application or your unit tests at this point. They won't function until you port all critical aspects.
 
