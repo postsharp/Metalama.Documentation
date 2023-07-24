@@ -7,7 +7,7 @@ namespace Metalama.Documentation.QuickStart
     public class NoNullStringAttribute : OverrideFieldOrPropertyAspect
     {
         
-        public override dynamic OverrideProperty
+        public override dynamic? OverrideProperty
         {
             get
             {

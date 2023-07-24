@@ -20,7 +20,7 @@ There are four distinct types of fabrics:
 | Fabric Type | Abstract Class | Purpose |
 |-------------|----------------|---------|
 | Project Fabrics | <xref:Metalama.Framework.Fabrics.ProjectFabric> | Add aspects, architecture rules, or configure aspect libraries in the _current_ project. |
-| Transitive Project Fabrics | <xref:Metalama.Framework.Fabrics.ProjectFabric> | Add aspects, architecture rules, or configure aspect libraries in projects that _reference_ the current project. |
+| Transitive Project Fabrics | <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric> | Add aspects, architecture rules, or configure aspect libraries in projects that _reference_ the current project. |
 | Namespace Fabric | <xref:Metalama.Framework.Fabrics.NamespaceFabric> | Add aspects or architecture rules to the namespace that contains the fabric type. |
 | Type Fabric | <xref:Metalama.Framework.Fabrics.TypeFabric> | Add aspects to different members of the type that contains the nested fabric type. |
 

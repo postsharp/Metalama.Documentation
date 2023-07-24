@@ -66,12 +66,12 @@ The following aspect uses a `foreach` loop to print the value of each parameter 
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeForEach.cs name="Compile-Time If"]
 
-### No compile-time for, while and goto
+### No compile-time for and goto
 
-Compile-time `for` or `while` loops are not supported. `goto` statements are also not allowed in templates. If you need a compile-time `for`, you can use the following construct:
+Compile-time `for` loops are not supported. `goto` statements are also not allowed in templates. If you need a compile-time `for`, you can use the following construct:
 
 ```cs
-foreach ( int i in meta.CompileTime( Enumerable.Range( 0, n ) ) )
+foreach ( int i in Enumerable.Range( 0, n ) )
 ```
 
 If the above approach is not feasible, you can move your logic to a compile-time aspect function (not a template method), have this function return an enumerable, and use the return value in a `foreach` loop in the template method.

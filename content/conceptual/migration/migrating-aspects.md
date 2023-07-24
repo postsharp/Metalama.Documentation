@@ -49,7 +49,7 @@ The `Metalama.Migration` package contains the public API of PostSharp, but not i
 
 Building these projects at this point will likely result in numerous warnings.
 
-If your code uses APIs that haven't been ported to PostSharp yet, you may also encounter errors. If you see errors, consider possible workarounds. If none are available, you may need to delay the migration effort.
+If your code uses APIs that haven't been ported to PostSharp, you may also encounter errors. If you see errors, consider possible workarounds. If none are available, you may need to delay the migration effort.
 
 Do not attempt to run your application or your unit tests at this point. They won't function until you port all critical aspects.
 

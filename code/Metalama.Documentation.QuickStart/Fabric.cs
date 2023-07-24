@@ -8,10 +8,10 @@ namespace Metalama.Documentation.QuickStart
 {
     public class Fabric : ProjectFabric
     {
-        public override void AmendProject(IProjectAmender project)
+        public override void AmendProject(IProjectAmender amender)
         {
             //Locating all types 
-            var allMethods = project.Outbound.SelectMany
+            var allMethods = amender.Outbound.SelectMany
                             (p => p.Types).SelectMany(t => t.Methods);
             AddLoggingAspect(allMethods);
             AddRetryAspect(allMethods);

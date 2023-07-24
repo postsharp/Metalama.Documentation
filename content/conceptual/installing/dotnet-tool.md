@@ -16,7 +16,7 @@ The Metalama Command Line Tool provides the following features:
 To install the Metalama Command Line Tool, follow these steps:
 
 1. While Metalama is in preview, check the latest version number of the [Metalama.Tool](https://www.nuget.org/packages/Metalama.Tool) package on NuGet.
-2. Run the following command at the command prompt, replacing `<VERSION>` with the version number you obtained in the first step.
+2. Run the following command at the command prompt:
 
     ```powershell
     dotnet tool install -g metalama.tool
