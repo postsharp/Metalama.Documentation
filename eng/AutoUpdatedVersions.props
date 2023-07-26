@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+    <PropertyGroup>
+        <MetalamaVersion></MetalamaVersion>
+        <MetalamaCompilerVersion></MetalamaCompilerVersion>
+        <MetalamaMigrationVersion></MetalamaMigrationVersion>
+        <MetalamaExtensionsVersion></MetalamaExtensionsVersion>
+        <MetalamaLinqPadVersion></MetalamaLinqPadVersion>
+        <MetalamaSamplesVersion></MetalamaSamplesVersion>
+    </PropertyGroup>
+
+</Project>
