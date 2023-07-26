@@ -8,6 +8,7 @@ using PostSharp.Engineering.BuildTools.Build.Solutions;
 using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
+using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
 using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
@@ -22,7 +23,7 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
 {
     // Note that we don't build Metalama.Samples ourselves. We expect it to be built from the repo itself.
     // HTML artifacts should be restored from artifacts.
-    
+
     Solutions = new Solution[]
     {
         new DotNetSolution( "code\\Metalama.Documentation.Prerequisites.sln" ) { CanFormatCode = true },
@@ -36,23 +37,15 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
         },
         new DocFxSolution( "docfx.json" )
     },
-
     PublicArtifacts = Pattern.Create(
         docPackageFileName ),
-    
-    Dependencies = new[] { 
-         DevelopmentDependencies.PostSharpEngineering,
-         MetalamaDependencies.MetalamaMigration,
-         MetalamaDependencies.MetalamaLinqPad,
-         MetalamaDependencies.MetalamaSamples
-    },
-
-    SourceDependencies = new[]
-    {
-        MetalamaDependencies.MetalamaSamples,
-        MetalamaDependencies.MetalamaCommunity
-    },
-
+    Dependencies =
+        new[]
+        {
+            DevelopmentDependencies.PostSharpEngineering, MetalamaDependencies.MetalamaMigration,
+            MetalamaDependencies.MetalamaLinqPad, MetalamaDependencies.MetalamaSamples
+        },
+    SourceDependencies = new[] { MetalamaDependencies.MetalamaSamples, MetalamaDependencies.MetalamaCommunity },
     AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
 
     Configurations = Product.DefaultConfigurations
