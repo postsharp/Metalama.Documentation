@@ -83,3 +83,8 @@ Follow this procedure:
    If, however, you need to validate declarations that are not types or type sets the type of the `verifier` should be `ITypeSetVerifier`, where `T` is the base interface that you want to validate. The receiver that allows you to add validators or report diagnostics is available on the <xref:Metalama.Extensions.Architecture.Fabrics.IVerifier`1.Receiver?text=verifier.TypeReceiver> property.
 
 5. You can filter the receiver (i.e. either `verifier.TypeReceiver` or `ver
+
+
+
+> [!div class="see-also"]
+> <xref:video-custom-architecture-rules>

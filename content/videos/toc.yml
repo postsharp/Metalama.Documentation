@@ -18,3 +18,7 @@ items:
       topicUid: video-reporting-errors-and-warnings
     - name: 7. Offering code fixes and live templates
       topicUid: video-code-fixes
+    - name: 8. Verifying architecture
+      topicUid: video-architecture-verification
+    - name: 9. Building custom architecture rules
+      topicUid: video-custom-architecture-rules

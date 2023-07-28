@@ -50,3 +50,7 @@ If you want to enforce naming conventions for a scenario different from the one 
 Many teams require UI pages to be suffixed with `Page`, controls with `Control`, and so on. This cannot be achieved using a custom attribute because you don't own the source code of the base class. In the following example, we show how to implement this requirement: we require all classes derived from `TextReader` to be suffixed with `Reader`. We use the <xref:Metalama.Extensions.Architecture.Fabrics.ITypeSetVerifier`1.SelectTypesDerivedFrom*> method to select the relevant types.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/NamingConvention_Fabric.cs tabs="target"]
+
+> [!div class="see-also"]
+> <xref:video-architecture-verification>
+  

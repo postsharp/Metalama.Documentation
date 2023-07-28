@@ -120,3 +120,8 @@ In the following example, we use a namespace fabric to restrict the accessibilit
 Using floating-point arithmetic in operations involving currencies is a common pitfall. Instead, `decimal` numbers should be used. In the following example, we use a project fabric to validate all references to the `float` and `double` types. We report a diagnostic when they are used from the `**.Invoicing` namespaces.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Fabric_ForbidFloat.cs tabs="target"]
+
+
+> [!div class="see-also"]
+> <xref:video-architecture-verification>
+  

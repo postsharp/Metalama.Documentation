@@ -32,3 +32,6 @@ This chapter includes the following articles:
 |<xref:validation-extending>     |  This article demonstrates how to create custom attributes or fabric extension methods to validate your own architectural rules.   |
 
 
+> [!div class="see-also"]
+> <xref:video-architecture-verification>
+  
