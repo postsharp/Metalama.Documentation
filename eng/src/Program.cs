@@ -1,15 +1,20 @@
-﻿using BuildMetalamaDocumentation;
+﻿
+using Amazon;
+using BuildMetalamaDocumentation;
 using Microsoft.Extensions.FileSystemGlobbing;
 using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
 using PostSharp.Engineering.BuildTools;
 using PostSharp.Engineering.BuildTools.Build.Solutions;
+using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
+using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
 using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
 using System.IO;
 using System.Diagnostics;
+using PostSharp.Engineering.BuildTools.Search;
 using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2023_3;
 
 var docPackageFileName = $"Metalama.Doc.{MetalamaDependencies.Metalama.ProductFamily.Version}.zip";
@@ -44,20 +49,27 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
     AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
 
     Configurations = Product.DefaultConfigurations
-        // Disable automatic build triggers.
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
-
-        // Documentation 2023.3 is not yet published. See earlier versions for deployment configuration.
-        .WithValue( BuildConfiguration.Public, c => c with { ExportsToTeamCityDeploy = true } ),
-    
-    // Extensions = new ProductExtension[]
-    // {
-    //     new UpdateSearchProductExtension(
-    //         "https://0fpg9nu41dat6boep.a1.typesense.net",
-    //         "metalamadoc",
-    //         "https://doc-production.metalama.net/sitemap.xml",
-    //         true )
-    // }
+        .WithValue( BuildConfiguration.Public, c => c with
+        {
+            ExportsToTeamCityDeployWithoutDependencies = true,
+            PublicPublishers = new Publisher[]
+            {
+                new MergePublisher(), new DocumentationPublisher( new S3PublisherConfiguration[]
+                {
+                    //TODO
+                    new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
+                } )
+            }
+        } ),
+    Extensions = new ProductExtension[]
+    {
+        new UpdateSearchProductExtension(
+            "https://0fpg9nu41dat6boep.a1.typesense.net",
+            "metalamadoc",
+            "https://doc-production.metalama.net/sitemap.xml",
+            true )
+    }
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
@@ -80,31 +92,31 @@ static void OnPrepareCompleted( PrepareCompletedEventArgs args )
     {
         args.IsFailed = true;
     }
-    
+
     // Copy HTML artefact dependencies to the source dependency directory.
     var htmlSourceDirectory = Path.Combine( args.Context.RepoDirectory, "dependencies", "Metalama.Samples", "html" );
     var htmlTargetDirectory = Path.Combine( args.Context.RepoDirectory, "source-dependencies", "Metalama.Samples", "examples" );
-    
+
     if ( Directory.Exists( htmlSourceDirectory ) )
     {
         args.Context.Console.WriteMessage( $"Restoring HTML files from '{htmlSourceDirectory}'." );
         var matcher = new Matcher();
-        matcher.AddInclude("**/*.html");
-        var matches = matcher.Execute(new DirectoryInfoWrapper( new DirectoryInfo( htmlSourceDirectory ) ));
+        matcher.AddInclude( "**/*.html" );
+        var matches = matcher.Execute( new DirectoryInfoWrapper( new DirectoryInfo( htmlSourceDirectory ) ) );
 
         var count = 0;
-        foreach (var match in matches.Files)
+        foreach ( var match in matches.Files )
         {
             var sourceFile = Path.Combine( htmlSourceDirectory, match.Path );
             var targetFile = Path.Combine( htmlTargetDirectory, match.Path );
             var targetSubdirectory = Path.GetDirectoryName( targetFile )!;
             Directory.CreateDirectory( targetSubdirectory );
-            File.Copy(sourceFile, targetFile, true);
+            File.Copy( sourceFile, targetFile, true );
 
             count++;
         }
-        
+
         args.Context.Console.WriteMessage( $"{count} files copied." );
-        
+
     }
 }

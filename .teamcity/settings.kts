@@ -17,7 +17,10 @@ project {
    buildType(DebugBuild)
    buildType(PublicBuild)
    buildType(PublicDeployment)
-   buildTypesOrder = arrayListOf(DebugBuild,PublicBuild,PublicDeployment)
+   buildType(PublicDeploymentNoDependency)
+   buildType(PublicUpdateSearch)
+   buildType(PublicUpdateSearchNoDependency)
+   buildTypesOrder = arrayListOf(DebugBuild,PublicBuild,PublicDeployment,PublicDeploymentNoDependency,PublicUpdateSearch,PublicUpdateSearchNoDependency)
 }
 
 object DebugBuild : BuildType({
@@ -576,6 +579,292 @@ object PublicDeployment : BuildType({
         }
 
      }
+
+})
+
+object PublicDeploymentNoDependency : BuildType({
+
+    name = "Standalone Deploy [Public]"
+
+    type = Type.DEPLOYMENT
+
+    params {
+        text("BuildArguments", "", label = "Build Arguments", description = "Arguments to append to the engineering command.", allowEmpty = true)
+        text("TimeOut", "300", label = "Time-Out Threshold", description = "Seconds after the duration of the last successful build.",
+              regex = """\d+""", validationMessage = "The timeout has to be an integer number.")
+    }
+    vcs {
+        root(DslContext.settingsRoot)
+        root(AbsoluteId("Metalama_Metalama20233_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+        root(AbsoluteId("Metalama_Metalama20233_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
+    }
+
+    steps {
+        powerShell {
+            name = "Standalone Deploy [Public]"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "publish --configuration Public %BuildArguments%")
+        }
+    }
+
+    failureConditions {
+        failOnMetricChange {
+            metric = BuildFailureOnMetric.MetricType.BUILD_DURATION
+            units = BuildFailureOnMetric.MetricUnit.DEFAULT_UNIT
+            comparison = BuildFailureOnMetric.MetricComparison.MORE
+            compareTo = build {
+                buildRule = lastSuccessful()
+            }
+            stopBuildOnFailure = true
+            param("metricThreshold", "%TimeOut%")
+        }
+    }
+
+    requirements {
+        equals("env.BuildAgentType", "caravela04cloud")
+    }
+
+    features {
+        swabra {
+            lockingProcesses = Swabra.LockingProcessPolicy.KILL
+            verbose = true
+        }
+        sshAgent {
+            // By convention, the SSH key name is always PostSharp.Engineering for all repositories using SSH to connect.
+            teamcitySshKey = "PostSharp.Engineering"
+        }
+    }
+
+    dependencies {
+
+        dependency(AbsoluteId("Metalama_Metalama20233_Metalama_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20233_MetalamaBackstage_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Backstage"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20233_MetalamaCompiler_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/packages/Release/Shipping/**/*=>dependencies/Metalama.Compiler"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20233_MetalamaExtensions_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Extensions"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20233_MetalamaLinqPad_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.LinqPad"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20233_MetalamaMigration_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
+            }
+
+        }
+
+        dependency(AbsoluteId("Metalama_Metalama20233_MetalamaSamples_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Samples"
+            }
+
+        }
+
+        dependency(PublicBuild) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/public/**/*=>artifacts/publish/public\n+:artifacts/publish/private/**/*=>artifacts/publish/private\n+:artifacts/testResults/**/*=>artifacts/testResults"
+            }
+
+        }
+
+     }
+
+})
+
+object PublicUpdateSearch : BuildType({
+
+    name = "Update Search [Public]"
+
+    type = Type.DEPLOYMENT
+
+    params {
+        text("BuildArguments", "", label = "Build Arguments", description = "Arguments to append to the engineering command.", allowEmpty = true)
+        text("TimeOut", "300", label = "Time-Out Threshold", description = "Seconds after the duration of the last successful build.",
+              regex = """\d+""", validationMessage = "The timeout has to be an integer number.")
+    }
+    vcs {
+        root(DslContext.settingsRoot)
+        root(AbsoluteId("Metalama_Metalama20233_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+        root(AbsoluteId("Metalama_Metalama20233_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
+    }
+
+    steps {
+        powerShell {
+            name = "Update Search [Public]"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools search update https://0fpg9nu41dat6boep.a1.typesense.net metalamadoc https://doc-production.metalama.net/sitemap.xml --ignore-tls %BuildArguments%")
+        }
+    }
+
+    failureConditions {
+        failOnMetricChange {
+            metric = BuildFailureOnMetric.MetricType.BUILD_DURATION
+            units = BuildFailureOnMetric.MetricUnit.DEFAULT_UNIT
+            comparison = BuildFailureOnMetric.MetricComparison.MORE
+            compareTo = build {
+                buildRule = lastSuccessful()
+            }
+            stopBuildOnFailure = true
+            param("metricThreshold", "%TimeOut%")
+        }
+    }
+
+    requirements {
+        equals("env.BuildAgentType", "caravela04cloud")
+    }
+
+    features {
+        swabra {
+            lockingProcesses = Swabra.LockingProcessPolicy.KILL
+            verbose = true
+        }
+    }
+
+    dependencies {
+
+        dependency(PublicDeployment) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+
+        }
+
+     }
+
+})
+
+object PublicUpdateSearchNoDependency : BuildType({
+
+    name = "Standalone Update Search [Public]"
+
+    type = Type.DEPLOYMENT
+
+    params {
+        text("BuildArguments", "", label = "Build Arguments", description = "Arguments to append to the engineering command.", allowEmpty = true)
+        text("TimeOut", "300", label = "Time-Out Threshold", description = "Seconds after the duration of the last successful build.",
+              regex = """\d+""", validationMessage = "The timeout has to be an integer number.")
+    }
+    vcs {
+        root(DslContext.settingsRoot)
+        root(AbsoluteId("Metalama_Metalama20233_MetalamaSamples"), "+:. => source-dependencies/Metalama.Samples")
+        root(AbsoluteId("Metalama_Metalama20233_MetalamaCommunity"), "+:. => source-dependencies/Metalama.Community")
+    }
+
+    steps {
+        powerShell {
+            name = "Standalone Update Search [Public]"
+            scriptMode = file {
+                path = "Build.ps1"
+            }
+            noProfile = false
+            param("jetbrains_powershell_scriptArguments", "tools search update https://0fpg9nu41dat6boep.a1.typesense.net metalamadoc https://doc-production.metalama.net/sitemap.xml --ignore-tls %BuildArguments%")
+        }
+    }
+
+    failureConditions {
+        failOnMetricChange {
+            metric = BuildFailureOnMetric.MetricType.BUILD_DURATION
+            units = BuildFailureOnMetric.MetricUnit.DEFAULT_UNIT
+            comparison = BuildFailureOnMetric.MetricComparison.MORE
+            compareTo = build {
+                buildRule = lastSuccessful()
+            }
+            stopBuildOnFailure = true
+            param("metricThreshold", "%TimeOut%")
+        }
+    }
+
+    requirements {
+        equals("env.BuildAgentType", "caravela04cloud")
+    }
+
+    features {
+        swabra {
+            lockingProcesses = Swabra.LockingProcessPolicy.KILL
+            verbose = true
+        }
+    }
 
 })
 
