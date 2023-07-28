@@ -11,10 +11,13 @@ namespace BuildMetalamaDocumentation
 {
     public class DocFxSolution : Solution
     {
-        public DocFxSolution( string solutionPath ) : base( solutionPath )
+        private readonly string _archiveName;
+
+        public DocFxSolution( string solutionPath, string archiveName ) : base( solutionPath )
         {
             // Packing is done by the publish command.
-            this.BuildMethod = PostSharp.Engineering.BuildTools.Build.Model.BuildMethod.Pack;            
+            this.BuildMethod = PostSharp.Engineering.BuildTools.Build.Model.BuildMethod.Pack;
+            this._archiveName = archiveName;
         }
 
         public override bool Build( BuildContext context, BuildSettings settings )
@@ -74,7 +77,7 @@ namespace BuildMetalamaDocumentation
                 return false;
             }
 
-            var zipPath = Path.Combine( context.RepoDirectory, "artifacts\\publish\\private\\Metalama.Doc.zip" );
+            var zipPath = Path.Combine( context.RepoDirectory, $"artifacts\\publish\\private\\{this._archiveName}" );
 
             if (File.Exists(zipPath))
             {

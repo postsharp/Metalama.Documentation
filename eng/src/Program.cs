@@ -1,23 +1,18 @@
-﻿
-using Amazon;
-using BuildMetalamaDocumentation;
+﻿using BuildMetalamaDocumentation;
 using Microsoft.Extensions.FileSystemGlobbing;
 using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
 using PostSharp.Engineering.BuildTools;
 using PostSharp.Engineering.BuildTools.Build.Solutions;
-using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
-using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
 using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
 using System.IO;
 using System.Diagnostics;
-using PostSharp.Engineering.BuildTools.Search;
 using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2023_3;
 
-const string docPackageFileName = "Metalama.Doc.zip";
+var docPackageFileName = $"Metalama.Doc.{MetalamaDependencies.Metalama.ProductFamily.Version}.zip";
 
 var product = new Product( MetalamaDependencies.MetalamaDocumentation )
 {
@@ -35,7 +30,7 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
         {
             CanFormatCode = true, BuildMethod = BuildMethod.Build,
         },
-        new DocFxSolution( "docfx.json" )
+        new DocFxSolution( "docfx.json", docPackageFileName )
     },
     PublicArtifacts = Pattern.Create(
         docPackageFileName ),
@@ -53,7 +48,7 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
 
         // Documentation 2023.3 is not yet published. See earlier versions for deployment configuration.
-        .WithValue( BuildConfiguration.Public, c => c with { ExportsToTeamCityDeploy = false } ),
+        .WithValue( BuildConfiguration.Public, c => c with { ExportsToTeamCityDeploy = true } ),
     
     // Extensions = new ProductExtension[]
     // {
