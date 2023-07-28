@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+
 <Project>
 
     <PropertyGroup>
-        <MetalamaVersion></MetalamaVersion>
-        <MetalamaCompilerVersion></MetalamaCompilerVersion>
-        <MetalamaMigrationVersion></MetalamaMigrationVersion>
-        <MetalamaExtensionsVersion></MetalamaExtensionsVersion>
-        <MetalamaLinqPadVersion></MetalamaLinqPadVersion>
-        <MetalamaSamplesVersion></MetalamaSamplesVersion>
-    </PropertyGroup>
+        <MetalamaVersion>2023.3.1-preview</MetalamaVersion>
+        <MetalamaCompilerVersion>2023.3.1-preview</MetalamaCompilerVersion>
+        <MetalamaMigrationVersion>2023.3.1-preview</MetalamaMigrationVersion>
+        <MetalamaExtensionsVersion>2023.3.1-preview</MetalamaExtensionsVersion>
+        <MetalamaLinqPadVersion>2023.3.1-preview</MetalamaLinqPadVersion>
+        <MetalamaSamplesVersion>2023.3.0-preview</MetalamaSamplesVersion>
+    <MetalamaBackstageVersion>2023.3.1-preview</MetalamaBackstageVersion></PropertyGroup>
 
 </Project>
