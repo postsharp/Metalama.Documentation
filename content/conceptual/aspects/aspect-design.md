@@ -32,7 +32,7 @@ classDiagram
         AddInitializer*(...)
     }
 
-    class IDiagnosticSink {
+    class ScopedDiagnosticSink {
         Report(...)
         Suppress(...)
         Suggest(...)
@@ -40,7 +40,7 @@ classDiagram
 
     IAspect --> IAspectBuilder : BuildAspect() receives
     IAspectBuilder --> IAdviceFactory : exposes
-    IAspectBuilder --> IDiagnosticSink : exposes
+    IAspectBuilder --> ScopedDiagnosticSink : exposes
 
 ```
 

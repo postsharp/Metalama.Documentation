@@ -18,7 +18,7 @@ classDiagram
       SuppressedDiagnosticId
   }
 
-    class IDiagnosticSink {
+    class ScopedDiagnosticSink {
         Report(IDiagnosticLocation, IDiagnostic)
         Suppress(IDiagnosticLocation, SuppressionDefinition)
         Suggest(IDiagnosticLocation, CodeFix)
@@ -33,7 +33,6 @@ classDiagram
         Suggest(CodeFix)
     }
 
-    IDiagnosticSink <|-- ScopedDiagnosticSink : implements
 
 
 
@@ -88,9 +87,9 @@ class `DiagnosticDefinition ` {
     IDiagnostic <|.. `DiagnosticDefinition ` : implements
     IDiagnostic <.. DiagnosticDefinition~T~ : WithArguments instantiates
     DiagnosticSeverity <-- IDiagnostic : Severity
-    IDiagnostic <.. IDiagnosticSink : accepts
-    SuppressionDefinition <.. IDiagnosticSink : accepts
-    CodeFix <.. IDiagnosticSink : accepts
+    IDiagnostic <.. ScopedDiagnosticSink : accepts
+    SuppressionDefinition <.. ScopedDiagnosticSink : accepts
+    CodeFix <.. ScopedDiagnosticSink : accepts
 
     ScopedDiagnosticSink <-- IAspectBuilder : exposes
     ScopedDiagnosticSink <-- ValidationContext : exposes
@@ -106,7 +105,7 @@ To report a diagnostic, first define a static field of type <xref:Metalama.Frame
 
 To report parametric diagnostics, first call the <xref:Metalama.Framework.Diagnostics.DiagnosticDefinition`1.WithArguments*> method. This step is not necessary for parameterless diagnostics.
 
-To report a diagnostic, call the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Report*> method. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectBuilder.Diagnostics> property of the argument of the <xref:Metalama.Framework.Aspects.IAspectBuilder>.<xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method of your aspect. You can also report a diagnostic from a validator.
+To report a diagnostic, call the <xref:Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Report*> method. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectBuilder.Diagnostics> property of the argument of the <xref:Metalama.Framework.Aspects.IAspectBuilder>.<xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method of your aspect. You can also report a diagnostic from a validator.
 
 When reporting a diagnostic, you can specify the *location* of the diagnostic, i.e., the code element to which it will be reported (which determines the file and line of the error message). If you don't specify the location, the default location for the current context will be used.
 
@@ -115,7 +114,7 @@ You can add code fixes to diagnostics. For details, refer to the <xref:Metalama.
 ## Suppressing diagnostics
 
 To suppress a diagnostic, first define it as a static field of type <xref:Metalama.Framework.Diagnostics.SuppressionDefinition> in your aspect class.
-You can then suppress a diagnostic from any declaration from an aspect using the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suppress*> method.
+You can then suppress a diagnostic from any declaration from an aspect using the <xref:Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Suppress*> method.
 
 For more information, refer to <xref:diagnostics>.
 

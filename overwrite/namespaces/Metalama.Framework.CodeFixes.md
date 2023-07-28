@@ -9,14 +9,14 @@ You can instantiate code fixes using the static methods of the <xref:Metalama.Fr
 
 To add code fixes to a diagnostic, utilize the <xref:Metalama.Framework.Diagnostics.IDiagnostic.WithCodeFixes*?text=IDiagnostic.WithCodeFixes> method.
 
-To suggest a code refactoring without reporting a diagnostic, employ the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*>text=IDiagnosticSink.Suggest> method.
+To suggest a code refactoring without reporting a diagnostic, employ the <xref:Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Suggest*>text=ScopedDiagnosticSink.Suggest> method.
 
 ## Class diagram
 
 ```mermaid
 classDiagram
 
-    class IDiagnosticSink {
+    class ScopedDiagnosticSink {
         Report()
         Suppress()
         Suggest()
@@ -46,8 +46,8 @@ classDiagram
     ICodeFixBuilder <-- CodeFixFactory : custom code fixes\nimplemented with
     CodeFix <-- CodeFixFactory : creates
     IDiagnostic <-- CodeFix: add to
-    IDiagnosticSink <-- CodeFix: suggest to
-    IDiagnosticSink <-- IDiagnostic: reports to
+    ScopedDiagnosticSink <-- CodeFix: suggest to
+    ScopedDiagnosticSink <-- IDiagnostic: reports to
 ```
 
 ## Namespace members

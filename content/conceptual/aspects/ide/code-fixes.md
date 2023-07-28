@@ -11,13 +11,13 @@ When an aspect or fabric reports a diagnostic, it can attach a set of code fixes
 
 ## Suggesting code refactorings without diagnostics
 
-An aspect or fabric can also suggest a code refactoring without reporting a diagnostic by invoking the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method.
+An aspect or fabric can also suggest a code refactoring without reporting a diagnostic by invoking the <xref:Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Suggest*> method.
 
 ### Example
 
 The example below demonstrates an aspect that implements the `ToString` method. By default, it includes all public properties of the class in the `ToString` result. However, the developer using the aspect can opt-out by adding `[NotToString]` to any property.
 
-The aspect utilizes the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method to add a code fix suggestion for all properties not yet annotated with `[NotToString]`.
+The aspect utilizes the <xref:Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Suggest*> method to add a code fix suggestion for all properties not yet annotated with `[NotToString]`.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/ToStringWithSimpleCodeFix.cs name="ToString aspect with simple code fix"]
 
@@ -60,7 +60,7 @@ The custom code fix performs the following actions:
   * The logic that _creates_ the delegate must be highly efficient because it is rarely used. Any expensive logic should be moved to the _implementation_ of the delegate itself.
   * To avoid generating the delegate, you can make it conditional upon the `MetalamaExecutionContext.Current.ExecutionScenario.CapturesCodeFixImplementations` expression.
 
-* At design time, all code fix titles, including those added by the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suggest*> method, are cached for the complete solution. Therefore, you should avoid adding a large number of suggestions. The current Metalama design is not suited for this scenario.
+* At design time, all code fix titles, including those added by the <xref:Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Suggest*> method, are cached for the complete solution. Therefore, you should avoid adding a large number of suggestions. The current Metalama design is not suited for this scenario.
 
 
 > [!div class="see-also"]

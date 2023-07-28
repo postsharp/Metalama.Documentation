@@ -49,7 +49,7 @@ To suppress a diagnostic:
 
 2. Define a `static` field of type <xref:Metalama.Framework.Diagnostics.SuppressionDefinition> in your aspect class. <xref:Metalama.Framework.Diagnostics.SuppressionDefinition> specifies the identifier of the diagnostic to suppress.
 
-3. Call the <xref:Metalama.Framework.Diagnostics.IDiagnosticSink.Suppress*> method using `builder.Diagnostics.Suppress(...)` in the `BuildAspect` method.
+3. Call the <xref:Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Suppress*> method using `builder.Diagnostics.Suppress(...)` in the `BuildAspect` method.
 
 ### Example
 

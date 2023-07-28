@@ -49,14 +49,14 @@ classDiagram
         AddInitializer*(...)
     }
 
-    class IDiagnosticSink {
+    class ScopedDiagnosticSink {
         Report(...)
         Suppress(...)
     }
 
     IAspectBuilder <-- IAspect : BuildAspect() receives
     IAdviceFactory <-- IAspectBuilder : exposes
-    IDiagnosticSink <-- IAspectBuilder : exposes
+    ScopedDiagnosticSink <-- IAspectBuilder : exposes
 
 ```
 
