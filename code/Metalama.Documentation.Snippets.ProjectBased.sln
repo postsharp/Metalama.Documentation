@@ -8,8 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.QuickStart", "Metalama.Documentation.QuickStart\Metalama.Documentation.QuickStart.csproj", "{3BC34F98-D332-4894-9CD7-11B69EE116AE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.QuickStart.Fabrics", "Metalama.Documentation.QuickStart.Fabrics\Metalama.Documentation.QuickStart.Fabrics.csproj", "{2BBCC7A2-E5CA-4F68-B003-96FDB81773B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.QuickStart.Fabrics.2", "Metalama.Documentation.QuickStart.Fabrics.2\Metalama.Documentation.QuickStart.Fabrics.2.csproj", "{72B0979A-AFE8-45B6-BDFE-9B332F201D81}"
@@ -36,10 +34,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3BC34F98-D332-4894-9CD7-11B69EE116AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BC34F98-D332-4894-9CD7-11B69EE116AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BC34F98-D332-4894-9CD7-11B69EE116AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BC34F98-D332-4894-9CD7-11B69EE116AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2BBCC7A2-E5CA-4F68-B003-96FDB81773B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2BBCC7A2-E5CA-4F68-B003-96FDB81773B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BBCC7A2-E5CA-4F68-B003-96FDB81773B9}.Release|Any CPU.ActiveCfg = Release|Any CPU

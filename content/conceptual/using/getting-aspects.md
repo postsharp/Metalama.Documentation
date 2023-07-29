@@ -16,7 +16,7 @@ In the examples provided in this chapter, the following pre-built aspects will b
 |`Retry` | For retrying a method multiple times. |
 |`NotifyingPropertyChanged` | For easy implementation of the `INotifyPropertyChanged` interface. |
 
-The NuGet package containing these aspects can be downloaded from [TO_Be_Filled_URL](here).
+The NuGet package containing these aspects is [Metalama.Documentation.QuickStart](https://www.nuget.org/packages/Metalama.Documentation.QuickStart). You can add this package to your projects while following the tutorials in this chapter.
 
 When applied, these aspects alter the behavior of your source code without modifying the source level. They transform the source code before it is passed to the compiler.
 
@@ -25,12 +25,12 @@ When applied, these aspects alter the behavior of your source code without modif
 
 ## Metalama ready-made aspects
 
-We aim to port the `PostSharp.Patterns` aspect suite to Metalama and make it open-source. This process may take a few months. Once completed, you will have access to professionally-built aspects without the need to create them yourself.
+We are in the process of porting the `PostSharp.Patterns` aspect suite to Metalama and make it open-source. This process may take a few months. You can follow the work in progress in the [Metalama.Patterns](https://github.com/postsharp/Metalama.Patterns) repository. Once completed, you will have access to professionally-built aspects without the need to create them yourself.
 
 ## Community aspects
 
-Additionally, we plan to compile a list of maintained third-party Metalama aspect libraries.
+Additionally, you can find open-source aspect libraries built by the community on the [Metalama community portal](https://www.postsharp.net/community/projects).
 
-In the interim, you can [search GitHub](https://github.com/search?p=1&q=metalama&type=Repositories) for these libraries.
+You can [search GitHub](https://github.com/search?p=1&q=metalama&type=Repositories) for projects mentioning Metalama.
 
 
