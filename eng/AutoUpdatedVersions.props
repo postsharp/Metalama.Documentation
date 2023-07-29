@@ -7,7 +7,7 @@
         <MetalamaMigrationVersion>2023.3.1-preview</MetalamaMigrationVersion>
         <MetalamaExtensionsVersion>2023.3.1-preview</MetalamaExtensionsVersion>
         <MetalamaLinqPadVersion>2023.3.1-preview</MetalamaLinqPadVersion>
-        <MetalamaSamplesVersion>2023.3.0-preview</MetalamaSamplesVersion>
+        <MetalamaSamplesVersion>2023.3.1-preview</MetalamaSamplesVersion>
     <MetalamaBackstageVersion>2023.3.1-preview</MetalamaBackstageVersion></PropertyGroup>
 
 </Project>
