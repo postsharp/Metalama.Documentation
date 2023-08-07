@@ -1,7 +1,10 @@
 using Microsoft.Extensions.Hosting;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
+
+#if METALAMA
+using Microsoft.Extensions.Logging;
+#endif
 
 namespace Doc.LogCustomFramework
 {
@@ -11,7 +14,9 @@ namespace Doc.LogCustomFramework
         [Log]
         protected override Task ExecuteAsync( CancellationToken stoppingToken )
         {
-            Console.WriteLine( "Hello, world." );
+#if METALAMA
+            _logger.LogInformation( "Hello, world." );
+#endif
             return Task.CompletedTask;
         }
     }
