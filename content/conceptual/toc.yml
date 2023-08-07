@@ -157,10 +157,12 @@ items:
     - name: Extending Metalama
       topicUid: sdk
       items:
-        - name: Creating the project structure
-          topicUid: sdk-scaffolding
         - name: Aspect weavers
           topicUid: aspect-weavers
+        - name: Using the Roslyn API from aspects
+          topicUid: roslyn-api
+        - name: Custom metrics
+          topicUid: custom-metrics
     - name: Migrating from PostSharp
       topicUid: migration
       items:

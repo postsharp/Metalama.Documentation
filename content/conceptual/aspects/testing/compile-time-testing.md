@@ -21,11 +21,9 @@ Unit-testing compile-time classes offers the following advantages:
 In the project defining the compile-time code, set the `MetalamaRemoveCompileTimeOnlyCode` property to `False`:
 
 ```xml
-<Project>
-    <PropertyGroup>
-        <MetalamaRemoveCompileTimeOnlyCode>False</MetalamaRemoveCompileTimeOnlyCode>
-    </PropertyGroup>
-</Project>
+<PropertyGroup>
+    <MetalamaRemoveCompileTimeOnlyCode>False</MetalamaRemoveCompileTimeOnlyCode>
+</PropertyGroup>
 ```
 
 Failing to follow this step will result in an exception whenever any compile-time code is called from a unit test.
@@ -36,14 +34,14 @@ Proceed to create an Xunit test project as you usually would.
 
 It's strongly recommended to target .NET 6.0 as temporary files cannot be automatically cleaned up with lower .NET versions.
 
-### Step 3. Add the Metalama.Testing.UnitTesting project
+If you're referencing a project that transitively references `Metalama.Framework`, you might need to disable Metalama for the test project: `<MetalamaEnabled>false</MetalamaEnabled>`.
+
+### Step 3. Reference the Metalama.Testing.UnitTesting package
 
 ```xml
-<Project>
-    <ItemGroup>
-        <PackageReference Include="Metalama.Testing.UnitTesting" Version="CHANGE ME" />
-    </ItemGroup>
-</Project>
+<ItemGroup>
+    <PackageReference Include="Metalama.Testing.UnitTesting" Version="CHANGE ME" />
+</ItemGroup>
 ```
 
 ### Step 4. Create a test class derived from UnitTestClass

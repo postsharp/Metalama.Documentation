@@ -14,21 +14,24 @@ When you assign an aspect weaver to an aspect class, Metalama bypasses the <xref
 Unlike normal aspects, weaver-based aspects:
 
 * Are significantly more complex to implement;
-* Are not executed at design time;
-* Require their unique implementation project;
 * May significantly impact compilation performance, particularly when many are in use.
 
 ## Creating a weaver-based aspect
 
 The following steps guide you through the process of creating a weaver-based aspect and its weaver:
 
-### Step 1. Create the solution scaffolding
+### Step 1. Reference the Metalama SDK
 
-This step is described in <xref:sdk-scaffolding>.
+A weaver project needs to reference the `Metalama.Framework.Sdk` package privately, and also the regular `Metalama.Framework` package:
 
-### Step 2. Define the public interface of your aspect (typically a custom attribute)
+```xml
+<PackageReference Include="Metalama.Framework.Sdk" Version="$(MetalamaVersion)" PrivateAssets="all" />
+<PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)" />
+```
 
-In the _public API project_ created in the previous step, define an aspect class as usual. For example:
+### Step 2. Define the public interface of your aspect (typically an attribute)
+
+Define an aspect class as usual. For example:
 
 ```csharp
 using Metalama.Framework.Aspects;
@@ -40,22 +43,19 @@ public class VirtualizeAttribute : TypeAspect { }
 
 ### Step 3. Create the weaver for this aspect
 
-In the _weaver project_ created in Step 1:
-
 1. Add a class that implements the <xref:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver> interface.
-2. Ensure the class is `public`.
-3. Add the <xref:Metalama.Compiler.MetalamaPlugInAttribute> attribute to this class.
+2. Add the <xref:Metalama.Framework.Engine.MetalamaPlugInAttribute> attribute to this class.
 
 At this point, the code should look like this:
 
 ```cs
-using Metalama.Compiler;
+using Metalama.Framework.Engine;
 using Metalama.Framework.Engine.AspectWeavers;
 
 namespace Metalama.Community.Virtuosity.Weaver;
 
 [MetalamaPlugIn]
-public class VirtuosityWeaver : IAspectWeaver
+class VirtuosityWeaver : IAspectWeaver
 {
     public Task TransformAsync( AspectWeaverContext context )
     {
@@ -66,10 +66,10 @@ public class VirtuosityWeaver : IAspectWeaver
 
 ### Step 4. Bind the aspect class to its weaver class
 
-Return to the aspect class and annotate it with a custom attribute of type <xref:Metalama.Framework.Aspects.RequireAspectWeaverAttribute>. The constructor argument must be the namespace-qualified name of the weaver class.
+Return to the aspect class and annotate it with a custom attribute of type <xref:Metalama.Framework.Aspects.RequireAspectWeaverAttribute>. The constructor argument must point to the weaver class.
 
 ```cs
-[RequireAspectWeaver( "Metalama.Community.Virtuosity.Weaver.VirtuosityWeaver" )]
+[RequireAspectWeaver( typeof(VirtuosityWeaver) )]
 public class VirtualizeAttribute : TypeAspect { }
 ```
 
@@ -98,7 +98,7 @@ Each weaver will be invoked a single time per project, regardless of the number 
 
 The list of aspect instances that your weaver needs to handle is given by the <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.AspectInstances?text=context.AspectInstances> property.
 
-To map the Metalama code model to an <xref:Microsoft.CodeAnalysis.ISymbol>, use the extension methods in <xref:Metalama.Framework.Engine.CodeModel.SymbolExtensions>.
+To map the Metalama code model to an [ISymbol](https://learn.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.isymbol), use the extension methods in <xref:Metalama.Framework.Engine.CodeModel.SymbolExtensions>.
 
 Your weaver does not need to format the output code itself. This task is handled by Metalama at the end of the pipeline, and only when necessary.
 However, your weaver is responsible for annotating the syntax nodes with the annotations declared in the  <xref:Metalama.Framework.Engine.Formatting.FormattingAnnotations> class.
@@ -109,11 +109,11 @@ A simplified version of `VirtuosityWeaver` could look like this:
 
 [!code-csharp[](~\code\Metalama.Documentation.SampleCode.Sdk\VirtuosityWeaver.cs)]
 
-The actual implementation is available [on the GitHub repo](https://github.com/postsharp/Metalama.Community/blob/master/src/Metalama.Community.Virtuosity/Metalama.Community.Virtuosity.Weaver/VirtuosityWeaver.cs).
+The actual implementation is available [on the GitHub repo](https://github.com/postsharp/Metalama.Community/blob/master/src/Metalama.Community.Virtuosity/Metalama.Community.Virtuosity/VirtuosityWeaver.cs).
 
-### Step 7. Write unit tests
+### Step 6. Write unit tests
 
-If you have created a test project as described in <xref:sdk-scaffolding>, you can test your weaver-based aspect as any other aspect, see <xref:aspect-testing>.
+You can test your weaver-based aspect as any other aspect, see <xref:aspect-testing>.
 
 ## Examples
 
@@ -122,7 +122,3 @@ Available examples of Metalama.Framework.Sdk weavers are:
 * [Metalama.Community.Virtuosity](https://github.com/postsharp/Metalama.Community/tree/master/src/Metalama.Community.Virtuosity): Makes all possible methods in a type `virtual`.
 * [Metalama.Community.AutoCancellationToken](https://github.com/postsharp/Metalama.Community/tree/master/src/Metalama.Community.AutoCancellationToken): Automatically propagates `CancellationToken` parameter.
 * [Metalama.Community.Costura](https://github.com/postsharp/Metalama.Community/tree/master/src/Metalama.Community.Costura): Bundles .NET Framework applications into a single executable file.
-
-The Metalama.Community.Virtuosity project contains minimal logic, so it can be used as a template for your own weavers.
-
-
