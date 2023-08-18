@@ -50,6 +50,7 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
 
     Configurations = Product.DefaultConfigurations
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
+
         .WithValue( BuildConfiguration.Public, c => c with
         {
             ExportsToTeamCityDeployWithoutDependencies = true,
