@@ -1,21 +1,16 @@
-﻿
-using Amazon;
-using BuildMetalamaDocumentation;
+﻿using BuildMetalamaDocumentation;
 using Microsoft.Extensions.FileSystemGlobbing;
 using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
 using PostSharp.Engineering.BuildTools;
 using PostSharp.Engineering.BuildTools.Build.Solutions;
-using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
-using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
 using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
 using System.IO;
 using System.Diagnostics;
-using PostSharp.Engineering.BuildTools.Search;
-using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2023_3;
+using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2023_4;
 
 var docPackageFileName = $"Metalama.Doc.{MetalamaDependencies.Metalama.ProductFamily.Version}.zip";
 
