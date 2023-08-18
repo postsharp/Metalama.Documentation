@@ -48,7 +48,7 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
         // Disable automatic build triggers.
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
 
-        // Documentation 2023.0 is no longer published. See later versions for deployment configuration.
+        // Documentation 2023.1 is no longer published. See later versions for deployment configuration.
         .WithValue( BuildConfiguration.Public, c => c with { ExportsToTeamCityDeploy = false } )
 };
 
