@@ -51,26 +51,9 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
     // Disable automatic build triggers.
     Configurations = Product.DefaultConfigurations
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
-        .WithValue( BuildConfiguration.Public, c => c with
-        {
-            ExportsToTeamCityDeployWithoutDependencies = true,
-            PublicPublishers = new Publisher[]
-            {
-                new MergePublisher(), new DocumentationPublisher( new S3PublisherConfiguration[]
-                {
-                    //TODO
-                    new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
-                } )
-            }
-        } ),
-    Extensions = new ProductExtension[]
-    {
-        new UpdateSearchProductExtension(
-            "https://0fpg9nu41dat6boep.a1.typesense.net",
-            "metalamadoc",
-            "https://doc-production.metalama.net/sitemap.xml",
-            true )
-    }
+
+        // Documentation 2023.2 is no longer published. See later versions for deployment configuration.
+        .WithValue( BuildConfiguration.Public, c => c with { ExportsToTeamCityDeploy = false } )
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
