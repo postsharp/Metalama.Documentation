@@ -34,7 +34,12 @@ Proceed to create an Xunit test project as you usually would.
 
 It's strongly recommended to target .NET 6.0 as temporary files cannot be automatically cleaned up with lower .NET versions.
 
-If you're referencing a project that transitively references `Metalama.Framework`, you might need to disable Metalama for the test project: `<MetalamaEnabled>false</MetalamaEnabled>`.
+Disable Metalama for the test project by defining the following property:
+
+```xml
+<PropertyGroup>
+   <MetalamaEnabled>false</MetalamaEnabled>
+</PropertyGroup>
 
 ### Step 3. Reference the Metalama.Testing.UnitTesting package
 

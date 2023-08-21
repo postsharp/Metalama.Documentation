@@ -27,7 +27,7 @@ Your aspect generally gets access to Roslyn types by using extension methods fro
 As an example, you could use Roslyn API to get the documentation comment ID for a Metalama declaration like this:
 
 ```c#
-static string? GetDocumentationCommentId(IDeclaration metalamaDeclaration)
+static string? GetDocumentationCommentId(this IDeclaration metalamaDeclaration)
 {
     var roslynSymbol = metalamaDeclaration.GetSymbol();
 
