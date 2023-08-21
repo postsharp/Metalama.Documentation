@@ -5,18 +5,20 @@ level: 400
 
 # Custom metrics
 
-> [!WARNING]
-> This feature is not completed and does not work as documented.
-
 ## Creating a custom metric
 
-### Step 1. Create the projects in the solution
+### Step 1. Reference the Metalama SDK
 
-Start by creating the scaffolding as described in <xref:sdk-scaffolding>.
+Start by referencing `Metalama.Framework.Sdk` and `Metalama.Framework`, both privately:
+
+```xml
+<PackageReference Include="Metalama.Framework.Sdk" Version="$(MetalamaVersion)" PrivateAssets="all" />
+<PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)" PrivateAssets="all" />
+```
 
 ### Step 2. Create the metric public API
 
-In the public project, create a `struct` that implements the <xref:Metalama.Framework.Metrics.IMetric`1> generic interface. The type parameter should be the type of declaration to which the metric applies (e.g., `IMethod` or `IField`). Note that your metric `struct` can implement several generic instances of the <xref:Metalama.Framework.Metrics.IMetric`1> interface simultaneously.
+Create a `struct` that implements the <xref:Metalama.Framework.Metrics.IMetric`1> generic interface. The type parameter should be the type of declaration to which the metric applies (e.g., `IMethod` or `IField`). Note that your metric `struct` can implement several generic instances of the <xref:Metalama.Framework.Metrics.IMetric`1> interface simultaneously.
 
 Typically, your metric `struct` will have at least one public property. It will also have internal members to update the values, which will be utilized by the metric implementation.
 
@@ -25,56 +27,54 @@ Typically, your metric `struct` will have at least one public property. It will 
 The following example demonstrates a single-value metric.
 
 ```cs
-public struct SyntaxNodeNumberMetric : IMetric<IMethodBase>, IMetric<INamedType>, IMetric<INamespace>, IMetric<ICompilation>
+public struct SyntaxNodesCount : IMetric<IMethodBase>, IMetric<INamedType>, IMetric<INamespace>, IMetric<ICompilation>
 {
     public int Value { get; internal set; }
 
-    internal void Add( in SyntaxNodeNumberMetric other ) => this.Value += other.Value;
+    internal void Add( in SyntaxNodesCount other ) => this.Value += other.Value;
 }
 ```
 
 ### Step 3. Create the metric implementation
 
-A metric requires several implementation classes. All of these must be contained in the weaver project created in Step 1.
+A metric requires several implementation classes:
 
-1. Create a visitor class that derives from <xref:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxVisitor`1>, where `T` is the metric type created above. Override the relevant `Visit` methods in this class. This class forms the actual implementation of the metric. The visitor should recursively compute the metric for each syntax node in the syntax tree. The visitor is invoked by the metric provider (described below) for each _member_. The visitor should not implement aggregation at the type or namespace level.
+1. Create a public class that derives from <xref:Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1>, where `T` is the metric type created above. In the constructor, pass an instance of the visitor created in the next step.
 
-2. Create a public class that derives from <xref:Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1>, where `T` is again the same metric type. In the class constructor, pass an instance of the visitor created in the previous step.
+2. Inside the metric provider class, create a nested visitor class that derives from <xref:Metalama.Framework.Engine.Metrics.SyntaxMetricProvider`1.BaseVisitor>. Override the relevant `Visit` methods in this class. This class forms the actual implementation of the metric. The visitor should recursively compute the metric for each syntax node in the syntax tree. The visitor is invoked by the metric provider (described below) for each _member_. The visitor should not implement aggregation at the type or namespace level.
 
 3. Implement the <xref:Metalama.Framework.Engine.Metrics.MetricProvider`1.Aggregate*> method. This method is used to aggregate the metric from the level of members to the level of types, namespaces, or the whole project.
 
-4. Annotate this class with the <xref:Metalama.Compiler.MetalamaPlugInAttribute> custom attribute.
+4. Annotate this class with the <xref:Metalama.Framework.Engine.MetalamaPlugInAttribute> custom attribute.
 
 #### Example: counting syntax nodes
 
 The following example implements a metric that counts the number of nodes in a member.
 
 ```cs
-    [MetalamaPlugIn]
-    public partial class SyntaxNodeNumberMetricProvider : SyntaxMetricProvider<SyntaxNodeNumberMetric>
+[MetalamaPlugIn]
+public class SyntaxNodesCountMetricProvider : SyntaxMetricProvider<SyntaxNodesCount>
+{
+    public SyntaxNodesCountMetricProvider() : base( new Visitor() ) { }
+
+    protected override void Aggregate( ref SyntaxNodesCount aggregate, in SyntaxNodesCount newValue )
+        => aggregate.Add( newValue );
+
+    private class Visitor : BaseVisitor
     {
-        public SyntaxNodeNumberMetricProvider() : base( Visitor.Instance ) { }
-
-        protected override void Aggregate( ref SyntaxNodeNumberMetric aggregate, in SyntaxNodeNumberMetric newValue )
-           => aggregate.Add( newValue );
-
-        private class Visitor : CSharpSyntaxVisitor<SyntaxNodeNumberMetric>
+        public override SyntaxNodesCount DefaultVisit( SyntaxNode node )
         {
-            public static readonly Visitor Instance = new();
+            var metric = new SyntaxNodesCount { Value = 1 };
 
-            public override SyntaxNodeNumberMetric DefaultVisit( SyntaxNode node )
+            foreach ( var child in node.ChildNodes() )
             {
-                var metric = new SyntaxNodeNumberMetric { Value = 1 };
-
-                foreach ( var child in node.ChildNodes() )
-                {
-                    metric.Add( this.Visit( child ) );
-                }
-
-                return metric;
+                metric.Add( this.Visit( child ) );
             }
+
+            return metric;
         }
-    }
+    }        
+}
 ```
 
 ## Consuming a custom metric
