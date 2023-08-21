@@ -1,4 +1,4 @@
-﻿using Metalama.Compiler;
+﻿using Metalama.Framework.Engine;
 using Metalama.Framework.Engine.AspectWeavers;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxKind;
 
-namespace Metalama.Community.Virtuosity.Weaver;
+namespace Metalama.Community.Virtuosity;
 
 [MetalamaPlugIn]
 public sealed class VirtuosityWeaver : IAspectWeaver
