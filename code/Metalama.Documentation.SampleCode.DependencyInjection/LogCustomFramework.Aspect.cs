@@ -4,6 +4,7 @@ using Metalama.Extensions.DependencyInjection;
 using Metalama.Extensions.DependencyInjection.Implementation;
 using Metalama.Framework.Fabrics;
 using Microsoft.Extensions.Logging;
+using Metalama.Framework.Diagnostics;
 
 #pragma warning disable CS0649, CS8618
 
@@ -14,35 +15,35 @@ namespace Doc.LogCustomFramework
     public class LoggerDependencyInjectionFramework : DefaultDependencyInjectionFramework
     {
         // Returns true if we want to handle this dependency, i.e. if is a dependency of type ILogger.
-        public override bool CanHandleDependency( DependencyContext context )
+        public override bool CanHandleDependency( DependencyProperties properties, in ScopedDiagnosticSink diagnosticSink )
         {
-            return context.FieldOrProperty.Type.Is( typeof( ILogger ) );
+            return properties.DependencyType.Is( typeof( ILogger ) );
         }
 
         // Return our own customized strategy.
-        protected override DefaultDependencyInjectionStrategy GetStrategy( DependencyContext context )
+        protected override DefaultDependencyInjectionStrategy GetStrategy( DependencyProperties properties )
         {
-            return new InjectionStrategy( context );
+            return new InjectionStrategy( properties );
         }
 
         // Our customized injection strategy. Decides how to create the field or property.
         // We actually have no customization except that we return a customized pull strategy instead of the default one.
         private class InjectionStrategy : DefaultDependencyInjectionStrategy
         {
-            public InjectionStrategy( DependencyContext context ) : base( context )
+            public InjectionStrategy( DependencyProperties properties ) : base( properties )
             {
             }
 
             protected override IPullStrategy GetPullStrategy( IFieldOrProperty introducedFieldOrProperty )
             {
-                return new LoggerPullStrategy( this.Context, introducedFieldOrProperty );
+                return new LoggerPullStrategy( this.Properties, introducedFieldOrProperty );
             }
         }
 
         // Our customized pull strategy. Decides how to assign the field or property from the constructor.
         private class LoggerPullStrategy : DefaultPullStrategy
         {
-            public LoggerPullStrategy( DependencyContext context, IFieldOrProperty introducedFieldOrProperty ) : base( context, introducedFieldOrProperty )
+            public LoggerPullStrategy( DependencyProperties properties, IFieldOrProperty introducedFieldOrProperty ) : base( properties, introducedFieldOrProperty )
             {
             }
 
