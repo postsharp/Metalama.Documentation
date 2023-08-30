@@ -17,7 +17,12 @@
               "Metalama.Extensions.DependencyInjection.ServiceLocator.dll",
               "Metalama.Extensions.Multicast.dll",
               "Metalama.Extensions.Metrics.dll",
-              "Metalama.Extensions.Architecture.dll"
+              "Metalama.Extensions.Architecture.dll",
+              "Metalama.Patterns.Contracts.dll",
+              "Metalama.Patterns.Caching.dll",
+              "Metalama.Patterns.Caching.Backends.Azure.dll",
+              "Metalama.Patterns.Caching.Backends.Redis.dll",
+              "Flashtrace.dll"
               ],
           "src": "code/Metalama.Documentation.Consolidated/bin/Debug/net6.0-windows"
         }

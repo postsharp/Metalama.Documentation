@@ -37,8 +37,11 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
     Dependencies =
         new[]
         {
-            DevelopmentDependencies.PostSharpEngineering, MetalamaDependencies.MetalamaMigration,
-            MetalamaDependencies.MetalamaLinqPad, MetalamaDependencies.MetalamaSamples
+            DevelopmentDependencies.PostSharpEngineering, 
+            MetalamaDependencies.MetalamaMigration,
+            MetalamaDependencies.MetalamaPatterns,
+            MetalamaDependencies.MetalamaLinqPad, 
+            MetalamaDependencies.MetalamaSamples
         },
     SourceDependencies = new[] { MetalamaDependencies.MetalamaSamples, MetalamaDependencies.MetalamaCommunity },
     AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },

@@ -10,7 +10,7 @@ If you are encountering issues with Metalama, our support team might request a p
 > [!WARNING]
 > **Process dumps may contain potentially confidential information**
 >
-> Process dumps could include a copy of your source code. While we treat process dumps as confidential material, your company might not permit you to send us a process dump.
+> Process dumps could include a copy of your source code. While we treat process dumps as confidential material, your company might not permit you to send us a process dump without management approval.
 
 ## Step 1. Install the PostSharp Command-Line Tool
 
