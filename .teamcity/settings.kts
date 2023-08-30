@@ -149,6 +149,16 @@ object DebugBuild : BuildType({
                 artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
             }
         }
+        dependency(AbsoluteId("Metalama_Metalama20233_MetalamaPatterns_DebugBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Patterns"
+            }
+        }
         dependency(AbsoluteId("Metalama_Metalama20233_MetalamaSamples_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
@@ -307,6 +317,16 @@ object PublicBuild : BuildType({
                 artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
             }
         }
+        dependency(AbsoluteId("Metalama_Metalama20233_MetalamaPatterns_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Patterns"
+            }
+        }
         dependency(AbsoluteId("Metalama_Metalama20233_MetalamaSamples_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
@@ -456,6 +476,21 @@ object PublicDeployment : BuildType({
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
         }
+        dependency(AbsoluteId("Metalama_Metalama20233_MetalamaPatterns_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Patterns"
+            }
+        }
+        dependency(AbsoluteId("Metalama_Metalama20233_MetalamaPatterns_PublicDeployment")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+        }
         dependency(AbsoluteId("Metalama_Metalama20233_MetalamaSamples_PublicBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
@@ -598,6 +633,16 @@ object PublicDeploymentNoDependency : BuildType({
             artifacts {
                 cleanDestination = true
                 artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
+            }
+        }
+        dependency(AbsoluteId("Metalama_Metalama20233_MetalamaPatterns_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Patterns"
             }
         }
         dependency(AbsoluteId("Metalama_Metalama20233_MetalamaSamples_PublicBuild")) {
