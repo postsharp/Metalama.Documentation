@@ -5,7 +5,12 @@ level: 200
 
 # Capturing performance data
 
-If you are experencing performance issues with Metalama, our support team might request to profile the Metalama or IDE processes.
+If you are experiencing performance issues with Metalama, our support team might request to profile the Metalama or IDE processes.
+
+> [!WARNING]
+> **Profiling snapshots may contain potentially confidential information**
+>
+> Profiling snapshots can include call stacks from your compile-time code. While we treat process dumps as confidential material, your company might not permit you to send us a profiling snapshot without management approval.
 
 > [!NOTE]
 > Metalama uses [JetBrains dotTrace](https://www.jetbrains.com/profiler/) to create performance snapshots. dotTrace will be automatically downloaded upon first use. You do not need a license to collect performance, but you may need to acquire a license if you want to analyze this data.
@@ -72,7 +77,7 @@ Close your IDE. If you are profiling the compiler processes, run `metalama kill`
 
 ## Step 5. Upload the snapshots to an online drive
 
-You will find the profiling snapshots in the `%TEMP%\Metalama\CrashReports` directory. Zip the whole directory and upload this file to an online storage service like OneDrive.
+You will find the profiling snapshots in the `%TEMP%\Metalama\Profiling` directory. Zip the whole directory and upload this file to an online storage service like OneDrive.
 
 ## Step 6. Send us the URL through a private channel
 
