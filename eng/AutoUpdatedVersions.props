@@ -9,6 +9,7 @@
         <MetalamaSamplesVersion></MetalamaSamplesVersion>
         <MetalamaMigrationVersion></MetalamaMigrationVersion>
         <MetalamaLinqPadVersion></MetalamaLinqPadVersion>
+        <MetalamaPatternsVersion></MetalamaPatternsVersion>
     </PropertyGroup>
 
 </Project>
