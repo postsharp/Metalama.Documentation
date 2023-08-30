@@ -24,6 +24,10 @@
 		<PackageReference Include="Metalama.Extensions.Architecture" Version="$(MetalamaExtensionsVersion)" />
 		<PackageReference Include="Metalama.Compiler" Version="$(MetalamaCompilerVersion)" />
 		<PackageReference Include="Metalama.Migration" Version="$(MetalamaMigrationVersion)" />
+		<PackageReference Include="Metalama.Patterns.Contracts" Version="$(MetalamaPatternsVersion)" />
+		<PackageReference Include="Metalama.Patterns.Caching" Version="$(MetalamaPatternsVersion)" />
+		<PackageReference Include="Metalama.Patterns.Caching.Backends.Azure" Version="$(MetalamaPatternsVersion)" />
+		<PackageReference Include="Metalama.Patterns.Caching.Backends.Redis" Version="$(MetalamaPatternsVersion)" />
 	</ItemGroup>
 
 	<Target Name="CheckConfiguration">

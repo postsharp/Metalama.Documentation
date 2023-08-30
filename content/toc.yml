@@ -14,6 +14,8 @@ items:
       topicUid: aspect-api
     - name: Extensions API
       topicUid: extensions-api      
+    - name: Patterns API
+      topicUid: patterns-api      
     - name: Introspection API
       topicUid: introspection-api      
     - name: Advanced API
