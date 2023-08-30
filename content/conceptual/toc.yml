@@ -146,8 +146,10 @@ items:
           topicUid: msbuild-properties
         - name: Enabling logging
           topicUid: creating-logs
-        - name: Capturing process dumps
+        - name: Capturing crash reports
           topicUid: process-dump
+        - name: Capturing performance data
+          topicUid: profiling
         - name: Troubleshooting a build server
           topicUid: troubleshooting-unattended-build
         - name: Telemetry

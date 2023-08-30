@@ -8,6 +8,8 @@
         <MetalamaExtensionsVersion>2023.3.3-preview</MetalamaExtensionsVersion>
         <MetalamaLinqPadVersion>2023.3.3-preview</MetalamaLinqPadVersion>
         <MetalamaSamplesVersion>2023.3.3-preview</MetalamaSamplesVersion>
-    <MetalamaBackstageVersion>2023.3.2-preview</MetalamaBackstageVersion></PropertyGroup>
+        <MetalamaBackstageVersion>2023.3.2-preview</MetalamaBackstageVersion>
+        <MetalamaPatternsVersion></MetalamaPatternsVersion>
+</PropertyGroup>
 
 </Project>
