@@ -9,6 +9,17 @@
         <NoWarn>1701;1702;169;649;67;8618;8618</NoWarn>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="AuxiliaryTemplate - Copy.t.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="AuxiliaryTemplate_Return.t.cs">
+        <SubType>Code</SubType>
+        <DependentUpon>AuxiliaryTemplate_Return.cs</DependentUpon>
+      </None>
+    </ItemGroup>
+
     
     
 
@@ -28,6 +39,12 @@
     <ItemGroup>
       <Compile Update="AddEditorBrowsableAttribute_Introduced_Programmatic.Aspect.cs">
         <DependentUpon>$([System.String]::Copy('%(Filename)').Replace('.Aspect','')).cs</DependentUpon>
+      </Compile>
+      <Compile Update="AuxiliaryTemplate_Return.Aspect.cs">
+        <DependentUpon>AuxiliaryTemplate_Return.cs</DependentUpon>
+      </Compile>
+      <Compile Update="AuxiliaryTemplate_StructurallyComparable.Aspect.cs">
+        <DependentUpon>AuxiliaryTemplate_StructurallyComparable.cs</DependentUpon>
       </Compile>
 
     </ItemGroup>

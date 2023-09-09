@@ -15,7 +15,7 @@ namespace Doc.LogCustomFramework
     public class LoggerDependencyInjectionFramework : DefaultDependencyInjectionFramework
     {
         // Returns true if we want to handle this dependency, i.e. if is a dependency of type ILogger.
-        public override bool CanHandleDependency( DependencyProperties properties, in ScopedDiagnosticSink diagnosticSink )
+        public override bool CanHandleDependency( DependencyProperties properties, in ScopedDiagnosticSink diagnostics )
         {
             return properties.DependencyType.Is( typeof( ILogger ) );
         }

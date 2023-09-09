@@ -49,7 +49,7 @@ Examples:
 If the condition of an `if` statement is a compile-time expression, the `if` statement will be interpreted at compile-time.
 
 
-#### Example
+#### Example: if
 
 In the following example, the aspect prints a different string for static methods than for instance methods.
 
@@ -60,7 +60,7 @@ In the following example, the aspect prints a different string for static method
 If the expression of a `foreach` statement is a compile-time expression, the `foreach` statement will be interpreted at compile-time.
 
 
-#### Example
+#### Example: foreach
 
 The following aspect uses a `foreach` loop to print the value of each parameter of the method to which it is applied.
 
@@ -71,7 +71,7 @@ The following aspect uses a `foreach` loop to print the value of each parameter 
 Compile-time `for` loops are not supported. `goto` statements are also not allowed in templates. If you need a compile-time `for`, you can use the following construct:
 
 ```cs
-foreach ( int i in Enumerable.Range( 0, n ) )
+foreach ( int i in meta.CompileTime( Enumerable.Range( 0, n ) ) )
 ```
 
 If the above approach is not feasible, you can move your logic to a compile-time aspect function (not a template method), have this function return an enumerable, and use the return value in a `foreach` loop in the template method.
@@ -84,30 +84,24 @@ If the above approach is not feasible, you can move your logic to a compile-time
 
 When `typeof(Foo)` is used with a run-time-only type `Foo`, a mock `System.Type` object is returned. This object can be used in run-time expressions or as an argument of Metalama compile-time methods. However, most members of this fake `System.Type` _cannot_ be evaluated at compile time and will throw an exception. In some cases, you may need to call the <xref:Metalama.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method to indicate to the T# compiler that you want a run-time expression instead of a compile-time one.
 
-## Accessing aspect members
+## Aspect properties
 
-Aspect members are compile-time and can be accessed from templates. For example, an aspect custom attribute can define a property that can be set when the custom attribute is applied to a target declaration and then read from the aspect compile-time code.
+Many aspects have properties that can be set when the aspect is instantiated -- for instance as a custom attribute. The scope of these properties is generally run-time-or-compile-time. When you read these properties from a template, they will be replaced by their compile-time value.
 
-There are a few exceptions to this rule:
+### Example: aspect property
 
-- Aspect members whose signature contains a run-time-only type cannot be accessed from a template.
-- Aspect members annotated with the `[Template]` attribute (or overriding members that are), such as `OverrideMethod`, cannot be invoked from a template.
-- Aspect members annotated with the `[Introduce]` or `[InterfaceMember]` attribute are considered run-time (see <xref:introducing-members> and <xref:implementing-interfaces>).
-
-#### Example
-
-The following example shows a simple _Retry_ aspect. The maximum number of attempts can be configured by setting a property of the custom attribute. This property is compile-time.
+The following example shows a simple _Retry_ aspect. The maximum number of attempts can be configured by setting a property of the custom attribute. This property is compile-time. As you can see, when the template is expanded, the property reference is replaced by its value.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Retry.cs name="Retry"]
 
-## Custom compile-time types and methods
+## Compile-time types and methods
 
 If you want to share compile-time code between aspects or aspect methods, you can create your own types and methods that execute at compile time.
 
 - Compile-time code must be annotated with the [<xref:Metalama.Framework.Aspects.CompileTimeAttribute?text=CompileTime>] custom attribute. This attribute is typically used on:
   - A method or field of an aspect;
   - A type (`class`, `struct`, `record`, ...);
-  - An assembly, using `[assembly: CompileTime]`.
+  - The whole project, using `[assembly: CompileTime]`.
 - Code that can execute at either compile or run time must be annotated with the [<xref:Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute?text=RunTimeOrCompileTime>] custom attribute.
 
 ## Calling other packages from compile-time code
