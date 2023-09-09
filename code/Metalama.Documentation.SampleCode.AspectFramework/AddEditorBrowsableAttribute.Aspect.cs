@@ -4,6 +4,8 @@ using Metalama.Framework.Code.DeclarationBuilders;
 using System.ComponentModel;
 using System.Linq;
 
+#pragma warning disable CA1310 // Specify StringComparison for correctness
+
 namespace Doc.AddEditorBrowsableAttribute
 {
     public class HideFieldsFromEditorAttribute : TypeAspect

@@ -59,6 +59,8 @@ items:
               topicUid: template-dynamic-code
             - name: Template parameters and type parameters
               topicUid: template-parameters
+            - name: Calling auxiliary templates
+              topicUid: auxiliary-templates
             - name: Generating System.Reflection objects
               topicUid: reflection
         - name: Understanding the framework design

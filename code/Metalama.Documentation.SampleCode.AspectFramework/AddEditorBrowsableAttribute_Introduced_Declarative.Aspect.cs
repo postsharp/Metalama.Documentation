@@ -7,6 +7,9 @@ namespace Doc.AddEditorBrowsableAttribute_Introduced_Declarative
     {
         [Introduce]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public int __HiddenField;
+#pragma warning disable IDE1006 // Naming Styles
+        public string? __HiddenField;
+#pragma warning restore IDE1006 // Naming Styles
+
     }
 }

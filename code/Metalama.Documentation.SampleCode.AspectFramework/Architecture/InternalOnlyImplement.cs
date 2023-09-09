@@ -1,4 +1,4 @@
 ﻿namespace Doc.Architecture.InternalOnlyImplement
 {
-    class TheImplementation : IMyInterface { }
+    internal class TheImplementation : IMyInterface { }
 }

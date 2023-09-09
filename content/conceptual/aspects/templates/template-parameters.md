@@ -1,6 +1,6 @@
 ---
 uid: template-parameters
-level: 200
+level: 300
 ---
 
 # Template parameters and type parameters
