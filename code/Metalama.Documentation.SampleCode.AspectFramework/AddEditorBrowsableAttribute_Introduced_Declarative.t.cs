@@ -6,6 +6,6 @@ namespace Doc.AddEditorBrowsableAttribute_Introduced_Declarative
   {
     public int NormalField;
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public int __HiddenField;
+    public string? __HiddenField;
   }
 }
