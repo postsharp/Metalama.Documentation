@@ -5,9 +5,9 @@ level: 300
 
 # Generating System.Reflection objects
 
-The code model is represented by the `Metalama.Framework.Code` namespace objects at compile time, and by the `System.Reflection` namespace at run time. Metalama is designed to eliminate the need for reflection in run-time code. However, there may be situations where you might require a run-time `System.Reflection` object.
+The code model is represented by objects from the `Metalama.Framework.Code` namespace at compile time and by objects from the `System.Reflection` namespace at run time. Metalama is designed to eliminate the need for reflection in run-time code. However, there may be situations where you might require a run-time `System.Reflection` object.
 
-To assist in these situations, the `Metalama.Framework.Code` namespace provides several methods that return the `System.Reflection` objects, representing the desired declaration at run time.
+To accommodate these situations, the `Metalama.Framework.Code` namespace provides several methods that return `System.Reflection` objects, representing the desired declaration at run time.
 
 | Compile-time type | Run-time type | Conversion method |
 |------------------|---------------|-------------------|

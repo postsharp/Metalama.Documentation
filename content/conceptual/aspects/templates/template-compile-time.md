@@ -1,4 +1,5 @@
-﻿---
+---
+
 uid: template-compile-time
 level: 200
 ---
@@ -7,11 +8,11 @@ level: 200
 
 Compile-time expressions are expressions that contain a call to a compile-time method, a reference to a compile-time local variable, or a compile-time aspect member. These expressions are executed at compile time when the aspect is applied to a target.
 
-Compile-time statements, such as `if`, `foreach`, or `meta.DebugBreak()`, are executed at compile time.
+Compile-time statements, such as `if`, `foreach`, or `meta.DebugBreak()`, are also executed at compile time.
 
 ## The meta pseudo-keyword
 
-The <xref:Metalama.Framework.Aspects.meta> static class serves as the entry point for the compile-time API. It can be considered a pseudo-keyword that provides access to the _meta_ side of meta-programming. The <xref:Metalama.Framework.Aspects.meta> class is the entry point to the meta-model and its members can only be invoked within the context of a template.
+The <xref:Metalama.Framework.Aspects.meta> static class serves as the entry point for the compile-time API. It can be considered a pseudo-keyword that provides access to the _meta_ side of meta-programming. The <xref:Metalama.Framework.Aspects.meta> class is the entry point to the meta-model, and its members can only be invoked within the context of a template.
 
 The <xref:Metalama.Framework.Aspects.meta> static class exposes the following members:
 
@@ -48,7 +49,6 @@ Examples:
 
 If the condition of an `if` statement is a compile-time expression, the `if` statement will be interpreted at compile-time.
 
-
 #### Example: if
 
 In the following example, the aspect prints a different string for static methods than for instance methods.
@@ -58,7 +58,6 @@ In the following example, the aspect prints a different string for static method
 ### Compile-time foreach
 
 If the expression of a `foreach` statement is a compile-time expression, the `foreach` statement will be interpreted at compile-time.
-
 
 #### Example: foreach
 
@@ -119,7 +118,7 @@ For advanced scenarios, the following packages are also included by default:
 To make another package available in compile-time code:
 
 1. Make sure that this package targets .NET Standard 2.0.
-2. Make sure that the package is included in the project.
+2. Ensure that the package is included in the project.
 3. Edit your `.csproj` or `Directory.Build.props` file and add the following:
 
 ```xml
@@ -128,7 +127,7 @@ To make another package available in compile-time code:
 </ItemGroup>
 ```
 
-When this configuration is done, `MyPackage` can be used both in run-time and compile-time code.
+Once this configuration is done, `MyPackage` can be used both in run-time and compile-time code.
 
 > [!WARNING]
 > You must also specify `MetalamaCompileTimePackage` in each project that _uses_ the aspects.
