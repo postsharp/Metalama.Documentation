@@ -5,8 +5,7 @@ level: 200
 
 # Generating run-time code
 
-
-Templates utilize the `dynamic` type to represent types unknown to the template developer. For example, an aspect may not know the return type of the methods to which it is applied in advance. The return type is represented by the `dynamic` type.
+Templates use the `dynamic` type to represent types unknown to the template developer. For example, an aspect may not know the return type of the methods to which it is applied in advance. The return type is represented by the `dynamic` type.
 
 ```cs
 dynamic? OverrideMethod()
@@ -18,8 +17,6 @@ dynamic? OverrideMethod()
 All `dynamic` compile-time code is transformed into strongly-typed run-time code. That is, we use `dynamic` when the expression type is unknown to the template developer, but the type is always known when the template is applied.
 
 In a template, it is not possible to generate code that employs `dynamic` typing at run time.
-
-
 
 ## Dynamic code
 
@@ -34,13 +31,13 @@ Here are a few examples of APIs that return a `dynamic`:
   * <xref:Metalama.Framework.Aspects.meta.Base?text=meta.Base>, equivalent to the `base` keyword, allows calling arbitrary _instance_ members of the _base_ of the target type.
   * <xref:Metalama.Framework.Aspects.meta.ThisType?text=meta.ThisType> allows calling arbitrary _static_ members of the target type.
   * <xref:Metalama.Framework.Aspects.meta.BaseType?text=meta.BaseType>, allows calling arbitrary _static_ members of the _base_ of the target type.
-* <xref:Metalama.Framework.Code.IExpression.Value?text=IExpression.Value> allows to get or set the value of a compile-time expression in run time code. It is implemented, for instance, by:
-  * `meta.Target.Field.Value`, `meta.Target.Property.Value` or `meta.Target.FieldOrProperty.Value` allow to get or set the value of the target field or property.
-  * `meta.Target.Parameter.Value` allows to get or set the value of the target parameter.
-  * `meta.Target.Method.Parameters[*].Value` allows you to get or set the value of a target method's parameter.
+* <xref:Metalama.Framework.Code.IExpression.Value?text=IExpression.Value> allows getting or setting the value of a compile-time expression in run-time code. It is implemented, for instance, by:
+  * `meta.Target.Field.Value`, `meta.Target.Property.Value` or `meta.Target.FieldOrProperty.Value` allow getting or setting the value of the target field or property.
+  * `meta.Target.Parameter.Value` allows getting or setting the value of the target parameter.
+  * `meta.Target.Method.Parameters[*].Value` allows getting or setting the value of a target method's parameter.
 
 > [!WARNING]
-> Because of limitations of the C# language, you cannot use extension methods on the right part of a dynamic expression. In this case, you must call the extension method in the classic way, by specifying its type name on the left and passing the dynamic expression as an argument. An alternative approach is to cast the dynamic expression to a specified type, if it is well-known.
+> Due to the limitations of the C# language, you cannot use extension methods on the right part of a dynamic expression. In this case, you must call the extension method in the traditional way, by specifying its type name on the left and passing the dynamic expression as an argument. An alternative approach is to cast the dynamic expression to a specified type, if it is well-known.
 
 ### Using dynamic expressions
 
@@ -84,8 +81,6 @@ meta.Property.Value = 5;
 
 When the template is expanded, `dynamic` variables are transformed into `var` variables. Therefore, all `dynamic` variables must be initialized.
 
-
-
 ## Generating calls to the code model
 
 When you have a <xref:Metalama.Framework.Code> representation of a declaration, you may want to access it from your generated run-time code. You can do this by using one of the following methods or properties:
@@ -95,8 +90,7 @@ When you have a <xref:Metalama.Framework.Code> representation of a declaration, 
 * <xref:Metalama.Framework.Code.Invokers.IIndexerInvoker.GetValue*?text=indexer.GetValue>> or <xref:Metalama.Framework.Code.Invokers.IIndexerInvoker.SetValue*?text=indexer.SetValue> to generate code that gets or sets the value of an accessor.
 * <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Add*?text=event.Add>, <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Remove*?text=event.Remove> or <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Raise*?text=event.Raise> to generate code that interacts with an event.
 
-By default, when used when an instance member, all the methods and properties above generate calls for the current (`this`) instance. To specify a different the instance, use the `With` method.
-
+By default, when used with an instance member, all the methods and properties above generate calls for the current (`this`) instance. To specify a different instance, use the `With` method.
 
 ### Example: invoking members
 
