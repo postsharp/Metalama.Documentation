@@ -4,6 +4,19 @@ items:
   items:
     - name: Requirements
       topicUid: requirements
+   
+    - name: Release notes
+      topicUid: release-notes
+      items:
+        - name: Metalama 2023.3
+          topicUid: release-notes-2023.3
+        - name: Metalama 2023.2
+          topicUid: release-notes-2023.2
+        - name: Metalama 2023.1
+          topicUid: release-notes-2023.1
+        - name: Metalama 2023.0
+          topicUid: release-notes-2023.0
+
     - name: Installing Metalama
       topicUid: installing
       items:
