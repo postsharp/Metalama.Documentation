@@ -8,7 +8,7 @@
         <MetalamaExtensionsVersion>2023.3.5-rc</MetalamaExtensionsVersion>
         <MetalamaLinqPadVersion>2023.3.5-rc</MetalamaLinqPadVersion>
         <MetalamaSamplesVersion>2023.3.5-rc</MetalamaSamplesVersion>
-        <MetalamaBackstageVersion>2023.3.4-rc</MetalamaBackstageVersion>
+        <MetalamaBackstageVersion>2023.3.5-rc</MetalamaBackstageVersion>
         <MetalamaPatternsVersion>2023.3.5-preview</MetalamaPatternsVersion>
 </PropertyGroup>
 
