@@ -10,8 +10,9 @@ Metalama 2023.3 introduces several new features: ready-made aspect implementatio
 
 * Roslyn 4.7.
 * Visual Studio Code:
-    - Dev Kit is now supported.
+    - C# Dev Kit is now supported.
     - Omnisharp is deprecated and no longer tested.
+* Visual Studio for Mac is deprecated and no longer tested, as Microsoft announced its sunsetting.
 
 ## New Features
 

@@ -140,6 +140,10 @@ For details about member introductions, see <xref:introducing-members>.
 
 When you create a new test file, your IDE does not automatically discover it. To make the new test appear in the Test Explorer, you first need to run all tests in the project. After the first run, the test will appear in the Test Explorer, and it will be possible to execute tests individually.
 
+> [!NOTE]
+> If you are using Rider, you must first configure the xUnit adapter. To achieve this, open settings, go to _Build, Execution, Deployment_ > _Unit Testing_ > _xUnit.net_ and select **Test Runner** instead of metadata for test discovery.
+
+
 You can also run the tests using `dotnet test`.
 
 You can find the output code, transformed by your aspects, at two locations:

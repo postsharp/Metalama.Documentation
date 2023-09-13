@@ -15,6 +15,9 @@ These tools include:
 
 ## CodeLens details
 
+> [!NOTE]
+> This feature is only available in Visual Studio when Metalama Tools with Visual Studio are installed.
+
 The first tool that can assist you in understanding your code is CodeLens. This tool displays the number of aspects applied to your code directly in the editor. Clicking on the summary provides more details:
 
 ![](./images/log_aspect_applied_on_flakymethod.png)
@@ -39,6 +42,10 @@ This example illustrates a method that retrieves customer details from the datab
 CodeLens also provides a clickable link to display the transformed and original code side by side.
 
 ## Previewing generated code
+
+> [!NOTE]
+> This feature is only available in Visual Studio when Metalama Tools with Visual Studio are installed.
+
 
 To preview the change, click on the `Preview Transformed Code` link. It will display the result as follows:
 
