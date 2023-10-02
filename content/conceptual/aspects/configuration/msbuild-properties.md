@@ -5,17 +5,16 @@ level: 200
 
 # Reading MSBuild properties
 
-Instead or additionally to having a programmatic configuraiton API, an aspect can accept configuration by reading MSBuild properties using the <xref:Metalama.Framework.Project.IProject.TryGetProperty*?text=IProject.TryGetProperty> method. 
+In addition to or as an alternative to a programmatic configuration API, an aspect can accept configuration by reading MSBuild properties using the <xref:Metalama.Framework.Project.IProject.TryGetProperty*?text=IProject.TryGetProperty> method.
 
-This strategy allows to configure the aspect without modifying the source code. It can be useful when you want the aspect to behave differently according to a property supplied from the command line, for instance.
+This strategy enables the aspect to be configured without modifying the source code. This can be useful when you want the aspect to behave differently according to a property supplied from the command line, for example.
 
-Another benefit of accepting MSBuild properties for configuration is that they can be defined in `Directory.Build.props` and shared among all projects in the repository. For details, see [Customize the build by folder](https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-by-directory) in the Visual Studio documentation.
+Another advantage of accepting MSBuild properties for configuration is that they can be defined in `Directory.Build.props` and shared among all projects in the repository. For more details, refer to [Customize the build by folder](https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-by-directory) in the Visual Studio documentation.
 
 
 ## Exposing MSBuild properties
 
-
-MSBuild properties are not visible to Metalama by default: you must instruct MSBuild to pass it to the compiler using the `CompilerVisibleProperty` item.
+By default, MSBuild properties are not visible to Metalama: you must instruct MSBuild to pass them to the compiler using the `CompilerVisibleProperty` item.
 
 We recommend the following approach to consume a configuration property:
 
@@ -57,7 +56,7 @@ We recommend the following approach to consume a configuration property:
     ```
 
      > [!WARNING]
-     > Line breaks and semicolons are not allowed in the values of compiler-visible properties as they will cause your aspect to receive an incorrect value.
+     > Line breaks and semicolons are not allowed in the values of compiler-visible properties as they can cause your aspect to receive an incorrect value.
 
 
 ## Reading MSBuild properties from an aspect or fabric
@@ -73,12 +72,13 @@ In the example below, the `Log` aspect reads the default category from the MSBui
 
 ## Combining MSBuild properties with the options API
 
-Whenever your aspect library relies on both MSBuild properties and a configuration API, it is preferable to integrate the MSBuild properties with your option class instead of reading the properties from directly from the aspect classes.
+Whenever your aspect library relies on both MSBuild properties and a configuration API, it is recommended to integrate the MSBuild properties with your option class instead of reading the properties directly from the aspect classes.
 
-Instead, properties should be read from the <xref:Metalama.Framework.Options.IHierarchicalOptions.GetDefaultOptions*> method of your option class. This method receives a parameter of type <xref:Metalama.Framework.Options.OptionsInitializationContext>, which exposes the <xref:Metalama.Framework.Project.IProject> interface, and let you read the properties. The object also lets you report errors or warnings if the properties have an invalid value. Thanks to this approach, you can make the default options dependent on MSBuild properties.
+Instead, properties should be read from the <xref:Metalama.Framework.Options.IHierarchicalOptions.GetDefaultOptions*> method of your option class. This method receives a parameter of type <xref:Metalama.Framework.Options.OptionsInitializationContext>, which exposes the <xref:Metalama.Framework.Project.IProject> interface, and allows you to read the properties. The object also lets you report errors or warnings if the properties have an invalid value. Thanks to this approach, you can make the default options dependent on MSBuild properties.
 
 ### Examples: building default options from MSBuild properties
 
 In the following example, the options class implements the <xref:Metalama.Framework.Options.IHierarchicalOptions.GetDefaultOptions*> to read default values from the MSBuild properties. It reports a diagnostic if their value is incorrect.
 
 [!metalama-file ~/code/Metalama.Documentation.SampleCode.AspectFramework/AspectConfiguration_ProjectDefault.Options.cs]
+
