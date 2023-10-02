@@ -1,7 +1,6 @@
 using System.Diagnostics;
-namespace Doc.AspectConfiguration
+namespace Doc.AspectConfiguration_ProjectDefault
 {
-  // Some target code.
   public class SomeClass
   {
     [Log]

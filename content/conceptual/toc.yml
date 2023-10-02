@@ -126,6 +126,10 @@ items:
           topicUid: ordering-aspects
         - name: Exposing configuration
           topicUid: exposing-configuration
+          items:
+            - name: From v2023.4
+              topicUid: exposing-configuration-2
+
         - name: Testing and debugging aspects
           topicUid: testing
           items:

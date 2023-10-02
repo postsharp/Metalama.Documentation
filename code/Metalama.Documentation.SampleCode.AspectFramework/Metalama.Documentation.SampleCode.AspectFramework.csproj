@@ -11,6 +11,14 @@
 
     <ItemGroup>
       <Compile Remove="AuxiliaryTemplate - Copy.t.cs" />
+      <Compile Update="AspectConfiguration_ProjectDefault.Aspect.cs">
+        <DependentUpon>AspectConfiguration_ProjectDefault.cs</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="AspectConfiguration_Provider.Aspect.cs">
+        <DependentUpon>AspectConfiguration_Provider.cs</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

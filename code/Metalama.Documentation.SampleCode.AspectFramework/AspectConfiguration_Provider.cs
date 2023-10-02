@@ -1,19 +1,22 @@
 // Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
-namespace Doc.AspectConfiguration
+using System.Diagnostics;
+
+namespace Doc.AspectConfiguration_Provider
 {
-    // Some target code.
+    [LogConfiguration( Category = "SomeClass" )]
     public class SomeClass
     {
         [Log]
         public void SomeMethod() { }
     }
 
-    namespace ChildNamespace
+    [LogConfiguration( Category = "SomeClass" )]
+    public class ChildNamespace
     {
         public class SomeOtherClass
         {
-            [Log]
+            [Log( Level = TraceLevel.Warning )]
             public void SomeMethod() { }
         }
     }

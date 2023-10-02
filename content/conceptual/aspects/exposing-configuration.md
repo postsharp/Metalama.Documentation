@@ -4,6 +4,9 @@ level: 300
 ---
 # Exposing configuration
 
+> [!NOTE]
+> Starting from Metalama 2023.4, this article is obsolete and replaced by <xref:exposing-configuration-2>
+
 Complex and widely-used aspects often require a centralized, project-wide method for configuring their compile-time behavior.
 
 There are two complementary mechanisms for configuration: MSBuild properties and the configuration API.
