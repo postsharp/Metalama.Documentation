@@ -124,11 +124,17 @@ items:
           topicUid: aspect-validating
         - name: Ordering aspects
           topicUid: ordering-aspects
-        - name: Exposing configuration
-          topicUid: exposing-configuration
+        - name: Making aspects configurable
+          topicUid: aspect-configuration
           items:
-            - name: From v2023.4
-              topicUid: exposing-configuration-2
+            - name: Exposing a configuration API
+              topicUid: exposing-options
+            - name: Reading MSBuild properties
+              topicUid: reading-msbuild-properties
+            - name: Customizing the option merge process
+              topicUid: configuration-custom-merge
+            - name: Configuration before v2023.4
+              topicUid: exposing-configuration-before-2023-4
 
         - name: Testing and debugging aspects
           topicUid: testing

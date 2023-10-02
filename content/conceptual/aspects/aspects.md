@@ -33,7 +33,7 @@ This chapter includes the following articles:
 | <xref:child-aspects>         | This section explains how an aspect can add other aspects and how child aspects can become aware of their parents.                                     |
 | <xref:aspect-inheritance>    | This section provides insight into how to automatically apply an aspect to all declarations derived from its direct targets.                           |
 | <xref:ordering-aspects>      | This article describes how to order aspect classes to ensure the correct execution order when multiple aspects are applied to the same declaration.     |
-| <xref:exposing-configuration> | This article explains how an aspect can expose and consume configuration properties or a configuration API.                                           |
+| <xref:configuration> | This article explains how an aspect can expose and consume configuration properties or a configuration API.                                           |
 | <xref:testing>               | This section provides guidance on how to test aspects.                                                                                                 |
 | <xref:debugging-aspects>     | This article explains how to debug aspects.                                                                                                            |
 
