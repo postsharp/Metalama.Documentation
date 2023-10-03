@@ -7,15 +7,13 @@ This namespace serves the following purposes:
 
 * It provides read access to the project configuration, which encompasses project references, preprocessor symbols, build properties, and other related information. Refer to the <xref:Metalama.Framework.Project.IProject> interface for more details. This interface can be accessed from any code element through the <xref:Metalama.Framework.Code.ICompilation.Project?text=ICompilation.Project> property.
 
-* It enables the implementation of a configuration API for your aspect library. Refer to <xref:configuration> for more details.
-
 * It discloses information about the current execution context via the <xref:Metalama.Framework.Project.MetalamaExecutionContext.Current?text=MetalamaExecutionContext.Current> property.
 
 * It reveals the service provider, which facilitates access from high-level code to the low-level plugins.
 
 ## Conceptual documentation
 
-Refer to <xref:exposing-configuration>.
+Refer to <xref:aspect-configuration>.
 
 ## Class diagram
 
@@ -34,7 +32,6 @@ classDiagram
         ServiceProvider
         TargetFramework
         TryGetProperty()
-        Extension< T >()
     }
 
     class IExecutionContext {
@@ -46,12 +43,6 @@ classDiagram
 
     class MetalamaExecutionContext {
         Current
-    }
-
-    class ProjectExtension {
-        IsReadOnly
-        Initialize()
-        MakeReadOnly()
     }
 
     class IServiceProvider {
@@ -72,7 +63,6 @@ classDiagram
 
     IProject <-- ICompilation : exposes
     IServiceProvider <-- IProject: exposes
-    ProjectExtension <-- IProject: exposes
     IExecutionContext <-- MetalamaExecutionContext : exposes
     IServiceProvider <-- IExecutionContext: exposes
     IExecutionScenario <-- IExecutionContext: exposes

@@ -49,15 +49,17 @@ The following example is similar to the previous one but uses the `ServiceLocato
 
 By default, Metalama generates code for the default .NET dependency injection framework implemented in the ``Microsoft.Extensions.DependencyInjection`` namespace (also called the .NET Core dependency injection framework).
 
-If you want to select a different framework for a project, generally adding a reference to the package implementing this dependency framework is sufficient, i.e., `Metalama.Extensions.DependencyInjection.ServiceLocator`. These packages typically include a <xref:Metalama typically.Framework.Fabrics.TransitiveProjectFabric> that registers itself. This works well when the project has a single dependency injection framework.
+If you want to select a different framework for a project, generally adding a reference to the package implementing this dependency framework is sufficient, e.g., `Metalama.Extensions.DependencyInjection.ServiceLocator`. These packages typically include a <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric> that registers itself. This works well when the project has a single dependency injection framework.
 
-When there are several dependency injection frameworks in a project, Metalama will call the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptions.Selector?text=DependencyInjectionOptions.Selector> delegate. Its default implementation returns the first eligible framework in the input list, i.e., the topmost in the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptions.RegisteredFrameworks> list.
+When several dependency injection frameworks can handle a specified dependency, Metalama select the one with the lowest priority value among them. This selection strategy can be customized for the whole project or for specified namespaces or types.
 
-To customize the selection strategy of the dependency injection framework for a specific aspect and dependency:
+ To customize the selection strategy of the dependency injection framework for a specific aspect and dependency:
 
-1. Add a <xref:Metalama.Framework.Fabrics.ProjectFabric> to your project as described in <xref:fabrics-configuration>.
-2. From the <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> method, call the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.DependencyInjectionOptions*?text=amender.Project.DependencyInjectionOptions()> method to access the options.
-3. Set the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptions.Selector?text=DependencyInjectionOptions.Selector> property.
+1. Add a <xref:Metalama.Framework.Fabrics.ProjectFabric> or <xref:Metalama.Framework.Fabrics.NamespaceFabric> as described in <xref:fabrics-configuration>.
+2. From the <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*> or <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> method, call the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection*?text=amender.Outgoing.ConfigureDependencyInjection> method. Supply the empty delegate `builder => {}` as an argument to this method.
+3. From this delegate, do one of the following things:
+    * Call the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder.SetFrameworkPriority*> method, to change the priority of a given framework (lower values win), or
+    * Set the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder.Selector?text=builder.Selector> property to your own implementation of <xref:Metalama.Extensions.DependencyInjection.IDependencyInjectionFrameworkSelector> interface.
 
 ## Implementing an adaptor for a new dependency injection framework
 
@@ -70,7 +72,7 @@ The steps are as follows:
 1. Create a class library project that targets `netstandard2.0`.
 2. Add a reference to the `Metalama.Extensions.DependencyInjection` package.
 3. Implement the <xref:Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework> interface in a new public class. It is easier to start from the <xref:Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionFramework> class. In this case, you must override the <xref:Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionStrategy> class. See the source code and the class documentation for details.
-4. Optionally create a <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric> that registers the framework in <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.DependencyInjectionOptions*?text=amender.Project.DependencyInjectionOptions()> using the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptions.RegisterFramework*> method.
+4. Optionally create a <xref:Metalama.Framework.Fabrics.TransitiveProjectFabric> that registers the framework by calling <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection*?text=amender.Outgoing.ConfigureDependencyInjection>, then  <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionOptionsBuilder.RegisterFramework*?text=builder.RegisterFramework>.
 
 ### Example
 

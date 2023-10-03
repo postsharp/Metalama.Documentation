@@ -67,7 +67,7 @@ To read an MSBuild property, use the <xref:Metalama.Framework.Project.IProject.T
 
 In the example below, the `Log` aspect reads the default category from the MSBuild property.
 
-[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/ConsumingProperty.cs name="Consuming Property"]
+[!metalama-file ~/code/Metalama.Documentation.SampleCode.AspectFramework/ConsumingProperty.cs name="Consuming Property"]
 
 
 ## Combining MSBuild properties with the options API
