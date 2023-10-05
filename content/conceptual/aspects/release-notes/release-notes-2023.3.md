@@ -24,7 +24,7 @@ For details, see <xref:auxiliary-templates>.
 
 ### Metalama.Patterns.Contracts
 
-Our Code Contracts library is an [open-source](https://github.com/postsharp/Metalama.Patterns/tree/release/2023.3/src/Metalama.Patterns.Contracts), aspect-oriented implementation of [System.ComponentModel.DataAnnotations](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations). Unlike Microsoft's annotations, Metalama's Code Contracts works with any C# code, not just ASP.NET MVC or Entity Framework, as it utilizes aspects to inject validation logic during compilation.
+Metalama Contracts y is an [open-source](https://github.com/postsharp/Metalama.Patterns/tree/release/2023.3/src/Metalama.Patterns.Contracts), aspect-oriented implementation of [System.ComponentModel.DataAnnotations](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations). Unlike Microsoft's annotations, Metalama Contracts works with any C# code, not just ASP.NET MVC or Entity Framework, as it utilizes aspects to inject validation logic during compilation.
 
 In 2023.3, we are releasing `Metalama.Patterns.Contracts` under the _preview_ quality label. Conceptual documentation is not available at the moment. For conceptual documentation, see <xref:Metalama.Patterns.Contracts>.
 

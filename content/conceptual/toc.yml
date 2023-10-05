@@ -48,6 +48,24 @@ items:
             topicUid: fabrics-configuration
           - name: Amending many projects at once
             topicUid: fabrics-many-projects
+    - name: Using Metalama Patterns
+      topicUid: patterns
+      items:
+        - name: Code Contracts
+          topicUid: contract-patterns
+          items:
+            - name: Validating field, property and parameter values
+              topicUid: value-contracts
+              items:
+              - name: Contract types
+                topicUid: contract-types
+              - name: Checking all non-nullable references
+                topicUid: enforcing-non-nullability
+            - name: Enforcing type invariants
+              topicUid: invariants
+            - name: Configuring contracts
+              topicUid: configuring-contracts
+
     - name: Creating aspects
       topicUid: aspects
       items:

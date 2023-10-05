@@ -1,0 +1,25 @@
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using Metalama.Framework.Aspects;
+using Metalama.Patterns.Contracts;
+using System;
+
+// ReSharper disable StringLiteralTypo
+
+namespace Doc.Localize
+{
+    internal class FrenchTemplates : ContractTemplates
+    {
+        public override void OnPhoneContractViolated( dynamic? value )
+        {
+            if ( meta.Target.ContractDirection == ContractDirection.Input )
+            {
+                throw new ArgumentException( "La valeur doit être un numéro de téléphone correct.", TargetParameterName );
+            }
+            else
+            {
+                throw new PostconditionViolationException( "La valeur doit être un numéro de téléphone correct." );
+            }
+        }
+    }
+}

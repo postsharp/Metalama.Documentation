@@ -42,7 +42,7 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
         new[]
         {
             DevelopmentDependencies.PostSharpEngineering, 
-            MetalamaDependencies.MetalamaMigration,
+//            MetalamaDependencies.MetalamaMigration,
             MetalamaDependencies.MetalamaPatterns,
             MetalamaDependencies.MetalamaLinqPad, 
             MetalamaDependencies.MetalamaSamples

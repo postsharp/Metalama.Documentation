@@ -28,9 +28,12 @@ The default direction is as follows:
 - For fields and properties: the _assigned_ value (i.e., the `value` parameter of the setter).
 - For `out` parameters and return value parameters: the _output_ value.
 
-To change the filter direction, set the <xref:Metalama.Framework.Aspects.ContractAspect.Direction> property of the <xref:Metalama.Framework.Aspects.ContractAspect> class in the constructor.
+To change the filter direction, override the <xref:Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection*> method of the <xref:Metalama.Framework.Aspects.ContractAspect> class.
 
 For information on customizing eligibility for different contract directions than the default one, see the remarks in the documentation of the <xref:Metalama.Framework.Aspects.ContractAspect> class. To learn about eligibility, visit <xref:eligibility>.
+
+> [!NOTE]
+> Prior to Metalama 2023.4, the <xref:Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection*> method did not exist, Instead, implementations could specify the contract direction in the <xref:Metalama.Framework.Aspects.ContractAspect>  constructor or set a property named `Direction`. Both this property and this constructor are now obsolete.
 
 ### Example: NotNull for output parameters and return values
 
@@ -54,3 +57,5 @@ The [fabric](xref:fabrics) adds a method-level aspect to all exposed methods. Th
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/NotNullFabric.cs name="NotNull Fabric"]
 
 
+> [!NOTE]
+> For a production-ready version of this use case, see <xref:enforcing-non-nullability>.
