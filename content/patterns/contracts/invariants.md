@@ -4,50 +4,48 @@ uid: invariants
 
 # Checking type invariants
 
-Invariants are methods that verify the consistency of the state of the current object, and throw an exception if this is not the case. We recommend to throw an exception of type <xref:Metalama.Patterns.Contracts.InvariantViolationException>, although this decision is entirely eventually up to you.
+Invariants are methods that verify the consistency of the state of the current object and throw an exception if inconsistencies are found. We recommend throwing an exception of type <xref:Metalama.Patterns.Contracts.InvariantViolationException>, but the final decision is entirely up to you.
 
 ## Adding invariants
 
 To add an invariant to a class:
 
-1. Create a `void`, non-`static` and parameterless method in your class. You should typically make it `private`.
+1. Create a `void`, non-`static`, and parameterless method in your class. This method should typically be `private`.
 2. Add the <xref:Metalama.Patterns.Contracts.InvariantAttribute?text=[Invariant]> custom attribute to this method.
-3. Add the validation logic to this method and throw an <xref:Metalama.Patterns.Contracts.InvariantViolationException> in case of violation.
-
+3. Add the validation logic to this method and throw an <xref:Metalama.Patterns.Contracts.InvariantViolationException> in case of a violation.
 
 > [!WARNING]
-> An invariant method should not have any side effect besides throwing an exception in case of invariant violation.
-
+> An invariant method should not have any side effects other than throwing an exception in case of an invariant violation.
 
 ### Example: adding invariants
 
-In the following example, an `Invoice` entity has two properties that allow to provide discounts: `DiscountPercent` and `DiscountAmount`. These two properties are additive, but their sum cannot result in a negative price. This condition is enforced by the `CheckDiscounts` method.
+In the following example, an `Invoice` entity has two properties, `DiscountPercent` and `DiscountAmount`, that allow providing discounts. These two properties are additive, but their sum cannot result in a negative price. The `CheckDiscounts` method enforces this condition.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Contracts/Invariants.cs]
 
+## Opting out from invariant checking
 
-## Opting opt from invariant checking
-
-When there is any invariant in a type, the implementation of all public or internal methods in this type will be wrapped into a `try...finally` block, and invariants will be verified from the `finally` block.
+When a type has any invariant, the implementation of all public or internal methods in this type will be wrapped into a `try...finally` block, and invariants will be verified from the `finally` block.
 
 To prevent a method from being enhanced with this invariant checking logic, you can use the <xref:Metalama.Patterns.Contracts.DoNotCheckInvariantsAttribute?text=[BreaksInvariants]> custom attribute.
 
-Note that this will not waive the enforcement of invariants in methods _called_ by the target of the <xref:Metalama.Patterns.Contracts.DoNotCheckInvariantsAttribute?text=[BreaksInvariants]> attribute. Therefore, this attribute is mainly useful to optimize performance, but not to relax invariants.
+Note that this will not waive the enforcement of invariants in methods _called_ by the target of the <xref:Metalama.Patterns.Contracts.DoNotCheckInvariantsAttribute?text=[BreaksInvariants]> attribute. Therefore, this attribute is mainly useful to optimize performance, not to relax invariants.
 
 ## Suspending enforcement of invariants
 
-If you have some code snippet that temporarily breaks invariants, it is possible to suspend invariant enforcement.
+If you have a code snippet that temporarily breaks invariants, you can suspend invariant enforcement.
 
-First, you must enabled the <xref:Metalama.Patterns.Contracts.ContractOptions.IsInvariantSuspensionSupported> option for this type. This option is disabled by default because it generates additional code. You can set this option from a <xref:Metalama.Framework.Fabrics.ProjectFabric> or <xref:Metalama.Framework.Fabrics.NamespaceFabric> as described in <xref:configuring-contracts>.
+First, enable the <xref:Metalama.Patterns.Contracts.ContractOptions.IsInvariantSuspensionSupported> option for this type. This option is disabled by default because it generates additional code. You can set this option from a <xref:Metalama.Framework.Fabrics.ProjectFabric> or <xref:Metalama.Framework.Fabrics.NamespaceFabric> as described in <xref:configuring-contracts>.
 
 Once this feature is enabled, there are two ways to suspend invariant enforcement:
 
-* To disable enforcement while the whole method is executing, add the <xref:Metalama.Patterns.Contracts.SuspendInvariantsAttribute?text=[SuspendInvariants]> custom attribute to this method. 
-* To disable enforcement while a code snippet is executing, wrap this snippet into a call to `using ( this.SuspendInvariants() )`. The `SuspendInvariants` method is generated by the <xref:Metalama.Patterns.Contracts.ContractOptions.IsInvariantSuspensionSupported> option.
+* To disable enforcement while the entire method is executing, add the <xref:Metalama.Patterns.Contracts.SuspendInvariantsAttribute?text=[SuspendInvariants]> custom attribute to this method.
+* To disable enforcement while a code snippet is executing, wrap this snippet in a call to `using ( this.SuspendInvariants() )`. The `SuspendInvariants` method is generated by the <xref:Metalama.Patterns.Contracts.ContractOptions.IsInvariantSuspensionSupported> option.
 
 ### Example: suspending invariants
 
-The following example elaborates from the previous one. We added a fabric to enable the  <xref:Metalama.Patterns.Contracts.ContractOptions.IsInvariantSuspensionSupported> option. The `Invoice` method has two new methods, `UpdateDiscounts1`and `UpdateDiscounts2`, which update  `DiscountPercent` and `DiscountAmount` while suspending invariants. 
+The following example builds upon the previous one. We added a fabric to enable the  <xref:Metalama.Patterns.Contracts.ContractOptions.IsInvariantSuspensionSupported> option. The `Invoice` method now has two new methods, `UpdateDiscounts1` and `UpdateDiscounts2`, which update `DiscountPercent` and `DiscountAmount` while suspending invariants.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Contracts/Invariants_Suspend.cs]
+
 
