@@ -27,9 +27,9 @@ In the following example, an `Invoice` entity has two properties, `DiscountPerce
 
 When a type has any invariant, the implementation of all public or internal methods in this type will be wrapped into a `try...finally` block, and invariants will be verified from the `finally` block.
 
-To prevent a method from being enhanced with this invariant checking logic, you can use the <xref:Metalama.Patterns.Contracts.DoNotCheckInvariantsAttribute?text=[BreaksInvariants]> custom attribute.
+To prevent a method from being enhanced with this invariant checking logic, you can use the <xref:Metalama.Patterns.Contracts.DoNotCheckInvariantsAttribute?text=[DoNotCheckInvariants]> custom attribute.
 
-Note that this will not waive the enforcement of invariants in methods _called_ by the target of the <xref:Metalama.Patterns.Contracts.DoNotCheckInvariantsAttribute?text=[BreaksInvariants]> attribute. Therefore, this attribute is mainly useful to optimize performance, not to relax invariants.
+Note that this will not waive the enforcement of invariants in methods _called_ by the target of the <xref:Metalama.Patterns.Contracts.DoNotCheckInvariantsAttribute?text=[DoNotCheckInvariants]> attribute. Therefore, this attribute is mainly useful to optimize performance, not to relax invariants.
 
 ## Suspending enforcement of invariants
 
