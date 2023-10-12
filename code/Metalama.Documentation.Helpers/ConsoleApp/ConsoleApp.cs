@@ -34,5 +34,5 @@ public class ConsoleApp : IDisposable, IAsyncDisposable
         this.Services.Dispose();
     }
 
-    public  ValueTask DisposeAsync() => this.Services.DisposeAsync();
+    public ValueTask DisposeAsync() => this.Services.DisposeAsync();
 }

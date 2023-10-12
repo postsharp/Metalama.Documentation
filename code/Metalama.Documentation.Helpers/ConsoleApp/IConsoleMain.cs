@@ -6,3 +6,18 @@ public interface IConsoleMain
 {
     void Execute();
 }
+
+public interface IConsoleHost
+{
+    public IReadOnlyList<string> Arguments { get; }
+}
+
+internal class ConsoleHost : IConsoleHost
+{
+    public ConsoleHost( IReadOnlyList<string>? arguments ) 
+    {
+        this.Arguments = arguments ?? Array.Empty<string>();
+    }
+
+    public IReadOnlyList<string> Arguments { get; }
+}

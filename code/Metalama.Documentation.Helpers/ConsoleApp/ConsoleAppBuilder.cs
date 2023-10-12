@@ -10,8 +10,10 @@ public class ConsoleAppBuilder
 
     public IServiceCollection Services => this._serviceCollection;
 
-    public ConsoleApp Build()
+    public ConsoleApp Build( IReadOnlyList<string>? arguments = null )
     {
+        this._serviceCollection.AddSingleton<IConsoleHost>( _ => new ConsoleHost( arguments ) );
+
         return new ConsoleApp( this._serviceCollection.BuildServiceProvider() );
     }
 }

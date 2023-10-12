@@ -24,12 +24,11 @@ namespace Doc.RedisGC
         // Build the Redis connection options.
         var redisConnectionOptions = new ConfigurationOptions();
         redisConnectionOptions.EndPoints.Add("localhost", redisServer.Port);
-        // The KeyPrefix must match exactly the one used by the caching back-end.
-        var keyPrefix = "TheApp.1.0.0.";
+        // The KeyPrefix must match _exactly_ the one used by the caching back-end.
+        var keyPrefix = "TheApp.1.0.0";
         return new RedisCachingBackendConfiguration(redisConnectionOptions, keyPrefix);
       });
       var host = appBuilder.Build();
-      const bool isProductionCode = false;
       await host.StartAsync();
       if (args.Contains("--full"))
       {
@@ -38,12 +37,14 @@ namespace Doc.RedisGC
         await collector.PerformFullCollectionAsync();
         Console.WriteLine("Full collection completed.");
       }
+      const bool isProductionCode = false;
       if (isProductionCode)
       {
         await host.WaitForShutdownAsync();
       }
       else
       {
+        // This code is automatically executed so we shut down the service after 1 second.
         await Task.Delay(1000);
         await host.StopAsync();
       }
