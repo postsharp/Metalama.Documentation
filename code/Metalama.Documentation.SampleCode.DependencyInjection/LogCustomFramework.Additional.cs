@@ -1,25 +1,21 @@
+// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using Metalama.Documentation.Helpers.ConsoleApp;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
 
 namespace Doc.LogCustomFramework
 {
     // Program entry point. Creates the host, configure dependencies, and runs it.
     public static class Program
     {
-        private static async Task Main()
+        private static void Main()
         {
-            using var host = CreateHostBuilder( Array.Empty<string>() ).Build();
-            await host.StartAsync();
-            await host.StopAsync();
+            var builder = ConsoleApp.CreateBuilder();
+            builder.Services.AddLogging( logging => logging.AddConsole() );
+            builder.Services.AddConsoleMain<ConsoleMain>();
+            using var app = builder.Build();
+            app.Run();
         }
-
-        private static IHostBuilder CreateHostBuilder( string[] args ) =>
-           Host.CreateDefaultBuilder( args )
-               .ConfigureServices( ( _, services ) =>
-                   services.AddHostedService<Worker>() )
-                                       .ConfigureLogging( loggingBuilder => loggingBuilder.AddFilter( "Microsoft.Hosting.Lifetime", LogLevel.None )  );
     }
 }

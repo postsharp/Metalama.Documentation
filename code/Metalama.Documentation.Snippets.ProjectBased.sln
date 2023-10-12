@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project2", "SharedProjectFa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.SampleCode.Sdk", "Metalama.Documentation.SampleCode.Sdk\Metalama.Documentation.SampleCode.Sdk.csproj", "{B2CD4686-EDAF-42AE-B099-2A71F28C9D53}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Caching", "Caching", "{5A40C00B-602E-41D1-8294-66E5437C9ADD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,6 +1,6 @@
-warn: Doc.LogCustomFramework.Worker[0]
-      Worker.ExecuteAsync(CancellationToken) started.
-info: Doc.LogCustomFramework.Worker[0]
+warn: Doc.LogCustomFramework.ConsoleMain[0]
+      ConsoleMain.Execute() started.
+info: Doc.LogCustomFramework.ConsoleMain[0]
       Hello, world.
-warn: Doc.LogCustomFramework.Worker[0]
-      Worker.ExecuteAsync(CancellationToken) completed.
+warn: Doc.LogCustomFramework.ConsoleMain[0]
+      ConsoleMain.Execute() completed.

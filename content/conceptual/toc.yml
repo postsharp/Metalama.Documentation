@@ -66,6 +66,31 @@ items:
             - name: Configuring contracts
               topicUid: configuring-contracts
 
+        - name: Caching
+          topicUid: caching
+          items:
+            - name: Getting started with caching
+              topicUid: caching-getting-started
+            - name: Customizing cache keys
+              topicUid: caching-keys
+            - name: Excluding parameters
+              topicUid: caching-exclude-parameters
+            - name: Configuring the caching behavior
+              topicUid: caching-configuration
+            - name: Invalidating the cache
+              topicUid: caching-invalidation
+            - name: Working with cache dependencies
+              topicUid: caching-dependencies
+            - name: Distributed caching with Redis
+              topicUid: caching-redis
+            - name: Synchronizing local in-memory caches for multiple nodes
+              topicUid: caching-pubsub
+            - name: Caching special types with value adapters
+              topicUid: caching-value-adapters
+            - name: Preventing concurrent execution
+              topicUid: cache-locking
+
+
     - name: Creating aspects
       topicUid: aspects
       items:

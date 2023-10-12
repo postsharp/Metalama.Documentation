@@ -1,0 +1,131 @@
+// Program execution failed
+System.Reflection.TargetInvocationException :
+Exception has been  thrown  by  the  target  of  an  invocation . --  -> Xunit . Sdk . EqualException  :
+Assert.Equal()Failure Expected :
+2 Actual:
+  1 at Xunit .Assert.Equal[T](T expected, T actual, IEqualityComparer `1 comparer) in
+C:
+   \
+Dev \ xunit \ xunit \ src \ xunit . assert \ Asserts \ EqualityAsserts . cs :
+line  40  at  Xunit . Assert . Equal [T]
+(T expected, T actual) in
+C:
+   \
+Dev \ xunit \ xunit \ src \ xunit . assert \ Asserts \ EqualityAsserts . cs :
+line  24  at  Doc . ObjectDependencies . ConsoleMain . Execute (  )
+at Metalama .Documentation.Helpers.ConsoleApp.ConsoleApp.Run() in
+C:
+   \
+src \ Metalama . Documentation \ code \ Metalama . Documentation . Helpers \ ConsoleApp \ ConsoleApp . cs :
+line  22  at  Doc . ObjectDependencies . Program . Main (  )
+at System .RuntimeMethodHandle.InvokeMethod(Object target, Void * *arguments, Signature sig, Boolean isConstructor)at System .Reflection.MethodInvoker.Invoke(Object obj, IntPtr * args, BindingFlags invokeAttr)-- - End of inner exception  stack  trace -- - at  System . Reflection . MethodInvoker . Invoke ( Object  obj , IntPtr * args, BindingFlags invokeAttr  )
+at System .Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)at System .Reflection.MethodBase.Invoke(Object obj, Object[] parameters)at Metalama .Testing.AspectTesting.AspectTestRunner.ExecuteTestProgramAsync(TestInput testInput, TestResult testResult, MemoryStream peStream, MemoryStream pdbStream) in
+/ _ / Metalama.Testing.AspectTesting / AspectTestRunner.cs :
+line  295  using  Metalama . Patterns . Caching ;  using  Metalama . Patterns . Caching ;  using  Metalama . Patterns . Caching . Aspects ;  using  Metalama . Patterns . Caching . Aspects . Helpers ;  using  Metalama . Patterns . Caching . Dependencies ;  using  System ;  using  System . Collections . Generic ;  using  System . Linq ;  using  System . Reflection ;
+namespace Doc.ObjectDependencies
+{
+  internal static class GlobalDependencies
+  {
+    public static ICacheDependency ProductCatalogue = new StringDependency(nameof(ProductCatalogue));
+    public static ICacheDependency ProductList = new StringDependency(nameof(ProductList));
+  }
+  public record Product(string Name, decimal Price) : ICacheDependency
+  {
+    string ICacheDependency.GetCacheKey(ICachingService cachingService) => this.Name;
+    // Means that when we invalidate the current product in cache, we should also invalidate the product catalogue.
+    IReadOnlyCollection<ICacheDependency> ICacheDependency.CascadeDependencies { get; } = new[]
+    {
+      GlobalDependencies.ProductCatalogue
+    };
+  }
+  public sealed class ProductCatalogue
+  {
+    private readonly Dictionary<string, Product> _dbSimulator = new()
+    {
+      ["corn"] = new Product("corn", 100)
+    };
+    public int DbOperationCount { get; private set; }
+    [Cache]
+    public Product GetProduct(string productId)
+    {
+      object? Invoke(object? instance, object? [] args)
+      {
+        return ((ProductCatalogue)instance).GetProduct_Source((string)args[0]);
+      }
+      return _cachingService!.GetFromCacheOrExecute<Product>(_cacheRegistration_GetProduct!, this, new object[] { productId }, Invoke);
+    }
+    private Product GetProduct_Source(string productId)
+    {
+      Console.WriteLine($"Getting the price of {productId} from database.");
+      this.DbOperationCount++;
+      var product = this._dbSimulator[productId];
+      this._cachingService.AddDependency(product); /*<AddDependency>*/
+      /*</AddDependency>*/
+      return product;
+    }
+    [Cache]
+    public string[] GetProducts()
+    {
+      object? Invoke(object? instance, object? [] args)
+      {
+        return ((ProductCatalogue)instance).GetProducts_Source();
+      }
+      return _cachingService!.GetFromCacheOrExecute<string[]>(_cacheRegistration_GetProducts!, this, new object[] { }, Invoke);
+    }
+    private string[] GetProducts_Source()
+    {
+      Console.WriteLine("Getting the product list from database.");
+      this.DbOperationCount++;
+      this._cachingService.AddDependency(GlobalDependencies.ProductList);
+      return this._dbSimulator.Keys.ToArray();
+    }
+    [Cache]
+    public IReadOnlyCollection<Product> GetPriceList()
+    {
+      object? Invoke(object? instance, object? [] args)
+      {
+        return ((ProductCatalogue)instance).GetPriceList_Source();
+      }
+      return _cachingService!.GetFromCacheOrExecute<IReadOnlyCollection<Product>>(_cacheRegistration_GetPriceList!, this, new object[] { }, Invoke);
+    }
+    private IReadOnlyCollection<Product> GetPriceList_Source()
+    {
+      this.DbOperationCount++;
+      this._cachingService.AddDependency(GlobalDependencies.ProductCatalogue);
+      return this._dbSimulator.Values;
+    }
+    public void AddProduct(Product product)
+    {
+      Console.WriteLine($"Adding the product {product.Name}.");
+      this.DbOperationCount++;
+      this._dbSimulator.Add(product.Name, product);
+      this._cachingService.Invalidate(product);
+    }
+    public void UpdateProduct(Product product)
+    {
+      if (!this._dbSimulator.ContainsKey(product.Name))
+      {
+        throw new KeyNotFoundException();
+      }
+      Console.WriteLine($"Updating the price of {product.Name}.");
+      this.DbOperationCount++;
+      this._dbSimulator[product.Name] = product;
+      this._cachingService.Invalidate(product); /*<Invalidate>*/
+    /*</Invalidate>*/
+    }
+    private static readonly CachedMethodMetadata _cacheRegistration_GetPriceList;
+    private static readonly CachedMethodMetadata _cacheRegistration_GetProduct;
+    private static readonly CachedMethodMetadata _cacheRegistration_GetProducts;
+    private ICachingService _cachingService;
+    static ProductCatalogue()
+    {
+      ProductCatalogue._cacheRegistration_GetPriceList = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(ProductCatalogue).GetMethod("GetPriceList", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!, "ProductCatalogue.GetPriceList()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+      ProductCatalogue._cacheRegistration_GetProducts = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!, "ProductCatalogue.GetProducts()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+      ProductCatalogue._cacheRegistration_GetProduct = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(ProductCatalogue).GetMethod("GetProduct", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!, "ProductCatalogue.GetProduct(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+    }
+    public ProductCatalogue(ICachingService? cachingService = default)
+    {
+      this._cachingService = cachingService ?? throw new System.ArgumentNullException(nameof(cachingService));
+    }
+  }
+}

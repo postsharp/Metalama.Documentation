@@ -56,7 +56,7 @@ Example:
 
 ### Step 3. Implement eligibility
 
-If your aspect has eligibility requirements on the _type_ to which it is applied, override the <xref:Metalama.Extensions.Multicast.MulticastAspect.BuildEligibility(Metalama.Framework.Eligibility.IEligibilityBuilder{Metalama.Framework.Code.INamedType})?text=BuildEligibility(INamedType)> method.
+If your aspect has eligibility requirements on the _type_ to which it is applied, override the <xref:Metalama.Extensions.Multicast.MulticastAspect.BuildEligibility*> method.
 
 Instead of repeating this eligibility condition in the `BuildEligibility` method for all final destinations of the aspect, you can call the `BuildEligibility(INamedType)` method as follows:
 

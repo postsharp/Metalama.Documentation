@@ -5,7 +5,7 @@
 	
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -25,7 +25,11 @@
 		<PackageReference Include="Metalama.Compiler" Version="$(MetalamaCompilerVersion)" />
 		<PackageReference Include="Metalama.Migration" Version="$(MetalamaMigrationVersion)" />
 		<PackageReference Include="Metalama.Patterns.Contracts" Version="$(MetalamaPatternsVersion)" />
+		<PackageReference Include="Metalama.Patterns.Memoization" Version="$(MetalamaPatternsVersion)" />
+		<PackageReference Include="Metalama.Patterns.NotifyPropertyChanged" Version="$(MetalamaPatternsVersion)" />
 		<PackageReference Include="Metalama.Patterns.Caching" Version="$(MetalamaPatternsVersion)" />
+		<PackageReference Include="Metalama.Patterns.Caching.Backend" Version="$(MetalamaPatternsVersion)" />
+		<PackageReference Include="Metalama.Patterns.Caching.Aspects" Version="$(MetalamaPatternsVersion)" />
 		<PackageReference Include="Metalama.Patterns.Caching.Backends.Azure" Version="$(MetalamaPatternsVersion)" />
 		<PackageReference Include="Metalama.Patterns.Caching.Backends.Redis" Version="$(MetalamaPatternsVersion)" />
 	</ItemGroup>
