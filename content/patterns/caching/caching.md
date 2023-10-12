@@ -20,16 +20,8 @@ Metalama allows you to dramatically reduce the complexity of caching. It allows 
 | <xref:caching-invalidation> | This article shows how to invalidate cached returned values of methods declaratively and imperatively. |
 | <xref:caching-dependencies> | This article shows how to invalidate cache items automatically using cache dependencies. |
 | <xref:caching-keys> | This article shows how to customize the cache keys which identify cached method return values. |
-| <xref:caching-backends> | This article shows how to store cached values in various backends. |
+| <xref:caching-redis> | This article shows how to use Redis as a distributed cache. |
 | <xref:caching-pubsub> | This article shows how to invalidate all related in-memory caches in a distributed environment. |
 | <xref:caching-value-adapters> | This article describes how to cache return values of methods which cannot be cached directly, such as instances of <xref:System.Collections.Generic.IEnumerable`1> or <xref:System.IO.Stream>.  |
 | <xref:cache-locking> | This article explains how you can prevent the same method from being executed with the same arguments at the same time - by using locking. |
 
-## See Also
-
-**Reference**
-
-<xref:Metalama.Patterns.Caching.Aspects.CacheAttribute>
-<br><xref:Metalama.Patterns.Caching.Aspects.CachingConfigurationAttribute>
-<br><xref:Metalama.Patterns.Caching.Aspects.InvalidateCacheAttribute>
-<br>

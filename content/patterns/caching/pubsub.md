@@ -38,13 +38,13 @@ The first step is to create a topic. To achieve this using Microsoft Azure porta
 
 2. Add a reference to the [Metalama.Patterns.Caching.Backends.Azure](https://www.nuget.org/packages/Metalama.Patterns.Caching.Backends.Azure/) NuGet package. 
 
-3. Go back to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithBackend*> method, then and supply a delegate that calls the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.Memory*> method. Then, call  <xref:Metalama.Patterns.Caching.Backends.Azure.AzureCachingFactory.WithAzureSynchronization> and pass the topic connection string as an argument.
+3. Go back to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithBackend*> method, then and supply a delegate that calls the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.Memory*> method. Then, call  <xref:Metalama.Patterns.Caching.Backends.Azure.AzureCachingFactory.WithAzureSynchronization*> and pass the topic connection string as an argument.
 
     [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/AzureSynchronized/AzureSynchronized.Program.cs marker="AddCaching"]
 
 ### Example: A distributed application synchronized by Azure Service Bus
 
-The following example simulates a multi-instance application. Here, for the ease of testing, both instances live in the same process. Both instances read and write to a shared database simulated by a concurrent dictionary, which sits behinds an in-memory cache. These two cache instances are synchronized using <xref:Metalama.Patterns.Caching.Backends.Azure.AzureCachingFactory.WithAzureSynchronization>. 
+The following example simulates a multi-instance application. Here, for the ease of testing, both instances live in the same process. Both instances read and write to a shared database simulated by a concurrent dictionary, which sits behinds an in-memory cache. These two cache instances are synchronized using <xref:Metalama.Patterns.Caching.Backends.Azure.AzureCachingFactory.WithAzureSynchronization*>. 
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Caching/AzureSynchronized/AzureSynchronized.cs]
 

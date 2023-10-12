@@ -48,7 +48,7 @@ Follow these steps to configure your project:
 
     [!metalama-test ~/code/Metalama.Documentation.SampleCode.Caching/GettingStarted_NoDI/GettingStarted_NoDI.CachingConfiguration.cs ]
 
-    This code disables dependency injection for the whole project. You can also add this attribute to individual types to disable dependency injection specifically for these types. You can also configure your project using fabrics and use the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SetOptions*?text=amender.Outgoing.SetOptions> method and the <xref:Metalama.Patterns.Caching.Aspects.CachingOptions> object to modify the <xref:Metalama.Patterns.Caching.Aspects.UseDependencyInjection> for selected namespaces or types.
+    This code disables dependency injection for the whole project. You can also add this attribute to individual types to disable dependency injection specifically for these types. You can also configure your project using fabrics and use the <xref:Metalama.Patterns.Caching.Aspects.Configuration.CachingConfigurationExtensions.ConfigureCaching*?text=amender.Outgoing.ConfigureCaching> method and modify the <xref:Metalama.Patterns.Caching.Aspects.Configuration.CachingOptionsBuilder.UseDependencyInjection> property for selected namespaces or types.
 
 3. Initialize the <xref:Metalama.Patterns.Caching.CachingService.Default?text=CachingService.Default> property from your initialization code (typically `Program.Main`). Call the <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create> method to get a new instance of the service.
  

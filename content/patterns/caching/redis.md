@@ -47,7 +47,7 @@ The second step is to configure Metalama Caching to use Redis. Follow these step
 2. Create an instance of [StackExchange.Redis.ConnectionMultiplexer](https://stackexchange.github.io/StackExchange.Redis/Configuration). 
 
 
-3. Go back to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithBackend*> method, then and supply a delegate that calls the <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.Memory*> method, then immediately call the <xref:etalama.Patterns.Caching.Backends.Azure.AzureCachingFactory.WithAzureSynchronization*> method. Pass the topic connection string as a parameter.
+3. Go back to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithBackend*> method, then and supply a delegate that calls the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.Memory*> method, then immediately call the <xref:Metalama.Patterns.Caching.Backends.Azure.AzureCachingFactory.WithAzureSynchronization*> method. Pass the topic connection string as a parameter.
 
     Here is an example of the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*> code.
 
@@ -89,7 +89,7 @@ Metalama Caching's Redis back-end supports dependencies (see <xref:caching-depen
 
 If you choose to enable dependencies with Redis, you need to make sure that there is at least one instance of the cache GC process is running. It is legal to have several instances of this process running, but since all instances will compete to process the same messages, it is better to ensure that only a small number of instances (ideally one) is running.
 
-To enable dependencies, set the <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportDependencies?text=RedisCachingBackendConfiguration.SupportDependencies> property to `true` when initializing the Redis caching back-end.
+To enable dependencies, set the <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsDependencies?text=RedisCachingBackendConfiguration.SupportsDependencies> property to `true` when initializing the Redis caching back-end.
 
 ### Running the dependency GC process
 

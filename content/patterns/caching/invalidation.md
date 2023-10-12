@@ -57,7 +57,7 @@ One of the nicest features of the <xref:Metalama.Patterns.Caching.Aspects.Invali
 
 ## Invalidating cache items imperatively
 
-Instead of annotating invalidating methods with a custom attribute, you can call to one of the overloads of the <xref:Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate*> or <xref:Metalama.Patterns.Caching.CachingServiceExtensions.InvalidatAsync*> extension method of the <xref:Metalama.Patterns.Caching.ICachingService> interface.
+Instead of annotating invalidating methods with a custom attribute, you can call to one of the overloads of the <xref:Metalama.Patterns.Caching.CachingServiceExtensions.Invalidate*> or <xref:Metalama.Patterns.Caching.CachingServiceExtensions.InvalidateAsync*> extension method of the <xref:Metalama.Patterns.Caching.ICachingService> interface.
 
 To get access to this interface, if you are using dependency injection, you should first make your class `partial`. Then, the service is available as a field named `_cachingService`. If you are not using dependency injection in this class, use  the <xref:Metalama.Patterns.Caching.CachingService.Default?text=CachingService.Default> property.
 

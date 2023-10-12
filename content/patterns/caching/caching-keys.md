@@ -88,7 +88,7 @@ The ultimate and hopefully least necessary solution to customize the cache key i
 
 The default implementation is the <xref:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder> class. It has many `virtual` methods that you can override. It generates the cache key by appending the following items:
 
-* in case that the backend supports it, a global prefix that allows using the same caching server with several applications (see e.g. <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyPrefix> ). 
+* in case that the backend supports it, a global prefix that allows using the same caching server with several applications (see e.g. <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyPrefix>). 
 
 * the full name of the declaring type (including generic parameters, if any),
 
