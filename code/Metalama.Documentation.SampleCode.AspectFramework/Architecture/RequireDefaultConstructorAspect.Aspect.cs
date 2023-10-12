@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using System.Linq;
@@ -18,11 +20,11 @@ namespace Doc.Architecture.RequireDefaultConstructorAspect
             }
 
             var defaultConstructor = builder.Target.Constructors.SingleOrDefault( c => c.Parameters.Count == 0 );
+
             if ( defaultConstructor == null || defaultConstructor.Accessibility != Accessibility.Public )
             {
                 builder.Diagnostics.Report( _warning.WithArguments( builder.Target ) );
             }
         }
     }
-
 }

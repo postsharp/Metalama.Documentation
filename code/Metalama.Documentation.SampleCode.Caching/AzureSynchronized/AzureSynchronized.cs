@@ -1,4 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 #if TEST_OPTIONS
 // @DisableCompareProgramOutput -- the output is random
@@ -16,21 +16,21 @@ using Metalama.Patterns.Caching;
 namespace Doc.AzureSynchronized
 {
     public record Product( string Id, decimal Price, string? Remarks = null );
-    
+
     public sealed class ProductCatalogue
     {
         // This instance is intentionally shared between both app instances to simulate
         // a shared database.
-        private static readonly ConcurrentDictionary<string, Product> _dbSimulator 
+        private static readonly ConcurrentDictionary<string, Product> _dbSimulator
             = new() { ["corn"] = new Product( "corn", 100, "Initial record." ) };
 
         public int DbOperationCount { get; private set; }
 
-        [Cache]                                  
+        [Cache]
         public Product GetProduct( string productId )
         {
             Console.WriteLine( $"Getting the product of {productId} from database." );
-            
+
             this.DbOperationCount++;
 
             return _dbSimulator[productId];

@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Eligibility;
@@ -14,9 +15,9 @@ namespace Doc.Eligibility_Custom
             // The aspect must not be offered on record classes.
             builder
                 .DeclaringType()
-                .MustSatisfy( 
-                t => t.TypeKind is not ( TypeKind.RecordClass or TypeKind.RecordStruct ), 
-                t => $"{t} must not be a record type" );
+                .MustSatisfy(
+                    t => t.TypeKind is not (TypeKind.RecordClass or TypeKind.RecordStruct),
+                    t => $"{t} must not be a record type" );
         }
 
         public override dynamic? OverrideMethod()

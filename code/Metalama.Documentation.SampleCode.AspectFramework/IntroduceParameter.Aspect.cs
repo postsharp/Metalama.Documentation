@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Advising;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Code.SyntaxBuilders;
@@ -9,20 +11,18 @@ namespace Doc.IntroduceParameter
     {
         public override void BuildAspect( IAspectBuilder<IConstructor> builder )
         {
-
             builder.Advice.IntroduceParameter(
                 builder.Target,
                 "instanceRegistry",
-                typeof( IInstanceRegistry ),
-                TypedConstant.Default( typeof( IInstanceRegistry ) ),
+                typeof(IInstanceRegistry),
+                TypedConstant.Default( typeof(IInstanceRegistry) ),
                 pullAction: ( parameter, constructor ) =>
-                 PullAction.IntroduceParameterAndPull(
-                    "instanceRegistry",
-                    TypeFactory.GetType( typeof( IInstanceRegistry ) ),
-                    TypedConstant.Default( typeof( IInstanceRegistry ) ) ) );
+                    PullAction.IntroduceParameterAndPull(
+                        "instanceRegistry",
+                        TypeFactory.GetType( typeof(IInstanceRegistry) ),
+                        TypedConstant.Default( typeof(IInstanceRegistry) ) ) );
 
             builder.Advice.AddInitializer( builder.Target, StatementFactory.Parse( "instanceRegistry.Register( this );" ) );
-
         }
     }
 
@@ -30,5 +30,4 @@ namespace Doc.IntroduceParameter
     {
         void Register( object instance );
     }
-
 }

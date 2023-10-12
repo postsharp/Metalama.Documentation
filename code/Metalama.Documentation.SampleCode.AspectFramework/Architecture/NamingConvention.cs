@@ -1,8 +1,10 @@
-﻿using Metalama.Extensions.Architecture.Aspects;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Extensions.Architecture.Aspects;
 
 namespace Doc.Architecture.NamingConvention
 {
-    [DerivedTypesMustRespectNamingConvention("*Factory")]
+    [DerivedTypesMustRespectNamingConvention( "*Factory" )]
     public interface IFactory { }
 
     // This will report a warning because the naming convention is not respected.

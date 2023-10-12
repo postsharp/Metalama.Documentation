@@ -1,4 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
@@ -20,10 +20,10 @@ namespace Doc.AspectConfiguration_Provider
             get => this._level ?? TraceLevel.Verbose;
             init => this._level = value;
         }
-        
+
         public IEnumerable<IHierarchicalOptions> GetOptions( in OptionsProviderContext context )
             => new[] { new LoggingOptions { Category = this.Category, Level = this._level } };
-        
+
         public override dynamic? OverrideMethod()
         {
             var options = meta.Target.Method.Enhancements().GetOptions<LoggingOptions>();

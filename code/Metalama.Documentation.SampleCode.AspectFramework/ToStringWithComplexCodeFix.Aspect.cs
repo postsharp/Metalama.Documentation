@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Code.SyntaxBuilders;
@@ -45,7 +46,7 @@ namespace Doc.ToStringWithComplexCodeFix
             stringBuilder.AddText( meta.Target.Type.Name );
             stringBuilder.AddText( " " );
 
-            var fields = meta.Target.Type.FieldsAndProperties.Where( f => !f.IsStatic && !f.IsImplicitlyDeclared).ToList();
+            var fields = meta.Target.Type.FieldsAndProperties.Where( f => !f.IsStatic && !f.IsImplicitlyDeclared ).ToList();
 
             var i = meta.CompileTime( 0 );
 

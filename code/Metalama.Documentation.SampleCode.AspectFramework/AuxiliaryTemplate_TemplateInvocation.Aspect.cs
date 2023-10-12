@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Framework.Aspects;
 using System;
 using System.Collections.Concurrent;
 
@@ -11,7 +13,7 @@ namespace Doc.AuxiliaryTemplate_TemplateInvocation
 
         public override dynamic? OverrideMethod()
         {
-            this.AroundCaching( new TemplateInvocation( nameof( CacheOrExecuteCore ) ) );
+            this.AroundCaching( new TemplateInvocation( nameof(this.CacheOrExecuteCore) ) );
 
             // This should be unreachable.
             return default;
@@ -36,9 +38,7 @@ namespace Doc.AuxiliaryTemplate_TemplateInvocation
             }
 
             meta.Return( returnValue );
-
         }
-
     }
 
     public class CacheAndRetryAttribute : CacheAttribute
@@ -49,8 +49,7 @@ namespace Doc.AuxiliaryTemplate_TemplateInvocation
         {
             if ( this.IncludeRetry )
             {
-
-                for ( var i = 0; ; i++ )
+                for ( var i = 0;; i++ )
                 {
                     try
                     {
@@ -59,22 +58,15 @@ namespace Doc.AuxiliaryTemplate_TemplateInvocation
                     catch ( Exception ex ) when ( i < 10 )
                     {
                         Console.WriteLine( ex.ToString() );
+
                         continue;
                     }
-
                 }
             }
             else
             {
                 meta.InvokeTemplate( templateInvocation );
             }
-
         }
-
     }
-
-
 }
-
-
-

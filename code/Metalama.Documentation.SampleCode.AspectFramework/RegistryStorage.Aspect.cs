@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Microsoft.Win32;

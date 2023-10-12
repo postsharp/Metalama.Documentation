@@ -1,4 +1,4 @@
-// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+// This is public domain Metalama sample code.
 
 using Microsoft.Extensions.Hosting;
 using System;
@@ -9,7 +9,7 @@ namespace Doc.GettingStarted
     public sealed class ConsoleMain : IConsoleMain
     {
         private readonly CloudCalculator _cloudCalculator;
-        
+
         public ConsoleMain( CloudCalculator cloudCalculator )
         {
             this._cloudCalculator = cloudCalculator;

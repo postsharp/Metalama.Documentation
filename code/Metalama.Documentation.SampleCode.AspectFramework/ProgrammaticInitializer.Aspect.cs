@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Code.SyntaxBuilders;
@@ -11,7 +12,7 @@ namespace Doc.ProgrammaticInitializer
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {
             // Create an expression that contains the array with all method names.
-            var arrayBuilder = new ArrayBuilder(typeof(string));
+            var arrayBuilder = new ArrayBuilder( typeof(string) );
 
             foreach ( var methodName in builder.Target.Methods.Select( m => m.Name ).Distinct() )
             {

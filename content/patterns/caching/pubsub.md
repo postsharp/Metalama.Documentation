@@ -4,7 +4,7 @@ title: "Synchronizing Local In-Memory Caches for Multiple Servers"
 product: "postsharp"
 categories: "Metalama;AOP;Metaprogramming"
 ---
-# Synchronizing Local In-Memory Caches for Multiple Servers
+# Synchronizing local in-memory caches for multiple servers
 
 Caching in distributed applications can be a tricky problem. When there are several instances of an application running simultaneously (typically web sites or web services deployed into the cloud or web farms), you have to make sure that the cache is properly invalidated for all instances of the application.
 

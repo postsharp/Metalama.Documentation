@@ -1,3 +1,5 @@
+// This is public domain Metalama sample code.
+
 using Metalama.Extensions.DependencyInjection.ServiceLocator;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -12,7 +14,7 @@ namespace Doc.LogServiceLocator
         {
             // Creates a service collection, add the service, and build a service provider.
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddSingleton<IMessageWriter>(new MessageWriter());
+            serviceCollection.AddSingleton<IMessageWriter>( new MessageWriter() );
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
             // Assigns the service provider to the global service locator.
@@ -21,7 +23,6 @@ namespace Doc.LogServiceLocator
             // Executes the program.
             return new Worker().ExecuteAsync();
         }
-
     }
 
     // Definition of the interface consumed by the aspect.

@@ -1,4 +1,4 @@
-// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+// This is public domain Metalama sample code.
 
 namespace Metalama.Documentation.Helpers.ConsoleApp;
 
@@ -14,7 +14,7 @@ public interface IConsoleHost
 
 internal class ConsoleHost : IConsoleHost
 {
-    public ConsoleHost( IReadOnlyList<string>? arguments ) 
+    public ConsoleHost( IReadOnlyList<string>? arguments )
     {
         this.Arguments = arguments ?? Array.Empty<string>();
     }

@@ -1,4 +1,4 @@
-// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+// This is public domain Metalama sample code.
 
 using Metalama.Documentation.Helpers.ConsoleApp;
 using Microsoft.Extensions.Hosting;
@@ -11,11 +11,11 @@ namespace Doc.RedisWithLocalCache
     {
         private readonly CloudCalculator _cloudCalculator;
 
-        public ConsoleMain( CloudCalculator cloudCalculator)
+        public ConsoleMain( CloudCalculator cloudCalculator )
         {
             this._cloudCalculator = cloudCalculator;
         }
-        
+
         public Task ExecuteAsync()
         {
             for ( var i = 0; i < 3; i++ )

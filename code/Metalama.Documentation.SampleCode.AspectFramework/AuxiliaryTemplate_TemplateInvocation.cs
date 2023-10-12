@@ -1,4 +1,6 @@
-﻿namespace Doc.AuxiliaryTemplate_TemplateInvocation
+﻿// This is public domain Metalama sample code.
+
+namespace Doc.AuxiliaryTemplate_TemplateInvocation
 {
     public class SelfCachedClass
     {

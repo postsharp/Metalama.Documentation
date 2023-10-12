@@ -1,4 +1,4 @@
-// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+// This is public domain Metalama sample code.
 
 using Metalama.Documentation.Helpers.ConsoleApp;
 using Microsoft.Extensions.Hosting;
@@ -11,7 +11,7 @@ namespace Doc.InvalidateAspect
     {
         private readonly ProductCatalogue _catalogue;
 
-        public ConsoleMain( ProductCatalogue catalogue)
+        public ConsoleMain( ProductCatalogue catalogue )
         {
             this._catalogue = catalogue;
         }

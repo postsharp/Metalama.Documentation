@@ -1,4 +1,6 @@
-﻿namespace Doc.AddEditorBrowsableAttribute
+﻿// This is public domain Metalama sample code.
+
+namespace Doc.AddEditorBrowsableAttribute
 {
     [HideFieldsFromEditor]
     public class C

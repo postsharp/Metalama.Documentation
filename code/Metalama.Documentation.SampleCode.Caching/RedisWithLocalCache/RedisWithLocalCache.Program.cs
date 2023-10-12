@@ -1,4 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using Metalama.Documentation.Helpers.ConsoleApp;
 using Metalama.Documentation.Helpers.Redis;
@@ -22,7 +22,7 @@ namespace Doc.RedisWithLocalCache
             builder.Services.AddLocalRedisServer();
 
             // Add the caching service.                         
-            builder.Services.AddCaching(                                                            /*<AddCaching>*/
+            builder.Services.AddCaching( /*<AddCaching>*/
                 caching => caching.WithBackend(
                     backend =>
                     {
@@ -32,19 +32,19 @@ namespace Doc.RedisWithLocalCache
                         // Build the Redis connection options.
                         var redisConnectionOptions = new ConfigurationOptions();
                         redisConnectionOptions.EndPoints.Add( "localhost", redisServer.Port );
-                        
+
                         // Build the Redis caching options. As a best practice, assign a version-specific KeyPrefix.
                         var thisAssembly = Assembly.GetCallingAssembly().GetName();
                         var keyPrefix = $"{thisAssembly.Name}.{thisAssembly.Version}";
 
                         // Finally, build the Redis caching back-end. Add an L1 cache.
-                        return backend.Redis(  new RedisCachingBackendConfiguration( redisConnectionOptions, keyPrefix ) ).WithL1();
+                        return backend.Redis( new RedisCachingBackendConfiguration( redisConnectionOptions, keyPrefix ) ).WithL1();
                     } ) ); /*</AddCaching>*/
 
             // Add other components as usual.
             builder.Services.AddAsyncConsoleMain<ConsoleMain>();
             builder.Services.AddSingleton<CloudCalculator>();
-            
+
             // Build the host.
             await using var app = builder.Build();
 

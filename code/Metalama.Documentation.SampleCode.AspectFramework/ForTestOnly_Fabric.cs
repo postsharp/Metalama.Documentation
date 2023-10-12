@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 using Doc.ForTestOnly_Fabric.ValidatedNamespace;
 
 namespace Doc.ForTestOnly_Fabric

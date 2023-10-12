@@ -1,4 +1,7 @@
-﻿using Metalama.Framework.Fabrics;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Framework.Code;
+using Metalama.Framework.Fabrics;
 using System.Linq;
 
 namespace Doc.ProjectFabric_TwoAspects
@@ -13,7 +16,7 @@ namespace Doc.ProjectFabric_TwoAspects
             AddProfiling( project );
         }
 
-        private static void AddLogging( IProjectAmender project  )
+        private static void AddLogging( IProjectAmender project )
         {
             project.Outbound
                 .SelectMany( p => p.Types )
@@ -24,10 +27,9 @@ namespace Doc.ProjectFabric_TwoAspects
         private static void AddProfiling( IProjectAmender project )
         {
             project.Outbound
-                .SelectMany( p => p.Types.Where( t => t.Accessibility == Metalama.Framework.Code.Accessibility.Public ) )
-                .SelectMany( t => t.Methods.Where( m => m.Accessibility == Metalama.Framework.Code.Accessibility.Public ) )
+                .SelectMany( p => p.Types.Where( t => t.Accessibility == Accessibility.Public ) )
+                .SelectMany( t => t.Methods.Where( m => m.Accessibility == Accessibility.Public ) )
                 .AddAspectIfEligible<Profile>();
-
         }
     }
 }

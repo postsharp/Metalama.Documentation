@@ -1,7 +1,8 @@
-﻿using Metalama.Framework.Aspects;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Framework.Aspects;
 using System;
 using System.Diagnostics;
-
 
 namespace Doc.Profile
 {
@@ -20,6 +21,6 @@ namespace Doc.Profile
                 var name = meta.Target.Method.ToDisplayString();
                 Console.WriteLine( $"{name} executed in {sw.ElapsedMilliseconds} ms." );
             }
-        }   
+        }
     }
 }

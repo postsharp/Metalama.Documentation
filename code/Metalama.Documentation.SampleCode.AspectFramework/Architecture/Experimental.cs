@@ -1,4 +1,6 @@
-﻿using Metalama.Extensions.Architecture.Aspects;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Extensions.Architecture.Aspects;
 
 namespace Doc.Architecture.Experimental
 {
@@ -7,7 +9,7 @@ namespace Doc.Architecture.Experimental
     {
         public static void Foo() { }
 
-        public static void Bar() 
+        public static void Bar()
         {
             // This call is allowed because we are within the experimental class.
             Foo();
@@ -20,8 +22,6 @@ namespace Doc.Architecture.Experimental
         {
             // This call is reported.
             ExperimentalApi.Foo();
-
         }
-
     }
 }

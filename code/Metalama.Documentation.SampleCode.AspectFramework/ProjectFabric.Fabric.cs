@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Fabrics;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Framework.Fabrics;
 using System.Linq;
 
 namespace Doc.ProjectFabric_

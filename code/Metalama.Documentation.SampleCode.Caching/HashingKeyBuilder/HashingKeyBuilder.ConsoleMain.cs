@@ -1,4 +1,4 @@
-// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+// This is public domain Metalama sample code.
 
 using Metalama.Documentation.Helpers.ConsoleApp;
 using Microsoft.Extensions.Hosting;
@@ -9,8 +9,8 @@ namespace Doc.HashKeyBuilder
     public sealed class ConsoleMain : IConsoleMain
     {
         private readonly FileSystem _fileSystem;
-        
-        public ConsoleMain( FileSystem fileSystem)
+
+        public ConsoleMain( FileSystem fileSystem )
         {
             this._fileSystem = fileSystem;
         }
