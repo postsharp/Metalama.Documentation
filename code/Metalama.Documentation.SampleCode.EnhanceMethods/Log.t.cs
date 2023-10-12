@@ -9,7 +9,7 @@ namespace Doc.Logging
       try
       {
         Console.WriteLine("Started Program.SayHello(string)");
-        System.Console.WriteLine($"Hello {name}");
+        Console.WriteLine($"Hello {name}");
         return;
       }
       finally

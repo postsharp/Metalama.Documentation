@@ -6,7 +6,8 @@ namespace Doc.NotEmptyContract
   {
     private string _name = default !;
     // Neither null nor empty strings are allowed.
-    [NotNull, NotEmpty]
+    [NotNull]
+    [NotEmpty]
     public string Name
     {
       get
