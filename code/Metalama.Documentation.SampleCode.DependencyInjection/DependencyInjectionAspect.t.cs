@@ -41,7 +41,7 @@ namespace Doc.DependencyInjectionAspect
     {
       this._lifetimeFunc = lifetime ?? throw new System.ArgumentNullException(nameof(lifetime));
       this._environment = environment ?? throw new System.ArgumentNullException(nameof(environment));
-      this._logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
+      this._logger = logger;
     }
   }
 }

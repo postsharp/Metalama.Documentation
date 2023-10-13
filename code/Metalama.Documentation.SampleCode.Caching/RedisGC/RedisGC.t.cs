@@ -1,4 +1,3 @@
-// The 'Program.Main' method must not have parameters.
 using Metalama.Documentation.Helpers.Redis;
 using Metalama.Patterns.Caching.Backends.Redis;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,5 +1,8 @@
-Doing some very hard work.
-CloudCalculator returned 2.
-CloudCalculator returned 2.
-CloudCalculator returned 2.
-In total, CloudCalculator performed 1 operation(s).
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\src\Metalama.Documentation\code\Metalama.Documentation.SampleCode.Caching\bin\Debug\net7.0
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...

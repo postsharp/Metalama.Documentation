@@ -9,6 +9,10 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
+#if TEST_OPTIONS
+// @DisableCompareProgramOutput
+#endif
+
 namespace Doc.RedisGC
 {
     public sealed class Program
