@@ -8,7 +8,23 @@ categories: "Metalama;AOP;Metaprogramming"
 
 Caching is a great way to improve the latency an application. Traditionally, when you implement caching, you need to play with the API of the caching framework (such as <xref:System.Runtime.Caching.MemoryCache>) or caching server (such as Redis) and to include moderately complex logic to your source code to generate the cache key, check the existence of the item in the cache, and add the item into the cache. Another source of complexity stems from removing items from the cache when the source data is updated. Implementing caching manually is not only time-consuming, but also is error-prone: it is easy to generate inconsistent cache keys between read and update methods. 
 
-Metalama allows you to dramatically reduce the complexity of caching. It allows you to cache the return value of a method as a function of its arguments with just a custom attribute, namely the <xref:Metalama.Patterns.Caching.Aspects.CacheAttribute> aspect. The <xref:Metalama.Patterns.Caching.Aspects.InvalidateCacheAttribute> aspect and the <xref:Metalama.Patterns.Caching.CachingService> API offer a strongly-typed way to invalidate cached methods. Additionally, Metalama is independent from the caching framework or server (called caching *backend*), so you can choose from several backends or implement an adapter for your own backend. 
+## Benefits 
+
+Metalama Caching has the following benefits over manual caching:
+
+* **Reduce boilerplate**.  Metalama Caching allows you to cache the return value of a method as a function of its arguments with just a custom attribute, namely the <xref:Metalama.Patterns.Caching.Aspects.CacheAttribute?text=[Cache]> aspect. To invalidate the cache, add the <xref:Metalama.Patterns.Caching.Aspects.InvalidateCacheAttribute?text=[InvalidateCache]> aspect to the update methods. To use a custom class as a parameter of a cached method, use the <xref:Metalama.Patterns.Caching.Aspects.CacheKeyAttribute?text=[CacheKey]> aspect to mark the properties that uniquely identify the object. As a result, your business code is shorter and more readable.
+
+* **Reduce bugs**. Generating cache keys with hand-written code is notoriously bug-prone. Metalama Caching eliminates this source of defects by implementing a reliable approach to key generation, combining object-oriented and aspect-oriented techniques.
+
+* **Reduce coupling**. Cache invalidation can be tricky and often requires you to review your complete _write_ methods every time you add caching to a _read_ method. Cache dependencies act like an abstraction layer sitting between _read_ and _write_ methods and help reduce coupling between them.
+
+* **Flexible topologies**. Metalama Caching supports several caching topologies, and you can switch between them without effort:
+
+    * In-memory caching,
+    * Redis-based distributed caching (see <xref:caching-redis>),
+    * Redis-based distributed caching with a synchronized in-memory L1 (see <xref:caching-redis>), and
+    * In-memory caching with multi-node synchronization over Azure Service Bus or Redis Pub/Sub  (see <xref:caching-pubsub>).
+
 
 
 ## In this chapter
