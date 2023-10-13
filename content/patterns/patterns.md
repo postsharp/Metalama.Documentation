@@ -13,5 +13,5 @@ The following libraries are currently available:
 | Library | Description |
 |---------|-------------|
 | <xref:contract-patterns> | Metalama Contracts implement Contract-Based Programming via preconditions, postconditions, and invariants. This aids in building maintainable, reliable, and scalable software systems. |
-
+| <xref:caching> | Metalama Caching combines object-oriented and aspect-oriented APIs
 
