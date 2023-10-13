@@ -1,8 +1,5 @@
 ---
 uid: cache-locking
-title: "Preventing Concurrent Execution of Cached Methods"
-product: "postsharp"
-categories: "Metalama;AOP;Metaprogramming"
 ---
 # Preventing concurrent execution of cached methods
 

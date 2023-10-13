@@ -1,8 +1,5 @@
 ---
 uid: caching-keys
-title: "Customizing Cache Keys"
-product: "postsharp"
-categories: "Metalama;AOP;Metaprogramming"
 ---
 # Customizing cache keys
 
