@@ -3,11 +3,11 @@ uid: fabrics-many-projects
 level: 300
 ---
 
-# Adding aspects to many projects
+# Adding aspects to multiple projects
 
-If you manage a repository or a solution composed of several projects, it can be beneficial to add aspects from a central location. This article outlines several methods for achieving this.
+If you manage a repository or a solution composed of multiple projects, you may find it beneficial to add aspects from a central location. This article outlines several methods to achieve this.
 
-Please note that these approaches are also applicable when configuring aspect libraries or adding architectural rules.
+These approaches are also applicable when configuring aspect libraries or adding architectural rules.
 
 ## Using transitive project fabrics
 

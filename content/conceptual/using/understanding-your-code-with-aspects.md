@@ -5,7 +5,7 @@ level: 100
 
 # Understanding your aspect-oriented code
 
-Now that you have integrated aspects into your code, you might be curious about its functionality and execution process. Metalama provides several tools to help you understand precisely what happens with your code when you hit the Run button.
+Now that you have integrated aspects into your code, you may be curious about its functionality and execution process. Metalama provides several tools to help you understand precisely what happens with your code when you hit the Run button.
 
 These tools include:
 
@@ -45,7 +45,6 @@ CodeLens also provides a clickable link to display the transformed and original 
 
 > [!NOTE]
 > This feature is only available in Visual Studio when Metalama Tools with Visual Studio are installed.
-
 
 To preview the change, click on the `Preview Transformed Code` link. It will display the result as follows:
 
@@ -90,5 +89,3 @@ Z has changed
 ```
 
 Observe that members of the `MovingVertex3D` type don't have an explicit `[NotifyPropertyChanged]` attribute. The aspect is inherited from the base class.
-
-

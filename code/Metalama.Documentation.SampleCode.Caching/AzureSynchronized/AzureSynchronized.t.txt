@@ -1,37 +1,37 @@
 Getting the product of corn from database.
 Getting the product of corn from database.
-App1 reads and gets Product { Id = corn, Price = 100, Remarks = Initial record. }.
-App2 reads and gets Product { Id = corn, Price = 100, Remarks = Initial record. }.
 App2 reads and gets Product { Id = corn, Price = 100, Remarks = Initial record. }.
 App1 reads and gets Product { Id = corn, Price = 100, Remarks = Initial record. }.
 App1 reads and gets Product { Id = corn, Price = 100, Remarks = Initial record. }.
 App2 reads and gets Product { Id = corn, Price = 100, Remarks = Initial record. }.
-App1 update Product { Id = corn, Price = 105, Remarks = Updated by App1, i=0 }.
-App2 update Product { Id = corn, Price = 118, Remarks = Updated by App2, i=0 }.
+App1 reads and gets Product { Id = corn, Price = 100, Remarks = Initial record. }.
+App2 reads and gets Product { Id = corn, Price = 100, Remarks = Initial record. }.
+App2 update Product { Id = corn, Price = 114, Remarks = Updated by App2, i=0 }.
+App1 update Product { Id = corn, Price = 103, Remarks = Updated by App1, i=0 }.
 Updating the product corn.
 Updating the product corn.
 Getting the product of corn from database.
 Getting the product of corn from database.
-App2 reads and gets Product { Id = corn, Price = 118, Remarks = Updated by App2, i=0 }.
-App1 reads and gets Product { Id = corn, Price = 118, Remarks = Updated by App2, i=0 }.
-App1 reads and gets Product { Id = corn, Price = 118, Remarks = Updated by App2, i=0 }.
-App2 reads and gets Product { Id = corn, Price = 118, Remarks = Updated by App2, i=0 }.
-App2 reads and gets Product { Id = corn, Price = 118, Remarks = Updated by App2, i=0 }.
-App1 reads and gets Product { Id = corn, Price = 118, Remarks = Updated by App2, i=0 }.
-App2 update Product { Id = corn, Price = 107, Remarks = Updated by App2, i=1 }.
-App1 update Product { Id = corn, Price = 101, Remarks = Updated by App1, i=1 }.
+App1 reads and gets Product { Id = corn, Price = 103, Remarks = Updated by App1, i=0 }.
+App2 reads and gets Product { Id = corn, Price = 103, Remarks = Updated by App1, i=0 }.
+App2 reads and gets Product { Id = corn, Price = 103, Remarks = Updated by App1, i=0 }.
+App1 reads and gets Product { Id = corn, Price = 103, Remarks = Updated by App1, i=0 }.
+App2 reads and gets Product { Id = corn, Price = 103, Remarks = Updated by App1, i=0 }.
+App1 reads and gets Product { Id = corn, Price = 103, Remarks = Updated by App1, i=0 }.
+App2 update Product { Id = corn, Price = 100, Remarks = Updated by App2, i=1 }.
+App1 update Product { Id = corn, Price = 111, Remarks = Updated by App1, i=1 }.
 Updating the product corn.
 Updating the product corn.
 Getting the product of corn from database.
 Getting the product of corn from database.
-App2 reads and gets Product { Id = corn, Price = 101, Remarks = Updated by App1, i=1 }.
-App1 reads and gets Product { Id = corn, Price = 101, Remarks = Updated by App1, i=1 }.
-App2 reads and gets Product { Id = corn, Price = 101, Remarks = Updated by App1, i=1 }.
-App1 reads and gets Product { Id = corn, Price = 101, Remarks = Updated by App1, i=1 }.
-App1 reads and gets Product { Id = corn, Price = 101, Remarks = Updated by App1, i=1 }.
-App2 reads and gets Product { Id = corn, Price = 101, Remarks = Updated by App1, i=1 }.
-App1 update Product { Id = corn, Price = 113, Remarks = Updated by App1, i=2 }.
-App2 update Product { Id = corn, Price = 116, Remarks = Updated by App2, i=2 }.
+App1 reads and gets Product { Id = corn, Price = 111, Remarks = Updated by App1, i=1 }.
+App2 reads and gets Product { Id = corn, Price = 111, Remarks = Updated by App1, i=1 }.
+App1 reads and gets Product { Id = corn, Price = 111, Remarks = Updated by App1, i=1 }.
+App2 reads and gets Product { Id = corn, Price = 111, Remarks = Updated by App1, i=1 }.
+App1 reads and gets Product { Id = corn, Price = 111, Remarks = Updated by App1, i=1 }.
+App2 reads and gets Product { Id = corn, Price = 111, Remarks = Updated by App1, i=1 }.
+App1 update Product { Id = corn, Price = 101, Remarks = Updated by App1, i=2 }.
+App2 update Product { Id = corn, Price = 117, Remarks = Updated by App2, i=2 }.
 Updating the product corn.
 Updating the product corn.
 In total, CloudCalculator performed 6 database operation(s).

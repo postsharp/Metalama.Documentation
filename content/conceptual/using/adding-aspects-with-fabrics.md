@@ -3,19 +3,19 @@ uid: fabrics-adding-aspects
 level: 200
 ---
 
-# Adding many aspects at once
+# Adding many aspects simultaneously
 
-In <xref:quickstart-adding-aspects>, you learned to apply aspects one at a time using custom attributes. While this approach is suitable for aspects like caching or auto-retry, it can be overwhelming for other aspects like logging or profiling.
+In <xref:quickstart-adding-aspects>, you learned how to apply aspects individually using custom attributes. While this approach is suitable for aspects like caching or auto-retry, it can be cumbersome for other aspects such as logging or profiling.
 
 In this article, you will learn how to use _fabrics_ to add aspects to your targets _programmatically_.
 
 ## When to use fabrics
 
-Fabrics enable you to add all aspects from a central place. You should consider using fabrics instead of custom attributes when the decision to add an aspect to a declaration can be easily expressed as a _rule_, and when this rule only depends on the metadata of the declaration, such as its name, signature, parent type, implemented interfaces, custom attributes, or any other detail exposed by the [code model](xref:Metalama.Framework.Code).
+Fabrics allow you to add all aspects from a central location. Consider using fabrics instead of custom attributes when the decision to add an aspect to a declaration can be easily expressed as a _rule_, and when this rule depends solely on the metadata of the declaration, such as its name, signature, parent type, implemented interfaces, custom attributes, or any other detail exposed by the [code model](xref:Metalama.Framework.Code).
 
 For instance, if you want to add logging to all public methods of all public types of a namespace, it is more efficient to do it using a fabric.
 
-Conversely, it may not be advisable to use a fabric to add caching to all methods that start with the word _Get_ because you may end up creating more problems than you solve. Caching is typically an aspect you would hand-pick, and custom attributes are a better approach.
+Conversely, it may not be advisable to use a fabric to add caching to all methods that start with the word _Get_ because you may end up creating more problems than you solve. Caching is typically an aspect you would carefully select, and custom attributes are a better approach.
 
 ## Adding aspects using fabrics
 
@@ -71,17 +71,14 @@ For each project, it is recommended to have only one project fabric. Having seve
 To add the Logging aspect (`LogAttribute`) to all the methods that appear in types within namespaces that start with the prefix `Outer.Inner` and all the child types located in any descendant namespace, use the following fabric.
 
 [!metalama-test  ~/code/DebugDemo2/Fabric2.cs tabs="target"]
-
-In this fabric, we use the `GlobalNamespace.GetDescendant` method to get all the children's namespace of the given namespace (in this case, `Outer.Inner`). The first `SelectMany` calls get all the types in these namespaces, and the inner `SelectMany` call gets all the methods in these types. This results in an `IAspectReceiver<IMethod>`. So the final call <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspectIfEligible*> adds the `Log` aspect to all eligible methods.
+In this fabric, we use the `GlobalNamespace.GetDescendant` method to retrieve all child namespaces of the given namespace (in this case, `Outer.Inner`). The first `SelectMany` call retrieves all the types in these namespaces, and the subsequent `SelectMany` call retrieves all the methods in these types. This results in an `IAspectReceiver<IMethod>`. The final call to <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspectIfEligible*> adds the `Log` aspect to all eligible methods.
 
 ### Example 4: Adding the `Log` aspect only to derived classes of a given class
 
-Sometimes you may not need or want to add aspects to all the types but only to a class and its derived types. The following fabric shows how you can add those. In this example fabric, you see how to get the derived types of a given type and how to add aspects to them.
+Sometimes you may not need or want to add aspects to all types, but only to a class and its derived types. The following fabric shows how you can accomplish this. In this example fabric, you will see how to get the derived types of a given type and how to add aspects to them.
 
 [!metalama-test ~/code/Metalama.Documentation.QuickStart.Fabrics.2/AddLoggingToChildrenFabric.cs tabs="target"]
-
 
 > [!div class="see-also"]
 > <xref:video-fabrics-and-inheritance>
 > <xref:fabrics-adding-aspects>
-
