@@ -16,7 +16,6 @@ Metalama allows you to dramatically reduce the complexity of caching. It allows 
 | Section | Description |
 |---------|-------------|
 | <xref:caching-getting-started> | This article shows how to make method returned values being cached. |
-| <xref:caching-logging-interaction> | This article shows how to prevent Metalama from logging cache hits, which has a performance impact. |
 | <xref:caching-invalidation> | This article shows how to invalidate cached returned values of methods declaratively and imperatively. |
 | <xref:caching-dependencies> | This article shows how to invalidate cache items automatically using cache dependencies. |
 | <xref:caching-keys> | This article shows how to customize the cache keys which identify cached method return values. |
@@ -24,4 +23,4 @@ Metalama allows you to dramatically reduce the complexity of caching. It allows 
 | <xref:caching-pubsub> | This article shows how to invalidate all related in-memory caches in a distributed environment. |
 | <xref:caching-value-adapters> | This article describes how to cache return values of methods which cannot be cached directly, such as instances of <xref:System.Collections.Generic.IEnumerable`1> or <xref:System.IO.Stream>.  |
 | <xref:cache-locking> | This article explains how you can prevent the same method from being executed with the same arguments at the same time - by using locking. |
-
+| <xref:caching-troubleshooting> | This article describes how to add logging to the caching component. |

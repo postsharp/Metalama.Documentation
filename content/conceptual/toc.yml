@@ -69,7 +69,7 @@ items:
         - name: Caching
           topicUid: caching
           items:
-            - name: Getting started with caching
+            - name: Getting started
               topicUid: caching-getting-started
             - name: Customizing cache keys
               topicUid: caching-keys
@@ -89,6 +89,8 @@ items:
               topicUid: caching-value-adapters
             - name: Preventing concurrent execution
               topicUid: cache-locking
+            - name: caching-troubleshooting
+              topicUid: caching-troubleshooting
 
 
     - name: Creating aspects

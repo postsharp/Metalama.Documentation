@@ -40,7 +40,7 @@ namespace Doc.RedisGC
       const bool isProductionCode = false;
       if (isProductionCode)
       {
-        await host.WaitForShutdownAsync();
+      // await host.WaitForShutdownAsync();
       }
       else
       {

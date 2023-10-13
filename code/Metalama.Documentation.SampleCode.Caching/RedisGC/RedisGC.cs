@@ -53,7 +53,7 @@ namespace Doc.RedisGC
 
             if ( isProductionCode )
             {
-                await host.WaitForShutdownAsync();
+                // await host.WaitForShutdownAsync();
             }
             else
             {

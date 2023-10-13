@@ -48,9 +48,9 @@ namespace Doc.RedisWithLocalCache
             // Build the host.
             await using var app = builder.Build();
 
-            // Initialize the caching service.
-            var cachingService = app.Services.GetRequiredService<ICachingService>();
-            await cachingService.InitializeAsync();
+            // Initialize caching.
+            await app.Services.GetRequiredService<ICachingService>().InitializeAsync(); /*<Initialize>*/
+            /*</Initialize>*/
 
             // Run the host.
             await app.RunAsync();

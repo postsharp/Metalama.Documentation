@@ -1,8 +1,5 @@
 ---
 uid: caching-value-adapters
-title: "Caching Special Types with Value Adapters"
-product: "postsharp"
-categories: "Metalama;AOP;Metaprogramming"
 ---
 # Caching mutable or stream-like types with value adapters
 

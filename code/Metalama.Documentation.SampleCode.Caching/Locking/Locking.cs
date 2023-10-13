@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace Doc.Locking
 {
-    public sealed class CloudService
+    public sealed class CloudService : IDisposable
     {
         // We use barriers to make sure we wait long enough.
         private readonly Barrier _withoutLockBarrier = new( 2 );
@@ -31,5 +31,7 @@ namespace Doc.Locking
 
             return new byte[32];
         }
+
+        public void Dispose() => this._withoutLockBarrier.Dispose();
     }
 }

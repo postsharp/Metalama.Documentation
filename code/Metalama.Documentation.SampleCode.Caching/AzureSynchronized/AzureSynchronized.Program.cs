@@ -2,6 +2,7 @@
 
 using Metalama.Documentation.Helpers.ConsoleApp;
 using Metalama.Documentation.Helpers.Security;
+using Metalama.Patterns.Caching;
 using Metalama.Patterns.Caching.Backends.Azure;
 using Metalama.Patterns.Caching.Building;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,11 +35,17 @@ namespace Doc.AzureSynchronized
                         backend =>
                             backend.Memory().WithAzureSynchronization( connectionString ) ) ); /*</AddCaching>*/
 
-            // Add other components as usual, then run the application.
+            // Add other components as usual.
             builder.Services.AddAsyncConsoleMain<ConsoleMain>();
             builder.Services.AddSingleton<ProductCatalogue>();
 
+            // Build the application.
             await using var app = builder.Build( new[] { name } );
+            
+            await app.Services.GetRequiredService<ICachingService>().InitializeAsync(); /*<Initialize>*/
+            /*</Initialize>*/
+
+            // Run the application.
             await app.RunAsync();
         }
     }

@@ -1,8 +1,6 @@
-// Warning LAMA5002 on `FirstName`: `The [Required] contract has been applied to 'ICustomer.FirstName', but its type is nullable.`
-// Warning LAMA5002 on `FirstName`: `The [Required] contract has been applied to 'Customer.FirstName', but its type is nullable.`
 using System;
 using Metalama.Patterns.Contracts;
-namespace Doc.Contracts.Inheritane
+namespace Doc.Contracts.Inheritance
 {
   public interface ICustomer
   {
@@ -13,7 +11,7 @@ namespace Doc.Contracts.Inheritane
     [Range(1900, 2100)]
     int? BirthYear { get; set; }
     [Required]
-    string? FirstName { get; set; }
+    string FirstName { get; set; }
     [Required]
     string LastName { get; set; }
   }
@@ -71,8 +69,8 @@ namespace Doc.Contracts.Inheritane
         this._birthYear = value;
       }
     }
-    private string? _firstName;
-    public string? FirstName
+    private string _firstName = default !;
+    public string FirstName
     {
       get
       {
@@ -116,6 +114,33 @@ namespace Doc.Contracts.Inheritane
         }
         this._lastName = value;
       }
+    }
+    public Customer([Required] string firstName, [Required] string lastName)
+    {
+      if (string.IsNullOrWhiteSpace(lastName))
+      {
+        if (lastName == null !)
+        {
+          throw new ArgumentNullException("lastName", "The 'lastName' parameter is required.");
+        }
+        else
+        {
+          throw new ArgumentOutOfRangeException("lastName", "The 'lastName' parameter is required.");
+        }
+      }
+      if (string.IsNullOrWhiteSpace(firstName))
+      {
+        if (firstName == null !)
+        {
+          throw new ArgumentNullException("firstName", "The 'firstName' parameter is required.");
+        }
+        else
+        {
+          throw new ArgumentOutOfRangeException("firstName", "The 'firstName' parameter is required.");
+        }
+      }
+      this.FirstName = firstName;
+      this.LastName = lastName;
     }
   }
 }

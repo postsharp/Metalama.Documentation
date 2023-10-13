@@ -1,8 +1,5 @@
 ---
 uid: caching-pubsub
-title: "Synchronizing Local In-Memory Caches for Multiple Servers"
-product: "postsharp"
-categories: "Metalama;AOP;Metaprogramming"
 ---
 # Synchronizing local in-memory caches for multiple servers
 
@@ -42,6 +39,15 @@ The first step is to create a topic. To achieve this using Microsoft Azure porta
 
     [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/AzureSynchronized/AzureSynchronized.Program.cs marker="AddCaching"]
 
+4. We recommend initializing the caching service during the initialization sequence of your application, otherwise the service will be initialized lazily upon first use. Get the <xref:Metalama.Patterns.Caching.ICachingService>   interface from the <xref:System.IServiceProvider> and call the <xref"Metalama.Patterns.Caching.ICachingService.InitializeAsync> method.
+
+    [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/AzureSynchronized/AzureSynchronized.Program.cs marker="Initialize"]
+
+
+> [!WARNING]
+> Make sure that the <xref:Metalama.Patterns.Caching.ICachingService> is properly disposed of before the application exits, otherwise some background cache write operations may be left unprocessed, and the cache will be inconsistent.
+
+
 ### Example: A distributed application synchronized by Azure Service Bus
 
 The following example simulates a multi-instance application. Here, for the ease of testing, both instances live in the same process. Both instances read and write to a shared database simulated by a concurrent dictionary, which sits behinds an in-memory cache. These two cache instances are synchronized using <xref:Metalama.Patterns.Caching.Backends.Azure.AzureCachingFactory.WithAzureSynchronization*>. 
@@ -51,7 +57,7 @@ The following example simulates a multi-instance application. Here, for the ease
 
 ## Using Redis Pub/Sub
 
-If you are already using Redis as a storage for Metalama Caching, it is useless to add another layer of invalidation because this is already taken care of by the <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackend> class. However, if you already have a Redis cluster but you don't want to use it for caching, you can still use it for cache invalidation. An example situation is when the latency of your Redis server is too high for caching but sufficient for cache invalidation. 
+If you are already using Redis as a storage for Metalama Caching, it is useless to add another layer of invalidation because this is already taken care of by the Redis caching back-end. However, if you already have a Redis cluster but you don't want to use it for caching, you can still use it for cache invalidation. An example situation is when the latency of your Redis server is too high for caching but sufficient for cache invalidation. 
 
 No configuration on your Redis server is necessary to use it for cache synchronization.
 
@@ -60,4 +66,10 @@ No configuration on your Redis server is necessary to use it for cache synchroni
  
 2. Add a reference to the [Metalama.Patterns.Caching.Backends.Redis](https://www.nuget.org/packages/Metalama.Patterns.Caching.Backends.Redis/) NuGet package. 
 
-3. Go back to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithBackend*> method, then and supply a delegate that calls the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.Memory*> method. Then, call  <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.WithRedisSynchronization> and pass an instance of <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCacheSynchronizerConfiguration>.
+3. Go back to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithBackend*> method, then and supply a delegate that calls the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.Memory*> method. Then, call  <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.WithRedisSynchronization*> and pass an instance of <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCacheSynchronizerConfiguration>.
+
+4. We recommend initializing the caching service during the initialization sequence of your application, otherwise the service will be initialized lazily upon first use. Get the <xref:Metalama.Patterns.Caching.ICachingService>  interface from the <xref:System.IServiceProvider> and call the <xref"Metalama.Patterns.Caching.ICachingService.InitializeAsync> method.
+
+
+> [!WARNING]
+> Make sure that the <xref:Metalama.Patterns.Caching.ICachingService> is properly disposed of before the application exits, otherwise some background cache write operations may be left unprocessed, and the cache will be inconsistent.

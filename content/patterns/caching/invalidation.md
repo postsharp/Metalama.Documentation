@@ -1,7 +1,7 @@
 ---
 uid: caching-invalidation
 ---
-# Removing Items From the Cache
+# Invalidating the cache
 
 As Phil Karlton once [famously said](https://www.karlton.org/2017/12/naming-things-hard/), _here are only two hard things in Computer Science: cache invalidation and naming things._
 
