@@ -39,15 +39,14 @@ items:
           topicUid: debugging-aspect-oriented-code
         - name: Applying live templates
           topicUid:  applying-live-templates
-        - name: Using fabrics
+        - name: Adding many aspects at once
+          topicUid: fabrics-adding-aspects
+        - name: More about fabrics
           topicUid: fabrics
-          items:
-          - name: Adding aspects
-            topicUid: fabrics-adding-aspects
-          - name: Configuring aspect libraries
-            topicUid: fabrics-configuration
-          - name: Amending many projects at once
-            topicUid: fabrics-many-projects
+        - name: Configuring aspect libraries
+          topicUid: fabrics-configuration
+        - name: Amending many projects at once
+          topicUid: fabrics-many-projects
     - name: Using Metalama Patterns
       topicUid: patterns
       items:
@@ -89,7 +88,7 @@ items:
               topicUid: caching-value-adapters
             - name: Preventing concurrent execution
               topicUid: cache-locking
-            - name: caching-troubleshooting
+            - name: Troubleshooting
               topicUid: caching-troubleshooting
             
         - name: Memoization

@@ -28,7 +28,7 @@ To add aspects using fabrics:
 3. Call one of the following methods from <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*>:
 
    * To select the type itself, simply use the <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> property.
-   * To select type members (methods, fields, nested types, etc.), call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> or <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> method and provide a lambda expression that selects the relevant type members.
+   * To select type members (methods, fields, nested types, etc.), call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*>, <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> or <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Where*> method and provide a lambda expression that selects the relevant type members.
 
 4. Call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> or  <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspectIfEligible*> method.
 
@@ -80,13 +80,6 @@ Sometimes you may not need or want to add aspects to all the types but only to a
 
 [!metalama-test ~/code/Metalama.Documentation.QuickStart.Fabrics.2/AddLoggingToChildrenFabric.cs tabs="target"]
 
-## Adding fabrics to namespaces or types
-
-In all examples above, we have used the <xref:Metalama.Framework.Fabrics.ProjectFabric> class to add a global fabric to our project.
-
-Alternatively, you can add fabrics to namespaces thanks to the <xref:Metalama.Framework.Fabrics.NamespaceFabric> class. This can be useful when you have large projects where different namespaces must follow architectural styles, requiring different aspects and validation rules.
-
-Lastly, you can add a fabric to a type by adding a nested type derived from <xref:Metalama.Framework.Fabrics.TypeFabric>. This is useful when this type has so many members that using custom attributes is cumbersome or when a large part of this type is automatically generated.
 
 > [!div class="see-also"]
 > <xref:video-fabrics-and-inheritance>

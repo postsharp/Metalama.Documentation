@@ -6,7 +6,10 @@ uid: patterns
 
 Metalama Patterns, housed under the <xref:patterns-api?text=Metalama.Patterns> namespace, consist of libraries of aspects that implement the most common design patterns for C#.
 
-Constructed by the Metalama team, these patterns uphold the same quality standard as the Metalama framework itself. They are released under the open-source MIT license and are available on [GitHub](https://github.com/postsharp/Metalama.Patterns).
+Constructed by the Metalama team, these patterns uphold the same quality standard as the Metalama framework itself. 
+
+> [!NOTE]
+> Metalama Patterns are released under the open-source MIT license and are available on [GitHub](https://github.com/postsharp/Metalama.Patterns).
 
 
 The following libraries are currently available:
