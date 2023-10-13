@@ -39,7 +39,7 @@ The first step is to create a topic. To do this using the Microsoft Azure portal
 
     [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/AzureSynchronized/AzureSynchronized.Program.cs marker="AddCaching"]
 
-4. We recommend initializing the caching service during your application's initialization sequence; otherwise, the service will be initialized lazily upon its first use. Retrieve the <xref:Metalama.Patterns.Caching.ICachingService> interface from the <xref:System.IServiceProvider> and call the <xref"Metalama.Patterns.Caching.ICachingService.InitializeAsync> method.
+4. We recommend initializing the caching service during your application's initialization sequence; otherwise, the service will be initialized lazily upon its first use. Retrieve the <xref:Metalama.Patterns.Caching.ICachingService> interface from the <xref:System.IServiceProvider> and call the <xref"Metalama.Patterns.Caching.ICachingService.InitializeAsync*> method.
 
     [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/AzureSynchronized/AzureSynchronized.Program.cs marker="Initialize"]
 
@@ -66,7 +66,7 @@ No configuration on your Redis server is necessary to use it for cache synchroni
 
 3. Return to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching> or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithBackend*> method and supply a delegate that calls the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.Memory*> method. Then, call <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.WithRedisSynchronization*> and pass an instance of <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCacheSynchronizerConfiguration>.
 
-4. We recommend initializing the caching service during your application's initialization sequence; otherwise, the service will be initialized lazily upon its first use. Retrieve the <xref:Metalama.Patterns.Caching.ICachingService> interface from the <xref:System.IServiceProvider> and call the <xref"Metalama.Patterns.Caching.ICachingService.InitializeAsync> method.
+4. We recommend initializing the caching service during your application's initialization sequence; otherwise, the service will be initialized lazily upon its first use. Retrieve the <xref:Metalama.Patterns.Caching.ICachingService> interface from the <xref:System.IServiceProvider> and call the <xref"Metalama.Patterns.Caching.ICachingService.InitializeAsync*> method.
 
 > [!WARNING]
 > Ensure that the <xref:Metalama.Patterns.Caching.ICachingService> is properly disposed of before the application exits. Failure to do so may leave some background cache write operations unprocessed, leading to cache inconsistency.

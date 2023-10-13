@@ -5,18 +5,17 @@ uid: caching-troubleshooting
 
 If you need to troubleshoot the caching feature, you can enable verbose logging.
 
-> [!NOTE]
-> Metalama Caching employs an intermediate logging layer, _Flashtrace_. However, we do not currently recommend using Flashtrace in your applications for other scenarios.
+## With dependency injection
 
-## With Dependency Injection
+If your application utilizes dependency injection, add the .NET logging service as usual using the <xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging*> extension method. The the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*> extension method automatically uses logging when available.
 
-If your application utilizes dependency injection, add the .NET logging service as usual using the <xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging*> extension method. Then, supply a delegate that calls <xref:Microsoft.Extensions.Logging.LoggingBuilderExtensions.SetMinimumLevel*> to set the level to `Debug`.
+ Therefore, to troubleshoot caching, just set the minimum caching level to `Debug` using the <xref:Microsoft.Extensions.Logging.LoggingBuilderExtensions.SetMinimumLevel*> method.
 
 The following code snippet illustrates this:
 
 [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/Logging/Logging.Program.cs marker="AddLogging"]
 
-### Example: Logging of Caching with Dependency Injection
+### Example: Logging of caching with dependency injection
 
 The following is an update to the _getting started_ example, with logging enabled. You can observe detailed logging in the program output.
 

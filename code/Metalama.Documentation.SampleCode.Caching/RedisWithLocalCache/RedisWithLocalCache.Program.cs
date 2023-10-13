@@ -27,7 +27,7 @@ namespace Doc.RedisWithLocalCache
                     backend =>
                     {
                         // Get the random port of the test Redis server. You don't need this in your code.
-                        var redisServer = caching.ServiceProvider.GetRequiredService<LocalRedisServer>();
+                        var redisServer = caching.ServiceProvider!.GetRequiredService<LocalRedisServer>();
 
                         // Build the Redis connection options.
                         var redisConnectionOptions = new ConfigurationOptions();

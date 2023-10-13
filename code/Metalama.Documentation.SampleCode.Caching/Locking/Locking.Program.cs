@@ -17,7 +17,7 @@ namespace Doc.Locking
             // Add the caching service.
             builder.Services.AddCaching( /*<AddCaching>*/
                 caching =>
-                    caching.AddProfile( new CachingProfile( "Locking" ) { LockFactory = new LocalLockFactory() } ) ); /*</AddCaching>*/
+                    caching.AddProfile( new CachingProfile( "Locking" ) { LockingStrategy = new LocalLockingStrategy() } ) ); /*</AddCaching>*/
 
             // Add other components as usual, then run the application.
             builder.Services.AddConsoleMain<ConsoleMain>();

@@ -50,7 +50,7 @@ The second step is to configure Metalama Caching to use Redis. Follow these step
     [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/Redis/Redis.Program.cs marker="AddCaching"]
 
 
-4. We recommend initializing the caching service during the initialization sequence of your application, otherwise the service will be initialized lazily upon first use. Get the <xref:Metalama.Patterns.Caching.ICachingService>   interface from the <xref:System.IServiceProvider> and call the <xref:Metalama.Patterns.Caching.ICachingService.InitializeAsync> method.
+4. We recommend initializing the caching service during the initialization sequence of your application, otherwise the service will be initialized lazily upon first use. Get the <xref:Metalama.Patterns.Caching.ICachingService>   interface from the <xref:System.IServiceProvider> and call the <xref:Metalama.Patterns.Caching.ICachingService.InitializeAsync*> method.
 
     [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/Redis/Redis.Program.cs marker="Initialize"]
 

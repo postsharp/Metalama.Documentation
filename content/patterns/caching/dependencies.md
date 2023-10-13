@@ -59,7 +59,7 @@ For this reason, Metalama Caching allows you to work with strongly-typed, object
 This interface has two members:
 
 * <xref:Metalama.Patterns.Caching.Dependencies.ICacheDependency.GetCacheKey*> should return the `string` representation of the caching key,
-* <xref:Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDepependencies>, an optional property, can return a list of dependencies that should be recursively invalidated when the current dependency is invalidated.
+* <xref:Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDependencies>, an optional property, can return a list of dependencies that should be recursively invalidated when the current dependency is invalidated.
 
 How and where you implement <xref:Metalama.Patterns.Caching.Dependencies.ICacheDependency> is entirely up to you. You have the following options:
 
@@ -75,7 +75,7 @@ Let's revamp our previous example using object-oriented dependencies.
 Instead of just working with primitive types like `string` and `decimal`, we create a new type `record Product( string Name, decimal Price)` and make this type implement the  <xref:Metalama.Patterns.Caching.Dependencies.ICacheDependency> interface.
 To represent dependencies of the global collections `ProductList` and `PriceList`, we use instances of the <xref:Metalama.Patterns.Caching.Dependencies.StringDependency> class rather than creating new classes for each. These instances are exposed as static properties of the `GlobalDependencies` static class.
 
-To ensure the entire `PriceList` is invalidated whenever a `Product` is updated, we return the global `PriceList` dependency instance from the <xref:Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDepependencies> property of the `Product` class.
+To ensure the entire `PriceList` is invalidated whenever a `Product` is updated, we return the global `PriceList` dependency instance from the <xref:Metalama.Patterns.Caching.Dependencies.ICacheDependency.CascadeDependencies> property of the `Product` class.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Caching/ObjectDependencies/ObjectDependencies.cs]
 
