@@ -8,6 +8,8 @@ items:
     - name: Release notes
       topicUid: release-notes
       items:
+        - name: Metalama 2023.4
+          topicUid: release-notes-2023.4
         - name: Metalama 2023.3
           topicUid: release-notes-2023.3
         - name: Metalama 2023.2

@@ -1,10 +1,7 @@
 ---
 uid: caching
-title: "Caching"
-product: "postsharp"
-categories: "Metalama;AOP;Metaprogramming"
 ---
-# Caching
+# Metalama Caching
 
 Caching is an effective method to enhance the performance of an application. Traditionally, implementing caching requires interacting with the API of the caching framework (such as <xref:System.Runtime.Caching.MemoryCache>) or database (like Redis). It also involves incorporating moderately complex logic into your source code to generate the cache key, verify the item's existence in the cache, and add the item to the cache. Additional complexity arises from the necessity to remove items from the cache when the source data is updated. Manual caching implementation is not only time-consuming but also prone to errors, as it is easy to generate inconsistent cache keys between read and update methods.
 
