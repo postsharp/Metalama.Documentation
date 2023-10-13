@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.Samp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.Helpers", "Metalama.Documentation.Helpers\Metalama.Documentation.Helpers.csproj", "{45ED549F-F462-497E-B401-10C89262AA9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.SampleCode.Memoization", "Metalama.Documentation.SampleCode.Memoization\Metalama.Documentation.SampleCode.Memoization.csproj", "{7C614485-7874-4D4A-813A-56BAAC6586CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{45ED549F-F462-497E-B401-10C89262AA9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45ED549F-F462-497E-B401-10C89262AA9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45ED549F-F462-497E-B401-10C89262AA9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C614485-7874-4D4A-813A-56BAAC6586CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C614485-7874-4D4A-813A-56BAAC6586CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C614485-7874-4D4A-813A-56BAAC6586CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C614485-7874-4D4A-813A-56BAAC6586CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,7 +15,7 @@ Before you can utilize the <xref:Metalama.Patterns.Caching.Aspects.CacheAttribut
 
 If your project is designed for the .NET Core dependency injection framework (`Microsoft.Extensions.DependencyInjection`), follow these steps:
 
-1. Install the [Metalama.Patterns.Caching.Aspects](https://www.nuget.org/packages/Metalama.Patterns.Caching.Aspects/) package into your project.
+1. Add the [Metalama.Patterns.Caching.Aspects](https://www.nuget.org/packages/Metalama.Patterns.Caching.Aspects/) package into your project.
 2. In your application setup logic, while adding services to the <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, include a call to the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*> extension method. This action will add an instance of the <xref:Metalama.Patterns.Caching.ICachingService> interface, which is consumed by the <xref:Metalama.Patterns.Caching.Aspects.CacheAttribute?text=[Cache]> aspect.
 
     [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/GettingStarted/GettingStarted.Program.cs mark="Registration"]
@@ -41,7 +41,7 @@ If your project does not use dependency injection, the global default instance o
 
 Follow these steps to configure your project:
 
-1. Install the [Metalama.Patterns.Caching.Aspects](https://www.nuget.org/packages/Metalama.Patterns.Caching.Aspects/) package into your project.
+1. Add the [Metalama.Patterns.Caching.Aspects](https://www.nuget.org/packages/Metalama.Patterns.Caching.Aspects/) package into your project.
 2. Create a file named, for instance, `CachingConfiguration.cs`, and add the following code:
 
     [!metalama-test ~/code/Metalama.Documentation.SampleCode.Caching/GettingStarted_NoDI/GettingStarted_NoDI.CachingConfiguration.cs ]

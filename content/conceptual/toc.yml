@@ -51,7 +51,7 @@ items:
     - name: Using Metalama Patterns
       topicUid: patterns
       items:
-        - name: Code Contracts
+        - name: Contracts
           topicUid: contract-patterns
           items:
             - name: Validating field, property and parameter values
@@ -91,6 +91,11 @@ items:
               topicUid: cache-locking
             - name: caching-troubleshooting
               topicUid: caching-troubleshooting
+            
+        - name: Memoization
+          topicUid: memoization
+        - name: Dependency injection
+          topicUid: dependency-injection-aspect
 
 
     - name: Creating aspects
