@@ -14,7 +14,6 @@ namespace Doc.LogDefaultFramework
         private static void Main()
         {
             var appBuilder = ConsoleApp.CreateBuilder();
-            appBuilder.Services.AddLogging( logging => logging.AddConsole() );
             appBuilder.Services.AddConsoleMain<ConsoleMain>();
             using var app = appBuilder.Build();
             app.Run();

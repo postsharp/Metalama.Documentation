@@ -14,10 +14,6 @@ using Metalama.Framework.Diagnostics;
 
 namespace Doc.LogCustomFramework
 {
-   
-
-    // A project fabric that registers our framework.
-
     // Our logging aspect.
     public class LogAttribute : OverrideMethodAspect
     {

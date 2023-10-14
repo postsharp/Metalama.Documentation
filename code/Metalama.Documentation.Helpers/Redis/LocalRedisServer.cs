@@ -161,11 +161,7 @@ public class LocalRedisServer : IDisposable
         {
             if ( !this._process.HasExited )
             {
-                try
-                {
-                    this._process.Kill();
-                }
-                catch ( Win32Exception ) { }
+                 this._process.Kill();
             }
 
             goto restart;
@@ -193,16 +189,12 @@ public class LocalRedisServer : IDisposable
 
             if ( !this._process.HasExited )
             {
-                try
-                {
-                    this._process.Kill();
-                }
-                catch ( Win32Exception ) { }
+                 this._process.Kill();
             }
 
             if ( disposing )
             {
-                this._process.WaitForExit( 2000 );
+                this._process.WaitForExit();
                 this._process.Dispose();
                 this._executable.Dispose();
             }
