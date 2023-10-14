@@ -2,13 +2,12 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Identity.Client;
 
 namespace Metalama.Documentation.Helpers.ConsoleApp;
 
 public class ConsoleAppBuilder
 {
-    private List<Action<ILoggingBuilder>> _configureLoggingActions = new();
+    private readonly List<Action<ILoggingBuilder>> _configureLoggingActions = new();
     private readonly ServiceCollection _serviceCollection = new();
 
     public IServiceCollection Services => this._serviceCollection;
@@ -25,7 +24,7 @@ public class ConsoleAppBuilder
         this._serviceCollection.AddLogging(
             logging =>
             {
-                logging.AddConsole();
+                logging.AddProvider( new TrivialConsoleLoggerProvider() );
 
                 foreach ( var action in this._configureLoggingActions )
                 {

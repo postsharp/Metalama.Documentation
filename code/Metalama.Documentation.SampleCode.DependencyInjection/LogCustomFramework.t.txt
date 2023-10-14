@@ -1,6 +1,3 @@
-warn: Doc.LogCustomFramework.ConsoleMain[0]
-      ConsoleMain.Execute() started.
-info: Doc.LogCustomFramework.ConsoleMain[0]
-      Hello, world.
-warn: Doc.LogCustomFramework.ConsoleMain[0]
-      ConsoleMain.Execute() completed.
+ConsoleMain.Execute() started.
+Hello, world.
+ConsoleMain.Execute() completed.
