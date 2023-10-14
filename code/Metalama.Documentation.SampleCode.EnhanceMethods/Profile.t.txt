@@ -1,1 +1,1 @@
-Program.SimulatedDelay() executed in 1932 ms.
+Program.SimulatedDelay() executed in 1659 ms.
