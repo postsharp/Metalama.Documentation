@@ -5,6 +5,7 @@
         {
           "files": [
               "Metalama.Framework.dll",
+              "Metalama.Framework.RunTime.dll",
               "Metalama.Testing.AspectTesting.dll",
               "Metalama.Testing.UnitTesting.dll",
               "Metalama.Framework.Sdk.dll",

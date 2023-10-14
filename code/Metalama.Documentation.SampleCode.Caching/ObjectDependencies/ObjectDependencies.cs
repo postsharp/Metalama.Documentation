@@ -84,6 +84,7 @@ namespace Doc.ObjectDependencies
 
 #if METALAMA
             this._cachingService.Invalidate( product );
+            this._cachingService.Invalidate( GlobalDependencies.ProductList );
 #endif
         }
 

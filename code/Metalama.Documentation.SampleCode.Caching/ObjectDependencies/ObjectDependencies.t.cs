@@ -1,27 +1,12 @@
-// Program execution failed
-System.Reflection.TargetInvocationException :
-Exception has been  thrown  by  the  target  of  an  invocation . --  -> Xunit . Sdk . EqualException  :
-Assert.Equal()Failure Expected :
-2 Actual:
-  1 at Xunit .Assert.Equal[T](T expected, T actual, IEqualityComparer `1 comparer) in
-C:
-   \
-Dev \ xunit \ xunit \ src \ xunit . assert \ Asserts \ EqualityAsserts . cs :
-line  40  at  Xunit . Assert . Equal [T]
-(T expected, T actual) in
-C:
-   \
-Dev \ xunit \ xunit \ src \ xunit . assert \ Asserts \ EqualityAsserts . cs :
-line  24  at  Doc . ObjectDependencies . ConsoleMain . Execute (  )
-at Metalama .Documentation.Helpers.ConsoleApp.ConsoleApp.Run() in
-C:
-   \
-src \ Metalama . Documentation \ code \ Metalama . Documentation . Helpers \ ConsoleApp \ ConsoleApp . cs :
-line  22  at  Doc . ObjectDependencies . Program . Main (  )
-at System .RuntimeMethodHandle.InvokeMethod(Object target, Void * *arguments, Signature sig, Boolean isConstructor)at System .Reflection.MethodInvoker.Invoke(Object obj, IntPtr * args, BindingFlags invokeAttr)-- - End of inner exception  stack  trace -- - at  System . Reflection . MethodInvoker . Invoke ( Object  obj , IntPtr * args, BindingFlags invokeAttr  )
-at System .Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)at System .Reflection.MethodBase.Invoke(Object obj, Object[] parameters)at Metalama .Testing.AspectTesting.AspectTestRunner.ExecuteTestProgramAsync(TestInput testInput, TestResult testResult, MemoryStream peStream, MemoryStream pdbStream) in
-/ _ / Metalama.Testing.AspectTesting / AspectTestRunner.cs :
-line  295  using  Metalama . Patterns . Caching ;  using  Metalama . Patterns . Caching ;  using  Metalama . Patterns . Caching . Aspects ;  using  Metalama . Patterns . Caching . Aspects . Helpers ;  using  Metalama . Patterns . Caching . Dependencies ;  using  System ;  using  System . Collections . Generic ;  using  System . Linq ;  using  System . Reflection ;
+using Metalama.Patterns.Caching;
+using Metalama.Patterns.Caching;
+using Metalama.Patterns.Caching.Aspects;
+using Metalama.Patterns.Caching.Aspects.Helpers;
+using Metalama.Patterns.Caching.Dependencies;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 namespace Doc.ObjectDependencies
 {
   internal static class GlobalDependencies
@@ -100,6 +85,7 @@ namespace Doc.ObjectDependencies
       this.DbOperationCount++;
       this._dbSimulator.Add(product.Name, product);
       this._cachingService.Invalidate(product);
+      this._cachingService.Invalidate(GlobalDependencies.ProductList);
     }
     public void UpdateProduct(Product product)
     {

@@ -1,0 +1,15 @@
+Read the price catalogue a first time.
+Getting the product list from database.
+Getting the price of corn from database.
+Price of 'corn' is Product { Name = corn, Price = 100 }.
+Read the price catalogue a second time time. It should be completely performed from cache.
+Price of 'corn' is Product { Name = corn, Price = 100 }.
+Updating the catalogue.
+Adding the product wheat.
+Updating the price of corn.
+Getting the product list from database.
+Getting the price of corn from database.
+Catalogue after changes:
+Price of 'corn' is Product { Name = corn, Price = 110 }.
+Getting the price of wheat from database.
+Price of 'wheat' is Product { Name = wheat, Price = 150 }.
