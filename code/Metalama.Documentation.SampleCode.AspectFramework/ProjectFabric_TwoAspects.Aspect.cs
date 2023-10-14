@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 using Metalama.Framework.Aspects;
 using System;
 using System.Diagnostics;
@@ -23,7 +24,7 @@ namespace Doc.ProjectFabric_TwoAspects
     }
 
     public class Profile : OverrideMethodAspect
-    { 
+    {
         public override dynamic? OverrideMethod()
         {
             var stopwatch = Stopwatch.StartNew();
@@ -34,9 +35,8 @@ namespace Doc.ProjectFabric_TwoAspects
             }
             finally
             {
-                Console.WriteLine( $"{meta.Target.Method} completed in {stopwatch.ElapsedMilliseconds}.");
+                Console.WriteLine( $"{meta.Target.Method} completed in {stopwatch.ElapsedMilliseconds}." );
             }
-
-        } 
+        }
     }
 }

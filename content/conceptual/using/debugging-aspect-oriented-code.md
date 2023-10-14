@@ -5,7 +5,7 @@ level: 100
 
 # Debugging aspect-oriented code
 
-In this section, we will demonstrate how to debug aspect-oriented code using the Visual Studio debugger. This follows on from our previous discussion on how aspects transform your code, which included a side-by-side comparison of the original and transformed code at <xref:preview-metalama-diff>.
+In this section, we illustrate how to debug aspect-oriented code using the Visual Studio debugger. This builds on our previous discussion about how aspects transform your code, which included a side-by-side comparison of the original and transformed code at <xref:preview-metalama-diff>.
 
 ## Steps to debug aspect-oriented code
 
@@ -13,13 +13,13 @@ To debug your code with aspects, follow these steps:
 
 ### **Step 1:** Open Build Configuration Manager
 
-From the debug setting dropdown, select `Configuration Manager` as shown below:
+From the debug setting dropdown, select `Configuration Manager` as depicted below:
 
 ![](images/config_manager.png)
 
-### **Step 2:** Create a debug configuration called `LamaDebug`
+### **Step 2:** Create a debug configuration named `LamaDebug`
 
-The Configuration Manager will display the following dialog:
+The Configuration Manager will present the following dialog:
 
 ![](images/config_manager_dialog.png)
 
@@ -27,18 +27,18 @@ The Configuration Manager will display the following dialog:
 
 ![](images/config_manager_new_config.png)
 
-* Click on `<New...>` to create a new debug configuration. This action will open the New dialog as shown below.
+* Click on `<New...>` to create a new debug configuration. This action will open the New dialog as depicted below.
 
 ![](images/empty_debug_config.png)
 
-* Enter the name **`LamaDebug`** and copy settings from `Debug` as indicated below.
+* Enter the name **`LamaDebug`** and copy settings from `Debug` as shown below.
 
 ![](images/lamadebug_config.png)
 
 * Save this configuration by clicking the `OK` button.
 * Change the build configuration to `LamaDebug`.
 
-You are now ready to debug your aspect-transformed code.
+You are now prepared to debug your aspect-transformed code.
 
 ## Breakpoints and Step-Into
 
@@ -72,7 +72,7 @@ As demonstrated, you can set a breakpoint on this transformed code, and it will 
 [!metalama-test ~/code/DebugDemo/Program.cs]
 
 > [!NOTE]
-> When you debug this code by Step-Into, you will see that the actual code being debugged is the transformed code.
+> When you debug this code by Step-Into, you will observe that the actual code being debugged is the transformed code.
 
 ## Breaking forcefully using `Debugger.Break`
 
@@ -86,5 +86,4 @@ You can use `Debugger.Break` to forcefully break the program. The following scre
 > [!div class="see-also"]
 > <xref:debugging-aspects>
 > <xref:video-debugging>
-
 

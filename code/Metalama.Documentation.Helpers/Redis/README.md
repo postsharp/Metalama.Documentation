@@ -1,0 +1,1 @@
+This directory is copied from the Metalama.Patterns repo.

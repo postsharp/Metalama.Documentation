@@ -17,5 +17,16 @@ See <xref:aspect-configuration>.
 
 ### Metalama Contracts
 
-Metalama Contracts is has been finalized and documented. See <xref:contract-patterns>.
+Metalama Contracts has been finalized and documented. See <xref:contract-patterns>.
 
+
+### Metalama Caching
+
+Metalama Contracts has been finalized and documented. See <xref:caching>.
+
+Memoization, a simpler and faster alternative to caching, has now its own aspect. See <xref:memoization>.
+
+
+### INotifyPropertyChanged
+
+We are releasing a preview of our <xref:Metalama.Patterns.NotifyPropertyChanged.IgnoreNotifyPropertyChangedAttribute?text=[NotifyPropertyChanged]> aspect. It will be finalized and documented in the next release.

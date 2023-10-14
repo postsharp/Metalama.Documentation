@@ -1,4 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using Metalama.Patterns.Contracts;
 
@@ -20,7 +20,7 @@ namespace Doc.NotNullFabric
     public class Category
     {
         // Internal APIs won't be checked by default.
-        internal Category( string name ) 
+        internal Category( string name )
         {
             this.Name = name;
         }

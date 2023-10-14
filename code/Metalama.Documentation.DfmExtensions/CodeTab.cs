@@ -44,29 +44,18 @@ internal class CodeTab : BaseTab
 
     protected override bool IsContentEmpty( string[] lines ) => base.IsContentEmpty( lines ) || lines.All( l => l.TrimStart().StartsWith( "//" ) );
 
-    private string GetHtmlPath()
-    {
-        var projectDirectory = this.GetProjectDirectory();
-        var relativePath = PathHelper.GetRelativePath( projectDirectory, this.FullPath );
-
-        return Path.GetFullPath(
-            Path.Combine(
-                projectDirectory,
-                "obj",
-                "html",
-                "net6.0",
-                Path.ChangeExtension( relativePath, this.HtmlExtension ) ) );
-    }
+    private string? GetHtmlPath()
+        => PathHelper.GetObjPath( this.GetProjectDirectory(), this.FullPath, this.HtmlExtension );
 
     protected virtual string HtmlExtension => ".cs.html";
 
-    public bool Exists() => File.Exists( this.GetHtmlPath() );
+    public bool Exists() => this.GetHtmlPath() != null;
 
     public override string GetTabContent( bool fallbackToSource = true )
     {
         var htmlPath = this.GetHtmlPath();
 
-        if ( File.Exists( htmlPath ) )
+        if ( htmlPath != null )
         {
             if ( !string.IsNullOrEmpty( this.Marker ) || !string.IsNullOrEmpty( this.Member ) )
             {
@@ -159,7 +148,7 @@ internal class CodeTab : BaseTab
         }
         else
         {
-            throw new FileNotFoundException( $"The file '{htmlPath}' could not be found.", htmlPath );
+            throw new FileNotFoundException( $"No HTML file for '{this.FullPath}' could found.", htmlPath );
         }
     }
 
@@ -168,7 +157,7 @@ internal class CodeTab : BaseTab
     public string GetCodeForComparison()
     {
         var document = new HtmlDocument();
-        document.Load( this.GetHtmlPath() );
+        document.Load( this.GetHtmlPath() ?? throw new FileNotFoundException($"Cannot find the HTML file for {this.FullPath}."));
 
         var diagLines = document.DocumentNode.SelectNodes( "//span[@class='diagLines']" )?.ToList() ?? new List<HtmlNode>();
 

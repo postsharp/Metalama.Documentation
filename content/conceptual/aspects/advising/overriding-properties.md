@@ -70,7 +70,7 @@ Advising fields or properties with the `Override` method has the following limit
 * You cannot choose a template for each accessor separately.
 * You cannot have generic templates.  (Not yet implemented in `OverrideAccessors` anyway.)
 
-To alleviate these limitations, you can use the method <xref:Metalama.Framework.Advising.IAdviceFactory.OverrideAccessors(Metalama.Framework.Code.IFieldOrPropertyOrIndexer,Metalama.Framework.Advising.GetterTemplateSelector@,System.String,System.Object,System.Object)> and provide one or two method templates: a getter template and/or a setter template.
+To alleviate these limitations, you can use the method <xref:Metalama.Framework.Advising.IAdviceFactory.OverrideAccessors*> and provide one or two method templates: a getter template and/or a setter template.
 
 The templates must fulfill the following conditions:
 

@@ -1,5 +1,6 @@
-﻿using System;
+﻿// This is public domain Metalama sample code.
 
+using System;
 
 namespace Doc.UpperCase
 {
@@ -20,7 +21,7 @@ namespace Doc.UpperCase
             package.From = "lhr";
             package.To = "jfk";
 
-            Console.WriteLine($"Package is booked from {package.From} to {package.To}");
+            Console.WriteLine( $"Package is booked from {package.From} to {package.To}" );
         }
     }
 }

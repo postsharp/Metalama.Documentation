@@ -1,4 +1,6 @@
-﻿using Metalama.Extensions.Architecture.Fabrics;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Extensions.Architecture.Fabrics;
 using Metalama.Extensions.Architecture.Predicates;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
@@ -28,7 +30,8 @@ namespace Doc.Architecture.Fabric_CustomPredicate
     [CompileTime]
     public static class Extensions
     {
-        public static ReferencePredicate MethodNameEndsWith( this ReferencePredicateBuilder? builder, string suffix ) => new MethodNamePredicate( builder, suffix );
+        public static ReferencePredicate MethodNameEndsWith( this ReferencePredicateBuilder? builder, string suffix )
+            => new MethodNamePredicate( builder, suffix );
     }
 
     // Here is how your new predicate can be used.
@@ -36,17 +39,17 @@ namespace Doc.Architecture.Fabric_CustomPredicate
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Verify().SelectTypes( typeof( CofeeMachine ) ).CanOnlyBeUsedFrom( r => r.MethodNameEndsWith( "Politely" ) );
+            amender.Verify().SelectTypes( typeof(CofeeMachine) ).CanOnlyBeUsedFrom( r => r.MethodNameEndsWith( "Politely" ) );
         }
     }
 
     // This is the class whose access are validated.
-    internal static class CofeeMachine 
+    internal static class CofeeMachine
     {
         public static void TurnOn() { }
     }
 
-    internal class Bar 
+    internal class Bar
     {
         public static void OrderCoffee()
         {
@@ -54,12 +57,10 @@ namespace Doc.Architecture.Fabric_CustomPredicate
             CofeeMachine.TurnOn();
         }
 
-        public static void OrderCoffeePolitely() 
+        public static void OrderCoffeePolitely()
         {
             // Allowed.
             CofeeMachine.TurnOn();
         }
     }
-
-
 }

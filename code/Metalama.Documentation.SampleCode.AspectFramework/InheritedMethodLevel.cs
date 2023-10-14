@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 // @Skipped(Bug 30453)
 
 namespace Doc.InheritedMethodLevel

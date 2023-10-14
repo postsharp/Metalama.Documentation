@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Code.SyntaxBuilders;
@@ -19,7 +20,7 @@ namespace Doc.ToStringWithSimpleToString
             base.BuildAspect( builder );
 
             // For each field, suggest a code fix to remove from ToString.
-            foreach ( var field in builder.Target.FieldsAndProperties.Where( f => !f.IsStatic && !f.IsImplicitlyDeclared) )
+            foreach ( var field in builder.Target.FieldsAndProperties.Where( f => !f.IsStatic && !f.IsImplicitlyDeclared ) )
             {
                 if ( !field.Attributes.Any( a => a.Type.Is( typeof(NotToStringAttribute) ) ) )
                 {

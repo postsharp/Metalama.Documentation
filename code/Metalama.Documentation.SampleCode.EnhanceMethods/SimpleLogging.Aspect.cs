@@ -1,4 +1,6 @@
-﻿using System;
+﻿// This is public domain Metalama sample code.
+
+using System;
 using Metalama.Framework.Aspects;
 
 namespace Doc.SimpleLog
@@ -8,12 +10,10 @@ namespace Doc.SimpleLog
         public override dynamic? OverrideMethod()
         {
             // Enhancing the method.
-            Console.WriteLine($"Simply logging a method...");
+            Console.WriteLine( $"Simply logging a method..." );
 
             // Let the method do its own thing.
             return meta.Proceed();
         }
-
     }
 }
-

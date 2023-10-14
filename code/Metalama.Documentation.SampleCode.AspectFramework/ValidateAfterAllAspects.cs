@@ -1,6 +1,7 @@
-﻿namespace Doc.ValidateAfterAllAspects
-{
+﻿// This is public domain Metalama sample code.
 
+namespace Doc.ValidateAfterAllAspects
+{
     [AddLogger]
     internal class OkClass
     {

@@ -1,24 +1,24 @@
-using Microsoft.Extensions.Hosting;
+// Error CS0234 on `LogCustomFramework`: `The type or namespace name 'LogCustomFramework' does not exist in the namespace 'Doc' (are you missing an assembly reference?)`
+// Error CS0246 on `ConsoleMain`: `The type or namespace name 'ConsoleMain' could not be found (are you missing a using directive or an assembly reference?)`
+using Metalama.Documentation.Helpers.ConsoleApp;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 namespace Doc.LogDefaultFramework
 {
   // The class using the Log aspect. This class is instantiated by the host builder and dependencies are automatically passed.
-  public class Worker : BackgroundService
+  public class Worker : IConsoleMain
   {
     [Log]
-    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+    public void Execute()
     {
       try
       {
-        this._messageWriter.Write("Worker.ExecuteAsync(CancellationToken) started.");
+        this._messageWriter.Write("Worker.Execute() started.");
         Console.WriteLine("Hello, world.");
-        return Task.CompletedTask;
+        return;
       }
       finally
       {
-        this._messageWriter.Write("Worker.ExecuteAsync(CancellationToken) completed.");
+        this._messageWriter.Write("Worker.Execute() completed.");
       }
     }
     private IMessageWriter _messageWriter;

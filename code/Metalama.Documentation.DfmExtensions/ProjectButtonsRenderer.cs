@@ -26,15 +26,10 @@ internal class ProjectButtonsRenderer : BaseRenderer<ProjectButtonsToken>
             {
                 // We need to try harder to find the good category.
 
-                var outHtmlPath = Path.GetFullPath(
-                    Path.Combine(
-                        directory,
-                        "obj",
-                        "html",
-                        "net6.0",
-                        Path.ChangeExtension( Path.GetFileName( file ), ".t.cs.html" ) ) );
 
-                if ( !File.Exists( outHtmlPath ) || !File.ReadAllText( outHtmlPath ).Contains( "cr-GeneratedCode" ) )
+                var outHtmlPath = PathHelper.GetObjPath( token.Directory, file, ".t.cs.html" ); 
+                    
+                if ( outHtmlPath == null || !File.ReadAllText( outHtmlPath ).Contains( "cr-GeneratedCode" ) )
                 {
                     kind = SandboxFileKind.ExtraCode;
                 }

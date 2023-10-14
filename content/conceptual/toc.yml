@@ -8,6 +8,8 @@ items:
     - name: Release notes
       topicUid: release-notes
       items:
+        - name: Metalama 2023.4
+          topicUid: release-notes-2023.4
         - name: Metalama 2023.3
           topicUid: release-notes-2023.3
         - name: Metalama 2023.2
@@ -39,19 +41,18 @@ items:
           topicUid: debugging-aspect-oriented-code
         - name: Applying live templates
           topicUid:  applying-live-templates
-        - name: Using fabrics
+        - name: Adding many aspects at once
+          topicUid: fabrics-adding-aspects
+        - name: More about fabrics
           topicUid: fabrics
-          items:
-          - name: Adding aspects
-            topicUid: fabrics-adding-aspects
-          - name: Configuring aspect libraries
-            topicUid: fabrics-configuration
-          - name: Amending many projects at once
-            topicUid: fabrics-many-projects
+        - name: Configuring aspect libraries
+          topicUid: fabrics-configuration
+        - name: Amending many projects at once
+          topicUid: fabrics-many-projects
     - name: Using Metalama Patterns
       topicUid: patterns
       items:
-        - name: Code Contracts
+        - name: Contracts
           topicUid: contract-patterns
           items:
             - name: Validating field, property and parameter values
@@ -65,6 +66,38 @@ items:
               topicUid: invariants
             - name: Configuring contracts
               topicUid: configuring-contracts
+
+        - name: Caching
+          topicUid: caching
+          items:
+            - name: Getting started
+              topicUid: caching-getting-started
+            - name: Customizing cache keys
+              topicUid: caching-keys
+            - name: Excluding parameters
+              topicUid: caching-exclude-parameters
+            - name: Configuring the caching behavior
+              topicUid: caching-configuration
+            - name: Invalidating the cache
+              topicUid: caching-invalidation
+            - name: Working with cache dependencies
+              topicUid: caching-dependencies
+            - name: Distributed caching with Redis
+              topicUid: caching-redis
+            - name: Synchronizing local in-memory caches for multiple nodes
+              topicUid: caching-pubsub
+            - name: Caching special types with value adapters
+              topicUid: caching-value-adapters
+            - name: Preventing concurrent execution
+              topicUid: cache-locking
+            - name: Troubleshooting
+              topicUid: caching-troubleshooting
+            
+        - name: Memoization
+          topicUid: memoization
+        - name: Dependency injection
+          topicUid: dependency-injection-aspect
+
 
     - name: Creating aspects
       topicUid: aspects

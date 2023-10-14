@@ -1,6 +1,6 @@
-using Microsoft.Extensions.Hosting;
-using System.Threading;
-using System.Threading.Tasks;
+// This is public domain Metalama sample code.
+
+using Metalama.Documentation.Helpers.ConsoleApp;
 
 #if METALAMA
 using Microsoft.Extensions.Logging;
@@ -9,16 +9,14 @@ using Microsoft.Extensions.Logging;
 namespace Doc.LogCustomFramework
 {
     // The class using the Log aspect. This class is instantiated by the host builder and dependencies are automatically passed.
-    public class Worker : BackgroundService
+    public class ConsoleMain : IConsoleMain
     {
         [Log]
-        protected override Task ExecuteAsync( CancellationToken stoppingToken )
+        public void Execute()
         {
 #if METALAMA
             _logger.LogInformation( "Hello, world." );
 #endif
-            return Task.CompletedTask;
         }
     }
-
 }

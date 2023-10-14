@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System.Collections.Generic;
 using System;
@@ -6,19 +8,17 @@ using System.Linq;
 
 namespace Doc.StructurallyComparable
 {
-
-
-
     public class StructuralEquatableAttribute : TypeAspect
     {
-
-
-        [Introduce( Name = nameof( Equals ), WhenExists = OverrideStrategy.Override )]
+        [Introduce( Name = nameof(Equals), WhenExists = OverrideStrategy.Override )]
         public bool EqualsImpl( object? other )
         {
-            foreach ( var fieldOrProperty in meta.Target.Type.FieldsAndProperties.Where( t => t.IsAutoPropertyOrField == true && t.IsImplicitlyDeclared == false ) )
+            foreach ( var fieldOrProperty in meta.Target.Type.FieldsAndProperties.Where(
+                         t => t.IsAutoPropertyOrField == true && t.IsImplicitlyDeclared == false ) )
             {
-                meta.InvokeTemplate( nameof( CompareFieldOrProperty ), args: new { TFieldOrProperty = fieldOrProperty.Type, fieldOrProperty, other = (IExpression) other! } );
+                meta.InvokeTemplate(
+                    nameof(this.CompareFieldOrProperty),
+                    args: new { TFieldOrProperty = fieldOrProperty.Type, fieldOrProperty, other = (IExpression) other! } );
             }
 
             return true;
@@ -33,13 +33,13 @@ namespace Doc.StructurallyComparable
             }
         }
 
-
-        [Introduce( Name =nameof(GetHashCode), WhenExists = OverrideStrategy.Override )]
+        [Introduce( Name = nameof(GetHashCode), WhenExists = OverrideStrategy.Override )]
         public int GetHashCodeImpl()
         {
             var hashCode = new HashCode();
 
-            foreach ( var fieldOrProperty in meta.Target.Type.FieldsAndProperties.Where( t => t.IsAutoPropertyOrField == true && t.IsImplicitlyDeclared == false ) )
+            foreach ( var fieldOrProperty in meta.Target.Type.FieldsAndProperties.Where(
+                         t => t.IsAutoPropertyOrField == true && t.IsImplicitlyDeclared == false ) )
             {
                 hashCode.Add( fieldOrProperty.Value );
             }
@@ -47,7 +47,4 @@ namespace Doc.StructurallyComparable
             return hashCode.ToHashCode();
         }
     }
-
-
-
 }

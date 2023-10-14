@@ -1,4 +1,7 @@
-﻿using Metalama.Framework.Aspects;
+﻿// This is public domain Metalama sample code.
+
+using Doc.ValidateAfterAllAspects;
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using Metalama.Framework.Validation;
@@ -6,7 +9,7 @@ using System.IO;
 using System.Linq;
 
 // Note that aspects are applied in inverse order than they appear in the next line.
-[assembly: AspectOrder( typeof( Doc.ValidateAfterAllAspects.AddLoggerAttribute ), typeof( Doc.ValidateAfterAllAspects.LogAttribute ) )]
+[assembly: AspectOrder( typeof(AddLoggerAttribute), typeof(LogAttribute) )]
 
 namespace Doc.ValidateAfterAllAspects
 {
@@ -22,7 +25,8 @@ namespace Doc.ValidateAfterAllAspects
         private void ValidateDeclaringType( in DeclarationValidationContext context )
         {
             var type = (INamedType) context.Declaration;
-            if ( !type.AllFields.OfName("_logger").Any())
+
+            if ( !type.AllFields.OfName( "_logger" ).Any() )
             {
                 context.Diagnostics.Report( _error.WithArguments( type ) );
             }
@@ -30,16 +34,15 @@ namespace Doc.ValidateAfterAllAspects
 
         public override dynamic? OverrideMethod()
         {
-            meta.This._logger.WriteLine($"Executing {meta.Target.Method}.");
+            meta.This._logger.WriteLine( $"Executing {meta.Target.Method}." );
 
-            return meta.Proceed(); 
+            return meta.Proceed();
         }
     }
 
     internal class AddLoggerAttribute : TypeAspect
     {
         [Introduce]
-        private TextWriter _logger = File.CreateText( "log.txt");
-
+        private TextWriter _logger = File.CreateText( "log.txt" );
     }
 }

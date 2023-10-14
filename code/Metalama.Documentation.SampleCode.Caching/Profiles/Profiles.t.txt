@@ -1,0 +1,17 @@
+Printing all prices...
+Getting the product list from database.
+Getting the price from database.
+Price of 'corn' is 102.
+Printing all prices...
+Getting the price from database.
+Price of 'corn' is 103.
+Printing all prices...
+Getting the price from database.
+Price of 'corn' is 104.
+Printing all prices...
+Getting the price from database.
+Price of 'corn' is 105.
+Printing all prices...
+Getting the price from database.
+Price of 'corn' is 106.
+ProductCatalogue performed 6 operations in total.

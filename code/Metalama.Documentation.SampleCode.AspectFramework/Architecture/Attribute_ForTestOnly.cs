@@ -1,8 +1,9 @@
-﻿using Metalama.Extensions.Architecture.Aspects;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Extensions.Architecture.Aspects;
 
 namespace Doc.Architecture.Type_ForTestOnly
 {
-
     public class Foo
     {
         private bool _isTest;
@@ -10,7 +11,7 @@ namespace Doc.Architecture.Type_ForTestOnly
         public Foo() { }
 
         [CanOnlyBeUsedFrom( Namespaces = new[] { "**.Tests" }, Description = "Use this constructor in tests only." )]
-        public Foo(bool isTest)
+        public Foo( bool isTest )
         {
             this._isTest = isTest;
         }
@@ -19,7 +20,7 @@ namespace Doc.Architecture.Type_ForTestOnly
     internal class ForbiddenClass
     {
         // This call is forbidden because it is not in a **.Tests namespace.
-        private Foo _c = new Foo( true );
+        private Foo _c = new( true );
     }
 
     namespace Tests
@@ -27,10 +28,7 @@ namespace Doc.Architecture.Type_ForTestOnly
         internal class TestClass
         {
             // This call is allowed.
-            private Foo _c = new Foo( true );
+            private Foo _c = new( true );
         }
     }
-
-    
-
 }

@@ -5,6 +5,7 @@
         {
           "files": [
               "Metalama.Framework.dll",
+              "Metalama.Framework.RunTime.dll",
               "Metalama.Testing.AspectTesting.dll",
               "Metalama.Testing.UnitTesting.dll",
               "Metalama.Framework.Sdk.dll",
@@ -19,12 +20,17 @@
               "Metalama.Extensions.Metrics.dll",
               "Metalama.Extensions.Architecture.dll",
               "Metalama.Patterns.Contracts.dll",
+              "Metalama.Patterns.Memoization.dll",
+              "Metalama.Patterns.NotifyPropertyChanged.dll",
               "Metalama.Patterns.Caching.dll",
+              "Metalama.Patterns.Caching.Backend.dll",
+              "Metalama.Patterns.Caching.Aspects.dll",
               "Metalama.Patterns.Caching.Backends.Azure.dll",
               "Metalama.Patterns.Caching.Backends.Redis.dll",
-              "Flashtrace.dll"
+              "Flashtrace.dll",
+              "Flashtrace.Formatters.dll"
               ],
-          "src": "code/Metalama.Documentation.Consolidated/bin/Debug/net6.0-windows"
+          "src": "code/Metalama.Documentation.Consolidated/bin/Debug/net7.0-windows"
         }
       ],
       "dest": "obj/api",
@@ -81,7 +87,7 @@
       }
     ],
     "xrefService": [
-      "https://xref.docs.microsoft.com/query?uid={uid}"
+      "https://learn.microsoft.com/api/xref/query?uid={uid}"
     ],
     "dest": "docfx/_site",
     "globalMetadataFiles": [],

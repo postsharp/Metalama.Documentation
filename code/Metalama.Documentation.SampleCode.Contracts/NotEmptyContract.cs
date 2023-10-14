@@ -1,4 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using Metalama.Patterns.Contracts;
 
@@ -7,7 +7,8 @@ namespace Doc.NotEmptyContract
     public class Instrument
     {
         // Neither null nor empty strings are allowed.
-        [NotNull, NotEmpty]
+        [NotNull]
+        [NotEmpty]
         public string Name { get; set; }
 
         // Null strings are allowed but not empty strings.

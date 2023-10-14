@@ -1,0 +1,45 @@
+dbug: Caching.Doc.Logging.CloudCalculator[0]
+      Processing invocation of method Int32 Add(Int32, Int32): Starting
+dbug: Caching.Doc.Logging.CloudCalculator[0]
+      Key="Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)".
+dbug: Caching.Metalama.Patterns.Caching.Backends.MemoryCachingBackend[0]
+      GetItem( backend = "{MemoryCachingBackend Id=b014c313-f4c1-4646-8891-b1adb90538de, Status=Default}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Starting
+dbug: Caching.Metalama.Patterns.Caching.Backends.MemoryCachingBackend[0]
+      GetItem( backend = "{MemoryCachingBackend Id=b014c313-f4c1-4646-8891-b1adb90538de, Status=Default}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Succeeded, result = Cache miss.
+dbug: Caching.Doc.Logging.CloudCalculator[0]
+      Cache miss: Key="Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)".
+Doing some very hard work.
+dbug: Caching.Metalama.Patterns.Caching.Backends.MemoryCachingBackend[0]
+      SetItem( backend = "{MemoryCachingBackend Id=b014c313-f4c1-4646-8891-b1adb90538de, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Starting
+dbug: Caching.Metalama.Patterns.Caching.Backends.MemoryCachingBackend[0]
+      SetItem( backend = "{MemoryCachingBackend Id=b014c313-f4c1-4646-8891-b1adb90538de, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Succeeded
+dbug: Caching.Doc.Logging.CloudCalculator[0]
+      Processing invocation of method Int32 Add(Int32, Int32): Succeeded
+CloudCalculator returned 2.
+dbug: Caching.Doc.Logging.CloudCalculator[0]
+      Processing invocation of method Int32 Add(Int32, Int32): Starting
+dbug: Caching.Doc.Logging.CloudCalculator[0]
+      Key="Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)".
+dbug: Caching.Metalama.Patterns.Caching.Backends.MemoryCachingBackend[0]
+      GetItem( backend = "{MemoryCachingBackend Id=b014c313-f4c1-4646-8891-b1adb90538de, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Starting
+dbug: Caching.Metalama.Patterns.Caching.Backends.MemoryCachingBackend[0]
+      GetItem( backend = "{MemoryCachingBackend Id=b014c313-f4c1-4646-8891-b1adb90538de, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Succeeded, result = Cache hit.
+dbug: Caching.Doc.Logging.CloudCalculator[0]
+      Cache hit: Key="Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)".
+dbug: Caching.Doc.Logging.CloudCalculator[0]
+      Processing invocation of method Int32 Add(Int32, Int32): Succeeded
+CloudCalculator returned 2.
+dbug: Caching.Doc.Logging.CloudCalculator[0]
+      Processing invocation of method Int32 Add(Int32, Int32): Starting
+dbug: Caching.Doc.Logging.CloudCalculator[0]
+      Key="Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)".
+dbug: Caching.Metalama.Patterns.Caching.Backends.MemoryCachingBackend[0]
+      GetItem( backend = "{MemoryCachingBackend Id=b014c313-f4c1-4646-8891-b1adb90538de, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Starting
+dbug: Caching.Metalama.Patterns.Caching.Backends.MemoryCachingBackend[0]
+      GetItem( backend = "{MemoryCachingBackend Id=b014c313-f4c1-4646-8891-b1adb90538de, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Succeeded, result = Cache hit.
+CloudCalculator returned 2.
+In total, CloudCalculator performed 1 operation(s).
+dbug: Caching.Doc.Logging.CloudCalculator[0]
+      Cache hit: Key="Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)".
+dbug: Caching.Doc.Logging.CloudCalculator[0]
+      Processing invocation of method Int32 Add(Int32, Int32): Succeeded

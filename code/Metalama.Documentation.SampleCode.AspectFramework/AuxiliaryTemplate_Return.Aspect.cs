@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Framework.Aspects;
 using System.Collections.Concurrent;
 
 namespace Doc.AuxiliaryTemplate_Return
@@ -12,22 +14,21 @@ namespace Doc.AuxiliaryTemplate_Return
         public override dynamic? OverrideMethod()
         {
             // Naive implementation of a caching key.
-            var cacheKey = $"{meta.Target.Method.Name}({ string.Join( ", ", meta.Target.Method.Parameters.ToValueArray() )})";
+            var cacheKey = $"{meta.Target.Method.Name}({string.Join( ", ", meta.Target.Method.Parameters.ToValueArray() )})";
 
             this.GetFromCache( cacheKey );
 
             var returnValue = meta.Proceed();
 
             this.AddToCache( cacheKey, returnValue );
-       
-            return returnValue;
 
+            return returnValue;
         }
 
         // This method is an auxiliary template.
 
         [Template]
-        protected virtual void GetFromCache( string cacheKey )  
+        protected virtual void GetFromCache( string cacheKey )
         {
             if ( this._cache.TryGetValue( cacheKey, out var returnValue ) )
             {
@@ -37,11 +38,9 @@ namespace Doc.AuxiliaryTemplate_Return
 
         // This method is an auxiliary template.
         [Template]
-        protected virtual void AddToCache(string cacheKey, object? returnValue ) 
+        protected virtual void AddToCache( string cacheKey, object? returnValue )
         {
             this._cache.TryAdd( cacheKey, returnValue );
         }
-
     }
-
 }

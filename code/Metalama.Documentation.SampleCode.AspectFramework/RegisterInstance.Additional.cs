@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

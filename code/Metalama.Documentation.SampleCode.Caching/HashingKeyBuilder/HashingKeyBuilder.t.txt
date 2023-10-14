@@ -1,0 +1,5 @@
+Reading the whole file.
+FileSystem returned 101 bytes.
+FileSystem returned 101 bytes.
+FileSystem returned 101 bytes.
+In total, FileSystem performed 1 operation(s).

@@ -1,4 +1,6 @@
-﻿namespace Doc.Architecture.RequireDefaultConstructorAspect
+﻿// This is public domain Metalama sample code.
+
+namespace Doc.Architecture.RequireDefaultConstructorAspect
 {
     // Apply the aspect to the base class. It will be inherited to all derived classes.
     [RequireDefaultConstructor]
@@ -9,13 +11,13 @@
 
     // This class has an explicit default constructor.
     public class ValidClass2 : BaseClass
-    { 
-        public ValidClass2 () { }
+    {
+        public ValidClass2() { }
     }
 
     // This class has no default constructor.
     public class InvalidClass : BaseClass
-    { 
-        public InvalidClass ( int x ) { }
+    {
+        public InvalidClass( int x ) { }
     }
 }

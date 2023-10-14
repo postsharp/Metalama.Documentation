@@ -1,9 +1,12 @@
+// This is public domain Metalama sample code.
+
+using Doc.LogDefaultFramework;
 using Metalama.Framework.Aspects;
 using Metalama.Extensions.DependencyInjection;
 
 #pragma warning disable CS0649, CS8618
 
-[assembly: AspectOrder( typeof(Doc.LogDefaultFramework.LogAttribute), typeof(DependencyAttribute))] 
+[assembly: AspectOrder( typeof(LogAttribute), typeof(DependencyAttribute) )]
 
 namespace Doc.LogDefaultFramework
 {
@@ -27,9 +30,6 @@ namespace Doc.LogDefaultFramework
             {
                 this._messageWriter.Write( $"{meta.Target.Method} completed." );
             }
-
         }
     }
-
-
 }

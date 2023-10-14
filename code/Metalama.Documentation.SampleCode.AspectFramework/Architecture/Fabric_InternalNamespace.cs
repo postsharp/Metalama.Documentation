@@ -1,4 +1,6 @@
-﻿using Doc.Architecture.Fabric_InternalNamespace.VerifiedNamespace;
+﻿// This is public domain Metalama sample code.
+
+using Doc.Architecture.Fabric_InternalNamespace.VerifiedNamespace;
 using Metalama.Extensions.Architecture.Fabrics;
 using Metalama.Extensions.Architecture.Predicates;
 using Metalama.Framework.Fabrics;
@@ -24,5 +26,4 @@ namespace Doc.Architecture.Fabric_InternalNamespace
     {
         internal class ForbiddenInheritor : Foo { }
     }
-
 }

@@ -1,4 +1,6 @@
-﻿using Metalama.Extensions.Architecture.Fabrics;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Extensions.Architecture.Fabrics;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
@@ -13,14 +15,14 @@ namespace Doc.Architecture.RequireDefaultConstructorFabric
     {
         private static DiagnosticDefinition<INamedType> _warning = new( "MY001", Severity.Warning, "The type '{0}' must have a public default constructor." );
 
-        public static void MustHaveDefaultConstructor( this ITypeSetVerifier<IDeclaration> verifier ) 
+        public static void MustHaveDefaultConstructor( this ITypeSetVerifier<IDeclaration> verifier )
         {
             verifier.TypeReceiver
-                .Where( t => !t.IsStatic && t.Constructors.FirstOrDefault( c => c.Parameters.Count == 0 ) is null or { Accessibility: not Accessibility.Public } )
+                .Where(
+                    t => !t.IsStatic && t.Constructors.FirstOrDefault( c => c.Parameters.Count == 0 ) is null or { Accessibility: not Accessibility.Public } )
                 .ReportDiagnostic( t => _warning.WithArguments( t ) );
         }
     }
-
 
     internal class Fabric : ProjectFabric
     {
@@ -36,7 +38,7 @@ namespace Doc.Architecture.RequireDefaultConstructorFabric
     public class ValidClass1 { }
 
     // This class has an explicit default constructor.
-    public class ValidClass2 
+    public class ValidClass2
     {
         public ValidClass2() { }
     }
