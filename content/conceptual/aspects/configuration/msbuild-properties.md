@@ -58,6 +58,7 @@ We recommend the following approach to consume a configuration property:
      > [!WARNING]
      > Line breaks and semicolons are not allowed in the values of compiler-visible properties as they can cause your aspect to receive an incorrect value.
 
+Note that the above approach only works when referencing the aspect library as a NuGet package, but not when referencing it as a project.
 
 ## Reading MSBuild properties from an aspect or fabric
 
