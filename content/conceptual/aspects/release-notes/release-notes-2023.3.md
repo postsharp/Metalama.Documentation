@@ -52,7 +52,7 @@ For details, see <xref:sdk>.
 ### Object model
 
 * The <xref:Metalama.Framework.Code.IDeclaration> interface has a new <xref:Metalama.Framework.Code.IDeclaration.Sources> property exposes references to the source code. You can now get any declaration's file path, line, and column.
-* The <xref: Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke*> method has a new overload that accepts an  `IEnumerable<IExpression>` to generate dynamic method calls.
+* The <xref:Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke*> method has a new overload that accepts an  `IEnumerable<IExpression>` to generate dynamic method calls.
 * Invoking a method from the target type with <xref:Metalama.Framework.Code.Invokers.InvokerOptions.Base?text=InvokerOptions.Base> and an instance (other than `base`) is now possible if the base layer is in the current type.
 * Any aspect can now reflect on any other <xref:Metalama.Framework.Aspects.IAspectInstance> added before the current aspect thanks to the new API <xref:Metalama.Framework.Code.DeclarationEnhancements`1.GetAspectInstances?text=declaration.Enhancements().GetAspectInstances()> returning an `IEnumerable<IAspectInstance>`. The previous method, <xref:Metalama.Framework.Code.DeclarationEnhancements`1.GetAspects*>, did not return the <xref:Metalama.Framework.Aspects.IAspectInstance> and gave no access to the <xref:Metalama.Framework.Aspects.IAspectState>.
 * <xref:Metalama.Extensions.DependencyInjection>: You can now introduce a dependency programmatically thanks to the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.TryIntroduceDependency*> method.
@@ -88,4 +88,17 @@ There will be a few minor breaking changes in 2023.3. We think that there are st
 * The `IDiagnosticSink` interface is now internal. The <xref:Metalama.Framework.Diagnostics.ScopedDiagnosticSink> type is now used in all public APIs.
 
 * The type `SyntaxReference` has been renamed <xref:Metalama.Framework.Code.SourceReference>.
+
+
+## Bug fixes & changelogs
+
+For a detailed list of bugs fixed in this release, see the detailed changelogs:
+
+- [2023.3-7-rc](https://github.com/orgs/postsharp/discussions/226)
+- [2023.3.6-rc](https://github.com/orgs/postsharp/discussions/223)
+- [2023.3.5-rc](https://github.com/orgs/postsharp/discussions/218)
+- [2023.3.4-preview](https://github.com/orgs/postsharp/discussions/213)
+- [2023.3.3-preview](https://github.com/orgs/postsharp/discussions/211)
+- [2023.3.2-preview](https://github.com/orgs/postsharp/discussions/200)
+- [2023.3.1-preview](https://github.com/orgs/postsharp/discussions/196)
 

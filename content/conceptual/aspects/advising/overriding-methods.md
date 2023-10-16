@@ -5,9 +5,9 @@ level: 300
 
 # Overriding methods
 
-In <xref: simple-override-method>, you learned the basic technique to replace a method's implementation with code defined by the aspect. This was achieved using the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class, an aspect-oriented implementation of the [decorator design pattern](https://en.wikipedia.org/wiki/Decorator_pattern) for methods.
+In <xref:simple-override-method>, you learned the basic technique to replace a method's implementation with code defined by the aspect. This was achieved using the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class, an aspect-oriented implementation of the [decorator design pattern](https://en.wikipedia.org/wiki/Decorator_pattern) for methods.
 
-This article assumes you have read <xref: simple-override-method> and will expose additional techniques related to overriding methods.
+This article assumes you have read <xref:simple-override-method> and will expose additional techniques related to overriding methods.
 
 ## Accessing the method details
 
