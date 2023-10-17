@@ -21,7 +21,7 @@
               "Metalama.Extensions.Architecture.dll",
               "Metalama.Patterns.Contracts.dll",
               "Metalama.Patterns.Memoization.dll",
-              "Metalama.Patterns.NotifyPropertyChanged.dll",
+              "Metalama.Patterns.Observability.dll",
               "Metalama.Patterns.Caching.dll",
               "Metalama.Patterns.Caching.Backend.dll",
               "Metalama.Patterns.Caching.Aspects.dll",

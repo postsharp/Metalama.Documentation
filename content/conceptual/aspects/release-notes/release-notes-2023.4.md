@@ -29,4 +29,4 @@ Memoization, a simpler and faster alternative to caching, has now its own aspect
 
 ### INotifyPropertyChanged
 
-We are releasing a preview of our <xref:Metalama.Patterns.NotifyPropertyChanged.IgnoreNotifyPropertyChangedAttribute?text=[NotifyPropertyChanged]> aspect. It will be finalized and documented in the next release.
+We are releasing a preview of our <xref:Metalama.Patterns.Observability.ObserbableAttribute?text=[Observable]> aspect. It will be finalized and documented in the next release.
