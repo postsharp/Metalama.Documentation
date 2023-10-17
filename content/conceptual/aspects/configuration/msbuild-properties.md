@@ -16,9 +16,12 @@ Another advantage of accepting MSBuild properties for configuration is that they
 
 By default, MSBuild properties are not visible to Metalama: you must instruct MSBuild to pass them to the compiler using the `CompilerVisibleProperty` item.
 
-We recommend the following approach to consume a configuration property:
+If you are shipping your project as a NuGet package, we recommend the following approach to consume a configuration property:
 
-1. Create a file named `YourProject.targets` (the actual file name is not important, but the extension is):
+1. Create a file named `build/YourProject.props`. 
+
+    > [!WARNING]
+    > The file name must exactly match the name of your package.
 
     ```xml
     <Project>
@@ -28,22 +31,47 @@ We recommend the following approach to consume a configuration property:
     </Project>
     ```
 
-2. Include `YourProject.targets` in your project and mark it for inclusion in the `build` directory of your NuGet package. This ensures that the property will be visible to the aspect for all projects referencing your package. Your `csproj` file should look like this:
+2. Create a second file named `buildTransitive/YourProject.props`. 
+
+    ```xml
+    <Project>
+    	<Import Project="../build/YourProject.props"/>
+    </Project>
+    ```
+
+
+2. Include both `YourProject.props` in your project and mark it for inclusion in your NuGet package, respectively. Your `csproj` file should look like this:
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk">
         <!-- ... -->
         <ItemGroup>
-            <None Include="YourProject.targets">
+            <None Include="build/*">
                 <Pack>true</Pack>
-                <PackagePath>build</PackagePath>
+                <PackagePath></PackagePath>
+            </None>
+            <None Include="buildTransitive/*">
+                <Pack>true</Pack>
+                <PackagePath></PackagePath>
             </None>
         </ItemGroup>
         <!-- ... -->
     </Project>
     ```
 
-3. To configure the aspect, users should set this property in the `csproj` file, as shown in the following snippet:
+This approach will make sure that `YourProject.props` is automatically included in any project that references your project using a `PackageReference`.
+
+However, this will not work for projects referencing your project using a `PackageReference`. In this case, you need to manually import the `YourProject.props` file using the following code:
+
+```xml
+<Import Project="../YourProject/build/YourProject.props"/>
+```
+
+## Setting MSBuild properties
+
+To configure the aspect, users should set this property using one of the following approaches:
+
+1. By modifying the `csproj` file, as shown in the following snippet:
 
    ```xml
     <Project Sdk="Microsoft.NET.Sdk">
@@ -57,6 +85,11 @@ We recommend the following approach to consume a configuration property:
 
      > [!WARNING]
      > Line breaks and semicolons are not allowed in the values of compiler-visible properties as they can cause your aspect to receive an incorrect value.
+
+    
+2. From the command line, using the `-p:PropertyName=PropertyValue` command-line argument to `dotnet` or `msbuild`.
+
+3. By setting an environment variable. See the [MSBuild documentation](https://learn.microsoft.com/en-us/visualstudio/msbuild/how-to-use-environment-variables-in-a-build) for details.
 
 
 ## Reading MSBuild properties from an aspect or fabric

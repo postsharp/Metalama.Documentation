@@ -68,7 +68,7 @@ The following example puts all previous code snippets together. It adds a projec
 
 ### Exposing options directly on your aspect
 
-Often, you will want to offer users of your aspect the possibility to specify options directly when instantiating the aspect, typically as properties as the aspect custom attribute.
+Often, you will want to offer users of your aspect the possibility to specify options directly when instantiating the aspect, typically as properties of the aspect custom attribute.
 
 To achieve this, your aspect must implement the <xref:Metalama.Framework.Options.IHierarchicalOptionsProvider> interface. This interface has a single method <xref:Metalama.Framework.Options.IHierarchicalOptionsProvider.GetOptions*> that returns a list of options objects, typically an instance of your option class wrapped into an array.
 
@@ -87,4 +87,5 @@ In addition to the programmatic API represented by the option class, you may wan
 To create a configuration custom attribute, follow these steps:
 
 1. Create a class derived from <xref:System.Attribute?text=System.Attribute>.
-2. Add the <xref:System.Attribute?text=[AttributeUsage]> attribute as required. Typically, you will want to allow users to apply this attribute to the assembly,
+2. Add the <xref:System.Attribute?text=[AttributeUsage]> attribute as required. Typically, you will want to allow users to apply this attribute to the assembly and the enclosing type.
+3. Implement the <xref:Metalama.Framework.Options.IHierarchicalOptionsProvider> interface as described above.

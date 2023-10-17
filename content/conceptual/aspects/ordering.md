@@ -5,13 +5,14 @@ level: 300
 
 # Ordering aspects
 
-When multiple aspect classes are defined, the order of their execution becomes critical.
+When multiple aspect classes are defined, the execution order becomes critical.
 
 ## Concepts
 
 ### Per-project ordering
 
-In Metalama, the execution order of aspects is static. Defining the execution order is primarily the responsibility of the aspect library author, not the users of the aspect library.
+> [!NOTE]
+> Defining the execution order is the primary responsibility of the aspect library author, not the users of the aspect library. Aspect libraries that know about each other should set their execution order properly to avoid user confusion.
 
 Each aspect library should define the execution order of the aspects it introduces. This order should consider not only other aspects within the same library but also aspects defined in referenced aspect libraries.
 
@@ -61,15 +62,14 @@ using Metalama.Framework.Aspects;
 
 These two attributes define the following relationships:
 
-
-This is akin to mathematics: if we have `a < b` and `b < c`, then we have `a < c`, and the ordered sequence is `{a, b, c}`. 
+This is akin to mathematics: if we have `a < b` and `b < c`, then we have `a < c`, and the ordered sequence is `{a, b, c}`.
 
 If you specify conflicting relationships or import an aspect library that defines a conflicting order, Metalama will emit a compilation error.
 
 > [!NOTE]
 > Metalama will merge all `[assembly: AspectOrder(...)]` attributes that it finds not only in the current project but also in all referenced projects or libraries. Therefore, you don't need to repeat the `[assembly: AspectOrder(...)]` attributes in all projects that use aspects. It is sufficient to define them in projects that define aspects.
 
-Under the hood, Metalama performs a [topological sort](https://en.wikipedia.org/wiki/Topological_sorting) on a graph composed with all relationships found in the current project and all its dependencies.
+Under the hood, Metalama performs a [topological sort](https://en.wikipedia.org/wiki/Topological_sorting) on a graph composed of all relationships found in the current project and all its dependencies.
 
 When a pair of aspects do not have any specific ordering relationship, Metalama falls back to _alphabetical_ ordering.
 
@@ -92,6 +92,4 @@ The primary aspect instance is the instance that has been applied closest to the
     4. Aspects added by a fabric.
 
 Within these individual categories, the ordering is currently undefined, meaning the build may be nondeterministic if the aspect implementation relies on that ordering.
-
 [comment]: # (TODO: Example of handling secondary instances)
-
