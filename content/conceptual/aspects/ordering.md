@@ -11,7 +11,7 @@ When multiple aspect classes are defined, the order of their execution becomes c
 
 ### Per-project ordering
 
-In Metalama, the execution order is _static_. This order is primarily the responsibility of the aspect library author, not the users of the aspect library.
+In Metalama, the execution order of aspects is static. Defining the execution order is primarily the responsibility of the aspect library author, not the users of the aspect library.
 
 Each aspect library should define the execution order of the aspects it introduces. This order should consider not only other aspects within the same library but also aspects defined in referenced aspect libraries.
 
@@ -29,11 +29,24 @@ Therefore, the aspect application order and the aspect execution order are _oppo
 
 ## Specifying the execution order
 
+By default, the execution order of aspects is alphabetical. This order is not intended to be correct but at least it is deterministic.
+
 The execution order of aspects must be defined using the <xref:Metalama.Framework.Aspects.AspectOrderAttribute> assembly-level custom attribute. The order of the aspect classes in the attribute corresponds to their execution order.
 
 ```cs
 using Metalama.Framework.Aspects;
 [assembly: AspectOrder( typeof(Aspect1), typeof(Aspect2), typeof(Aspect3))]
+```
+
+This custom attribute defines the following relationships:
+
+
+```mermaid
+flowchart LR
+
+Aspect1 --> Aspect2
+Aspect2 --> Aspect3
+
 ```
 
 You can specify _partial_ order relationships. The aspect framework will merge all partial relationships and determine the global order for the current project.
@@ -46,14 +59,20 @@ using Metalama.Framework.Aspects;
 [assembly: AspectOrder( typeof(Aspect2), typeof(Aspect3))]
 ```
 
-This is akin to mathematics: if we have `a < b` and `b < c`, then we have `a < c`, and the ordered sequence is `{a, b, c}`.
+These two attributes define the following relationships:
+
+
+This is akin to mathematics: if we have `a < b` and `b < c`, then we have `a < c`, and the ordered sequence is `{a, b, c}`. 
 
 If you specify conflicting relationships or import an aspect library that defines a conflicting order, Metalama will emit a compilation error.
 
 > [!NOTE]
 > Metalama will merge all `[assembly: AspectOrder(...)]` attributes that it finds not only in the current project but also in all referenced projects or libraries. Therefore, you don't need to repeat the `[assembly: AspectOrder(...)]` attributes in all projects that use aspects. It is sufficient to define them in projects that define aspects.
 
-[comment]: # (TODO: mention what happens when the ordering is not fully specified?)
+Under the hood, Metalama performs a [topological sort](https://en.wikipedia.org/wiki/Topological_sorting) on a graph composed with all relationships found in the current project and all its dependencies.
+
+When a pair of aspects do not have any specific ordering relationship, Metalama falls back to _alphabetical_ ordering.
+
 
 ### Example
 
