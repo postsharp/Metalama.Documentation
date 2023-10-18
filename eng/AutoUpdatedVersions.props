@@ -2,14 +2,14 @@
 <Project>
 
     <PropertyGroup>
-        <MetalamaBackstageVersion>2023.4.3-preview</MetalamaBackstageVersion>
-        <MetalamaCompilerVersion>2023.4.3-preview</MetalamaCompilerVersion>
-        <MetalamaVersion>2023.4.3-preview</MetalamaVersion>
-        <MetalamaExtensionsVersion>2023.4.3-preview</MetalamaExtensionsVersion>
-        <MetalamaSamplesVersion>2023.4.3-preview</MetalamaSamplesVersion>
+        <MetalamaBackstageVersion>2023.4.4-preview</MetalamaBackstageVersion>
+        <MetalamaCompilerVersion>2023.4.4-preview</MetalamaCompilerVersion>
+        <MetalamaVersion>2023.4.4-preview</MetalamaVersion>
+        <MetalamaExtensionsVersion>2023.4.4-preview</MetalamaExtensionsVersion>
+        <MetalamaSamplesVersion>2023.4.4-preview</MetalamaSamplesVersion>
         <MetalamaMigrationVersion>2023.4.3-preview</MetalamaMigrationVersion>
-        <MetalamaLinqPadVersion>2023.4.3-preview</MetalamaLinqPadVersion>
-        <MetalamaPatternsVersion>2023.4.3-preview</MetalamaPatternsVersion>
-    </PropertyGroup>
+        <MetalamaLinqPadVersion>2023.4.4-preview</MetalamaLinqPadVersion>
+        <MetalamaPatternsVersion>2023.4.4-preview</MetalamaPatternsVersion>
+    <MetalamaFrameworkRunTimeVersion>2023.4.1-preview</MetalamaFrameworkRunTimeVersion></PropertyGroup>
 
 </Project>
