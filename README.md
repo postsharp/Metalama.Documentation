@@ -1,5 +1,9 @@
 # Metalama Documentation
 
+<!-- Matomo Image Tracker-->
+<img referrerpolicy="no-referrer-when-downgrade" src="https://postsharp.matomo.cloud/matomo.php?idsite=4&amp;rec=1" style="border:0" alt="" />
+<!-- End Matomo -->
+
 This repository contains the documentation for Metalama. It is recommended to read it online at https://doc.metalama.net.
 
 The code snippets in this documentation are located under the `code` subdirectory and are fully unit testable. Other examples are derived from the [Metalama.Samples](https://github.com/postsharp/Metalama.Samples) and [Metalama.Community](https://github.com/postsharp/Metalama.Community) repositories.
