@@ -1,8 +1,12 @@
-# Metalama Documentation
-
 <!-- Matomo Image Tracker-->
 <img referrerpolicy="no-referrer-when-downgrade" src="https://postsharp.matomo.cloud/matomo.php?idsite=4&amp;rec=1" style="border:0" alt="" />
 <!-- End Matomo -->
+
+<p align="center">
+<img width="450" src="https://github.com/postsharp/Metalama/raw/master/images/metalama-by-postsharp.svg" alt="Metalama logo" />
+</p>
+
+# Metalama.Documentation
 
 This repository contains the documentation for Metalama. It is recommended to read it online at https://doc.metalama.net.
 
