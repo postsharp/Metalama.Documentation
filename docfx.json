@@ -26,9 +26,7 @@
               "Metalama.Patterns.Caching.Backend.dll",
               "Metalama.Patterns.Caching.Aspects.dll",
               "Metalama.Patterns.Caching.Backends.Azure.dll",
-              "Metalama.Patterns.Caching.Backends.Redis.dll",
-              "Flashtrace.dll",
-              "Flashtrace.Formatters.dll"
+              "Metalama.Patterns.Caching.Backends.Redis.dll"
               ],
           "src": "code/Metalama.Documentation.Consolidated/bin/Debug/net7.0-windows"
         }
