@@ -20,7 +20,4 @@
     <node path="api/migration-api">
         <rule matchId="^PostSharp" />
     </node>
-    <node path="none">
-        <rule matchId="^Flashtrace" />
-    </node>
 </map>
