@@ -1,19 +1,16 @@
-﻿using Amazon;
-using BuildMetalamaDocumentation;
+﻿using BuildMetalamaDocumentation;
 using PostSharp.Engineering.BuildTools;
-using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build.Solutions;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
 using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
-using PostSharp.Engineering.BuildTools.Search;
 using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
 using System.IO;
 using System.Diagnostics;
 using System.IO.Compression;
-using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2023_4;
+using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2024_0;
 
 var docPackageFileName = $"Metalama.Doc.{MetalamaDependencies.Metalama.ProductFamily.Version}.zip";
 
@@ -57,21 +54,26 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
             ExportsToTeamCityDeployWithoutDependencies = true,
             PublicPublishers = new Publisher[]
             {
-                new MergePublisher(), new DocumentationPublisher( new S3PublisherConfiguration[]
-                {
-                    //TODO
-                    new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
-                } )
+                new MergePublisher()
+
+                // 2024.0 is not yet published.
+                // new DocumentationPublisher( new S3PublisherConfiguration[]
+                // {
+                //     //TODO
+                //     new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
+                // } )
             }
-        } ),
-    Extensions = new ProductExtension[]
-    {
-        new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
-            "https://0fpg9nu41dat6boep.a1.typesense.net",
-            "metalamadoc",
-            "https://doc-production.metalama.net/sitemap.xml",
-            true )
-    }
+        } )
+
+    // 2024.0 is not yet published.
+    // Extensions = new ProductExtension[]
+    // {
+    //     new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
+    //         "https://0fpg9nu41dat6boep.a1.typesense.net",
+    //         "metalamadoc",
+    //         "https://doc-production.metalama.net/sitemap.xml",
+    //         true )
+    // }
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
