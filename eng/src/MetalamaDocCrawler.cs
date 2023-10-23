@@ -9,6 +9,11 @@ namespace BuildMetalamaDocumentation;
 
 public class MetalamaDocCrawler : DocFxCrawler
 {
+    // This method parses the breadcrumb of an article
+    // (eg. Metalama > 🏠 > Conceptual documentation > Creating aspects > Ordering aspects
+    // for https://doc.metalama.net/conceptual/aspects/ordering)
+    // and calculates all properties required to create a respective instance
+    // of the BreadcrumbInfo record.
     protected override BreadcrumbInfo GetBreadcrumbData( HtmlNode[] breadcrumbLinks )
     {
         var isDefaultKind = breadcrumbLinks.Length < 5;
