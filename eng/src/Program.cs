@@ -1,10 +1,13 @@
-﻿using BuildMetalamaDocumentation;
+﻿using Amazon;
+using BuildMetalamaDocumentation;
 using PostSharp.Engineering.BuildTools;
+using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build.Solutions;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
 using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
+using PostSharp.Engineering.BuildTools.Search;
 using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
 using System.IO;
@@ -37,15 +40,13 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
     Dependencies =
         new[]
         {
-            DevelopmentDependencies.PostSharpEngineering, 
+            DevelopmentDependencies.PostSharpEngineering,
 //            MetalamaDependencies.MetalamaMigration,
-            MetalamaDependencies.MetalamaPatterns,
-            MetalamaDependencies.MetalamaLinqPad, 
+            MetalamaDependencies.MetalamaPatterns, MetalamaDependencies.MetalamaLinqPad,
             MetalamaDependencies.MetalamaSamples
         },
     SourceDependencies = new[] { MetalamaDependencies.MetalamaSamples, MetalamaDependencies.MetalamaCommunity },
     AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
-
     Configurations = Product.DefaultConfigurations
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
 
@@ -54,26 +55,21 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
             ExportsToTeamCityDeployWithoutDependencies = true,
             PublicPublishers = new Publisher[]
             {
-                new MergePublisher()
-
-                // 2024.0 is not yet published.
-                // new DocumentationPublisher( new S3PublisherConfiguration[]
-                // {
-                //     //TODO
-                //     new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
-                // } )
+                new MergePublisher(), new DocumentationPublisher( new S3PublisherConfiguration[]
+                {
+                    //TODO
+                    new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
+                } )
             }
-        } )
-
-    // 2024.0 is not yet published.
-    // Extensions = new ProductExtension[]
-    // {
-    //     new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
-    //         "https://0fpg9nu41dat6boep.a1.typesense.net",
-    //         "metalamadoc",
-    //         "https://doc-production.metalama.net/sitemap.xml",
-    //         true )
-    // }
+        } ),
+    Extensions = new ProductExtension[]
+    {
+        new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
+            "https://0fpg9nu41dat6boep.a1.typesense.net",
+            "metalamadoc",
+            "https://doc-production.metalama.net/sitemap.xml",
+            true )
+    }
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
