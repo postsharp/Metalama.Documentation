@@ -65,7 +65,7 @@ We are releasing a preview of our <xref:Metalama.Patterns.Observability.Observab
 * <xref:Metalama.Framework.Code.AttributeExtensions.TryConstruct*?text=IAttribute.TryConstruct> extension method: creates a CLR instance of a compile-time custom attribute.
 * <xref:Metalama.Framework.Code.ICompilation.GetAllAttributesOfType*?text=ICompilation.GetAllAttributesOfType>: gets all attributes of a given type in a project.
 * <xref:Metalama.Framework.Code.IMemberOrNamedType.Definition?text=IMemberOrNamedType.Definition>: navigates to the generic definition.
-* <xref:Metalama.Framework.Engine.Diagnostics.LocationExtensions.ToDiagnosticLocation?text=Location.ToDiagnosticLocation>: converts a Roslyn `Location` into a Metalama <xref:Metalama.Framework.Diagnostics.IDiagnosticLocation>.
+* <xref:Metalama.Framework.Engine.Diagnostics.LocationExtensions.ToDiagnosticLocation*?text=Location.ToDiagnosticLocation>: converts a Roslyn `Location` into a Metalama <xref:Metalama.Framework.Diagnostics.IDiagnosticLocation>.
 
 
 ## Breaking Changes
@@ -73,18 +73,18 @@ We are releasing a preview of our <xref:Metalama.Patterns.Observability.Observab
 We still indulge in introducing low-impact breaking changes in the compile-time API as we believe the platform is too young to enforce a strict forward-compatibility policy.
 
 * The `ContractAspect.Direction` property has become the <xref:Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection*> method.
-* The `IConditionallyInheritableAspect.IsInheritable` property has become the <xref: Metalama.Framework.Aspects.IConditionallyInheritableAspect.IsInheritable*> method.
+* The `IConditionallyInheritableAspect.IsInheritable` property has become the <xref:Metalama.Framework.Aspects.IConditionallyInheritableAspect.IsInheritable*> method.
 * <xref:Metalama.Extensions.DependencyInjection>
     * The <xref:Metalama.Extensions.DependencyInjection.DependencyProperties> record constructor has changed.
-    * The framework should now be configured with the new hierarchical options framework. The object `DependencyInjectionOptions` has completely changed. It may not be the final design.
+    * The framework should now be configured with the new hierarchical options framework. The `DependencyInjectionOptions` is now internal. The new configuration public API is the <xref:Metalama.Extensions.DependencyInjection.DependencyInjectionExtensions.ConfigureDependencyInjection*> extension method.
 * For external namespaces, the <xref:Metalama.Framework.Code.IDeclaration.ContainingDeclaration> of the namespace now returns the declaring assembly instead of the current compilation.
 
 ## Bug fixes
 
 We fixed 39 bugs before the GA of this version. For details, see the pre-release changelogs:
 
-    * [2023.4.5-rc](https://github.com/orgs/postsharp/discussions/236)
-    * [2023.4.4-preview](https://github.com/orgs/postsharp/discussions/231)
-    * [2023.4.3-preview](https://github.com/orgs/postsharp/discussions/227)
-    * [2023.4.2-preview](https://github.com/orgs/postsharp/discussions/224)
-    * [2024.4.1-preview](https://github.com/orgs/postsharp/discussions/219)
+* [2023.4.5-rc](https://github.com/orgs/postsharp/discussions/236)
+* [2023.4.4-preview](https://github.com/orgs/postsharp/discussions/231)
+* [2023.4.3-preview](https://github.com/orgs/postsharp/discussions/227)
+* [2023.4.2-preview](https://github.com/orgs/postsharp/discussions/224)
+* [2024.4.1-preview](https://github.com/orgs/postsharp/discussions/219)
