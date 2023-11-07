@@ -10,7 +10,7 @@ The following articles provide guidance on how to configure Metalama.
 | Article | Description |
 |---------|-------------|
 | <xref:telemetry> | This article explains the data collected through telemetry and the process to disable it. |
-| <xref:msbuild-properties> | This article enumerates the MSBuild properties recognized by Metalama. |
+| <xref:msbuild-properties> | This article enumerates the MSBuild properties and environment variables recognized by Metalama. |
 | <xref:creating-logs> | This article outlines the steps to enable logging in Metalama. |
 | <xref:process-dump> | This article details how to instruct Metalama to capture process dumps in the event of an exception. |
 | <xref:profiling> | This article explains how to collect performance data for Metalama processes. |
