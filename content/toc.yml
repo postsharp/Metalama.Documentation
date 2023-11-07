@@ -16,6 +16,8 @@ items:
       topicUid: extensions-api      
     - name: Patterns API
       topicUid: patterns-api      
+    - name: Flashtrace API
+      topicUid: flashtrace-api      
     - name: Introspection API
       topicUid: introspection-api      
     - name: Advanced API
