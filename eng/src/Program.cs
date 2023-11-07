@@ -1,13 +1,9 @@
-﻿using Amazon;
-using BuildMetalamaDocumentation;
+﻿using BuildMetalamaDocumentation;
 using PostSharp.Engineering.BuildTools;
-using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build.Solutions;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
-using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
-using PostSharp.Engineering.BuildTools.Search;
 using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
 using System.IO;
@@ -51,27 +47,8 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
 
     Configurations = Product.DefaultConfigurations
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
-
-        .WithValue( BuildConfiguration.Public, c => c with
-        {
-            ExportsToTeamCityDeployWithoutDependencies = true,
-            PublicPublishers = new Publisher[]
-            {
-                new MergePublisher(), new DocumentationPublisher( new S3PublisherConfiguration[]
-                {
-                    //TODO
-                    new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
-                } )
-            }
-        } ),
-    Extensions = new ProductExtension[]
-    {
-        new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
-            "https://0fpg9nu41dat6boep.a1.typesense.net",
-            "metalamadoc",
-            "https://doc-production.metalama.net/sitemap.xml",
-            true )
-    }
+    
+    // Metalama Documentation 2023.4 is no longer deployed.
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
