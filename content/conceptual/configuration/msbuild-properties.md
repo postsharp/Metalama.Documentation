@@ -32,6 +32,7 @@ Note that all environment variables are imported as MSBuild properties by defaul
 | `MetalamaCompileTimeTargetFrameworks`        | Semicolon-separated list | Specifies the list of target frameworks for which compile-time projects should be built. The default value is `netstandard2.0;net6.0;net48`. Override this property if you cannot install the required .NET targetting packs on the machine. `netstandard2.0` is required. |
 | `MetalamaRestoreSources`                     | Semicolon-separated list | Specifies the list of NuGet feeds used when restoring the compile-time project. The default value is `https://api.nuget.org/v3/index.json`. |
 | `MetalamaCreateLamaDebugConfiguration`       | Boolean                  | Indicates that the `LamaDebug` build configuration should be automatically defined (see below). The default value is `True`. |
+| `MetalamaTemplateLanguageVersion`            | String                   | Specifies the C# language version (e.g. `10.0`) that's used by templates. Any syntax from higher C# versions is not allowed in template bodies. Such templates can then be used in projects that use this C# version.
 
 
 ## MSBuild items
