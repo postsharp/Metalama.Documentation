@@ -40,6 +40,7 @@ Disable Metalama for the test project by defining the following property:
 <PropertyGroup>
    <MetalamaEnabled>false</MetalamaEnabled>
 </PropertyGroup>
+```
 
 ### Step 3. Reference the Metalama.Testing.UnitTesting package
 
