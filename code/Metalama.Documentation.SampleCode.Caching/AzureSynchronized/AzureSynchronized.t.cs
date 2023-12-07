@@ -20,7 +20,7 @@ namespace Doc.AzureSynchronized
     [Cache]
     public Product GetProduct(string productId)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((ProductCatalogue)instance).GetProduct_Source((string)args[0]);
       }

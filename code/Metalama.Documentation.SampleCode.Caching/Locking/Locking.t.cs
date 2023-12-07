@@ -13,7 +13,7 @@ namespace Doc.Locking
     [Cache(ProfileName = "Locking")]
     public byte[] ReadFileWithLock(string path)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((CloudService)instance).ReadFileWithLock_Source((string)args[0]);
       }
@@ -28,7 +28,7 @@ namespace Doc.Locking
     [Cache]
     public byte[] ReadFileWithoutLock(string path)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((CloudService)instance).ReadFileWithoutLock_Source((string)args[0]);
       }

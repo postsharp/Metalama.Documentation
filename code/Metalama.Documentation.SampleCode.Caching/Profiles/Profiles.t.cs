@@ -11,7 +11,7 @@ namespace Doc.Profiles
     [Cache(ProfileName = "Hot")]
     public decimal GetPrice(string productId)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((ProductCatalogue)instance).GetPrice_Source((string)args[0]);
       }
@@ -26,7 +26,7 @@ namespace Doc.Profiles
     [Cache]
     public string[] GetProducts()
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((ProductCatalogue)instance).GetProducts_Source();
       }

@@ -39,7 +39,7 @@ namespace Doc.AzureSynchronized
                 this._productCatalogue.Update( updatedCorn );
             }
 
-            Console.WriteLine( $"In total, CloudCalculator performed {this._productCatalogue.DbOperationCount} database operation(s)." );
+            Console.WriteLine( $"In total, CloudCalculator in {this._appName} performed {this._productCatalogue.DbOperationCount} database operation(s)." );
         }
     }
 }

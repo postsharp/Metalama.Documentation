@@ -12,7 +12,7 @@ namespace Doc.Formatter
     [Cache]
     public byte[] ReadAll(FileInfo file)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((FileSystem)instance).ReadAll_Source((FileInfo)args[0]);
       }

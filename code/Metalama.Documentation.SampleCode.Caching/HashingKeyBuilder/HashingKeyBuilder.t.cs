@@ -11,7 +11,7 @@ namespace Doc.HashKeyBuilder
     [Cache]
     public byte[] ReadAll(string path)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((FileSystem)instance).ReadAll_Source((string)args[0]);
       }

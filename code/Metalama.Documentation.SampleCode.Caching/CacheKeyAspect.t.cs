@@ -48,7 +48,7 @@ namespace Doc.CacheKeyAspect
     [Cache]
     public IEnumerable<Entity> GetRelatedEntities(Entity entity)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((EntityService)instance).GetRelatedEntities_Source((Entity)args[0]);
       }

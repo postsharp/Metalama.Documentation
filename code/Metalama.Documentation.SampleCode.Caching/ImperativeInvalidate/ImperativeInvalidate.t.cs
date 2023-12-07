@@ -17,7 +17,7 @@ namespace Doc.ImperativeInvalidate
     [Cache] /*<Cache>*/
     public decimal GetPrice(string productId) /*</Cache>*/
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((ProductCatalogue)instance).GetPrice_Source((string)args[0]);
       }
@@ -32,7 +32,7 @@ namespace Doc.ImperativeInvalidate
     [Cache]
     public string[] GetProducts()
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((ProductCatalogue)instance).GetProducts_Source();
       }

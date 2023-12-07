@@ -18,7 +18,7 @@ namespace Doc.StringDependencies
     [Cache]
     public decimal GetPrice(string productId)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((ProductCatalogue)instance).GetPrice_Source((string)args[0]);
       }
@@ -35,7 +35,7 @@ namespace Doc.StringDependencies
     [Cache]
     public string[] GetProducts()
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((ProductCatalogue)instance).GetProducts_Source();
       }
@@ -51,7 +51,7 @@ namespace Doc.StringDependencies
     [Cache]
     public ImmutableDictionary<string, decimal> GetPriceList()
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((ProductCatalogue)instance).GetPriceList_Source();
       }

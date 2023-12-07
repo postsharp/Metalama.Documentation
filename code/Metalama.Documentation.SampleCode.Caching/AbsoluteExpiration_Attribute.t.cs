@@ -11,7 +11,7 @@ namespace Doc.AbsoluteExpiration_Attribute
     [Cache]
     public decimal GetProductPrice(string productId)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((PricingService)instance).GetProductPrice_Source((string)args[0]);
       }
@@ -21,7 +21,7 @@ namespace Doc.AbsoluteExpiration_Attribute
     [Cache(AbsoluteExpiration = 20)]
     public string[] GetProducts(string productId)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((PricingService)instance).GetProducts_Source((string)args[0]);
       }

@@ -10,7 +10,7 @@ namespace Doc.ParameterFilter
     [Cache]
     public decimal GetProductPrice(string productId, [NotCacheKey] string? correlationId)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((PricingService)instance).GetProductPrice_Source((string)args[0], (string? )args[1]);
       }
@@ -20,7 +20,7 @@ namespace Doc.ParameterFilter
     [Cache]
     public string[] GetProducts(string productId, [NotCacheKey] string? correlationId)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((PricingService)instance).GetProducts_Source((string)args[0], (string? )args[1]);
       }

@@ -12,7 +12,7 @@ namespace Doc.ExcludeThisParameter
     [Cache]
     public decimal GetProductPrice(string productId)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((PricingService)instance).GetProductPrice_Source((string)args[0]);
       }
@@ -22,7 +22,7 @@ namespace Doc.ExcludeThisParameter
     [Cache]
     public string[] GetProducts(string productId)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((PricingService)instance).GetProducts_Source((string)args[0]);
       }

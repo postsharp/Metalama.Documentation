@@ -19,7 +19,7 @@ namespace Doc.ValueAdapter
     [Cache]
     public StringBuilder GetProductsAsStringBuilder()
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((ProductCatalogue)instance).GetProductsAsStringBuilder_Source();
       }

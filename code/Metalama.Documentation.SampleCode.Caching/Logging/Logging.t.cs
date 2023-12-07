@@ -11,7 +11,7 @@ namespace Doc.Logging
     [Cache]
     public int Add(int a, int b)
     {
-      object? Invoke(object? instance, object? [] args)
+      static object? Invoke(object? instance, object? [] args)
       {
         return ((CloudCalculator)instance).Add_Source((int)args[0], (int)args[1]);
       }
