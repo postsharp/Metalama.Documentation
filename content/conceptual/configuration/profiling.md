@@ -75,6 +75,8 @@ Perform the actions that cause the issue.
 
 Close your IDE. If you are profiling the compiler processes, run `metalama kill`.
 
+Wait a file with extension `*.dtp` is created under the `%TEMP%\Metalama\Profiling` directory. 
+
 ## Step 5. Upload the snapshots to an online drive
 
 You will find the profiling snapshots in the `%TEMP%\Metalama\Profiling` directory. Zip the whole directory and upload this file to an online storage service like OneDrive.

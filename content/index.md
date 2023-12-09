@@ -29,7 +29,7 @@ Each article is assigned a _complexity level_, such as 100, 200, 300, following 
 
 If you have any questions, don't hesitate to reach out:
 
-* Engage with us on [Slack](https://www.postsharp.net/slack) or [Discord](https://www.postsharp.net/discord).
+* Engage with us on [Slack](https://www.postsharp.net/slack).
 * [Initiate a discussion](https://github.com/postsharp/Metalama/discussions/new) on GitHub.
 
 
