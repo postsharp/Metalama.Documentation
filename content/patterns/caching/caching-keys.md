@@ -1,5 +1,6 @@
 ---
 uid: caching-keys
+summary: "The document provides comprehensive guidelines on customizing cache keys in Metalama Caching, including using the CacheKey aspect, overriding ToString method, implementing IFormattable<T> interface, creating a formatter for third-party types, changing the maximal length of a cache key, and overriding the cache key builder."
 ---
 # Customizing cache keys
 
@@ -108,4 +109,5 @@ In this example, we show how to build and register a custom key builder. We chos
 Note that we are reusing the string-based <xref:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder> implementation so that we can reuse the infrastructure described in this article. It is theoretically possible to implement a hashing string builder that does not rely on any string, but it would require us to design and implement a new solution, one that would not rely on the string-based <xref:Flashtrace.Formatters.IFormattable`1>.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Caching/HashingKeyBuilder/HashingKeyBuilder.cs]
+
 

@@ -1,6 +1,7 @@
 ---
 uid: aspects
 level: 200
+summary: "This document is a guide on creating aspects in Metalama, detailing the benefits of aspects like boilerplate elimination, code validation and fixes, and outlining various aspects-related topics."
 ---
 
 # Creating aspects
@@ -36,5 +37,6 @@ This chapter includes the following articles:
 | <xref:configuration> | This article explains how an aspect can expose and consume configuration properties or a configuration API.                                           |
 | <xref:testing>               | This section provides guidance on how to test aspects.                                                                                                 |
 | <xref:debugging-aspects>     | This article explains how to debug aspects.                                                                                                            |
+
 
 

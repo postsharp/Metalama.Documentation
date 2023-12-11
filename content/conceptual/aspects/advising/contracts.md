@@ -1,6 +1,7 @@
 ---
 uid: contracts
 level: 300
+summary: "The document provides advanced information on validating parameter, field, and property values with contracts in Metalama Framework. It covers accessing metadata, contract directions, and adding contract advice programmatically."
 ---
 
 # Validating parameter, field, and property values with contracts

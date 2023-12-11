@@ -1,5 +1,6 @@
 ---
 uid: patterns
+summary: "Metalama Patterns are libraries of design patterns for C#, developed by the Metalama team, and are available on GitHub under the MIT license."
 ---
 
 # Metalama Patterns
@@ -20,3 +21,4 @@ The following libraries are currently available:
 | <xref:caching> | Metalama Caching combines object-oriented and aspect-oriented APIs.
 | <xref:memoization> | A simple and high-performance alternative to caching limited to get-only properties and paramerless methods. |
 | <xref:dependency-injection-aspect> | An aspect to automatically pull dependencies from fields and properties. Supports lazy loading. |
+

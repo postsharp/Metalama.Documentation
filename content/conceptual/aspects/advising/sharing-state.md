@@ -1,6 +1,7 @@
 ---
 uid: sharing-state-with-advice
 level: 400
+summary: "The document provides strategies for sharing compile-time state between different pieces of advice or the BuildAspect method and the advice. It discusses sharing state with compile-time template parameters, the Tags property, and the AspectState property."
 ---
 
 # Sharing state with advice
@@ -34,5 +35,6 @@ To define and use tags:
 ## Sharing state with the AspectState property
 
 You can utilize the <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState?text=IAspectBuilder.AspectState> property to store any aspect state that depends on the target declaration. This object is exposed on the <xref:Metalama.Framework.Aspects.IAspectInstance.AspectState?text=IAspectInstance.AspectState> property and is visible to child aspects and aspects that inherit from them.
+
 
 

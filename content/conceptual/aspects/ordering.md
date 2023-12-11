@@ -1,6 +1,7 @@
 ---
 uid: ordering-aspects
 level: 300
+summary: "The document explains how to define the execution order of aspect classes in Metalama, a concept critical when multiple aspect classes are utilized. The execution order is defined using the AspectOrderAttribute assembly-level custom attribute. The order of aspect application and execution are opposite, and by default, the execution order is alphabetical."
 ---
 
 # Ordering aspects
@@ -93,3 +94,4 @@ The primary aspect instance is the instance that has been applied closest to the
 
 Within these individual categories, the ordering is currently undefined, meaning the build may be nondeterministic if the aspect implementation relies on that ordering.
 [comment]: # (TODO: Example of handling secondary instances)
+

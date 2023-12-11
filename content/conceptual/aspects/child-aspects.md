@@ -1,6 +1,7 @@
 ---
 uid: child-aspects
 level: 300
+summary: "The document explains how to add child aspects in Metalama Framework, the conditions they must follow, and how to access the parent aspect."
 ---
 
 # Adding child aspects
@@ -15,3 +16,4 @@ An aspect can add child aspects from the <xref:Metalama.Framework.Aspects.IAspec
 ## Accessing the parent aspect
 
 Parent aspects are enumerated in the <xref:Metalama.Framework.Aspects.IAspectPredecessor.Predecessors?text=IAspectPredecessor.Predecessors> property. The child aspect can access this from <xref:Metalama.Framework.Aspects.meta.AspectInstance?text=meta.AspectInstance> or <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectInstance?text=builder.AspectInstance>.
+

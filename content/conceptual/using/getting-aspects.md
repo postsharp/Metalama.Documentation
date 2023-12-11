@@ -1,6 +1,7 @@
 ---
 uid: getting-aspects
 level: 100
+summary: "The document provides information about using pre-built aspects in projects, including demo aspects and those from the Metalama community, without altering source code."
 ---
 # Getting aspects
 
@@ -32,4 +33,5 @@ We are currently in the process of porting the `PostSharp.Patterns` aspect suite
 In addition, you can find open-source aspect libraries built by the community on the [Metalama community portal](https://www.postsharp.net/community/projects).
 
 You can [search GitHub](https://github.com/search?p=1&q=metalama&type=Repositories) for projects that mention Metalama.
+
 

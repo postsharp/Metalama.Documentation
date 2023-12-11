@@ -1,6 +1,7 @@
 ---
 uid: template-dynamic-code
 level: 200
+summary: "The document provides detailed information on generating run-time code in templates, using dynamic expressions and variables, invoking members, parsing C# expressions and statements, converting run-time expressions to compile-time, and converting compile-time values to run-time values."
 ---
 
 # Generating run-time code
@@ -229,3 +230,4 @@ You can have classes that exist both at compile and run time. To allow Metalama 
 ### Example: custom converter
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/CustomSyntaxSerializer.cs name="Custom Syntax Serializer"]
+

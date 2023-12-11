@@ -1,6 +1,7 @@
 ---
 uid: templates
 level: 200
+summary: "The document provides a guide on writing T# templates in Metalama, covering topics like template language introduction, compile-time code, dynamic code generation, and debugging."
 ---
 
 # Writing T# templates
@@ -72,3 +73,4 @@ This chapter includes the following articles:
         </td>
     </tr>
 </table>
+

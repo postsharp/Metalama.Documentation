@@ -1,6 +1,7 @@
 ---
 uid: dotnet-tool
 level: 200
+summary: "The document provides instructions on how to install the Metalama Command Line Tool, which offers several features for managing the Metalama software."
 ---
 
 # Installing the Metalama Command Line Tool
@@ -23,3 +24,4 @@ To install the Metalama Command Line Tool, follow these steps:
     ```
 
 The Metalama Command Line Tool is now accessible through the `metalama` command.
+

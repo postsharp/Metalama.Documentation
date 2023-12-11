@@ -1,5 +1,6 @@
 ---
 uid: release-notes-2023.3
+summary: "Metalama 2023.3 release introduces new features including ready-made aspect implementations for caching and contracts, auxiliary templates, and a revamped Metalama.Framework.Sdk. It also includes platform updates, enhancements, minor breaking changes, and bug fixes."
 ---
 
 # Metalama 2023.3
@@ -101,4 +102,5 @@ For a detailed list of bugs fixed in this release, see the detailed changelogs:
 - [2023.3.3-preview](https://github.com/orgs/postsharp/discussions/211)
 - [2023.3.2-preview](https://github.com/orgs/postsharp/discussions/200)
 - [2023.3.1-preview](https://github.com/orgs/postsharp/discussions/196)
+
 

@@ -1,5 +1,6 @@
 ---
 uid: value-contracts
+summary: "The document provides a detailed guide on how to validate input and output values of fields, properties, or parameters using Metalama.Patterns.Contracts package in coding. It covers contract inheritance, return values, out parameters, ref parameters, and fields and properties."
 ---
 
 # Validating field, property, and parameter values
@@ -82,4 +83,5 @@ The `Item` class implements the `IItem` interface. You can observe that the cont
 In the `Item` class, the `Key` property is implemented as an automatic property. It might seem surprising that the contract is still implemented in the getter instead of in the setter. The reason is to preserve the semantics of the contract: when applied to the getter, the contract promises to throw a <xref:Metalama.Patterns.Contracts.PostconditionViolationException> exception upon violation. Implementing the contract on the getter would change the contract. Specifically, no exception would be thrown if the property is never set.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Contracts/Property.cs]
+
 

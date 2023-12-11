@@ -1,5 +1,6 @@
 ---
 uid: caching-pubsub
+summary: "The document provides a guide on synchronizing local in-memory caches across multiple servers using Metalama's publish/subscribe (Pub/Sub) message bus. It details the process using Azure Service Bus and Redis Pub/Sub."
 ---
 # Synchronizing local in-memory caches for multiple servers
 
@@ -70,3 +71,4 @@ No configuration on your Redis server is necessary to use it for cache synchroni
 
 > [!WARNING]
 > Ensure that the <xref:Metalama.Patterns.Caching.ICachingService> is properly disposed of before the application exits. Failure to do so may leave some background cache write operations unprocessed, leading to cache inconsistency.
+

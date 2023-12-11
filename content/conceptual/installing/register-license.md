@@ -1,6 +1,7 @@
 ---
 uid: register-license
 level: 200
+summary: "Metalama automatically activates a 45-day trial upon first use. Users can switch to Metalama Free or register a license key to continue usage beyond the trial period."
 ---
 
 # Registering a license
@@ -51,4 +52,5 @@ The license key can be stored as the value of the `MetalamaLicense` MSBuild prop
 - Storing the license as a value of the `MetalamaLicense` environment variable.
 - Storing the license in the source code repository using the [Directory.Build.props](https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2022#directorybuildprops-and-directorybuildtargets) file.
 - Storing the license in the `.csproj` project file.
+
 

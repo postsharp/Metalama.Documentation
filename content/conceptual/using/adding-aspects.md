@@ -1,6 +1,7 @@
 ---
 uid: quickstart-adding-aspects
 level: 100
+summary: "The document provides a guide on how to add aspects, or custom attributes, to code using Visual Studio and Metalama Tools. It covers adding aspects as custom attributes, adding multiple attributes, and using the refactoring menu."
 ---
 
 # Adding aspects to your code
@@ -61,3 +62,4 @@ The refactoring menu is smart enough to recognize which aspect has already been 
 
 > [!div class="see-also"]
 > <xref:video-first-aspect>
+

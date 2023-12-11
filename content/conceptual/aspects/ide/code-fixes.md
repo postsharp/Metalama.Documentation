@@ -1,6 +1,7 @@
 ---
 uid: code-fixes
 level: 300
+summary: "The document provides detailed instructions on how to offer code fixes and refactorings using the Metalama Framework, including attaching code fixes to diagnostics, suggesting refactorings without diagnostics, and building multi-step code fixes. It also discusses performance considerations."
 ---
 
 # Offering code fixes and refactorings

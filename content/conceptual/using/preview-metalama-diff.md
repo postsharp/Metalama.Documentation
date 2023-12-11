@@ -1,5 +1,6 @@
 ---
 uid: preview-metalama-diff
+summary: "The document explains how to use the Metalama Diff option in Visual Studio to view differences between original source code and its transformed version."
 ---
 
 # Metalama Diff
@@ -22,3 +23,4 @@ To view changes for a specific section of the code, select that portion from the
 
 > [!div class="see-also"]
 > <xref:video-first-aspect>
+

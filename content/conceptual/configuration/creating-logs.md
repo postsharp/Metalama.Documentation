@@ -1,5 +1,6 @@
 ---
 uid: creating-logs
+summary: "The document provides instructions on how to generate log files for reporting Metalama bugs, including installing the CLI tool, editing diagnostics.json, restarting processes, executing Metalama, and accessing the log file."
 ---
 
 # Enabling logging
@@ -78,5 +79,6 @@ Perform the sequence of actions that you wish to log.
 ## Step 5. Open the log file
 
 You can find the log in the `%TEMP%\Metalama\Logs` directory.
+
 
 

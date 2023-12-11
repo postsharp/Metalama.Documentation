@@ -1,6 +1,7 @@
 ---
 uid: packages
 level: 300
+summary: "The document provides a list of NuGet packages for Metalama, detailing their uses and descriptions. It also includes package diagrams for building, executing, testing, introspection, and SDK."
 ---
 
 # List of NuGet packages
@@ -192,5 +193,6 @@ graph BT
 
 
 ```
+
 
 

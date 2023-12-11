@@ -1,6 +1,7 @@
 ---
 uid: introducing-members
 level: 300
+summary: "The document provides a comprehensive guide on how to add new members to an existing type using the Metalama Framework. It covers both declarative and programmatic methods, and includes instructions for overriding existing implementations and referencing introduced members."
 ---
 
 # Introducing members
@@ -124,3 +125,4 @@ If the user does not add the `partial` keyword, Metalama will report a warning a
 
 > [!NOTE]
 > In __test projects__ built using `Metalama.Testing.AspectTesting`, the Metalama compiler is _not_ activated. Therefore, the source code of test projects cannot reference introduced declarations. Since the present documentation relies on `Metalama.Testing.AspectTesting` for all examples, we cannot include an example here.
+

@@ -1,5 +1,6 @@
 ---
 uid: linqpad
+summary: "This document provides a comprehensive guide on using the Metalama driver for LINQPad to inspect and test code queries, list target declarations, inspect the outcome of aspects, and query the resulting code mode. It includes installation instructions, usage examples, and troubleshooting tips."
 ---
 
 # Inspecting a project using LINQPad
@@ -128,5 +129,6 @@ If you want to run a Metalama query from a different application, add a referenc
 > [!div class="see-also"]
 > <xref:Metalama.Framework.Workspaces>
 > <xref:Metalama.Framework.Introspection>
+
 
 

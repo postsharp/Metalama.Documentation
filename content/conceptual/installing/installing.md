@@ -1,6 +1,7 @@
 ---
 uid: installing
 level: 100
+summary: "The document provides instructions on installing Metalama, including Metalama Tools for Visual Studio, the Metalama Command Line Tool, and registering a license key."
 ---
 
 # Installing Metalama
@@ -15,5 +16,6 @@ Metalama's core features are implemented via a set of NuGet packages, eliminatin
 | <xref:install-vsx>    | This article provides a guide on how to install Metalama Tools for Visual Studio. This extension is recommended for all users intending to utilize Metalama.        |
 | <xref:dotnet-tool>    | This article outlines the process of downloading the Metalama Command Line Tool. It is not necessary to read this article during your initial familiarization with the tool.        |
 | <xref:register-license>     |  This article explains how to transition from the trial mode to Metalama Free or register a license key. You can skip this article until your trial period is active.        |
+
 
 

@@ -2,6 +2,7 @@
 
 uid: template-compile-time
 level: 200
+summary: "The document provides detailed information on writing compile-time code using the Metalama Framework. It explains compile-time expressions, statements, the 'meta' pseudo-keyword, and compile-time language constructs. It also covers aspect properties, compile-time types, methods, and how to call other packages from compile-time code. "
 ---
 
 # Writing compile-time code
@@ -131,3 +132,4 @@ Once this configuration is done, `MyPackage` can be used both in run-time and co
 
 > [!WARNING]
 > You must also specify `MetalamaCompileTimePackage` in each project that _uses_ the aspects.
+

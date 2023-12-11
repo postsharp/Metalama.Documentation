@@ -1,5 +1,6 @@
 ---
 uid: caching
+summary: "Metalama Caching is an efficient way to enhance application performance, reducing boilerplate, bugs, and coupling. It supports various caching topologies and automates complex cache processes. "
 ---
 # Metalama Caching
 
@@ -36,3 +37,4 @@ Metalama Caching offers several advantages over manual caching:
 | <xref:caching-value-adapters> | This article describes how to cache return values of methods that cannot be directly cached, such as instances of <xref:System.Collections.Generic.IEnumerable`1> or <xref:System.IO.Stream>. |
 | <xref:cache-locking> | This article explains how to prevent the same method from being executed with the same arguments simultaneously by using locking. |
 | <xref:caching-troubleshooting> | This article details how to add logging to the caching component. |
+

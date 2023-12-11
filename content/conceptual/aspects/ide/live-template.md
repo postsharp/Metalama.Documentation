@@ -1,6 +1,7 @@
 ---
 uid: live-template
 level: 200
+summary: "The document explains how to create a live template using the Metalama Aspect Framework, which appears in the code editor menu alongside other code suggestions or refactoring actions."
 ---
 
 # Exposing an aspect as a live template

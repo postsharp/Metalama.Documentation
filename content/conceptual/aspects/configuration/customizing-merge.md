@@ -1,6 +1,7 @@
 ---
 uid: configuration-custom-merge
 level: 400
+summary: "The document details the process of customizing the change merging process in the Metalama Framework. It outlines how options are merged, the order of merging, disabling inheritance axes, and customizing the merging process."
 ---
 
 # Customizing the change merging process
@@ -40,3 +41,4 @@ If you don't want your options to be inherited along one of the above axes, you 
 If you need to further customize the merging process, you can make your <xref:Metalama.Framework.Options.IIncrementalObject.ApplyChanges*> implementation depend on the <xref:Metalama.Framework.Options.ApplyChangesContext> parameter. This allows you to handle each option property differently according to the context.
 
 Please note that this should be considered an extreme case and we currently do not see a valid use case at the time of writing this documentation.
+

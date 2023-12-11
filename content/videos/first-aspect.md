@@ -1,6 +1,7 @@
 ---
 uid: video-first-aspect
 level: 101
+summary: "The document is a video tutorial about creating your first aspect, with additional references for simple override methods and adding aspects."
 ---
 
 # Video tutorial: your first aspect

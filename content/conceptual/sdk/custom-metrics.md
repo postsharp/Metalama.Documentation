@@ -1,6 +1,7 @@
 ---
 uid: custom-metrics
 level: 400
+summary: "The document provides a detailed guide on how to create and consume custom metrics using the Metalama SDK, including steps on referencing the SDK, creating the metric public API, and implementing the metric."
 ---
 
 # Custom metrics
@@ -84,3 +85,4 @@ Custom metrics can be consumed in the usual manner.
 [comment]: # (TODO: what does "as usual" mean? a link or a short explanation would be useful)
 
 [comment]: # (TODO: Testing a custom metric)
+

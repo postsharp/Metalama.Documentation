@@ -1,6 +1,7 @@
 ---
 uid: fabrics-configuration
 level: 200
+summary: "The document provides a guide on how to configure aspects with fabrics in the Metalama framework, detailing the process steps, example configurations, and information about inheritance of configuration options."
 ---
 
 # Configuring aspects with fabrics
@@ -89,3 +90,4 @@ Unless specified otherwise by the aspect library, all configuration options are 
 So, when you want to set some options for an entire class family, it's sufficient to set these options for the base class, and they will automatically apply to child classes.
 
 Options inherited from the base class take precedence over the options that come from the enclosing type (including that of nested types), the enclosing namespace, or the project.
+

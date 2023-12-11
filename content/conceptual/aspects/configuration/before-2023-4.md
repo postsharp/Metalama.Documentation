@@ -1,6 +1,7 @@
 ---
 uid: exposing-configuration-before-2023-4
 level: 300
+summary: "The document provides instructions for establishing a configuration API prior to Metalama 2023.4, including constructing a class, overriding methods, and devising an extension method."
 ---
 
 # Exposing configuration (before v2023.4)
@@ -20,5 +21,6 @@ To establish a configuration API prior to Metalama 2023.4:
 ## Example
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/AspectConfiguration.cs name="Consuming Property"]
+
 
 

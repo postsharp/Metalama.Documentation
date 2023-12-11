@@ -1,5 +1,6 @@
 ---
 uid: migrating-aspects
+summary: "The document provides a step-by-step guide on migrating custom aspects from PostSharp to Metalama, including learning Metalama, assessing aspects' importance, verifying migration timing and project state, changing package references, creating a separate project for aspect tests, implementing individual aspects, migrating multicasting usages and configurations, and final project cleanup. "
 ---
 
 # Migrating custom aspects to Metalama
@@ -92,3 +93,4 @@ If your Metalama aspects have been correctly implemented, all your tests should 
 Once this is the case, replace the reference to the `Metalama.Migration` package with `Metalama.Framework`.
 
 You have now completed the migration.
+

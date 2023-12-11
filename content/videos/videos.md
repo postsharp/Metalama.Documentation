@@ -1,5 +1,6 @@
 ---
 uid: videos
+summary: "The document is a list of video tutorials covering topics like introduction, aspects, fabrics, testing, debugging, error reporting, code fixes, and architecture rules."
 ---
 
 # Video tutorials

@@ -1,5 +1,6 @@
 ---
 uid: dependency-injection-aspect
+summary: "The document discusses the use of `Microsoft.Extensions.DependencyInjection` in .NET for dependency injection. It highlights the advantages of using `Metalama.Extensions.DependencyInjection.DependencyAttribute` to reduce boilerplate code, simplify migration, and ensure compatibility."
 ---
 
 # Injecting dependencies
@@ -27,4 +28,5 @@ The <xref:Metalama.Extensions.DependencyInjection.DependencyAttribute?text=[Depe
 The following example demonstrates the code generation pattern for three types of dependency: required, optional, and lazy.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.DependencyInjection/DependencyInjectionAspect.cs]
+
 

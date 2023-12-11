@@ -1,5 +1,6 @@
 ---
 uid: invariants
+summary: "The document explains how to check type invariants in Metalama, including adding invariants, opting out from invariant checking, and suspending enforcement of invariants, with examples provided."
 ---
 
 # Checking type invariants
@@ -47,5 +48,6 @@ Once this feature is enabled, there are two ways to suspend invariant enforcemen
 The following example builds upon the previous one. We added a fabric to enable the  <xref:Metalama.Patterns.Contracts.ContractOptions.IsInvariantSuspensionSupported> option. The `Invoice` method now has two new methods, `UpdateDiscounts1` and `UpdateDiscounts2`, which update `DiscountPercent` and `DiscountAmount` while suspending invariants.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Contracts/Invariants_Suspend.cs]
+
 
 

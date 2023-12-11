@@ -1,6 +1,7 @@
 ---
 uid: validation
 level: 200
+summary: "The document discusses verifying source code against architecture, design patterns, and team conventions, emphasizing the benefits of immediate feedback, smoother code reviews, team alignment, reduced complexity, and architecture erosion prevention."
 ---
 
 # Verifying architecture

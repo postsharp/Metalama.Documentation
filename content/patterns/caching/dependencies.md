@@ -1,5 +1,6 @@
 ---
 uid: caching-dependencies
+summary: "The document explains the concept of cache dependencies in Metalama Caching, detailing how to add string dependencies, implement object-oriented dependencies, and suspend the collection of cache dependencies. It also highlights the potential trade-offs in performance and resource usage."
 ---
 # Working with cache dependencies
 
@@ -88,3 +89,4 @@ When a parent cached method calls a child cached method, the dependencies of the
 However, there are cases where propagating the caching context from the parent to the child methods (and thereby the collection of child dependencies into the parent context) is not desirable. For instance, if the parent method runs an asynchronous child task using `Task.Run` and does not wait for its completion, then it is likely that the dependencies of methods called in the child task should not be propagated to the parent. This is because the child task could be considered a side effect of the parent method and should not affect caching. Undesired dependencies would not compromise the program's correctness, but they would make it less efficient.
 
 To suspend the collection of dependencies in the current context and in all child contexts, use the <xref:Metalama.Patterns.Caching.CachingServiceExtensions.SuspendDependencyPropagation*?text=_cachingService.SuspendDependencyPropagation> method within a `using` construct.
+

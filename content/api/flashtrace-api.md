@@ -1,5 +1,6 @@
 ---
 uid: flashtrace-api
+summary: "Flashtrace is a logging front-end for Metalama Caching, only recommended for specific scenarios like custom cache key formatters."
 ---
 
 # Flashtrace API

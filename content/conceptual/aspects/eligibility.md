@@ -1,6 +1,7 @@
 ---
 uid: eligibility
 level: 300
+summary: "The document explains how to define eligibility for aspects in code, ensuring predictable behavior, standard error messages, and relevant IDE suggestions. It provides examples and discusses benefits, custom eligibility conditions, eligibility builders, and when to emit custom errors."
 ---
 
 # Defining the eligibility of aspects
@@ -93,3 +94,4 @@ For details about reporting errors, see <xref:diagnostics>.
 The following example expands the previous one, reporting custom errors when the target class does not define a field `logger` of type `TextWriter`.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/EligibilityAndValidation.cs name="Eligibility and Validation"]
+

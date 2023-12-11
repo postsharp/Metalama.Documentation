@@ -1,6 +1,7 @@
 ---
 uid: debugging-aspect-oriented-code
 level: 100
+summary: "The document provides a step-by-step guide on how to debug aspect-oriented code using the Visual Studio debugger, including setting up a debug configuration, using breakpoints and step-into, and forcefully breaking the program."
 ---
 
 # Debugging aspect-oriented code
@@ -86,4 +87,5 @@ You can use `Debugger.Break` to forcefully break the program. The following scre
 > [!div class="see-also"]
 > <xref:debugging-aspects>
 > <xref:video-debugging>
+
 

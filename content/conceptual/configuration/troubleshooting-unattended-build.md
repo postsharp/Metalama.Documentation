@@ -1,5 +1,6 @@
 ---
 uid: troubleshooting-unattended-build
+summary: "The document provides instructions on how to enable logging and process dumps for an unattended build on a build server without installing the 'metalama' tool."
 ---
 
 # Troubleshooting an unattended build
@@ -41,3 +42,4 @@ Metalama will automatically read the diagnostics configuration from the environm
 ## Step 4. Download the logs
 
 You can find the logs under the `%TEMP%\Metalama\Logs` directory.
+

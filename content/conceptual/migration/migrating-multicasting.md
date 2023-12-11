@@ -1,5 +1,6 @@
 ---
 uid: migrating-multicasting
+summary: "The document provides instructions on migrating multicasting from PostSharp to Metalama. It details how to enable multicasting for simple and blank aspects, and how to implement eligibility requirements."
 ---
 
 # Migrating PostSharp attribute multicasting to Metalama
@@ -76,5 +77,6 @@ public void BuildEligibility( IEligibilityBuilder<IMethod> builder )
     builder.MustNotBeAbstract();
 }
 ```
+
 
 

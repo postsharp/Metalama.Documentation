@@ -1,6 +1,7 @@
 ---
 uid: aspect-validating
 level: 300
+summary: "The document explains how to validate code from an aspect using Metalama Framework, covering validation before or after aspects and validating code references. It includes examples and steps to follow."
 ---
 
 # Validating code from an aspect
@@ -54,3 +55,4 @@ To create an aspect that validates references:
 The following example implements a custom attribute `[ForTestOnly]` that enforces that the target of this attribute can only be used from a namespace that ends with `.Tests.`.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/ForTestOnly.cs name="For Test Only, Aspect Implementation"]
+

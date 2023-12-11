@@ -1,6 +1,7 @@
 ---
 uid: overriding-methods
 level: 300
+summary: "The document provides advanced techniques for overriding methods using the Metalama.Framework.Aspects library, including accessing method details, invoking methods with different arguments, overriding async and iterator methods, and overriding multiple methods with the same aspect."
 ---
 
 # Overriding methods
@@ -205,3 +206,4 @@ The following aspect wraps all instance methods with a `lock( this )` statement.
 Instead of providing a single template method, you can give several of them and let the framework choose the most suitable one. The principle of this feature is described above. Instead of passing a string to the second argument of `OverrideMethod`, you can pass a <xref:Metalama.Framework.Advising.MethodTemplateSelector> and initialize it with many templates. See the reference documentation of <xref:Metalama.Framework.Advising.IAdviceFactory.Override*?displayProperty=nameWithType> and <xref:Metalama.Framework.Advising.MethodTemplateSelector> for details.
 
 [comment]: # (TODO: example)
+

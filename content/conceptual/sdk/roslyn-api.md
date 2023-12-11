@@ -1,6 +1,7 @@
 ---
 uid: roslyn-api
 level: 400
+summary: "The document provides a guide on how to access the syntax tree in the Roslyn API from aspects using the Metalama SDK. It includes steps to reference the SDK and use the Roslyn API."
 ---
 
 # Using the Roslyn API from aspects

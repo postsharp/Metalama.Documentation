@@ -1,6 +1,7 @@
 ---
 uid: advising-code
 level: 300
+summary: "The document provides a list of articles discussing advanced techniques in transforming code, including overriding methods, fields, events, implementing interfaces, and using aspects."
 ---
 
 # Transforming code
@@ -20,5 +21,6 @@ In <xref:simple-aspects>, you learned how to build simple aspects composed of a 
 | <xref:adding-attributes> | This article elucidates how to add or remove custom attributes. |
 | <xref:introducing-constructor-parameters> | This article explains how to append new parameters to constructors and pull their value from constructors of derived classes. |
 | <xref:sharing-state-with-advice> | This article discusses how the `BuildAspect` method can pass parameters or state to the templates.
+
 
 

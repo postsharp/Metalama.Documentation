@@ -1,6 +1,7 @@
 ---
 uid: validation-extending
 level: 300
+summary: "The document provides a guide on how to create custom validation rules in Metalama, including extending usage verification with custom predicates and creating new verification rules."
 ---
 
 # Creating your own validation rules
@@ -88,3 +89,4 @@ Follow this procedure:
 
 > [!div class="see-also"]
 > <xref:video-custom-architecture-rules>
+

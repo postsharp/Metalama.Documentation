@@ -1,6 +1,7 @@
 ---
 uid: compile-time-testing
 level: 400
+summary: "The document provides a guide on testing compile-time code using unit tests, outlining the benefits and a step-by-step process to create unit tests for compile-time code in a .NET 6.0 project using the Metalama.Testing.UnitTesting package."
 ---
 
 # Testing compile-time code
@@ -104,4 +105,5 @@ class C
 
 > [!NOTE]
 > Some APIs require the execution context to be set and assigned to your compilation. Currently, there's no public API to modify the execution context.
+
 

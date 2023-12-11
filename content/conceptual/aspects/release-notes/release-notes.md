@@ -1,5 +1,6 @@
 ---
 uid: release-notes
+summary: "The document provides a high-level changelog for all Metalama releases, highlighting key features and enhancements, and the status of each version."
 ---
 
 # Release Notes
@@ -14,5 +15,6 @@ This chapter gives a high-level changelog for all Metalama releases. It does not
 | 2023.2  | Deprecated            | Bug fixes, minor enhancements                                                                     | <xref:release-notes-2023.2> |
 | 2023.1  | Deprecated            | Bug fixes, minor enhancements                                                                     | <xref:release-notes-2023.1> |
 | 2023.0  | Deprecated            | Initial release                                                                                   | <xref:release-notes-2023.0> |
+
 
 

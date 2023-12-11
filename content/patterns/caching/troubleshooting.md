@@ -1,5 +1,6 @@
 ---
 uid: caching-troubleshooting
+summary: "The document provides instructions on how to troubleshoot the caching feature in Metalama using verbose logging, both with and without dependency injection."
 ---
 # Troubleshooting Metalama Caching
 
@@ -26,3 +27,4 @@ The following is an update to the _getting started_ example, with logging enable
 The <xref:Metalama.Patterns.Caching.CachingService> object and other components of Metalama Caching acquire the <xref:Flashtrace.IFlashtraceLoggerFactory> interface through the <xref:System.IServiceProvider>. To enable logging, you must provide an implementation of <xref:System.IServiceProvider> that supports the <xref:Flashtrace.IFlashtraceLoggerFactory> interface. Then, pass this <xref:System.IServiceProvider> to the <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create> method. You can use the <xref:Flashtrace.Loggers.TraceSourceLoggerFactory> class, which relies on the <xref:System.Diagnostics.TraceSource> system class.
 
 If you plan to implement the <xref:Flashtrace.IFlashtraceLoggerFactory> yourself, you may find the <xref:Flashtrace.Loggers.SimpleFlashtraceLogger> useful.
+

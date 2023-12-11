@@ -1,6 +1,7 @@
 ---
 uid: initializers
 level: 300
+summary: "The document provides instructions on how to add initializers to fields, properties, object constructors, and type constructors using the Metalama Framework. It includes examples for each case."
 ---
 
 # Adding initializers
@@ -62,5 +63,6 @@ If you wish to insert logic into a specific constructor, call the <xref:Metalama
 ## Before the type constructor
 
 The same approach can be used to add logic to the type constructor (i.e., static constructor) instead of the object constructor. In this case, the `InitializerType.BeforeTypeConstructor` value should be used.
+
 
 

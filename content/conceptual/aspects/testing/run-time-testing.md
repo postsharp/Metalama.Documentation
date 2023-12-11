@@ -1,6 +1,7 @@
 ---
 uid: run-time-testing
 level: 300
+summary: "The document discusses the approach of applying an aspect to a target code and creating unit tests to verify the resulting code's behavior, using a logging aspect as an example."
 ---
 
 # Unit testing aspects at run time
@@ -41,3 +42,4 @@ VoidMethod(5) succeeded.
 
 > [!div class="see-also"]
 > <xref:video-testing>
+

@@ -1,5 +1,6 @@
 ---
 uid: architecture
+summary: "The document describes the architecture of Metalama, showing how aspects, validators, code fixes, advice, source code, fabrics, and diagnostics interact."
 ---
 # Metalama architecture
 
@@ -18,5 +19,6 @@ flowchart  TB
     Diagnostics -- contain --> CodeFixes
     CodeFixes[Code Fixes] -- apply --> Aspects
 ```
+
 
 

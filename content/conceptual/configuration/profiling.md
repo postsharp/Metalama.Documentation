@@ -1,6 +1,7 @@
 ---
 uid: profiling
 level: 200
+summary: "The document provides instructions for profiling Metalama or IDE processes to diagnose performance issues, including capturing and sending performance data, while cautioning about potential confidentiality issues."
 ---
 
 # Capturing performance data
@@ -87,3 +88,4 @@ You will find the profiling snapshots in the `%TEMP%\Metalama\Profiling` directo
 > **NEVER** share the snapshot URL publicly on a service like GitHub Issues.
 
 Instead, kindly send us the link via [email](mailto:hello@postsharp.net) or private message on [Slack](https://www.postsharp.net/slack).
+

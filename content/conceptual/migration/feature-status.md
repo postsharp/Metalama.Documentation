@@ -1,5 +1,6 @@
 ---
 uid: migration-feature-status
+summary: "The document provides an update on the migration of PostSharp features to Metalama, detailing what has been completed and what is still in progress."
 ---
 
 # Status of the migration of PostSharp features to Metalama

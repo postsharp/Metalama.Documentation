@@ -1,6 +1,7 @@
 ---
 uid: understanding-your-code-with-aspects
 level: 100
+summary: "The document explains how to understand aspect-oriented code using Metalama's tools like CodeLens, Diff Preview, and Debug Transformed Code. It also discusses explicit and implicit aspect applications."
 ---
 
 # Understanding your aspect-oriented code
@@ -89,3 +90,4 @@ Z has changed
 ```
 
 Observe that members of the `MovingVertex3D` type don't have an explicit `[NotifyPropertyChanged]` attribute. The aspect is inherited from the base class.
+

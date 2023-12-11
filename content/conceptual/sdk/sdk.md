@@ -1,6 +1,7 @@
 ---
 uid: sdk
 level: 400
+summary: "The document provides guidance on using the `Metalama.Framework.Sdk` NuGet package, recommending it for creating one-off coding aids and advising against its use for conventional development."
 ---
 
 # Extending Metalama with the Roslyn API
@@ -18,4 +19,5 @@ This chapter comprises the following articles:
 * <xref:aspect-weavers>
 * <xref:roslyn-api>
 * <xref:custom-metrics>
+
 

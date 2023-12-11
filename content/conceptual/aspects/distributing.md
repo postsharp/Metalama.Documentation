@@ -1,5 +1,6 @@
 ---
 uid: distributing
+summary: "The document provides instructions on how to manage aspect usage in projects, either by allowing it to flow to other projects or preventing its transitive use with the help of Metalama.Framework and Metalama.Framework.Redist packages."
 ---
 
 # Distributing projects that use aspects
@@ -31,4 +32,5 @@ This can be achieved by the following code snippet in your `.csproj` file:
   <PackageReference Include="Metalama.Framework.Redist" Version="CHANGE ME"/>
 </ItemGroup>
 ```
+
 

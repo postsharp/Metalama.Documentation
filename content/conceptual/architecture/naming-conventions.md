@@ -1,6 +1,7 @@
 ---
 uid: naming-conventions
 level: 200
+summary: "The document explains how to enforce naming conventions in codebases using Metalama, either through custom attributes for source-owned classes or interfaces, or fabrics for other scenarios."
 ---
 
 # Enforcing naming conventions

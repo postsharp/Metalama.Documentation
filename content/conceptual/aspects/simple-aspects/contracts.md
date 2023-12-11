@@ -1,6 +1,7 @@
 ---
 uid: simple-contracts
 level: 200
+summary: "The document provides a guide on how to use contracts in Metalama for aspect-oriented programming, including creating custom attributes for field, property, or parameter validation, and how to implement the ContractAspect class."
 ---
 
 # Getting started: contracts
@@ -50,5 +51,6 @@ If you wish to delve deeper into contracts, consider referring to the following 
 
 * In this article, we have restricted ourselves to very basic contract implementations. To learn how to write more complex code templates, you can directly refer to <xref:templates>.
 * In this article, we have only applied contracts to the _default direction_ of fields, properties, or parameters. To understand the concept of contract direction, refer to <xref:contracts>.
+
 
 

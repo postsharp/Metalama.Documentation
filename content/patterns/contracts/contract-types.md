@@ -1,5 +1,6 @@
 ---
 uid: contract-types
+summary: "The document describes various contract attributes in the Metalama Patterns library, including nullability, string, enum, numeric, and collections contracts, each with specific verification rules."
 ---
 
 # List of contract attributes
@@ -111,3 +112,4 @@ Note that this contract does not validate the collection object against being nu
 ### Example: [NotEmpty] on collection
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Contracts/NotEmptyCollectionContract.cs]
+

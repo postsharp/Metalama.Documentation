@@ -1,5 +1,6 @@
 ---
 uid: adding-attributes
+summary: "The document provides a guide on how to add or remove custom attributes to or from any declaration using the Metalama Framework. It includes examples and methods for existing and introduced declarations."
 ---
 
 # Adding custom attributes
@@ -39,3 +40,4 @@ The second, more advanced method to introduce declarations into a type is to cal
 ### Example: programmatically introducing a field with EditorBrowsableAttribute
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/AddEditorBrowsableAttribute_Introduced_Programmatic.cs name="Add attributes to introduced field"]
+

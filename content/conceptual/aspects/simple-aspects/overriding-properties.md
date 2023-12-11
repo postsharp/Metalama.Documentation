@@ -1,6 +1,7 @@
 ---
 uid: simple-override-property
 level: 200
+summary: "The document provides a guide on how to override fields and properties using the Metalama.Framework package in C#, including examples of trimming strings and normalizing values to uppercase."
 ---
 
 # Getting started: overriding fields and properties
@@ -74,5 +75,6 @@ If you want to delve deeper into field/property overrides, consider exploring th
 
 > [!div class="see-also"]
 > <xref:video-other-aspect-types>
+
 
 

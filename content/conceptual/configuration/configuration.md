@@ -1,6 +1,7 @@
 ---
 uid: configuration
 level: 300
+summary: "The document provides guidance on configuring Metalama, covering topics like telemetry, MSBuild properties, logging, process dumps, performance data collection, unattended build troubleshooting, and NuGet packages."
 ---
 
 # Configuration and troubleshooting
@@ -16,5 +17,6 @@ The following articles provide guidance on how to configure Metalama.
 | <xref:profiling> | This article explains how to collect performance data for Metalama processes. |
 | <xref:troubleshooting-unattended-build> | This article provides information on deploying diagnostic configurations to a build server. |
 | <xref:packages> | This article presents the list of NuGet packages that constitute Metalama, along with their dependency graphs. |
+
 
 

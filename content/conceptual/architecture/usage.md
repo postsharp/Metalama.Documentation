@@ -1,6 +1,7 @@
 ---
 uid: validating-usage
 level: 200
+summary: "The document provides a detailed guide on how to verify the usage of a class, member or namespace in C# using Metalama, a tool that allows for fine-tuning accessibility. It covers both attribute-based and programmatically validation methods."
 ---
 
 # Verifying usage of a class, member, or namespace

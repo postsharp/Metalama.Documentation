@@ -1,6 +1,7 @@
 ---
 uid: install-vsx
 level: 100
+summary: "The document provides step-by-step instructions on how to install the Metalama Tools extension for Visual Studio 2022, and mentions the Metalama Command-Line Tool."
 ---
 
 # Installing Metalama Tools for Visual Studio
@@ -57,3 +58,4 @@ To verify the successful installation of the extension, navigate to the Extensio
 ## Installing Metalama Command-Line Tool
 
 While the Metalama command-line tool may not be necessary during your initial interactions with Metalama, it is beneficial to be aware of its existence. For more information, refer to <xref:dotnet-tool>. We will remind you about this tool when it becomes relevant to your work.
+

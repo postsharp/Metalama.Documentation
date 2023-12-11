@@ -1,6 +1,7 @@
 ---
 uid: fabrics-many-projects
 level: 300
+summary: "The document provides instructions on how to add aspects to multiple projects in a repository using transitive project fabrics and common project fabrics, including their execution order."
 ---
 
 # Adding aspects to multiple projects
@@ -131,3 +132,4 @@ Then the projects have the following fabrics:
 | `Project12` | `SharedFabric` |
 | `Project21` | `SharedFabric` |
 | `Project12` | `SharedFabric`, `Project21Fabric` |
+

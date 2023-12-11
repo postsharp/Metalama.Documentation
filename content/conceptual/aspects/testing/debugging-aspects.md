@@ -1,6 +1,7 @@
 ---
 uid: debugging-aspects
 level: 300
+summary: "The document provides step-by-step instructions on how to debug compile-time and design-time logic in aspect-oriented programming, emphasizing the importance of inserting breakpoints directly into the source code."
 ---
 
 # Debugging aspects
@@ -71,5 +72,6 @@ To attach a debugger to the design-time compiler process, follow these steps:
 > [!div class="see-also"]
 > <xref:debugging-aspect-oriented-code>
 > <xref:video-debugging>
+
 
 

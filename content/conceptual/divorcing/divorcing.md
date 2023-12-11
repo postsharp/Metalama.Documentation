@@ -1,6 +1,7 @@
 ---
 uid: divorcing
 level: 200
+summary: "The document explains the process of separating from the Metalama software framework, using the 'metalama divorce' command. It outlines the potential drawbacks and a seven-step procedure to ensure a smooth transition."
 ---
 
 # Divorcing from Metalama
@@ -80,5 +81,6 @@ Currently, Metalama does not provide a way to automatically remove fabrics and a
 
 * Editing all aspects to turn them into plain custom attributes,
 * Removing all fabrics.
+
 
 
