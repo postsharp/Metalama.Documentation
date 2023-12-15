@@ -57,7 +57,7 @@ Follow these steps to configure your project:
 
 When dependency injection is disabled, we can also cache `static` methods. Observe the <xref:Metalama.Patterns.Caching.Aspects.CacheAttribute?text=[Cache]> in the static `CloudCalculator` implementation.
 
-[!metalama-test ~/code/Metalama.Documentation.SampleCode.Caching/GettingStarted/GettingStarted.cs ]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.Caching/GettingStarted_NoDI/GettingStarted_NoDI.cs ]
 
 ## What's next
 
