@@ -5,7 +5,7 @@ using Metalama.Extensions.Architecture.Aspects;
 namespace Doc.Architecture.Experimental
 {
     [Experimental]
-    internal static class ExperimentalApi
+    public static class ExperimentalApi
     {
         public static void Foo() { }
 
