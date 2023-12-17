@@ -1,1 +1,25 @@
-// Error LAMA0037 on `Experimental`: `The aspect 'Experimental' cannot be applied to the type 'ExperimentalApi' because 'ExperimentalApi' must be public or protected or private protected or protected internal.`
+// Warning LAMA0900 on `ExperimentalApi.Foo`: `The 'ExperimentalApi' type is experimental.`
+using Metalama.Extensions.Architecture.Aspects;
+namespace Doc.Architecture.Experimental
+{
+    [Experimental]
+    public static class ExperimentalApi
+    {
+        public static void Foo()
+        {
+        }
+        public static void Bar()
+        {
+            // This call is allowed because we are within the experimental class.
+            Foo();
+        }
+    }
+    internal static class ProductionCode
+    {
+        public static void Dummy()
+        {
+            // This call is reported.
+            ExperimentalApi.Foo();
+        }
+    }
+}
