@@ -11,7 +11,7 @@ internal class MultipleFilesRenderer : BaseRenderer<MultipleFilesToken>
     protected override StringBuffer RenderCore( MultipleFilesToken token, MarkdownBlockContext context )
     {
         var directory = Path.GetDirectoryName( token.Files[0] )!;
-        var tabGroup = new DirectoryTabGroup( token.Name, directory );
+        var tabGroup = new DirectoryTabGroup( token.Name.Replace( '.', '_' ), directory );
 
         foreach ( var file in token.Files )
         {

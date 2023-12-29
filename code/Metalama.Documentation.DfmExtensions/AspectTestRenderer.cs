@@ -40,7 +40,7 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
             throw new FileNotFoundException( $"The file '{token.Src}' does not exist." );
         }
 
-        var id = Path.GetFileNameWithoutExtension( token.Src ).ToLowerInvariant();
+        var id = Path.GetFileNameWithoutExtension( token.Src ).ToLowerInvariant().Replace( '.', '_' );
         var directory = Path.GetDirectoryName( token.Src )!;
 
         var tabGroup = new AspectTestTabGroup( id );

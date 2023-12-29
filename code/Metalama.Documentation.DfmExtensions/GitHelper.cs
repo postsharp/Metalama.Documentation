@@ -60,7 +60,7 @@ internal static class GitHelper
         var relativePath = PathHelper.GetRelativePath( gitDirectory, path );
         var gitUrl = GetRepoUrl( gitDirectory );
 
-        var fullUrl = gitUrl + "/blob/master/" + relativePath.Replace( "\\", "/" );
+        var fullUrl = gitUrl + "/blob/HEAD/" + relativePath.Replace( "\\", "/" );
 
         return fullUrl;
     }
