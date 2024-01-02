@@ -1,5 +1,5 @@
 ---
-uid: release-notes-2024-0
+uid: release-notes-2024.0
 summary: "Metalama 2024.0 adds support for C# 12, offers multi C# version support, and introduces deterministic build for all Metalama assemblies. Other improvements include published symbol packages, warnings and errors deduplication, and updated licensing."
 ---
 

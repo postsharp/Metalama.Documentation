@@ -8,6 +8,7 @@ summary: "The document outlines the different chapters in a manual about Metalam
 | Chapter              | Description                                                                                                              |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------|
 | <xref:requirements> | This article outlines the requirements of Metalama for the development environment, along with its compatibility with various project types and platforms.
+| <xref:release-notes> | The document provides a high-level changelog for all Metalama releases, highlighting key features and enhancements, and the status of each version
 | <xref:installing>   | This chapter provides instructions on how to install the different components of Metalama. |
 | <xref:using-metalama> | This chapter details how to use Metalama with prebuilt aspects. It does not, however, cover how to create your own aspects.
 | <xref:aspects>      | This chapter provides guidance on how to create your own aspects.
