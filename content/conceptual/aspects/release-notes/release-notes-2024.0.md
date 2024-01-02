@@ -1,5 +1,6 @@
 ---
 uid: release-notes-2024-0
+summary: "Metalama 2024.0 adds support for C# 12, offers multi C# version support, and introduces deterministic build for all Metalama assemblies. Other improvements include published symbol packages, warnings and errors deduplication, and updated licensing."
 ---
 
 # Metalama 2024.0
@@ -45,3 +46,4 @@ We have been working on the following projects, but they are not yet stable:
 
 * [Metalama.Patterns.Observability](https://github.com/postsharp/Metalama.Patterns/tree/release/2024.0/src/Metalama.Patterns.Observability) is an aspect implementing the `INotifyPropertyChanged` interface. It supports computed properties and child objects.
 * [Metalama.Patterns.Xaml](https://github.com/postsharp/Metalama.Patterns/tree/release/2024.0/src/Metalama.Patterns.Xaml) are aspects implementing XAML commands and dependency properties.
+
