@@ -4,48 +4,44 @@ uid: release-notes-2024-0
 
 # Metalama 2024.0
 
-The principal objective of this release was to support C# 12. Additionally, it fills a few leftovers of the previous releases when we released the source code of Metalama.
+The primary goal of this release was to provide support for C# 12. Additionally, it addresses a few remaining tasks from previous releases when we made the Metalama source code available.
 
-## Plaftorm update
+## Platform Update
 
-
-* `Metalama.Compiler`: merge from Roslyn 4.8 RTM.
-
+* `Metalama.Compiler`: We merged Roslyn 4.8 RTM.
 * Support for C# 12:
 
    * Default lambda parameters,
    * Inline arrays in run-time code,
-   * `nameof`: access to instance members from a static context,
+   * `nameof`: Access to instance members from a static context,
    * Primary constructors,
    * Type aliases,
-   * Collection expressions (aka collection literals) like `[1,2,..array]`,
-   * `AppendParameter` advice (used in dependency injection scenarios) in primary constructors,
+   * Collection expressions (also known as collection literals) like `[1,2,..array]`,
+   * `AppendParameter` advice (utilized in dependency injection scenarios) in primary constructors,
    * Primary constructor parameters in initializer expressions.
 
 ## Multi C# version support
 
-Metalama 2024.0 is the first version that supports several versions of C#.
+Metalama 2024.0 is the first version to support multiple versions of C#.
 
-* Metalama will use different C# code generation patterns depending on the C# version of the current project. Supported versions are 10, 11, and 12.
-* Metalama detects the version used by each T# template and will report an error if a template is used in a project that targets a lower version of C# than required. The new MSBuild property `MetalamaTemplateLanguageVersion` restricts the version of C# that can be used in templates. Define this property if you don't want to use a higher version of C# than desired by mistake.
-* There is currently no way for a template to conditionally generate code patterns according to the C# version of the target project.
+* Metalama will utilize different C# code generation patterns based on the C# version of the current project. The supported versions are 10, 11, and 12.
+* Metalama identifies the version used by each T# template and will report an error if a template is used in a project targeting a lower version of C# than required. The new MSBuild property `MetalamaTemplateLanguageVersion` limits the version of C# that can be used in templates. Define this property if you want to prevent the accidental use of a higher version of C# than intended.
+* Currently, there is no way for a template to conditionally generate code patterns according to the C# version of the target project.
 
+## Other improvements
 
-## Other Improvements
-
-* **Deterministic build** is now implemented for all Metalama assemblies. This allows users to verify that the binaries we released are actually built from our source code. The only difference between official assemblies and your own builds should normally be strong name keys and AuthentiCode signatures. Note that building Metalama from source code requires a source subscription, sold for an additional fee.
-* **Symbol packages** are now published for all Metalama NuGet packages, allowing for source code debugging thanks to SourceLink.
-* **Warnings and errors deduplication**. (Not supported in the user API at the moment.)
-* **Licensing**: aspect inheritance is now allowed for all license types.
-
+* **Deterministic build** is now implemented for all Metalama assemblies. This feature enables users to verify that the released binaries were indeed built from our source code. The only differences between the official assemblies and your own builds should normally be strong name keys and AuthentiCode signatures. Note that building Metalama from source code requires a source subscription, sold for an additional fee.
+* **Symbol packages**: Now published for all Metalama NuGet packages, allowing for source code debugging via SourceLink.
+* **Warnings and errors deduplication**. Currently not supported in the user API.
+* **Licensing**: Aspect inheritance is now permitted for all license types.
 
 ## Breaking changes
 
-In the <xref:Metalama.Framework.Code.RefKind> enum, `In` and `RefReadOnly` are no longer synonyms.
+In the <xref:Metalama.Framework.Code.RefKind> enum, `In` and `RefReadOnly` are no longer synonymous.
 
 ## In Progress
 
-We have been working on the following projects, but they are not stable yet:
+We have been working on the following projects, but they are not yet stable:
 
-* [Metalama.Patterns.Observability](https://github.com/postsharp/Metalama.Patterns/tree/release/2024.0/src/Metalama.Patterns.Observability) is an aspect implementating of the `INotifyPropertyChanged` interface. It supports computer properties and child objects.
+* [Metalama.Patterns.Observability](https://github.com/postsharp/Metalama.Patterns/tree/release/2024.0/src/Metalama.Patterns.Observability) is an aspect implementing the `INotifyPropertyChanged` interface. It supports computed properties and child objects.
 * [Metalama.Patterns.Xaml](https://github.com/postsharp/Metalama.Patterns/tree/release/2024.0/src/Metalama.Patterns.Xaml) are aspects implementing XAML commands and dependency properties.
