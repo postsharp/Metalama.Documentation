@@ -31,7 +31,7 @@ Metalama 2024.0 is the first version to support multiple versions of C#.
 
 ## Other improvements
 
-* **Deterministic build** is now implemented for all Metalama assemblies. This feature enables users to verify that the released binaries were indeed built from our source code. The only differences between the official assemblies and your own builds should normally be strong name keys and AuthentiCode signatures. Note that building Metalama from source code requires a source subscription, sold for an additional fee.
+* **Deterministic build** is now implemented for all Metalama assemblies. This feature enables users to verify that the released binaries were indeed built from our source code. The only differences between the official assemblies and your own builds should normally be strong-name and Authenticode signatures. Note that building Metalama from source code requires a source subscription, which is available for an additional fee.
 * **Symbol packages**: Now published for all Metalama NuGet packages, allowing for source code debugging via SourceLink.
 * **Warnings and errors deduplication**. Currently not supported in the user API.
 * **Licensing**: Aspect inheritance is now permitted for all license types.
