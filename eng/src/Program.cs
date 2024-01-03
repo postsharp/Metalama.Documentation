@@ -67,7 +67,7 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
         new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
             "https://0fpg9nu41dat6boep.a1.typesense.net",
             "metalamadoc",
-            "https://doc-production.metalama.net/sitemap.xml",
+            "https://doc-production.postsharp.net/metalama/sitemap.xml",
             true )
     }
 };
