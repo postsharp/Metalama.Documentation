@@ -28,7 +28,7 @@ Let's start with logging, the traditional _Hello, world_ example of aspect-orien
 
 Type the following code:
 
-[!metalama-file ~/code/Metalama.Documentation.SampleCode.AspectFramework/GettingStarted.Aspect.cs]
+[!metalama-file ~/code/Metalama.Documentation.SampleCode.AspectFramework/GettingStarted/GettingStarted.Aspect.cs]
 
 As you can infer from its name, the `LogAttribute` class is a custom attribute. You can think of an aspect as a _template_. When you apply it to some code (in this case, to a method), it transforms it. Indeed, the code of the target method will be replaced by the implementation of `OverrideMethod`. This method is very special. Some parts execute at run time, while others, which typically start with the `meta` keyword, execute at compile time. If you installed Metalama Tools for Visual Studio, you will notice that compile-part segments are displayed with a different background color.
 
