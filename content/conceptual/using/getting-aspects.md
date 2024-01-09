@@ -22,16 +22,12 @@ The NuGet package that contains these aspects is [Metalama.Documentation.QuickSt
 When applied, these aspects change the behavior of your source code without altering the source level. They transform the source code before it is passed to the compiler.
 
 > [!NOTE]
-> The implementation of these aspects is not the focus of this chapter. Instead, we will focus on how to use them.
+> The implementation of these aspects is not the focus of this chapter. Instead, we will focus on how to _use_ them.
 
-## Metalama ready-made aspects
+## Metalama Marketplace
 
-We are currently in the process of porting the `PostSharp.Patterns` aspect suite to Metalama and making it open-source. This process may take several months. You can follow the progress in the [Metalama.Patterns](https://github.com/postsharp/Metalama.Patterns) repository. Once completed, you will have access to professionally-built aspects without the need to create them yourself.
+Don't use the demo aspects in real projects. Instead, [Metalama Marketplace](https://www.postsharp.net/metalama/marketplace) and find dozens of open-source aspects and extensions.
 
-## Community aspects
 
-In addition, you can find open-source aspect libraries built by the community on the [Metalama community portal](https://www.postsharp.net/community/projects).
-
-You can [search GitHub](https://github.com/search?p=1&q=metalama&type=Repositories) for projects that mention Metalama.
 
 

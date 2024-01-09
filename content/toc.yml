@@ -1,6 +1,9 @@
 items:
 # - name: Overview
 #   href: overview/toc.yml
+
+- name: Getting started
+  topicUid: main-getting-started
 - name: Video tutorials
   href: videos/toc.yml
 - name: Conceptual documentation
