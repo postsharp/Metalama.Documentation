@@ -75,16 +75,16 @@ namespace Doc.InvalidateAspect
     private static MethodInfo[] _methodsInvalidatedBy_UpdatePrice_DA3C5EB2E8FE3C0C2B256E589481CF14;
     static ProductCatalogue()
     {
-      ProductCatalogue._methodsInvalidatedBy_UpdatePrice_DA3C5EB2E8FE3C0C2B256E589481CF14 = new MethodInfo[]
-      {
-        RunTimeHelpers.ThrowIfMissing(typeof(ProductCatalogue).GetMethod("GetPrice", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!, "ProductCatalogue.GetPrice(string)")
-      };
+      ProductCatalogue._cacheRegistration_GetPrice = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(ProductCatalogue).GetMethod("GetPrice", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!, "ProductCatalogue.GetPrice(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, false);
+      ProductCatalogue._cacheRegistration_GetProducts = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!, "ProductCatalogue.GetProducts()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
       ProductCatalogue._methodsInvalidatedBy_AddProduct_976614B12F3F447F4082EAE1C88C1EE0 = new MethodInfo[]
       {
         RunTimeHelpers.ThrowIfMissing(typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!, "ProductCatalogue.GetProducts()")
       };
-      ProductCatalogue._cacheRegistration_GetProducts = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!, "ProductCatalogue.GetProducts()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
-      ProductCatalogue._cacheRegistration_GetPrice = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(ProductCatalogue).GetMethod("GetPrice", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!, "ProductCatalogue.GetPrice(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, false);
+      ProductCatalogue._methodsInvalidatedBy_UpdatePrice_DA3C5EB2E8FE3C0C2B256E589481CF14 = new MethodInfo[]
+      {
+        RunTimeHelpers.ThrowIfMissing(typeof(ProductCatalogue).GetMethod("GetPrice", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!, "ProductCatalogue.GetPrice(string)")
+      };
     }
     public ProductCatalogue(ICachingService? cachingService = default)
     {
