@@ -10,6 +10,7 @@ summary: "The document outlines the different chapters in a manual about Metalam
 | <xref:requirements> | This article outlines the requirements of Metalama for the development environment, along with its compatibility with various project types and platforms.
 | <xref:installing>   | This chapter provides instructions on how to install the different components of Metalama. |
 | <xref:using-metalama> | This chapter details how to use Metalama with prebuilt aspects. It does not, however, cover how to create your own aspects.
+| <xref:patterns> | This chapter documents a set of high-quality, open-source aspects developed and supported by the Metalama team. |
 | <xref:aspects>      | This chapter provides guidance on how to create your own aspects.
 | <xref:validation>    | This section offers insights on how to programmatically validate code against architecture rules or conventions.
 | <xref:sdk> | This chapter explains how to extend Metalama using the Roslyn API.
