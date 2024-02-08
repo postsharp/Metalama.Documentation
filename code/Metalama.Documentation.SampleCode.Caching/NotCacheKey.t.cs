@@ -32,8 +32,8 @@ namespace Doc.NotCacheKey
     private ICachingService _cachingService;
     static PricingService()
     {
-      PricingService._cacheRegistration_GetProducts = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(PricingService).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string), typeof(string) }, null)!, "PricingService.GetProducts(string, string?)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
       PricingService._cacheRegistration_GetProductPrice = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(PricingService).GetMethod("GetProductPrice", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string), typeof(string) }, null)!, "PricingService.GetProductPrice(string, string?)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, false);
+      PricingService._cacheRegistration_GetProducts = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(PricingService).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string), typeof(string) }, null)!, "PricingService.GetProducts(string, string?)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
     }
     public PricingService(ICachingService? cachingService = default)
     {

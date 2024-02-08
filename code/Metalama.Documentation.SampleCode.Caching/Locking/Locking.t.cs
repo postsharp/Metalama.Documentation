@@ -47,8 +47,8 @@ namespace Doc.Locking
     private ICachingService _cachingService;
     static CloudService()
     {
-      CloudService._cacheRegistration_ReadFileWithoutLock = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(CloudService).GetMethod("ReadFileWithoutLock", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!, "CloudService.ReadFileWithoutLock(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
       CloudService._cacheRegistration_ReadFileWithLock = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(CloudService).GetMethod("ReadFileWithLock", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!, "CloudService.ReadFileWithLock(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = "Locking", SlidingExpiration = null }, true);
+      CloudService._cacheRegistration_ReadFileWithoutLock = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(CloudService).GetMethod("ReadFileWithoutLock", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!, "CloudService.ReadFileWithoutLock(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
     }
     public CloudService(ICachingService? cachingService = default)
     {
