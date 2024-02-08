@@ -5,26 +5,28 @@ summary: "The document provides guidance on how to navigate the Metalama documen
 
 # Metalama Documentation
 
-Welcome to the documentation of Metalama, a framework designed to enhance code quality and productivity for C#.
-
-
-## Documentation structure
-
-| Book | Description |
-|------|-------------|
-| <xref:videos> | A collection of tutorial videos. |
-| <xref:conceptual> | Comprehensive and precise reference documentation. |
-| <xref:samples> | Commented examples with varying degrees of complexity. |
-| <xref:api> | API documentation generated from the source code. |
+Welcome to the documentation of Metalama, a code generation and analysis framework for C#.
 
 ## How to navigate this documentation?
 
 There are typically two types of Metalama users:
 
 * If you intend to _utilize aspects written by others_, begin with <xref:using-metalama> and likely conclude there.
-* If you aspire to _develop your own aspects_, start with <xref:using-metalama> and proceed to <xref:simple-aspects>.
+* If you aspire to _develop your own aspects_, start with <xref:main-getting-started> to get a quick overview, then jump to <xref:using-metalama> and continue to <xref:simple-aspects>.
 
-Each article is assigned a _complexity level_, such as 100, 200, 300, following the U.S. school system. Before advancing to a level 200 article, ensure you have a solid understanding of level 100. We strive to avoid incorporating complex details into basic level articles. Occasionally, you may need to peruse several articles to gather comprehensive information on a specific topic.
+Each article is assigned a _complexity level_, such as 100, 200, 300, following the U.S. school system. Before advancing to a level 200 article, ensure you have a solid understanding of level 100. We strive to avoid incorporating complex details into basic level articles. Occasionally, you may need to study several articles to gather comprehensive information on a specific topic.
+
+
+## Documentation structure
+
+| Book | Description |
+|------|-------------|
+| <xref:main-getting-started> | A quick _Hello, world_ walkthrough that shows you how to create a logging aspect and apply a simple architecture validation rule. |
+| <xref:videos> | A collection of tutorial videos. |
+| <xref:conceptual> | Comprehensive and precise reference documentation. |
+| <xref:samples> | Commented examples with varying degrees of complexity. |
+| <xref:api> | API documentation generated from the source code. |
+
 
 ## Getting help
 
