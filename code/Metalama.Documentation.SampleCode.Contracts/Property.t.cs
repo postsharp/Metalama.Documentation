@@ -1,4 +1,3 @@
-using System;
 using Metalama.Framework.Aspects;
 using Metalama.Patterns.Contracts;
 namespace Doc.Contracts.Property
@@ -45,7 +44,7 @@ namespace Doc.Contracts.Property
       {
         if (value.Length <= 0)
         {
-          throw new ArgumentException("The 'Value' property must not be null or empty.", "value");
+          throw new PostconditionViolationException("The 'Value' property must not be null or empty.");
         }
         this._value = value;
       }
