@@ -9,10 +9,6 @@ namespace Doc.NotEmptyCollectionContract
     public IReadOnlyCollection<MenuItem> Items { get; }
     public Submenu([Required] string name, [NotNull][NotEmpty] IReadOnlyCollection<MenuItem> items)
     {
-      if (items == null !)
-      {
-        throw new ArgumentNullException("items", "The 'items' parameter must not be null.");
-      }
       if (string.IsNullOrWhiteSpace(name))
       {
         if (name == null !)
@@ -23,6 +19,10 @@ namespace Doc.NotEmptyCollectionContract
         {
           throw new ArgumentOutOfRangeException("name", "The 'name' parameter is required.");
         }
+      }
+      if (items == null !)
+      {
+        throw new ArgumentNullException("items", "The 'items' parameter must not be null.");
       }
       if (items.Count <= 0)
       {

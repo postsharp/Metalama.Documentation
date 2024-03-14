@@ -47,10 +47,6 @@ namespace Doc.RequiredContract
     }
     public Instrument([Required] string name, [Required] Category category)
     {
-      if (category == null !)
-      {
-        throw new ArgumentNullException("category", "The 'category' parameter is required.");
-      }
       if (string.IsNullOrWhiteSpace(name))
       {
         if (name == null !)
@@ -61,6 +57,10 @@ namespace Doc.RequiredContract
         {
           throw new ArgumentOutOfRangeException("name", "The 'name' parameter is required.");
         }
+      }
+      if (category == null !)
+      {
+        throw new ArgumentNullException("category", "The 'category' parameter is required.");
       }
       this.Name = name;
       this.Category = category;

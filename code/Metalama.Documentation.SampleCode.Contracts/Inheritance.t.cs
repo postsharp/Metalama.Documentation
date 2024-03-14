@@ -117,17 +117,6 @@ namespace Doc.Contracts.Inheritance
     }
     public Customer([Required] string firstName, [Required] string lastName)
     {
-      if (string.IsNullOrWhiteSpace(lastName))
-      {
-        if (lastName == null !)
-        {
-          throw new ArgumentNullException("lastName", "The 'lastName' parameter is required.");
-        }
-        else
-        {
-          throw new ArgumentOutOfRangeException("lastName", "The 'lastName' parameter is required.");
-        }
-      }
       if (string.IsNullOrWhiteSpace(firstName))
       {
         if (firstName == null !)
@@ -137,6 +126,17 @@ namespace Doc.Contracts.Inheritance
         else
         {
           throw new ArgumentOutOfRangeException("firstName", "The 'firstName' parameter is required.");
+        }
+      }
+      if (string.IsNullOrWhiteSpace(lastName))
+      {
+        if (lastName == null !)
+        {
+          throw new ArgumentNullException("lastName", "The 'lastName' parameter is required.");
+        }
+        else
+        {
+          throw new ArgumentOutOfRangeException("lastName", "The 'lastName' parameter is required.");
         }
       }
       this.FirstName = firstName;

@@ -40,13 +40,13 @@ namespace Doc.NotNullContract
     }
     public Instrument([NotNull] string name, [NotNull] Category category)
     {
-      if (category == null !)
-      {
-        throw new ArgumentNullException("category", "The 'category' parameter must not be null.");
-      }
       if (name == null !)
       {
         throw new ArgumentNullException("name", "The 'name' parameter must not be null.");
+      }
+      if (category == null !)
+      {
+        throw new ArgumentNullException("category", "The 'category' parameter must not be null.");
       }
       this.Name = name;
       this.Category = category;
