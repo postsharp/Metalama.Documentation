@@ -62,9 +62,9 @@ namespace Doc.Contracts.Inheritance
       }
       set
       {
-        if (value.HasValue && (value < 1900 || value > 2100))
+        if (value is < 1900 or > 2100)
         {
-          throw new ArgumentOutOfRangeException("The 'BirthYear' property must be between 1900 and 2100.", "value");
+          throw new ArgumentOutOfRangeException("The 'BirthYear' property must be in the range [1900, 2100].", "value");
         }
         this._birthYear = value;
       }
