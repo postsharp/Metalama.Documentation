@@ -1,6 +1,5 @@
 using Metalama.Framework.Aspects;
 using Metalama.Patterns.Contracts;
-using System;
 using System.Text.RegularExpressions;
 namespace Doc.Contracts.RefParameter
 {
@@ -12,15 +11,15 @@ namespace Doc.Contracts.RefParameter
   {
     public void CountWords(string text, ref int wordCount)
     {
-      if (wordCount < 0)
+      if (wordCount is < 0)
       {
-        throw new ArgumentOutOfRangeException("wordCount", "The 'wordCount' parameter must be greater than 0.");
+        throw new PostconditionViolationException("The 'wordCount' parameter must be greater than or equal to 0.");
       }
       var regex = new Regex(@"\b\w+\b");
       wordCount += regex.Matches(text).Count;
-      if (wordCount < 0)
+      if (wordCount is < 0)
       {
-        throw new PostconditionViolationException("The 'wordCount' parameter must be greater than 0.");
+        throw new PostconditionViolationException("The 'wordCount' parameter must be greater than or equal to 0.");
       }
     }
   }

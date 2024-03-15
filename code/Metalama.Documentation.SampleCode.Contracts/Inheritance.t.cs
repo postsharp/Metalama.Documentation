@@ -62,9 +62,9 @@ namespace Doc.Contracts.Inheritance
       }
       set
       {
-        if (value.HasValue && (value < 1900 || value > 2100))
+        if (value is < 1900 or > 2100)
         {
-          throw new ArgumentOutOfRangeException("The 'BirthYear' property must be between 1900 and 2100.", "value");
+          throw new ArgumentOutOfRangeException("The 'BirthYear' property must be in the range [1900, 2100].", "value");
         }
         this._birthYear = value;
       }
@@ -117,17 +117,6 @@ namespace Doc.Contracts.Inheritance
     }
     public Customer([Required] string firstName, [Required] string lastName)
     {
-      if (string.IsNullOrWhiteSpace(lastName))
-      {
-        if (lastName == null !)
-        {
-          throw new ArgumentNullException("lastName", "The 'lastName' parameter is required.");
-        }
-        else
-        {
-          throw new ArgumentOutOfRangeException("lastName", "The 'lastName' parameter is required.");
-        }
-      }
       if (string.IsNullOrWhiteSpace(firstName))
       {
         if (firstName == null !)
@@ -137,6 +126,17 @@ namespace Doc.Contracts.Inheritance
         else
         {
           throw new ArgumentOutOfRangeException("firstName", "The 'firstName' parameter is required.");
+        }
+      }
+      if (string.IsNullOrWhiteSpace(lastName))
+      {
+        if (lastName == null !)
+        {
+          throw new ArgumentNullException("lastName", "The 'lastName' parameter is required.");
+        }
+        else
+        {
+          throw new ArgumentOutOfRangeException("lastName", "The 'lastName' parameter is required.");
         }
       }
       this.FirstName = firstName;

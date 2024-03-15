@@ -1,5 +1,4 @@
 ---
-
 uid: enforcing-non-nullability
 summary: "The document instructs on using Metalama's VerifyNotNullableDeclarations method to automatically check and enforce non-nullability in C# 8.0, simplifying the process of ensuring clean code."
 ---

@@ -14,9 +14,9 @@ namespace Doc.NumericContracts
       }
       private init
       {
-        if (value < 0M)
+        if (value is < 0M)
         {
-          throw new ArgumentOutOfRangeException("value", "The 'NominalPrice' property must be greater than 0.");
+          throw new ArgumentOutOfRangeException("value", "The 'NominalPrice' property must be greater than or equal to 0.");
         }
         this._nominalPrice = value;
       }
@@ -31,7 +31,7 @@ namespace Doc.NumericContracts
       }
       private init
       {
-        if (value < 0.0000000000000000000000000001M)
+        if (value is <= 0M)
         {
           throw new ArgumentOutOfRangeException("value", "The 'Quantity' property must be strictly greater than 0.");
         }
@@ -48,9 +48,9 @@ namespace Doc.NumericContracts
       }
       private init
       {
-        if (value < 0 || value > 100)
+        if (value is < 0 or > 100)
         {
-          throw new ArgumentOutOfRangeException("The 'Discount' property must be between 0 and 100.", "value");
+          throw new ArgumentOutOfRangeException("The 'Discount' property must be in the range [0, 100].", "value");
         }
         this._discount = value;
       }

@@ -39,9 +39,9 @@ namespace Doc.Invariants_Suspend
       {
         try
         {
-          if (value < 0 || value > 100)
+          if (value is < 0 or > 100)
           {
-            throw new ArgumentOutOfRangeException("The 'DiscountPercent' property must be between 0 and 100.", "value");
+            throw new ArgumentOutOfRangeException("The 'DiscountPercent' property must be in the range [0, 100].", "value");
           }
           this._discountPercent = value;
           return;
@@ -67,9 +67,9 @@ namespace Doc.Invariants_Suspend
       {
         try
         {
-          if (value < 0M || value > 100M)
+          if (value is < 0M or > 100M)
           {
-            throw new ArgumentOutOfRangeException("The 'DiscountAmount' property must be between 0 and 100.", "value");
+            throw new ArgumentOutOfRangeException("The 'DiscountAmount' property must be in the range [0, 100].", "value");
           }
           this._discountAmount = value;
           return;
@@ -136,10 +136,10 @@ namespace Doc.Invariants_Suspend
     {
       return _invariantSuspensionCounter.AreInvariantsSuspended;
     }
-    protected IDisposable SuspendInvariants()
+    protected SuspendInvariantsCookie SuspendInvariants()
     {
       this._invariantSuspensionCounter.Increment();
-      return _invariantSuspensionCounter;
+      return new SuspendInvariantsCookie(_invariantSuspensionCounter);
     }
     protected virtual void VerifyInvariants()
     {
