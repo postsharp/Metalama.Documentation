@@ -9,6 +9,8 @@ items:
     - name: Release notes
       topicUid: release-notes
       items:
+        - name: Metalama 2024.1
+          topicUid: release-notes-2024.1      
         - name: Metalama 2024.0
           topicUid: release-notes-2024.0      
         - name: Metalama 2023.4
@@ -25,7 +27,7 @@ items:
     - name: Installing Metalama
       topicUid: installing
       items:
-        - name: Installing Metalama Tools for Visual Studio
+        - name: Installing the Visual Studio tooling
           topicUid:  install-vsx
         - name: Installing Metalama command line tool
           topicUid: dotnet-tool
@@ -151,10 +153,12 @@ items:
             topicUid: implementing-interfaces
           - name: Adding initializers
             topicUid: initializers
-          - name: Adding and removing attributes
-            topicUid: adding-attributes
           - name: Introducing constructor parameters
             topicUid: introducing-constructor-parameters
+          - name: Overriding constructors
+            topicUid: overriding-constructors
+          - name: Adding and removing attributes
+            topicUid: adding-attributes
           - name: Sharing state with advice
             topicUid: sharing-state-with-advice
         - name: Reporting and suppressing diagnostics

@@ -1,23 +1,24 @@
 ---
 uid: understanding-your-code-with-aspects
 level: 100
-summary: "The document explains how to understand aspect-oriented code using Metalama's tools like CodeLens, Diff Preview, and Debug Transformed Code. It also discusses explicit and implicit aspect applications."
+summary: "This document explains how to understand aspect-oriented code using Metalama's tools like CodeLens, Diff Preview, and Debug Transformed Code. It also discusses explicit and implicit aspect applications."
 ---
 
 # Understanding your aspect-oriented code
 
-Now that you have integrated aspects into your code, you may be curious about its functionality and execution process. Metalama provides several tools to help you understand precisely what happens with your code when you hit the Run button.
+Now that you have integrated aspects into your code, you might be curious about its functionality and execution process. Metalama provides several tools to help you understand precisely what happens with your code when you hit the Run button.
 
 These tools include:
 
 * CodeLens
-* Diff Preview
-* Debug Transformed Code
-
-## CodeLens details
+* Metalama Diff
+* Aspect Explorer
 
 > [!NOTE]
-> This feature is only available in Visual Studio when Metalama Tools with Visual Studio are installed.
+> These features are only available in Visual Studio when Visual Studio Tools for Metalama and PostSharp are installed.
+
+
+## CodeLens
 
 The first tool that can assist you in understanding your code is CodeLens. This tool displays the number of aspects applied to your code directly in the editor. Clicking on the summary provides more details:
 
@@ -27,27 +28,23 @@ CodeLens reveals the following details:
 
 |Detail | Purpose |
 |-------|---------|
-|`Aspect Class` | The name of the applied aspect to this target. |
-|`Aspect Target` | The fully qualified name of the target. |
-|`Aspect Origin` | How the aspect is applied. |
-|`Transformation`| A default message indicating that the aspect alters the behavior of the target method. |
+|Aspect Class  | The name of the aspect applied to this target. |
+|Aspect Target | The fully qualified name of the target. |
+|Aspect Origin | How the aspect is applied. |
+|Transformation| A default message indicating that the aspect alters the behavior of the target method. |
 
-The utility of this feature becomes apparent when you notice that many aspects can be added to your code and when aspects are applied implicitly.
+The utility of this feature becomes apparent when you notice that many aspects can be added to your code and when aspects are applied implicitly. That is, even if there is no aspect custom attribute on your code, there may still be an aspect on it due to aspect inheritance (if the aspect has been applied to an ancestor class or interface) or fabrics (which allow adding aspects in bulk to code without custom attributes).
 
-Consider the following example of a method with a couple of aspects applied:
 
-[!code-csharp[](~\code\DebugDemo3\Program.cs)]
+## Metalama Diff
 
-This example illustrates a method that retrieves customer details from the database as an XML string. Given the potential issues associated with database connectivity, a `Retry` aspect is useful, as is a `Log` aspect for recording these issues. However, the order of applying these aspects is determined by the aspects' author. As a user of these aspects, you don't need to concern yourself with this.
+Once you know that your code is being affected by some aspects, you might wonder how. The simplest way is to compare your source code with the generated code, side by side, in a diff. This is what Metalama Diff is about.
 
-CodeLens also provides a clickable link to display the transformed and original code side by side.
+To preview the change, click on the `Preview Transformed Code` link in Code Lens.  Alternatively, you can right-click on the document, and choose _Metalama Diff_ in the document menu.
 
-## Previewing generated code
+![Metalama_Diff_Menu_Option](images/showing_metalama_diff_option.png)
 
-> [!NOTE]
-> This feature is only available in Visual Studio when Metalama Tools with Visual Studio are installed.
-
-To preview the change, click on the `Preview Transformed Code` link. It will display the result as follows:
+It will display the result as follows:
 
 ![Metalama_Diff_Side_by_Side](images/lama_diff_side_by_side.png)
 
@@ -60,34 +57,14 @@ To view changes for a specific section of the code, select that part of the code
 
 ![Diff_change_selector](images/metalama_diff_change_view_selector.png)
 
-This can also be accessed from the Context menu that appears when you right-click on the method. The following screenshots highlight the `Show Metalama Diff` option.
 
-![Metalama_Diff_Menu_Option](images/showing_metalama_diff_option.png)
 
-## Implicit aspect addition
+## Aspect Explorer
 
-In <xref:quickstart-adding-aspects>, you learned how aspects can be added to a target method one at a time. This operation is considered _explicit_ because you are adding the attribute.
+With CodeLens, you start from a specific piece of code, and you wonder which aspects it is influenced by.
 
-However, you may sometimes find that CodeLens displays some aspects applied to certain targets even though no explicit attribute is provided. These are _implicit_ aspect applications.
+Aspect Explorer answers the opposite question. It shows all aspects available in the current solution, and when you select one, it displays the declaration that it affects.
 
-This occurs because aspects marked as <xref:Metalama.Framework.Aspects.InheritableAttribute?text=[Inheritable]> are inherited from the base class to the child classes. Another reason is that fabrics or other aspects can programmatically apply aspects. In these cases, you won't see an aspect custom attribute on the target declaration.
+To open the Aspect Explorer tool window, use the top-level menu and select _Extension_ > _Metalama + PostSharp_ > _Aspect Explorer_.
 
-### Example: NotifyPropertyChanged
-
-The following code example demonstrates how the `PropertyChanged` event is triggered for all members of derived classes when the `NotificationPropertyChanged` aspect is applied.
-
-[!code-csharp[](~\code\DebugDemo4\Program.cs)]
-
-This program produces the following output:
-
-```
-X has changed
-Y has changed
-----------
-X has changed
-Y has changed
-Z has changed
-```
-
-Observe that members of the `MovingVertex3D` type don't have an explicit `[NotifyPropertyChanged]` attribute. The aspect is inherited from the base class.
-
+![Aspect Explorer](images/aspect-explorer.png)

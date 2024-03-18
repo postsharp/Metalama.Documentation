@@ -16,13 +16,13 @@ Metalama integrates with Roslyn, so it is theoretically compatible with any Rosl
 
 | IDE | Design-Time Correctness | Code Fixes | Additional UI Features |
 | --- | ----------------------- | ---------- | ---------------------- |
-| Visual Studio 2022 _with_ Metalama Tools | Yes | Yes | Transformed code diff, info bar, syntax highlighting |
-| Visual Studio 2022 _without_ Metalama Tools | Yes | Yes | |
+| Visual Studio 2022 _with_ Visual Stutio tooling | Yes | Yes | Transformed code diff, info bar, syntax highlighting |
+| Visual Studio 2022 _without_ Visual Stutio tooling | Yes | Yes | |
 | Rider | Yes | Yes | |
 | Visual Studio Code (C# Dev Kit) | Yes | Yes | |
 
 > [!NOTE]
-> While using Visual Studio, the utilization of Metalama Tools for Visual Studio is not mandatory but is highly recommended.
+> While using Visual Studio, the utilization of Visual Studio Tools for Metalama and PostSharp is not mandatory but is highly recommended.
 
 ## Target frameworks
 

@@ -1,21 +1,18 @@
 ---
 uid: installing
 level: 100
-summary: "The document provides instructions on installing Metalama, including Metalama Tools for Visual Studio, the Metalama Command Line Tool, and registering a license key."
+summary: "This document provides instructions on how to install Metalama, including the Visual Studio Tools for Metalama and PostSharp, the Metalama Command Line Tool, and the process of registering a license key."
 ---
 
 # Installing Metalama
 
-This chapter provides instructions on how to install Metalama.
+This section provides instructions on how to install Metalama.
 
-Metalama's core features are implemented via a set of NuGet packages, eliminating the need for a machine-based installation. However, if you are working on a project that utilizes Metalama, it is advisable to install the Metalama Tools for Visual Studio.
+The core features of Metalama are implemented through a set of NuGet packages, eliminating the need for a machine-based installation. However, if you are working on a project that uses Metalama, we recommend installing the Visual Studio Tools for Metalama and PostSharp.
 
 
 | Article  | Description  |
 |---------|---------|
-| <xref:install-vsx>    | This article provides a guide on how to install Metalama Tools for Visual Studio. This extension is recommended for all users intending to utilize Metalama.        |
-| <xref:dotnet-tool>    | This article outlines the process of downloading the Metalama Command Line Tool. It is not necessary to read this article during your initial familiarization with the tool.        |
-| <xref:register-license>     |  This article explains how to transition from the trial mode to Metalama Free or register a license key. You can skip this article until your trial period is active.        |
-
-
-
+| <xref:install-vsx>    | This article provides instructions on how to install the Visual Studio Tools for Metalama and PostSharp. We recommend this extension for all users planning to use Metalama.        |
+| <xref:dotnet-tool>    | This article details the process of installing the Metalama Command Line Tool. It is not necessary to read this article during your initial familiarization with the tool.        |
+| <xref:register-license>     |  This article explains how to transition from trial mode to Metalama Free or how to register a license key. You can skip this article while your trial period is active.        |

@@ -6,33 +6,40 @@ summary: "Metalama automatically activates a 45-day trial upon first use. Users 
 
 # Registering a license
 
-When you use Metalama for the first time, it will automatically activate the trial mode, which will work for 45 days. To use Metalama beyond this period, switch to Metalama Free or register a license key.
+When you use Metalama for the first time, the license registration UI will open, where you can choose between the 45-day evaluation mode, the Metalama Free, or registering a license key.
 
-You can use all features of any preview of Metalama for up to 45 days after its release without registering a license.
+To change your license after the activation UI has closed, you can choose one of the following approaches.
 
-## Switching to Metalama Free
+## With the Visual Studio tooling
 
-To transition to the Metalama Free license, follow the steps below:
+You can manage your Metalama licenses using Visual Studio Tools for Metalama and PostSharp. For instructions on how to install it, see <xref:install-vsx>.
 
-1. Install the Metalama Command Line Tools as detailed in <xref:dotnet-tool>.
-2. Run the following command:
+To access these options:
 
-   ```powershell
-   metalama license free
-   ```
+1. In the top-level menu, choose _Extensions_ > _Metalama + PostSharp_ > _Options_.
+2. Go to the _License_ tab.
 
-## Registering a license key
 
-To register a license key for the current user, perform the following steps:
+![License Options in the Metalama+PostSharp VSX](vsx-license.png)
 
-1. Install the Metalama Command Line Tools as outlined in <xref:dotnet-tool>.
-2. Run the following command:
 
-   ```powershell
-   metalama license register <LICENSE KEY>
-   ```
+## With the command-line tool
 
-## Registering a license key manually
+You can manage licensing options using the `metalama` CLI tool.
+
+First, install the Metalama Command Line Tools as detailed in <xref:dotnet-tool>.
+
+The following commands are available:
+
+| Command | Description |
+|-------------|-----------------|
+| `metalama license list` | Shows the current license options. |
+| `metalama license try` | Activate the 45-day evaluation period of Metalama Ultimate. |
+| `metalama license free` | Activate Metalama Free, a free but limited edition of Metalama. |
+| `metalama license register <LICENSE KEY>` | Register a license key.
+
+
+## By editing the configuration file
 
 To manually register a license for the current user, do the following:
 
@@ -45,7 +52,7 @@ To manually register a license for the current user, do the following:
    }
    ```
 
-## Registering a license key using an environment variable or MSBuild
+## With an environment variable or MSBuild property
 
 The license key can be stored as the value of the `MetalamaLicense` MSBuild property. This allows for the following:
 

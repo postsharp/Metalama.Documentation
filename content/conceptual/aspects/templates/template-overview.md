@@ -1,12 +1,12 @@
 ---
 uid: template-overview
 level: 200
-summary: "The document provides an overview of T#, a template language used by Metalama that is fully compatible with C#. It details how T# integrates compile-time and run-time expressions and statements, and outlines the different scopes of code: run-time, compile-time, and scope-neutral. The document also compares T# to Razor and explains the compilation process."
+summary: "This document provides an overview of T#, a template language used by Metalama, which is fully compatible with C#. It details how T# integrates compile-time and run-time expressions and statements, and outlines the different scopes of code: run-time, compile-time, and scope-neutral. The document also compares T# to Razor and explains the compilation process."
 ---
 
-# T# templates: overview
+# T# templates: Overview
 
-T# is the template language utilized by Metalama. The syntax of T# is 100% compatible with C#. The distinction between T# and C# lies in the fact that the T# compiler operates within the compiler or the IDE to generate C# code, while the C# compiler generates IL (binary) files.
+T# is the template language used by Metalama. The syntax of T# is 100% compatible with C#. The distinction between T# and C# lies in the fact that the T# compiler operates within the compiler or the IDE to generate C# code, while the C# compiler generates IL (binary) files.
 
 ## Scopes of code
 
@@ -52,7 +52,7 @@ In the code below, compile-time code is highlighted <span class="metalamaClassif
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/SimpleLogging.cs name="Simple Logging"]
 
 > [!NOTE]
-> To benefit from syntax highlighting in Visual Studio, install the [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama). Syntax highlighting is not supported in other IDEs.
+> To benefit from syntax highlighting in Visual Studio, install the [Visual Studio Tools for Metalama and PostSharp](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama). Syntax highlighting is not supported in other IDEs.
 
 The expression `meta.Target.Method` (with an implicit trailing `.ToString()`) is a compile-time expression. At compile time, it is replaced by the name and signature of the method to which the aspect is applied.
 
@@ -73,5 +73,4 @@ During compilation, Metalama compiles the [T# templates](xref:templates) into st
 
 > [!WARNING]
 > *Intellectual property alert.* The _source_ of your compile-time code is embedded in clear text, without any obfuscation, in the run-time binary assemblies as a managed resource.
-
 

@@ -1,20 +1,20 @@
 ---
 uid: overriding-fields-or-properties
 level: 300
-summary: "The document provides advanced usage scenarios for the Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect class, including accessing metadata, resolving dependencies, overriding multiple fields or properties, and using property and accessor templates."
+summary: "This document provides advanced usage scenarios for the Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect class, including accessing metadata, resolving dependencies, overriding multiple fields or properties, and using property and accessor templates."
 ---
 
 # Overriding fields or properties
 
-In <xref:simple-override-property>, you learned the basics of the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> class. Now, we will cover more advanced scenarios.
+In <xref:simple-override-property>, you learned the basics of the <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect> class. In this section, we will cover more advanced scenarios.
 
 ## Accessing the metadata of the overridden field or property
 
-The metadata of the overridden field or property is accessible from the template accessors on the <xref:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty?text=meta.Target.FieldOrProperty> property. This property provides all information about the field or property's name, type, and custom attributes. For instance, the member name is available on `meta.Target.FieldOrProperty.Name` and its type on `meta.Target.FieldOrProperty.Type`.
+The metadata of the overridden field or property can be accessed from the template accessors on the <xref:Metalama.Framework.Aspects.IMetaTarget.FieldOrProperty?text=meta.Target.FieldOrProperty> property. This property provides all information about the field or property's name, type, and custom attributes. For instance, the member name is available on `meta.Target.FieldOrProperty.Name` and its type on `meta.Target.FieldOrProperty.Type`.
 
 - `meta.Target.FieldOrProperty` exposes the current field or property as an <xref:Metalama.Framework.Code.IFieldOrProperty>, which reveals characteristics common to fields and properties.
-- `meta.Target.Field` exposes the current field as an <xref:Metalama.Framework.Code.IField> but will throw an exception if the target is not a field.
-- `meta.Target.Property` exposes the current field as an <xref:Metalama.Framework.Code.IProperty> but will throw an exception if the target is not a property.
+- `meta.Target.Field` exposes the current field as an <xref:Metalama.Framework.Code.IField>, but will throw an exception if the target is not a field.
+- `meta.Target.Property` exposes the current field as an <xref:Metalama.Framework.Code.IProperty>, but will throw an exception if the target is not a property.
 - `meta.Target.Method` exposes the current accessor method. This works even if the target is a field because Metalama creates pseudo methods to represent field accessors.
 
 To access the _value_ of the field or property, you can use the `meta.Target.FieldOrProperty.Value` expression both in reading and writing. In the setter template, `meta.Target.Parameters[0].Value` gives you the value of the `value` parameter.
@@ -69,7 +69,7 @@ The following aspect can be applied to fields or properties of type `string`. It
 Advising fields or properties with the `Override` method has the following limitations over the use of `OverrideAccessors`:
 
 * You cannot choose a template for each accessor separately.
-* You cannot have generic templates.  (Not yet implemented in `OverrideAccessors` anyway.)
+* You cannot have generic templates.
 
 To alleviate these limitations, you can use the method <xref:Metalama.Framework.Advising.IAdviceFactory.OverrideAccessors*> and provide one or two method templates: a getter template and/or a setter template.
 
@@ -80,4 +80,3 @@ The templates must fulfill the following conditions:
 * The setter template must be of signature `void Setter(T value)`, where the name `value` of the first parameter is mandatory.
 
 [comment]: # (TODO: example)
-

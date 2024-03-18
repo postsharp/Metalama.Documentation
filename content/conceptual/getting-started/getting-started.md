@@ -8,15 +8,14 @@ uid: main-getting-started
 > If you don't plan to create your own aspects but just use existing ones, start with <xref:using-metalama>.
 
 
-## 1. Add the Metalama to your project
-
+## 1. Add Metalama to Your Project
 
 Add the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) package to your project.
 
 > [!NOTE]
-> If your project targets .NET Framework or .NET Standard, you may also need to add [PolySharp](https://github.com/Sergio0694/PolySharp), which updates the language version even if it's officially unsupported.
+> If your project targets the .NET Framework or .NET Standard, you may also need to add [PolySharp](https://github.com/Sergio0694/PolySharp), which updates the language version even if it's officially unsupported.
 
-Optionally, install [Metalama Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama). This extension offers the following features:
+Optionally, install [Visual Studio Tools for Metalama and PostSharp](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama). This extension offers the following features:
 
 * AspectDiff: Displays a side-by-side comparison of source code with the generated code.
 * CodeLens: Displays which aspects are applied to your code.
@@ -30,7 +29,7 @@ Type the following code:
 
 [!metalama-file ~/code/Metalama.Documentation.SampleCode.AspectFramework/GettingStarted/GettingStarted.Aspect.cs]
 
-As you can infer from its name, the `LogAttribute` class is a custom attribute. You can think of an aspect as a _template_. When you apply it to some code (in this case, to a method), it transforms it. Indeed, the code of the target method will be replaced by the implementation of `OverrideMethod`. This method is very special. Some parts execute at run time, while others, which typically start with the `meta` keyword, execute at compile time. If you installed Metalama Tools for Visual Studio, you will notice that compile-part segments are displayed with a different background color.
+As you can infer from its name, the `LogAttribute` class is a custom attribute. You can think of an aspect as a _template_. When you apply it to some code (in this case, to a method), it transforms it. Indeed, the code of the target method will be replaced by the implementation of `OverrideMethod`. This method is very special. Some parts execute at run time, while others, which typically start with the `meta` keyword, execute at compile time. If you installed Visual Studio Tools for Metalama and PostSharp, you will notice that compile-part segments are displayed with a different background color.
 
 Let's examine two `meta` expressions:
 
@@ -57,7 +56,7 @@ Leaving Foo.Method1()
 
 You can see that Metalama did not modify anything in your source code. It's still _yours_. Instead, Metalama applied the logging aspect during compilation. So, it's no longer your source code that's being executed, but your source code _enhanced_ by the logging aspect.
 
-If you installed Metalama Tools for Visual Studio, you can compare your source code with the transformed (executed) code using the "Diff preview" feature accessible from the source file context menu in Visual Studio.
+If you installed Visual Studio Tools for Metalama and PostSharp, you can compare your source code with the transformed (executed) code using the "Diff preview" feature accessible from the source file context menu in Visual Studio.
 
 It will show you something like this:
 

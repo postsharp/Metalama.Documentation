@@ -1,25 +1,25 @@
 ---
 uid: quickstart-adding-aspects
 level: 100
-summary: "The document provides a guide on how to add aspects, or custom attributes, to code using Visual Studio and Metalama Tools. It covers adding aspects as custom attributes, adding multiple attributes, and using the refactoring menu."
+summary: "This document provides a guide on how to add aspects to source code using custom attributes. It covers the process of adding aspects as custom attributes, adding multiple attributes, and using the refactoring menu."
 ---
 
 # Adding aspects to your code
 
-Aspects are custom attributes that should be applied to a target declaration. Some aspects can target methods, others can target properties or classes.
+Aspects are custom attributes that should be applied to a target declaration. Some aspects can target methods, while others can target properties or classes.
 
-In this section, you will learn how to use custom attributes to add aspects.
+In this section, you will learn how to utilize custom attributes to add aspects.
 
 ## Adding aspects as custom attributes
 
-Assume you have a method that fails occasionally.
+Let's assume you have a method that fails occasionally.
 
 ![](images/flaky_method_no_aspect.png)
 
 Currently, CodeLens displays `No aspect`, indicating that no aspect has been applied to this method.
 
 > [!NOTE]
-> The CodeLens feature is only available in Visual Studio when Metalama Tools with Visual Studio are installed.
+> The CodeLens feature is only available in Visual Studio when Visual Studio Tools for Metalama and PostSharp are installed.
 
 To apply the `Retry` aspect, add it as a standard custom attribute by typing `[Retry]`:
 

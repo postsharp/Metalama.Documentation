@@ -1,29 +1,36 @@
 ---
 uid: install-vsx
 level: 100
-summary: "The document provides step-by-step instructions on how to install the Metalama Tools extension for Visual Studio 2022, and mentions the Metalama Command-Line Tool."
+summary: "This document provides step-by-step instructions on how to install the Metalama Tools extension for Visual Studio 2022, and introduces the Metalama Command-Line Tool."
 ---
 
-# Installing Metalama Tools for Visual Studio
+# Installing Visual Studio Tools for Metalama and PostSharp
 
-Metalama Tools for Visual Studio is an extension that enhances your development experience by providing features such as syntax highlighting for aspect codes, CodeLens additions, and the ability to compare your original source code against the transformed code. While this extension is optional, it is highly recommended for a more comprehensive understanding of your aspect-oriented code.
+The Visual Studio Tools for Metalama and PostSharp is an extension that enhances your development experience by providing features such as:
+
+* CodeLens additions for quickly viewing the impact of aspects on your code,
+* Aspect Explorer for displaying which aspects are available in the current solution and which code is affected,
+* Diffing functionality to compare your original source code against the transformed code,
+* Syntax highlighting for aspect code.
+
+While this extension is optional, it is highly recommended for a more comprehensive understanding of your aspect-oriented code.
 
 > [!WARNING]
-> Metalama Tools for Visual Studio require Visual Studio 2022.
+> The following screenshots are outdated and need to be updated due to changes in the logo and the name of the extension.
 
-1. Go to `Extensions` > `Manage Extensions`.
+1. Navigate to `Extensions` > `Manage Extensions`.
 
     ![step1](../../images/ext_manage_1.png)
 
-2. This will open the following dialog:
+2. This action will open the following dialog:
 
     ![step2](../../images/ext_manage_2.png)
 
-3. In the search box to the right of the prompt, type "Metalama".
+3. In the search box to the right of the prompt, enter "Metalama + PostSharp".
 
     ![step3](../../images/ext_manage_3.png)
 
-4. Click the `Download` button to begin the download process.
+4. Click the `Download` button to initiate the download process.
 
     ![step4](../../images/ext_manage_4.png)
 
@@ -33,7 +40,7 @@ Metalama Tools for Visual Studio is an extension that enhances your development 
 
 6. Provide consent for the installation of the extension.
 
-    The installation process will begin automatically when Visual Studio is closed.
+    The installation process will commence automatically when Visual Studio is closed.
 
     ![wizard_init](../../images/ext_manage_6.png)
 
@@ -43,7 +50,7 @@ Metalama Tools for Visual Studio is an extension that enhances your development 
 
 7. Click "Modify" to finalize the installation.
 
-    To continue with the installation, click on the `Modify` button. The wizard will then proceed with the installation process.
+    To proceed with the installation, click the `Modify` button. The wizard will then continue with the installation process.
 
     ![metalama_install_progress](../../images/metalama_install_progress.png)
 
@@ -54,8 +61,4 @@ Metalama Tools for Visual Studio is an extension that enhances your development 
 To verify the successful installation of the extension, navigate to the Extensions Manager. If the installation was successful, a green tick mark will be displayed on the top right corner of the extension icon.
 
 ![metalama_already_installed](../../images/metalama_already_installed.png)
-
-## Installing Metalama Command-Line Tool
-
-While the Metalama command-line tool may not be necessary during your initial interactions with Metalama, it is beneficial to be aware of its existence. For more information, refer to <xref:dotnet-tool>. We will remind you about this tool when it becomes relevant to your work.
 
