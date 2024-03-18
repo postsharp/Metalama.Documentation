@@ -13,16 +13,7 @@ namespace Doc.InvalidateAspect
 
         public int DbOperationCount { get; private set; }
 
-        [Cache]                                     /*<Cache>*/
-        public decimal GetPrice( string productId ) /*</Cache>*/
-        {
-            Console.WriteLine( $"Getting the price of {productId} from database." );
-            this.DbOperationCount++;
-
-            return this._dbSimulator[productId];
-        }
-
-        [Cache]
+        [Cache]                       
         public string[] GetProducts()
         {
             Console.WriteLine( "Getting the product list from database." );
@@ -32,8 +23,17 @@ namespace Doc.InvalidateAspect
             return this._dbSimulator.Keys.ToArray();
         }
 
-        [InvalidateCache( nameof(GetProducts) )]                  /*<InvalidateCache>*/
-        public void AddProduct( string productId, decimal price ) /*</InvalidateCache>*/
+        [Cache]                                     /*<Cache>*/
+        public decimal GetPrice( string productId ) /*</Cache>*/
+        {
+            Console.WriteLine( $"Getting the price of {productId} from database." );
+            this.DbOperationCount++;
+
+            return this._dbSimulator[productId];
+        }
+
+        [InvalidateCache( nameof(GetProducts) )]
+        public void AddProduct( string productId, decimal price ) 
         {
             Console.WriteLine( $"Adding the product {productId}." );
 
@@ -41,8 +41,8 @@ namespace Doc.InvalidateAspect
             this._dbSimulator.Add( productId, price );
         }
 
-        [InvalidateCache( nameof(GetPrice) )]
-        public void UpdatePrice( string productId, decimal price )
+        [InvalidateCache( nameof(GetPrice) )]                      /*<InvalidateCache>*/
+        public void UpdatePrice( string productId, decimal price ) /*</InvalidateCache>*/
         {
             if ( !this._dbSimulator.ContainsKey( productId ) )
             {
