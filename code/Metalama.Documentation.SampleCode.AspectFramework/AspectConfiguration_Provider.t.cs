@@ -8,7 +8,6 @@ namespace Doc.AspectConfiguration_Provider
     public void SomeMethod()
     {
       Trace.WriteLine("SomeClass: Executing SomeClass.SomeMethod().");
-      return;
     }
   }
   [LogConfiguration(Category = "SomeClass")]
@@ -20,7 +19,6 @@ namespace Doc.AspectConfiguration_Provider
       public void SomeMethod()
       {
         Trace.TraceWarning("SomeClass: Executing ChildNamespace.SomeOtherClass.SomeMethod().");
-        return;
       }
     }
   }

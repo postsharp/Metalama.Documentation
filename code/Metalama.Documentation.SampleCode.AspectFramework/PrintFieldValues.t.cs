@@ -15,7 +15,6 @@ namespace Doc.PrintFieldValues
       Console.WriteLine($"_c={value_1}");
       var value_2 = B;
       Console.WriteLine($"B={value_2}");
-      return;
     }
   }
 }

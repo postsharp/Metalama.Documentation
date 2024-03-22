@@ -9,7 +9,6 @@ namespace Doc.CompileTimeForEach
       Console.WriteLine($"a = {a}");
       Console.WriteLine($"b = {b}");
       Console.WriteLine($"Hello, world! a={a}, b='{b}'.");
-      return;
     }
   }
 }

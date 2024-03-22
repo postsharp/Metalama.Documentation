@@ -9,7 +9,6 @@ namespace Doc.DynamicTrivial
     private void Foo()
     {
       this._logger.WriteLine("Executing Program.Foo().");
-      return;
     }
     private static void Main()
     {

@@ -52,7 +52,6 @@ namespace Doc.InvalidateAspect
       this._dbSimulator.Add(productId, price);
       object result = null;
       CachingServiceExtensions.Invalidate(this._cachingService!, ProductCatalogue._methodsInvalidatedBy_AddProduct_976614B12F3F447F4082EAE1C88C1EE0![0], this, new object[] { });
-      return;
     }
     [InvalidateCache(nameof(GetPrice))] /*<InvalidateCache>*/
     public void UpdatePrice(string productId, decimal price) /*</InvalidateCache>*/
@@ -66,7 +65,6 @@ namespace Doc.InvalidateAspect
       this._dbSimulator[productId] = price;
       object result = null;
       CachingServiceExtensions.Invalidate(this._cachingService!, ProductCatalogue._methodsInvalidatedBy_UpdatePrice_DA3C5EB2E8FE3C0C2B256E589481CF14![0], this, new object[] { productId });
-      return;
     }
     private static readonly CachedMethodMetadata _cacheRegistration_GetPrice;
     private static readonly CachedMethodMetadata _cacheRegistration_GetProducts;

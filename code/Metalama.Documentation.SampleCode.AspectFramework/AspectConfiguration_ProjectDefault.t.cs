@@ -7,7 +7,6 @@ namespace Doc.AspectConfiguration_ProjectDefault
     public void SomeMethod()
     {
       Trace.TraceInformation("GeneralCategory: Executing SomeClass.SomeMethod().");
-      return;
     }
   }
   namespace ChildNamespace
@@ -18,7 +17,6 @@ namespace Doc.AspectConfiguration_ProjectDefault
       public void SomeMethod()
       {
         Trace.TraceInformation("ChildCategory: Executing SomeOtherClass.SomeMethod().");
-        return;
       }
     }
   }

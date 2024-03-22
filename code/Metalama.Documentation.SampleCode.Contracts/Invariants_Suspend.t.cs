@@ -138,7 +138,7 @@ namespace Doc.Invariants_Suspend
     }
     protected SuspendInvariantsCookie SuspendInvariants()
     {
-      this._invariantSuspensionCounter.Increment();
+      _invariantSuspensionCounter.Increment();
       return new SuspendInvariantsCookie(_invariantSuspensionCounter);
     }
     protected virtual void VerifyInvariants()

@@ -8,8 +8,7 @@ namespace Doc.DynamicCodeModel
     [Log]
     private void Foo()
     {
-      this._logger.WriteLine("Executing Program.Foo().");
-      return;
+      _logger.WriteLine("Executing Program.Foo().");
     }
     private static void Main()
     {
