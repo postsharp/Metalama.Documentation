@@ -25,13 +25,20 @@ In addition to telemetry, the software may undergo a _license audit_. This audit
 
 ## Disabling telemetry
 
+Telemetry is disabled by default. During the license registration process, a checkbox will give you the option to enable telemetry.
+
+> [!NOTE]
+> Prior to Metalama 2024.1, telemetry was enabled by default.
+
 You can disable telemetry using one of the two methods outlined below.
 
 ### Option 1. Defining an environment variable
 
 You can disable telemetry by defining the `METALAMA_TELEMETRY_OPT_OUT` environment variable to any non-empty value.
 
-This method allows you to disable telemetry for build agents, or you can disable telemetry for all devices in your domain using remote management tools such as Azure Endpoint Manager.
+This environment variable has priority over any other setting. It does not affect the license audit mechanism.
+
+It allows you to disable telemetry for all devices in your domain using remote management tools such as Azure Endpoint Manager.
 
 ### Option 2. Using Metalama Command Line Tools
 
@@ -41,6 +48,12 @@ This method allows you to disable telemetry for build agents, or you can disable
    ```powershell
    metalama telemetry disable
    ```
+
+### Option 3. Using Visual Studio Tools for Metalama and PostSharp
+
+1. In the top-level menu, choose _Options_.
+2. Select the _Metalama + PostSharp_ category, then the _Privacy_ page.
+3. Set individual settings.
 
 ## Resetting your device id
 
