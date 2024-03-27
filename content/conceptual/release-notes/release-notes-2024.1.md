@@ -57,3 +57,7 @@ We have dedicated several weeks to optimizing build-time performance and are pro
 
 * Initializers are now all executed before constructor parameter contracts. Previously, initializers and contracts on constructors could be interleaved.
 * The ordering of contracts within the same method has been fixed.
+* Contracts are now uneligible on unimplemented partial methods.
+* In <xref:Metalama.Framework.Code.TypeFactory>, the generic methods `public static T ToNullableType<T>( this T type )  where T : IType` and `public static T ToNonNullableType<T>( this T type )  where T : IType` have been replaced by a set non-generic of non-generic overloads  (see <xref:Metalama.Framework.Code.TypeFactory.ToNullableType*> and <xref:<xref:Metalama.Framework.Code.TypeFactory.ToNonNullableTypes>), taking into account the fact that the nullable type of an <xref:Metalama.Framework.Code.ITypeParameter> is not an <xref:Metalama.Framework.Code.ITypeParameter> if the type parameter has a `struct` constraint.
+* The <xref:Metalama.Framework.Code.INamedType.UnderlyingType> property, when the <xref:Metalama.Framework.Code.INamedType> represents a `Nullable<T>` (i.e. a nullable value type) no longer returns `T` but `Nullable<T>`. This behavior is now consistent with other generic types but no longer consistent with nullable reference types.
+
