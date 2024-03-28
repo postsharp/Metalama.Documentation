@@ -1,5 +1,5 @@
 ﻿
-using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
+using PostSharp.Engineering.BuildTools.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
 using System;
