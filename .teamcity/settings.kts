@@ -19,9 +19,8 @@ project {
    buildType(PublicBuild)
    buildType(PublicDeployment)
    buildType(PublicDeploymentNoDependency)
-   buildType(PublicUpdateSearch)
-   buildType(PublicUpdateSearchNoDependency)
-   buildTypesOrder = arrayListOf(DebugBuild,ReleaseBuild,PublicBuild,PublicDeployment,PublicDeploymentNoDependency,PublicUpdateSearch,PublicUpdateSearchNoDependency)
+   buildType(DownstreamMerge)
+   buildTypesOrder = arrayListOf(DebugBuild,ReleaseBuild,PublicBuild,PublicDeployment,PublicDeploymentNoDependency,DownstreamMerge)
 }
 
 object DebugBuild : BuildType({
@@ -820,14 +819,12 @@ object PublicDeploymentNoDependency : BuildType({
 
 })
 
-object PublicUpdateSearch : BuildType({
+object DownstreamMerge : BuildType({
 
-    name = "Update Search [Public]"
-
-    type = Type.DEPLOYMENT
+    name = "Downstream Merge"
 
     params {
-        text("UpdateSearchArguments", "", label = "Update search Arguments", description = "Arguments to append to the 'Update search' build step.", allowEmpty = true)
+        text("DownstreamMergeArguments", "", label = "Merge downstream Arguments", description = "Arguments to append to the 'Merge downstream' build step.", allowEmpty = true)
         text("TimeOut", "300", label = "Time-Out Threshold", description = "Seconds after the duration of the last successful build.", regex = """\d+""", validationMessage = "The timeout has to be an integer number.")
     }
     vcs {
@@ -836,12 +833,12 @@ object PublicUpdateSearch : BuildType({
 
     steps {
         powerShell {
-            name = "Update search"
+            name = "Merge downstream"
             scriptMode = file {
                 path = "Build.ps1"
             }
             noProfile = false
-            param("jetbrains_powershell_scriptArguments", "tools search update https://0fpg9nu41dat6boep.a1.typesense.net metalamadoc https://doc-production.postsharp.net/metalama/sitemap.xml --ignore-tls %UpdateSearchArguments%")
+            param("jetbrains_powershell_scriptArguments", "tools git merge-downstream %DownstreamMergeArguments%")
         }
     }
 
@@ -867,67 +864,29 @@ object PublicUpdateSearch : BuildType({
             lockingProcesses = Swabra.LockingProcessPolicy.KILL
             verbose = true
         }
+        sshAgent {
+            // By convention, the SSH key name is always PostSharp.Engineering for all repositories using SSH to connect.
+            teamcitySshKey = "PostSharp.Engineering"
+        }
+    }
+
+    triggers {
+        vcs {
+            watchChangesInDependencies = true
+            branchFilter = "+:<default>"
+            // Build will not trigger automatically if the commit message contains comment value.
+            triggerRules = "-:comment=<<VERSION_BUMP>>|<<DEPENDENCIES_UPDATED>>:**"
+        }
     }
 
     dependencies {
-        dependency(PublicDeployment) {
+        dependency(DebugBuild) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
             }
         }
 
      }
-
-})
-
-object PublicUpdateSearchNoDependency : BuildType({
-
-    name = "Standalone Update Search [Public]"
-
-    type = Type.DEPLOYMENT
-
-    params {
-        text("UpdateSearchArguments", "", label = "Update search Arguments", description = "Arguments to append to the 'Update search' build step.", allowEmpty = true)
-        text("TimeOut", "300", label = "Time-Out Threshold", description = "Seconds after the duration of the last successful build.", regex = """\d+""", validationMessage = "The timeout has to be an integer number.")
-    }
-    vcs {
-        root(DslContext.settingsRoot)
-    }
-
-    steps {
-        powerShell {
-            name = "Update search"
-            scriptMode = file {
-                path = "Build.ps1"
-            }
-            noProfile = false
-            param("jetbrains_powershell_scriptArguments", "tools search update https://0fpg9nu41dat6boep.a1.typesense.net metalamadoc https://doc-production.postsharp.net/metalama/sitemap.xml --ignore-tls %UpdateSearchArguments%")
-        }
-    }
-
-    failureConditions {
-        failOnMetricChange {
-            metric = BuildFailureOnMetric.MetricType.BUILD_DURATION
-            units = BuildFailureOnMetric.MetricUnit.DEFAULT_UNIT
-            comparison = BuildFailureOnMetric.MetricComparison.MORE
-            compareTo = build {
-                buildRule = lastSuccessful()
-            }
-            stopBuildOnFailure = true
-            param("metricThreshold", "%TimeOut%")
-        }
-    }
-
-    requirements {
-        equals("env.BuildAgentType", "caravela04cloud")
-    }
-
-    features {
-        swabra {
-            lockingProcesses = Swabra.LockingProcessPolicy.KILL
-            verbose = true
-        }
-    }
 
 })
 
