@@ -6,7 +6,7 @@ summary: "This document provides step-by-step instructions on how to install the
 
 # Installing Visual Studio Tools for Metalama and PostSharp
 
-The Visual Studio Tools for Metalama and PostSharp is an extension that enhances your development experience by providing features such as:
+The [Visual Studio Tools for Metalama and PostSharp](https://www.postsharp.net/links/download-unified-vsx) is an extension that enhances your development experience by providing features such as:
 
 * CodeLens additions for quickly viewing the impact of aspects on your code,
 * Aspect Explorer for displaying which aspects are available in the current solution and which code is affected,
@@ -14,6 +14,15 @@ The Visual Studio Tools for Metalama and PostSharp is an extension that enhances
 * Syntax highlighting for aspect code.
 
 While this extension is optional, it is highly recommended for a more comprehensive understanding of your aspect-oriented code.
+
+## Downloading the extension
+
+The simplest way to install the extension is to install it from [Visual Studio Marketplace](https://www.postsharp.net/links/download-unified-vsx) and launch the downloaded file.
+
+
+## Installing from Visual Studio
+
+Alternatively, you can use the following procedure from Visual Studio.
 
 > [!WARNING]
 > The following screenshots are outdated and need to be updated due to changes in the logo and the name of the extension.
