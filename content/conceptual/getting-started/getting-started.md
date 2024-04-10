@@ -15,7 +15,7 @@ Add the [Metalama.Framework](https://www.nuget.org/packages/Metalama.Framework) 
 > [!NOTE]
 > If your project targets the .NET Framework or .NET Standard, you may also need to add [PolySharp](https://github.com/Sergio0694/PolySharp), which updates the language version even if it's officially unsupported.
 
-Optionally, install [Visual Studio Tools for Metalama and PostSharp](https://marketplace.visualstudio.com/items?itemName=PostSharpTechnologies.metalama). This extension offers the following features:
+Optionally, install [Visual Studio Tools for Metalama and PostSharp](https://www.postsharp.net/links/download-unified-vsx). This extension offers the following features:
 
 * AspectDiff: Displays a side-by-side comparison of source code with the generated code.
 * CodeLens: Displays which aspects are applied to your code.
