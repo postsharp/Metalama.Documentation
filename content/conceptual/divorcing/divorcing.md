@@ -83,4 +83,42 @@ Currently, Metalama does not provide a way to automatically remove fabrics and a
 * Removing all fabrics.
 
 
+## PowerShell script
+
+The steps above, except the last one, are summarized in the following script.
+
+```powershell
+ # Run git status and capture the output
+ $gitStatus = $(git status --porcelain)
+
+ # Check if the repo has uncommitted changes
+ if (-not [string]::IsNullOrWhiteSpace($gitStatus)) {
+     throw "Uncommitted changes detected. Please commit or stash your changes."
+ }
+
+ # Create a new branch
+ $currentTimestamp  = Get-Date -Format "yyyyMMdd-HHmmss"
+ $branchName = "divorce-$currentTimestamp"
+ git checkout -b $branchName
+
+ # Format code
+ dotnet format
+
+ # Commit
+ git commit -a -m "Formatting the code before Metalama divorce."
+
+ # Enable code formatting for Metalama
+$env:MetalamaEmitCompilerTransformedFiles="true"
+$env:MetalamaFormatOutput="true"
+
+# Rebuild
+dotnet build /t:rebuild
+
+# Write generated code back to the source code
+metalama divorce
+
+## Format
+dotnet format
+```
+
 
