@@ -39,7 +39,7 @@ We also have added toast notifications for unhandled exceptions.
 
 ## Overriding constructors
 
-You can now override instance constructors from the aspect's `BuildAspect` method by calling the <xref:Metalama.Framework.Advising.IAdviceFactory.Override*?text=IAdviceFactory.Override> and passing an <xref:Metalama.Framework.Code.IConstructor>.
+You can now override instance constructors from the aspect's `BuildAspect` method by calling the <xref:Metalama.Framework.Advising.IAdviceFactory.Override*?text=IAdviceFactory.Override> method and passing an <xref:Metalama.Framework.Code.IConstructor>.
 
 This will work for both standard constructors and primary constructors. If you attempt to override the primary constructor, it will be transparently expanded into a standard constructor.
 
@@ -47,7 +47,7 @@ For details, see <xref:overriding-constructors>.
 
 ## Performance improvements
 
-We have dedicated several weeks to optimizing build-time performance and are proud to announce a XX% improvement.
+We have dedicated several weeks to optimizing build-time performance and achieved a 7% improvement on a warm run of `dotnet build /t:rebuild` with a typical aspect workload. We took NopCommerce as a guinea pig for this benchmark. Improvements in specific areas like contracts are much higher.
 
 ## Other improvements
 
