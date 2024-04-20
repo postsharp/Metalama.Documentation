@@ -10,7 +10,10 @@ namespace Doc.Architecture.RequireDefaultConstructorAspect
     [Inheritable]
     public class RequireDefaultConstructorAttribute : TypeAspect
     {
-        private static DiagnosticDefinition<INamedType> _warning = new( "MY001", Severity.Warning, "The type '{0}' must have a public default constructor." );
+        private static readonly DiagnosticDefinition<INamedType> _warning = new(
+            "MY001",
+            Severity.Warning,
+            "The type '{0}' must have a public default constructor." );
 
         public override void BuildAspect( IAspectBuilder<INamedType> builder )
         {

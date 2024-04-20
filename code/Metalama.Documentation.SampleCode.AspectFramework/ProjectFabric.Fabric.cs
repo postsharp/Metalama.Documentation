@@ -11,7 +11,7 @@ namespace Doc.ProjectFabric_
         // It executes within the compiler or IDE.
         public override void AmendProject( IProjectAmender project )
         {
-            project.Outbound.SelectMany( p => p.Types.SelectMany( t => t.Methods ) ).AddAspectIfEligible<Log>();
+            project.SelectMany( p => p.Types.SelectMany( t => t.Methods ) ).AddAspectIfEligible<Log>();
         }
     }
 }

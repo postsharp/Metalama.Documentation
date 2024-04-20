@@ -13,7 +13,7 @@ namespace Doc.Localize
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Outbound.SetOptions( new ContractOptions { Templates = new FrenchTemplates() } );
+            amender.SetOptions( new ContractOptions { Templates = new FrenchTemplates() } );
         }
     }
 }

@@ -9,13 +9,12 @@ namespace Doc.GettingStarted_Fabric
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Outbound
+            amender
                 .SelectMany( compilation => compilation.AllTypes )
                 .Where( type => type.Accessibility is Accessibility.Public )
                 .SelectMany( type => type.Methods )
                 .Where( method => method.Accessibility is Accessibility.Public )
                 .AddAspectIfEligible<LogAttribute>();
-
         }
     }
 }

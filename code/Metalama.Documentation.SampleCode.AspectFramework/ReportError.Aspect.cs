@@ -10,7 +10,7 @@ namespace Doc.ReportError
     internal class LogAttribute : OverrideMethodAspect
     {
         // You MUST have a static field that defines the diagnostic.
-        private static DiagnosticDefinition<INamedType> _error = new(
+        private static readonly DiagnosticDefinition<INamedType> _error = new(
             "MY001",
             Severity.Error,
             "The type {0} must have a field named '_logger'." );

@@ -18,7 +18,7 @@ namespace Doc.ProjectFabric_TwoAspects
 
         private static void AddLogging( IProjectAmender project )
         {
-            project.Outbound
+            project
                 .SelectMany( p => p.Types )
                 .SelectMany( t => t.Methods )
                 .AddAspectIfEligible<Log>();
@@ -26,7 +26,7 @@ namespace Doc.ProjectFabric_TwoAspects
 
         private static void AddProfiling( IProjectAmender project )
         {
-            project.Outbound
+            project
                 .SelectMany( p => p.Types.Where( t => t.Accessibility == Accessibility.Public ) )
                 .SelectMany( t => t.Methods.Where( m => m.Accessibility == Accessibility.Public ) )
                 .AddAspectIfEligible<Profile>();

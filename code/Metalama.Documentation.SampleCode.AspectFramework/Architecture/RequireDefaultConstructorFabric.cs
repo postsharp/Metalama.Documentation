@@ -1,6 +1,5 @@
 ﻿// This is public domain Metalama sample code.
 
-using Metalama.Extensions.Architecture.Fabrics;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
@@ -13,11 +12,14 @@ namespace Doc.Architecture.RequireDefaultConstructorFabric
     [CompileTime]
     internal static class ArchitectureExtensions
     {
-        private static DiagnosticDefinition<INamedType> _warning = new( "MY001", Severity.Warning, "The type '{0}' must have a public default constructor." );
+        private static readonly DiagnosticDefinition<INamedType> _warning = new(
+            "MY001",
+            Severity.Warning,
+            "The type '{0}' must have a public default constructor." );
 
-        public static void MustHaveDefaultConstructor( this ITypeSetVerifier<IDeclaration> verifier )
+        public static void MustHaveDefaultConstructor( this IAspectReceiver<INamedType> verifier )
         {
-            verifier.TypeReceiver
+            verifier
                 .Where(
                     t => !t.IsStatic && t.Constructors.FirstOrDefault( c => c.Parameters.Count == 0 ) is null or { Accessibility: not Accessibility.Public } )
                 .ReportDiagnostic( t => _warning.WithArguments( t ) );
@@ -30,7 +32,7 @@ namespace Doc.Architecture.RequireDefaultConstructorFabric
         {
             // Using the reusable MustHaveDefaultConstructor rule.
             // Note that we only apply the rule to public types. 
-            amender.Verify().Types().Where( t => t.Accessibility == Accessibility.Public ).MustHaveDefaultConstructor();
+            amender.SelectTypes().Where( t => t.Accessibility == Accessibility.Public ).MustHaveDefaultConstructor();
         }
     }
 

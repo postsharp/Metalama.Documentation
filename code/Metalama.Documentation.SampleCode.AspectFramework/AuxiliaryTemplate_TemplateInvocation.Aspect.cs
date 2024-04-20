@@ -9,7 +9,7 @@ namespace Doc.AuxiliaryTemplate_TemplateInvocation
     public class CacheAttribute : OverrideMethodAspect
     {
         [Introduce( WhenExists = OverrideStrategy.Ignore )]
-        private ConcurrentDictionary<string, object?> _cache = new();
+        private readonly ConcurrentDictionary<string, object?> _cache = new();
 
         public override dynamic? OverrideMethod()
         {

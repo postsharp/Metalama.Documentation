@@ -10,7 +10,7 @@ namespace Doc.LogCustomFramework
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Outbound.ConfigureDependencyInjection(
+            amender.ConfigureDependencyInjection(
                 dependencyInjection => dependencyInjection.RegisterFramework<LoggerDependencyInjectionFramework>() );
         }
     }

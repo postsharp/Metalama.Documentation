@@ -15,7 +15,7 @@ namespace Doc.ValidateAfterAllAspects
 {
     internal class LogAttribute : OverrideMethodAspect
     {
-        private static DiagnosticDefinition<INamedType> _error = new( "MY001", Severity.Error, "The type {0} must have a field named _logger." );
+        private static readonly DiagnosticDefinition<INamedType> _error = new( "MY001", Severity.Error, "The type {0} must have a field named _logger." );
 
         public override void BuildAspect( IAspectBuilder<IMethod> builder )
         {

@@ -11,15 +11,14 @@ namespace Doc.AspectConfiguration
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Outbound
-                .SetOptions( new LoggingOptions { Category = "GeneralCategory", Level = TraceLevel.Info } );
+            amender.SetOptions( new LoggingOptions { Category = "GeneralCategory", Level = TraceLevel.Info } );
 
-            amender.Outbound
+            amender
                 .Select( x => x.GlobalNamespace.GetDescendant( "Doc.AspectConfiguration.ChildNamespace" )! )
                 .SetOptions( new LoggingOptions() { Category = "ChildCategory" } );
 
             // Adds the aspect to all members.
-            amender.Outbound
+            amender
                 .SelectMany( c => c.Types.SelectMany( t => t.Methods ) )
                 .AddAspectIfEligible<LogAttribute>();
         }

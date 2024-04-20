@@ -12,23 +12,23 @@ namespace Doc.ForTestOnly_Fabric
     {
         public class Fabric : NamespaceFabric
         {
-            private static DiagnosticDefinition<IDeclaration> _warning = new(
+            private static readonly DiagnosticDefinition<IDeclaration> _warning = new(
                 "MY001",
                 Severity.Warning,
                 "'{0}' can only be invoked from a namespace that ends with '.Tests'." );
 
             public override void AmendNamespace( INamespaceAmender amender )
             {
-                amender.Outbound.ValidateReferences( this.ValidateReference, ReferenceKinds.All );
+                amender.ValidateOutboundReferences( this.ValidateReference, ReferenceGranularity.Namespace );
             }
 
-            private void ValidateReference( in ReferenceValidationContext context )
+            private void ValidateReference( ReferenceValidationContext context )
             {
                 if (
-                    context.ReferencingType.Namespace != context.ReferencedDeclaration &&
-                    !context.ReferencingType.Namespace.FullName.EndsWith( ".Tests", StringComparison.Ordinal ) )
+                    context.Origin.Namespace != context.Destination.Declaration &&
+                    !context.Origin.Namespace.FullName.EndsWith( ".Tests", StringComparison.Ordinal ) )
                 {
-                    context.Diagnostics.Report( _warning.WithArguments( context.ReferencedDeclaration ) );
+                    context.Diagnostics.Report( _warning.WithArguments( context.Destination.Declaration ) );
                 }
             }
         }

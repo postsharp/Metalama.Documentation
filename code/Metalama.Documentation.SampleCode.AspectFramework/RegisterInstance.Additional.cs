@@ -69,7 +69,7 @@ namespace Doc.RegisterInstance
 
         private class Handle : IDisposable
         {
-            private int _id;
+            private readonly int _id;
 
             public Handle( int id )
             {
