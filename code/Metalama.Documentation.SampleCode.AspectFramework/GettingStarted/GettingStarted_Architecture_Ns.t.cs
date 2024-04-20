@@ -1,4 +1,5 @@
-// Warning LAMA0905 on `VerifiedNamespace.Foo`: `The 'Doc.GettingStarted_Architecture_Ns.VerifiedNamespace' namespace cannot be referenced by the 'ForbiddenInheritor' type.`
+// Warning LAMA0905 on `VerifiedNamespace`: `The 'Doc.GettingStarted_Architecture_Ns.VerifiedNamespace' namespace cannot be referenced by the 'Doc.GettingStarted_Architecture_Ns.OtherNamespace' namespace.`
+// Warning LAMA0905 on `Foo`: `The 'Doc.GettingStarted_Architecture_Ns.VerifiedNamespace' namespace cannot be referenced by the 'Doc.GettingStarted_Architecture_Ns.OtherNamespace' namespace.`
 namespace Doc.GettingStarted_Architecture_Ns
 {
   namespace VerifiedNamespace

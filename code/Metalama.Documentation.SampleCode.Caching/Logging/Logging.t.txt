@@ -1,24 +1,24 @@
 Processing invocation of method Int32 Add(Int32, Int32): Starting
 Key="Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)".
-GetItem( backend = "{MemoryCachingBackend Id=ae214eac-fae7-4e3e-bd48-230c5d14b4b9, Status=Default}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Starting
-GetItem( backend = "{MemoryCachingBackend Id=ae214eac-fae7-4e3e-bd48-230c5d14b4b9, Status=Default}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Succeeded, result = Cache miss.
+GetItem( backend = "{MemoryCachingBackend Id=27718499-55d6-4a98-96ad-3c122582f5e2, Status=Default}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Starting
+GetItem( backend = "{MemoryCachingBackend Id=27718499-55d6-4a98-96ad-3c122582f5e2, Status=Default}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Succeeded, result = Cache miss.
 Cache miss: Key="Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)".
 Doing some very hard work.
-SetItem( backend = "{MemoryCachingBackend Id=ae214eac-fae7-4e3e-bd48-230c5d14b4b9, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Starting
-SetItem( backend = "{MemoryCachingBackend Id=ae214eac-fae7-4e3e-bd48-230c5d14b4b9, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Succeeded
+SetItem( backend = "{MemoryCachingBackend Id=27718499-55d6-4a98-96ad-3c122582f5e2, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Starting
+SetItem( backend = "{MemoryCachingBackend Id=27718499-55d6-4a98-96ad-3c122582f5e2, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Succeeded
 Processing invocation of method Int32 Add(Int32, Int32): Succeeded
 CloudCalculator returned 2.
 Processing invocation of method Int32 Add(Int32, Int32): Starting
 Key="Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)".
-GetItem( backend = "{MemoryCachingBackend Id=ae214eac-fae7-4e3e-bd48-230c5d14b4b9, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Starting
-GetItem( backend = "{MemoryCachingBackend Id=ae214eac-fae7-4e3e-bd48-230c5d14b4b9, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Succeeded, result = Cache hit.
+GetItem( backend = "{MemoryCachingBackend Id=27718499-55d6-4a98-96ad-3c122582f5e2, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Starting
+GetItem( backend = "{MemoryCachingBackend Id=27718499-55d6-4a98-96ad-3c122582f5e2, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Succeeded, result = Cache hit.
 Cache hit: Key="Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)".
 Processing invocation of method Int32 Add(Int32, Int32): Succeeded
 CloudCalculator returned 2.
 Processing invocation of method Int32 Add(Int32, Int32): Starting
 Key="Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)".
-GetItem( backend = "{MemoryCachingBackend Id=ae214eac-fae7-4e3e-bd48-230c5d14b4b9, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Starting
-GetItem( backend = "{MemoryCachingBackend Id=ae214eac-fae7-4e3e-bd48-230c5d14b4b9, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Succeeded, result = Cache hit.
+GetItem( backend = "{MemoryCachingBackend Id=27718499-55d6-4a98-96ad-3c122582f5e2, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Starting
+GetItem( backend = "{MemoryCachingBackend Id=27718499-55d6-4a98-96ad-3c122582f5e2, Status=Initialized}" key = "Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)" ): Succeeded, result = Cache hit.
 Cache hit: Key="Doc.Logging.CloudCalculator.Add(this={Doc.Logging.CloudCalculator}, (int) 1, (int) 1)".
 Processing invocation of method Int32 Add(Int32, Int32): Succeeded
 CloudCalculator returned 2.

@@ -1,9 +1,8 @@
-// Warning LAMA0900 on `ExperimentalApi.Foo`: `The 'ExperimentalApi' type is experimental.`
+// Warning LAMA0900 on `Foo`: `The 'ExperimentalApi' type is experimental.`
 using Doc.Architecture.Experimental_Fabric.ExperimentalNamespace;
-using Metalama.Extensions.Architecture.Fabrics;
+using Metalama.Extensions.Architecture;
 using Metalama.Framework.Code;
 using Metalama.Framework.Fabrics;
-using System.Linq;
 namespace Doc.Architecture.Experimental_Fabric
 {
   namespace ExperimentalNamespace

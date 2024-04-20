@@ -1,5 +1,5 @@
 // Warning LAMA0906 on `TextLoader`: `The type 'TextLoader' does not respect the naming convention set by a fabric. The type name should match the "^.*Reader$" pattern.`
-using Metalama.Extensions.Architecture.Fabrics;
+using Metalama.Extensions.Architecture;
 using Metalama.Framework.Fabrics;
 using System.IO;
 namespace Doc.Architecture.NamingConvention_Fabric

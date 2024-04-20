@@ -1,4 +1,4 @@
-// Warning LAMA0900 on `ExperimentalApi.Foo`: `The 'ExperimentalApi' type is experimental.`
+// Warning LAMA0900 on `Foo`: `The 'ExperimentalApi' type is experimental.`
 using Metalama.Extensions.Architecture.Aspects;
 namespace Doc.Architecture.Experimental
 {

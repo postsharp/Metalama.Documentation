@@ -1,6 +1,6 @@
-// Warning LAMA0905 on `Foo`: `The 'Doc.Architecture.Fabric_InternalNamespace.VerifiedNamespace' namespace cannot be referenced by the 'ForbiddenInheritor' type.`
+// Warning LAMA0905 on `Foo`: `The 'Doc.Architecture.Fabric_InternalNamespace.VerifiedNamespace' namespace cannot be referenced by the 'Doc.Architecture.Fabric_InternalNamespace.OtherNamespace' namespace.`
 using Doc.Architecture.Fabric_InternalNamespace.VerifiedNamespace;
-using Metalama.Extensions.Architecture.Fabrics;
+using Metalama.Extensions.Architecture;
 using Metalama.Extensions.Architecture.Predicates;
 using Metalama.Framework.Fabrics;
 namespace Doc.Architecture.Fabric_InternalNamespace

@@ -1,4 +1,4 @@
-// Warning LAMA0905 on `foo.InternalMethod`: `The 'Foo.InternalMethod()' method cannot be referenced by the 'ForbiddenClass' type.`
+// Warning LAMA0905 on `InternalMethod`: `The 'Foo.InternalMethod()' method cannot be referenced by the 'ForbiddenClass' type.`
 using Doc.Architecture.Type_CurrentNamespace.A;
 using Metalama.Extensions.Architecture.Aspects;
 namespace Doc.Architecture.Type_CurrentNamespace
