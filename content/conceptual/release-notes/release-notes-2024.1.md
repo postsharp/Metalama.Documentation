@@ -5,7 +5,7 @@ summary: ""
 
 # Metalama 2024.1
 
-The primary objective of Metalama 2024.1 is to enhance the user interface, with a focus on improving Visual Studio tooling and introducing a new license activation UI. Furthermore, we have made significant strides in improving performance and advising constructors.
+The primary objective of Metalama 2024.1 is to enhance the user interface, with a focus on improving Visual Studio tooling and introducing a new license activation UI. Furthermore, it is now possible to override constructors.
 
 ## User Interface
 
@@ -45,9 +45,6 @@ This will work for both standard constructors and primary constructors. If you a
 
 For details, see <xref:overriding-constructors>.
 
-## Performance improvements
-
-We have dedicated several weeks to optimizing build-time performance and achieved a 7% improvement on a warm run of `dotnet build /t:rebuild` with a typical aspect workload. We took NopCommerce as a guinea pig for this benchmark. Improvements in specific areas like contracts are much higher.
 
 ## Other improvements
 
