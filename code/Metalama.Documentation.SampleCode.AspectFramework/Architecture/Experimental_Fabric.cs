@@ -1,10 +1,9 @@
 ﻿// This is public domain Metalama sample code.
 
 using Doc.Architecture.Experimental_Fabric.ExperimentalNamespace;
-using Metalama.Extensions.Architecture.Fabrics;
+using Metalama.Extensions.Architecture;
 using Metalama.Framework.Code;
 using Metalama.Framework.Fabrics;
-using System.Linq;
 
 namespace Doc.Architecture.Experimental_Fabric
 {
@@ -14,7 +13,7 @@ namespace Doc.Architecture.Experimental_Fabric
         {
             public override void AmendNamespace( INamespaceAmender amender )
             {
-                amender.Verify().Types().Where( t => t.Accessibility == Accessibility.Public ).Experimental();
+                amender.SelectTypes().Where( t => t.Accessibility == Accessibility.Public ).Experimental();
             }
         }
 

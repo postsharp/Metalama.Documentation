@@ -1,6 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
-using Metalama.Extensions.Architecture.Fabrics;
+using Metalama.Extensions.Architecture;
 using Metalama.Framework.Fabrics;
 using System.IO;
 
@@ -10,7 +10,7 @@ namespace Doc.Architecture.NamingConvention_Fabric
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Verify().SelectTypesDerivedFrom( typeof(TextReader) ).MustRespectNamingConvention( "*Reader" );
+            amender.SelectTypesDerivedFrom( typeof(TextReader) ).MustRespectNamingConvention( "*Reader" );
         }
     }
 

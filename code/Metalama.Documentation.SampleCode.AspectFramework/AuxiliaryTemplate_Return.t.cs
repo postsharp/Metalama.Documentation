@@ -19,6 +19,6 @@ namespace Doc.AuxiliaryTemplate_Return
       this._cache.TryAdd(cacheKey_2, returnValue_2);
       return returnValue_1;
     }
-    private ConcurrentDictionary<string, object?> _cache = new();
+    private readonly ConcurrentDictionary<string, object?> _cache = new();
   }
 }

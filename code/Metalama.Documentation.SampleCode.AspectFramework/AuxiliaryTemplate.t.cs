@@ -40,6 +40,6 @@ namespace Doc.AuxiliaryTemplate
       }
       return (int)returnValue;
     }
-    private ConcurrentDictionary<string, object?> _cache = new();
+    private readonly ConcurrentDictionary<string, object?> _cache = new();
   }
 }

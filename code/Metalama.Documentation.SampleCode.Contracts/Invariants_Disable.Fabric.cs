@@ -9,7 +9,7 @@ namespace Doc.Invariants_Disable
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Outbound.Select( c => c.GlobalNamespace.GetDescendant( "Doc.Invariants_Disable" )! )
+            amender.Select( c => c.GlobalNamespace.GetDescendant( "Doc.Invariants_Disable" )! )
                 .SetOptions( new ContractOptions { AreInvariantsEnabled = false } );
         }
     }

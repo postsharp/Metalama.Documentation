@@ -14,23 +14,22 @@ namespace Doc.ForTestOnly
         AttributeTargets.Event )]
     public class ForTestOnlyAttribute : Attribute, IAspect<IMember>
     {
-        private static DiagnosticDefinition<IDeclaration> _warning = new(
+        private static readonly DiagnosticDefinition<IDeclaration> _warning = new(
             "MY001",
             Severity.Warning,
             "'{0}' can only be invoked from a namespace that ends with Tests." );
 
         public void BuildAspect( IAspectBuilder<IMember> builder )
         {
-            builder.Outbound.ValidateReferences( this.ValidateReference, ReferenceKinds.All );
+            builder.Outbound.ValidateOutboundReferences( this.ValidateReference, ReferenceGranularity.Namespace );
         }
 
-        private void ValidateReference( in ReferenceValidationContext context )
+        private void ValidateReference( ReferenceValidationContext context )
         {
-            if (
-                context.ReferencingType != context.ReferencedDeclaration.GetClosestNamedType() &&
-                !context.ReferencingType.Namespace.FullName.EndsWith( ".Tests", StringComparison.Ordinal ) )
+            if ( !context.Origin.Namespace.FullName.EndsWith( ".Tests", StringComparison.Ordinal ) )
             {
-                context.Diagnostics.Report( _warning.WithArguments( context.ReferencedDeclaration ) );
+                context.Diagnostics.Report(
+                    r => r.ReferencingDeclaration.IsContainedIn( context.Destination.Type ) ? null : _warning.WithArguments( context.Destination.Namespace ) );
             }
         }
     }

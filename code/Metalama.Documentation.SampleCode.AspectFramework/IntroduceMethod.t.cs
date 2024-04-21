@@ -5,7 +5,7 @@ namespace Doc.IntroduceMethod
   [ToString]
   internal class MyClass
   {
-    private int _id = IdGenerator.GetId();
+    private readonly int _id = IdGenerator.GetId();
     public override string ToString()
     {
       return $"{GetType().Name} Id={_id}";

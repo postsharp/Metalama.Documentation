@@ -10,7 +10,7 @@ namespace Doc.AbsoluteExpiration_Fabric
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Outbound.Select( x => x.GlobalNamespace.GetDescendant( "MyProduct.MyNamespace" )! )
+            amender.Select( x => x.GlobalNamespace.GetDescendant( "MyProduct.MyNamespace" )! )
                 .ConfigureCaching( caching => caching.AbsoluteExpiration = TimeSpan.FromMinutes( 20 ) );
         }
     }

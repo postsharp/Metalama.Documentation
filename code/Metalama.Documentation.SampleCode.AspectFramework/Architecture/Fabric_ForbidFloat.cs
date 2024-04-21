@@ -1,7 +1,8 @@
 ﻿// This is public domain Metalama sample code.
 
-using Metalama.Extensions.Architecture.Fabrics;
+using Metalama.Extensions.Architecture;
 using Metalama.Extensions.Architecture.Predicates;
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Fabrics;
 
 namespace Doc.Architecture.Fabric_ForbidFloat
@@ -10,7 +11,7 @@ namespace Doc.Architecture.Fabric_ForbidFloat
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Verify()
+            amender
                 .SelectTypes( typeof(float), typeof(double) )
                 .CannotBeUsedFrom( r => r.Namespace( "**.Invoicing" ), "Use decimal numbers instead." );
         }

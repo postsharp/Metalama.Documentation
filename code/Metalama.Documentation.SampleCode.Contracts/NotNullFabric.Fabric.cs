@@ -9,7 +9,7 @@ namespace Doc.NotNullFabric
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Outbound.VerifyNotNullableDeclarations();
+            amender.VerifyNotNullableDeclarations();
         }
     }
 }

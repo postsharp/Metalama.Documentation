@@ -11,11 +11,11 @@ namespace Doc.ProjectValidatorWithFix
 {
     internal class MyProjectFabric : ProjectFabric
     {
-        private static DiagnosticDefinition<IField> _warning = new( "MY001", Severity.Warning, "The field {0} must be private." );
+        private static readonly DiagnosticDefinition<IField> _warning = new( "MY001", Severity.Warning, "The field {0} must be private." );
 
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Outbound.SelectMany(
+            amender.SelectMany(
                     p => p.Types.SelectMany( t => t.Fields.Where( f => f.Accessibility != Accessibility.Private && f.Type.Is( typeof(TextWriter) ) ) ) )
                 .ReportDiagnostic( f => _warning.WithArguments( f ).WithCodeFixes( CodeFixFactory.ChangeAccessibility( f, Accessibility.Private ) ) );
         }

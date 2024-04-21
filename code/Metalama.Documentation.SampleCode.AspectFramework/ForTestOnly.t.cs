@@ -1,4 +1,4 @@
-// Warning MY001 on `new( DateTime.Now.AddDays( 1 ) )`: `'MyService.MyService(DateTime)' can only be invoked from a namespace that ends with Tests.`
+// Warning MY001 on `new`: `'Doc.ForTestOnly' can only be invoked from a namespace that ends with Tests.`
 using System;
 namespace Doc.ForTestOnly
 {

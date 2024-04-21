@@ -1,4 +1,4 @@
-// Warning LAMA0905 on `new( true )`: `The 'Foo.Foo(bool)' constructor cannot be referenced by the 'ForbiddenClass' type. Use this constructor in tests only.`
+// Warning LAMA0905 on `new`: `The 'Foo.Foo(bool)' constructor cannot be referenced by the 'ForbiddenClass' type. Use this constructor in tests only.`
 using Metalama.Extensions.Architecture.Aspects;
 namespace Doc.Architecture.Type_ForTestOnly
 {

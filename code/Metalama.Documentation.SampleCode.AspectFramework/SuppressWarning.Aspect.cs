@@ -9,7 +9,7 @@ namespace Doc.SuppressWarning
 {
     internal class LogAttribute : OverrideMethodAspect
     {
-        private static SuppressionDefinition _suppression = new( "CS0169" );
+        private static readonly SuppressionDefinition _suppression = new( "CS0169" );
 
         public override void BuildAspect( IAspectBuilder<IMethod> builder )
         {

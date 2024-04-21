@@ -1,6 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
-using Metalama.Extensions.Architecture.Fabrics;
+using Metalama.Extensions.Architecture;
 using Metalama.Extensions.Architecture.Predicates;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
@@ -11,26 +11,26 @@ using System;
 namespace Doc.Architecture.Fabric_CustomPredicate
 {
     // This class is the actual implementation of the predicate.
-    internal class MethodNamePredicate : ReferencePredicate
+    internal class MethodNamePredicate : ReferenceEndPredicate
     {
         private readonly string _suffix;
 
-        public MethodNamePredicate( ReferencePredicateBuilder? builder, string suffix ) : base( builder )
+        public MethodNamePredicate( ReferencePredicateBuilder builder, string suffix ) : base( builder )
         {
             this._suffix = suffix;
         }
 
-        public override bool IsMatch( in ReferenceValidationContext context )
-        {
-            return context.ReferencingDeclaration is IMethod method && method.Name.EndsWith( this._suffix, StringComparison.Ordinal );
-        }
+        public override ReferenceGranularity Granularity => ReferenceGranularity.Member;
+
+        public override bool IsMatch( ReferenceEnd referenceEnd )
+            => referenceEnd.Member is IMethod method && method.Name.EndsWith( this._suffix, StringComparison.Ordinal );
     }
 
     // This class exposes the predicate as an extension method. It is your public API.
     [CompileTime]
     public static class Extensions
     {
-        public static ReferencePredicate MethodNameEndsWith( this ReferencePredicateBuilder? builder, string suffix )
+        public static ReferencePredicate MethodNameEndsWith( this ReferencePredicateBuilder builder, string suffix )
             => new MethodNamePredicate( builder, suffix );
     }
 
@@ -39,7 +39,7 @@ namespace Doc.Architecture.Fabric_CustomPredicate
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Verify().SelectTypes( typeof(CofeeMachine) ).CanOnlyBeUsedFrom( r => r.MethodNameEndsWith( "Politely" ) );
+            amender.SelectType( typeof(CofeeMachine) ).CanOnlyBeUsedFrom( r => r.MethodNameEndsWith( "Politely" ) );
         }
     }
 

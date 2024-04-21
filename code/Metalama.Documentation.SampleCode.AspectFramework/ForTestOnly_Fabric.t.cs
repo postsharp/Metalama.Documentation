@@ -1,5 +1,5 @@
 // Warning MY001 on `MyService`: `'Doc.ForTestOnly_Fabric.ValidatedNamespace' can only be invoked from a namespace that ends with '.Tests'.`
-// Warning MY001 on `new()`: `'Doc.ForTestOnly_Fabric.ValidatedNamespace' can only be invoked from a namespace that ends with '.Tests'.`
+// Warning MY001 on `new`: `'Doc.ForTestOnly_Fabric.ValidatedNamespace' can only be invoked from a namespace that ends with '.Tests'.`
 using Doc.ForTestOnly_Fabric.ValidatedNamespace;
 namespace Doc.ForTestOnly_Fabric
 {

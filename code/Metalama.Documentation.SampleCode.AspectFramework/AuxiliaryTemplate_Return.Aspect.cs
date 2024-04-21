@@ -8,7 +8,7 @@ namespace Doc.AuxiliaryTemplate_Return
     internal class CacheAttribute : OverrideMethodAspect
     {
         [Introduce( WhenExists = OverrideStrategy.Ignore )]
-        private ConcurrentDictionary<string, object?> _cache = new();
+        private readonly ConcurrentDictionary<string, object?> _cache = new();
 
         // This method is the usual top-level template.
         public override dynamic? OverrideMethod()
