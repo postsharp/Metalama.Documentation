@@ -7,8 +7,8 @@ public class SharedFabric : ProjectFabric
 {
     public override void AmendProject( IProjectAmender amender )
     {
-        amender.Outbound
-            .SelectMany( p => p.AllTypes )
+        amender
+            .SelectTypes()
             .SelectMany( t => t.Methods )
             .AddAspectIfEligible<LogAttribute>();
     }

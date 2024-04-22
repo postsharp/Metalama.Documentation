@@ -28,13 +28,14 @@ To add aspects using fabrics:
 
 3. Call one of the following methods from <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*>:
 
-   * To select the type itself, simply use the <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> property.
-   * To select type members (methods, fields, nested types, etc.), call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*>, <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> or <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Where*> method and provide a lambda expression that selects the relevant type members.
+   * To select all types in the project, use the <xref:Metalama.Framework.Validation.IValidatorReceiver`1.SelectTypes*?text=amender.SelectTypes> method.
+   * To select type members (methods, fields, nested types, etc.), call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> method and provide a lambda expression that selects the relevant type members, e.g. `SelectMany( t => t.Methods )` to select all methods.
+   * To filter types or members, use the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Where*> method.
 
 4. Call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> or  <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspectIfEligible*> method.
 
 > [!NOTE]
-> The <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> method will not only select members declared in source code, but also members introduced by other aspects and therefore unknown when the  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed. This is why the _Amend_ method does not directly expose the code model.
+> The amemder object will not only select members declared in source code, but also members introduced by other aspects and therefore unknown when the  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> method is executed. This is why these methods do not directly expose the code model.
 
 
 ### Example 1: Adding aspect to all methods in a project

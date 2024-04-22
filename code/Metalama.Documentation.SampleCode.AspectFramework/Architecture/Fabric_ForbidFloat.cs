@@ -12,7 +12,7 @@ namespace Doc.Architecture.Fabric_ForbidFloat
         public override void AmendProject( IProjectAmender amender )
         {
             amender
-                .SelectTypes( typeof(float), typeof(double) )
+                .SelectReflectionTypes( typeof(float), typeof(double) )
                 .CannotBeUsedFrom( r => r.Namespace( "**.Invoicing" ), "Use decimal numbers instead." );
         }
     }

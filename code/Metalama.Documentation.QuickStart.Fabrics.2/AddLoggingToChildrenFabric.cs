@@ -9,8 +9,10 @@ namespace Metalama.Documentation.QuickStart.Fabrics
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            //Locate all derived types of a given base class
-            amender.Outbound.SelectMany( t => t.GetDerivedTypes( typeof(BaseClass) ) )
+            amender
+                    
+                //Locate all derived types of a given base class
+                .SelectTypesDerivedFrom( typeof(BaseClass) )
 
                 //Find all methods of all of these types
                 .SelectMany( t => t.Methods )

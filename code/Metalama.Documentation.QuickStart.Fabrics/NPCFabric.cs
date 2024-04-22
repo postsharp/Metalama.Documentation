@@ -11,7 +11,9 @@ namespace Metalama.Documentation.QuickStart.Fabrics
         public override void AmendNamespace( INamespaceAmender project )
         {
             //Add NotifyPropertyChanged to all public types 
-            project.Outbound.SelectMany( t => t.Types.Where( m => m.Accessibility == Accessibility.Public ) )
+            project
+                .SelectTypes()
+                .Where( t => t.Accessibility == Accessibility.Public )
                 .AddAspectIfEligible<NotifyPropertyChangedAttribute>();
         }
     }

@@ -11,13 +11,9 @@ namespace DebugDemo
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            //1. Get all the types
-            var allPublicMethods = amender.Outbound.SelectMany( p => p.Types )
-
-                //2. Get all methods of all these types
+            var allPublicMethods = amender
+                .SelectTypes()
                 .SelectMany( t => t.Methods )
-
-                //3. Find only the public ones  
                 .Where( t => t.Accessibility == Accessibility.Public );
 
             this.AddLoggingAspect( allPublicMethods );

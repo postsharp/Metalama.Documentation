@@ -18,10 +18,11 @@ The process to access these configuration APIs is similar to adding aspects in b
 
 2. Override the appropriate method: <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*>, <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*>, or <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>.
 
-3. Call one of the following methods:
+3. Call the following methods:
 
-   * To select the current project, namespace, or type itself, simply use the <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound*?text=amender.Outbound> property.
-   * To select child members (methods, fields, types, sub-namespaces, etc.), call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*>, <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> or <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Where*> method and provide a lambda expression that selects the relevant type members.
+   * To select all types in the project or the namespace, use the <xref:Metalama.Framework.Validation.IValidatorReceiver`1.SelectTypes*?text=amender.SelectTypes> method.
+   * To select type members (methods, fields, nested types, etc.), call the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> method and provide a lambda expression that selects the relevant type members, e.g. `SelectMany( t => t.Methods )` to select all methods.
+   * To filter types or members, use the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Where*> method.
 
 4. The next step depends on the kind of configuration API exposed by the aspect library:
 
@@ -47,13 +48,13 @@ Interestingly, the order of configuration operations does _not_ matter when they
 Therefore, the two following code snippets are equivalent:
 
 ```cs
-amender.Outbound
+amender
   .ConfigureCaching( caching => {
         caching.SlidingExpiration = TimeSpan.FromMinutes( 10 );
         caching.AbsoluteExpiration = TimeSpan.FromMinutes( 30 );
     });
 
-amender.Outbound
+amender
   .Select( x => x.GlobalNamespace.GetDescendant( "ColdNs" )! )
   .ConfigureCaching( caching => caching.AbsoluteExpiration = TimeSpan.FromMinutes( 60 ) );
 
@@ -62,11 +63,11 @@ amender.Outbound
 And in reverse order:
 
 ```cs
-amender.Outbound
+amender
   .Select( x => x.GlobalNamespace.GetDescendant( "ColdNs" )! )
   .ConfigureCaching( caching => caching.AbsoluteExpiration = TimeSpan.FromMinutes( 60 ) );
 
-amender.Outbound
+amender
   .ConfigureCaching( caching => {
         caching.SlidingExpiration = TimeSpan.FromMinutes( 10 );
         caching.AbsoluteExpiration = TimeSpan.FromMinutes( 30 );

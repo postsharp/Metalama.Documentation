@@ -16,11 +16,12 @@ namespace DebugDemo3
             //Adding Log attribute to all mehtods of all types 
             //that are available inside "Outer.Inner" namespace 
 
-            amender.Outbound.SelectMany(t => t.GlobalNamespace
-                                              .DescendantsAndSelf()
-                                              .Where(z => z.FullName.StartsWith("Outer.Inner")))
-                            .SelectMany(ns => ns.Types.SelectMany(t => t.Methods))
-                            .AddAspectIfEligible<LogAttribute>();
+            amender
+                .SelectMany(t => t.GlobalNamespacef() )
+                .Where(ns => ns.FullName.StartsWith("Outer.Inner"))
+                .SelectTypes()
+                .SelectMany(t => t.Methods)
+                .AddAspectIfEligible<LogAttribute>();
         }
     }
 }

@@ -15,15 +15,13 @@ namespace DebugDemo
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            //Locating all types 
-            var allTypes = amender.Outbound.SelectMany( p => p.Types );
-
-            //Finding all public methods from all types
-            var allPublicMethods = allTypes
-                .SelectMany( t => t.Methods )
+            
+            var allPublicMethods = amender
+                .SelectTypes() // Get all types 
+                .SelectMany( t => t.Methods )  // Get all methods
                 .Where( z => z.Accessibility == Accessibility.Public );
 
-            //Adding Log aspect 
+            // Adding Log aspect 
             allPublicMethods.AddAspectIfEligible<LogAttribute>();
         }
     }
