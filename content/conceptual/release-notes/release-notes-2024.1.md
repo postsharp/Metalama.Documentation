@@ -1,6 +1,6 @@
 ---
 uid: release-notes-2024.1
-summary: ""
+summary: "Metalama 2024.1 improves the user interface, especially through a Visual Studio extension that has been unified with PostSharp. The version also improves performance and the advising of constructors."
 ---
 
 # Metalama 2024.1
@@ -49,6 +49,7 @@ For details, see <xref:overriding-constructors>.
 ## Other improvements
 
 * Numeric contracts now generate idiomatic code.
+* Metalama 2024.1 now processes aspects approximately 55% faster than 2024.0. However, the fixed cost of using Metalama instead of the vanilla C# compiler has not improved. See [this analysis](https://blog.postsharp.net/metalama-2024-1-performance.html) for details.
 
 ## Breaking Changes
 
