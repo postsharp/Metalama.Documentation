@@ -63,7 +63,7 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
             }
         } )
         
-    // Metalama 2024.1 is not stable yet and we don't provide search for prerelease versions.    
+    // Metalama 2024.2 is not stable yet and we don't provide search for prerelease versions.    
     // Extensions = new ProductExtension[]
     // {
     //     // Run `b generate-scripts` after changing these parameters.
