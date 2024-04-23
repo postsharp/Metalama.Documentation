@@ -61,18 +61,16 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
                     new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
                 } )
             }
-        } )
-        
-    // Metalama 2024.1 is not stable yet and we don't provide search for prerelease versions.    
-    // Extensions = new ProductExtension[]
-    // {
-    //     // Run `b generate-scripts` after changing these parameters.
-    //     new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
-    //         "https://0fpg9nu41dat6boep.a1.typesense.net",
-    //         "metalamadoc",
-    //         "https://doc-production.postsharp.net/metalama/sitemap.xml",
-    //         true )
-    // }
+        } ),
+    Extensions = new ProductExtension[]
+    {
+        // Run `b generate-scripts` after changing these parameters.
+        new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
+            "https://0fpg9nu41dat6boep.a1.typesense.net",
+            "metalamadoc",
+            "https://doc-production.postsharp.net/metalama/sitemap.xml",
+            true )
+    }
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
