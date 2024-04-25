@@ -60,7 +60,7 @@ To modify run-time caching options with a caching profile:
     > [!NOTE]
     > A default profile is assigned to any cached method even if the <xref:Metalama.Patterns.Caching.Aspects.CachingBaseAttribute.ProfileName> property is not assigned. This profile can be customized at run time like any other profile.
 
-2. Go back to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>, and supply a delegate that calls <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.AddProfile*>.
+2. Go back to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*?text=serviceCollection.AddMetalamaCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>, and supply a delegate that calls <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.AddProfile*>.
 
 
 > [!WARNING]

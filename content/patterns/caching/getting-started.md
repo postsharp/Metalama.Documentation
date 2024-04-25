@@ -17,7 +17,7 @@ Before you can utilize the <xref:Metalama.Patterns.Caching.Aspects.CacheAttribut
 If your project is designed for the .NET Core dependency injection framework (`Microsoft.Extensions.DependencyInjection`), follow these steps:
 
 1. Add the [Metalama.Patterns.Caching.Aspects](https://www.nuget.org/packages/Metalama.Patterns.Caching.Aspects/) package into your project.
-2. In your application setup logic, while adding services to the <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, include a call to the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*> extension method. This action will add an instance of the <xref:Metalama.Patterns.Caching.ICachingService> interface, which is consumed by the <xref:Metalama.Patterns.Caching.Aspects.CacheAttribute?text=[Cache]> aspect.
+2. In your application setup logic, while adding services to the <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, include a call to the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*> extension method. This action will add an instance of the <xref:Metalama.Patterns.Caching.ICachingService> interface, which is consumed by the <xref:Metalama.Patterns.Caching.Aspects.CacheAttribute?text=[Cache]> aspect.
 
     [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/GettingStarted/GettingStarted.Program.cs mark="Registration"]
 
@@ -30,7 +30,7 @@ The <xref:Metalama.Patterns.Caching.Aspects.CacheAttribute?text=[Cache]> aspect 
 
 In this example, we demonstrate how to add logging to a self-hosted .NET Core application. This application consists of two services, the primary service called `MainService` and a hypothetical `CloudCalculator`, which performs complex and slow computations.
 
-`Program.Main` calls the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*> extension method. This action makes <xref:Metalama.Patterns.Caching.ICachingService> available to `CloudCalculator`, which can use the <xref:Metalama.Patterns.Caching.Aspects.CacheAttribute?text=[Cache]> aspect. Note how the <xref:Metalama.Patterns.Caching.ICachingService> interface is automatically pulled into the `CloudCalculator` class.
+`Program.Main` calls the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*> extension method. This action makes <xref:Metalama.Patterns.Caching.ICachingService> available to `CloudCalculator`, which can use the <xref:Metalama.Patterns.Caching.Aspects.CacheAttribute?text=[Cache]> aspect. Note how the <xref:Metalama.Patterns.Caching.ICachingService> interface is automatically pulled into the `CloudCalculator` class.
 
 Finally, `MainService` calls `CloudCalculator` as usual. It calls the `CloudCalculator.Add` three times with the same parameters and displays the actual number of operations performed at the end.
 

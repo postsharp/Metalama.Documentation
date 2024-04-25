@@ -13,7 +13,7 @@ namespace Doc.Formatter
             var builder = ConsoleApp.CreateBuilder();
 
             // Add the caching service.
-            builder.Services.AddCaching(
+            builder.Services.AddMetalamaCaching(
                 caching => caching.ConfigureFormatters(                                           /*<Registration>*/
                     formatters => formatters.AddFormatter( r => new FileInfoFormatter( r ) ) ) ); /*</Registration>*/
 

@@ -15,9 +15,9 @@ namespace Doc.Locking
             var builder = ConsoleApp.CreateBuilder();
 
             // Add the caching service.
-            builder.Services.AddCaching( /*<AddCaching>*/
+            builder.Services.AddMetalamaCaching( /*<AddMetalamaCaching>*/
                 caching =>
-                    caching.AddProfile( new CachingProfile( "Locking" ) { LockingStrategy = new LocalLockingStrategy() } ) ); /*</AddCaching>*/
+                    caching.AddProfile( new CachingProfile( "Locking" ) { LockingStrategy = new LocalLockingStrategy() } ) ); /*</AddMetalamaCaching>*/
 
             // Add other components as usual, then run the application.
             builder.Services.AddConsoleMain<ConsoleMain>();

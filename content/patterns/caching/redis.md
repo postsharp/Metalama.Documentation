@@ -44,11 +44,11 @@ The second step is to configure Metalama Caching to use Redis. Follow these step
 
 2. Create an instance of [StackExchange.Redis.ConnectionMultiplexer](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-3. Go back to the code that initialized Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithBackend*> method, and supply a delegate that calls the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.Memory*> method, then immediately call the <xref:Metalama.Patterns.Caching.Backends.Azure.AzureCachingFactory.WithAzureSynchronization*> method. Pass the topic connection string as a parameter.
+3. Go back to the code that initialized Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*?text=serviceCollection.AddMetalamaCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithBackend*> method, and supply a delegate that calls the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.Memory*> method, then immediately call the <xref:Metalama.Patterns.Caching.Backends.Azure.AzureCachingFactory.WithAzureSynchronization*> method. Pass the topic connection string as a parameter.
 
-    Here is an example of the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*> code.
+    Here is an example of the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*> code.
 
-    [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/Redis/Redis.Program.cs marker="AddCaching"]
+    [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/Redis/Redis.Program.cs marker="AddMetalamaCaching"]
 
 
 4. We recommend initializing the caching service during the initialization sequence of your application, otherwise the service will be initialized lazily upon first use. Get the <xref:Metalama.Patterns.Caching.ICachingService>   interface from the <xref:System.IServiceProvider> and call the <xref:Metalama.Patterns.Caching.ICachingService.InitializeAsync*> method.
@@ -68,11 +68,11 @@ For higher performance, you can add an additional, in-process layer of caching (
 
 The benefit of using an in-memory L1 cache is to decrease latency between the application and the Redis server, and to decrease CPU load due to the deserialization of objects. To further decrease latency, write operations to the L2 cache are performed in the background.
 
-To enable the local cache, inside <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>, call the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.WithL1*> method right after the <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.Redis*> method.
+To enable the local cache, inside <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*?text=serviceCollection.AddMetalamaCaching>, call the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.WithL1*> method right after the <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.Redis*> method.
 
-The following snippet shows the updated <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*> code, with just a tiny change calling the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.WithL1*> method.
+The following snippet shows the updated <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*> code, with just a tiny change calling the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.WithL1*> method.
 
-[!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/RedisWithLocalCache/RedisWithLocalCache.Program.cs marker="AddCaching"]
+[!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/RedisWithLocalCache/RedisWithLocalCache.Program.cs marker="AddMetalamaCaching"]
 
 When you run several nodes of your applications with the same Redis server and the same <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.KeyPrefix>, the L1 caches of each application node are synchronized using Redis notifications.
 
