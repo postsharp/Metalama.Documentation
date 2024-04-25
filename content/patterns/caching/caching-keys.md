@@ -54,7 +54,7 @@ Then, implement the <xref:Flashtrace.Formatters.Formatter`1.Format*> abstract me
 
 ### Step 2. Register your new formatter
 
-Return to the code that initialized Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>, and supply a delegate that calls <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.ConfigureFormatters*> like in the following snippet:
+Return to the code that initialized Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*?text=serviceCollection.AddMetalamaCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>, and supply a delegate that calls <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.ConfigureFormatters*> like in the following snippet:
 
 [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/Formatter/Formatter.Program.cs marker="Registration"]
 
@@ -69,7 +69,7 @@ The maximum length of a cache key is 1024 characters by default.
 
 To change the maximum length of a cache key, the procedure is similar to registering a custom formatter.
 
-Go to the code that initialized Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. This time, call <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilderOptions*> and pass a new instance of the `CacheKeyBuilderOptions` with the `MaxKeySize` property set to a different value.
+Go to the code that initialized Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*?text=serviceCollection.AddMetalamaCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. This time, call <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithKeyBuilderOptions*> and pass a new instance of the `CacheKeyBuilderOptions` with the `MaxKeySize` property set to a different value.
 
 > [!WARNING]
 > If you need large cache keys, we suggest you also hash the cache key before submitting it to the caching backend. To hash the cache key, implement a custom cache key builder. We will show how to achieve this in the next section.
@@ -96,7 +96,7 @@ To override the default <xref:Metalama.Patterns.Caching.Formatters.ICacheKeyBuil
 
 1. Create a new class that implements the <xref:Metalama.Patterns.Caching.Formatters.ICacheKeyBuilder> interface, or derive from <xref:Metalama.Patterns.Caching.Formatters.CacheKeyBuilder> if you want to reuse its logic.
 
-2. Register your implementation while calling  <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create> as shown in the following snippet:
+2. Register your implementation while calling  <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*?text=serviceCollection.AddMetalamaCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create> as shown in the following snippet:
 
 
     [!metalama-test ~/code/Metalama.Documentation.SampleCode.Caching/HashingKeyBuilder/HashingKeyBuilder.Program.cs marker="Registration"]

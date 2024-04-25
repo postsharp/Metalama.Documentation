@@ -13,9 +13,9 @@ namespace Doc.ValueAdapter
             var builder = ConsoleApp.CreateBuilder();
 
             // Add the caching service and register out ValueAdapter.
-            builder.Services.AddCaching(
-                caching =>                                                   /*<AddCaching>*/
-                    caching.AddValueAdapter( new StringBuilderAdapter() ) ); /*</AddCaching>*/
+            builder.Services.AddMetalamaCaching(
+                caching =>                                                   /*<AddMetalamaCaching>*/
+                    caching.AddValueAdapter( new StringBuilderAdapter() ) ); /*</AddMetalamaCaching>*/
 
             // Add other components as usual, then run the application.
             builder.Services.AddConsoleMain<ConsoleMain>();

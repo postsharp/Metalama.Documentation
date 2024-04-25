@@ -13,7 +13,7 @@ namespace Doc.HashKeyBuilder
             var builder = ConsoleApp.CreateBuilder();
 
             // Add the caching service.
-            builder.Services.AddCaching(                                                                         /*<Registration>*/
+            builder.Services.AddMetalamaCaching(                                                                         /*<Registration>*/
                 caching => caching.WithKeyBuilder( ( formatters, _ ) => new HashingKeyBuilder( formatters ) ) ); /*</Registration>*/
 
             // Add other components as usual.

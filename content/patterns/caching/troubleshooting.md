@@ -8,7 +8,7 @@ If you need to troubleshoot the caching feature, you can enable verbose logging.
 
 ## With dependency injection
 
-If your application utilizes dependency injection, add the .NET logging service as usual using the <xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging*> extension method. The the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*> extension method automatically uses logging when available.
+If your application utilizes dependency injection, add the .NET logging service as usual using the <xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging*> extension method. The the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*> extension method automatically uses logging when available.
 
  Therefore, to troubleshoot caching, just set the minimum caching level to `Debug` using the <xref:Microsoft.Extensions.Logging.LoggingBuilderExtensions.SetMinimumLevel*> method.
 

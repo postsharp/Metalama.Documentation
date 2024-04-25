@@ -29,11 +29,11 @@ namespace Doc.AzureSynchronized
             var connectionString = Secrets.Get( "CacheInvalidationTestServiceBusConnectionString" );
 
             // Add the caching service.
-            builder.Services.AddCaching( /*<AddCaching>*/
+            builder.Services.AddMetalamaCaching( /*<AddMetalamaCaching>*/
                 caching =>
                     caching.WithBackend(
                         backend =>
-                            backend.Memory().WithAzureSynchronization( connectionString ) ) ); /*</AddCaching>*/
+                            backend.Memory().WithAzureSynchronization( connectionString ) ) ); /*</AddMetalamaCaching>*/
 
             // Add other components as usual.
             builder.Services.AddAsyncConsoleMain<ConsoleMain>();
