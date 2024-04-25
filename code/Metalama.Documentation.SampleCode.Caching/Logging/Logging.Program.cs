@@ -20,7 +20,7 @@ namespace Doc.Logging
                     logging.SetMinimumLevel( LogLevel.Debug ) ); /*</AddLogging>*/
 
             // Add the caching service.
-            builder.Services.AddCaching();
+            builder.Services.AddMetalamaCaching();
 
             // Add other components as usual, then run the application.
             builder.Services.AddConsoleMain<ConsoleMain>();

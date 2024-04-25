@@ -16,14 +16,14 @@ The <xref:Metalama.Patterns.Caching.Locking.LocalLockingStrategy> class implemen
 
 To configure the lock manager, the <xref:Metalama.Patterns.Caching.CachingProfile.LockingStrategy> property of the relevant <xref:Metalama.Patterns.Caching.CachingProfile> must be set. Each caching profile needs to be configured separately.
 
-To start using <xref:Metalama.Patterns.Caching.Locking.LocalLockingStrategy>, navigate to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching> or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Supply a delegate that calls <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.AddProfile*> and sets the <xref:Metalama.Patterns.Caching.CachingProfile.LockingStrategy?CachingProfile.LockingStrategy> property.
+To start using <xref:Metalama.Patterns.Caching.Locking.LocalLockingStrategy>, navigate to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*?text=serviceCollection.AddMetalamaCaching> or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Supply a delegate that calls <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.AddProfile*> and sets the <xref:Metalama.Patterns.Caching.CachingProfile.LockingStrategy?CachingProfile.LockingStrategy> property.
 
 > [!NOTE]
 > Each instance of the <xref:Metalama.Patterns.Caching.Locking.LocalLockingStrategy> class maintains its own set of locks. However, it is irrelevant whether several profiles use the same or a different instance of the <xref:Metalama.Patterns.Caching.Locking.LocalLockingStrategy>, as each method is associated with one and only one profile.
 
 For instance, the following snippet activates <xref:Metalama.Patterns.Caching.Locking.LocalLockingStrategy> for the `Locking` logging profile:
 
-[!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/Locking/Locking.Program.cs marker="AddCaching"]
+[!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/Locking/Locking.Program.cs marker="AddMetalamaCaching"]
 
 ### Example: locking vs non-locking caching access
 

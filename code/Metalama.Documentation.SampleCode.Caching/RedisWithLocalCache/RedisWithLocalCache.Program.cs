@@ -22,7 +22,7 @@ namespace Doc.RedisWithLocalCache
             builder.Services.AddLocalRedisServer();
 
             // Add the caching service.                         
-            builder.Services.AddCaching( /*<AddCaching>*/
+            builder.Services.AddMetalamaCaching( /*<AddMetalamaCaching>*/
                 caching => caching.WithBackend(
                     backend =>
                     {
@@ -39,7 +39,7 @@ namespace Doc.RedisWithLocalCache
 
                         // Finally, build the Redis caching back-end. Add an L1 cache.
                         return backend.Redis( new RedisCachingBackendConfiguration( redisConnectionOptions, keyPrefix ) ).WithL1();
-                    } ) ); /*</AddCaching>*/
+                    } ) ); /*</AddMetalamaCaching>*/
 
             // Add other components as usual.
             builder.Services.AddAsyncConsoleMain<ConsoleMain>();

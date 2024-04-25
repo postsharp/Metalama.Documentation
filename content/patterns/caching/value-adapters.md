@@ -33,10 +33,10 @@ To implement a custom value adapter:
 
 1. Create a class implementing the <xref:Metalama.Patterns.Caching.ValueAdapters.IValueAdapter`1> interface or the non-generic <xref:Metalama.Patterns.Caching.ValueAdapters.IValueAdapter> interface.
 
-2. Go back to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddCaching*?text=serviceCollection.AddCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.AddValueAdapter*> method, then pass an instance of your <xref:Metalama.Patterns.Caching.ValueAdapters.IValueAdapter`1>.
+2. Go back to the code that initialized the Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*?text=serviceCollection.AddMetalamaCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.AddValueAdapter*> method, then pass an instance of your <xref:Metalama.Patterns.Caching.ValueAdapters.IValueAdapter`1>.
 
 
-    [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/ValueAdapter/ValueAdapter.Program.cs marker="AddCaching"]
+    [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/ValueAdapter/ValueAdapter.Program.cs marker="AddMetalamaCaching"]
 
 > [!NOTE]
 > Null values are automatically handled outside of the value adapters.
