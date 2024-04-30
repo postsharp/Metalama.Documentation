@@ -9,7 +9,7 @@ summary: ""
 >  This release is under development.
 
 
-## Improvements of fabrics and IAspectReceiver
+## Improvements in fabrics and IAspectReceiver
 
 *  The`IAmender.Outbound` property is now redundant and has been marked as `[Obsolete]`. The `IAmender` interface now exposes `IAspectReceiver`, which was previously exposed by `Outbound`. The `Outbound` property is still required for `IAspectBuilder`.
 * New method`IAspectReceiver.Tag`:  adds an arbitrary tag that is carried on and available for all lambdas on the right side of the `Tag` method for new overloads of all  (or most)`IAspectReceiver` methods.
@@ -20,7 +20,7 @@ summary: ""
 * The right side of query operators like `IAspectReceiver.SelectMany()`, `IAspectReceiver.SelectTypes` or `IAspectReceiver.SelectTypesDerivedFrom` now executes concurrently.
 * When a part of a query is used several times (typically by storing the query in a local variable), its result is cached.
 
-## Improvements of Metalama.Extensions.Architecture
+## Improvements in Metalama.Extensions.Architecture
 
 ### Reference validator granularity
 
@@ -41,6 +41,16 @@ Code written against the previous API will get obsolescence warnings. We suggest
 ## Improvements in the test framework
 
 * The default diff interactive tool will now be opened when an aspect test fails (i.e. the expected snapshot is different than the actual one). The feature works with [DiffEngine](https://github.com/VerifyTests/DiffEngine) and integrates with [DiffEngineTray](https://github.com/VerifyTests/DiffEngine/blob/main/docs/tray.md).
+
+
+## Improvements in the code model
+
+* Adding `IExpression.WithType` and `IExpression.WithNullability` to override the inferred type or nullability of a captured expression.
+* New method `StatementFactory.FromTemplate` to create an `IStatement` from a template.
+* New concept `IStatementList` to represent an unresolved list of statements. New extension methods `IStatement.AsList()`, `IEnumerable<IStatement>.AsList()`, and `IStatement.UnwrapBlock` to create lists. New class `StatementListBuilder` to create an `IStatementList` by adding elements.
+* New class `SwitchStatementBuilder` to dynamically creating a `switch` statement (cases can be added programmatically -- only literal case labels are currently supported.)
+
+
 
 ## Breaking Changes
 
