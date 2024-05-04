@@ -8,11 +8,11 @@ namespace Doc.GenerateResetMethods
     public string Z => this.Y;
     public void ResetX()
     {
-      this._x = default(int);
+      _x = default(int);
     }
     public void ResetY()
     {
-      this.Y = default(string);
+      Y = default(string);
     }
   }
 }

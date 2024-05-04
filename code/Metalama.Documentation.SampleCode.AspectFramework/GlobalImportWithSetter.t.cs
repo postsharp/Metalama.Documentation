@@ -14,7 +14,7 @@ namespace Doc.GlobalImportWithSetter
         if (service == null)
         {
           service = (IFormatProvider? )ServiceLocator.ServiceProvider.GetService(typeof(IFormatProvider));
-          this._formatProvider1 = service;
+          _formatProvider1 = service;
         }
         return service;
       }

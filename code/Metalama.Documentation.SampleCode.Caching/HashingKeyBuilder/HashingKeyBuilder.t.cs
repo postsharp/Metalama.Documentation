@@ -27,7 +27,7 @@ namespace Doc.HashKeyBuilder
     private ICachingService _cachingService;
     static FileSystem()
     {
-      FileSystem._cacheRegistration_ReadAll = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(FileSystem).GetMethod("ReadAll", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!, "FileSystem.ReadAll(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+      _cacheRegistration_ReadAll = CachedMethodMetadata.Register(typeof(FileSystem).GetMethod("ReadAll", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!.ThrowIfMissing("FileSystem.ReadAll(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
     }
     public FileSystem(ICachingService? cachingService = default)
     {

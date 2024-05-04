@@ -12,7 +12,7 @@ namespace Doc.NotEmptyContract
     {
       get
       {
-        return this._name;
+        return _name;
       }
       set
       {
@@ -24,7 +24,7 @@ namespace Doc.NotEmptyContract
         {
           throw new ArgumentException("The 'Name' property must not be null or empty.", "value");
         }
-        this._name = value;
+        _name = value;
       }
     }
     private string? _description;
@@ -34,7 +34,7 @@ namespace Doc.NotEmptyContract
     {
       get
       {
-        return this._description;
+        return _description;
       }
       set
       {
@@ -42,7 +42,7 @@ namespace Doc.NotEmptyContract
         {
           throw new ArgumentException("The 'Description' property must not be null or empty.", "value");
         }
-        this._description = value;
+        _description = value;
       }
     }
     private string _currency = default !;
@@ -52,7 +52,7 @@ namespace Doc.NotEmptyContract
     {
       get
       {
-        return this._currency;
+        return _currency;
       }
       set
       {
@@ -67,7 +67,7 @@ namespace Doc.NotEmptyContract
             throw new ArgumentOutOfRangeException("value", "The 'Currency' property is required.");
           }
         }
-        this._currency = value;
+        _currency = value;
       }
     }
     public Instrument(string name, string currency, string? description)

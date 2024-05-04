@@ -9,7 +9,7 @@ namespace Doc.NotNullFabric
     {
       get
       {
-        return this._name;
+        return _name;
       }
       set
       {
@@ -17,7 +17,7 @@ namespace Doc.NotNullFabric
         {
           throw new ArgumentNullException("value", "The 'Name' property must not be null.");
         }
-        this._name = value;
+        _name = value;
       }
     }
     public Category? Category { get; set; }

@@ -10,7 +10,7 @@ namespace Doc.CreditCardContract
     {
       get
       {
-        return this._creditCard;
+        return _creditCard;
       }
       set
       {
@@ -18,7 +18,7 @@ namespace Doc.CreditCardContract
         {
           throw new ArgumentException("The 'CreditCard' property must be a valid credit card number.", "value");
         }
-        this._creditCard = value;
+        _creditCard = value;
       }
     }
   }

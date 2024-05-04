@@ -10,7 +10,7 @@ namespace Doc.NumericContracts
     {
       get
       {
-        return this._nominalPrice;
+        return _nominalPrice;
       }
       private init
       {
@@ -18,7 +18,7 @@ namespace Doc.NumericContracts
         {
           throw new ArgumentOutOfRangeException("value", "The 'NominalPrice' property must be greater than or equal to 0.");
         }
-        this._nominalPrice = value;
+        _nominalPrice = value;
       }
     }
     private readonly decimal _quantity;
@@ -27,7 +27,7 @@ namespace Doc.NumericContracts
     {
       get
       {
-        return this._quantity;
+        return _quantity;
       }
       private init
       {
@@ -35,7 +35,7 @@ namespace Doc.NumericContracts
         {
           throw new ArgumentOutOfRangeException("value", "The 'Quantity' property must be strictly greater than 0.");
         }
-        this._quantity = value;
+        _quantity = value;
       }
     }
     private readonly int _discount;
@@ -44,7 +44,7 @@ namespace Doc.NumericContracts
     {
       get
       {
-        return this._discount;
+        return _discount;
       }
       private init
       {
@@ -52,7 +52,7 @@ namespace Doc.NumericContracts
         {
           throw new ArgumentOutOfRangeException("The 'Discount' property must be in the range [0, 100].", "value");
         }
-        this._discount = value;
+        _discount = value;
       }
     }
   }

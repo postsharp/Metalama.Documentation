@@ -13,7 +13,7 @@ namespace Doc.UpperCase
       }
       set
       {
-        this._from = value?.ToUpper();
+        _from = value?.ToUpper();
       }
     }
     private string? _to;
@@ -26,7 +26,7 @@ namespace Doc.UpperCase
       }
       set
       {
-        this._to = value?.ToUpper();
+        _to = value?.ToUpper();
       }
     }
   }

@@ -10,7 +10,7 @@ namespace Doc.Contracts.Input
     {
       get
       {
-        return this._phone;
+        return _phone;
       }
       set
       {
@@ -20,7 +20,7 @@ namespace Doc.Contracts.Input
           var regex_1 = regex;
           throw new ArgumentException("The 'Phone' property must be a valid phone number.", "value");
         }
-        this._phone = value;
+        _phone = value;
       }
     }
     private string? _url;
@@ -29,7 +29,7 @@ namespace Doc.Contracts.Input
     {
       get
       {
-        return this._url;
+        return _url;
       }
       set
       {
@@ -39,7 +39,7 @@ namespace Doc.Contracts.Input
           var regex_1 = regex;
           throw new ArgumentException("The 'Url' property must be a valid URL.", "value");
         }
-        this._url = value;
+        _url = value;
       }
     }
     private int? _birthYear;
@@ -48,7 +48,7 @@ namespace Doc.Contracts.Input
     {
       get
       {
-        return this._birthYear;
+        return _birthYear;
       }
       set
       {
@@ -56,7 +56,7 @@ namespace Doc.Contracts.Input
         {
           throw new ArgumentOutOfRangeException("The 'BirthYear' property must be in the range [1900, 2100].", "value");
         }
-        this._birthYear = value;
+        _birthYear = value;
       }
     }
     public string? FirstName { get; set; }
@@ -66,7 +66,7 @@ namespace Doc.Contracts.Input
     {
       get
       {
-        return this._lastName;
+        return _lastName;
       }
       set
       {
@@ -81,7 +81,7 @@ namespace Doc.Contracts.Input
             throw new ArgumentOutOfRangeException("value", "The 'LastName' property is required.");
           }
         }
-        this._lastName = value;
+        _lastName = value;
       }
     }
     public Customer([Required] string fullName)

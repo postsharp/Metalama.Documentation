@@ -49,8 +49,19 @@ Code written against the previous API will get obsolescence warnings. We suggest
 * New method `StatementFactory.FromTemplate` to create an `IStatement` from a template.
 * New concept `IStatementList` to represent an unresolved list of statements. New extension methods `IStatement.AsList()`, `IEnumerable<IStatement>.AsList()`, and `IStatement.UnwrapBlock` to create lists. New class `StatementListBuilder` to create an `IStatementList` by adding elements.
 * New class `SwitchStatementBuilder` to dynamically creating a `switch` statement (cases can be added programmatically -- only literal case labels are currently supported.)
+* New method `IMethodInvoker.CreateInvokeExpression` generating an `IExpression` that represents a method invocation. Can be called outside of a template context.
 
+## Improvements in code formatting
 
+* The performance of whole-project output code formatting has been improved. Note that code formatting is disabled by default so it should not affect your standard builds, but `LamaDebug` builds should be faster.
+* Redundancies in member access expressions are eliminated where application  (e.g. `this.X` or `MyType.Y` becomes `X` or `Y`).
+* Non-extension calls to extension methods in templates are transformed into extension calls. This is useful because extension methods cannot be called on dynamic types.
+* The discard parameter `_`, when used in templates, was renamed to `__1`, `__2` and so on.
+
+## Improvements in advising and code templates
+
+* Added support for lambda statements and anonymous methods of known scope, i.e. either run-time or compile-time (the scope can be coerced using `meta.RunTime` or `meta.CompileTime` when it is not obvious from the context). Lambda expressions returning `dynamic` are not supported and won't be. Single-statement lambdas (e.g. `() => { return 0; }` are transparently simplified into expression lambdas (e.g. `() => 0`).
+* New class `Promise<T>` and interfaces `IPromise<T>` and `IPromise` to represent results that are not available yet. This mechanism allows to resolve chicken-or-egg issues when introducing members, when a template must receive a reference to a declaration that has not been introduced yet. A `Promise<T>` can be passed as an argument to a template, which receives it on a parameter of type `T`. 
 
 ## Breaking Changes
 

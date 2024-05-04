@@ -16,9 +16,9 @@ namespace Doc.Memoize_
     {
       get
       {
-        if (this._Hash == null)
+        if (_Hash == null)
         {
-          var value = new StrongBox<ReadOnlyMemory<byte>>(this.Hash_Source);
+          var value = new StrongBox<ReadOnlyMemory<byte>>(Hash_Source);
           global::System.Threading.Interlocked.CompareExchange(ref this._Hash, value, null);
         }
         return _Hash!.Value;
@@ -28,7 +28,7 @@ namespace Doc.Memoize_
     [Memoize]
     public override string ToString()
     {
-      if (this._ToString == null)
+      if (_ToString == null)
       {
         string value;
         value = $"{{HashedBuffer ({this.Buffer.Length} bytes)}}";

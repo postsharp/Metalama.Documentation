@@ -8,7 +8,7 @@ namespace Doc.AuxiliaryTemplate_Return
     {
       var cacheKey = $"Add({string.Join(", ", new object[] { a, b })})";
       string cacheKey_1 = cacheKey;
-      if (this._cache.TryGetValue(cacheKey_1, out var returnValue))
+      if (_cache.TryGetValue(cacheKey_1, out var returnValue))
       {
         return (int)returnValue;
       }
@@ -16,7 +16,7 @@ namespace Doc.AuxiliaryTemplate_Return
       returnValue_1 = a + b;
       string cacheKey_2 = cacheKey;
       global::System.Object? returnValue_2 = returnValue_1;
-      this._cache.TryAdd(cacheKey_2, returnValue_2);
+      _cache.TryAdd(cacheKey_2, returnValue_2);
       return returnValue_1;
     }
     private readonly ConcurrentDictionary<string, object?> _cache = new();

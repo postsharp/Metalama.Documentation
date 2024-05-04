@@ -13,7 +13,7 @@ namespace Doc.Trimmed
       }
       set
       {
-        this._code = value?.Trim();
+        _code = value?.Trim();
       }
     }
   }

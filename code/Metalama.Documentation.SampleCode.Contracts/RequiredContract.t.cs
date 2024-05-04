@@ -10,7 +10,7 @@ namespace Doc.RequiredContract
     {
       get
       {
-        return this._name;
+        return _name;
       }
       set
       {
@@ -25,7 +25,7 @@ namespace Doc.RequiredContract
             throw new ArgumentOutOfRangeException("value", "The 'Name' property is required.");
           }
         }
-        this._name = value;
+        _name = value;
       }
     }
     private Category _category = default !;
@@ -34,7 +34,7 @@ namespace Doc.RequiredContract
     {
       get
       {
-        return this._category;
+        return _category;
       }
       set
       {
@@ -42,7 +42,7 @@ namespace Doc.RequiredContract
         {
           throw new ArgumentNullException("value", "The 'Category' property is required.");
         }
-        this._category = value;
+        _category = value;
       }
     }
     public Instrument([Required] string name, [Required] Category category)

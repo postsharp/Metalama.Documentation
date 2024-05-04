@@ -10,7 +10,7 @@ namespace Doc.NotNullContract
     {
       get
       {
-        return this._name;
+        return _name;
       }
       set
       {
@@ -18,7 +18,7 @@ namespace Doc.NotNullContract
         {
           throw new ArgumentNullException("value", "The 'Name' property must not be null.");
         }
-        this._name = value;
+        _name = value;
       }
     }
     private Category _category = default !;
@@ -27,7 +27,7 @@ namespace Doc.NotNullContract
     {
       get
       {
-        return this._category;
+        return _category;
       }
       set
       {
@@ -35,7 +35,7 @@ namespace Doc.NotNullContract
         {
           throw new ArgumentNullException("value", "The 'Category' property must not be null.");
         }
-        this._category = value;
+        _category = value;
       }
     }
     public Instrument([NotNull] string name, [NotNull] Category category)

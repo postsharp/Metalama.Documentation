@@ -13,7 +13,7 @@ namespace Doc.Invariants_Disable
       {
         get
         {
-          return this._discountPercent;
+          return _discountPercent;
         }
         set
         {
@@ -21,7 +21,7 @@ namespace Doc.Invariants_Disable
           {
             throw new ArgumentOutOfRangeException("The 'DiscountPercent' property must be in the range [0, 100].", "value");
           }
-          this._discountPercent = value;
+          _discountPercent = value;
         }
       }
       private decimal _discountAmount;
@@ -30,7 +30,7 @@ namespace Doc.Invariants_Disable
       {
         get
         {
-          return this._discountAmount;
+          return _discountAmount;
         }
         set
         {
@@ -38,7 +38,7 @@ namespace Doc.Invariants_Disable
           {
             throw new ArgumentOutOfRangeException("The 'DiscountAmount' property must be in the range [0, 100].", "value");
           }
-          this._discountAmount = value;
+          _discountAmount = value;
         }
       }
       public virtual decimal DiscountedAmount => (this.Amount * (100 - this.Amount) / 100m) - this.DiscountAmount;

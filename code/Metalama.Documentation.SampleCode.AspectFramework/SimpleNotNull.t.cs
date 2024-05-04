@@ -9,7 +9,7 @@ namespace Doc.SimpleNotNull
     {
       get
       {
-        return this._field;
+        return _field;
       }
       set
       {
@@ -17,7 +17,7 @@ namespace Doc.SimpleNotNull
         {
           throw new ArgumentNullException(nameof(value));
         }
-        this._field = value;
+        _field = value;
       }
     }
     private string _property = "Property";
@@ -26,7 +26,7 @@ namespace Doc.SimpleNotNull
     {
       get
       {
-        return this._property;
+        return _property;
       }
       set
       {
@@ -34,7 +34,7 @@ namespace Doc.SimpleNotNull
         {
           throw new ArgumentNullException(nameof(value));
         }
-        this._property = value;
+        _property = value;
       }
     }
     public void Method([NotNull] string parameter)

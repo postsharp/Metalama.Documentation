@@ -10,7 +10,7 @@ namespace Doc.CustomRegexContract
     {
       get
       {
-        return this._password;
+        return _password;
       }
       set
       {
@@ -20,7 +20,7 @@ namespace Doc.CustomRegexContract
           var regex_1 = regex;
           throw new ArgumentException($"The 'Password' property must match the regular expression '{regex_1}'.", "value");
         }
-        this._password = value;
+        _password = value;
       }
     }
   }

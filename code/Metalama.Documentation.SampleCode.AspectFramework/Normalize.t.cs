@@ -8,11 +8,11 @@ namespace Doc.Normalize
     {
       get
       {
-        return this._property;
+        return _property;
       }
       set
       {
-        this._property = value?.Trim().ToLowerInvariant();
+        _property = value?.Trim().ToLowerInvariant();
       }
     }
   }

@@ -12,13 +12,13 @@ namespace Doc.LogDefaultFramework
     {
       try
       {
-        this._messageWriter.Write("Worker.Execute() started.");
+        _messageWriter.Write("Worker.Execute() started.");
         Console.WriteLine("Hello, world.");
         return;
       }
       finally
       {
-        this._messageWriter.Write("Worker.Execute() completed.");
+        _messageWriter.Write("Worker.Execute() completed.");
       }
     }
     private IMessageWriter _messageWriter;

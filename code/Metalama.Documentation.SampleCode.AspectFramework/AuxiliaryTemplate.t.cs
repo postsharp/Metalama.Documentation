@@ -8,7 +8,7 @@ namespace Doc.AuxiliaryTemplate
     public int Add(int a, int b)
     {
       var cacheKey = $"Add({string.Join(", ", new object[] { a, b })})";
-      if (this._cache.TryGetValue(cacheKey, out var returnValue))
+      if (_cache.TryGetValue(cacheKey, out var returnValue))
       {
         string cacheKey_1 = cacheKey;
         global::System.Object? value = returnValue;
@@ -17,7 +17,7 @@ namespace Doc.AuxiliaryTemplate
       {
         string cacheKey_2 = cacheKey;
         returnValue = a + b;
-        this._cache.TryAdd(cacheKey, returnValue);
+        _cache.TryAdd(cacheKey, returnValue);
       }
       return (int)returnValue;
     }
@@ -25,7 +25,7 @@ namespace Doc.AuxiliaryTemplate
     public int Rmove(int a, int b)
     {
       var cacheKey = $"Rmove({string.Join(", ", new object[] { a, b })})";
-      if (this._cache.TryGetValue(cacheKey, out var returnValue))
+      if (_cache.TryGetValue(cacheKey, out var returnValue))
       {
         string cacheKey_1 = cacheKey;
         global::System.Object? value = returnValue;
@@ -36,7 +36,7 @@ namespace Doc.AuxiliaryTemplate
         string cacheKey_2 = cacheKey;
         Console.WriteLine($"Cache hit: {cacheKey_2}");
         returnValue = a - b;
-        this._cache.TryAdd(cacheKey, returnValue);
+        _cache.TryAdd(cacheKey, returnValue);
       }
       return (int)returnValue;
     }

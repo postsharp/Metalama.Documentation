@@ -10,7 +10,7 @@ namespace Doc.Localize
     {
       get
       {
-        return this._telephone;
+        return _telephone;
       }
       set
       {
@@ -20,7 +20,7 @@ namespace Doc.Localize
           var regex_1 = regex;
           throw new ArgumentException("La valeur doit être un numéro de téléphone correct.", "value");
         }
-        this._telephone = value;
+        _telephone = value;
       }
     }
   }

@@ -10,7 +10,7 @@ namespace Doc.EnumDataTypeContract
     {
       get
       {
-        return this._color;
+        return _color;
       }
       set
       {
@@ -18,7 +18,7 @@ namespace Doc.EnumDataTypeContract
         {
           throw new ArgumentException("The 'Color' property must be a valid string?.", "value");
         }
-        this._color = value;
+        _color = value;
       }
     }
   }

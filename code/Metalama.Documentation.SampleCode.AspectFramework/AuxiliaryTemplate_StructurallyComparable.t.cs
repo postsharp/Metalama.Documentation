@@ -10,15 +10,15 @@ namespace Doc.StructurallyComparable
     public WineProducer Vigneron { get; init; }
     public override bool Equals(object? other)
     {
-      if (!EqualityComparer<string>.Default.Equals(this.Cepage, ((WineBottle)other!).Cepage))
+      if (!EqualityComparer<string>.Default.Equals(Cepage, ((WineBottle)other!).Cepage))
       {
         return false;
       }
-      if (!EqualityComparer<int>.Default.Equals(this.Millesime, ((WineBottle)other!).Millesime))
+      if (!EqualityComparer<int>.Default.Equals(Millesime, ((WineBottle)other!).Millesime))
       {
         return false;
       }
-      if (!EqualityComparer<WineProducer>.Default.Equals(this.Vigneron, ((WineBottle)other!).Vigneron))
+      if (!EqualityComparer<WineProducer>.Default.Equals(Vigneron, ((WineBottle)other!).Vigneron))
       {
         return false;
       }
@@ -27,9 +27,9 @@ namespace Doc.StructurallyComparable
     public override int GetHashCode()
     {
       var hashCode = new HashCode();
-      hashCode.Add(this.Cepage);
-      hashCode.Add(this.Millesime);
-      hashCode.Add(this.Vigneron);
+      hashCode.Add(Cepage);
+      hashCode.Add(Millesime);
+      hashCode.Add(Vigneron);
       return hashCode.ToHashCode();
     }
   }
@@ -40,11 +40,11 @@ namespace Doc.StructurallyComparable
     public string Address { get; init; }
     public override bool Equals(object? other)
     {
-      if (!EqualityComparer<string>.Default.Equals(this.Name, ((WineProducer)other!).Name))
+      if (!EqualityComparer<string>.Default.Equals(Name, ((WineProducer)other!).Name))
       {
         return false;
       }
-      if (!EqualityComparer<string>.Default.Equals(this.Address, ((WineProducer)other!).Address))
+      if (!EqualityComparer<string>.Default.Equals(Address, ((WineProducer)other!).Address))
       {
         return false;
       }
@@ -53,8 +53,8 @@ namespace Doc.StructurallyComparable
     public override int GetHashCode()
     {
       var hashCode = new HashCode();
-      hashCode.Add(this.Name);
-      hashCode.Add(this.Address);
+      hashCode.Add(Name);
+      hashCode.Add(Address);
       return hashCode.ToHashCode();
     }
   }

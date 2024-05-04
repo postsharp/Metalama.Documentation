@@ -27,7 +27,7 @@ namespace Doc.LogMethodAndProperty
       set
       {
         Console.WriteLine("Assigning Foo.Property");
-        this._property = value;
+        _property = value;
       }
     }
     private string? _field;
@@ -41,7 +41,7 @@ namespace Doc.LogMethodAndProperty
       set
       {
         Console.WriteLine("Assigning Foo.Field");
-        this._field = value;
+        _field = value;
       }
     }
   }

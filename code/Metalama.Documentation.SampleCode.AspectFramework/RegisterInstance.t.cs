@@ -1,4 +1,4 @@
-// Warning CS8618 on `_instanceRegistryHandle`: `Non-nullable field '_instanceRegistryHandle' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.`  
+// Warning CS8618 on `_instanceRegistryHandle`: `Non-nullable field '_instanceRegistryHandle' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.`
 using System;
 namespace Doc.RegisterInstance
 {
@@ -7,14 +7,14 @@ namespace Doc.RegisterInstance
   {
     public DemoClass() : base()
     {
-      this._instanceRegistryHandle = InstanceRegistry.Register(this);
+      _instanceRegistryHandle = InstanceRegistry.Register(this);
     }
     public DemoClass(int i) : this()
     {
     }
     public DemoClass(string s)
     {
-      this._instanceRegistryHandle = InstanceRegistry.Register(this);
+      _instanceRegistryHandle = InstanceRegistry.Register(this);
     }
     private IDisposable _instanceRegistryHandle;
   }

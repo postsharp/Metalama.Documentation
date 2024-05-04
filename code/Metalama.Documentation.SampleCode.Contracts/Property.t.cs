@@ -16,7 +16,7 @@ namespace Doc.Contracts.Property
     {
       get
       {
-        var returnValue = this._key;
+        var returnValue = _key;
         if (returnValue.Length <= 0)
         {
           throw new PostconditionViolationException("The 'Key' property must not be null or empty.");
@@ -25,7 +25,7 @@ namespace Doc.Contracts.Property
       }
       private init
       {
-        this._key = value;
+        _key = value;
       }
     }
     private string _value = default !;
@@ -33,7 +33,7 @@ namespace Doc.Contracts.Property
     {
       get
       {
-        var returnValue = this._value;
+        var returnValue = _value;
         if (returnValue.Length <= 0)
         {
           throw new PostconditionViolationException("The 'Value' property must not be null or empty.");
@@ -46,7 +46,7 @@ namespace Doc.Contracts.Property
         {
           throw new PostconditionViolationException("The 'Value' property must not be null or empty.");
         }
-        this._value = value;
+        _value = value;
       }
     }
     public Item(string key, string value)

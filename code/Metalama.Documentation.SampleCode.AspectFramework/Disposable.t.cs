@@ -14,7 +14,7 @@ namespace Doc.Disposable
     }
     protected virtual void Dispose(bool disposing)
     {
-      this._cancellationTokenSource.Dispose();
+      _cancellationTokenSource.Dispose();
     }
   }
   [Disposable]
@@ -24,7 +24,7 @@ namespace Doc.Disposable
     protected override void Dispose(bool disposing)
     {
       base.Dispose(disposing);
-      this._stream.Dispose();
+      _stream.Dispose();
     }
   }
 }

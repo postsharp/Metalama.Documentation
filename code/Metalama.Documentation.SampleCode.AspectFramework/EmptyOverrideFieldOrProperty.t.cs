@@ -12,7 +12,7 @@ namespace Doc
       }
       set
       {
-        this._field = value;
+        _field = value;
       }
     }
     private string? _property;
@@ -25,7 +25,7 @@ namespace Doc
       }
       set
       {
-        this._property = value;
+        _property = value;
       }
     }
   }

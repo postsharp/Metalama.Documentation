@@ -22,7 +22,7 @@ namespace Doc.Contracts.Inheritance
     {
       get
       {
-        return this._phone;
+        return _phone;
       }
       set
       {
@@ -32,7 +32,7 @@ namespace Doc.Contracts.Inheritance
           var regex_1 = regex;
           throw new ArgumentException("The 'Phone' property must be a valid phone number.", "value");
         }
-        this._phone = value;
+        _phone = value;
       }
     }
     private string? _url;
@@ -40,7 +40,7 @@ namespace Doc.Contracts.Inheritance
     {
       get
       {
-        return this._url;
+        return _url;
       }
       set
       {
@@ -50,7 +50,7 @@ namespace Doc.Contracts.Inheritance
           var regex_1 = regex;
           throw new ArgumentException("The 'Url' property must be a valid URL.", "value");
         }
-        this._url = value;
+        _url = value;
       }
     }
     private int? _birthYear;
@@ -58,7 +58,7 @@ namespace Doc.Contracts.Inheritance
     {
       get
       {
-        return this._birthYear;
+        return _birthYear;
       }
       set
       {
@@ -66,7 +66,7 @@ namespace Doc.Contracts.Inheritance
         {
           throw new ArgumentOutOfRangeException("The 'BirthYear' property must be in the range [1900, 2100].", "value");
         }
-        this._birthYear = value;
+        _birthYear = value;
       }
     }
     private string _firstName = default !;
@@ -74,7 +74,7 @@ namespace Doc.Contracts.Inheritance
     {
       get
       {
-        return this._firstName;
+        return _firstName;
       }
       set
       {
@@ -89,7 +89,7 @@ namespace Doc.Contracts.Inheritance
             throw new ArgumentOutOfRangeException("value", "The 'FirstName' property is required.");
           }
         }
-        this._firstName = value;
+        _firstName = value;
       }
     }
     private string _lastName = default !;
@@ -97,7 +97,7 @@ namespace Doc.Contracts.Inheritance
     {
       get
       {
-        return this._lastName;
+        return _lastName;
       }
       set
       {
@@ -112,7 +112,7 @@ namespace Doc.Contracts.Inheritance
             throw new ArgumentOutOfRangeException("value", "The 'LastName' property is required.");
           }
         }
-        this._lastName = value;
+        _lastName = value;
       }
     }
     public Customer([Required] string firstName, [Required] string lastName)

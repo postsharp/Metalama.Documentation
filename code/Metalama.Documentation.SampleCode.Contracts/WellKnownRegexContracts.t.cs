@@ -10,7 +10,7 @@ namespace Doc.WellKnownRegexContracts
     {
       get
       {
-        return this._phone;
+        return _phone;
       }
       set
       {
@@ -20,7 +20,7 @@ namespace Doc.WellKnownRegexContracts
           var regex_1 = regex;
           throw new ArgumentException("The 'Phone' property must be a valid phone number.", "value");
         }
-        this._phone = value;
+        _phone = value;
       }
     }
     private string? _email;
@@ -29,7 +29,7 @@ namespace Doc.WellKnownRegexContracts
     {
       get
       {
-        return this._email;
+        return _email;
       }
       set
       {
@@ -39,7 +39,7 @@ namespace Doc.WellKnownRegexContracts
           var regex_1 = regex;
           throw new ArgumentException("The 'Email' property must be a valid email address.", "value");
         }
-        this._email = value;
+        _email = value;
       }
     }
     private string? _profile;
@@ -48,7 +48,7 @@ namespace Doc.WellKnownRegexContracts
     {
       get
       {
-        return this._profile;
+        return _profile;
       }
       set
       {
@@ -58,7 +58,7 @@ namespace Doc.WellKnownRegexContracts
           var regex_1 = regex;
           throw new ArgumentException("The 'Profile' property must be a valid URL.", "value");
         }
-        this._profile = value;
+        _profile = value;
       }
     }
   }

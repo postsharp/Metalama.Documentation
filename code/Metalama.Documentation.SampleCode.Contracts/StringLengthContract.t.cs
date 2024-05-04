@@ -10,7 +10,7 @@ namespace Doc.StringLengthContract
     {
       get
       {
-        return this._password;
+        return _password;
       }
       set
       {
@@ -18,7 +18,7 @@ namespace Doc.StringLengthContract
         {
           throw new ArgumentException($"The  'Password' property must be a string with length between {12} and {64}.", "value");
         }
-        this._password = value;
+        _password = value;
       }
     }
   }

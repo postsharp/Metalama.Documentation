@@ -10,13 +10,13 @@ namespace Doc.LogCustomFramework
     {
       try
       {
-        LoggerExtensions.LogWarning(this._logger, "ConsoleMain.Execute() started.");
+        _logger.LogWarning("ConsoleMain.Execute() started.");
         _logger.LogInformation("Hello, world.");
         return;
       }
       finally
       {
-        LoggerExtensions.LogWarning(this._logger, "ConsoleMain.Execute() completed.");
+        _logger.LogWarning("ConsoleMain.Execute() completed.");
       }
     }
     private ILogger _logger;

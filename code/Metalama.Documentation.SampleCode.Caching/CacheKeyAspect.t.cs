@@ -22,24 +22,24 @@ namespace Doc.CacheKeyAspect
     public string? Description { get; set; }
     void IFormattable<CacheKeyFormatting>.Format(UnsafeStringBuilder stringBuilder, IFormatterRepository formatterRepository)
     {
-      stringBuilder.Append(this.GetType().FullName);
+      stringBuilder.Append(GetType().FullName);
       if (formatterRepository.Role is CacheKeyFormatting)
       {
         stringBuilder.Append(" ");
-        formatterRepository.Get<int>().Format(stringBuilder, this.Id);
+        formatterRepository.Get<int>().Format(stringBuilder, Id);
         stringBuilder.Append(" ");
-        formatterRepository.Get<string>().Format(stringBuilder, this.Kind);
+        formatterRepository.Get<string>().Format(stringBuilder, Kind);
       }
     }
     protected virtual void FormatCacheKey(UnsafeStringBuilder stringBuilder, IFormatterRepository formatterRepository)
     {
-      stringBuilder.Append(this.GetType().FullName);
+      stringBuilder.Append(GetType().FullName);
       if (formatterRepository.Role is CacheKeyFormatting)
       {
         stringBuilder.Append(" ");
-        formatterRepository.Get<int>().Format(stringBuilder, this.Id);
+        formatterRepository.Get<int>().Format(stringBuilder, Id);
         stringBuilder.Append(" ");
-        formatterRepository.Get<string>().Format(stringBuilder, this.Kind);
+        formatterRepository.Get<string>().Format(stringBuilder, Kind);
       }
     }
   }
@@ -59,7 +59,7 @@ namespace Doc.CacheKeyAspect
     private ICachingService _cachingService;
     static EntityService()
     {
-      EntityService._cacheRegistration_GetRelatedEntities = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(EntityService).GetMethod("GetRelatedEntities", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(Entity) }, null)!, "EntityService.GetRelatedEntities(Entity)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+      _cacheRegistration_GetRelatedEntities = CachedMethodMetadata.Register(typeof(EntityService).GetMethod("GetRelatedEntities", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(Entity) }, null)!.ThrowIfMissing("EntityService.GetRelatedEntities(Entity)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
     }
     public EntityService(ICachingService? cachingService = default)
     {

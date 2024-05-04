@@ -13,7 +13,7 @@ namespace Doc.GettingStarted_NoDI
     {
       static object? Invoke(object? instance, object? [] args)
       {
-        return CloudCalculator.Add_Source((int)args[0], (int)args[1]);
+        return Add_Source((int)args[0], (int)args[1]);
       }
       return ((ICachingService)CachingService.Default).GetFromCacheOrExecute<int>(_cacheRegistration_Add!, null, new object[] { a, b }, Invoke);
     }
@@ -26,7 +26,7 @@ namespace Doc.GettingStarted_NoDI
     private static readonly CachedMethodMetadata _cacheRegistration_Add;
     static CloudCalculator()
     {
-      CloudCalculator._cacheRegistration_Add = CachedMethodMetadata.Register(RunTimeHelpers.ThrowIfMissing(typeof(CloudCalculator).GetMethod("Add", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(int), typeof(int) }, null)!, "CloudCalculator.Add(int, int)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, false);
+      _cacheRegistration_Add = CachedMethodMetadata.Register(typeof(CloudCalculator).GetMethod("Add", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(int), typeof(int) }, null)!.ThrowIfMissing("CloudCalculator.Add(int, int)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, false);
     }
   }
 }

@@ -24,7 +24,7 @@ namespace Doc.RegistryStorage
       {
         var stringValue = Convert.ToString(value);
         Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\Animals", "Turtles", stringValue);
-        this._turtles = value;
+        _turtles = value;
       }
     }
     private int _cats;
@@ -46,7 +46,7 @@ namespace Doc.RegistryStorage
       {
         var stringValue = Convert.ToString(value);
         Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\Animals", "Cats", stringValue);
-        this._cats = value;
+        _cats = value;
       }
     }
     public int All => this.Turtles + this.Cats;

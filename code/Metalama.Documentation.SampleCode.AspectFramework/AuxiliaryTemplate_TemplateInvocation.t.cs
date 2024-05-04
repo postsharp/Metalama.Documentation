@@ -9,10 +9,10 @@ namespace Doc.AuxiliaryTemplate_TemplateInvocation
     {
       {
         var cacheKey = $"Add({string.Join(", ", new object[] { a, b })})";
-        if (!this._cache.TryGetValue(cacheKey, out var returnValue))
+        if (!_cache.TryGetValue(cacheKey, out var returnValue))
         {
           returnValue = a + b;
-          this._cache.TryAdd(cacheKey, returnValue);
+          _cache.TryAdd(cacheKey, returnValue);
         }
         return (int)returnValue;
       }
@@ -27,10 +27,10 @@ namespace Doc.AuxiliaryTemplate_TemplateInvocation
         {
           {
             var cacheKey = $"Rmove({string.Join(", ", new object[] { a, b })})";
-            if (!this._cache.TryGetValue(cacheKey, out var returnValue))
+            if (!_cache.TryGetValue(cacheKey, out var returnValue))
             {
               returnValue = a - b;
-              this._cache.TryAdd(cacheKey, returnValue);
+              _cache.TryAdd(cacheKey, returnValue);
             }
             return (int)returnValue;
           }

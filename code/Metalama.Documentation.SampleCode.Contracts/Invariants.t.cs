@@ -9,13 +9,13 @@ namespace Doc.Invariants
     {
       get
       {
-        return this._amount;
+        return _amount;
       }
       set
       {
         try
         {
-          this._amount = value;
+          _amount = value;
           return;
         }
         finally
@@ -30,7 +30,7 @@ namespace Doc.Invariants
     {
       get
       {
-        return this._discountPercent;
+        return _discountPercent;
       }
       set
       {
@@ -40,7 +40,7 @@ namespace Doc.Invariants
           {
             throw new ArgumentOutOfRangeException("The 'DiscountPercent' property must be in the range [0, 100].", "value");
           }
-          this._discountPercent = value;
+          _discountPercent = value;
           return;
         }
         finally
@@ -55,7 +55,7 @@ namespace Doc.Invariants
     {
       get
       {
-        return this._discountAmount;
+        return _discountAmount;
       }
       set
       {
@@ -65,7 +65,7 @@ namespace Doc.Invariants
           {
             throw new ArgumentOutOfRangeException("The 'DiscountAmount' property must be in the range [0, 100].", "value");
           }
-          this._discountAmount = value;
+          _discountAmount = value;
           return;
         }
         finally
@@ -85,7 +85,7 @@ namespace Doc.Invariants
     }
     protected virtual void VerifyInvariants()
     {
-      this.CheckDiscounts();
+      CheckDiscounts();
     }
   }
 }
