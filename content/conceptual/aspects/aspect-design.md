@@ -6,7 +6,7 @@ summary: "The document provides an in-depth understanding of the Metalama aspect
 
 # Understanding the aspect framework design
 
-Until now, you have learned how to create simple aspects using the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> and <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect>. These classes can be viewed as _API sugar_, designed to simplify the creation of your first aspects. To delve deeper, it is essential to understand the design of the Metalama aspect framework.
+Until now, you have learned how to create simple aspects using the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> and <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect>. These classes can be viewed as _API sugar_, designed to simplify the creation of your first aspects. Before going deeper, it is essential to understand the design of the Metalama aspect framework.
 
 ## Class diagram
 

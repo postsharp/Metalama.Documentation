@@ -6,7 +6,7 @@ summary: "The document provides guidance on creating simple aspects, including o
 
 # Creating simple aspects
 
-In <xref:using-metalama>, you learned how to utilize pre-built aspects in your project. This section introduces you to writing your first aspect. Initially, we will concentrate on simple tasks and features. Subsequent sections in this chapter will delve into more intricate details.
+In <xref:using-metalama>, you learned how to utilize pre-built aspects in your project. This section introduces you to writing your first aspect. Initially, we will concentrate on simple tasks and features. Subsequent sections in this chapter will go into more intricate details.
 
 ## In this section
 

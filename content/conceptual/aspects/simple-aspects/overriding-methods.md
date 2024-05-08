@@ -83,7 +83,7 @@ When you need to find out which method call is taking time, the first step is us
 
 ## Going deeper
 
-If you want to delve deeper into method overrides, consider reading the following articles:
+If you want to go deeper into method overrides, consider reading the following articles:
 
 * In this article, you have learned how to use `meta.Proceed` and `meta.Target.Method.Name` in your templates. You can create much more complex and powerful templates, even doing compile-time `if` and `foreach` blocks. To learn how, jump directly to <xref:templates>.
 

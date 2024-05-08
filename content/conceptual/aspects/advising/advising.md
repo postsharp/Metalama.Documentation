@@ -6,7 +6,7 @@ summary: "The document provides a list of articles discussing advanced technique
 
 # Transforming code
 
-In <xref:simple-aspects>, you learned how to build simple aspects composed of a single transformation (or advice). This section introduces more advanced scenarios and explains how to create aspects composed of multiple pieces of advice. However, before we delve into these topics, we need to familiarize you with a few additional concepts.
+In <xref:simple-aspects>, you learned how to build simple aspects composed of a single transformation (or advice). This section introduces more advanced scenarios and explains how to create aspects composed of multiple pieces of advice. However, before we go deeper into these topics, we need to familiarize you with a few additional concepts.
 
 | Article | Description |
 |----|----|
