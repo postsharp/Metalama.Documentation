@@ -67,7 +67,7 @@ Note that in this example, `From` is a public field and `To` is a public propert
 
 ## Going deeper
 
-If you want to delve deeper into field/property overrides, consider exploring the following articles:
+If you want to go deeper into field/property overrides, consider exploring the following articles:
 
 * In this article, you learned how to use `meta.Proceed` and `meta.Target.Method.Name` in your templates. You can write much more complex and powerful templates, even performing compile-time `if` and `foreach` blocks. To see how, you can jump directly to <xref:templates>.
 

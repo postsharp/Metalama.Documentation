@@ -48,7 +48,7 @@ Two properties of the <xref:Metalama.Patterns.Caching.CachingProfile> class infl
 
 ## Implementing a distributed lock manager
 
-Implementing a distributed locking algorithm is a complex task, and we at Metalama have chosen not to delve into this area (just as we do not provide the implementation of a cache itself). However, Metalama does offer the ability to use any third-party implementation.
+Implementing a distributed locking algorithm is a complex task, and we at Metalama have chosen not to go deeper into this area (just as we do not provide the implementation of a cache itself). However, Metalama does offer the ability to use any third-party implementation.
 
 To make your lock manager work with the caching aspect, you should implement the <xref:Metalama.Patterns.Caching.Locking.ILockingStrategy> and <xref:Metalama.Patterns.Caching.Locking.ILockHandle> interfaces.
 
