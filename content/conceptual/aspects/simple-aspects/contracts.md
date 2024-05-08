@@ -47,7 +47,7 @@ A contract can be used for more than just throwing an exception. In the subseque
 
 ## Going deeper
 
-If you wish to delve deeper into contracts, consider referring to the following articles:
+If you wish to go deeper into contracts, consider referring to the following articles:
 
 * In this article, we have restricted ourselves to very basic contract implementations. To learn how to write more complex code templates, you can directly refer to <xref:templates>.
 * In this article, we have only applied contracts to the _default direction_ of fields, properties, or parameters. To understand the concept of contract direction, refer to <xref:contracts>.

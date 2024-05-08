@@ -17,6 +17,6 @@ summary: "The document outlines the different chapters in a manual about Metalam
 | <xref:sdk> | This chapter explains how to extend Metalama using the Roslyn API.
 | <xref:configuration>    | This chapter discusses how to configure Metalama for specific situations or troubleshooting purposes. |
 | <xref:migration> | This chapter sheds light on why, when, and how to migrate your projects from PostSharp to Metalama.
-| <xref:implementation> | This chapter delves into a few implementation details.
+| <xref:implementation> | This chapter covers a few implementation details.
 | <xref:divorcing> | This chapter provides a guide on how to remove Metalama from your codebase.
 
