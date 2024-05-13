@@ -7,7 +7,7 @@ summary: "Memoization is an optimization technique that caches results of determ
 
 Memoization is an optimization technique that enhances the performance of deterministic methods by caching their results. Metalama provides a straightforward and high-performance implementation of this technique through the <xref:Metalama.Patterns.Memoization.MemoizeAttribute?text=[Memoize]> aspect.
 
-Currently, this aspect is limited to get-only properties and parameterless methods. The cached value of memoized methods and properties is stored in a field of the object itself, enabling a high-performance implementation using `Interlocked.CompareExchange`. It serves as an alternative to the <xref:System.Lazy`1`> class, offering a simpler usage and superior performance characteristics.
+Currently, this aspect is limited to get-only properties and parameterless methods. The cached value of memoized methods and properties is stored in a field of the object itself, enabling a high-performance implementation using `Interlocked.CompareExchange`. It serves as an alternative to the <xref:System.Lazy`1> class, offering a simpler usage and superior performance characteristics.
 
 To memoize a property or a method:
 
@@ -23,7 +23,7 @@ To memoize a property or a method:
 
 ## Example: Memoization
 
-The following example demonstrates a typical use of the <xref:Metalama.Patterns.Memoization.MemoizeAttribute?text=[Memoize]> aspect. It presents a `HashedBuffer` class, for which we aim to optimize the performance of the `Hash` property and the `ToString` method. We assume that these members are only evaluated for a minority of instances of the `HashedBuffer` class, therefore the hash should not be pre-computed in the constructor. However, when they are evaluated, we assume they are evaluated often, which means that we should cache the result. The <xref:Metalama.Patterns.Memoization.MemoizeAttribute?text=[Memoize]> aspect offers a solution that is both simpler and more performant than the <xref:System.Lazy`1`> class.
+The following example demonstrates a typical use of the <xref:Metalama.Patterns.Memoization.MemoizeAttribute?text=[Memoize]> aspect. It presents a `HashedBuffer` class, for which we aim to optimize the performance of the `Hash` property and the `ToString` method. We assume that these members are only evaluated for a minority of instances of the `HashedBuffer` class, therefore the hash should not be pre-computed in the constructor. However, when they are evaluated, we assume they are evaluated often, which means that we should cache the result. The <xref:Metalama.Patterns.Memoization.MemoizeAttribute?text=[Memoize]> aspect offers a solution that is both simpler and more performant than the <xref:System.Lazy`1> class.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Memoization/Memoize.cs]
 
