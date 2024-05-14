@@ -86,9 +86,13 @@
         ]
       }
     ],
-    "xrefService": [
+      "xref": [
+        "https://learn.microsoft.com/en-us/dotnet/.xrefmap.json"
+//        "C:\\Users\\GaelFraiteur.AzureAD\\Downloads\\xrefmap.json"
+      ],
+/*    "xrefService": [
       "https://learn.microsoft.com/api/xref/query?uid={uid}"
-    ],
+    ], */
     "dest": "docfx/_site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],

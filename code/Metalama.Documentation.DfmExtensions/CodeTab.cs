@@ -148,7 +148,7 @@ internal class CodeTab : BaseTab
         }
         else
         {
-            throw new FileNotFoundException( $"No HTML file for '{this.FullPath}' could found.", htmlPath );
+            throw new FileNotFoundException( $"No HTML file for '{this.FullPath}' could be found.", htmlPath );
         }
     }
 
