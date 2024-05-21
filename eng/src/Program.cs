@@ -57,9 +57,8 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
             {
                 new MergePublisher(), new DocumentationPublisher( new S3PublisherConfiguration[]
                 {
-                    //TODO
                     new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
-                } )
+                }, "https://postsharp-helpbrowser.azurewebsites.net/" )
             }
         } ),
     Extensions = new ProductExtension[]
