@@ -2,7 +2,7 @@
 
 namespace BuildMetalamaDocumentation;
 
-public enum MetalamaDocFxRank
+internal enum MetalamaDocFxRank
 {
     Unknown = 1,
     Api = 2,
