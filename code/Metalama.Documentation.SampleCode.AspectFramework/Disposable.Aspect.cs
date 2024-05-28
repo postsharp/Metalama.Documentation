@@ -35,7 +35,7 @@ namespace Doc.Disposable
         }
 
         // Implementation of IDisposable.Dispose.
-        [InterfaceMember]
+        [Introduce( WhenExists = OverrideStrategy.Ignore )]
         public void Dispose()
         {
             meta.This.Dispose( true );
