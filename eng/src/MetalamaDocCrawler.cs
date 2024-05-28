@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace BuildMetalamaDocumentation;
 
-public class MetalamaDocCrawler : DocFxCrawler
+internal class MetalamaDocCrawler : DocFxCrawler
 {
     // This method parses the breadcrumb of an article
     // (eg. Metalama > 🏠 > Conceptual documentation > Creating aspects > Ordering aspects
