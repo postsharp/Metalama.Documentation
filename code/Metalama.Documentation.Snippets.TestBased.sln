@@ -18,13 +18,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.Samp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.SampleCode.EnhanceMethods", "Metalama.Documentation.SampleCode.EnhanceMethods\Metalama.Documentation.SampleCode.EnhanceMethods.csproj", "{AC365E4C-46FA-4457-A520-662E635058CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.SampleCode.Contracts", "Metalama.Documentation.SampleCode.Contracts\Metalama.Documentation.SampleCode.Contracts.csproj", "{C3BDBB92-FA37-4FB2-BFA5-90AB51298D5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.SampleCode.Contracts", "Metalama.Documentation.SampleCode.Contracts\Metalama.Documentation.SampleCode.Contracts.csproj", "{C3BDBB92-FA37-4FB2-BFA5-90AB51298D5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.SampleCode.Caching", "Metalama.Documentation.SampleCode.Caching\Metalama.Documentation.SampleCode.Caching.csproj", "{CDA47C34-EB1E-4A37-8A37-F72566CE724B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.SampleCode.Caching", "Metalama.Documentation.SampleCode.Caching\Metalama.Documentation.SampleCode.Caching.csproj", "{CDA47C34-EB1E-4A37-8A37-F72566CE724B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.Helpers", "Metalama.Documentation.Helpers\Metalama.Documentation.Helpers.csproj", "{45ED549F-F462-497E-B401-10C89262AA9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.Helpers", "Metalama.Documentation.Helpers\Metalama.Documentation.Helpers.csproj", "{45ED549F-F462-497E-B401-10C89262AA9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.SampleCode.Memoization", "Metalama.Documentation.SampleCode.Memoization\Metalama.Documentation.SampleCode.Memoization.csproj", "{7C614485-7874-4D4A-813A-56BAAC6586CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.SampleCode.Memoization", "Metalama.Documentation.SampleCode.Memoization\Metalama.Documentation.SampleCode.Memoization.csproj", "{7C614485-7874-4D4A-813A-56BAAC6586CB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.SampleCode.Observability", "Metalama.Documentation.SampleCode.Observability\Metalama.Documentation.SampleCode.Observability.csproj", "{AF5A550A-BD31-4FA5-BE13-1884D5B7FB8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.SampleCode.Xaml", "Metalama.Documentation.SampleCode.Xaml\Metalama.Documentation.SampleCode.Xaml.csproj", "{7E73DAE2-3C8F-4357-AED1-DE2AB1989C47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +72,14 @@ Global
 		{7C614485-7874-4D4A-813A-56BAAC6586CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C614485-7874-4D4A-813A-56BAAC6586CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C614485-7874-4D4A-813A-56BAAC6586CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF5A550A-BD31-4FA5-BE13-1884D5B7FB8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF5A550A-BD31-4FA5-BE13-1884D5B7FB8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF5A550A-BD31-4FA5-BE13-1884D5B7FB8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF5A550A-BD31-4FA5-BE13-1884D5B7FB8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E73DAE2-3C8F-4357-AED1-DE2AB1989C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E73DAE2-3C8F-4357-AED1-DE2AB1989C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E73DAE2-3C8F-4357-AED1-DE2AB1989C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E73DAE2-3C8F-4357-AED1-DE2AB1989C47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
