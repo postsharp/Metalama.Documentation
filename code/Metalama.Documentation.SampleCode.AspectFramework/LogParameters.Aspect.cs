@@ -62,7 +62,7 @@ namespace Doc.LogParameters
             stringBuilder.AddText( "." );
             stringBuilder.AddText( meta.Target.Method.Name );
             stringBuilder.AddText( "(" );
-            var i = meta.CompileTime( 0 );
+            var i = 0;
 
             foreach ( var p in meta.Target.Parameters )
             {
@@ -75,7 +75,7 @@ namespace Doc.LogParameters
                 else
                 {
                     stringBuilder.AddText( $"{comma}{p.Name} = {{" );
-                    stringBuilder.AddExpression( p.Value );
+                    stringBuilder.AddExpression( p );
                     stringBuilder.AddText( "}" );
                 }
 
