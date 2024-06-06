@@ -4,17 +4,17 @@
 using Metalama.Patterns.Xaml;
 using System.Windows;
 using System.Windows.Controls;
-namespace Doc.DependencyProperties.ReadOnly;
+namespace Doc.DependencyProperties.DefaultValueButNotInitial;
 internal class MyControl : UserControl
 {
-  [DependencyProperty]
+  [DependencyProperty(InitializerProvidesDefaultValue = false, InitializerProvidesInitialValue = true)]
   public double BorderWidth
   {
     get
     {
       return (double)GetValue(BorderWidthProperty);
     }
-    private set
+    set
     {
       this.SetValue(BorderWidthProperty, value);
     }
@@ -23,5 +23,9 @@ internal class MyControl : UserControl
   static MyControl()
   {
     BorderWidthProperty = DependencyProperty.Register("BorderWidth", typeof(double), typeof(MyControl));
+  }
+  public MyControl()
+  {
+    BorderWidth = 5;
   }
 }

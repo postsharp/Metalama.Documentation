@@ -1,27 +1,34 @@
-// Warning LAMA5206 on `BorderWidth`: `No property-changed method was found using the default naming convention, with candidate member name 'OnBorderWidthChanged'.`
-// Warning LAMA5206 on `BorderWidth`: `No property-changing method was found using the default naming convention, with candidate member name 'OnBorderWidthChanging'.`
-// Warning LAMA5206 on `BorderWidth`: `No validate method was found using the default naming convention, with candidate member name 'ValidateBorderWidth'.`
+// Warning LAMA5206 on `Title`: `No property-changing method was found using the default naming convention, with candidate member name 'OnTitleChanging'.`
+// Warning LAMA5206 on `Title`: `No validate method was found using the default naming convention, with candidate member name 'ValidateTitle'.`
 using Metalama.Patterns.Xaml;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-namespace Doc.DependencyProperties.Contract;
+namespace Doc.DependencyProperties.OnPropertyChanging;
 internal class MyControl : UserControl
 {
   [DependencyProperty]
-  public double BorderWidth
+  public string Title
   {
     get
     {
-      return (double)GetValue(BorderWidthProperty);
+      return (string)GetValue(TitleProperty);
     }
     set
     {
-      this.SetValue(BorderWidthProperty, value);
+      this.SetValue(TitleProperty, value);
     }
   }
-  public static readonly DependencyProperty BorderWidthProperty;
+  private void OnTitleChanged(string value)
+  {
+    if (value.Contains("foo"))
+    {
+      throw new ArgumentOutOfRangeException(nameof(value));
+    }
+  }
+  public static readonly DependencyProperty TitleProperty;
   static MyControl()
   {
-    BorderWidthProperty = DependencyProperty.Register("BorderWidth", typeof(double), typeof(MyControl));
+    TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(MyControl), new PropertyMetadata((d, e) => ((MyControl)d).OnTitleChanged((string)e.NewValue)));
   }
 }

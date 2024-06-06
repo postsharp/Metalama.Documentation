@@ -6,7 +6,7 @@ using Metalama.Patterns.Xaml;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-namespace Doc.DependencyProperties.Simple;
+namespace Doc.DependencyProperties.Contract;
 internal class MyControl : UserControl
 {
   [DependencyProperty]

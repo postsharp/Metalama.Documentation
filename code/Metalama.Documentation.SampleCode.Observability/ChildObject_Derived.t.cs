@@ -1,6 +1,6 @@
 using System.ComponentModel;
 using Metalama.Patterns.Observability;
-namespace Doc.ChildObject;
+namespace Doc.ChildObject_Derived;
 [Observable]
 public class Person : INotifyPropertyChanged
 {
