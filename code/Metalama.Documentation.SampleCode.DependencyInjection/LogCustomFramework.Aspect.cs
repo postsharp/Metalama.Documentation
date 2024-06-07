@@ -2,15 +2,12 @@
 
 using Doc.LogCustomFramework;
 using Metalama.Framework.Aspects;
-using Metalama.Framework.Code;
 using Metalama.Extensions.DependencyInjection;
-using Metalama.Extensions.DependencyInjection.Implementation;
 using Microsoft.Extensions.Logging;
-using Metalama.Framework.Diagnostics;
 
 #pragma warning disable CS0649, CS8618
 
-[assembly: AspectOrder( typeof(LogAttribute), typeof(DependencyAttribute) )]
+[assembly: AspectOrder( AspectOrderDirection.RunTime, typeof(LogAttribute), typeof(DependencyAttribute) )]
 
 namespace Doc.LogCustomFramework
 {

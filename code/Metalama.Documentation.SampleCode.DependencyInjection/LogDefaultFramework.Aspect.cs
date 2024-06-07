@@ -6,7 +6,7 @@ using Metalama.Extensions.DependencyInjection;
 
 #pragma warning disable CS0649, CS8618
 
-[assembly: AspectOrder( typeof(LogAttribute), typeof(DependencyAttribute) )]
+[assembly: AspectOrder( AspectOrderDirection.RunTime, typeof(LogAttribute), typeof(DependencyAttribute) )]
 
 namespace Doc.LogDefaultFramework
 {

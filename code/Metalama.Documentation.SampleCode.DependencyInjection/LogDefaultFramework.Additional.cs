@@ -2,8 +2,6 @@
 
 using Doc.LogCustomFramework;
 using Metalama.Documentation.Helpers.ConsoleApp;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using System;
 
 namespace Doc.LogDefaultFramework

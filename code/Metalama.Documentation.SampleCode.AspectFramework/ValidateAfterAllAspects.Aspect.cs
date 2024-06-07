@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 
 // Note that aspects are applied in inverse order than they appear in the next line.
-[assembly: AspectOrder( typeof(AddLoggerAttribute), typeof(LogAttribute) )]
+[assembly: AspectOrder(AspectOrderDirection.RunTime, typeof(AddLoggerAttribute), typeof(LogAttribute) )]
 
 namespace Doc.ValidateAfterAllAspects
 {

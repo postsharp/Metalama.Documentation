@@ -1,8 +1,6 @@
 // This is public domain Metalama sample code.
 
 using Metalama.Documentation.Helpers.ConsoleApp;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Doc.LogCustomFramework
 {
