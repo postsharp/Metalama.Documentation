@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿// This is public domain Metalama sample code.
+
+using System.Windows;
 using Metalama.Framework.Fabrics;
 using Metalama.Patterns.Xaml;
 using Metalama.Patterns.Xaml.Configuration;
@@ -30,6 +32,7 @@ public class Fabric : ProjectFabric
 {
     public override void AmendProject( IProjectAmender amender )
     {
-        amender.ConfigureCommand( builder => builder.AddNamingConvention( new CommandNamingConvention( "czech" ) { CanExecutePattern = "^Můzeme{CommandName}$" } ) );
+        amender.ConfigureCommand(
+            builder => builder.AddNamingConvention( new CommandNamingConvention( "czech" ) { CanExecutePattern = "^Můzeme{CommandName}$" } ) );
     }
 }

@@ -1,14 +1,13 @@
 ﻿// This is public domain Metalama sample code.
 
-namespace Doc.RegisterInstance
+namespace Doc.RegisterInstance;
+
+[RegisterInstance]
+internal class DemoClass
 {
-    [RegisterInstance]
-    internal class DemoClass
-    {
-        public DemoClass() : base() { }
+    public DemoClass() : base() { }
 
-        public DemoClass( int i ) : this() { }
+    public DemoClass( int i ) : this() { }
 
-        public DemoClass( string s ) { }
-    }
+    public DemoClass( string s ) { }
 }

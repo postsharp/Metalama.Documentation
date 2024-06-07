@@ -1,25 +1,23 @@
 using System;
-namespace Doc.Logging
+namespace Doc.Logging;
+public class Program
 {
-  public class Program
+  [Log]
+  public static void SayHello(string name)
   {
-    [Log]
-    public static void SayHello(string name)
+    try
     {
-      try
-      {
-        Console.WriteLine("Started Program.SayHello(string)");
-        Console.WriteLine($"Hello {name}");
-        return;
-      }
-      finally
-      {
-        Console.WriteLine("Finished Program.SayHello(string)");
-      }
+      Console.WriteLine("Started Program.SayHello(string)");
+      Console.WriteLine($"Hello {name}");
+      return;
     }
-    public static void Main()
+    finally
     {
-      SayHello("Your Majesty");
+      Console.WriteLine("Finished Program.SayHello(string)");
     }
+  }
+  public static void Main()
+  {
+    SayHello("Your Majesty");
   }
 }

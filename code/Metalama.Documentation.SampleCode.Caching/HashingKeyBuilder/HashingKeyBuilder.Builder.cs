@@ -7,50 +7,49 @@ using System;
 using System.Collections.Generic;
 using System.IO.Hashing;
 
-namespace Doc.HashKeyBuilder
+namespace Doc.HashKeyBuilder;
+
+internal sealed class HashingKeyBuilder : ICacheKeyBuilder, IDisposable
 {
-    internal sealed class HashingKeyBuilder : ICacheKeyBuilder, IDisposable
+    private readonly CacheKeyBuilder _underlyingBuilder;
+
+    public HashingKeyBuilder( IFormatterRepository formatters )
     {
-        private readonly CacheKeyBuilder _underlyingBuilder;
+        this._underlyingBuilder = new CacheKeyBuilder( formatters, new CacheKeyBuilderOptions() { MaxKeySize = 8000 } );
+    }
 
-        public HashingKeyBuilder( IFormatterRepository formatters )
+    public string BuildMethodKey( CachedMethodMetadata metadata, object? instance, IList<object?> arguments )
+    {
+        var fullKey = this._underlyingBuilder.BuildMethodKey( metadata, instance, arguments );
+
+        return Hash( fullKey );
+    }
+
+    public string BuildDependencyKey( object o )
+    {
+        var fullKey = this._underlyingBuilder.BuildDependencyKey( o );
+
+        return Hash( fullKey );
+    }
+
+    private static string Hash( string s )
+    {
+        unsafe
         {
-            this._underlyingBuilder = new CacheKeyBuilder( formatters, new CacheKeyBuilderOptions() { MaxKeySize = 8000 } );
-        }
-
-        public string BuildMethodKey( CachedMethodMetadata metadata, object? instance, IList<object?> arguments )
-        {
-            var fullKey = this._underlyingBuilder.BuildMethodKey( metadata, instance, arguments );
-
-            return Hash( fullKey );
-        }
-
-        public string BuildDependencyKey( object o )
-        {
-            var fullKey = this._underlyingBuilder.BuildDependencyKey( o );
-
-            return Hash( fullKey );
-        }
-
-        private static string Hash( string s )
-        {
-            unsafe
+            fixed ( byte* hashBytes = stackalloc byte[128] )
+            fixed ( char* input = s )
             {
-                fixed ( byte* hashBytes = stackalloc byte[128] )
-                fixed ( char* input = s )
-                {
-                    var span = new ReadOnlySpan<byte>( input, s.Length * 2 );
-                    var hashSpan = new Span<byte>( hashBytes, 128 );
-                    XxHash128.Hash( span, hashSpan );
+                var span = new ReadOnlySpan<byte>( input, s.Length * 2 );
+                var hashSpan = new Span<byte>( hashBytes, 128 );
+                XxHash128.Hash( span, hashSpan );
 
-                    return Convert.ToBase64String( hashSpan );
-                }
+                return Convert.ToBase64String( hashSpan );
             }
         }
+    }
 
-        public void Dispose()
-        {
-            this._underlyingBuilder.Dispose();
-        }
+    public void Dispose()
+    {
+        this._underlyingBuilder.Dispose();
     }
 }

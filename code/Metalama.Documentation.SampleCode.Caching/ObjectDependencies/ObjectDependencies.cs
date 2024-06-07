@@ -11,99 +11,98 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Doc.ObjectDependencies
+namespace Doc.ObjectDependencies;
+
+internal static class GlobalDependencies
 {
-    internal static class GlobalDependencies
+    public static ICacheDependency ProductCatalogue = new StringDependency( nameof(ProductCatalogue) );
+    public static ICacheDependency ProductList = new StringDependency( nameof(ProductList) );
+}
+
+public record Product( string Name, decimal Price ) : ICacheDependency
+{
+    string ICacheDependency.GetCacheKey( ICachingService cachingService ) => this.Name;
+
+    // Means that when we invalidate the current product in cache, we should also invalidate the product catalogue.
+    IReadOnlyCollection<ICacheDependency> ICacheDependency.CascadeDependencies { get; } = new[] { GlobalDependencies.ProductCatalogue };
+}
+
+public sealed class ProductCatalogue
+{
+    private readonly Dictionary<string, Product> _dbSimulator = new() { ["corn"] = new Product( "corn", 100 ) };
+
+    public int DbOperationCount { get; private set; }
+
+    [Cache]
+    public Product GetProduct( string productId )
     {
-        public static ICacheDependency ProductCatalogue = new StringDependency( nameof(ProductCatalogue) );
-        public static ICacheDependency ProductList = new StringDependency( nameof(ProductList) );
-    }
+        Console.WriteLine( $"Getting the price of {productId} from database." );
+        this.DbOperationCount++;
 
-    public record Product( string Name, decimal Price ) : ICacheDependency
-    {
-        string ICacheDependency.GetCacheKey( ICachingService cachingService ) => this.Name;
-
-        // Means that when we invalidate the current product in cache, we should also invalidate the product catalogue.
-        IReadOnlyCollection<ICacheDependency> ICacheDependency.CascadeDependencies { get; } = new[] { GlobalDependencies.ProductCatalogue };
-    }
-
-    public sealed class ProductCatalogue
-    {
-        private readonly Dictionary<string, Product> _dbSimulator = new() { ["corn"] = new Product( "corn", 100 ) };
-
-        public int DbOperationCount { get; private set; }
-
-        [Cache]
-        public Product GetProduct( string productId )
-        {
-            Console.WriteLine( $"Getting the price of {productId} from database." );
-            this.DbOperationCount++;
-
-            var product = this._dbSimulator[productId];
+        var product = this._dbSimulator[productId];
 
 #if METALAMA
             this._cachingService.AddDependency( product );  /*<AddDependency>*/
                                                                                 /*</AddDependency>*/
 #endif
-            return product;
-        }
+        return product;
+    }
 
-        [Cache]
-        public string[] GetProducts()
-        {
-            Console.WriteLine( "Getting the product list from database." );
+    [Cache]
+    public string[] GetProducts()
+    {
+        Console.WriteLine( "Getting the product list from database." );
 
-            this.DbOperationCount++;
+        this.DbOperationCount++;
 
 #if METALAMA
             this._cachingService.AddDependency( GlobalDependencies.ProductList );
 #endif
 
-            return this._dbSimulator.Keys.ToArray();
-        }
+        return this._dbSimulator.Keys.ToArray();
+    }
 
-        [Cache]
-        public IReadOnlyCollection<Product> GetPriceList()
-        {
-            this.DbOperationCount++;
+    [Cache]
+    public IReadOnlyCollection<Product> GetPriceList()
+    {
+        this.DbOperationCount++;
 
 #if METALAMA
             this._cachingService.AddDependency( GlobalDependencies.ProductCatalogue );
 #endif
 
-            return this._dbSimulator.Values;
-        }
+        return this._dbSimulator.Values;
+    }
 
-        public void AddProduct( Product product )
-        {
-            Console.WriteLine( $"Adding the product {product.Name}." );
+    public void AddProduct( Product product )
+    {
+        Console.WriteLine( $"Adding the product {product.Name}." );
 
-            this.DbOperationCount++;
+        this.DbOperationCount++;
 
-            this._dbSimulator.Add( product.Name, product );
+        this._dbSimulator.Add( product.Name, product );
 
 #if METALAMA
             this._cachingService.Invalidate( product );
             this._cachingService.Invalidate( GlobalDependencies.ProductList );
 #endif
+    }
+
+    public void UpdateProduct( Product product )
+    {
+        if ( !this._dbSimulator.ContainsKey( product.Name ) )
+        {
+            throw new KeyNotFoundException();
         }
 
-        public void UpdateProduct( Product product )
-        {
-            if ( !this._dbSimulator.ContainsKey( product.Name ) )
-            {
-                throw new KeyNotFoundException();
-            }
+        Console.WriteLine( $"Updating the price of {product.Name}." );
 
-            Console.WriteLine( $"Updating the price of {product.Name}." );
-
-            this.DbOperationCount++;
-            this._dbSimulator[product.Name] = product;
+        this.DbOperationCount++;
+        this._dbSimulator[product.Name] = product;
 
 #if METALAMA
             this._cachingService.Invalidate( product  ); /*<Invalidate>*/
                                                                                             /*</Invalidate>*/
 #endif
-        }
     }
 }

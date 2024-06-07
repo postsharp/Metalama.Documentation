@@ -4,55 +4,53 @@ using Metalama.Patterns.Caching.Aspects.Helpers;
 using System;
 using System.Reflection;
 using System.Threading;
-namespace Doc.Locking
+namespace Doc.Locking;
+public sealed class CloudService : IDisposable
 {
-  public sealed class CloudService : IDisposable
+  // We use barriers to make sure we wait long enough.
+  private readonly Barrier _withoutLockBarrier = new(2);
+  [Cache(ProfileName = "Locking")]
+  public byte[] ReadFileWithLock(string path)
   {
-    // We use barriers to make sure we wait long enough.
-    private readonly Barrier _withoutLockBarrier = new(2);
-    [Cache(ProfileName = "Locking")]
-    public byte[] ReadFileWithLock(string path)
+    static object? Invoke(object? instance, object? [] args)
     {
-      static object? Invoke(object? instance, object? [] args)
-      {
-        return ((CloudService)instance).ReadFileWithLock_Source((string)args[0]);
-      }
-      return _cachingService!.GetFromCacheOrExecute<byte[]>(_cacheRegistration_ReadFileWithLock!, this, new object[] { path }, Invoke);
+      return ((CloudService)instance).ReadFileWithLock_Source((string)args[0]);
     }
-    private byte[] ReadFileWithLock_Source(string path)
+    return _cachingService!.GetFromCacheOrExecute<byte[]>(_cacheRegistration_ReadFileWithLock!, this, new object[] { path }, Invoke);
+  }
+  private byte[] ReadFileWithLock_Source(string path)
+  {
+    Console.WriteLine("Doing some very hard work.");
+    Thread.Sleep(50);
+    return new byte[32];
+  }
+  [Cache]
+  public byte[] ReadFileWithoutLock(string path)
+  {
+    static object? Invoke(object? instance, object? [] args)
     {
-      Console.WriteLine("Doing some very hard work.");
-      Thread.Sleep(50);
-      return new byte[32];
+      return ((CloudService)instance).ReadFileWithoutLock_Source((string)args[0]);
     }
-    [Cache]
-    public byte[] ReadFileWithoutLock(string path)
-    {
-      static object? Invoke(object? instance, object? [] args)
-      {
-        return ((CloudService)instance).ReadFileWithoutLock_Source((string)args[0]);
-      }
-      return _cachingService!.GetFromCacheOrExecute<byte[]>(_cacheRegistration_ReadFileWithoutLock!, this, new object[] { path }, Invoke);
-    }
-    private byte[] ReadFileWithoutLock_Source(string path)
-    {
-      Console.WriteLine("Doing some very hard work.");
-      // Simulate a long-running operation.
-      this._withoutLockBarrier.SignalAndWait();
-      return new byte[32];
-    }
-    public void Dispose() => this._withoutLockBarrier.Dispose();
-    private static readonly CachedMethodMetadata _cacheRegistration_ReadFileWithLock;
-    private static readonly CachedMethodMetadata _cacheRegistration_ReadFileWithoutLock;
-    private ICachingService _cachingService;
-    static CloudService()
-    {
-      _cacheRegistration_ReadFileWithLock = CachedMethodMetadata.Register(typeof(CloudService).GetMethod("ReadFileWithLock", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!.ThrowIfMissing("CloudService.ReadFileWithLock(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = "Locking", SlidingExpiration = null }, true);
-      _cacheRegistration_ReadFileWithoutLock = CachedMethodMetadata.Register(typeof(CloudService).GetMethod("ReadFileWithoutLock", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!.ThrowIfMissing("CloudService.ReadFileWithoutLock(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
-    }
-    public CloudService(ICachingService? cachingService = default)
-    {
-      this._cachingService = cachingService ?? throw new System.ArgumentNullException(nameof(cachingService));
-    }
+    return _cachingService!.GetFromCacheOrExecute<byte[]>(_cacheRegistration_ReadFileWithoutLock!, this, new object[] { path }, Invoke);
+  }
+  private byte[] ReadFileWithoutLock_Source(string path)
+  {
+    Console.WriteLine("Doing some very hard work.");
+    // Simulate a long-running operation.
+    this._withoutLockBarrier.SignalAndWait();
+    return new byte[32];
+  }
+  public void Dispose() => this._withoutLockBarrier.Dispose();
+  private static readonly CachedMethodMetadata _cacheRegistration_ReadFileWithLock;
+  private static readonly CachedMethodMetadata _cacheRegistration_ReadFileWithoutLock;
+  private ICachingService _cachingService;
+  static CloudService()
+  {
+    _cacheRegistration_ReadFileWithLock = CachedMethodMetadata.Register(typeof(CloudService).GetMethod("ReadFileWithLock", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!.ThrowIfMissing("CloudService.ReadFileWithLock(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = "Locking", SlidingExpiration = null }, true);
+    _cacheRegistration_ReadFileWithoutLock = CachedMethodMetadata.Register(typeof(CloudService).GetMethod("ReadFileWithoutLock", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!.ThrowIfMissing("CloudService.ReadFileWithoutLock(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+  }
+  public CloudService(ICachingService? cachingService = default)
+  {
+    this._cachingService = cachingService ?? throw new System.ArgumentNullException(nameof(cachingService));
   }
 }

@@ -2,61 +2,60 @@
 
 // @Skipped(Bug 30453)
 
-namespace Doc.InheritedMethodLevel
+namespace Doc.InheritedMethodLevel;
+
+internal class BaseClass
 {
-    internal class BaseClass
-    {
-        [InheritedAspect]
-        public virtual void ClassMethodWithAspect() { }
+    [InheritedAspect]
+    public virtual void ClassMethodWithAspect() { }
 
-        public virtual void ClassMethodWithoutAspect() { }
+    public virtual void ClassMethodWithoutAspect() { }
+}
+
+internal interface IInterface
+{
+    [InheritedAspect]
+    private void InterfaceMethodWithAspect() { }
+
+    private void InterfaceMethodWithoutAspect() { }
+}
+
+internal class DerivedClass : BaseClass, IInterface
+{
+    public override void ClassMethodWithAspect()
+    {
+        base.ClassMethodWithAspect();
     }
 
-    internal interface IInterface
+    public override void ClassMethodWithoutAspect()
     {
-        [InheritedAspect]
-        private void InterfaceMethodWithAspect() { }
-
-        private void InterfaceMethodWithoutAspect() { }
+        base.ClassMethodWithoutAspect();
     }
 
-    internal class DerivedClass : BaseClass, IInterface
+    public virtual void InterfaceMethodWithAspect() { }
+
+    public virtual void InterfaceMethodWithoutAspect() { }
+}
+
+internal class DerivedTwiceClass : DerivedClass
+{
+    public override void ClassMethodWithAspect()
     {
-        public override void ClassMethodWithAspect()
-        {
-            base.ClassMethodWithAspect();
-        }
-
-        public override void ClassMethodWithoutAspect()
-        {
-            base.ClassMethodWithoutAspect();
-        }
-
-        public virtual void InterfaceMethodWithAspect() { }
-
-        public virtual void InterfaceMethodWithoutAspect() { }
+        base.ClassMethodWithAspect();
     }
 
-    internal class DerivedTwiceClass : DerivedClass
+    public override void ClassMethodWithoutAspect()
     {
-        public override void ClassMethodWithAspect()
-        {
-            base.ClassMethodWithAspect();
-        }
+        base.ClassMethodWithoutAspect();
+    }
 
-        public override void ClassMethodWithoutAspect()
-        {
-            base.ClassMethodWithoutAspect();
-        }
+    public override void InterfaceMethodWithAspect()
+    {
+        base.InterfaceMethodWithAspect();
+    }
 
-        public override void InterfaceMethodWithAspect()
-        {
-            base.InterfaceMethodWithAspect();
-        }
-
-        public override void InterfaceMethodWithoutAspect()
-        {
-            base.InterfaceMethodWithoutAspect();
-        }
+    public override void InterfaceMethodWithoutAspect()
+    {
+        base.InterfaceMethodWithoutAspect();
     }
 }

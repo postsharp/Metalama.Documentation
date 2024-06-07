@@ -5,30 +5,29 @@ using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using System.Linq;
 
-namespace Doc.SuppressWarning
+namespace Doc.SuppressWarning;
+
+internal class LogAttribute : OverrideMethodAspect
 {
-    internal class LogAttribute : OverrideMethodAspect
+    private static readonly SuppressionDefinition _suppression = new( "CS0169" );
+
+    public override void BuildAspect( IAspectBuilder<IMethod> builder )
     {
-        private static readonly SuppressionDefinition _suppression = new( "CS0169" );
+        base.BuildAspect( builder );
 
-        public override void BuildAspect( IAspectBuilder<IMethod> builder )
+        var loggerField = builder.Target.DeclaringType.Fields.OfName( "_logger" ).FirstOrDefault();
+
+        if ( loggerField != null )
         {
-            base.BuildAspect( builder );
-
-            var loggerField = builder.Target.DeclaringType.Fields.OfName( "_logger" ).FirstOrDefault();
-
-            if ( loggerField != null )
-            {
-                // Suppress "Field is never read" warning from Intellisense warning for this field.
-                builder.Diagnostics.Suppress( _suppression, loggerField );
-            }
+            // Suppress "Field is never read" warning from Intellisense warning for this field.
+            builder.Diagnostics.Suppress( _suppression, loggerField );
         }
+    }
 
-        public override dynamic? OverrideMethod()
-        {
-            meta.This._logger.WriteLine( $"Executing {meta.Target.Method}." );
+    public override dynamic? OverrideMethod()
+    {
+        meta.This._logger.WriteLine( $"Executing {meta.Target.Method}." );
 
-            return meta.Proceed();
-        }
+        return meta.Proceed();
     }
 }

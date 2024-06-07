@@ -2,14 +2,13 @@
 
 using Metalama.Extensions.Architecture.Aspects;
 
-namespace Doc.Architecture.NamingConvention
-{
-    [DerivedTypesMustRespectNamingConvention( "*Factory" )]
-    public interface IFactory { }
+namespace Doc.Architecture.NamingConvention;
 
-    // This will report a warning because the naming convention is not respected.
-    internal class ThingCreator : IFactory { }
+[DerivedTypesMustRespectNamingConvention( "*Factory" )]
+public interface IFactory { }
 
-    // This is properly named.
-    internal class WidgetFactory : IFactory { }
-}
+// This will report a warning because the naming convention is not respected.
+internal class ThingCreator : IFactory { }
+
+// This is properly named.
+internal class WidgetFactory : IFactory { }

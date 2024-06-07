@@ -3,16 +3,15 @@
 using Metalama.Framework.Aspects;
 using System;
 
-namespace Doc.SimpleNotNull
+namespace Doc.SimpleNotNull;
+
+public class NotNullAttribute : ContractAspect
 {
-    public class NotNullAttribute : ContractAspect
+    public override void Validate( dynamic? value )
     {
-        public override void Validate( dynamic? value )
+        if ( value == null! )
         {
-            if ( value == null! )
-            {
-                throw new ArgumentNullException( nameof(value) );
-            }
+            throw new ArgumentNullException( nameof(value) );
         }
     }
 }

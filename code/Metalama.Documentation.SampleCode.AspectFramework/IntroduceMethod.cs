@@ -3,25 +3,24 @@
 using System;
 using System.Threading;
 
-namespace Doc.IntroduceMethod
+namespace Doc.IntroduceMethod;
+
+[ToString]
+internal class MyClass { }
+
+internal static class IdGenerator
 {
-    [ToString]
-    internal class MyClass { }
+    private static int _nextId;
 
-    internal static class IdGenerator
+    public static int GetId() => Interlocked.Increment( ref _nextId );
+}
+
+internal class Program
+{
+    private static void Main()
     {
-        private static int _nextId;
-
-        public static int GetId() => Interlocked.Increment( ref _nextId );
-    }
-
-    internal class Program
-    {
-        private static void Main()
-        {
-            Console.WriteLine( new MyClass().ToString() );
-            Console.WriteLine( new MyClass().ToString() );
-            Console.WriteLine( new MyClass().ToString() );
-        }
+        Console.WriteLine( new MyClass().ToString() );
+        Console.WriteLine( new MyClass().ToString() );
+        Console.WriteLine( new MyClass().ToString() );
     }
 }

@@ -3,22 +3,21 @@
 using Metalama.Framework.Aspects;
 using System;
 
-namespace Doc.PrintFieldValues
-{
-    internal class PrintFieldValuesAttribute : OverrideMethodAspect
-    {
-        public override dynamic? OverrideMethod()
-        {
-            foreach ( var fieldOrProperty in meta.Target.Type.FieldsAndProperties )
-            {
-                if ( !fieldOrProperty.IsImplicitlyDeclared && fieldOrProperty.IsAutoPropertyOrField == true )
-                {
-                    var value = fieldOrProperty.Value;
-                    Console.WriteLine( $"{fieldOrProperty.Name}={value}" );
-                }
-            }
+namespace Doc.PrintFieldValues;
 
-            return meta.Proceed();
+internal class PrintFieldValuesAttribute : OverrideMethodAspect
+{
+    public override dynamic? OverrideMethod()
+    {
+        foreach ( var fieldOrProperty in meta.Target.Type.FieldsAndProperties )
+        {
+            if ( !fieldOrProperty.IsImplicitlyDeclared && fieldOrProperty.IsAutoPropertyOrField == true )
+            {
+                var value = fieldOrProperty.Value;
+                Console.WriteLine( $"{fieldOrProperty.Name}={value}" );
+            }
         }
+
+        return meta.Proceed();
     }
 }

@@ -1,32 +1,30 @@
-namespace Doc
+namespace Doc;
+internal class EmptyOverrideFieldOrPropertyExample
 {
-  internal class EmptyOverrideFieldOrPropertyExample
+  private int _field;
+  [EmptyOverrideFieldOrProperty]
+  public int Field
   {
-    private int _field;
-    [EmptyOverrideFieldOrProperty]
-    public int Field
+    get
     {
-      get
-      {
-        return _field;
-      }
-      set
-      {
-        _field = value;
-      }
+      return _field;
     }
-    private string? _property;
-    [EmptyOverrideFieldOrProperty]
-    public string? Property
+    set
     {
-      get
-      {
-        return _property;
-      }
-      set
-      {
-        _property = value;
-      }
+      _field = value;
+    }
+  }
+  private string? _property;
+  [EmptyOverrideFieldOrProperty]
+  public string? Property
+  {
+    get
+    {
+      return _property;
+    }
+    set
+    {
+      _property = value;
     }
   }
 }

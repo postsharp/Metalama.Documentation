@@ -4,30 +4,29 @@ using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System.ComponentModel;
 
-namespace Doc.IntroducePropertyChanged2
+namespace Doc.IntroducePropertyChanged2;
+
+internal class IntroducePropertyChangedAspect : TypeAspect
 {
-    internal class IntroducePropertyChangedAspect : TypeAspect
+    public override void BuildAspect( IAspectBuilder<INamedType> builder )
     {
-        public override void BuildAspect( IAspectBuilder<INamedType> builder )
-        {
-            var propertyChangedEvent = builder.Advice.IntroduceEvent(
-                    builder.Target,
-                    nameof(this.PropertyChanged) )
-                .Declaration;
-
-            builder.Advice.IntroduceMethod(
+        var propertyChangedEvent = builder.Advice.IntroduceEvent(
                 builder.Target,
-                nameof(this.OnPropertyChanged),
-                args: new { theEvent = propertyChangedEvent } );
-        }
+                nameof(this.PropertyChanged) )
+            .Declaration;
 
-        [Template]
-        public event PropertyChangedEventHandler? PropertyChanged;
+        builder.Advice.IntroduceMethod(
+            builder.Target,
+            nameof(this.OnPropertyChanged),
+            args: new { theEvent = propertyChangedEvent } );
+    }
 
-        [Template]
-        protected virtual void OnPropertyChanged( string propertyName, IEvent theEvent )
-        {
-            theEvent.Raise( meta.This, new PropertyChangedEventArgs( propertyName ) );
-        }
+    [Template]
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [Template]
+    protected virtual void OnPropertyChanged( string propertyName, IEvent theEvent )
+    {
+        theEvent.Raise( meta.This, new PropertyChangedEventArgs( propertyName ) );
     }
 }

@@ -3,17 +3,16 @@
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code.SyntaxBuilders;
 
-namespace Doc.ParseExpression
+namespace Doc.ParseExpression;
+
+internal class LogAttribute : OverrideMethodAspect
 {
-    internal class LogAttribute : OverrideMethodAspect
+    public override dynamic? OverrideMethod()
     {
-        public override dynamic? OverrideMethod()
-        {
-            var logger = ExpressionFactory.Parse( "this._logger" );
+        var logger = ExpressionFactory.Parse( "this._logger" );
 
-            logger.Value?.WriteLine( $"Executing {meta.Target.Method}." );
+        logger.Value?.WriteLine( $"Executing {meta.Target.Method}." );
 
-            return meta.Proceed();
-        }
+        return meta.Proceed();
     }
 }

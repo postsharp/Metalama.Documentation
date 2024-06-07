@@ -1,91 +1,89 @@
 using System;
 using Metalama.Patterns.Contracts;
-namespace Doc.Invariants
+namespace Doc.Invariants;
+public class Invoice
 {
-  public class Invoice
+  private decimal _amount;
+  public decimal Amount
   {
-    private decimal _amount;
-    public decimal Amount
+    get
     {
-      get
+      return _amount;
+    }
+    set
+    {
+      try
       {
-        return _amount;
+        _amount = value;
+        return;
       }
-      set
+      finally
       {
-        try
-        {
-          _amount = value;
-          return;
-        }
-        finally
-        {
-          this.VerifyInvariants();
-        }
+        this.VerifyInvariants();
       }
     }
-    private int _discountPercent;
-    [Range(0, 100)]
-    public int DiscountPercent
+  }
+  private int _discountPercent;
+  [Range(0, 100)]
+  public int DiscountPercent
+  {
+    get
     {
-      get
+      return _discountPercent;
+    }
+    set
+    {
+      try
       {
-        return _discountPercent;
+        if (value is < 0 or > 100)
+        {
+          throw new ArgumentOutOfRangeException("The 'DiscountPercent' property must be in the range [0, 100].", "value");
+        }
+        _discountPercent = value;
+        return;
       }
-      set
+      finally
       {
-        try
-        {
-          if (value is < 0 or > 100)
-          {
-            throw new ArgumentOutOfRangeException("The 'DiscountPercent' property must be in the range [0, 100].", "value");
-          }
-          _discountPercent = value;
-          return;
-        }
-        finally
-        {
-          this.VerifyInvariants();
-        }
+        this.VerifyInvariants();
       }
     }
-    private decimal _discountAmount;
-    [Range(0, 100)]
-    public decimal DiscountAmount
+  }
+  private decimal _discountAmount;
+  [Range(0, 100)]
+  public decimal DiscountAmount
+  {
+    get
     {
-      get
+      return _discountAmount;
+    }
+    set
+    {
+      try
       {
-        return _discountAmount;
-      }
-      set
-      {
-        try
+        if (value is < 0M or > 100M)
         {
-          if (value is < 0M or > 100M)
-          {
-            throw new ArgumentOutOfRangeException("The 'DiscountAmount' property must be in the range [0, 100].", "value");
-          }
-          _discountAmount = value;
-          return;
+          throw new ArgumentOutOfRangeException("The 'DiscountAmount' property must be in the range [0, 100].", "value");
         }
-        finally
-        {
-          this.VerifyInvariants();
-        }
+        _discountAmount = value;
+        return;
       }
-    }
-    public virtual decimal DiscountedAmount => (this.Amount * (100 - this.Amount) / 100m) - this.DiscountAmount;
-    [Invariant]
-    private void CheckDiscounts()
-    {
-      if (this.DiscountedAmount < 0)
+      finally
       {
-        throw new PostconditionViolationException("The discounted amount cannot be negative.");
+        this.VerifyInvariants();
       }
     }
-    protected virtual void VerifyInvariants()
+  }
+  public virtual decimal DiscountedAmount => (this.Amount * (100 - this.Amount) / 100m) - this.DiscountAmount;
+  [Invariant]
+  private void CheckDiscounts()
+  {
+    if (this.DiscountedAmount < 0)
     {
-      CheckDiscounts();
+      throw new PostconditionViolationException("The discounted amount cannot be negative.");
     }
+  }
+  protected virtual void VerifyInvariants()
+  {
+    CheckDiscounts();
   }
 }

@@ -3,20 +3,19 @@
 using Metalama.Patterns.Caching.Aspects;
 using System;
 
-namespace Doc.HashKeyBuilder
+namespace Doc.HashKeyBuilder;
+
+public sealed class FileSystem
 {
-    public sealed class FileSystem
+    public int OperationCount { get; private set; }
+
+    [Cache]
+    public byte[] ReadAll( string path )
     {
-        public int OperationCount { get; private set; }
+        this.OperationCount++;
 
-        [Cache]
-        public byte[] ReadAll( string path )
-        {
-            this.OperationCount++;
+        Console.WriteLine( "Reading the whole file." );
 
-            Console.WriteLine( "Reading the whole file." );
-
-            return new byte[100 + this.OperationCount];
-        }
+        return new byte[100 + this.OperationCount];
     }
 }

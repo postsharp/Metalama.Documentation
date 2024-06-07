@@ -2,14 +2,13 @@
 
 using System;
 
-namespace Doc.GettingStarted_Fabric
+namespace Doc.GettingStarted_Fabric;
+
+internal class Foo
 {
-    internal class Foo
+    [Log]
+    public void Method1()
     {
-        [Log]
-        public void Method1()
-        {
-            Console.WriteLine( "Hello, world." );
-        }
+        Console.WriteLine( "Hello, world." );
     }
 }

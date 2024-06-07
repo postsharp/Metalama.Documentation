@@ -4,69 +4,68 @@ using Metalama.Framework.Aspects;
 using System;
 using System.Collections.Concurrent;
 
-namespace Doc.AuxiliaryTemplate_TemplateInvocation
+namespace Doc.AuxiliaryTemplate_TemplateInvocation;
+
+public class CacheAttribute : OverrideMethodAspect
 {
-    public class CacheAttribute : OverrideMethodAspect
+    [Introduce( WhenExists = OverrideStrategy.Ignore )]
+    private readonly ConcurrentDictionary<string, object?> _cache = new();
+
+    public override dynamic? OverrideMethod()
     {
-        [Introduce( WhenExists = OverrideStrategy.Ignore )]
-        private readonly ConcurrentDictionary<string, object?> _cache = new();
+        this.AroundCaching( new TemplateInvocation( nameof(this.CacheOrExecuteCore) ) );
 
-        public override dynamic? OverrideMethod()
-        {
-            this.AroundCaching( new TemplateInvocation( nameof(this.CacheOrExecuteCore) ) );
-
-            // This should be unreachable.
-            return default;
-        }
-
-        [Template]
-        protected virtual void AroundCaching( TemplateInvocation templateInvocation )
-        {
-            meta.InvokeTemplate( templateInvocation );
-        }
-
-        [Template]
-        private void CacheOrExecuteCore()
-        {
-            // Naive implementation of a caching key.
-            var cacheKey = $"{meta.Target.Method.Name}({string.Join( ", ", meta.Target.Method.Parameters.ToValueArray() )})";
-
-            if ( !this._cache.TryGetValue( cacheKey, out var returnValue ) )
-            {
-                returnValue = meta.Proceed();
-                this._cache.TryAdd( cacheKey, returnValue );
-            }
-
-            meta.Return( returnValue );
-        }
+        // This should be unreachable.
+        return default;
     }
 
-    public class CacheAndRetryAttribute : CacheAttribute
+    [Template]
+    protected virtual void AroundCaching( TemplateInvocation templateInvocation )
     {
-        public bool IncludeRetry { get; set; }
+        meta.InvokeTemplate( templateInvocation );
+    }
 
-        protected override void AroundCaching( TemplateInvocation templateInvocation )
+    [Template]
+    private void CacheOrExecuteCore()
+    {
+        // Naive implementation of a caching key.
+        var cacheKey = $"{meta.Target.Method.Name}({string.Join( ", ", meta.Target.Method.Parameters.ToValueArray() )})";
+
+        if ( !this._cache.TryGetValue( cacheKey, out var returnValue ) )
         {
-            if ( this.IncludeRetry )
-            {
-                for ( var i = 0;; i++ )
-                {
-                    try
-                    {
-                        meta.InvokeTemplate( templateInvocation );
-                    }
-                    catch ( Exception ex ) when ( i < 10 )
-                    {
-                        Console.WriteLine( ex.ToString() );
+            returnValue = meta.Proceed();
+            this._cache.TryAdd( cacheKey, returnValue );
+        }
 
-                        continue;
-                    }
+        meta.Return( returnValue );
+    }
+}
+
+public class CacheAndRetryAttribute : CacheAttribute
+{
+    public bool IncludeRetry { get; set; }
+
+    protected override void AroundCaching( TemplateInvocation templateInvocation )
+    {
+        if ( this.IncludeRetry )
+        {
+            for ( var i = 0;; i++ )
+            {
+                try
+                {
+                    meta.InvokeTemplate( templateInvocation );
+                }
+                catch ( Exception ex ) when ( i < 10 )
+                {
+                    Console.WriteLine( ex.ToString() );
+
+                    continue;
                 }
             }
-            else
-            {
-                meta.InvokeTemplate( templateInvocation );
-            }
+        }
+        else
+        {
+            meta.InvokeTemplate( templateInvocation );
         }
     }
 }

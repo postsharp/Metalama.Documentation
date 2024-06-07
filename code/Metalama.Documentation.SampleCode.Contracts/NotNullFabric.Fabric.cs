@@ -3,13 +3,12 @@
 using Metalama.Framework.Fabrics;
 using Metalama.Patterns.Contracts;
 
-namespace Doc.NotNullFabric
+namespace Doc.NotNullFabric;
+
+internal class Fabric : ProjectFabric
 {
-    internal class Fabric : ProjectFabric
+    public override void AmendProject( IProjectAmender amender )
     {
-        public override void AmendProject( IProjectAmender amender )
-        {
-            amender.VerifyNotNullableDeclarations();
-        }
+        amender.VerifyNotNullableDeclarations();
     }
 }

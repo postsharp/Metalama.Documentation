@@ -7,13 +7,12 @@ using System;
 
 // ReSharper disable StringLiteralTypo
 
-namespace Doc.Localize
+namespace Doc.Localize;
+
+internal class Fabric : ProjectFabric
 {
-    internal class Fabric : ProjectFabric
+    public override void AmendProject( IProjectAmender amender )
     {
-        public override void AmendProject( IProjectAmender amender )
-        {
-            amender.SetOptions( new ContractOptions { Templates = new FrenchTemplates() } );
-        }
+        amender.SetOptions( new ContractOptions { Templates = new FrenchTemplates() } );
     }
 }

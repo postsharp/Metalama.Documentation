@@ -4,26 +4,25 @@ using Microsoft.Extensions.Hosting;
 using System;
 using Metalama.Documentation.Helpers.ConsoleApp;
 
-namespace Doc.GettingStarted
+namespace Doc.GettingStarted;
+
+public sealed class ConsoleMain : IConsoleMain
 {
-    public sealed class ConsoleMain : IConsoleMain
+    private readonly CloudCalculator _cloudCalculator;
+
+    public ConsoleMain( CloudCalculator cloudCalculator )
     {
-        private readonly CloudCalculator _cloudCalculator;
+        this._cloudCalculator = cloudCalculator;
+    }
 
-        public ConsoleMain( CloudCalculator cloudCalculator )
+    public void Execute()
+    {
+        for ( var i = 0; i < 3; i++ )
         {
-            this._cloudCalculator = cloudCalculator;
+            var value = this._cloudCalculator.Add( 1, 1 );
+            Console.WriteLine( $"CloudCalculator returned {value}." );
         }
 
-        public void Execute()
-        {
-            for ( var i = 0; i < 3; i++ )
-            {
-                var value = this._cloudCalculator.Add( 1, 1 );
-                Console.WriteLine( $"CloudCalculator returned {value}." );
-            }
-
-            Console.WriteLine( $"In total, CloudCalculator performed {this._cloudCalculator.OperationCount} operation(s)." );
-        }
+        Console.WriteLine( $"In total, CloudCalculator performed {this._cloudCalculator.OperationCount} operation(s)." );
     }
 }

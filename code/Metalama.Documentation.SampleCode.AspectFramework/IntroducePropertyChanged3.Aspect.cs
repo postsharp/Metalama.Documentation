@@ -3,17 +3,16 @@
 using Metalama.Framework.Aspects;
 using System.ComponentModel;
 
-namespace Doc.IntroducePropertyChanged3
-{
-    internal class IntroducePropertyChangedAspect : TypeAspect
-    {
-        [Introduce]
-        public event PropertyChangedEventHandler? PropertyChanged;
+namespace Doc.IntroducePropertyChanged3;
 
-        [Introduce]
-        protected virtual void OnPropertyChanged( string propertyName )
-        {
-            meta.This.PropertyChanged?.Invoke( meta.This, new PropertyChangedEventArgs( propertyName ) );
-        }
+internal class IntroducePropertyChangedAspect : TypeAspect
+{
+    [Introduce]
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [Introduce]
+    protected virtual void OnPropertyChanged( string propertyName )
+    {
+        meta.This.PropertyChanged?.Invoke( meta.This, new PropertyChangedEventArgs( propertyName ) );
     }
 }

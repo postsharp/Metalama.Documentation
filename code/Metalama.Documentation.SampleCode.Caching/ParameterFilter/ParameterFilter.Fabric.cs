@@ -3,11 +3,10 @@
 using Metalama.Framework.Fabrics;
 using Metalama.Patterns.Caching.Aspects.Configuration;
 
-namespace Doc.ParameterFilter
+namespace Doc.ParameterFilter;
+
+internal class Fabric : ProjectFabric
 {
-    internal class Fabric : ProjectFabric
-    {
-        public override void AmendProject( IProjectAmender amender )
-            => amender.ConfigureCaching( caching => caching.AddParameterClassifier( "ILogger", new LoggerParameterClassifier() ) );
-    }
+    public override void AmendProject( IProjectAmender amender )
+        => amender.ConfigureCaching( caching => caching.AddParameterClassifier( "ILogger", new LoggerParameterClassifier() ) );
 }

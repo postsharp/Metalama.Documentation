@@ -1,5 +1,7 @@
 ﻿// This is public domain Metalama sample code.
 
+using Doc.GettingStarted_Architecture_Ns.VerifiedNamespace;
+
 namespace Doc.GettingStarted_Architecture_Ns
 {
     namespace VerifiedNamespace
@@ -11,6 +13,6 @@ namespace Doc.GettingStarted_Architecture_Ns
 
     namespace OtherNamespace
     {
-        internal class ForbiddenInheritor : VerifiedNamespace.Foo { }
-        }
+        internal class ForbiddenInheritor : Foo { }
     }
+}

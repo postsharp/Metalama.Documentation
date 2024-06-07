@@ -3,11 +3,10 @@
 using Metalama.Patterns.Contracts;
 using System;
 
-namespace Doc.EnumDataTypeContract
+namespace Doc.EnumDataTypeContract;
+
+public class Message
 {
-    public class Message
-    {
-        [EnumDataType( typeof(ConsoleColor) )]
-        public string? Color { get; set; }
-    }
+    [EnumDataType( typeof(ConsoleColor) )]
+    public string? Color { get; set; }
 }

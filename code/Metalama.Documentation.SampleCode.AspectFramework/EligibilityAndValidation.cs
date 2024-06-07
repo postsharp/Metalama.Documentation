@@ -1,15 +1,14 @@
 ﻿// This is public domain Metalama sample code.
 
-namespace Doc.EligibilityAndValidation
+namespace Doc.EligibilityAndValidation;
+
+internal class SomeClass
 {
-    internal class SomeClass
-    {
-        private object? _logger;
+    private object? _logger;
 
-        [Log]
-        private void InstanceMethod() { }
+    [Log]
+    private void InstanceMethod() { }
 
-        [Log]
-        private static void StaticMethod() { }
-    }
+    [Log]
+    private static void StaticMethod() { }
 }

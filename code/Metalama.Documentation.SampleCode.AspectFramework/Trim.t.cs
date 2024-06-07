@@ -1,24 +1,22 @@
 using System;
-namespace Doc.Trim
+namespace Doc.Trim;
+internal class Foo
 {
-  internal class Foo
+  public void Method1([Trim] string nonNullableString, [Trim] string? nullableString)
   {
-    public void Method1([Trim] string nonNullableString, [Trim] string? nullableString)
-    {
-      nonNullableString = nonNullableString.Trim();
-      nullableString = nullableString?.Trim();
-      Console.WriteLine($"nonNullableString='{nonNullableString}', nullableString='{nullableString}'");
-    }
-    public string Property { get; set; }
+    nonNullableString = nonNullableString.Trim();
+    nullableString = nullableString?.Trim();
+    Console.WriteLine($"nonNullableString='{nonNullableString}', nullableString='{nullableString}'");
   }
-  internal class Program
+  public string Property { get; set; }
+}
+internal class Program
+{
+  public static void Main()
   {
-    public static void Main()
-    {
-      var foo = new Foo();
-      foo.Method1("     A  ", "   B ");
-      foo.Property = "    C   ";
-      Console.WriteLine($"Property='{foo.Property}'");
-    }
+    var foo = new Foo();
+    foo.Method1("     A  ", "   B ");
+    foo.Property = "    C   ";
+    Console.WriteLine($"Property='{foo.Property}'");
   }
 }

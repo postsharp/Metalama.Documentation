@@ -2,17 +2,16 @@
 
 using Metalama.Patterns.Contracts;
 
-namespace Doc.WellKnownRegexContracts
+namespace Doc.WellKnownRegexContracts;
+
+public class Customer
 {
-    public class Customer
-    {
-        [Phone]
-        public string? Phone { get; set; }
+    [Phone]
+    public string? Phone { get; set; }
 
-        [Email]
-        public string? Email { get; set; }
+    [Email]
+    public string? Email { get; set; }
 
-        [Url]
-        public string? Profile { get; set; }
-    }
+    [Url]
+    public string? Profile { get; set; }
 }

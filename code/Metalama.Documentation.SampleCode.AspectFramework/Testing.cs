@@ -2,14 +2,13 @@
 
 using System;
 
-namespace Doc.Testing
+namespace Doc.Testing;
+
+internal class SimpleLogTests
 {
-    internal class SimpleLogTests
+    [SimpleLog]
+    private void MyMethod()
     {
-        [SimpleLog]
-        private void MyMethod()
-        {
-            Console.WriteLine( "Hello, world" );
-        }
+        Console.WriteLine( "Hello, world" );
     }
 }

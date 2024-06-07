@@ -2,11 +2,10 @@
 
 using Metalama.Patterns.Contracts;
 
-namespace Doc.CreditCardContract
+namespace Doc.CreditCardContract;
+
+public class Customer
 {
-    public class Customer
-    {
-        [CreditCard]
-        public string? CreditCard { get; set; }
-    }
+    [CreditCard]
+    public string? CreditCard { get; set; }
 }

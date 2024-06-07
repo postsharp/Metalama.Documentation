@@ -2,10 +2,9 @@
 
 using System.IO;
 
-namespace Doc.ProjectValidatorWithFix
+namespace Doc.ProjectValidatorWithFix;
+
+internal class SomeType
 {
-    internal class SomeType
-    {
-        public TextWriter Writer;
-    }
+    public TextWriter Writer;
 }

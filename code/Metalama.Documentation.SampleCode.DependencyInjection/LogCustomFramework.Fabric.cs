@@ -3,15 +3,12 @@
 using Metalama.Extensions.DependencyInjection;
 using Metalama.Framework.Fabrics;
 
-namespace Doc.LogCustomFramework
-{
+namespace Doc.LogCustomFramework;
 #pragma warning disable CS0649, CS8618
-    public class Fabric : ProjectFabric
+public class Fabric : ProjectFabric
+{
+    public override void AmendProject( IProjectAmender amender )
     {
-        public override void AmendProject( IProjectAmender amender )
-        {
-            amender.ConfigureDependencyInjection(
-                dependencyInjection => dependencyInjection.RegisterFramework<LoggerDependencyInjectionFramework>() );
-        }
+        amender.ConfigureDependencyInjection( dependencyInjection => dependencyInjection.RegisterFramework<LoggerDependencyInjectionFramework>() );
     }
 }

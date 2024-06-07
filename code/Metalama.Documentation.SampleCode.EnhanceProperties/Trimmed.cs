@@ -2,21 +2,20 @@
 
 using System;
 
-namespace Doc.Trimmed
+namespace Doc.Trimmed;
+
+public class Details
 {
-    public class Details
-    {
-        [Trim]
-        public string? Code { get; set; }
-    }
+    [Trim]
+    public string? Code { get; set; }
+}
 
-    public class Program
+public class Program
+{
+    public static void Main()
     {
-        public static void Main()
-        {
-            Details detail1 = new() { Code = "   GW12345  " };
+        Details detail1 = new() { Code = "   GW12345  " };
 
-            Console.WriteLine( $"Code='{detail1.Code}'" );
-        }
+        Console.WriteLine( $"Code='{detail1.Code}'" );
     }
 }

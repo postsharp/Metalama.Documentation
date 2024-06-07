@@ -2,14 +2,13 @@
 
 using Metalama.Framework.Aspects;
 
-namespace Doc.Trimmed
+namespace Doc.Trimmed;
+
+public class TrimAttribute : OverrideFieldOrPropertyAspect
 {
-    public class TrimAttribute : OverrideFieldOrPropertyAspect
+    public override dynamic? OverrideProperty
     {
-        public override dynamic? OverrideProperty
-        {
-            get => meta.Proceed();
-            set => meta.Target.FieldOrProperty.Value = value?.Trim();
-        }
+        get => meta.Proceed();
+        set => meta.Target.FieldOrProperty.Value = value?.Trim();
     }
 }

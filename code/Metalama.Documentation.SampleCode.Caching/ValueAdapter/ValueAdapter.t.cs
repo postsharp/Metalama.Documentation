@@ -6,49 +6,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-namespace Doc.ValueAdapter
+namespace Doc.ValueAdapter;
+public sealed class ProductCatalogue
 {
-  public sealed class ProductCatalogue
+  private readonly Dictionary<string, decimal> _dbSimulator = new()
   {
-    private readonly Dictionary<string, decimal> _dbSimulator = new()
+    ["corn"] = 100
+  };
+  public int DbOperationCount { get; private set; }
+  // Very weird API but suppose it's legacy and we need to keep it, but cache it.
+  [Cache]
+  public StringBuilder GetProductsAsStringBuilder()
+  {
+    static object? Invoke(object? instance, object? [] args)
     {
-      ["corn"] = 100
-    };
-    public int DbOperationCount { get; private set; }
-    // Very weird API but suppose it's legacy and we need to keep it, but cache it.
-    [Cache]
-    public StringBuilder GetProductsAsStringBuilder()
+      return ((ProductCatalogue)instance).GetProductsAsStringBuilder_Source();
+    }
+    return _cachingService!.GetFromCacheOrExecute<StringBuilder>(_cacheRegistration_GetProductsAsStringBuilder!, this, new object[] { }, Invoke);
+  }
+  private StringBuilder GetProductsAsStringBuilder_Source()
+  {
+    Console.WriteLine("Getting the product list from database.");
+    this.DbOperationCount++;
+    var stringBuilder = new StringBuilder();
+    foreach (var productId in this._dbSimulator.Keys)
     {
-      static object? Invoke(object? instance, object? [] args)
+      if (stringBuilder.Length > 0)
       {
-        return ((ProductCatalogue)instance).GetProductsAsStringBuilder_Source();
+        stringBuilder.Append(",");
       }
-      return _cachingService!.GetFromCacheOrExecute<StringBuilder>(_cacheRegistration_GetProductsAsStringBuilder!, this, new object[] { }, Invoke);
+      stringBuilder.Append(productId);
     }
-    private StringBuilder GetProductsAsStringBuilder_Source()
-    {
-      Console.WriteLine("Getting the product list from database.");
-      this.DbOperationCount++;
-      var stringBuilder = new StringBuilder();
-      foreach (var productId in this._dbSimulator.Keys)
-      {
-        if (stringBuilder.Length > 0)
-        {
-          stringBuilder.Append(",");
-        }
-        stringBuilder.Append(productId);
-      }
-      return stringBuilder;
-    }
-    private static readonly CachedMethodMetadata _cacheRegistration_GetProductsAsStringBuilder;
-    private ICachingService _cachingService;
-    static ProductCatalogue()
-    {
-      _cacheRegistration_GetProductsAsStringBuilder = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProductsAsStringBuilder", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetProductsAsStringBuilder()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
-    }
-    public ProductCatalogue(ICachingService? cachingService = default)
-    {
-      this._cachingService = cachingService ?? throw new System.ArgumentNullException(nameof(cachingService));
-    }
+    return stringBuilder;
+  }
+  private static readonly CachedMethodMetadata _cacheRegistration_GetProductsAsStringBuilder;
+  private ICachingService _cachingService;
+  static ProductCatalogue()
+  {
+    _cacheRegistration_GetProductsAsStringBuilder = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProductsAsStringBuilder", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetProductsAsStringBuilder()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+  }
+  public ProductCatalogue(ICachingService? cachingService = default)
+  {
+    this._cachingService = cachingService ?? throw new System.ArgumentNullException(nameof(cachingService));
   }
 }

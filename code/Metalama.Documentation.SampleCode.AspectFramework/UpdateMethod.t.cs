@@ -1,24 +1,22 @@
 using System;
-namespace Doc.UpdateMethod
+namespace Doc.UpdateMethod;
+[UpdateMethod]
+internal class CityHunter
 {
-  [UpdateMethod]
-  internal class CityHunter
+  private int _x;
+  public string? Y { get; private set; }
+  public DateTime Z { get; }
+  public void Update(int _x, string? Y)
   {
-    private int _x;
-    public string? Y { get; private set; }
-    public DateTime Z { get; }
-    public void Update(int _x, string? Y)
-    {
-      this._x = _x;
-      this.Y = Y;
-    }
+    this._x = _x;
+    this.Y = Y;
   }
-  internal class Program
+}
+internal class Program
+{
+  private static void Main()
   {
-    private static void Main()
-    {
-      CityHunter ch = new();
-      ch.Update(0, "1");
-    }
+    CityHunter ch = new();
+    ch.Update(0, "1");
   }
 }

@@ -8,6 +8,7 @@ namespace Doc.ChildObject;
 public class Person
 {
     public string? FirstName { get; set; }
+
     public string? LastName { get; set; }
 }
 
@@ -22,6 +23,7 @@ public class PersonViewModel
     }
 
     public string? FirstName => this.Person.FirstName;
+
     public string? LastName => this.Person.LastName;
 
     public string FullName => $"{this.FirstName} {this.LastName}";

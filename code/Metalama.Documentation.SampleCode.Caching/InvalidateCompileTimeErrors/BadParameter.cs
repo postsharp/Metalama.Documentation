@@ -3,14 +3,13 @@
 using Metalama.Patterns.Caching.Aspects;
 using System;
 
-namespace Doc.InvalidateCompileTimeErrors.BadArgument
-{
-    public sealed class ProductCatalogue
-    {
-        [Cache]
-        public decimal GetPrice( string productId ) => throw new NotImplementedException();
+namespace Doc.InvalidateCompileTimeErrors.BadArgument;
 
-        [InvalidateCache( nameof(GetPrice) )]
-        public void UpdatePrice( string product, decimal price ) => throw new NotImplementedException();
-    }
+public sealed class ProductCatalogue
+{
+    [Cache]
+    public decimal GetPrice( string productId ) => throw new NotImplementedException();
+
+    [InvalidateCache( nameof(GetPrice) )]
+    public void UpdatePrice( string product, decimal price ) => throw new NotImplementedException();
 }

@@ -1,13 +1,11 @@
 using System.ComponentModel;
-namespace Doc.AddEditorBrowsableAttribute
+namespace Doc.AddEditorBrowsableAttribute;
+[HideFieldsFromEditor]
+public class C
 {
-  [HideFieldsFromEditor]
-  public class C
-  {
-    public int NormalField;
+  public int NormalField;
 #pragma warning disable IDE1006 // Naming Styles
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public string? __HiddenField;
+  [EditorBrowsable(EditorBrowsableState.Never)]
+  public string? __HiddenField;
 #pragma warning restore IDE1006 // Naming Styles
-  }
 }

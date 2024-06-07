@@ -1,48 +1,46 @@
 using System;
-namespace Doc.LogMethodAndProperty
+namespace Doc.LogMethodAndProperty;
+internal class Foo
 {
-  internal class Foo
+  [Log]
+  public int Method(int a, int b)
   {
-    [Log]
-    public int Method(int a, int b)
+    Console.WriteLine("Entering Foo.Method(int, int)");
+    try
     {
-      Console.WriteLine("Entering Foo.Method(int, int)");
-      try
-      {
-        return a + b;
-      }
-      finally
-      {
-        Console.WriteLine(" Leaving Foo.Method(int, int)");
-      }
+      return a + b;
     }
-    private int _property;
-    [Log]
-    public int Property
+    finally
     {
-      get
-      {
-        return _property;
-      }
-      set
-      {
-        Console.WriteLine("Assigning Foo.Property");
-        _property = value;
-      }
+      Console.WriteLine(" Leaving Foo.Method(int, int)");
     }
-    private string? _field;
-    [Log]
-    public string? Field
+  }
+  private int _property;
+  [Log]
+  public int Property
+  {
+    get
     {
-      get
-      {
-        return _field;
-      }
-      set
-      {
-        Console.WriteLine("Assigning Foo.Field");
-        _field = value;
-      }
+      return _property;
+    }
+    set
+    {
+      Console.WriteLine("Assigning Foo.Property");
+      _property = value;
+    }
+  }
+  private string? _field;
+  [Log]
+  public string? Field
+  {
+    get
+    {
+      return _field;
+    }
+    set
+    {
+      Console.WriteLine("Assigning Foo.Field");
+      _field = value;
     }
   }
 }

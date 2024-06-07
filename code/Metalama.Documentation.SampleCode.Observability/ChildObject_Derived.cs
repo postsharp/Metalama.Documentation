@@ -8,6 +8,7 @@ namespace Doc.ChildObject_Derived;
 public class Person
 {
     public string? FirstName { get; set; }
+
     public string? LastName { get; set; }
 
     public string? Title { get; set; }
@@ -24,9 +25,8 @@ public class PersonViewModel
     }
 
     public string? FirstName => this.Person.FirstName;
+
     public string? LastName => this.Person.LastName;
-
-
 }
 
 [Observable]

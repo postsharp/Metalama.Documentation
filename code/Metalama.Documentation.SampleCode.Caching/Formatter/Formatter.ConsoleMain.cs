@@ -5,28 +5,27 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
 
-namespace Doc.Formatter
+namespace Doc.Formatter;
+
+public sealed class ConsoleMain : IConsoleMain
 {
-    public sealed class ConsoleMain : IConsoleMain
+    private readonly FileSystem _fileSystem;
+
+    public ConsoleMain( FileSystem fileSystem )
     {
-        private readonly FileSystem _fileSystem;
+        this._fileSystem = fileSystem;
+    }
 
-        public ConsoleMain( FileSystem fileSystem )
+    public void Execute()
+    {
+        var fileInfo = new FileInfo( Environment.ProcessPath! );
+
+        for ( var i = 0; i < 3; i++ )
         {
-            this._fileSystem = fileSystem;
+            var value = this._fileSystem.ReadAll( fileInfo );
+            Console.WriteLine( $"FileSystem returned {value.Length} bytes." );
         }
 
-        public void Execute()
-        {
-            var fileInfo = new FileInfo( Environment.ProcessPath! );
-
-            for ( var i = 0; i < 3; i++ )
-            {
-                var value = this._fileSystem.ReadAll( fileInfo );
-                Console.WriteLine( $"FileSystem returned {value.Length} bytes." );
-            }
-
-            Console.WriteLine( $"In total, FileSystem performed {this._fileSystem.OperationCount} operation(s)." );
-        }
+        Console.WriteLine( $"In total, FileSystem performed {this._fileSystem.OperationCount} operation(s)." );
     }
 }

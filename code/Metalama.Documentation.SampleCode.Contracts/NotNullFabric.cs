@@ -2,29 +2,28 @@
 
 using Metalama.Patterns.Contracts;
 
-namespace Doc.NotNullFabric
+namespace Doc.NotNullFabric;
+
+public class Instrument
 {
-    public class Instrument
+    public string Name { get; set; }
+
+    public Category? Category { get; set; }
+
+    public Instrument( string name, Category? category )
     {
-        public string Name { get; set; }
+        this.Name = name;
+        this.Category = category;
+    }
+}
 
-        public Category? Category { get; set; }
-
-        public Instrument( string name, Category? category )
-        {
-            this.Name = name;
-            this.Category = category;
-        }
+public class Category
+{
+    // Internal APIs won't be checked by default.
+    internal Category( string name )
+    {
+        this.Name = name;
     }
 
-    public class Category
-    {
-        // Internal APIs won't be checked by default.
-        internal Category( string name )
-        {
-            this.Name = name;
-        }
-
-        public string Name { get; }
-    }
+    public string Name { get; }
 }

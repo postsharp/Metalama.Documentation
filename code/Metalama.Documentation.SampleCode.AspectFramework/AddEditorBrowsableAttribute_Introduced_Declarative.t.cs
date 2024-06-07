@@ -1,11 +1,9 @@
 using System.ComponentModel;
-namespace Doc.AddEditorBrowsableAttribute_Introduced_Declarative
+namespace Doc.AddEditorBrowsableAttribute_Introduced_Declarative;
+[AddEditorHiddenFieldAttribute]
+public class C
 {
-  [AddEditorHiddenFieldAttribute]
-  public class C
-  {
-    public int NormalField;
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public string? __HiddenField;
-  }
+  public int NormalField;
+  [EditorBrowsable(EditorBrowsableState.Never)]
+  public string? __HiddenField;
 }

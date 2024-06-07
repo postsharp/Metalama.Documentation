@@ -2,29 +2,27 @@ using System;
 using System.IO;
 using System.Threading;
 #pragma warning disable CA1001 // Types that own disposable fields should be disposable
-namespace Doc.Disposable
+namespace Doc.Disposable;
+[Disposable]
+internal class Foo : IDisposable
 {
-  [Disposable]
-  internal class Foo : IDisposable
+  private CancellationTokenSource _cancellationTokenSource = new();
+  public void Dispose()
   {
-    private CancellationTokenSource _cancellationTokenSource = new();
-    public void Dispose()
-    {
-      this.Dispose(true);
-    }
-    protected virtual void Dispose(bool disposing)
-    {
-      _cancellationTokenSource.Dispose();
-    }
+    this.Dispose(true);
   }
-  [Disposable]
-  internal class Bar : Foo
+  protected virtual void Dispose(bool disposing)
   {
-    private MemoryStream _stream = new();
-    protected override void Dispose(bool disposing)
-    {
-      base.Dispose(disposing);
-      _stream.Dispose();
-    }
+    _cancellationTokenSource.Dispose();
+  }
+}
+[Disposable]
+internal class Bar : Foo
+{
+  private MemoryStream _stream = new();
+  protected override void Dispose(bool disposing)
+  {
+    base.Dispose(disposing);
+    _stream.Dispose();
   }
 }

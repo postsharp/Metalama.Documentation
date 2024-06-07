@@ -1,16 +1,15 @@
 ﻿// This is public domain Metalama sample code.
 
-namespace Doc.PrintFieldValues
+namespace Doc.PrintFieldValues;
+
+internal class Foo
 {
-    internal class Foo
-    {
-        private readonly int _a;
+    private readonly int _a;
 
-        public string? B { get; set; }
+    public string? B { get; set; }
 
-        private static readonly int _c;
+    private static readonly int _c;
 
-        [PrintFieldValues]
-        public void Bar() { }
-    }
+    [PrintFieldValues]
+    public void Bar() { }
 }

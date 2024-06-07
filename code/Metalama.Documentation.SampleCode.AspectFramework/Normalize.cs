@@ -1,10 +1,9 @@
 ﻿// This is public domain Metalama sample code.
 
-namespace Doc.Normalize
+namespace Doc.Normalize;
+
+internal class Foo
 {
-    internal class Foo
-    {
-        [Normalize]
-        public string? Property { get; set; }
-    }
+    [Normalize]
+    public string? Property { get; set; }
 }

@@ -1,10 +1,9 @@
 ﻿// This is public domain Metalama sample code.
 
-namespace Doc.CustomRegexContract
+namespace Doc.CustomRegexContract;
+
+public class Customer
 {
-    public class Customer
-    {
-        [Password]
-        public string? Password { get; set; }
-    }
+    [Password]
+    public string? Password { get; set; }
 }

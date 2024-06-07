@@ -6,43 +6,42 @@ using Metalama.Framework.Fabrics;
 using System;
 using System.Linq;
 
-namespace Doc.NotNullFabric
+namespace Doc.NotNullFabric;
+
+internal class NotNullAttribute : MethodAspect
 {
-    internal class NotNullAttribute : MethodAspect
+    public override void BuildAspect( IAspectBuilder<IMethod> builder )
     {
-        public override void BuildAspect( IAspectBuilder<IMethod> builder )
-        {
-            base.BuildAspect( builder );
+        base.BuildAspect( builder );
 
-            foreach ( var parameter in builder.Target.Parameters.Where(
-                         p => p.RefKind is RefKind.None or RefKind.In
-                              && p.Type.IsNullable != true
-                              && p.Type.IsReferenceType == true ) )
-            {
-                builder.Advice.AddContract( parameter, nameof(this.Validate), args: new { parameterName = parameter.Name } );
-            }
-        }
-
-        [Template]
-        private void Validate( dynamic? value, [CompileTime] string parameterName )
+        foreach ( var parameter in builder.Target.Parameters.Where(
+                     p => p.RefKind is RefKind.None or RefKind.In
+                          && p.Type.IsNullable != true
+                          && p.Type.IsReferenceType == true ) )
         {
-            if ( value == null )
-            {
-                throw new ArgumentNullException( parameterName );
-            }
+            builder.Advice.AddContract( parameter, nameof(this.Validate), args: new { parameterName = parameter.Name } );
         }
     }
 
-    internal class Fabric : ProjectFabric
+    [Template]
+    private void Validate( dynamic? value, [CompileTime] string parameterName )
     {
-        public override void AmendProject( IProjectAmender amender )
+        if ( value == null )
         {
-            amender.SelectMany(
-                    a => a.Types
-                        .Where( t => t.Accessibility == Accessibility.Public )
-                        .SelectMany( t => t.Methods )
-                        .Where( m => m.Accessibility == Accessibility.Public ) )
-                .AddAspect<NotNullAttribute>();
+            throw new ArgumentNullException( parameterName );
         }
+    }
+}
+
+internal class Fabric : ProjectFabric
+{
+    public override void AmendProject( IProjectAmender amender )
+    {
+        amender.SelectMany(
+                a => a.Types
+                    .Where( t => t.Accessibility == Accessibility.Public )
+                    .SelectMany( t => t.Methods )
+                    .Where( m => m.Accessibility == Accessibility.Public ) )
+            .AddAspect<NotNullAttribute>();
     }
 }

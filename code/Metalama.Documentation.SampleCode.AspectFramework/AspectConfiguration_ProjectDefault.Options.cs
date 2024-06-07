@@ -6,59 +6,58 @@ using Metalama.Framework.Options;
 using System;
 using System.Diagnostics;
 
-namespace Doc.AspectConfiguration_ProjectDefault
+namespace Doc.AspectConfiguration_ProjectDefault;
+
+// Options for the [Log] aspects.
+public class LoggingOptions : IHierarchicalOptions<IMethod>, IHierarchicalOptions<INamedType>,
+                              IHierarchicalOptions<INamespace>, IHierarchicalOptions<ICompilation>
 {
-    // Options for the [Log] aspects.
-    public class LoggingOptions : IHierarchicalOptions<IMethod>, IHierarchicalOptions<INamedType>,
-                                  IHierarchicalOptions<INamespace>, IHierarchicalOptions<ICompilation>
+    private static readonly DiagnosticDefinition<string> _invalidLogLevelWarning = new(
+        "MY001",
+        Severity.Warning,
+        "The 'DefaultLogLevel' MSBuild property was set to the invalid value '{0}' and has been ignored." );
+
+    public string? Category { get; init; }
+
+    public TraceLevel? Level { get; init; }
+
+    object IIncrementalObject.ApplyChanges( object changes, in ApplyChangesContext context )
     {
-        private static readonly DiagnosticDefinition<string> _invalidLogLevelWarning = new(
-            "MY001",
-            Severity.Warning,
-            "The 'DefaultLogLevel' MSBuild property was set to the invalid value '{0}' and has been ignored." );
+        var other = (LoggingOptions) changes;
 
-        public string? Category { get; init; }
+        return new LoggingOptions { Category = other.Category ?? this.Category, Level = other.Level ?? this.Level };
+    }
 
-        public TraceLevel? Level { get; init; }
+    IHierarchicalOptions IHierarchicalOptions.GetDefaultOptions( OptionsInitializationContext context )
+    {
+        context.Project.TryGetProperty( "DefaultLogCategory", out var defaultCategory );
 
-        object IIncrementalObject.ApplyChanges( object changes, in ApplyChangesContext context )
+        if ( string.IsNullOrWhiteSpace( defaultCategory ) )
         {
-            var other = (LoggingOptions) changes;
-
-            return new LoggingOptions { Category = other.Category ?? this.Category, Level = other.Level ?? this.Level };
+            defaultCategory = "Trace";
+        }
+        else
+        {
+            defaultCategory = defaultCategory.Trim();
         }
 
-        IHierarchicalOptions IHierarchicalOptions.GetDefaultOptions( OptionsInitializationContext context )
+        TraceLevel defaultLogLevel;
+
+        context.Project.TryGetProperty( "DefaultLogLevel", out var defaultLogLevelString );
+
+        if ( string.IsNullOrWhiteSpace( defaultLogLevelString ) )
         {
-            context.Project.TryGetProperty( "DefaultLogCategory", out var defaultCategory );
-
-            if ( string.IsNullOrWhiteSpace( defaultCategory ) )
+            defaultLogLevel = TraceLevel.Verbose;
+        }
+        else
+        {
+            if ( !Enum.TryParse( defaultLogLevelString.Trim(), out defaultLogLevel ) )
             {
-                defaultCategory = "Trace";
-            }
-            else
-            {
-                defaultCategory = defaultCategory.Trim();
-            }
-
-            TraceLevel defaultLogLevel;
-
-            context.Project.TryGetProperty( "DefaultLogLevel", out var defaultLogLevelString );
-
-            if ( string.IsNullOrWhiteSpace( defaultLogLevelString ) )
-            {
+                context.Diagnostics.Report( _invalidLogLevelWarning.WithArguments( defaultLogLevelString ) );
                 defaultLogLevel = TraceLevel.Verbose;
             }
-            else
-            {
-                if ( !Enum.TryParse( defaultLogLevelString.Trim(), out defaultLogLevel ) )
-                {
-                    context.Diagnostics.Report( _invalidLogLevelWarning.WithArguments( defaultLogLevelString ) );
-                    defaultLogLevel = TraceLevel.Verbose;
-                }
-            }
-
-            return new LoggingOptions { Category = defaultCategory, Level = defaultLogLevel };
         }
+
+        return new LoggingOptions { Category = defaultCategory, Level = defaultLogLevel };
     }
 }

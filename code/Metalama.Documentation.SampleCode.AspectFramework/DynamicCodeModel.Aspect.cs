@@ -5,18 +5,17 @@ using Metalama.Framework.Code;
 using System.IO;
 using System.Linq;
 
-namespace Doc.DynamicCodeModel
+namespace Doc.DynamicCodeModel;
+
+internal class LogAttribute : OverrideMethodAspect
 {
-    internal class LogAttribute : OverrideMethodAspect
+    public override dynamic? OverrideMethod()
     {
-        public override dynamic? OverrideMethod()
-        {
-            var loggerField = meta.Target.Type.FieldsAndProperties.Where( x => x.Type.Is( typeof(TextWriter) ) )
-                .Single();
+        var loggerField = meta.Target.Type.FieldsAndProperties.Where( x => x.Type.Is( typeof(TextWriter) ) )
+            .Single();
 
-            ((TextWriter) loggerField.Value!).WriteLine( $"Executing {meta.Target.Method}." );
+        ((TextWriter) loggerField.Value!).WriteLine( $"Executing {meta.Target.Method}." );
 
-            return meta.Proceed();
-        }
+        return meta.Proceed();
     }
 }

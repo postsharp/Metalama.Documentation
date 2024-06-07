@@ -5,29 +5,28 @@ using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using System.Linq;
 
-namespace Doc.Architecture.RequireDefaultConstructorAspect
+namespace Doc.Architecture.RequireDefaultConstructorAspect;
+
+[Inheritable]
+public class RequireDefaultConstructorAttribute : TypeAspect
 {
-    [Inheritable]
-    public class RequireDefaultConstructorAttribute : TypeAspect
+    private static readonly DiagnosticDefinition<INamedType> _warning = new(
+        "MY001",
+        Severity.Warning,
+        "The type '{0}' must have a public default constructor." );
+
+    public override void BuildAspect( IAspectBuilder<INamedType> builder )
     {
-        private static readonly DiagnosticDefinition<INamedType> _warning = new(
-            "MY001",
-            Severity.Warning,
-            "The type '{0}' must have a public default constructor." );
-
-        public override void BuildAspect( IAspectBuilder<INamedType> builder )
+        if ( builder.Target.IsAbstract )
         {
-            if ( builder.Target.IsAbstract )
-            {
-                return;
-            }
+            return;
+        }
 
-            var defaultConstructor = builder.Target.Constructors.SingleOrDefault( c => c.Parameters.Count == 0 );
+        var defaultConstructor = builder.Target.Constructors.SingleOrDefault( c => c.Parameters.Count == 0 );
 
-            if ( defaultConstructor == null || defaultConstructor.Accessibility != Accessibility.Public )
-            {
-                builder.Diagnostics.Report( _warning.WithArguments( builder.Target ) );
-            }
+        if ( defaultConstructor == null || defaultConstructor.Accessibility != Accessibility.Public )
+        {
+            builder.Diagnostics.Report( _warning.WithArguments( builder.Target ) );
         }
     }
 }

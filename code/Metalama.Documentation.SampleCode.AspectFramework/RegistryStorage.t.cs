@@ -1,54 +1,52 @@
 using System;
 using Microsoft.Win32;
-namespace Doc.RegistryStorage
+namespace Doc.RegistryStorage;
+[RegistryStorage("Animals")]
+internal class Animals
 {
-  [RegistryStorage("Animals")]
-  internal class Animals
+  private int _turtles;
+  public int Turtles
   {
-    private int _turtles;
-    public int Turtles
+    get
     {
-      get
+      var value = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\Animals", "Turtles", null);
+      if (value != null)
       {
-        var value = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\Animals", "Turtles", null);
-        if (value != null)
-        {
-          return (int)Convert.ChangeType(value, typeof(int));
-        }
-        else
-        {
-          return default;
-        }
+        return (int)Convert.ChangeType(value, typeof(int));
       }
-      set
+      else
       {
-        var stringValue = Convert.ToString(value);
-        Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\Animals", "Turtles", stringValue);
-        _turtles = value;
+        return default;
       }
     }
-    private int _cats;
-    public int Cats
+    set
     {
-      get
-      {
-        var value = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\Animals", "Cats", null);
-        if (value != null)
-        {
-          return (int)Convert.ChangeType(value, typeof(int));
-        }
-        else
-        {
-          return default;
-        }
-      }
-      set
-      {
-        var stringValue = Convert.ToString(value);
-        Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\Animals", "Cats", stringValue);
-        _cats = value;
-      }
+      var stringValue = Convert.ToString(value);
+      Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\Animals", "Turtles", stringValue);
+      _turtles = value;
     }
-    public int All => this.Turtles + this.Cats;
   }
+  private int _cats;
+  public int Cats
+  {
+    get
+    {
+      var value = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\Animals", "Cats", null);
+      if (value != null)
+      {
+        return (int)Convert.ChangeType(value, typeof(int));
+      }
+      else
+      {
+        return default;
+      }
+    }
+    set
+    {
+      var stringValue = Convert.ToString(value);
+      Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\Animals", "Cats", stringValue);
+      _cats = value;
+    }
+  }
+  public int All => this.Turtles + this.Cats;
 }

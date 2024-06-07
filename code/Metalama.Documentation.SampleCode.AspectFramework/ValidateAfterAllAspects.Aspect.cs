@@ -9,40 +9,39 @@ using System.IO;
 using System.Linq;
 
 // Note that aspects are applied in inverse order than they appear in the next line.
-[assembly: AspectOrder(AspectOrderDirection.RunTime, typeof(AddLoggerAttribute), typeof(LogAttribute) )]
+[assembly: AspectOrder( AspectOrderDirection.RunTime, typeof(AddLoggerAttribute), typeof(LogAttribute) )]
 
-namespace Doc.ValidateAfterAllAspects
+namespace Doc.ValidateAfterAllAspects;
+
+internal class LogAttribute : OverrideMethodAspect
 {
-    internal class LogAttribute : OverrideMethodAspect
+    private static readonly DiagnosticDefinition<INamedType> _error = new( "MY001", Severity.Error, "The type {0} must have a field named _logger." );
+
+    public override void BuildAspect( IAspectBuilder<IMethod> builder )
     {
-        private static readonly DiagnosticDefinition<INamedType> _error = new( "MY001", Severity.Error, "The type {0} must have a field named _logger." );
+        builder.Outbound.AfterAllAspects().Select( m => m.DeclaringType ).Validate( this.ValidateDeclaringType );
+    }
 
-        public override void BuildAspect( IAspectBuilder<IMethod> builder )
+    private void ValidateDeclaringType( in DeclarationValidationContext context )
+    {
+        var type = (INamedType) context.Declaration;
+
+        if ( !type.AllFields.OfName( "_logger" ).Any() )
         {
-            builder.Outbound.AfterAllAspects().Select( m => m.DeclaringType ).Validate( this.ValidateDeclaringType );
-        }
-
-        private void ValidateDeclaringType( in DeclarationValidationContext context )
-        {
-            var type = (INamedType) context.Declaration;
-
-            if ( !type.AllFields.OfName( "_logger" ).Any() )
-            {
-                context.Diagnostics.Report( _error.WithArguments( type ) );
-            }
-        }
-
-        public override dynamic? OverrideMethod()
-        {
-            meta.This._logger.WriteLine( $"Executing {meta.Target.Method}." );
-
-            return meta.Proceed();
+            context.Diagnostics.Report( _error.WithArguments( type ) );
         }
     }
 
-    internal class AddLoggerAttribute : TypeAspect
+    public override dynamic? OverrideMethod()
     {
-        [Introduce]
-        private TextWriter _logger = File.CreateText( "log.txt" );
+        meta.This._logger.WriteLine( $"Executing {meta.Target.Method}." );
+
+        return meta.Proceed();
     }
+}
+
+internal class AddLoggerAttribute : TypeAspect
+{
+    [Introduce]
+    private TextWriter _logger = File.CreateText( "log.txt" );
 }

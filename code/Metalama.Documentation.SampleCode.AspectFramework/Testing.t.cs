@@ -1,21 +1,19 @@
 using System;
-namespace Doc.Testing
+namespace Doc.Testing;
+internal class SimpleLogTests
 {
-  internal class SimpleLogTests
+  [SimpleLog]
+  private void MyMethod()
   {
-    [SimpleLog]
-    private void MyMethod()
+    Console.WriteLine("Entering SimpleLogTests.MyMethod()");
+    try
     {
-      Console.WriteLine("Entering SimpleLogTests.MyMethod()");
-      try
-      {
-        Console.WriteLine("Hello, world");
-        return;
-      }
-      finally
-      {
-        Console.WriteLine("Leaving SimpleLogTests.MyMethod()");
-      }
+      Console.WriteLine("Hello, world");
+      return;
+    }
+    finally
+    {
+      Console.WriteLine("Leaving SimpleLogTests.MyMethod()");
     }
   }
 }

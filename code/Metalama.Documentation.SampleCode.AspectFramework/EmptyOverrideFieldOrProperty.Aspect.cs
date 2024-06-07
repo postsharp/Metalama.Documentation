@@ -2,14 +2,13 @@
 
 using Metalama.Framework.Aspects;
 
-namespace Doc
+namespace Doc;
+
+public class EmptyOverrideFieldOrPropertyAttribute : OverrideFieldOrPropertyAspect
 {
-    public class EmptyOverrideFieldOrPropertyAttribute : OverrideFieldOrPropertyAspect
+    public override dynamic? OverrideProperty
     {
-        public override dynamic? OverrideProperty
-        {
-            get => meta.Proceed();
-            set => meta.Proceed();
-        }
+        get => meta.Proceed();
+        set => meta.Proceed();
     }
 }

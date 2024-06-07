@@ -1,113 +1,111 @@
 using System;
 using Metalama.Patterns.Contracts;
-namespace Doc.Contracts.Input
+namespace Doc.Contracts.Input;
+public class Customer
 {
-  public class Customer
+  private string? _phone;
+  [Phone]
+  public string? Phone
   {
-    private string? _phone;
-    [Phone]
-    public string? Phone
+    get
     {
-      get
-      {
-        return _phone;
-      }
-      set
-      {
-        var regex = ContractHelpers.PhoneRegex!;
-        if (value != null && !regex.IsMatch(value!))
-        {
-          var regex_1 = regex;
-          throw new ArgumentException("The 'Phone' property must be a valid phone number.", "value");
-        }
-        _phone = value;
-      }
+      return _phone;
     }
-    private string? _url;
-    [Url]
-    public string? Url
+    set
     {
-      get
+      var regex = ContractHelpers.PhoneRegex!;
+      if (value != null && !regex.IsMatch(value!))
       {
-        return _url;
+        var regex_1 = regex;
+        throw new ArgumentException("The 'Phone' property must be a valid phone number.", "value");
       }
-      set
-      {
-        var regex = ContractHelpers.UrlRegex!;
-        if (value != null && !regex.IsMatch(value!))
-        {
-          var regex_1 = regex;
-          throw new ArgumentException("The 'Url' property must be a valid URL.", "value");
-        }
-        _url = value;
-      }
+      _phone = value;
     }
-    private int? _birthYear;
-    [Range(1900, 2100)]
-    public int? BirthYear
+  }
+  private string? _url;
+  [Url]
+  public string? Url
+  {
+    get
     {
-      get
-      {
-        return _birthYear;
-      }
-      set
-      {
-        if (value is < 1900 or > 2100)
-        {
-          throw new ArgumentOutOfRangeException("The 'BirthYear' property must be in the range [1900, 2100].", "value");
-        }
-        _birthYear = value;
-      }
+      return _url;
     }
-    public string? FirstName { get; set; }
-    private string _lastName = default !;
-    [Required]
-    public string LastName
+    set
     {
-      get
+      var regex = ContractHelpers.UrlRegex!;
+      if (value != null && !regex.IsMatch(value!))
       {
-        return _lastName;
+        var regex_1 = regex;
+        throw new ArgumentException("The 'Url' property must be a valid URL.", "value");
       }
-      set
-      {
-        if (string.IsNullOrWhiteSpace(value))
-        {
-          if (value == null !)
-          {
-            throw new ArgumentNullException("value", "The 'LastName' property is required.");
-          }
-          else
-          {
-            throw new ArgumentOutOfRangeException("value", "The 'LastName' property is required.");
-          }
-        }
-        _lastName = value;
-      }
+      _url = value;
     }
-    public Customer([Required] string fullName)
+  }
+  private int? _birthYear;
+  [Range(1900, 2100)]
+  public int? BirthYear
+  {
+    get
     {
-      if (string.IsNullOrWhiteSpace(fullName))
+      return _birthYear;
+    }
+    set
+    {
+      if (value is < 1900 or > 2100)
       {
-        if (fullName == null !)
+        throw new ArgumentOutOfRangeException("The 'BirthYear' property must be in the range [1900, 2100].", "value");
+      }
+      _birthYear = value;
+    }
+  }
+  public string? FirstName { get; set; }
+  private string _lastName = default !;
+  [Required]
+  public string LastName
+  {
+    get
+    {
+      return _lastName;
+    }
+    set
+    {
+      if (string.IsNullOrWhiteSpace(value))
+      {
+        if (value == null !)
         {
-          throw new ArgumentNullException("fullName", "The 'fullName' parameter is required.");
+          throw new ArgumentNullException("value", "The 'LastName' property is required.");
         }
         else
         {
-          throw new ArgumentOutOfRangeException("fullName", "The 'fullName' parameter is required.");
+          throw new ArgumentOutOfRangeException("value", "The 'LastName' property is required.");
         }
       }
-      var split = fullName.Split(' ');
-      if (split.Length == 0)
+      _lastName = value;
+    }
+  }
+  public Customer([Required] string fullName)
+  {
+    if (string.IsNullOrWhiteSpace(fullName))
+    {
+      if (fullName == null !)
       {
-        this.FirstName = "";
-        this.LastName = split[0];
+        throw new ArgumentNullException("fullName", "The 'fullName' parameter is required.");
       }
       else
       {
-        this.FirstName = split[0];
-        this.LastName = split[^1];
+        throw new ArgumentOutOfRangeException("fullName", "The 'fullName' parameter is required.");
       }
+    }
+    var split = fullName.Split(' ');
+    if (split.Length == 0)
+    {
+      this.FirstName = "";
+      this.LastName = split[0];
+    }
+    else
+    {
+      this.FirstName = split[0];
+      this.LastName = split[^1];
     }
   }
 }

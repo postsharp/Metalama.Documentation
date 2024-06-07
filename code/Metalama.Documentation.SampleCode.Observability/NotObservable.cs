@@ -1,4 +1,6 @@
-﻿using Metalama.Patterns.Observability;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Patterns.Observability;
 using System;
 
 namespace Doc.NotObservable;
@@ -7,6 +9,7 @@ namespace Doc.NotObservable;
 public class Person
 {
     public string? FirstName { get; set; }
+
     public string? LastName { get; set; }
 
     [NotObservable]

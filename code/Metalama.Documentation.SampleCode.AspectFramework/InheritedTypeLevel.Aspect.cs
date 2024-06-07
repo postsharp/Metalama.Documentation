@@ -4,25 +4,24 @@ using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
 
-namespace Doc.InheritedTypeLevel
+namespace Doc.InheritedTypeLevel;
+
+[Inheritable]
+internal class InheritedAspectAttribute : TypeAspect
 {
-    [Inheritable]
-    internal class InheritedAspectAttribute : TypeAspect
+    public override void BuildAspect( IAspectBuilder<INamedType> builder )
     {
-        public override void BuildAspect( IAspectBuilder<INamedType> builder )
+        foreach ( var method in builder.Target.Methods )
         {
-            foreach ( var method in builder.Target.Methods )
-            {
-                builder.Advice.Override( method, nameof(this.MethodTemplate) );
-            }
+            builder.Advice.Override( method, nameof(this.MethodTemplate) );
         }
+    }
 
-        [Template]
-        private dynamic? MethodTemplate()
-        {
-            Console.WriteLine( "Hacked!" );
+    [Template]
+    private dynamic? MethodTemplate()
+    {
+        Console.WriteLine( "Hacked!" );
 
-            return meta.Proceed();
-        }
+        return meta.Proceed();
     }
 }

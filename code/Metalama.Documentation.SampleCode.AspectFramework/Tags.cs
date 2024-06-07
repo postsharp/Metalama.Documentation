@@ -2,14 +2,13 @@
 
 using System;
 
-namespace Doc.Tags
+namespace Doc.Tags;
+
+internal class Foo
 {
-    internal class Foo
+    [TagsAspect]
+    private void Bar( int a, int b )
     {
-        [TagsAspect]
-        private void Bar( int a, int b )
-        {
-            Console.WriteLine( $"Method({a}, {b})" );
-        }
+        Console.WriteLine( $"Method({a}, {b})" );
     }
 }

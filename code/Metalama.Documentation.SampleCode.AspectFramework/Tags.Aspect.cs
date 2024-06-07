@@ -4,24 +4,23 @@ using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
 
-namespace Doc.Tags
+namespace Doc.Tags;
+
+internal class TagsAspect : MethodAspect
 {
-    internal class TagsAspect : MethodAspect
+    public override void BuildAspect( IAspectBuilder<IMethod> builder )
     {
-        public override void BuildAspect( IAspectBuilder<IMethod> builder )
-        {
-            builder.Advice.Override(
-                builder.Target,
-                nameof(this.OverrideMethod),
-                tags: new { ParameterCount = builder.Target.Parameters.Count } );
-        }
+        builder.Advice.Override(
+            builder.Target,
+            nameof(this.OverrideMethod),
+            tags: new { ParameterCount = builder.Target.Parameters.Count } );
+    }
 
-        [Template]
-        private dynamic? OverrideMethod()
-        {
-            Console.WriteLine( $"This method has {meta.Tags["ParameterCount"]} parameters." );
+    [Template]
+    private dynamic? OverrideMethod()
+    {
+        Console.WriteLine( $"This method has {meta.Tags["ParameterCount"]} parameters." );
 
-            return meta.Proceed();
-        }
+        return meta.Proceed();
     }
 }

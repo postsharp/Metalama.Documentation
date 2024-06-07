@@ -2,11 +2,10 @@
 
 using Metalama.Patterns.Contracts;
 
-namespace Doc.StringLengthContract
+namespace Doc.StringLengthContract;
+
+public class Customer
 {
-    public class Customer
-    {
-        [StringLength( 12, 64 )]
-        public string? Password { get; set; }
-    }
+    [StringLength( 12, 64 )]
+    public string? Password { get; set; }
 }

@@ -1,17 +1,15 @@
-namespace Doc.IntroduceParameter
+namespace Doc.IntroduceParameter;
+internal class Foo
 {
-  internal class Foo
+  [RegisterInstance]
+  public Foo(IInstanceRegistry instanceRegistry = default)
   {
-    [RegisterInstance]
-    public Foo(IInstanceRegistry instanceRegistry = default)
-    {
-      instanceRegistry.Register(this);
-    }
+    instanceRegistry.Register(this);
   }
-  internal class Bar : Foo
+}
+internal class Bar : Foo
+{
+  public Bar(IInstanceRegistry instanceRegistry = default) : base(instanceRegistry)
   {
-    public Bar(IInstanceRegistry instanceRegistry = default) : base(instanceRegistry)
-    {
-    }
   }
 }

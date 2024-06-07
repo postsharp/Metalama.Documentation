@@ -2,14 +2,13 @@
 
 using System;
 
-namespace Doc.ConvertToRunTime
+namespace Doc.ConvertToRunTime;
+
+internal class Foo
 {
-    internal class Foo
+    [ConvertToRunTimeAspect]
+    private void Bar( string a, int c, DateTime e )
     {
-        [ConvertToRunTimeAspect]
-        private void Bar( string a, int c, DateTime e )
-        {
-            Console.WriteLine( $"Method({a}, {c}, {e})" );
-        }
+        Console.WriteLine( $"Method({a}, {c}, {e})" );
     }
 }

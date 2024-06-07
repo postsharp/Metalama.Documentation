@@ -2,14 +2,13 @@
 
 using System;
 
-namespace Doc.SimpleLogging
+namespace Doc.SimpleLogging;
+
+internal class Foo
 {
-    internal class Foo
+    [SimpleLog]
+    public void Method1()
     {
-        [SimpleLog]
-        public void Method1()
-        {
-            Console.WriteLine( "Hello, world." );
-        }
+        Console.WriteLine( "Hello, world." );
     }
 }

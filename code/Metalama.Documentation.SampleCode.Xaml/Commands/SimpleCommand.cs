@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 using System.Windows;
 using Metalama.Patterns.Xaml;
 
@@ -19,7 +20,4 @@ public class MyWindow : Window
     {
         this.Counter--;
     }
-
 }
-
-

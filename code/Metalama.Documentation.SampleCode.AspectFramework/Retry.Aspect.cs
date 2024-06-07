@@ -4,25 +4,24 @@ using Metalama.Framework.Aspects;
 using System;
 using System.Threading;
 
-namespace Doc.Retry
-{
-    internal class RetryAttribute : OverrideMethodAspect
-    {
-        public int MaxAttempts { get; set; } = 5;
+namespace Doc.Retry;
 
-        public override dynamic? OverrideMethod()
+internal class RetryAttribute : OverrideMethodAspect
+{
+    public int MaxAttempts { get; set; } = 5;
+
+    public override dynamic? OverrideMethod()
+    {
+        for ( var i = 0;; i++ )
         {
-            for ( var i = 0;; i++ )
+            try
             {
-                try
-                {
-                    return meta.Proceed();
-                }
-                catch ( Exception e ) when ( i < this.MaxAttempts )
-                {
-                    Console.WriteLine( $"{e.Message}. Retrying in 100 ms." );
-                    Thread.Sleep( 100 );
-                }
+                return meta.Proceed();
+            }
+            catch ( Exception e ) when ( i < this.MaxAttempts )
+            {
+                Console.WriteLine( $"{e.Message}. Retrying in 100 ms." );
+                Thread.Sleep( 100 );
             }
         }
     }

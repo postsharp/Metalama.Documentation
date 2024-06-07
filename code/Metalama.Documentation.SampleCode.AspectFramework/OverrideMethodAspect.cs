@@ -5,22 +5,21 @@ using Metalama.Framework.Code;
 using Metalama.Framework.Eligibility;
 using System;
 
-namespace Doc.OverrideMethodAspect_
+namespace Doc.OverrideMethodAspect_;
+
+[AttributeUsage( AttributeTargets.Method )]
+public abstract class OverrideMethodAspect : Attribute, IAspect<IMethod>
 {
-    [AttributeUsage( AttributeTargets.Method )]
-    public abstract class OverrideMethodAspect : Attribute, IAspect<IMethod>
+    public virtual void BuildAspect( IAspectBuilder<IMethod> builder )
     {
-        public virtual void BuildAspect( IAspectBuilder<IMethod> builder )
-        {
-            builder.Advice.Override( builder.Target, nameof(this.OverrideMethod) );
-        }
-
-        public virtual void BuildEligibility( IEligibilityBuilder<IMethod> builder )
-        {
-            builder.ExceptForInheritance().MustNotBeAbstract();
-        }
-
-        [Template]
-        public abstract dynamic? OverrideMethod();
+        builder.Advice.Override( builder.Target, nameof(this.OverrideMethod) );
     }
+
+    public virtual void BuildEligibility( IEligibilityBuilder<IMethod> builder )
+    {
+        builder.ExceptForInheritance().MustNotBeAbstract();
+    }
+
+    [Template]
+    public abstract dynamic? OverrideMethod();
 }

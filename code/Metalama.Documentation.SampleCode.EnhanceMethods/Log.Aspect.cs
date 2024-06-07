@@ -3,24 +3,23 @@
 using Metalama.Framework.Aspects;
 using System;
 
-namespace Doc.Logging
+namespace Doc.Logging;
+
+public class LogAttribute : OverrideMethodAspect
 {
-    public class LogAttribute : OverrideMethodAspect
+    public override dynamic? OverrideMethod()
     {
-        public override dynamic? OverrideMethod()
+        var targetMethodName = meta.Target.Method.ToDisplayString();
+
+        try
         {
-            var targetMethodName = meta.Target.Method.ToDisplayString();
+            Console.WriteLine( $"Started {targetMethodName}" );
 
-            try
-            {
-                Console.WriteLine( $"Started {targetMethodName}" );
-
-                return meta.Proceed();
-            }
-            finally
-            {
-                Console.WriteLine( $"Finished {targetMethodName}" );
-            }
+            return meta.Proceed();
+        }
+        finally
+        {
+            Console.WriteLine( $"Finished {targetMethodName}" );
         }
     }
 }

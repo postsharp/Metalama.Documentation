@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿// This is public domain Metalama sample code.
+
+using System.Windows;
 using Metalama.Patterns.Xaml;
 
 namespace Doc.Command.CanExecute;
@@ -22,6 +24,4 @@ public class MyWindow : Window
     }
 
     public bool CanExecuteDecrement => this.Counter > 0;
-
 }
-

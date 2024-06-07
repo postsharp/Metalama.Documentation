@@ -3,20 +3,19 @@
 using Metalama.Patterns.Caching.Aspects;
 using System;
 
-namespace Doc.GettingStarted_NoDI
+namespace Doc.GettingStarted_NoDI;
+
+public static class CloudCalculator
 {
-    public static class CloudCalculator
+    public static int OperationCount { get; private set; }
+
+    [Cache]
+    public static int Add( int a, int b )
     {
-        public static int OperationCount { get; private set; }
+        Console.WriteLine( "Doing some very hard work." );
 
-        [Cache]
-        public static int Add( int a, int b )
-        {
-            Console.WriteLine( "Doing some very hard work." );
+        OperationCount++;
 
-            OperationCount++;
-
-            return a + b;
-        }
+        return a + b;
     }
 }

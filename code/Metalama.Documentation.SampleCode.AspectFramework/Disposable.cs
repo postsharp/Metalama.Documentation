@@ -5,17 +5,16 @@ using System.Threading;
 
 #pragma warning disable CA1001 // Types that own disposable fields should be disposable
 
-namespace Doc.Disposable
-{
-    [Disposable]
-    internal class Foo
-    {
-        private CancellationTokenSource _cancellationTokenSource = new();
-    }
+namespace Doc.Disposable;
 
-    [Disposable]
-    internal class Bar : Foo
-    {
-        private MemoryStream _stream = new();
-    }
+[Disposable]
+internal class Foo
+{
+    private CancellationTokenSource _cancellationTokenSource = new();
+}
+
+[Disposable]
+internal class Bar : Foo
+{
+    private MemoryStream _stream = new();
 }

@@ -1,19 +1,17 @@
-namespace Doc.Normalize
+namespace Doc.Normalize;
+internal class Foo
 {
-  internal class Foo
+  private string? _property;
+  [Normalize]
+  public string? Property
   {
-    private string? _property;
-    [Normalize]
-    public string? Property
+    get
     {
-      get
-      {
-        return _property;
-      }
-      set
-      {
-        _property = value?.Trim().ToLowerInvariant();
-      }
+      return _property;
+    }
+    set
+    {
+      _property = value?.Trim().ToLowerInvariant();
     }
   }
 }

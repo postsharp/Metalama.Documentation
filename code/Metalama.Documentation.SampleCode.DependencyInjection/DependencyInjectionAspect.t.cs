@@ -5,43 +5,41 @@ using Microsoft.Extensions.Logging;
 #pragma warning disable CS0169 // Field is never used
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 #pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
-namespace Doc.DependencyInjectionAspect
+namespace Doc.DependencyInjectionAspect;
+public class DependencyInjectionAspect
 {
-  public class DependencyInjectionAspect
+  // This dependency will be optional because the field is nullable.
+  [Dependency]
+  private ILogger? _logger;
+  // This dependency will be required because the field is non-nullable.
+  [Dependency]
+  private IHostEnvironment _environment;
+  [Dependency(IsLazy = true)]
+  private IHostApplicationLifetime _lifetime
   {
-    // This dependency will be optional because the field is nullable.
-    [Dependency]
-    private ILogger? _logger;
-    // This dependency will be required because the field is non-nullable.
-    [Dependency]
-    private IHostEnvironment _environment;
-    [Dependency(IsLazy = true)]
-    private IHostApplicationLifetime _lifetime
+    get
     {
-      get
-      {
-        return _lifetimeCache ??= _lifetimeFunc!.Invoke();
-      }
-      set
-      {
-        throw new NotSupportedException("Cannot set '_lifetime' because of the dependency aspect.");
-      }
+      return _lifetimeCache ??= _lifetimeFunc!.Invoke();
     }
-    public void DoWork()
+    set
     {
-      this._logger?.LogDebug("Doing some work.");
-      if (!this._environment.IsProduction())
-      {
-        this._lifetime.StopApplication();
-      }
+      throw new NotSupportedException("Cannot set '_lifetime' because of the dependency aspect.");
     }
-    private IHostApplicationLifetime? _lifetimeCache;
-    private Func<IHostApplicationLifetime> _lifetimeFunc;
-    public DependencyInjectionAspect(ILogger<DependencyInjectionAspect> logger = default, IHostEnvironment? environment = default, Func<IHostApplicationLifetime>? lifetime = default)
+  }
+  public void DoWork()
+  {
+    this._logger?.LogDebug("Doing some work.");
+    if (!this._environment.IsProduction())
     {
-      this._logger = logger;
-      this._environment = environment ?? throw new System.ArgumentNullException(nameof(environment));
-      this._lifetimeFunc = lifetime ?? throw new System.ArgumentNullException(nameof(lifetime));
+      this._lifetime.StopApplication();
     }
+  }
+  private IHostApplicationLifetime? _lifetimeCache;
+  private Func<IHostApplicationLifetime> _lifetimeFunc;
+  public DependencyInjectionAspect(ILogger<DependencyInjectionAspect> logger = default, IHostEnvironment? environment = default, Func<IHostApplicationLifetime>? lifetime = default)
+  {
+    this._logger = logger;
+    this._environment = environment ?? throw new System.ArgumentNullException(nameof(environment));
+    this._lifetimeFunc = lifetime ?? throw new System.ArgumentNullException(nameof(lifetime));
   }
 }

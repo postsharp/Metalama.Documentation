@@ -1,17 +1,15 @@
 using System;
-namespace Doc.SimpleLog
+namespace Doc.SimpleLog;
+public class Program
 {
-  public class Program
+  [Log]
+  public static void SayHello(string name)
   {
-    [Log]
-    public static void SayHello(string name)
-    {
-      Console.WriteLine($"Simply logging a method...");
-      Console.WriteLine($"Hello {name}");
-    }
-    public static void Main()
-    {
-      SayHello("Your Majesty");
-    }
+    Console.WriteLine($"Simply logging a method...");
+    Console.WriteLine($"Hello {name}");
+  }
+  public static void Main()
+  {
+    SayHello("Your Majesty");
   }
 }

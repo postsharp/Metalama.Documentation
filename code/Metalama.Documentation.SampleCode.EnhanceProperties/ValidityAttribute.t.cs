@@ -1,6 +1,4 @@
-namespace Doc
+namespace Doc;
+internal class ValidityAttribute
 {
-  internal class ValidityAttribute
-  {
-  }
 }

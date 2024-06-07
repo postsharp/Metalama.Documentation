@@ -1,11 +1,13 @@
+// This is public domain Metalama sample code.
+
 using Metalama.Extensions.DependencyInjection;
 using Metalama.Extensions.DependencyInjection.Implementation;
 using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using Microsoft.Extensions.Logging;
 
-namespace Doc.LogCustomFramework
-{
+namespace Doc.LogCustomFramework;
+
 public class LoggerDependencyInjectionFramework : DefaultDependencyInjectionFramework
 {
     // Returns true if we want to handle this dependency, i.e. if is a dependency of type ILogger.
@@ -44,5 +46,4 @@ public class LoggerDependencyInjectionFramework : DefaultDependencyInjectionFram
         protected override IType ParameterType
             => ((INamedType) TypeFactory.GetType( typeof(ILogger<>) )).WithTypeArguments( this.IntroducedFieldOrProperty.DeclaringType );
     }
-}
 }

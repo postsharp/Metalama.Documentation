@@ -1,14 +1,12 @@
 using System;
-namespace Doc.NotNullFabric
+namespace Doc.NotNullFabric;
+public class PublicType
 {
-  public class PublicType
+  public void PublicMethod(string notNullableString, string? nullableString, int? nullableInt)
   {
-    public void PublicMethod(string notNullableString, string? nullableString, int? nullableInt)
+    if (notNullableString == null)
     {
-      if (notNullableString == null)
-      {
-        throw new ArgumentNullException("notNullableString");
-      }
+      throw new ArgumentNullException("notNullableString");
     }
   }
 }

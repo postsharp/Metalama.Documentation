@@ -1,19 +1,18 @@
 ﻿// This is public domain Metalama sample code.
 
-namespace Doc.LogMethodAndProperty
+namespace Doc.LogMethodAndProperty;
+
+internal class Foo
 {
-    internal class Foo
+    [Log]
+    public int Method( int a, int b )
     {
-        [Log]
-        public int Method( int a, int b )
-        {
-            return a + b;
-        }
-
-        [Log]
-        public int Property { get; set; }
-
-        [Log]
-        public string? Field;
+        return a + b;
     }
+
+    [Log]
+    public int Property { get; set; }
+
+    [Log]
+    public string? Field;
 }

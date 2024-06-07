@@ -161,7 +161,7 @@ public class LocalRedisServer : IDisposable
         {
             if ( !this._process.HasExited )
             {
-                 this._process.Kill();
+                this._process.Kill();
             }
 
             goto restart;
@@ -189,7 +189,7 @@ public class LocalRedisServer : IDisposable
 
             if ( !this._process.HasExited )
             {
-                 this._process.Kill();
+                this._process.Kill();
             }
 
             if ( disposing )

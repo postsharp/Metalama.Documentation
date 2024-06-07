@@ -4,32 +4,31 @@ using Doc.LogCustomFramework;
 using Metalama.Documentation.Helpers.ConsoleApp;
 using System;
 
-namespace Doc.LogDefaultFramework
+namespace Doc.LogDefaultFramework;
+
+// Program entry point. Creates the host, configure dependencies, and runs it.
+public static class Program
 {
-    // Program entry point. Creates the host, configure dependencies, and runs it.
-    public static class Program
+    private static void Main()
     {
-        private static void Main()
-        {
-            var appBuilder = ConsoleApp.CreateBuilder();
-            appBuilder.Services.AddConsoleMain<ConsoleMain>();
-            using var app = appBuilder.Build();
-            app.Run();
-        }
+        var appBuilder = ConsoleApp.CreateBuilder();
+        appBuilder.Services.AddConsoleMain<ConsoleMain>();
+        using var app = appBuilder.Build();
+        app.Run();
     }
+}
 
-    // Definition of the interface consumed by the aspect.
-    public interface IMessageWriter
-    {
-        void Write( string message );
-    }
+// Definition of the interface consumed by the aspect.
+public interface IMessageWriter
+{
+    void Write( string message );
+}
 
-    // Implementation actually consumed by the aspect.
-    public class MessageWriter : IMessageWriter
+// Implementation actually consumed by the aspect.
+public class MessageWriter : IMessageWriter
+{
+    public void Write( string message )
     {
-        public void Write( string message )
-        {
-            Console.WriteLine( message );
-        }
+        Console.WriteLine( message );
     }
 }

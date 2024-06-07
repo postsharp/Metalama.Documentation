@@ -3,16 +3,15 @@
 using System;
 using System.IO;
 
-namespace Doc.Eligibility
+namespace Doc.Eligibility;
+
+internal class SomeClass
 {
-    internal class SomeClass
-    {
-        private TextWriter _logger = Console.Out;
+    private TextWriter _logger = Console.Out;
 
-        [Log]
-        private void InstanceMethod() { }
+    [Log]
+    private void InstanceMethod() { }
 
-        [Log]
-        private static void StaticMethod() { }
-    }
+    [Log]
+    private static void StaticMethod() { }
 }

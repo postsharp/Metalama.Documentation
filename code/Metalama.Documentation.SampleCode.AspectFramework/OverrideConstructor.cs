@@ -2,30 +2,29 @@
 
 using System;
 
-namespace Doc.OverrideConstructor
+namespace Doc.OverrideConstructor;
+
+[LogConstructors]
+internal class SomeClass
 {
-    [LogConstructors]
-    internal class SomeClass
+    private readonly string _name;
+
+    public SomeClass() : this( "" )
     {
-        private readonly string _name;
-
-        public SomeClass() : this( "" )
-        {
-            Console.WriteLine( "Within constructor A." );
-        }
-
-        public SomeClass( string name )
-        {
-            this._name = name;
-            Console.WriteLine( "Within constructor B." );
-        }
+        Console.WriteLine( "Within constructor A." );
     }
 
-    internal static class Program
+    public SomeClass( string name )
     {
-        public static void Main()
-        {
-            _ = new SomeClass();
-        }
+        this._name = name;
+        Console.WriteLine( "Within constructor B." );
+    }
+}
+
+internal static class Program
+{
+    public static void Main()
+    {
+        _ = new SomeClass();
     }
 }

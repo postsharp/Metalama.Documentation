@@ -4,25 +4,24 @@ using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System.Linq;
 
-namespace Doc.Synchronized
-{
-    internal class SynchronizedAttribute : TypeAspect
-    {
-        public override void BuildAspect( IAspectBuilder<INamedType> builder )
-        {
-            foreach ( var method in builder.Target.Methods.Where( m => !m.IsStatic ) )
-            {
-                builder.Advice.Override( method, nameof(this.OverrideMethod) );
-            }
-        }
+namespace Doc.Synchronized;
 
-        [Template]
-        private dynamic? OverrideMethod()
+internal class SynchronizedAttribute : TypeAspect
+{
+    public override void BuildAspect( IAspectBuilder<INamedType> builder )
+    {
+        foreach ( var method in builder.Target.Methods.Where( m => !m.IsStatic ) )
         {
-            lock ( meta.This )
-            {
-                return meta.Proceed();
-            }
+            builder.Advice.Override( method, nameof(this.OverrideMethod) );
+        }
+    }
+
+    [Template]
+    private dynamic? OverrideMethod()
+    {
+        lock ( meta.This )
+        {
+            return meta.Proceed();
         }
     }
 }

@@ -2,20 +2,19 @@
 
 using System;
 
-namespace Doc.ToStringWithComplexCodeFix
+namespace Doc.ToStringWithComplexCodeFix;
+
+[ToString]
+internal class MovingVertex
 {
-    [ToString]
-    internal class MovingVertex
-    {
-        public double X;
+    public double X;
 
-        public double Y;
+    public double Y;
 
-        public double DX;
+    public double DX;
 
-        public double DY { get; set; }
+    public double DY { get; set; }
 
-        [NotToString]
-        public double Velocity => Math.Sqrt( (this.DX * this.DX) + (this.DY * this.DY) );
-    }
+    [NotToString]
+    public double Velocity => Math.Sqrt( (this.DX * this.DX) + (this.DY * this.DY) );
 }

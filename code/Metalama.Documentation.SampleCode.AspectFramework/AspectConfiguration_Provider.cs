@@ -2,22 +2,21 @@
 
 using System.Diagnostics;
 
-namespace Doc.AspectConfiguration_Provider
-{
-    [LogConfiguration( Category = "SomeClass" )]
-    public class SomeClass
-    {
-        [Log]
-        public void SomeMethod() { }
-    }
+namespace Doc.AspectConfiguration_Provider;
 
-    [LogConfiguration( Category = "SomeClass" )]
-    public class ChildNamespace
+[LogConfiguration( Category = "SomeClass" )]
+public class SomeClass
+{
+    [Log]
+    public void SomeMethod() { }
+}
+
+[LogConfiguration( Category = "SomeClass" )]
+public class ChildNamespace
+{
+    public class SomeOtherClass
     {
-        public class SomeOtherClass
-        {
-            [Log( Level = TraceLevel.Warning )]
-            public void SomeMethod() { }
-        }
+        [Log( Level = TraceLevel.Warning )]
+        public void SomeMethod() { }
     }
 }

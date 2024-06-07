@@ -2,19 +2,18 @@
 
 using System;
 
-namespace Doc.ToStringWithSimpleToString
+namespace Doc.ToStringWithSimpleToString;
+
+[ToString]
+internal class MovingVertex
 {
-    [ToString]
-    internal class MovingVertex
-    {
-        public double X;
+    public double X;
 
-        public double Y;
+    public double Y;
 
-        public double DX;
+    public double DX;
 
-        public double DY { get; set; }
+    public double DY { get; set; }
 
-        public double Velocity => Math.Sqrt( (this.DX * this.DX) + (this.DY * this.DY) );
-    }
+    public double Velocity => Math.Sqrt( (this.DX * this.DX) + (this.DY * this.DY) );
 }

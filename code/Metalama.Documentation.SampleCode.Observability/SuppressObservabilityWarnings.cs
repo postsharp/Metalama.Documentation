@@ -9,9 +9,10 @@ namespace Doc.SuppressObservabilityWarnings;
 public class Vector
 {
     public double X { get; set; }
+
     public double Y { get; set; }
 
-    public double NormWithWarning => VectorHelper.ComputeNorm(this);
+    public double NormWithWarning => VectorHelper.ComputeNorm( this );
 
     [SuppressObservabilityWarnings]
     public double NormWithoutWarning1 => VectorHelper.ComputeNorm( this );

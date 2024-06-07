@@ -6,48 +6,47 @@ using Microsoft.Win32;
 using System;
 using System.Linq;
 
-namespace Doc.RegistryStorage
+namespace Doc.RegistryStorage;
+
+internal class RegistryStorageAttribute : TypeAspect
 {
-    internal class RegistryStorageAttribute : TypeAspect
+    public string Key { get; }
+
+    public RegistryStorageAttribute( string key )
     {
-        public string Key { get; }
+        this.Key = "HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\" + key;
+    }
 
-        public RegistryStorageAttribute( string key )
+    public override void BuildAspect( IAspectBuilder<INamedType> builder )
+    {
+        foreach ( var property in builder.Target.FieldsAndProperties.Where( p => !p.IsImplicitlyDeclared && p.IsAutoPropertyOrField == true ) )
         {
-            this.Key = "HKEY_CURRENT_USER\\SOFTWARE\\Company\\Product\\" + key;
+            builder.Advice.Override( property, nameof(this.OverrideProperty) );
+        }
+    }
+
+    [Template]
+    private dynamic? OverrideProperty
+    {
+        get
+        {
+            var value = Registry.GetValue( this.Key, meta.Target.FieldOrProperty.Name, null );
+
+            if ( value != null )
+            {
+                return Convert.ChangeType( value, meta.Target.FieldOrProperty.Type.ToType() );
+            }
+            else
+            {
+                return meta.Target.FieldOrProperty.Type.DefaultValue();
+            }
         }
 
-        public override void BuildAspect( IAspectBuilder<INamedType> builder )
+        set
         {
-            foreach ( var property in builder.Target.FieldsAndProperties.Where( p => !p.IsImplicitlyDeclared && p.IsAutoPropertyOrField == true ) )
-            {
-                builder.Advice.Override( property, nameof(this.OverrideProperty) );
-            }
-        }
-
-        [Template]
-        private dynamic? OverrideProperty
-        {
-            get
-            {
-                var value = Registry.GetValue( this.Key, meta.Target.FieldOrProperty.Name, null );
-
-                if ( value != null )
-                {
-                    return Convert.ChangeType( value, meta.Target.FieldOrProperty.Type.ToType() );
-                }
-                else
-                {
-                    return meta.Target.FieldOrProperty.Type.DefaultValue();
-                }
-            }
-
-            set
-            {
-                var stringValue = Convert.ToString( value );
-                Registry.SetValue( this.Key, meta.Target.FieldOrProperty.Name, stringValue );
-                meta.Proceed();
-            }
+            var stringValue = Convert.ToString( value );
+            Registry.SetValue( this.Key, meta.Target.FieldOrProperty.Name, stringValue );
+            meta.Proceed();
         }
     }
 }

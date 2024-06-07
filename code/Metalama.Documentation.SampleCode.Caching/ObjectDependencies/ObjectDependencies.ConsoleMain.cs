@@ -5,57 +5,56 @@ using Microsoft.Extensions.Hosting;
 using System;
 using Xunit;
 
-namespace Doc.ObjectDependencies
+namespace Doc.ObjectDependencies;
+
+public sealed class ConsoleMain : IConsoleMain
 {
-    public sealed class ConsoleMain : IConsoleMain
+    private readonly ProductCatalogue _catalogue;
+
+    public ConsoleMain( ProductCatalogue catalogue )
     {
-        private readonly ProductCatalogue _catalogue;
+        this._catalogue = catalogue;
+    }
 
-        public ConsoleMain( ProductCatalogue catalogue )
+    private void PrintCatalogue()
+    {
+        var products = this._catalogue.GetProducts();
+
+        foreach ( var product in products )
         {
-            this._catalogue = catalogue;
+            var price = this._catalogue.GetProduct( product );
+            Console.WriteLine( $"Price of '{product}' is {price}." );
         }
+    }
 
-        private void PrintCatalogue()
-        {
-            var products = this._catalogue.GetProducts();
+    public void Execute()
+    {
+        Console.WriteLine( "Read the price catalogue a first time." );
+        this.PrintCatalogue();
 
-            foreach ( var product in products )
-            {
-                var price = this._catalogue.GetProduct( product );
-                Console.WriteLine( $"Price of '{product}' is {price}." );
-            }
-        }
+        Console.WriteLine( "Read the price catalogue a second time time. It should be completely performed from cache." );
+        var operationsBefore = this._catalogue.DbOperationCount;
+        this.PrintCatalogue();
+        var operationsAfter = this._catalogue.DbOperationCount;
+        Assert.Equal( operationsBefore, operationsAfter );
 
-        public void Execute()
-        {
-            Console.WriteLine( "Read the price catalogue a first time." );
-            this.PrintCatalogue();
+        // There should be just one product in the catalogue.
+        Assert.Single( this._catalogue.GetProducts() );
 
-            Console.WriteLine( "Read the price catalogue a second time time. It should be completely performed from cache." );
-            var operationsBefore = this._catalogue.DbOperationCount;
-            this.PrintCatalogue();
-            var operationsAfter = this._catalogue.DbOperationCount;
-            Assert.Equal( operationsBefore, operationsAfter );
+        var corn = this._catalogue.GetProduct( "corn" );
 
-            // There should be just one product in the catalogue.
-            Assert.Single( this._catalogue.GetProducts() );
+        // Adding a product and updating the price.
+        Console.WriteLine( "Updating the catalogue." );
 
-            var corn = this._catalogue.GetProduct( "corn" );
+        this._catalogue.AddProduct( new Product( "wheat", 150 ) );
+        this._catalogue.UpdateProduct( corn with { Price = 110 } );
 
-            // Adding a product and updating the price.
-            Console.WriteLine( "Updating the catalogue." );
+        // Read the catalogue a third time.
+        Assert.Equal( 2, this._catalogue.GetProducts().Length );
+        Assert.Equal( 110, this._catalogue.GetProduct( "corn" ).Price );
 
-            this._catalogue.AddProduct( new Product( "wheat", 150 ) );
-            this._catalogue.UpdateProduct( corn with { Price = 110 } );
-
-            // Read the catalogue a third time.
-            Assert.Equal( 2, this._catalogue.GetProducts().Length );
-            Assert.Equal( 110, this._catalogue.GetProduct( "corn" ).Price );
-
-            // Print the catalogue.
-            Console.WriteLine( "Catalogue after changes:" );
-            this.PrintCatalogue();
-        }
+        // Print the catalogue.
+        Console.WriteLine( "Catalogue after changes:" );
+        this.PrintCatalogue();
     }
 }

@@ -2,17 +2,16 @@
 
 using Metalama.Patterns.Contracts;
 
-namespace Doc.NumericContracts
+namespace Doc.NumericContracts;
+
+public class OrderLine
 {
-    public class OrderLine
-    {
-        [Positive]
-        public decimal NominalPrice { get; }
+    [Positive]
+    public decimal NominalPrice { get; }
 
-        [StrictlyPositive]
-        public decimal Quantity { get; }
+    [StrictlyPositive]
+    public decimal Quantity { get; }
 
-        [Range( 0, 100 )]
-        public int Discount { get; }
-    }
+    [Range( 0, 100 )]
+    public int Discount { get; }
 }

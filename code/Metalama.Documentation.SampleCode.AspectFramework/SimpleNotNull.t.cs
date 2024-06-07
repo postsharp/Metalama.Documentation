@@ -1,48 +1,46 @@
 using System;
-namespace Doc.SimpleNotNull
+namespace Doc.SimpleNotNull;
+public class TheClass
 {
-  public class TheClass
+  private string _field = "Field";
+  [NotNull]
+  public string Field
   {
-    private string _field = "Field";
-    [NotNull]
-    public string Field
+    get
     {
-      get
-      {
-        return _field;
-      }
-      set
-      {
-        if (value == null !)
-        {
-          throw new ArgumentNullException(nameof(value));
-        }
-        _field = value;
-      }
+      return _field;
     }
-    private string _property = "Property";
-    [NotNull]
-    public string Property
+    set
     {
-      get
+      if (value == null !)
       {
-        return _property;
+        throw new ArgumentNullException(nameof(value));
       }
-      set
-      {
-        if (value == null !)
-        {
-          throw new ArgumentNullException(nameof(value));
-        }
-        _property = value;
-      }
+      _field = value;
     }
-    public void Method([NotNull] string parameter)
+  }
+  private string _property = "Property";
+  [NotNull]
+  public string Property
+  {
+    get
     {
-      if (parameter == null !)
+      return _property;
+    }
+    set
+    {
+      if (value == null !)
       {
-        throw new ArgumentNullException(nameof(parameter));
+        throw new ArgumentNullException(nameof(value));
       }
+      _property = value;
+    }
+  }
+  public void Method([NotNull] string parameter)
+  {
+    if (parameter == null !)
+    {
+      throw new ArgumentNullException(nameof(parameter));
     }
   }
 }

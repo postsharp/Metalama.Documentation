@@ -1,19 +1,17 @@
 using System;
-namespace Doc.CompileTimeIf
+namespace Doc.CompileTimeIf;
+internal class Foo
 {
-  internal class Foo
+  [CompileTimeIf]
+  public void InstanceMethod()
   {
-    [CompileTimeIf]
-    public void InstanceMethod()
-    {
-      Console.WriteLine($"Invoking Foo.InstanceMethod() on instance {this.ToString()}.");
-      Console.WriteLine("InstanceMethod");
-    }
-    [CompileTimeIf]
-    public static void StaticMethod()
-    {
-      Console.WriteLine("Invoking Foo.StaticMethod()");
-      Console.WriteLine("StaticMethod");
-    }
+    Console.WriteLine($"Invoking Foo.InstanceMethod() on instance {this.ToString()}.");
+    Console.WriteLine("InstanceMethod");
+  }
+  [CompileTimeIf]
+  public static void StaticMethod()
+  {
+    Console.WriteLine("Invoking Foo.StaticMethod()");
+    Console.WriteLine("StaticMethod");
   }
 }

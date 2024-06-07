@@ -2,26 +2,25 @@
 
 using System;
 
-namespace Doc.UpperCase
+namespace Doc.UpperCase;
+
+public class Shipment
 {
-    public class Shipment
+    [UpperCase]
+    public string? From;
+
+    [UpperCase]
+    public string? To { get; set; }
+}
+
+public class UpperCase
+{
+    public static void Main()
     {
-        [UpperCase]
-        public string? From;
+        var package = new Shipment();
+        package.From = "lhr";
+        package.To = "jfk";
 
-        [UpperCase]
-        public string? To { get; set; }
-    }
-
-    public class UpperCase
-    {
-        public static void Main()
-        {
-            var package = new Shipment();
-            package.From = "lhr";
-            package.To = "jfk";
-
-            Console.WriteLine( $"Package is booked from {package.From} to {package.To}" );
-        }
+        Console.WriteLine( $"Package is booked from {package.From} to {package.To}" );
     }
 }

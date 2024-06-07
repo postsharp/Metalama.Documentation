@@ -10,81 +10,80 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 
-namespace Doc.StringDependencies
+namespace Doc.StringDependencies;
+
+public sealed class ProductCatalogue
 {
-    public sealed class ProductCatalogue
+    private readonly Dictionary<string, decimal> _dbSimulator = new() { ["corn"] = 100 };
+
+    public int DbOperationCount { get; private set; }
+
+    [Cache]
+    public decimal GetPrice( string productId )
     {
-        private readonly Dictionary<string, decimal> _dbSimulator = new() { ["corn"] = 100 };
-
-        public int DbOperationCount { get; private set; }
-
-        [Cache]
-        public decimal GetPrice( string productId )
-        {
-            Console.WriteLine( $"Getting the price of {productId} from database." );
-            this.DbOperationCount++;
+        Console.WriteLine( $"Getting the price of {productId} from database." );
+        this.DbOperationCount++;
 
 #if METALAMA
             this._cachingService.AddDependency( $"ProductPrice:{productId}" );  /*<AddDependency>*/
                                                                                 /*</AddDependency>*/
 #endif
-            return this._dbSimulator[productId];
-        }
+        return this._dbSimulator[productId];
+    }
 
-        [Cache]
-        public string[] GetProducts()
-        {
-            Console.WriteLine( "Getting the product list from database." );
+    [Cache]
+    public string[] GetProducts()
+    {
+        Console.WriteLine( "Getting the product list from database." );
 
-            this.DbOperationCount++;
+        this.DbOperationCount++;
 
 #if METALAMA
             this._cachingService.AddDependency( "ProductList" );
 #endif
 
-            return this._dbSimulator.Keys.ToArray();
-        }
+        return this._dbSimulator.Keys.ToArray();
+    }
 
-        [Cache]
-        public ImmutableDictionary<string, decimal> GetPriceList()
-        {
-            this.DbOperationCount++;
+    [Cache]
+    public ImmutableDictionary<string, decimal> GetPriceList()
+    {
+        this.DbOperationCount++;
 
 #if METALAMA
             this._cachingService.AddDependency( "PriceList" );
 #endif
 
-            return this._dbSimulator.ToImmutableDictionary();
-        }
+        return this._dbSimulator.ToImmutableDictionary();
+    }
 
-        public void AddProduct( string productId, decimal price )
-        {
-            Console.WriteLine( $"Adding the product {productId}." );
+    public void AddProduct( string productId, decimal price )
+    {
+        Console.WriteLine( $"Adding the product {productId}." );
 
-            this.DbOperationCount++;
-            this._dbSimulator.Add( productId, price );
+        this.DbOperationCount++;
+        this._dbSimulator.Add( productId, price );
 
 #if METALAMA
             this._cachingService.Invalidate( "ProductList", "PriceList" );
 #endif
+    }
+
+    public void UpdatePrice( string productId, decimal price )
+    {
+        if ( !this._dbSimulator.ContainsKey( productId ) )
+        {
+            throw new KeyNotFoundException();
         }
 
-        public void UpdatePrice( string productId, decimal price )
-        {
-            if ( !this._dbSimulator.ContainsKey( productId ) )
-            {
-                throw new KeyNotFoundException();
-            }
+        Console.WriteLine( $"Updating the price of {productId}." );
 
-            Console.WriteLine( $"Updating the price of {productId}." );
-
-            this.DbOperationCount++;
-            this._dbSimulator[productId] = price;
+        this.DbOperationCount++;
+        this._dbSimulator[productId] = price;
 
 #if METALAMA
             this._cachingService.Invalidate( $"ProductPrice:{productId}", "PriceList"  ); /*<Invalidate>*/
                                                                                             /*</Invalidate>*/
 #endif
-        }
     }
 }

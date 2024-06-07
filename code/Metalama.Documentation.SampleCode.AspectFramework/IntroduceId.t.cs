@@ -1,9 +1,7 @@
 using System;
-namespace Doc.IntroduceId
+namespace Doc.IntroduceId;
+[IntroduceId]
+internal class MyClass
 {
-  [IntroduceId]
-  internal class MyClass
-  {
-    public Guid Id { get; } = Guid.NewGuid();
-  }
+  public Guid Id { get; } = Guid.NewGuid();
 }

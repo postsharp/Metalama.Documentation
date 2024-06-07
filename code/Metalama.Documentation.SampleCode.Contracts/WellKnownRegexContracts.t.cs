@@ -1,65 +1,63 @@
 using System;
 using Metalama.Patterns.Contracts;
-namespace Doc.WellKnownRegexContracts
+namespace Doc.WellKnownRegexContracts;
+public class Customer
 {
-  public class Customer
+  private string? _phone;
+  [Phone]
+  public string? Phone
   {
-    private string? _phone;
-    [Phone]
-    public string? Phone
+    get
     {
-      get
-      {
-        return _phone;
-      }
-      set
-      {
-        var regex = ContractHelpers.PhoneRegex!;
-        if (value != null && !regex.IsMatch(value!))
-        {
-          var regex_1 = regex;
-          throw new ArgumentException("The 'Phone' property must be a valid phone number.", "value");
-        }
-        _phone = value;
-      }
+      return _phone;
     }
-    private string? _email;
-    [Email]
-    public string? Email
+    set
     {
-      get
+      var regex = ContractHelpers.PhoneRegex!;
+      if (value != null && !regex.IsMatch(value!))
       {
-        return _email;
+        var regex_1 = regex;
+        throw new ArgumentException("The 'Phone' property must be a valid phone number.", "value");
       }
-      set
-      {
-        var regex = ContractHelpers.EmailRegex!;
-        if (value != null && !regex.IsMatch(value!))
-        {
-          var regex_1 = regex;
-          throw new ArgumentException("The 'Email' property must be a valid email address.", "value");
-        }
-        _email = value;
-      }
+      _phone = value;
     }
-    private string? _profile;
-    [Url]
-    public string? Profile
+  }
+  private string? _email;
+  [Email]
+  public string? Email
+  {
+    get
     {
-      get
+      return _email;
+    }
+    set
+    {
+      var regex = ContractHelpers.EmailRegex!;
+      if (value != null && !regex.IsMatch(value!))
       {
-        return _profile;
+        var regex_1 = regex;
+        throw new ArgumentException("The 'Email' property must be a valid email address.", "value");
       }
-      set
+      _email = value;
+    }
+  }
+  private string? _profile;
+  [Url]
+  public string? Profile
+  {
+    get
+    {
+      return _profile;
+    }
+    set
+    {
+      var regex = ContractHelpers.UrlRegex!;
+      if (value != null && !regex.IsMatch(value!))
       {
-        var regex = ContractHelpers.UrlRegex!;
-        if (value != null && !regex.IsMatch(value!))
-        {
-          var regex_1 = regex;
-          throw new ArgumentException("The 'Profile' property must be a valid URL.", "value");
-        }
-        _profile = value;
+        var regex_1 = regex;
+        throw new ArgumentException("The 'Profile' property must be a valid URL.", "value");
       }
+      _profile = value;
     }
   }
 }

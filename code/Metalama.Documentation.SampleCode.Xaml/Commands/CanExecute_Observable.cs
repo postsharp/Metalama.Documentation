@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿// This is public domain Metalama sample code.
+
+using System.Windows;
 using Metalama.Patterns.Observability;
 using Metalama.Patterns.Xaml;
 
@@ -24,6 +26,4 @@ public class MyWindow : Window
     }
 
     public bool CanExecuteDecrement => this.Counter > 0;
-
 }
-

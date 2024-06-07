@@ -1,14 +1,13 @@
 ﻿// This is public domain Metalama sample code.
 
-namespace Doc.GenerateResetMethods
+namespace Doc.GenerateResetMethods;
+
+[GenerateResetMethods]
+public class Foo
 {
-    [GenerateResetMethods]
-    public class Foo
-    {
-        private int _x;
+    private int _x;
 
-        public string Y { get; set; }
+    public string Y { get; set; }
 
-        public string Z => this.Y;
-    }
+    public string Z => this.Y;
 }

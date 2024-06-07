@@ -2,20 +2,19 @@
 
 using System;
 
-namespace Doc.Retry
-{
-    internal class Foo
-    {
-        [Retry]
-        private void RetryDefault()
-        {
-            throw new InvalidOperationException();
-        }
+namespace Doc.Retry;
 
-        [Retry( MaxAttempts = 10 )]
-        private void RetryTenTimes()
-        {
-            throw new InvalidOperationException();
-        }
+internal class Foo
+{
+    [Retry]
+    private void RetryDefault()
+    {
+        throw new InvalidOperationException();
+    }
+
+    [Retry( MaxAttempts = 10 )]
+    private void RetryTenTimes()
+    {
+        throw new InvalidOperationException();
     }
 }

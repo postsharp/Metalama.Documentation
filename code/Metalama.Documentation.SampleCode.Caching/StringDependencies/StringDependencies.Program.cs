@@ -4,23 +4,22 @@ using Metalama.Documentation.Helpers.ConsoleApp;
 using Metalama.Patterns.Caching.Building;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Doc.StringDependencies
+namespace Doc.StringDependencies;
+
+internal static class Program
 {
-    internal static class Program
+    public static void Main()
     {
-        public static void Main()
-        {
-            var builder = ConsoleApp.CreateBuilder();
+        var builder = ConsoleApp.CreateBuilder();
 
-            // Add the caching service.
-            builder.Services.AddMetalamaCaching();
+        // Add the caching service.
+        builder.Services.AddMetalamaCaching();
 
-            // Add other components as usual, then run the application.
-            builder.Services.AddConsoleMain<ConsoleMain>();
-            builder.Services.AddSingleton<ProductCatalogue>();
+        // Add other components as usual, then run the application.
+        builder.Services.AddConsoleMain<ConsoleMain>();
+        builder.Services.AddSingleton<ProductCatalogue>();
 
-            var host = builder.Build();
-            host.Run();
-        }
+        var host = builder.Build();
+        host.Run();
     }
 }

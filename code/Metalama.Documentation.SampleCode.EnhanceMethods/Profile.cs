@@ -7,22 +7,21 @@
 using System;
 using System.Threading;
 
-namespace Doc.Profile
+namespace Doc.Profile;
+
+public class Program
 {
-    public class Program
+    [Profile]
+    public static int SimulatedDelay()
     {
-        [Profile]
-        public static int SimulatedDelay()
-        {
-            // Simulating a random delay between 500 ms to 2 secs
-            Thread.Sleep( new Random().Next( 500, 2000 ) );
+        // Simulating a random delay between 500 ms to 2 secs
+        Thread.Sleep( new Random().Next( 500, 2000 ) );
 
-            return 0;
-        }
+        return 0;
+    }
 
-        public static void Main()
-        {
-            SimulatedDelay();
-        }
+    public static void Main()
+    {
+        SimulatedDelay();
     }
 }

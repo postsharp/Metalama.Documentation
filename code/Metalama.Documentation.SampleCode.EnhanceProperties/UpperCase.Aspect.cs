@@ -2,17 +2,16 @@
 
 using Metalama.Framework.Aspects;
 
-namespace Doc.UpperCase
+namespace Doc.UpperCase;
+
+/// <summary>
+/// Changes the value of a string property to Upper Case
+/// </summary>
+public class UpperCaseAttribute : OverrideFieldOrPropertyAspect
 {
-    /// <summary>
-    /// Changes the value of a string property to Upper Case
-    /// </summary>
-    public class UpperCaseAttribute : OverrideFieldOrPropertyAspect
+    public override dynamic? OverrideProperty
     {
-        public override dynamic? OverrideProperty
-        {
-            get => meta.Proceed();
-            set => meta.Target.FieldOrProperty.Value = value?.ToUpper();
-        }
+        get => meta.Proceed();
+        set => meta.Target.FieldOrProperty.Value = value?.ToUpper();
     }
 }

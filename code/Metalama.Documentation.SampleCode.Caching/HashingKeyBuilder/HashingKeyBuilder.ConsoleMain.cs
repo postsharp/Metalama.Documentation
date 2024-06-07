@@ -4,26 +4,25 @@ using Metalama.Documentation.Helpers.ConsoleApp;
 using Microsoft.Extensions.Hosting;
 using System;
 
-namespace Doc.HashKeyBuilder
+namespace Doc.HashKeyBuilder;
+
+public sealed class ConsoleMain : IConsoleMain
 {
-    public sealed class ConsoleMain : IConsoleMain
+    private readonly FileSystem _fileSystem;
+
+    public ConsoleMain( FileSystem fileSystem )
     {
-        private readonly FileSystem _fileSystem;
+        this._fileSystem = fileSystem;
+    }
 
-        public ConsoleMain( FileSystem fileSystem )
+    public void Execute()
+    {
+        for ( var i = 0; i < 3; i++ )
         {
-            this._fileSystem = fileSystem;
+            var value = this._fileSystem.ReadAll( Environment.ProcessPath! );
+            Console.WriteLine( $"FileSystem returned {value.Length} bytes." );
         }
 
-        public void Execute()
-        {
-            for ( var i = 0; i < 3; i++ )
-            {
-                var value = this._fileSystem.ReadAll( Environment.ProcessPath! );
-                Console.WriteLine( $"FileSystem returned {value.Length} bytes." );
-            }
-
-            Console.WriteLine( $"In total, FileSystem performed {this._fileSystem.OperationCount} operation(s)." );
-        }
+        Console.WriteLine( $"In total, FileSystem performed {this._fileSystem.OperationCount} operation(s)." );
     }
 }

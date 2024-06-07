@@ -6,25 +6,24 @@ using Metalama.Patterns.Caching.Building;
 using Metalama.Patterns.Caching.Locking;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Doc.Locking
+namespace Doc.Locking;
+
+internal static class Program
 {
-    internal static class Program
+    public static void Main()
     {
-        public static void Main()
-        {
-            var builder = ConsoleApp.CreateBuilder();
+        var builder = ConsoleApp.CreateBuilder();
 
-            // Add the caching service.
-            builder.Services.AddMetalamaCaching( /*<AddMetalamaCaching>*/
-                caching =>
-                    caching.AddProfile( new CachingProfile( "Locking" ) { LockingStrategy = new LocalLockingStrategy() } ) ); /*</AddMetalamaCaching>*/
+        // Add the caching service.
+        builder.Services.AddMetalamaCaching( /*<AddMetalamaCaching>*/
+            caching =>
+                caching.AddProfile( new CachingProfile( "Locking" ) { LockingStrategy = new LocalLockingStrategy() } ) ); /*</AddMetalamaCaching>*/
 
-            // Add other components as usual, then run the application.
-            builder.Services.AddConsoleMain<ConsoleMain>();
-            builder.Services.AddSingleton<CloudService>();
+        // Add other components as usual, then run the application.
+        builder.Services.AddConsoleMain<ConsoleMain>();
+        builder.Services.AddSingleton<CloudService>();
 
-            using var app = builder.Build();
-            app.Run();
-        }
+        using var app = builder.Build();
+        app.Run();
     }
 }

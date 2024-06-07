@@ -4,14 +4,13 @@ using Metalama.Patterns.Caching;
 using Metalama.Patterns.Caching.Aspects;
 using System;
 
-namespace Doc.ParameterFilter
-{
-    public class PricingService
-    {
-        [Cache]
-        public decimal GetProductPrice( string productId, [NotCacheKey] string? correlationId ) => throw new NotImplementedException();
+namespace Doc.ParameterFilter;
 
-        [Cache]
-        public string[] GetProducts( string productId, [NotCacheKey] string? correlationId ) => throw new NotImplementedException();
-    }
+public class PricingService
+{
+    [Cache]
+    public decimal GetProductPrice( string productId, [NotCacheKey] string? correlationId ) => throw new NotImplementedException();
+
+    [Cache]
+    public string[] GetProducts( string productId, [NotCacheKey] string? correlationId ) => throw new NotImplementedException();
 }

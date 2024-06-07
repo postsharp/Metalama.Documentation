@@ -3,11 +3,10 @@
 using Metalama.Framework.Aspects;
 using System;
 
-namespace Doc.IntroduceId
+namespace Doc.IntroduceId;
+
+internal class IntroduceIdAttribute : TypeAspect
 {
-    internal class IntroduceIdAttribute : TypeAspect
-    {
-        [Introduce]
-        public Guid Id { get; } = Guid.NewGuid();
-    }
+    [Introduce]
+    public Guid Id { get; } = Guid.NewGuid();
 }

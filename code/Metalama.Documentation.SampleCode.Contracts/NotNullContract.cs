@@ -2,22 +2,21 @@
 
 using Metalama.Patterns.Contracts;
 
-namespace Doc.NotNullContract
+namespace Doc.NotNullContract;
+
+public class Instrument
 {
-    public class Instrument
+    [NotNull]
+    public string Name { get; set; }
+
+    [NotNull]
+    public Category Category { get; set; }
+
+    public Instrument( [NotNull] string name, [NotNull] Category category )
     {
-        [NotNull]
-        public string Name { get; set; }
-
-        [NotNull]
-        public Category Category { get; set; }
-
-        public Instrument( [NotNull] string name, [NotNull] Category category )
-        {
-            this.Name = name;
-            this.Category = category;
-        }
+        this.Name = name;
+        this.Category = category;
     }
-
-    public class Category { }
 }
+
+public class Category { }

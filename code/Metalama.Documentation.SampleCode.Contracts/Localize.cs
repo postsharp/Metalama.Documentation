@@ -2,11 +2,10 @@
 
 using Metalama.Patterns.Contracts;
 
-namespace Doc.Localize
+namespace Doc.Localize;
+
+public class Client
 {
-    public class Client
-    {
-        [Phone]
-        public string? Telephone { get; set; }
-    }
+    [Phone]
+    public string? Telephone { get; set; }
 }

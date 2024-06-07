@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 
 namespace Metalama.Documentation.Helpers.ConsoleApp;
 
-
 /// <summary>
 /// A trivial implementation of <see cref="ILoggerProvider"/> that logs to <see cref="Console"/>.
 /// Unlike the system ConsoleLoggerProvider, this class does not queue items and has deterministic behavior upon disposal.
@@ -17,10 +16,9 @@ internal class TrivialConsoleLoggerProvider : ILoggerProvider
 
     private class Logger : ILogger
     {
-
         public void Log<TState>( LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter )
         {
-            Console.WriteLine( formatter(state, exception) );
+            Console.WriteLine( formatter( state, exception ) );
         }
 
         public bool IsEnabled( LogLevel logLevel ) => true;

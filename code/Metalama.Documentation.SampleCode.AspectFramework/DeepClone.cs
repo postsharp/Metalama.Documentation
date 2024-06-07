@@ -2,26 +2,25 @@
 
 using System;
 
-namespace Doc.DeepClone
+namespace Doc.DeepClone;
+
+internal class ManuallyCloneable : ICloneable
 {
-    internal class ManuallyCloneable : ICloneable
+    public object Clone()
     {
-        public object Clone()
-        {
-            return new ManuallyCloneable();
-        }
+        return new ManuallyCloneable();
     }
+}
 
-    [DeepClone]
-    internal class AutomaticallyCloneable
-    {
-        private int _a;
-        private ManuallyCloneable? _b;
-        private AutomaticallyCloneable? _c;
-    }
+[DeepClone]
+internal class AutomaticallyCloneable
+{
+    private int _a;
+    private ManuallyCloneable? _b;
+    private AutomaticallyCloneable? _c;
+}
 
-    internal class DerivedCloneable : AutomaticallyCloneable
-    {
-        private string? _d;
-    }
+internal class DerivedCloneable : AutomaticallyCloneable
+{
+    private string? _d;
 }

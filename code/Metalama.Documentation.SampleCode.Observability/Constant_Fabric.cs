@@ -12,12 +12,12 @@ namespace Doc.Constant_Fabric;
 public class Vector
 {
     public double X { get; set; }
+
     public double Y { get; set; }
 
     public double Norm => VectorHelper.ComputeNorm( this );
 
     public Vector Direction => VectorHelper.Normalize( this );
-
 }
 
 public static class VectorHelper
@@ -27,15 +27,16 @@ public static class VectorHelper
     public static Vector Normalize( Vector v )
     {
         var norm = ComputeNorm( v );
+
         return new Vector { X = v.X / norm, Y = v.Y / norm };
     }
 }
-
 
 public class Fabric : ProjectFabric
 {
     public override void AmendProject( IProjectAmender amender )
     {
-        amender.SelectReflectionType( typeof( VectorHelper ) ).ConfigureObservability( builder => builder.ObservabilityContract = ObservabilityContract.Constant );
+        amender.SelectReflectionType( typeof(VectorHelper) )
+            .ConfigureObservability( builder => builder.ObservabilityContract = ObservabilityContract.Constant );
     }
 }

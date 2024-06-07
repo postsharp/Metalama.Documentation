@@ -1,12 +1,11 @@
 ﻿// This is public domain Metalama sample code.
 
-namespace Doc.GettingStarted
+namespace Doc.GettingStarted;
+
+public class Program
 {
-    public class Program
+    public static void Main( string[] args )
     {
-        public static void Main( string[] args)
-        {
-            new Foo().Method1();
-        }
+        new Foo().Method1();
     }
 }

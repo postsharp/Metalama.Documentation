@@ -2,20 +2,19 @@
 
 using System;
 
-namespace Doc.CompileTimeIf
-{
-    internal class Foo
-    {
-        [CompileTimeIf]
-        public void InstanceMethod()
-        {
-            Console.WriteLine( "InstanceMethod" );
-        }
+namespace Doc.CompileTimeIf;
 
-        [CompileTimeIf]
-        public static void StaticMethod()
-        {
-            Console.WriteLine( "StaticMethod" );
-        }
+internal class Foo
+{
+    [CompileTimeIf]
+    public void InstanceMethod()
+    {
+        Console.WriteLine( "InstanceMethod" );
+    }
+
+    [CompileTimeIf]
+    public static void StaticMethod()
+    {
+        Console.WriteLine( "StaticMethod" );
     }
 }

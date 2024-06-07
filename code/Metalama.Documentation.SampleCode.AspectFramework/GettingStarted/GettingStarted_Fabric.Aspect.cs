@@ -3,22 +3,21 @@
 using Metalama.Framework.Aspects;
 using System;
 
-namespace Doc.GettingStarted_Fabric
-{
-    public class LogAttribute : OverrideMethodAspect
-    {
-        public override dynamic? OverrideMethod()
-        {
-            Console.WriteLine( $"Entering {meta.Target.Method}" );
+namespace Doc.GettingStarted_Fabric;
 
-            try
-            {
-                return meta.Proceed();
-            }
-            finally
-            {
-                Console.WriteLine( $"Leaving {meta.Target.Method}" );
-            }
+public class LogAttribute : OverrideMethodAspect
+{
+    public override dynamic? OverrideMethod()
+    {
+        Console.WriteLine( $"Entering {meta.Target.Method}" );
+
+        try
+        {
+            return meta.Proceed();
+        }
+        finally
+        {
+            Console.WriteLine( $"Leaving {meta.Target.Method}" );
         }
     }
 }

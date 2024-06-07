@@ -11,12 +11,11 @@ internal class MyControl : UserControl
     [DependencyProperty]
     public string Title { get; set; }
 
-
     private void OnTitleChanged( string value )
     {
         if ( value.Contains( "foo" ) )
         {
-            throw new ArgumentOutOfRangeException(nameof(value));
+            throw new ArgumentOutOfRangeException( nameof(value) );
         }
     }
 }

@@ -3,13 +3,12 @@
 using Metalama.Framework.Fabrics;
 using Metalama.Patterns.Contracts;
 
-namespace Doc.Invariants_Suspend
+namespace Doc.Invariants_Suspend;
+
+public class Fabric : ProjectFabric
 {
-    public class Fabric : ProjectFabric
+    public override void AmendProject( IProjectAmender amender )
     {
-        public override void AmendProject( IProjectAmender amender )
-        {
-            amender.SetOptions( new ContractOptions { IsInvariantSuspensionSupported = true } );
-        }
+        amender.SetOptions( new ContractOptions { IsInvariantSuspensionSupported = true } );
     }
 }

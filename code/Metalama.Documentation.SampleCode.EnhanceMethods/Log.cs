@@ -2,19 +2,18 @@
 
 using System;
 
-namespace Doc.Logging
-{
-    public class Program
-    {
-        [Log]
-        public static void SayHello( string name )
-        {
-            Console.WriteLine( $"Hello {name}" );
-        }
+namespace Doc.Logging;
 
-        public static void Main()
-        {
-            SayHello( "Your Majesty" );
-        }
+public class Program
+{
+    [Log]
+    public static void SayHello( string name )
+    {
+        Console.WriteLine( $"Hello {name}" );
+    }
+
+    public static void Main()
+    {
+        SayHello( "Your Majesty" );
     }
 }

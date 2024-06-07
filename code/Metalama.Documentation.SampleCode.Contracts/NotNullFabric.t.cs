@@ -1,43 +1,41 @@
 using System;
 using Metalama.Patterns.Contracts;
-namespace Doc.NotNullFabric
+namespace Doc.NotNullFabric;
+public class Instrument
 {
-  public class Instrument
+  private string _name = default !;
+  public string Name
   {
-    private string _name = default !;
-    public string Name
+    get
     {
-      get
-      {
-        return _name;
-      }
-      set
-      {
-        if (value == null !)
-        {
-          throw new ArgumentNullException("value", "The 'Name' property must not be null.");
-        }
-        _name = value;
-      }
+      return _name;
     }
-    public Category? Category { get; set; }
-    public Instrument(string name, Category? category)
+    set
     {
-      if (name == null !)
+      if (value == null !)
       {
-        throw new ArgumentNullException("name", "The 'name' parameter must not be null.");
+        throw new ArgumentNullException("value", "The 'Name' property must not be null.");
       }
-      this.Name = name;
-      this.Category = category;
+      _name = value;
     }
   }
-  public class Category
+  public Category? Category { get; set; }
+  public Instrument(string name, Category? category)
   {
-    // Internal APIs won't be checked by default.
-    internal Category(string name)
+    if (name == null !)
     {
-      this.Name = name;
+      throw new ArgumentNullException("name", "The 'name' parameter must not be null.");
     }
-    public string Name { get; }
+    this.Name = name;
+    this.Category = category;
   }
+}
+public class Category
+{
+  // Internal APIs won't be checked by default.
+  internal Category(string name)
+  {
+    this.Name = name;
+  }
+  public string Name { get; }
 }

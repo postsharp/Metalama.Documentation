@@ -4,21 +4,20 @@ using Metalama.Framework.Aspects;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Doc.EnumerateMethodInfos
+namespace Doc.EnumerateMethodInfos;
+
+internal class EnumerateMethodAspect : TypeAspect
 {
-    internal class EnumerateMethodAspect : TypeAspect
+    [Introduce]
+    public IReadOnlyList<MethodInfo> GetMethods()
     {
-        [Introduce]
-        public IReadOnlyList<MethodInfo> GetMethods()
+        var methods = new List<MethodInfo>();
+
+        foreach ( var method in meta.Target.Type.Methods )
         {
-            var methods = new List<MethodInfo>();
-
-            foreach ( var method in meta.Target.Type.Methods )
-            {
-                methods.Add( method.ToMethodInfo() );
-            }
-
-            return methods;
+            methods.Add( method.ToMethodInfo() );
         }
+
+        return methods;
     }
 }

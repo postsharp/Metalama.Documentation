@@ -9,62 +9,61 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Doc.ImperativeInvalidate
+namespace Doc.ImperativeInvalidate;
+
+public sealed partial class ProductCatalogue
 {
-    public sealed partial class ProductCatalogue
+    private readonly Dictionary<string, decimal> _dbSimulator = new() { ["corn"] = 100 };
+
+    public int DbOperationCount { get; private set; }
+
+    [Cache]                                     /*<Cache>*/
+    public decimal GetPrice( string productId ) /*</Cache>*/
     {
-        private readonly Dictionary<string, decimal> _dbSimulator = new() { ["corn"] = 100 };
+        Console.WriteLine( $"Getting the price of {productId} from database." );
+        this.DbOperationCount++;
 
-        public int DbOperationCount { get; private set; }
+        return this._dbSimulator[productId];
+    }
 
-        [Cache]                                     /*<Cache>*/
-        public decimal GetPrice( string productId ) /*</Cache>*/
-        {
-            Console.WriteLine( $"Getting the price of {productId} from database." );
-            this.DbOperationCount++;
+    [Cache]
+    public string[] GetProducts()
+    {
+        Console.WriteLine( "Getting the product list from database." );
 
-            return this._dbSimulator[productId];
-        }
+        this.DbOperationCount++;
 
-        [Cache]
-        public string[] GetProducts()
-        {
-            Console.WriteLine( "Getting the product list from database." );
+        return this._dbSimulator.Keys.ToArray();
+    }
 
-            this.DbOperationCount++;
+    public void AddProduct( string productId, decimal price )
+    {
+        Console.WriteLine( $"Adding the product {productId}." );
 
-            return this._dbSimulator.Keys.ToArray();
-        }
-
-        public void AddProduct( string productId, decimal price )
-        {
-            Console.WriteLine( $"Adding the product {productId}." );
-
-            this.DbOperationCount++;
-            this._dbSimulator.Add( productId, price );
+        this.DbOperationCount++;
+        this._dbSimulator.Add( productId, price );
 
 #if METALAMA
             this._cachingService.Invalidate( this.GetProducts );
 
 #endif
+    }
+
+    public void UpdatePrice( string productId, decimal price )
+    {
+        if ( !this._dbSimulator.ContainsKey( productId ) )
+        {
+            throw new KeyNotFoundException();
         }
 
-        public void UpdatePrice( string productId, decimal price )
-        {
-            if ( !this._dbSimulator.ContainsKey( productId ) )
-            {
-                throw new KeyNotFoundException();
-            }
+        Console.WriteLine( $"Updating the price of {productId}." );
 
-            Console.WriteLine( $"Updating the price of {productId}." );
-
-            this.DbOperationCount++;
-            this._dbSimulator[productId] = price;
+        this.DbOperationCount++;
+        this._dbSimulator[productId] = price;
 
 #if METALAMA
             this._cachingService.Invalidate( this.GetPrice, productId ); /*<InvalidateCache>*/
                                                                          /*</InvalidateCache>*/
 #endif
-        }
     }
 }

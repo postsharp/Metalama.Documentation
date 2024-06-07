@@ -3,18 +3,17 @@
 using System;
 using System.IO;
 
-namespace Doc.DynamicTrivial
+namespace Doc.DynamicTrivial;
+
+internal class Program
 {
-    internal class Program
+    private TextWriter _logger = Console.Out;
+
+    [Log]
+    private void Foo() { }
+
+    private static void Main()
     {
-        private TextWriter _logger = Console.Out;
-
-        [Log]
-        private void Foo() { }
-
-        private static void Main()
-        {
-            new Program().Foo();
-        }
+        new Program().Foo();
     }
 }

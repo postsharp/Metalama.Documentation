@@ -2,26 +2,25 @@
 
 using System;
 
-namespace Doc.UpdateMethod
+namespace Doc.UpdateMethod;
+
+[UpdateMethod]
+internal class CityHunter
 {
-    [UpdateMethod]
-    internal class CityHunter
+    private int _x;
+
+    public string? Y { get; private set; }
+
+    public DateTime Z { get; }
+}
+
+internal class Program
+{
+    private static void Main()
     {
-        private int _x;
-
-        public string? Y { get; private set; }
-
-        public DateTime Z { get; }
-    }
-
-    internal class Program
-    {
-        private static void Main()
-        {
-            CityHunter ch = new();
+        CityHunter ch = new();
 #if METALAMA
             ch.Update(0, "1");
 #endif
-        }
     }
 }

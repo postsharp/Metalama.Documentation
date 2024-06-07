@@ -5,34 +5,33 @@ using System;
 using Metalama.Documentation.Helpers.ConsoleApp;
 using System.Threading.Tasks;
 
-namespace Doc.Locking
+namespace Doc.Locking;
+
+public sealed class ConsoleMain : IConsoleMain
 {
-    public sealed class ConsoleMain : IConsoleMain
+    private readonly CloudService _cloudService;
+
+    public ConsoleMain( CloudService cloudService )
     {
-        private readonly CloudService _cloudService;
+        this._cloudService = cloudService;
+    }
 
-        public ConsoleMain( CloudService cloudService )
+    public void Execute()
+    {
+        void ExecuteParallel( Func<byte[]> func )
         {
-            this._cloudService = cloudService;
+            var task1 = Task.Run( func );
+            var task2 = Task.Run( func );
+
+            Task.WaitAll( task1, task2 );
+
+            Console.WriteLine( $"Returned same array: {ReferenceEquals( task1.Result, task2.Result )}" );
         }
 
-        public void Execute()
-        {
-            void ExecuteParallel( Func<byte[]> func )
-            {
-                var task1 = Task.Run( func );
-                var task2 = Task.Run( func );
+        Console.WriteLine( "Without lock" );
+        ExecuteParallel( () => this._cloudService.ReadFileWithoutLock( "TheFile.txt" ) );
 
-                Task.WaitAll( task1, task2 );
-
-                Console.WriteLine( $"Returned same array: {ReferenceEquals( task1.Result, task2.Result )}" );
-            }
-
-            Console.WriteLine( "Without lock" );
-            ExecuteParallel( () => this._cloudService.ReadFileWithoutLock( "TheFile.txt" ) );
-
-            Console.WriteLine( "With locks" );
-            ExecuteParallel( () => this._cloudService.ReadFileWithLock( "TheFile.txt" ) );
-        }
+        Console.WriteLine( "With locks" );
+        ExecuteParallel( () => this._cloudService.ReadFileWithLock( "TheFile.txt" ) );
     }
 }

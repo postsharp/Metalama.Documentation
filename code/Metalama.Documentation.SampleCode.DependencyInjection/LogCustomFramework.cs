@@ -6,17 +6,16 @@ using Metalama.Documentation.Helpers.ConsoleApp;
 using Microsoft.Extensions.Logging;
 #endif
 
-namespace Doc.LogCustomFramework
+namespace Doc.LogCustomFramework;
+
+// The class using the Log aspect. This class is instantiated by the host builder and dependencies are automatically passed.
+public class ConsoleMain : IConsoleMain
 {
-    // The class using the Log aspect. This class is instantiated by the host builder and dependencies are automatically passed.
-    public class ConsoleMain : IConsoleMain
+    [Log]
+    public void Execute()
     {
-        [Log]
-        public void Execute()
-        {
 #if METALAMA
             _logger.LogInformation( "Hello, world." );
 #endif
-        }
     }
 }

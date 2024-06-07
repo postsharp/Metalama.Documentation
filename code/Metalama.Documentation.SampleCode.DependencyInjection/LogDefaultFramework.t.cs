@@ -2,29 +2,27 @@
 // Error CS0246 on `ConsoleMain`: `The type or namespace name 'ConsoleMain' could not be found (are you missing a using directive or an assembly reference?)`
 using Metalama.Documentation.Helpers.ConsoleApp;
 using System;
-namespace Doc.LogDefaultFramework
+namespace Doc.LogDefaultFramework;
+// The class using the Log aspect. This class is instantiated by the host builder and dependencies are automatically passed.
+public class Worker : IConsoleMain
 {
-  // The class using the Log aspect. This class is instantiated by the host builder and dependencies are automatically passed.
-  public class Worker : IConsoleMain
+  [Log]
+  public void Execute()
   {
-    [Log]
-    public void Execute()
+    try
     {
-      try
-      {
-        _messageWriter.Write("Worker.Execute() started.");
-        Console.WriteLine("Hello, world.");
-        return;
-      }
-      finally
-      {
-        _messageWriter.Write("Worker.Execute() completed.");
-      }
+      _messageWriter.Write("Worker.Execute() started.");
+      Console.WriteLine("Hello, world.");
+      return;
     }
-    private IMessageWriter _messageWriter;
-    public Worker(IMessageWriter? messageWriter = default)
+    finally
     {
-      this._messageWriter = messageWriter ?? throw new System.ArgumentNullException(nameof(messageWriter));
+      _messageWriter.Write("Worker.Execute() completed.");
     }
+  }
+  private IMessageWriter _messageWriter;
+  public Worker(IMessageWriter? messageWriter = default)
+  {
+    this._messageWriter = messageWriter ?? throw new System.ArgumentNullException(nameof(messageWriter));
   }
 }
