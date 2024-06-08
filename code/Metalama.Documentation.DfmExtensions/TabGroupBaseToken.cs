@@ -1,9 +1,16 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using Microsoft.DocAsCode.MarkdownLite;
 using System.Linq;
 
 namespace Metalama.Documentation.DfmExtensions;
+
+public enum DiffSide
+{
+    Both,
+    Source,
+    Transformed
+}
 
 public abstract class TabGroupBaseToken : IMarkdownToken
 {
@@ -14,7 +21,8 @@ public abstract class TabGroupBaseToken : IMarkdownToken
         string name,
         string title,
         string tabs,
-        bool addLinks = true )
+        bool addLinks = true,
+        DiffSide diffSide = DiffSide.Both )
     {
         this.Rule = rule;
         this.Context = context;
@@ -22,6 +30,7 @@ public abstract class TabGroupBaseToken : IMarkdownToken
         this.Name = name;
         this.Title = title;
         this.AddLinks = addLinks;
+        this.DiffSide = diffSide;
         this.Tabs = tabs.Split( ',' ).Select( x => x.Trim() ).Where( x => !string.IsNullOrEmpty( x ) ).ToArray();
     }
 
@@ -38,4 +47,6 @@ public abstract class TabGroupBaseToken : IMarkdownToken
     public string Title { get; }
 
     public bool AddLinks { get; }
+
+    public DiffSide DiffSide { get; }
 }

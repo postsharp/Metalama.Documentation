@@ -1,4 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using Microsoft.DocAsCode.MarkdownLite;
 using System;
@@ -28,7 +28,7 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
         "using Metalama.Framework.Advising",
         "using Metalama.Framework.Serialization",
         "using Metalama.Framework.CodeFixes" );
-    
+
     public override string Name => nameof(AspectTestRenderer);
 
     protected override StringBuffer RenderCore(
@@ -45,7 +45,7 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
 
         var tabGroup = new AspectTestTabGroup( id );
 
-        void AddCodeTab( string tabId, string suffix, SandboxFileKind kind )
+        void AddCodeTab( string tabId, string suffix, SandboxFileKind kind, DiffSide diffSide = DiffSide.Both )
         {
             var tabPath = suffix == "" ? token.Src : Path.ChangeExtension( token.Src, suffix + ".cs" );
 
@@ -53,7 +53,23 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
             {
                 if ( kind == SandboxFileKind.TargetCode )
                 {
-                    tabGroup.Tabs.Add( new CompareTab( tabId, "Target Code", tabPath ) );
+                    switch ( diffSide )
+                    {
+                        case DiffSide.Both:
+                            tabGroup.Tabs.Add( new CompareTab( tabId, "Target Code", tabPath ) );
+
+                            break;
+
+                        case DiffSide.Source:
+                            tabGroup.Tabs.Add( new CodeTab( tabId, tabPath, suffix, kind ) );
+
+                            break;
+
+                        case DiffSide.Transformed:
+                            tabGroup.Tabs.Add( new TransformedSingleFileCodeTab( tabPath ) );
+
+                            break;
+                    }
                 }
                 else
                 {
@@ -82,16 +98,16 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
 
             var text = File.ReadAllText( file );
             var isCompileTime = _compileTimeNamespaces.Any( ns => text.Contains( ns ) );
-            
+
             var fileName = Path.GetFileNameWithoutExtension( file );
             var fileKind = fileName.Substring( fileName.LastIndexOf( '.' ) + 1 );
 
-            var sandboxFileKind = (fileKind.ToLowerInvariant(), isCompileTime )
+            var sandboxFileKind = (fileKind.ToLowerInvariant(), isCompileTime)
                 switch
                 {
                     ("dependency", _) => SandboxFileKind.Incompatible,
                     (_, true) => SandboxFileKind.AspectCode,
-                    (_, false) => SandboxFileKind.ExtraCode,
+                    (_, false) => SandboxFileKind.ExtraCode
                 };
 
             AddCodeTab( fileKind.ToLowerInvariant(), fileKind, sandboxFileKind );

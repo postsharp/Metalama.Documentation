@@ -1,4 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ internal abstract class TabGroup
         {
             throw new ArgumentOutOfRangeException( nameof(tabGroupId), $"The id '{tabGroupId}' contains an invalid character." );
         }
-        
+
         this.TabGroupId = tabGroupId;
     }
 
@@ -59,7 +59,7 @@ internal abstract class TabGroup
             stringBuilder.AppendLine(
                 @$"
     <a class=""github"" href=""{gitUrl}"" target=""github"">See on GitHub</a>" );
-            
+
             stringBuilder.AppendLine( "<span class='separator'>|</span>" );
 
             // Full screen.

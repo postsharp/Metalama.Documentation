@@ -1,6 +1,7 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using Microsoft.DocAsCode.MarkdownLite;
+using System;
 using System.Text.RegularExpressions;
 
 namespace Metalama.Documentation.DfmExtensions;
@@ -25,6 +26,11 @@ public sealed class AspectTestTokenRule : IMarkdownRule
             attributes.TryGetValue( "title", out var title );
             attributes.TryGetValue( "tabs", out var tabs );
 
+            if ( !attributes.TryGetValue( "diff-side", out var diffSideString ) || !Enum.TryParse<DiffSide>( diffSideString, out var diffSide ) )
+            {
+                diffSide = DiffSide.Both;
+            }
+
             return new AspectTestToken(
                 this,
                 parser.Context,
@@ -32,7 +38,8 @@ public sealed class AspectTestTokenRule : IMarkdownRule
                 StringHelper.UnescapeMarkdown( path ),
                 StringHelper.UnescapeMarkdown( name ?? "" ),
                 StringHelper.UnescapeMarkdown( title ?? "" ),
-                tabs ?? "" );
+                tabs ?? "",
+                diffSide: diffSide );
         }
 
         return null;

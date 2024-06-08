@@ -1,4 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ namespace Metalama.Documentation.DfmExtensions;
 
 internal static class AttributeMatcher
 {
-    private static readonly Regex _oneAttributeRegex = new( @"(?<name>\w+)=(""(?<quoted_value>[^""]*)""|(?<unquoted_value>\w+))" );
+    private static readonly Regex _oneAttributeRegex = new( @"(?<name>[\w-]+)=(""(?<quoted_value>[^""]*)""|(?<unquoted_value>\w+))" );
 
     public static Dictionary<string, string> ParseAttributes( string attributes )
     {

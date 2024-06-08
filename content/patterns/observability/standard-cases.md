@@ -2,6 +2,7 @@
 uid: observability-standard-cases
 ---
 
+# Scenarios supported by the Observable aspect
 
 The `Metalama.Patterns.Observability` package supports the following cases:
 

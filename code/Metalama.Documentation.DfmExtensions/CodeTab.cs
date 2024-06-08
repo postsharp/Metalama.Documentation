@@ -1,4 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using HtmlAgilityPack;
 using System;
@@ -44,8 +44,7 @@ internal class CodeTab : BaseTab
 
     protected override bool IsContentEmpty( string[] lines ) => base.IsContentEmpty( lines ) || lines.All( l => l.TrimStart().StartsWith( "//" ) );
 
-    private string? GetHtmlPath()
-        => PathHelper.GetObjPath( this.GetProjectDirectory(), this.FullPath, this.HtmlExtension );
+    private string? GetHtmlPath() => PathHelper.GetObjPath( this.GetProjectDirectory(), this.FullPath, this.HtmlExtension );
 
     protected virtual string HtmlExtension => ".cs.html";
 
@@ -157,7 +156,7 @@ internal class CodeTab : BaseTab
     public string GetCodeForComparison()
     {
         var document = new HtmlDocument();
-        document.Load( this.GetHtmlPath() ?? throw new FileNotFoundException($"Cannot find the HTML file for {this.FullPath}."));
+        document.Load( this.GetHtmlPath() ?? throw new FileNotFoundException( $"Cannot find the HTML file for {this.FullPath}." ) );
 
         var diagLines = document.DocumentNode.SelectNodes( "//span[@class='diagLines']" )?.ToList() ?? new List<HtmlNode>();
 

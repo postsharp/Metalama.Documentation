@@ -1,4 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using Metalama.Compiler;
 using Metalama.Framework.Aspects;
@@ -12,10 +12,5 @@ Console.WriteLine( "Hello, World!" );
 // // This is to make sure that all packages are properly referenced.
 _ = new[]
 {
-    typeof(IAspect),
-    typeof(AspectWeaverContext),
-    typeof(Workspace),
-    typeof(IIntrospectionAspectClass),
-    typeof(ISourceTransformer),
-    typeof(MetalamaDriver)
+    typeof(IAspect), typeof(AspectWeaverContext), typeof(Workspace), typeof(IIntrospectionAspectClass), typeof(ISourceTransformer), typeof(MetalamaDriver)
 };

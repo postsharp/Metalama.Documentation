@@ -1,3 +1,5 @@
+// This is public domain Metalama sample code.
+
 using System.Collections.Immutable;
 
 namespace Metalama.Documentation.DfmExtensions;

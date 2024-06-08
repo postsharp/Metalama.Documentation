@@ -1,4 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using Microsoft.DocAsCode.MarkdownLite;
 using System;
@@ -26,9 +26,8 @@ internal class ProjectButtonsRenderer : BaseRenderer<ProjectButtonsToken>
             {
                 // We need to try harder to find the good category.
 
+                var outHtmlPath = PathHelper.GetObjPath( token.Directory, file, ".t.cs.html" );
 
-                var outHtmlPath = PathHelper.GetObjPath( token.Directory, file, ".t.cs.html" ); 
-                    
                 if ( outHtmlPath == null || !File.ReadAllText( outHtmlPath ).Contains( "cr-GeneratedCode" ) )
                 {
                     kind = SandboxFileKind.ExtraCode;

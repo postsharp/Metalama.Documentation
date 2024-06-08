@@ -1,4 +1,4 @@
-// Warning LAMA5021 on `Person`: `The 'Person.FirstName' property must not have a setter because of the [Immutable] aspect.`
+// Warning LAMA5021 on `FirstName`: `The 'Person.FirstName' property must not have a setter because of the [Immutable] aspect.`
 using Metalama.Patterns.Immutability;
 namespace Metalama.Documentation.SampleCode.Immutability.Warning;
 [Immutable]

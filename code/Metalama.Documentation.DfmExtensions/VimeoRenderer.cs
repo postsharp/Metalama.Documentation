@@ -1,4 +1,6 @@
-﻿using Microsoft.DocAsCode.MarkdownLite;
+﻿// This is public domain Metalama sample code.
+
+using Microsoft.DocAsCode.MarkdownLite;
 
 namespace Metalama.Documentation.DfmExtensions;
 

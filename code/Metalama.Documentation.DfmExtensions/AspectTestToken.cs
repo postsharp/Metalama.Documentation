@@ -1,4 +1,4 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+﻿// This is public domain Metalama sample code.
 
 using Microsoft.DocAsCode.MarkdownLite;
 
@@ -13,7 +13,8 @@ public sealed class AspectTestToken : TabGroupBaseToken
         string src,
         string name,
         string title,
-        string tabs ) : base( rule, context, sourceInfo, name, title, tabs )
+        string tabs,
+        DiffSide diffSide ) : base( rule, context, sourceInfo, name, title, tabs, diffSide: diffSide )
     {
         this.Src = PathHelper.ResolveTokenPath( src, context, sourceInfo );
     }

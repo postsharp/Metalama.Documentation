@@ -2,9 +2,11 @@
 uid: immutability
 ---
 
-Immutability is a well-known and highly beneficial concept in software programming. An immutable type is a type whose instances cannot be modified once they have been created. Designs that prioritize immutable types are typically easier to understand than those that heavily rely on mutating objects. Examples of immutable types in C# include intrinsic types like `int`, `float`, or `string`, enums, delegates, most system value types like `DateTime`, and collections from the `System.Collections.Immutable` namespace.
+# Immutability
 
-Metalama implements the Immutable Type concept in the `Metalama.Patterns.Immutability` package, specifically through the `[Immutable]` aspect and the `ConfigureImmutability` fabric method.
+Immutability is a widely recognized and beneficial concept in software programming. An immutable type refers to a type whose instances cannot be modified once they have been created. Designs that prioritize immutable types are typically easier to understand than those that heavily rely on mutating objects. Examples of immutable types in C# include intrinsic types like `int`, `float`, or `string`, enums, delegates, most system value types like `DateTime`, and collections from the `System.Collections.Immutable` namespace.
+
+Metalama implements the Immutable Type concept in the `Metalama.Patterns.Immutability` package, specifically through the <xref:Metalama.Patterns.Immutability.ImmutableAttribute?text=[Immutable]> aspect and the <xref:Metalama.Patterns.Immutability.Configuration.ImmutabilityConfigurationExtensions.ConfigureImmutability*> fabric method.
 
 This package serves three purposes:
 
@@ -15,7 +17,7 @@ This package serves three purposes:
 
 ## Kinds of immutability
 
-The `Metalama.Patterns.Immutability` package recognizes two kinds of immutability, represented by the `ImmutabilityKind` type:
+The `Metalama.Patterns.Immutability` package recognizes two kinds of immutability, represented by the <xref:Metalama.Patterns.Immutability.ImmutabilityKind> type:
 
 * _Shallow_ immutability implies that all instance fields are _read-only_ and that no automatic property has a setter.
 * _Deep_ immutability requires, recursively, that all instance fields and automatic properties are of a deeply immutable type.
@@ -40,9 +42,9 @@ Additionally, the following types are implicitly classified as _shallowly immuta
 
 ## Marking types as immutable in source code
 
-If you own the source code of a type, you can mark it as immutable by applying the `[Immutable]` aspect to it. By default, the `[Immutable]` aspect represents _shallow_ immutability. To represent deep immutability, supply the `ImmutabilityKind.Deep` argument.
+If you own the source code of a type, you can mark it as immutable by applying the <xref:Metalama.Patterns.Immutability.ImmutableAttribute?text=[Immutable]> aspect to it. By default, the <xref:Metalama.Patterns.Immutability.ImmutableAttribute?text=[Immutable]> attribute represents _shallow_ immutability. To represent deep immutability, supply the `ImmutabilityKind.Deep` argument.
 
-The `[Immutable]` aspect reports warnings when fields are not read-only or when automatic properties have a setter. You can either resolve the warning or ignore it using `#pragma warning disable`.
+The <xref:Metalama.Patterns.Immutability.ImmutableAttribute?text=[Immutable]> aspect reports warnings when fields are not read-only or when automatic properties have a setter. You can either resolve the warning or ignore it using `#pragma warning disable`.
 
 Note that the `Immutable` aspect is automatically inherited by derived types.
 
@@ -52,14 +54,15 @@ You can use a fabric method and <xref:Metalama.Framework.Aspects.IAspectReceiver
 
 The following example shows a class marked as immutable, but containing a mutable property. A warning is reported on this property.
 
-[!metalama-file ~/code/Metalama.Documentation.SampleCode.Immutability/Warning.cs]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.Immutability/Warning.cs diff-side="source"]
 
 ## Marking types for which you don't own the source code
 
-To assign an `ImmutabilityKind` to types to which you can't add the `[Immutable]` aspect, you can use the `ConfigureExtensibility` fabric extension method. You can pass either an `ImmutableKind`, if the type always has the same `ImmutableKind`, or an `IImmutabilityClassifier` if you want to determine the `ImmutableKind` dynamically. This mechanism is useful in generic types when their immutability depends on the immutability of type arguments.
+To assign an <xref:Metalama.Patterns.Immutability.ImmutabilityKind> to types to which you cannot add the <xref:Metalama.Patterns.Immutability.ImmutableAttribute?text=[Immutable]> aspect, you can use the <xref:Metalama.Patterns.Immutability.Configuration.ImmutabilityConfigurationExtensions.ConfigureImmutability*> fabric extension method. You can pass either an <xref:Metalama.Patterns.Immutability.ImmutabilityKind>, if the type always has the same <xref:Metalama.Patterns.Immutability.ImmutabilityKind>, or an <xref:Metalama.Patterns.Immutability.Configuration.IImmutabilityClassifier> if you want to determine the <xref:Metalama.Patterns.Immutability.ImmutabilityKind> dynamically. This mechanism is useful in generic types when their immutability depends on the immutability of type arguments.
 
-### Example: Marking a system class as immutable
+### Example: Marking System.Uri as immutable
 
-The following example marks the `Uri` class as deeply immutable. Thanks to this, an `Uri` property can legally be used in the deeply immutable type `Person`, and no warning is reported.
+The following example marks the `Uri` class as deeply immutable. Thanks to this, a `Uri` property can legally be used in the deeply immutable type `Person`, and no warning is reported.
 
-[!metalama-file ~/code/Metalama.Documentation.SampleCode.Immutability/Fabric.cs]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.Immutability/Fabric.cs  diff-side="source"]
+
