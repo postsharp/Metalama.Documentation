@@ -86,7 +86,7 @@ When `typeof(Foo)` is used with a run-time-only type `Foo`, a mock `System.Type`
 
 ## Aspect properties
 
-Many aspects have properties that can be set when the aspect is instantiated -- for instance as a custom attribute. The scope of these properties is generally run-time-or-compile-time. When you read these properties from a template, they will be replaced by their compile-time value.
+Many aspects have properties that can be set when the aspect is instantiated &mdash; for instance as a custom attribute. The scope of these properties is generally run-time-or-compile-time. When you read these properties from a template, they will be replaced by their compile-time value.
 
 ### Example: aspect property
 

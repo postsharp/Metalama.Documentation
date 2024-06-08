@@ -56,7 +56,7 @@ Do not attempt to run your application or your unit tests at this point. They wo
 
 ## Step 5. Create a separate project for aspect tests
 
-Since your current test base will likely be disrupted for a while -- until all your critical aspects have been ported -- it's a good idea to set up an infrastructure where you can test your aspects individually.
+Since your current test base will likely be disrupted for a while &mdash; until all your critical aspects have been ported &mdash; it's a good idea to set up an infrastructure where you can test your aspects individually.
 
 For more details, see <xref:aspect-testing>.
 

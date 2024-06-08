@@ -54,7 +54,7 @@ Code written against the previous API will get obsolescence warnings. We suggest
 * Adding `IExpression.WithType` and `IExpression.WithNullability` to override the inferred type or nullability of a captured expression.
 * New method `StatementFactory.FromTemplate` to create an `IStatement` from a template.
 * New concept `IStatementList` to represent an unresolved list of statements. New extension methods `IStatement.AsList()`, `IEnumerable<IStatement>.AsList()`, and `IStatement.UnwrapBlock` to create lists. New class `StatementListBuilder` to create an `IStatementList` by adding elements.
-* New class `SwitchStatementBuilder` to dynamically creating a `switch` statement (cases can be added programmatically -- only literal case labels are currently supported.)
+* New class `SwitchStatementBuilder` to dynamically creating a `switch` statement (cases can be added programmatically &mdash; only literal case labels are currently supported.)
 * New method `IMethodInvoker.CreateInvokeExpression` generating an `IExpression` that represents a method invocation. Can be called outside of a template context.
 * New interface `IConstructorInvoker` with methods `Invoke` and `CreateInvocationExpression`.
 

@@ -81,7 +81,7 @@ The order of operations only matters when they are applied to the same declarati
 
 Some libraries may provide configuration custom attributes in addition to an imperative one.
 
-It's important to note that both mechanisms -- fabrics and custom attributes -- are equivalent. Configuration custom attributes, when they exist, are simply easier ways to call the configuration API. The configuration properties they provide are merged with the ones provided by the fabrics.
+It's important to note that both mechanisms &mdash; fabrics and custom attributes &mdash; are equivalent. Configuration custom attributes, when they exist, are simply easier ways to call the configuration API. The configuration properties they provide are merged with the ones provided by the fabrics.
 
 
 ## Inheritance of configuration options

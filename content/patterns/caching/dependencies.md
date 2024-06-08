@@ -65,7 +65,7 @@ This interface has two members:
 How and where you implement <xref:Metalama.Patterns.Caching.Dependencies.ICacheDependency> is entirely up to you. You have the following options:
 
 1. The most practical option is often to implement the <xref:Metalama.Patterns.Caching.Dependencies.ICacheDependency> in your domain objects.
-2. Alternatively, you can create a parallel object model implementing <xref:Metalama.Patterns.Caching.Dependencies.ICacheDependency> -- just to represent dependencies.
+2. Alternatively, you can create a parallel object model implementing <xref:Metalama.Patterns.Caching.Dependencies.ICacheDependency> &mdash; just to represent dependencies.
 3. If you have types that can already be used in cache keys, e.g., thanks to the <xref:Metalama.Patterns.Caching.Aspects.CacheKeyAttribute?text=[CacheKey]> aspect or another mechanism (see <xref:caching-keys>), you can turn these objects into dependencies by wrapping them into an <xref:Metalama.Patterns.Caching.Dependencies.ObjectDependency>. You can also use the <xref:Metalama.Patterns.Caching.CachingServiceExtensions.AddObjectDependency*> and <xref:Metalama.Patterns.Caching.CachingServiceExtensions.InvalidateObject*> methods to avoid creating a wrapper.
 4. To represent singleton dependencies, it can be convenient to assign them a constant string and wrap this string into a <xref:Metalama.Patterns.Caching.Dependencies.StringDependency> object.
 

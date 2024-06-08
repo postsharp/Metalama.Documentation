@@ -91,7 +91,7 @@ The following code shows a base caching aspect named `CacheAttribute` that allow
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/AuxiliaryTemplate_TemplateInvocation.cs]
 
-This example is contrived in two regards. First, it would make sense in this case to use two aspects. Second, the use of a `protected` method invoked by `AroundCaching` would be preferable in this case. The use of <xref:Metalama.Framework.Aspects.TemplateInvocation> makes sense when the template to call is not a part of the same class -- for instance if the caching aspect accepts options that can be set from a fabric, and that would allow users to supply a different implementation of this logic without overriding the caching attribute itself.
+This example is contrived in two regards. First, it would make sense in this case to use two aspects. Second, the use of a `protected` method invoked by `AroundCaching` would be preferable in this case. The use of <xref:Metalama.Framework.Aspects.TemplateInvocation> makes sense when the template to call is not a part of the same class &mdash; for instance if the caching aspect accepts options that can be set from a fabric, and that would allow users to supply a different implementation of this logic without overriding the caching attribute itself.
 
 
 
