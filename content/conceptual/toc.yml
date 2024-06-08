@@ -187,7 +187,7 @@ items:
             topicUid: adding-attributes
           - name: Sharing state with advice
             topicUid: sharing-state-with-advice
-            
+
         - name: Reporting and suppressing diagnostics
           topicUid: diagnostics
         - name: Injecting dependencies into aspects
