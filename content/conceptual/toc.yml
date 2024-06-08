@@ -35,6 +35,9 @@ items:
           topicUid: dotnet-tool
         - name: Registering a license
           topicUid: register-license    
+
+
+
     - name: Using Metalama 
       topicUid: using-metalama
       items:
@@ -56,6 +59,9 @@ items:
           topicUid: fabrics-configuration
         - name: Amending many projects at once
           topicUid: fabrics-many-projects
+
+
+
     - name: Using Metalama Patterns
       topicUid: patterns
       items:
@@ -73,12 +79,18 @@ items:
               topicUid: invariants
             - name: Configuring contracts
               topicUid: configuring-contracts
+          
+        - name: Dependency injection
+          topicUid: dependency-injection-aspect
 
         - name: Immutability
           topicUid: immutability
 
         - name: Observability (INotifyPropertyChanged)
           topicUid: observability
+          items:
+            - name: Supported scenarios
+              topicUid: observability-standard-cases
 
         - name: Caching
           topicUid: caching
@@ -108,8 +120,12 @@ items:
             
         - name: Memoization
           topicUid: memoization
-        - name: Dependency injection
-          topicUid: dependency-injection-aspect
+
+        - name: XAML Command
+          topicUid: xaml-command
+
+        - name: XAML Dependency Property
+          topicUid: xaml-dependency-property
 
 
     - name: Creating aspects
@@ -140,8 +156,10 @@ items:
               topicUid: auxiliary-templates
             - name: Generating System.Reflection objects
               topicUid: reflection
+
         - name: Understanding the framework design
           topicUid: aspect-design
+
         - name: Advising code
           topicUid: advising-code
           items:
@@ -169,6 +187,7 @@ items:
             topicUid: adding-attributes
           - name: Sharing state with advice
             topicUid: sharing-state-with-advice
+            
         - name: Reporting and suppressing diagnostics
           topicUid: diagnostics
         - name: Injecting dependencies into aspects

@@ -85,21 +85,15 @@ Add the <xref:Metalama.Patterns.Observability.ConstantAttribute?text=[Constant]>
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Observability/Constant.cs]
 
-### Using a fabric
+### Using a the ConfigureObservability fabric method
 
-If you want to mark many methods as constant, it may be more convenient to use a fabric instead of adding the `[Constant]` attribute to each of them.
+If you want to mark many methods as constant, it may be more convenient to use a fabric method instead of adding the `[Constant]` attribute to each of them.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Observability/Constant_Fabric.cs]
 
-## Working with MVVM frameworks
+## Coping with MVVM frameworks and different naming conventions
 
  Instead of `OnPropertyChanged` methods, Other accepted method names are `NotifyOfPropertyChange` and `RaisePropertyChanged`.
 
-## Limitations and workarounds
 
-### Limitations
-
-- method calls: only static methods of with primitive arguments
-- other methods cause a warning to be reported
-- two mechanisms to work around the warning: `#pragma` and `[SuppressObservabilityWarnings]`
-- Mark methods as constants: `[Constant]` or fabric method
+TODO
