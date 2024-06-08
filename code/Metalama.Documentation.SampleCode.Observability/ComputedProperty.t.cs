@@ -1,6 +1,6 @@
 using System.ComponentModel;
 using Metalama.Patterns.Observability;
-namespace Doc.Simple;
+namespace Doc.ComputedProperty;
 [Observable]
 public class Person : INotifyPropertyChanged
 {
@@ -16,6 +16,7 @@ public class Person : INotifyPropertyChanged
       if (!object.ReferenceEquals(value, _firstName))
       {
         _firstName = value;
+        OnPropertyChanged("FullName");
         OnPropertyChanged("FirstName");
       }
     }
@@ -32,10 +33,12 @@ public class Person : INotifyPropertyChanged
       if (!object.ReferenceEquals(value, _lastName))
       {
         _lastName = value;
+        OnPropertyChanged("FullName");
         OnPropertyChanged("LastName");
       }
     }
   }
+  public string FullName => $"{this.FirstName} {this.LastName}";
   protected virtual void OnPropertyChanged(string propertyName)
   {
     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

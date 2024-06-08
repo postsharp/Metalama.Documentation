@@ -2,7 +2,7 @@
 
 using Metalama.Patterns.Observability;
 
-namespace Doc.Simple;
+namespace Doc.ChildObject;
 
 [Observable]
 public class Person

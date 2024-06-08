@@ -3,7 +3,7 @@
 using Metalama.Patterns.Observability;
 using System;
 
-namespace Doc.Constant;
+namespace Doc.Warning;
 
 [Observable]
 public class Vector
@@ -12,11 +12,10 @@ public class Vector
 
     public double Y { get; set; }
 
-    public double Norm => VectorHelper.ComputeNorm( this.X, this.Y );
+    public double Norm => VectorHelper.ComputeNorm( this );
 }
 
 public static class VectorHelper
 {
-    //[Constant]
-    public static double ComputeNorm( double x, double y ) => Math.Sqrt( ( x * x ) + ( y * y ) );
+    public static double ComputeNorm( Vector v ) => Math.Sqrt( v.X * v.X + v.Y * v.Y );
 }

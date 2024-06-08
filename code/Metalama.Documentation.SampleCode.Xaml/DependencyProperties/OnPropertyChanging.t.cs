@@ -1,9 +1,8 @@
-// Warning LAMA5206 on `Title`: `No property-changing method was found using the default naming convention, with candidate member name 'OnTitleChanging'.`
-// Warning LAMA5206 on `Title`: `No validate method was found using the default naming convention, with candidate member name 'ValidateTitle'.`
 using Metalama.Patterns.Xaml;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+#pragma warning disable CA1307
 namespace Doc.DependencyProperties.OnPropertyChanging;
 internal class MyControl : UserControl
 {

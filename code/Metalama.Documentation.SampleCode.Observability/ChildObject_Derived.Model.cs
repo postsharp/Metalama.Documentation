@@ -2,7 +2,7 @@
 
 using Metalama.Patterns.Observability;
 
-namespace Doc.Simple;
+namespace Doc.ChildObject_Derived;
 
 [Observable]
 public class Person
@@ -10,4 +10,6 @@ public class Person
     public string? FirstName { get; set; }
 
     public string? LastName { get; set; }
+
+    public string? Title { get; set; }
 }

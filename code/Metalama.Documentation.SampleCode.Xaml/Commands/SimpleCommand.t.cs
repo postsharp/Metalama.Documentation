@@ -1,5 +1,3 @@
-// Warning LAMA5206 on `Increment`: `No can-execute method or can-execute property was found using the default naming convention, with candidate member name 'CanExecuteIncrement'.`
-// Warning LAMA5206 on `Decrement`: `No can-execute method or can-execute property was found using the default naming convention, with candidate member name 'CanExecuteDecrement'.`
 using System.Windows;
 using System.Windows.Input;
 using Metalama.Patterns.Xaml;

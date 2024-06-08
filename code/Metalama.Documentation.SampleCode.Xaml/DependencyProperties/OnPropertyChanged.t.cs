@@ -1,8 +1,3 @@
-// Warning LAMA5206 on `BorderWidth`: `No property-changing method was found using the default naming convention, with candidate member name 'OnBorderWidthChanging'.`
-// Warning LAMA5206 on `BorderWidth`: `No validate method was found using the default naming convention, with candidate member name 'ValidateBorderWidth'.`
-// Warning LAMA5206 on `AvailableWidth`: `No property-changed method was found using the default naming convention, with candidate member name 'OnAvailableWidthChanged'.`
-// Warning LAMA5206 on `AvailableWidth`: `No property-changing method was found using the default naming convention, with candidate member name 'OnAvailableWidthChanging'.`
-// Warning LAMA5206 on `AvailableWidth`: `No validate method was found using the default naming convention, with candidate member name 'ValidateAvailableWidth'.`
 using Metalama.Patterns.Xaml;
 using System.Windows;
 using System.Windows.Controls;

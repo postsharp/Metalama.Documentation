@@ -4,6 +4,8 @@ using Metalama.Patterns.Xaml;
 using System;
 using System.Windows.Controls;
 
+#pragma warning disable CA1307
+
 namespace Doc.DependencyProperties.OnPropertyChanging;
 
 internal class MyControl : UserControl

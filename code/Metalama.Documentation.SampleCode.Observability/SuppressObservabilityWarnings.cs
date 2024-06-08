@@ -11,11 +11,9 @@ public class Vector
     public double X { get; set; }
 
     public double Y { get; set; }
-
-    public double NormWithWarning => VectorHelper.ComputeNorm( this );
-
+    
     [SuppressObservabilityWarnings]
-    public double NormWithoutWarning1 => VectorHelper.ComputeNorm( this );
+    public double Norm => VectorHelper.ComputeNorm( this );
 }
 
 public static class VectorHelper

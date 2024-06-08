@@ -5,15 +5,7 @@ using Metalama.Patterns.Observability;
 namespace Doc.ChildObject;
 
 [Observable]
-public class Person
-{
-    public string? FirstName { get; set; }
-
-    public string? LastName { get; set; }
-}
-
-[Observable]
-public class PersonViewModel
+public sealed class PersonViewModel
 {
     public Person Person { get; set; }
 

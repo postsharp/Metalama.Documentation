@@ -2,48 +2,7 @@ using System.ComponentModel;
 using Metalama.Patterns.Observability;
 namespace Doc.ChildObject;
 [Observable]
-public class Person : INotifyPropertyChanged
-{
-  private string? _firstName;
-  public string? FirstName
-  {
-    get
-    {
-      return _firstName;
-    }
-    set
-    {
-      if (!object.ReferenceEquals(value, _firstName))
-      {
-        _firstName = value;
-        OnPropertyChanged("FirstName");
-      }
-    }
-  }
-  private string? _lastName;
-  public string? LastName
-  {
-    get
-    {
-      return _lastName;
-    }
-    set
-    {
-      if (!object.ReferenceEquals(value, _lastName))
-      {
-        _lastName = value;
-        OnPropertyChanged("LastName");
-      }
-    }
-  }
-  protected virtual void OnPropertyChanged(string propertyName)
-  {
-    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-  }
-  public event PropertyChangedEventHandler? PropertyChanged;
-}
-[Observable]
-public class PersonViewModel : INotifyPropertyChanged
+public sealed class PersonViewModel : INotifyPropertyChanged
 {
   private Person _person = default !;
   public Person Person
@@ -62,7 +21,6 @@ public class PersonViewModel : INotifyPropertyChanged
           oldValue.PropertyChanged -= _handlePersonPropertyChanged;
         }
         _person = value;
-        OnObservablePropertyChanged("Person", oldValue, (INotifyPropertyChanged? )value);
         OnPropertyChanged("FirstName");
         OnPropertyChanged("FullName");
         OnPropertyChanged("LastName");
@@ -80,14 +38,10 @@ public class PersonViewModel : INotifyPropertyChanged
   public string FullName => $"{this.FirstName} {this.LastName}";
   private PropertyChangedEventHandler? _handlePersonPropertyChanged;
   [ObservedExpressions("Person")]
-  protected virtual void OnChildPropertyChanged(string parentPropertyPath, string propertyName)
+  private void OnChildPropertyChanged(string parentPropertyPath, string propertyName)
   {
   }
-  [ObservedExpressions("Person")]
-  protected virtual void OnObservablePropertyChanged(string propertyPath, INotifyPropertyChanged? oldValue, INotifyPropertyChanged? newValue)
-  {
-  }
-  protected virtual void OnPropertyChanged(string propertyName)
+  private void OnPropertyChanged(string propertyName)
   {
     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
   }

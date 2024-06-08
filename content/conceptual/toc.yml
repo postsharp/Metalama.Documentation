@@ -74,6 +74,12 @@ items:
             - name: Configuring contracts
               topicUid: configuring-contracts
 
+        - name: Immutability
+          topicUid: immutability
+
+        - name: Observability (INotifyPropertyChanged)
+          topicUid: observability
+
         - name: Caching
           topicUid: caching
           items:

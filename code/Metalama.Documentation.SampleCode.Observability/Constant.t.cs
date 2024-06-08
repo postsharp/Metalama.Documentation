@@ -17,6 +17,7 @@ public class Vector : INotifyPropertyChanged
       if (_x != value)
       {
         _x = value;
+        OnPropertyChanged("Norm");
         OnPropertyChanged("X");
       }
     }
@@ -33,11 +34,12 @@ public class Vector : INotifyPropertyChanged
       if (_y != value)
       {
         _y = value;
+        OnPropertyChanged("Norm");
         OnPropertyChanged("Y");
       }
     }
   }
-  public double Norm => VectorHelper.ComputeNorm(this);
+  public double Norm => VectorHelper.ComputeNorm(this.X, this.Y);
   protected virtual void OnPropertyChanged(string propertyName)
   {
     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -46,6 +48,6 @@ public class Vector : INotifyPropertyChanged
 }
 public static class VectorHelper
 {
-  [Constant]
-  public static double ComputeNorm(Vector v) => Math.Sqrt(v.X * v.X + v.Y * v.Y);
+  //[Constant]
+  public static double ComputeNorm(double x, double y) => Math.Sqrt((x * x) + (y * y));
 }

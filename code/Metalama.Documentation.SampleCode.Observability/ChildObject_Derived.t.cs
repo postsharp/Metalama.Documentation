@@ -2,63 +2,6 @@ using System.ComponentModel;
 using Metalama.Patterns.Observability;
 namespace Doc.ChildObject_Derived;
 [Observable]
-public class Person : INotifyPropertyChanged
-{
-  private string? _firstName;
-  public string? FirstName
-  {
-    get
-    {
-      return _firstName;
-    }
-    set
-    {
-      if (!object.ReferenceEquals(value, _firstName))
-      {
-        _firstName = value;
-        OnPropertyChanged("FirstName");
-      }
-    }
-  }
-  private string? _lastName;
-  public string? LastName
-  {
-    get
-    {
-      return _lastName;
-    }
-    set
-    {
-      if (!object.ReferenceEquals(value, _lastName))
-      {
-        _lastName = value;
-        OnPropertyChanged("LastName");
-      }
-    }
-  }
-  private string? _title;
-  public string? Title
-  {
-    get
-    {
-      return _title;
-    }
-    set
-    {
-      if (!object.ReferenceEquals(value, _title))
-      {
-        _title = value;
-        OnPropertyChanged("Title");
-      }
-    }
-  }
-  protected virtual void OnPropertyChanged(string propertyName)
-  {
-    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-  }
-  public event PropertyChangedEventHandler? PropertyChanged;
-}
-[Observable]
 public class PersonViewModel : INotifyPropertyChanged
 {
   private Person _person = default !;

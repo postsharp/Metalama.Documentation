@@ -26,7 +26,9 @@
 		<PackageReference Include="Metalama.Migration" Version="$(MetalamaMigrationVersion)" />
 		<PackageReference Include="Metalama.Patterns.Contracts" Version="$(MetalamaPatternsVersion)" />
 		<PackageReference Include="Metalama.Patterns.Memoization" Version="$(MetalamaPatternsVersion)" />
-		<PackageReference Include="Metalama.Patterns.Observability" Version="$(MetalamaPatternsPreviewVersion)" />
+		<PackageReference Include="Metalama.Patterns.Observability" Version="$(MetalamaPatternsVersion)" />
+		<PackageReference Include="Metalama.Patterns.Xaml" Version="$(MetalamaPatternsVersion)" />
+		<PackageReference Include="Metalama.Patterns.Immutability" Version="$(MetalamaPatternsVersion)" />
 		<PackageReference Include="Metalama.Patterns.Caching" Version="$(MetalamaPatternsVersion)" />
 		<PackageReference Include="Metalama.Patterns.Caching.Backend" Version="$(MetalamaPatternsVersion)" />
 		<PackageReference Include="Metalama.Patterns.Caching.Aspects" Version="$(MetalamaPatternsVersion)" />

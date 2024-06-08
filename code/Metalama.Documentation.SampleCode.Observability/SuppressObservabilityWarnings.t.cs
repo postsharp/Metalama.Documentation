@@ -1,4 +1,3 @@
-// Warning LAMA5162 on `ComputeNorm`: `The 'VectorHelper.ComputeNorm(Vector)' method cannot be analysed, and has not been configured with an observability contract. Mark this method with [ConstantAttribute] or ConfigureObservability via a fabric.`
 using Metalama.Patterns.Observability;
 using System;
 using System.ComponentModel;
@@ -38,9 +37,8 @@ public class Vector : INotifyPropertyChanged
       }
     }
   }
-  public double NormWithWarning => VectorHelper.ComputeNorm(this);
   [SuppressObservabilityWarnings]
-  public double NormWithoutWarning1 => VectorHelper.ComputeNorm(this);
+  public double Norm => VectorHelper.ComputeNorm(this);
   protected virtual void OnPropertyChanged(string propertyName)
   {
     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

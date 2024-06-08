@@ -1,10 +1,8 @@
-using Metalama.Framework.Aspects;
-using Metalama.Framework.Fabrics;
+// Warning LAMA5162 on `ComputeNorm`: `The 'VectorHelper.ComputeNorm(Vector)' method cannot be analysed, and has not been configured with an observability contract. Mark this method with [ConstantAttribute] or call ConfigureObservability via a fabric.`
 using Metalama.Patterns.Observability;
-using Metalama.Patterns.Observability.Configuration;
 using System;
 using System.ComponentModel;
-namespace Doc.Constant_Fabric;
+namespace Doc.Warning;
 [Observable]
 public class Vector : INotifyPropertyChanged
 {
@@ -41,7 +39,6 @@ public class Vector : INotifyPropertyChanged
     }
   }
   public double Norm => VectorHelper.ComputeNorm(this);
-  public Vector Direction => VectorHelper.Normalize(this);
   protected virtual void OnPropertyChanged(string propertyName)
   {
     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -50,19 +47,5 @@ public class Vector : INotifyPropertyChanged
 }
 public static class VectorHelper
 {
-  public static double ComputeNorm(Vector v) => Math.Sqrt((v.X * v.X) + (v.Y * v.Y));
-  public static Vector Normalize(Vector v)
-  {
-    var norm = ComputeNorm(v);
-    return new Vector
-    {
-      X = v.X / norm,
-      Y = v.Y / norm
-    };
-  }
-}
-#pragma warning disable CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052
-public class Fabric : ProjectFabric
-{
-  public override void AmendProject(IProjectAmender amender) => throw new System.NotSupportedException("Compile-time-only code cannot be called at run-time.");
+  public static double ComputeNorm(Vector v) => Math.Sqrt(v.X * v.X + v.Y * v.Y);
 }

@@ -33,6 +33,6 @@ public class Fabric : ProjectFabric
     public override void AmendProject( IProjectAmender amender )
     {
         amender.ConfigureCommand(
-            builder => builder.AddNamingConvention( new CommandNamingConvention( "czech" ) { CanExecutePattern = "^Můzeme{CommandName}$" } ) );
+            builder => builder.AddNamingConvention( new CommandNamingConvention( "czech" ) { CanExecutePatterns = ["^Můzeme{CommandName}$"] } ) );
     }
 }
