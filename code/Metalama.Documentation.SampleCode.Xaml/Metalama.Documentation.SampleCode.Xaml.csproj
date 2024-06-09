@@ -10,56 +10,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Commands\CanExecute - Copy.t.cs" />
-	  <Compile Remove="Commands\SimpleCommand - Copy.t.cs" />
-	  <Compile Remove="DependencyProperties\Contract - Copy.t.cs" />
-	  <Compile Remove="DependencyProperties\DefaultValue - Copy.t.cs" />
-	  <Compile Remove="DependencyProperties\OnPropertyChanged - Copy.t.cs" />
-	  <Compile Remove="DependencyProperties\Simple - Copy.t.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="Commands\CanExecute - Copy.t.cs">
-	    <SubType>Code</SubType>
-	    <DependentUpon>CanExecute.cs</DependentUpon>
-	  </None>
-	  <None Include="Commands\CanExecute - Copy.t.cs" />
-	  <None Include="Commands\CanExecute.t.cs" />
-	  <None Include="Commands\CanExecute_Czech.t.cs" />
-	  <None Include="Commands\CanExecute_Observable.t.cs">
-	    <SubType>Code</SubType>
-	    <DependentUpon>CanExecute_Observable.cs</DependentUpon>
-	  </None>
-	  <None Include="Commands\CanExecute.t.cs">
-	    <SubType>Code</SubType>
-	    <DependentUpon>CanExecute.cs</DependentUpon>
-	  </None>
-	  <None Include="Commands\CanExecute_Observable.t.cs" />
-	  <None Include="Commands\SimpleCommand.t.cs" />
-	  <None Include="DependencyProperties\DefaultValue.t.cs">
-	    <SubType>Code</SubType>
-	    <DependentUpon>DefaultValue.cs</DependentUpon>
-	  </None>
-	  <None Include="DependencyProperties\Contract.t.cs">
-	    <SubType>Code</SubType>
-	    <DependentUpon>Contract.cs</DependentUpon>
-	  </None>
-	  <None Include="DependencyProperties\OnPropertyChanging.t.cs">
-	    <SubType>Code</SubType>
-	    <DependentUpon>OnPropertyChanging.cs</DependentUpon>
-	  </None>
-	  <None Include="DependencyProperties\ReadOnly.t.cs">
-	    <SubType>Code</SubType>
-	    <DependentUpon>ReadOnly.cs</DependentUpon>
-	  </None>
-	  <None Include="DependencyProperties\OnPropertyChanged.t.cs">
-	    <SubType>Code</SubType>
-	    <DependentUpon>OnPropertyChanged.cs</DependentUpon>
-	  </None>
-	</ItemGroup>
-
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
 		<PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
 		<PackageReference Include="xunit" Version="2.7.0" />

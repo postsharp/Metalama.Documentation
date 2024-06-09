@@ -3,7 +3,7 @@
 using System.Windows;
 using Metalama.Patterns.Xaml;
 
-namespace Doc.Command.CanExecute;
+namespace Doc.Command.CanExecute_Explicit;
 
 public class MyWindow : Window
 {
@@ -13,13 +13,13 @@ public class MyWindow : Window
 
     public bool CanExecuteDecrement => this.Counter > 0;
 
-    [Command]
+    [Command( CanExecuteProperty = nameof(CanExecuteIncrement) )]
     public void Increment()
     {
         this.Counter++;
     }
 
-    [Command]
+    [Command( CanExecuteProperty = nameof(CanExecuteDecrement) )]
     public void Decrement()
     {
         this.Counter--;

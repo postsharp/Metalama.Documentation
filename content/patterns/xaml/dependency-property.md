@@ -4,12 +4,24 @@ uid: xaml-dependency-property
 
 # XAML Dependency Property
 
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/Simple.cs]
+
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/ReadOnly.cs]
 
 ## Default values
 
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/DefaultValue.cs]
+
+## Contracts
+
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/Contract.cs]
 
 
-## Naming conventions
+## PropertyChanging, PropertyChanged hooks
+
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/OnPropertyChanged.cs]
+
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/OnPropertyChanging.cs]
 
 
 ### Valid PropertyChanging and PropertyChanged Method Signatures
@@ -40,7 +52,7 @@ Note that `oldValue` does not appear to fit the purely DependencyProperty-backed
 
 ### Valid ValidateValue Method Signatures
 
-All the supported signatures originate fromt the PostSharp implementation:
+All the supported signatures originate from the PostSharp implementation:
 
 * `static bool ValidatePropertyName(TPropertyType value)`
 * `static bool ValidatePropertyName(DependencyProperty property, TPropertyType value)`

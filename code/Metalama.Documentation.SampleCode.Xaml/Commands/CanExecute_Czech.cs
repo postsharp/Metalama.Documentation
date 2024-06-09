@@ -1,18 +1,16 @@
 ﻿// This is public domain Metalama sample code.
 
 using System.Windows;
-using Metalama.Framework.Fabrics;
 using Metalama.Patterns.Xaml;
-using Metalama.Patterns.Xaml.Configuration;
 
-namespace Doc.Command.CanExecute;
+namespace Doc.Command.CanExecute_Czech;
 
 public class MojeOkno : Window
 {
     public int Počitadlo { get; private set; }
 
     [Command]
-    public void Zvýšit()
+    public void VykonatZvýšení()
     {
         this.Počitadlo++;
     }
@@ -26,13 +24,4 @@ public class MojeOkno : Window
     }
 
     public bool MůzemeSnížit => this.Počitadlo > 0;
-}
-
-public class Fabric : ProjectFabric
-{
-    public override void AmendProject( IProjectAmender amender )
-    {
-        amender.ConfigureCommand(
-            builder => builder.AddNamingConvention( new CommandNamingConvention( "czech" ) { CanExecutePatterns = ["^Můzeme{CommandName}$"] } ) );
-    }
 }

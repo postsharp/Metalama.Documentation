@@ -79,7 +79,7 @@ One way to mark a method as constant is to add the <xref:Metalama.Patterns.Obser
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Observability/Constant.cs]
 
-If you want to mark many methods as constant, it may be more convenient to use the <xref:Metalama.Patterns.Observability.Configuration.ObservabilityExtensions.ConfigureObservability> fabric method instead of adding the `[Constant]` attribute to each of them, and set the <xref:Metalama.Patterns.Observability.Configuration.ObservabilityTypeOptionsBuilder.ObservabilityContract> property to `ObservabilityContract.Constant`.
+If you want to mark many methods as constant, it may be more convenient to use the <xref:Metalama.Patterns.Observability.Configuration.ObservabilityExtensions.ConfigureObservability*> fabric method instead of adding the `[Constant]` attribute to each of them, and set the <xref:Metalama.Patterns.Observability.Configuration.ObservabilityTypeOptionsBuilder.ObservabilityContract> property to `ObservabilityContract.Constant`.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Observability/Constant_Fabric.cs]
 
