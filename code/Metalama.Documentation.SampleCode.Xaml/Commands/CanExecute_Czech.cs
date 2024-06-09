@@ -15,7 +15,7 @@ public class MojeOkno : Window
         this.Počitadlo++;
     }
 
-    public bool MůzemeZvýšit => this.Počitadlo < 10;
+    public bool MůžemeVykonatZvýšení => this.Počitadlo < 10;
 
     [Command]
     public void Snížit()
@@ -23,5 +23,5 @@ public class MojeOkno : Window
         this.Počitadlo--;
     }
 
-    public bool MůzemeSnížit => this.Počitadlo > 0;
+    public bool MůžemeSnížit => this.Počitadlo > 0;
 }

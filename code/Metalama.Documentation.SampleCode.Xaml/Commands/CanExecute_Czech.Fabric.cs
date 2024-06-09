@@ -18,14 +18,14 @@ public class Fabric : ProjectFabric
                     new CommandNamingConvention( "czech-1" )
                     {
                         CommandNamePattern = "^Vykonat(.*)$",
-                        CanExecutePatterns = ["^MůzemeVykonat{CommandName}$"],
+                        CanExecutePatterns = ["MůžemeVykonat{CommandName}"],
                         CommandPropertyName = "{CommandName}Příkaz"
                     } );
                 
                 builder.AddNamingConvention(
                     new CommandNamingConvention( "czech-2" )
                     {
-                        CanExecutePatterns = ["^Můzeme{CommandName}$"],
+                        CanExecutePatterns = ["Můžeme{CommandName}"],
                         CommandPropertyName = "{CommandName}Příkaz"
                     } );
             } );
