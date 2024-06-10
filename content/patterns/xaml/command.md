@@ -4,6 +4,10 @@ uid: xaml-command
 
 # XAML Command
 
+In XAML, a command is an object implementing the <xref:System.Windows.Input.ICommand> interface, used to separate UI from logic. Commands encapsulate execution logic, enabling a clean separation of concerns. They allow binding to UI controls (e.g., buttons) to trigger actions, and can enable/disable controls based on the <xref:System.Windows.Input.ICommand.CanExecute*> method. The <xref:<xref:System.Windows.Input.ICommand.Execute*> method runs the command, while the <<xref:System.Windows.Input.ICommand.CanExecuteChanged> event notifies when the command availability changes.
+
+Implementing XAML commands by hand typically requires a sheer amount of boilerplate code. Fortunately, most of this code can be automatically generated.
+
 The <xref:Metalama.Patterns.Xaml.CommandAttribute?text=[Command]> aspect generates a XAML Command property based on a plain C# method executing the command, and optionally, a `bool` property or method determining if the command is enabled.
 
 ## Generating a XAML command property from a method
