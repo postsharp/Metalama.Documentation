@@ -7,11 +7,15 @@ summary: "The document provides instructions on how to generate log files for re
 
 When reporting a Metalama bug, it is often helpful to attach Metalama log files. This document provides instructions on how to generate these logs.
 
-## Step 1. Install the Metalama CLI tool
+There are possible approaches: produce log files, or write the logging output to the console.
+
+## Producing log files
+
+### Step 1. Install the Metalama CLI tool
 
 First, install the `metalama` .NET tool as outlined in <xref:dotnet-tool>.
 
-## Step 2. Edit diagnostics.json
+### Step 2. Edit diagnostics.json
 
 Run the following command:
 
@@ -57,7 +61,7 @@ To validate the correctness of the JSON file, run the following command:
 metalama config validate diagnostics
 ```
 
-## Step 3. Restart processes
+### Step 3. Restart processes
 
 Diagnostic settings are cached in all processes, including background compiler processes and IDE helper processes.
 
@@ -69,16 +73,34 @@ metalama kill
 
 If you need to alter the logging configuration of the IDE processes, you will need to manually restart your IDE.
 
-## Step 4. Execute Metalama
+### Step 4. Execute Metalama
 
 Perform the sequence of actions that you wish to log.
 
 > [!WARNING]
 > Logging is automatically disabled after a certain number of hours following the last modification of `diagnostics.json`. The duration is specified in the `stopLoggingAfterHours` property in the `logging` section and defaults to 2 hours. To change this duration, you can edit the `diagnostics.json` file.
 
-## Step 5. Open the log file
+### Step 5. Open the log file
 
 You can find the log in the `%TEMP%\Metalama\Logs` directory.
 
 
+## Logging to the Console
+
+To diagnose the build on build agents, the above procedure may be cumbersome because of the need to upload the logs from the build agent to some artifact repository.
+
+It may be instead preferable to log directly to the console.
+
+To enable console logging, set the `METALAMA_CONSOLE_TRACE` environment variable to `*` or to a comma-separated list of trace categories.
+
+Note that `dotnet build` or `msbuild` process, as well as the Metalama compiler process, reuse background processes by default. These processes may fail to receive the `METALAMA_CONSOLE_TRACE` environment variable. To ensure that the Metalama compiler process receives the environment variable, you must disable build servers using the `--disable-build-servers` flag.
+
+It is also important to enable detailed verbosity in `dotnet build` or `msbuild` because the default verbosity does not pass through the standard output of the compiler process.
+
+Combining all these notes, here is how to enable console logging for all categories:
+
+```powershell
+$env:METALAMA_CONSOLE_TRACE="*"
+dotnet build -t:rebuild --disable-build-servers -v:detailed
+```
 

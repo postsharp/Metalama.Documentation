@@ -4,11 +4,11 @@ uid: xaml-command
 
 # XAML Command
 
-In XAML, a command is an object implementing the <xref:System.Windows.Input.ICommand> interface, used to separate UI from logic. Commands encapsulate execution logic, enabling a clean separation of concerns. They allow binding to UI controls (e.g., buttons) to trigger actions, and can enable/disable controls based on the <xref:System.Windows.Input.ICommand.CanExecute*> method. The <xref:<xref:System.Windows.Input.ICommand.Execute*> method runs the command, while the <<xref:System.Windows.Input.ICommand.CanExecuteChanged> event notifies when the command availability changes.
+In XAML, a command is an object that implements the <xref:System.Windows.Input.ICommand> interface, which can be bound to UI controls such as buttons to trigger actions, and can enable or disable these controls based on the <xref:System.Windows.Input.ICommand.CanExecute*> method. The <xref:System.Windows.Input.ICommand.Execute*> method runs the command, while the <xref:System.Windows.Input.ICommand.CanExecuteChanged> event notifies when the command availability changes.
 
-Implementing XAML commands by hand typically requires a sheer amount of boilerplate code. Fortunately, most of this code can be automatically generated.
+Implementing XAML commands manually typically requires much boilerplate code, especially to support the <xref:System.Windows.Input.ICommand.CanExecuteChanged> event. 
 
-The <xref:Metalama.Patterns.Xaml.CommandAttribute?text=[Command]> aspect generates a XAML Command property based on a plain C# method executing the command, and optionally, a `bool` property or method determining if the command is enabled.
+The <xref:Metalama.Patterns.Xaml.CommandAttribute?text=[Command]> aspect generates most of the XAML command boilerplate automatically. When applied to a method, the aspect generates a  Command property. It can also bind to a `CanExecute` property or method, and integrates with <xref:System.ComponentModel.INotifyPropertyChanged>.
 
 ## Generating a XAML command property from a method
 
@@ -49,7 +49,7 @@ This example is identical to the one above, but it uses the <xref:Metalama.Patte
 
 ### Example: Commands with a CanExecute property and [Observable]
 
-The following example demonstrates the code generated when the `[Command]` and `[Observable]` aspects are used together. Notice the compactness of the source code and the sheer size of the generated code.
+The following example demonstrates the code generated when the `[Command]` and `[Observable]` aspects are used together. Notice the compactness of the source code and the significant size of the generated code.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/Commands/CanExecute_Observable.cs]
 

@@ -6,14 +6,14 @@ using System.Windows.Controls;
 
 #pragma warning disable CA1307
 
-namespace Doc.DependencyProperties.OnPropertyChanging;
+namespace Doc.DependencyProperties.Validate;
 
 internal class MyControl : UserControl
 {
     [DependencyProperty]
     public string Title { get; set; }
 
-    private void OnTitleChanged( string value )
+    private void ValidateTitle( string value )
     {
         if ( value.Contains( "foo" ) )
         {
