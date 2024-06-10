@@ -4,7 +4,7 @@ uid: xaml-dependency-property
 
 # XAML Dependency Property
 
-A dependency property in XAML is a kind of property that can be set from the XAML markup language and be bound to a property of another object (such as a View-Model object) using a <xref"System.Windows.Data.Binding> element. Unlike C# properties, dependency properties must be programmatically registered using `DependencyProperty.Register`. To expose a dependency property as a C# property, one typically writes boilerplate code as demonstrated in the following example:
+A dependency property in XAML is a kind of property that can be set from the XAML markup language and bound to a property of another object (such as a View-Model object) using a <xref:System.Windows.Data.Binding> element. Unlike C# properties, dependency properties must be programmatically registered using `DependencyProperty.Register`. To expose a dependency property as a C# property, one typically writes boilerplate code as demonstrated in the following example:
 
 ```cs
 class MyClass
@@ -25,7 +25,7 @@ Instead of writing this boilerplate, you can simply add the <xref:Metalama.Patte
 The <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute?text=[DependencyProperty]> aspect implements the following features and benefits:
 
 * Zero boilerplate.
-* Integration with `Metalama.Patterns.Contracts` to validate dependency properties using aspects like <xref:Metalama.Patterns.Contracts.NotNullAttribute?text=[NotNull]> or <xref:Metalama.Patterns.Contracts.NotNullAttribute?text=[Url]>. See <xref:contract-patterns> for details.
+* Integration with `Metalama.Patterns.Contracts` to validate dependency properties using aspects like <xref:Metalama.Patterns.Contracts.NotNullAttribute?text=[NotNull]> or <xref:Metalama.Patterns.Contracts.UrlAttribute?text=[Url]>. See <xref:contract-patterns> for details.
 * Support for custom pre- and post-assignment callbacks.
 * Detection of mutable or read-only dependency properties based on property accessor accessibility.
 * Handling of default values.
@@ -39,7 +39,6 @@ To create a dependency property using the <xref:Metalama.Patterns.Xaml.Dependenc
 3. Add an automatic property to this class.
 4. Add the <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute?text=[DependencyProperty]> custom attribute to this automatic property.
 5. Optionally, add any contract from the `Metalama.Patterns.Contracts` details to the automatic property. See <xref:contract-patterns> for details about contracts.
-
 
 ### Example: a simple dependency property
 
@@ -55,7 +54,7 @@ In the following example, the automatic property has a private setter. The <xref
 
 ### Example: a dependency property with contracts
 
-In the following example, a `[Positive]` contract is added to the automatic property. You can see how the <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute?text=[DependencyProperty]>  aspect generates code to enforce this precondition.
+In the following example, a `[Positive]` contract is added to the automatic property. You can see how the <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute?text=[DependencyProperty]> aspect generates code to enforce this precondition.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/Contract.cs]
 
@@ -71,7 +70,6 @@ The following example demonstrates the code generation pattern when an automatic
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/DefaultValue.cs]
 
 If you don't want the property initial value to be interpreted as the default value of the dependency property, you can disable this behavior by setting the <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute.InitializerProvidesDefaultValue> property to `false`. This property is available from the <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute> class from the <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyExtensions.ConfigureDependencyProperty*> fabric extension method.
-
 
 ## Adding a validation callback
 
@@ -96,7 +94,6 @@ The following example implements a profanity filter on a dependency filter. If t
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/Validate.cs]
 
-
 ## Adding a PropertyChanged callback
 
 Whereas the validate method executes _before_ the assignment, you can also add code that executes _after_ the assignment of a dependency property to its new value. For a property named `Foo`, add a method named `OnFooChanged` of one of these signatures:
@@ -120,7 +117,6 @@ In the following example, the `OnBorderWidthChanged` method is executed after th
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/OnPropertyChanged.cs]
 
-
 ## Customizing naming conventions
 
 All examples above relied on the default naming convention, which is based on the following assumptions:
@@ -130,7 +126,7 @@ All examples above relied on the default naming convention, which is based on th
     * The name of the validation method is `ValidateFoo`.
     * The name of the post-assignment callback is `OnFooChanged`.
 
-This naming convention can be modified by calling the <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyExtensions.ConfigureDependendyProperty*> fabric extension method, then <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyOptionsBuilder.AddNamingConvention*?text=builder.AddNamingConvention>, and supplying an instance of the <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyNamingConvention> class.
+This naming convention can be modified by calling the <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyExtensions.ConfigureDependencyProperty*> fabric extension method, then <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyOptionsBuilder.AddNamingConvention*?text=builder.AddNamingConvention>, and supplying an instance of the <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyNamingConvention> class.
 
 If specified, the <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyNamingConvention.PropertyNamePattern?text=DependencyPropertyNamingConvention.PropertyNamePattern> is a regular expression that matches the name of the XAML dependency property from the name of the C# property. If this property is unspecified, the default matching algorithm is used, i.e., the name of the dependency property equals the name of the C# property. The <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyNamingConvention.OnPropertyChangedPattern> and <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyNamingConvention.ValidatePattern> properties are regular expressions that match the validate and property-changed methods. The <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyNamingConvention.RegistrationFieldName> property represents the name of the field containing the <xref:System.Windows.DependencyProperty> object. In these expressions, the `{PropertyName}` substring is replaced by the name of the dependency property returned by <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyNamingConvention.PropertyNamePattern>.
 
