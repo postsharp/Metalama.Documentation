@@ -74,7 +74,7 @@ Additionally, the new class <xref:Metalama.Extensions.Architecture.Predicates.Re
 
 ## Improvements in diagnostic suppressions
 
-Diagnostic suppressions can now be filtered by argument thanks to the new <xref:Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter?text=SuppressionDefinition.WithFilter> method.
+Diagnostic suppressions can now be filtered by argument thanks to the new <xref:Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter*?text=SuppressionDefinition.WithFilter> method.
 
 ## Improvements in the test framework
 
@@ -85,7 +85,7 @@ Diagnostic suppressions can now be filtered by argument thanks to the new <xref:
 The following changes improve your ability to generate code with Metalama:
 
 * Adding <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType*> and <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability*> extension methods for <xref:Metalama.Framework.Code.IType> to override the inferred type or nullability of a captured expression.
-* Ability to evaluate a T# template into an <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement> thanks to the <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.FromTemplate?text=StatementFactory.FromTemplate> method.
+* Ability to evaluate a T# template into an <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement> thanks to the <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.FromTemplate*?text=StatementFactory.FromTemplate> method.
 * New concept <xref:Metalama.Framework.Code.SyntaxBuilders.IStatementList> to represent an unresolved list of statements. Statement lists can be built from an `IStatement` or `IEnumerable<IStatement>` using the new extension method <xref:Metalama.Framework.Code.SyntaxBuilders.StatementExtensions.AsList*> and <xref:Metalama.Framework.Code.SyntaxBuilders.StatementExtensions.UnwrapBlock*> or with the new class <xref:Metalama.Framework.Code.SyntaxBuilders.StatementListBuilder>.
 * New class <xref:Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder> to dynamically create a `switch` statement (cases can be added programmatically &mdash; only literal case labels are currently supported).
 
@@ -103,7 +103,8 @@ The following changes improve your ability to generate code with Metalama:
 ## Improvements in advising and code templates
 
 * Added support for lambda statements and anonymous methods of known scope, i.e., either run-time or compile-time (the scope can be coerced using `meta.RunTime` or `meta.CompileTime` when it is not obvious from the context). Lambda expressions returning `dynamic` are not supported and won't be. Single-statement lambdas (e.g., `() => { return 0; }`) are transparently simplified into expression lambdas (e.g., `() => 0`).
-* New concept of <xref:Metalama.Framework.Utilities.Promise> (with its interface <xref:Metalama.Framework.Utilities.IPromise`1> to represent results that are not available yet. This mechanism allows resolving chicken-or-egg issues when introducing members when a template must receive a reference to a declaration that has not been introduced yet. A `Promise<T>` can be passed as an argument to a template, which receives it on a parameter of type `T`.
+* New concept of <xref:Metalama.Framework.Utilities.Promise`1> (with its interface <xref:Metalama.Framework.Utilities.IPromise`1>) to represent results that are not available yet. This mechanism allows resolving chicken-or-egg issues when introducing members when a template must receive a reference to a declaration that has not been introduced yet. A `Promise<T>` can be passed as an argument to a template, which receives it on a parameter of type `T`.
+* An error will be reported when attempting to use some template-only methods from a method that is not a template.
 
 ### Changes in interface implementation
 * The <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> advice no longer verifies if all interface members are present. Errors will appear during compilation. Interface members can be introduced using `[InterfaceMember]` as before, but also using `[Introduce]`, or programmatically using `IAdviceFactory.IntroduceMethod`.
@@ -121,3 +122,4 @@ For details, see <xref:creating-logs>.
 * <xref:Metalama.Framework.Validation.ReferenceValidationContext> no longer reports several <xref:System.String,Metalama.Framework.Validation.ReferenceKinds>, but only the deepest one. For instance, in `class A : List<C>;`, the reference to `C` is of kind `GenericArgument` and no longer `BaseType | GenericArgument`. Combined flags added complexity, and we did not see a use case for them.
 * Projects that were using transitive reference validators (or architecture constraints), if they were built with a previous version of Metalama, must be rebuilt.
 * Relationships specified with <xref:Metalama.Framework.Aspects.AspectOrderAttribute> are now applied to derived aspect classes by default. To revert to the previous behavior, set the <xref:Metalama.Framework.Aspects.AspectOrderAttribute.ApplyToDerivedTypes> property to `false`.
+* An error will be reported when attempting to use some compile-time methods (for instance `meta.CompileTime`) from a method that is not a template. In prior versions, these methods had no effect and were only confusing.
