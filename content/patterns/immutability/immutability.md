@@ -2,7 +2,7 @@
 uid: immutability
 ---
 
-# Immutability
+# Metalama.Patterns.Immutability
 
 Immutability is a widely recognized and beneficial concept in software programming. An immutable type refers to a type whose instances cannot be modified once they have been created. Designs that prioritize immutable types are typically easier to understand than those that heavily rely on mutating objects. Examples of immutable types in C# include intrinsic types like `int`, `float`, or `string`, enums, delegates, most system value types like `DateTime`, and collections from the `System.Collections.Immutable` namespace.
 

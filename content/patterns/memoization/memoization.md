@@ -3,7 +3,7 @@ uid: memoization
 summary: "Memoization is an optimization technique that caches results of deterministic methods to enhance performance. The technique is implemented through the Memoize aspect in Metalama, offering a simple and high-performance solution compared to the System.Lazy class."
 ---
 
-# Memoization
+# Metalama.Patterns.Memoization
 
 Memoization is an optimization technique that enhances the performance of deterministic methods by caching their results. Metalama provides a straightforward and high-performance implementation of this technique through the <xref:Metalama.Patterns.Memoization.MemoizeAttribute?text=[Memoize]> aspect.
 

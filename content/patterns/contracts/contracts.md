@@ -3,7 +3,7 @@ uid: contract-patterns
 summary: "Metalama Contracts facilitate contract-based programming, enhancing software reliability and clarity. They enforce preconditions, postconditions, and type invariants, aiding in error detection and promoting modular design. They are more readable, inheritable, and customizable than hand-written precondition checks. "
 ---
 
-# Metalama Contracts
+# Metalama.Patterns.Contracts
 
 Metalama Contracts facilitate the implementation of Contract-Based Programming principles, a software engineering practice that significantly enhances software reliability and clarity. In contract-based programming, a _contract_ defines a set of obligations and expectations between two parties: a caller and a callee. Metalama Contracts embody three fundamental concepts of contract-based programming: preconditions, postconditions, and type invariants.
 

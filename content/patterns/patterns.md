@@ -17,8 +17,11 @@ The following libraries are currently available:
 
 | Library | Description |
 |---------|-------------|
-| <xref:contract-patterns> | Metalama Contracts implement Contract-Based Programming via preconditions, postconditions, and invariants. This aids in building maintainable, reliable, and scalable software systems. |
-| <xref:caching> | Metalama Caching combines object-oriented and aspect-oriented APIs.
-| <xref:memoization> | A simple and high-performance alternative to caching limited to get-only properties and paramerless methods. |
-| <xref:dependency-injection-aspect> | An aspect to automatically pull dependencies from fields and properties. Supports lazy loading. |
+| <xref:dependency-injection-aspect> | Although this package is primarily designed to make it easy for aspect authors to integrate dependency injection, it also contains an aspect that automatically pulls dependencies from fields and properties. Supports lazy loading. |
+| <xref:contract-patterns> | Implements Contract-Based Programming via preconditions, postconditions, and invariants. This aids in building maintainable, reliable, and scalable software systems. |
+| <xref:caching> | Combines object-oriented and aspect-oriented APIs.
+| <xref:memoization> | Implements a simple and high-performance alternative to caching limited to get-only properties and paramerless methods. |
+| <xref:immutability> | Represents the concept of Immutable Type.
+| <xref:observability> | Contains an aspect that implements the <xref:System.ComponentModel.INotifyPropertyChanged> interface. Supports explicit properties, type inheritance, and child objects. |
+| <xref:xaml> | Two aspects to simplify the work with XAML: Command and Dependency Property. |
 

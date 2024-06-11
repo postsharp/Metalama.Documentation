@@ -3,7 +3,7 @@ uid: dependency-injection-aspect
 summary: "The document discusses the use of `Microsoft.Extensions.DependencyInjection` in .NET for dependency injection. It highlights the advantages of using `Metalama.Extensions.DependencyInjection.DependencyAttribute` to reduce boilerplate code, simplify migration, and ensure compatibility."
 ---
 
-# Injecting dependencies
+# Metalama.Extensions.DependencyInjection
 
 Dependency injection is one of the most prevalent patterns in .NET. Prior to .NET Core, the community developed several frameworks with varying features and coding patterns. Since then, `Microsoft.Extensions.DependencyInjection` has emerged as the default framework.
 
@@ -20,7 +20,7 @@ The advantages of this aspect include:
 The <xref:Metalama.Extensions.DependencyInjection.DependencyAttribute?text=[Dependency]> aspect provides two properties:
 
 * <xref:Metalama.Extensions.DependencyInjection.DependencyAttribute.IsLazy> generates code that resolves the dependency lazily, upon the first access.
-* <xref:Metalama.Extensions.DependencyInjection.DependencyAttribute.IsRequired> determines whether the code can execute if the property is missing.
+* <xref:Metalama.Extensions.DependencyInjection.DependencyAttribute.IsRequired> determines whether the code can execute if the property is missing. If you are using nullable reference types, the `IsRequired` parameter is inferred from the nullability of the field or property.
 
 
 ## Example: Injecting Dependencies

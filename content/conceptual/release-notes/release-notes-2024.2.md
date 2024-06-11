@@ -6,80 +6,118 @@ summary: ""
 # Metalama 2024.2
 
 > [!WARNING]
->  This release is under development.
+> This release is under development.
+
+Metalama 2024.2 has two focal points. The first is the ability to introduce classes, which closes the biggest gap with Roslyn source generator and finally makes it possible to implement patterns like memento or enum view-model. The second priority is to finalize and document the `Metalama.Patterns.Observability` and `Metalama.Patterns.Xaml` packages.
+
+We had to make dozens of smaller improvements to the framework to reach these objectives, and they will benefit everyone.
+
+Here is a detailed list.
+
+## Metalama.Patterns.Observability
+
+The `Metalama.Patterns.Observability` package is now stable and fully supported.
+
+It contains the <xref:Metalama.Patterns.Observability.ObservableAttribute?text=[Observable]> aspect, which implements the <xref:System.ComponentModel.INotifyPropertyChanged> interface.
+
+The <xref:Metalama.Patterns.Observability.ObservableAttribute?text=[Observable]> aspect is incredibly advanced and capable.
+
+Where competing solutions stop at automatic properties, our implementation supports:
+* explicit properties with references to fields, other properties, and methods,
+* child objects, i.e., properties like `string FullName => $"{this.Model.FirstName} {this.Model.LastName}"`,
+* references to properties of the base type,
+* use of constant static methods with immutable types.
+
+For details, see <xref:observability>.
+
+## Metalama.Patterns.Xaml
+
+The `Metalama.Patterns.Xaml` package is now stable and fully supported.
+
+It contains two aspects: <xref:Metalama.Patterns.Xaml.CommandAttribute?text=[Command]> and <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute?text=[DependencyAttribute]> to reduce the XAML boilerplate code.
+
+For details, see <xref:xaml>.
+
+## Metalama.Patterns.Immutability
+
+This new package defines a concept of immutable type. Types can be marked as immutable using the <xref:Metalama.Patterns.Immutability.ImmutableAttribute?text=[Immutable]> aspect or the <xref:Metalama.Patterns.Immutability.Configuration.ImmutabilityConfigurationExtensions.ConfigureImmutability*> fabric method. This information is used by the `Metalama.Patterns.Observability` package to infer the mutability of properties.
+
+For details, see <xref:immutability>.
 
 ## Introduction of classes and constructors
 
-* It is now possible to introduce whole classes by using the `IAdviceFactory.IntroduceClass` method. This method returns an `IAdviser<INamedType>`, which you can then use to add members to the new type.
-* New advice method `IAdviceFactory.IntroduceConstructor` to introduce a constructor into an existing or new type.
-
-
+* It is now possible to introduce whole classes by using the <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceClass*?text=IAdviceFactory.IntroduceClass> method. This method returns an <xref:Metalama.Framework.Advising.IAdviser`1>`<INamedType>`, which you can then use to add members to the new type.
+* New advice method <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceConstructor*?text=IAdviceFactory.IntroduceConstructor> to introduce a constructor into an existing or new type.
 
 ## Improvements in fabrics and IAspectReceiver
 
-*  The`IAmender.Outbound` property is now redundant and has been marked as `[Obsolete]`. The `IAmender` interface now exposes `IAspectReceiver`, which was previously exposed by `Outbound`. The `Outbound` property is still required for `IAspectBuilder`.
-* New method`IAspectReceiver.Tag`:  adds an arbitrary tag that is carried on and available for all lambdas on the right side of the `Tag` method for new overloads of all  (or most)`IAspectReceiver` methods.
-* New method`IAspectReceiver.SelectTypes`: gets all types in the current context (typically namespace, compilation, or current type)
-* New method `IAspectReceiver.SelectTypesDerivedFrom`: gets all types in the current context derived from a given type.
-* New extension method `IAspectReceiver<ICompilation>.SelectReferencedAssembly`: gets a referenced assembly.
-* New extension method `IAspectReceiver<ICompilation>.SelectReflectionType`: gets a type given by `System.Type`.
-* The right side of query operators like `IAspectReceiver.SelectMany()`, `IAspectReceiver.SelectTypes` or `IAspectReceiver.SelectTypesDerivedFrom` now executes concurrently.
-* When a part of a query is used several times (typically by storing the query in a local variable), its result is cached.
+* The <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound?text=IAmender.Outbound> property is now redundant and has been marked as `[Obsolete]`. The <xref:Metalama.Framework.Fabrics.IAmender`1> interface now directly derives from <xref:Metalama.Framework.Aspects.IAspectReceiver> instead of exposing it on the <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound> property. The use of the <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound> property is still required for <xref:Metalama.Framework.Aspects.IAspectBuilder`1>.
+* New method <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Tag*?text=IAspectReceiver.Tag>: adds an arbitrary tag that is carried on and available for all lambdas on the right side of the `Tag` method for new overloads of all (or most) `IAspectReceiver` methods.
+* New method <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectTypes*?text=IAspectReceiver.SelectTypes>: gets all types in the current context (typically namespace, compilation, or current type).
+* New method <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectTypesDerivedFrom*?text=IAspectReceiver.SelectTypesDerivedFrom>: gets all types in the current context derived from a given type.
+* New extension methods for `IAspectReceiver<ICompilation>`:
+   * <xref:Metalama.Framework.Aspects.AspectReceiverExtensions.SelectReferencedAssembly*> gets a referenced assembly,
+   * <xref:Metalama.Framework.Aspects.AspectReceiverExtensions.SelectReflectionType*> gets a type given by `System.Type`.
+* Performance improvements:
+    * The right side of query operators like `IAspectReceiver.SelectMany()`, `IAspectReceiver.SelectTypes` or `IAspectReceiver.SelectTypesDerivedFrom` now executes concurrently.
+    * When a part of a query is used several times (typically by storing the query in a local variable), its result is cached.
 
 ## Improvements in Metalama.Extensions.Architecture
 
-### Reference validator granularity
-
-The reference validator feature now has a concept of _validator granularity_, which can be set to `Compilation`, `Type`, `Member`, or `Declaration`. The idea is that when a validator is invariant within some level of granularity, then its predicate should only be evaluated once within the declaration at this level of granularity. For instance, if a validator granularity is set to `Namespace`, then _all_ references within that namespace will be either valid or invalid at the same time.
+The reference validator feature now has a concept of _validator granularity_ (<xref:Metalama.Framework.Validation.ReferenceGranularity>), which accepts the values `Compilation`, `Namespace`, `Type`, `Member`, or `ParameterOrAttribute`. The idea is that when a validator is invariant within some level of granularity, then its predicate should only be evaluated once within the declaration at this level of granularity. For instance, if a validator granularity is set to `Namespace`, then _all_ references within that namespace will be either valid or invalid at the same time.
 
 The _validator granularity_ concept is essential to improve the performance of validators, as references can be validated collectively instead of one by one.
 
 Code written against the previous API will get obsolescence warnings. We suggest porting your validators to the new API and choosing the coarsest possible granularity.
 
-### Other improvements
-
-* The new class `Metalama.Extensions.Architecture.Predicates.ReferenceEndPredicate` serves as a base for predicates that depend on a single end of the reference to validate. This is a preparation for some next feature, allowing the validation of inbound references instead of just outbound references.
+Additionally, the new class <xref:Metalama.Extensions.Architecture.Predicates.ReferenceEndPredicate> serves as a base for predicates that depend on a single end of the reference to validate. This class is a preparation for some future feature, allowing the validation of inbound references instead of just outbound references.
 
 ## Improvements in diagnostic suppressions
 
- Diagnostic suppressions can now be filtered by argument thanks to the new `SuppressionDefinition.WithFilter` method. 
+Diagnostic suppressions can now be filtered by argument thanks to the new <xref:Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter?text=SuppressionDefinition.WithFilter> method.
 
 ## Improvements in the test framework
 
-* The default diff interactive tool will now be opened when an aspect test fails (i.e. the expected snapshot is different than the actual one). The feature works with [DiffEngine](https://github.com/VerifyTests/DiffEngine) and integrates with [DiffEngineTray](https://github.com/VerifyTests/DiffEngine/blob/main/docs/tray.md).
-
+* The default diff interactive tool will now be opened when an aspect test fails (i.e., the expected snapshot is different than the actual one). The feature works with [DiffEngine](https://github.com/VerifyTests/DiffEngine) and integrates with [DiffEngineTray](https://github.com/VerifyTests/DiffEngine/blob/main/docs/tray.md).
 
 ## Improvements in the code model
 
-* Adding `IExpression.WithType` and `IExpression.WithNullability` to override the inferred type or nullability of a captured expression.
-* New method `StatementFactory.FromTemplate` to create an `IStatement` from a template.
-* New concept `IStatementList` to represent an unresolved list of statements. New extension methods `IStatement.AsList()`, `IEnumerable<IStatement>.AsList()`, and `IStatement.UnwrapBlock` to create lists. New class `StatementListBuilder` to create an `IStatementList` by adding elements.
-* New class `SwitchStatementBuilder` to dynamically creating a `switch` statement (cases can be added programmatically &mdash; only literal case labels are currently supported.)
-* New method `IMethodInvoker.CreateInvokeExpression` generating an `IExpression` that represents a method invocation. Can be called outside of a template context.
-* New interface `IConstructorInvoker` with methods `Invoke` and `CreateInvocationExpression`.
+The following changes improve your ability to generate code with Metalama:
+
+* Adding <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType*> and <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability*> extension methods for <xref:Metalama.Framework.Code.IType> to override the inferred type or nullability of a captured expression.
+* Ability to evaluate a T# template into an <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement> thanks to the <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.FromTemplate?text=StatementFactory.FromTemplate> method.
+* New concept <xref:Metalama.Framework.Code.SyntaxBuilders.IStatementList> to represent an unresolved list of statements. Statement lists can be built from an `IStatement` or `IEnumerable<IStatement>` using the new extension method <xref:Metalama.Framework.Code.SyntaxBuilders.StatementExtensions.AsList*> and <xref:Metalama.Framework.Code.SyntaxBuilders.StatementExtensions.UnwrapBlock*> or with the new class <xref:Metalama.Framework.Code.SyntaxBuilders.StatementListBuilder>.
+* New class <xref:Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder> to dynamically create a `switch` statement (cases can be added programmatically &mdash; only literal case labels are currently supported).
+
+* New method <xref:Metalama.Framework.Code.Invokers.IMethodInvoker.CreateInvokeExpression*> generating an <xref:Metalama.Framework.Code.IExpression> that represents a method invocation. Can be called outside of a template context.
+
+* New interface <xref:Metalama.Framework.Code.Invokers.IConstructorInvoker> with its <xref:Metalama.Framework.Code.Invokers.IConstructorInvoker.Invoke*> and <xref:Metalama.Framework.Code.Invokers.IConstructorInvoker.CreateInvokeExpression*> methods.
 
 ## Improvements in code formatting
 
 * The performance of whole-project output code formatting has been improved. Note that code formatting is disabled by default so it should not affect your standard builds, but `LamaDebug` builds should be faster.
-* Redundancies in member access expressions are eliminated where application  (e.g. `this.X` or `MyType.Y` becomes `X` or `Y`).
+* Redundancies in member access expressions are eliminated where applicable (e.g., `this.X` or `MyType.Y` becomes `X` or `Y`).
 * Non-extension calls to extension methods in templates are transformed into extension calls. This is useful because extension methods cannot be called on dynamic types.
 * The discard parameter `_`, when used in templates, was renamed to `__1`, `__2` and so on.
 
 ## Improvements in advising and code templates
 
-* Added support for lambda statements and anonymous methods of known scope, i.e. either run-time or compile-time (the scope can be coerced using `meta.RunTime` or `meta.CompileTime` when it is not obvious from the context). Lambda expressions returning `dynamic` are not supported and won't be. Single-statement lambdas (e.g. `() => { return 0; }` are transparently simplified into expression lambdas (e.g. `() => 0`).
-* New class `Promise<T>` and interfaces `IPromise<T>` and `IPromise` to represent results that are not available yet. This mechanism allows to resolve chicken-or-egg issues when introducing members, when a template must receive a reference to a declaration that has not been introduced yet. A `Promise<T>` can be passed as an argument to a template, which receives it on a parameter of type `T`. 
+* Added support for lambda statements and anonymous methods of known scope, i.e., either run-time or compile-time (the scope can be coerced using `meta.RunTime` or `meta.CompileTime` when it is not obvious from the context). Lambda expressions returning `dynamic` are not supported and won't be. Single-statement lambdas (e.g., `() => { return 0; }`) are transparently simplified into expression lambdas (e.g., `() => 0`).
+* New concept of <xref:Metalama.Framework.Utilities.Promise> (with its interface <xref:Metalama.Framework.Utilities.IPromise`1> to represent results that are not available yet. This mechanism allows resolving chicken-or-egg issues when introducing members when a template must receive a reference to a declaration that has not been introduced yet. A `Promise<T>` can be passed as an argument to a template, which receives it on a parameter of type `T`.
 
 ### Changes in interface implementation
-* The `ImplementInterface` advice no longer cares if all interface members are present. Errors will appear during compilation.
-* Interface members can be introduced using `[Introduce]` or programmatically using `IAdviceFactory.IntroduceMethod`.
-* `[InterfaceMember]` is marked as `[Obsolete]` and replaced by `[Introduce]` or `[ExplicitInterfaceMember]`.
-* `InterfaceMemberOverrideStrategy` becomes obsolete. The side case `MakeExplicit` is replaced by a programmatic strategy.
-* `IInterfaceImplementationResult` is `IAdviser<INamedType>` and allows to introduce members. Using `IInterfaceImplementationResult.WithExplicitImplementation() : IAdviser<INamedType>` it is possible to introduce named type.
+* The <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> advice no longer verifies if all interface members are present. Errors will appear during compilation. Interface members can be introduced using `[InterfaceMember]` as before, but also using `[Introduce]`, or programmatically using `IAdviceFactory.IntroduceMethod`.
+* The <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult> interface now has a <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult.ExplicitImplementation> property of type `IAdviser<INamedType>`, which allows introducing explicit (private) members.
+
+### Improvements in supportability
+
+When troubleshooting Metalama, it is now possible to enable tracing and direct it to the standard output just using an environment variable.
+
+For details, see <xref:creating-logs>.
 
 ## Breaking Changes
 
-* The `Metalama.Extensions.Architecture.Predicates.ReferencePredicate` class has a new abstract member `Granularity`. Its constructor now requires a `ReferencePredicateBuilder`.
-* `ReferenceValidationContext` no longer reports several `ReferenceKinds`, but only the deepest one. For instance, in `class A : List<C>;`,  the reference to `C` is of kind `GenericArgument` and no longer `BaseType | GenericArgument`. Combined flags added complexity, and we did not see a use case for them.
-* Projects that were using transitive reference validators (or architecture constraints), if they were built with a previous version of Metalama, must be rebuilt. 
-* Relationships specified with `AspectOrderAttribute` are now applied to derived aspect classes by default. To revert to the previous behavior, set the `AspectOrderAttribute.ApplyToDerivedTypes` property to `false`.
+* The <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicate> class has a new abstract property <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicate>. Its constructor now requires a <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateBuilder>.
+* <xref:Metalama.Framework.Validation.ReferenceValidationContext> no longer reports several <xref:System.String,Metalama.Framework.Validation.ReferenceKinds>, but only the deepest one. For instance, in `class A : List<C>;`, the reference to `C` is of kind `GenericArgument` and no longer `BaseType | GenericArgument`. Combined flags added complexity, and we did not see a use case for them.
+* Projects that were using transitive reference validators (or architecture constraints), if they were built with a previous version of Metalama, must be rebuilt.
+* Relationships specified with <xref:Metalama.Framework.Aspects.AspectOrderAttribute> are now applied to derived aspect classes by default. To revert to the previous behavior, set the <xref:Metalama.Framework.Aspects.AspectOrderAttribute.ApplyToDerivedTypes> property to `false`.

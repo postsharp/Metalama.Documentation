@@ -1,0 +1,67 @@
+items:
+  - name: Pattern Libraries
+    topicUid: patterns
+    items:
+          - name: Dependency injection
+            topicUid: dependency-injection-aspect
+
+          - name: Contracts
+            topicUid: contract-patterns
+            items:
+              - name: Validating field, property and parameter values
+                topicUid: value-contracts
+                items:
+                - name: Contract types
+                  topicUid: contract-types
+                - name: Checking all non-nullable references
+                  topicUid: enforcing-non-nullability
+              - name: Enforcing type invariants
+                topicUid: invariants
+              - name: Configuring contracts
+                topicUid: configuring-contracts
+            
+          - name: Immutability
+            topicUid: immutability
+
+          - name: Observability (INotifyPropertyChanged)
+            topicUid: observability
+            items:
+              - name: Supported scenarios
+                topicUid: observability-standard-cases
+
+          - name: Caching
+            topicUid: caching
+            items:
+              - name: Getting started
+                topicUid: caching-getting-started
+              - name: Customizing cache keys
+                topicUid: caching-keys
+              - name: Excluding parameters
+                topicUid: caching-exclude-parameters
+              - name: Configuring the caching behavior
+                topicUid: caching-configuration
+              - name: Invalidating the cache
+                topicUid: caching-invalidation
+              - name: Working with cache dependencies
+                topicUid: caching-dependencies
+              - name: Distributed caching with Redis
+                topicUid: caching-redis
+              - name: Synchronizing local in-memory caches for multiple nodes
+                topicUid: caching-pubsub
+              - name: Caching special types with value adapters
+                topicUid: caching-value-adapters
+              - name: Preventing concurrent execution
+                topicUid: cache-locking
+              - name: Troubleshooting
+                topicUid: caching-troubleshooting
+              
+          - name: Memoization
+            topicUid: memoization
+
+          - name: XAML
+            topicUid: xaml
+            items:
+              - name: Command
+                topicUid: xaml-command
+              - name: Dependency Property
+                topicUid: xaml-dependency-property

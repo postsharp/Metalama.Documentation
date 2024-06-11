@@ -2,7 +2,7 @@
 uid: caching
 summary: "Metalama Caching is an efficient way to enhance application performance, reducing boilerplate, bugs, and coupling. It supports various caching topologies and automates complex cache processes. "
 ---
-# Metalama Caching
+# Metalama.Patterns.Caching
 
 Caching is an effective method to enhance the performance of an application. Traditionally, implementing caching requires interacting with the API of the caching framework (such as <xref:System.Runtime.Caching.MemoryCache>) or database (like Redis). It also involves incorporating moderately complex logic into your source code to generate the cache key, verify the item's existence in the cache, and add the item to the cache. Additional complexity arises from the necessity to remove items from the cache when the source data is updated. Manual caching implementation is not only time-consuming but also prone to errors, as it is easy to generate inconsistent cache keys between read and update methods.
 

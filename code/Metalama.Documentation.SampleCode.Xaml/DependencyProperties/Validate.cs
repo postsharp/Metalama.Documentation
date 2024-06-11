@@ -11,7 +11,7 @@ namespace Doc.DependencyProperties.Validate;
 internal class MyControl : UserControl
 {
     [DependencyProperty]
-    public string Title { get; set; }
+    public string? Title { get; set; }
 
     private void ValidateTitle( string value )
     {
