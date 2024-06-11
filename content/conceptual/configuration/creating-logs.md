@@ -97,6 +97,7 @@ Note that `dotnet build` or `msbuild` process, as well as the Metalama compiler 
 
 It is also important to enable detailed verbosity in `dotnet build` or `msbuild` because the default verbosity does not pass through the standard output of the compiler process.
 
+### Example: PowerShell
 Combining all these notes, here is how to enable console logging for all categories:
 
 ```powershell
@@ -104,3 +105,33 @@ $env:METALAMA_CONSOLE_TRACE="*"
 dotnet build -t:rebuild --disable-build-servers -v:detailed
 ```
 
+### Example: GitHub action
+
+```yaml
+name: Build and Test
+on:
+    push:
+        branches:
+        - master
+env:
+    METALAMA_CONSOLE_TRACE: '*'
+jobs:
+    build-and-test:
+        strategy:
+            fail-fast: false
+            matrix:
+                os: [ubuntu-latest, windows-latest, macos-latest]
+                dotnet-version: ['8.x']
+        runs-on: ${{ matrix.os }}
+        name: Build and Test on ${{ matrix.os }} with .NET Core ${{ matrix.dotnet-version }}
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Setup .NET Core
+              uses: actions/setup-dotnet@v4
+              with:
+                  dotnet-version: ${{ matrix.dotnet-version }}
+            - run: dotnet restore
+            - run: dotnet build --configuration Debug --no-restore -v:detailed --disable-build-servers
+            - run: dotnet test --configuration Release --no-restore -v:detailed --disable-build-servers 
+```
