@@ -147,6 +147,16 @@ object DebugBuild : BuildType({
                 artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.LinqPad"
             }
         }
+        dependency(AbsoluteId("Metalama_Metalama20242_MetalamaMigration_DebugBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
+            }
+        }
         dependency(AbsoluteId("Metalama_Metalama20242_MetalamaPatterns_DebugBuild")) {
             snapshot {
                      onDependencyFailure = FailureAction.FAIL_TO_START
@@ -300,6 +310,16 @@ object ReleaseBuild : BuildType({
             artifacts {
                 cleanDestination = true
                 artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.LinqPad"
+            }
+        }
+        dependency(AbsoluteId("Metalama_Metalama20242_MetalamaMigration_ReleaseBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
             }
         }
         dependency(AbsoluteId("Metalama_Metalama20242_MetalamaPatterns_ReleaseBuild")) {
@@ -468,6 +488,16 @@ object PublicBuild : BuildType({
             artifacts {
                 cleanDestination = true
                 artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.LinqPad"
+            }
+        }        
+        dependency(AbsoluteId("Metalama_Metalama20242_MetalamaMigration_PublicBuild")) {
+            snapshot {
+                     onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "+:artifacts/publish/private/**/*=>dependencies/Metalama.Migration"
             }
         }
         dependency(AbsoluteId("Metalama_Metalama20242_MetalamaPatterns_PublicBuild")) {
