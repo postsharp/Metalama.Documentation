@@ -6,9 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)"/>
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Metalama.Framework" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Project1\Project1.csproj" />
   </ItemGroup>
