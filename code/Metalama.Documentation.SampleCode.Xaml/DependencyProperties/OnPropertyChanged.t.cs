@@ -25,7 +25,7 @@ internal class MyControl : UserControl
     }
     private set
     {
-      this.SetValue(AvailableWidthProperty, value);
+      this.SetValue(AvailableWidthPropertyKey, value);
     }
   }
   private void OnBorderWidthChanged()
@@ -33,10 +33,12 @@ internal class MyControl : UserControl
     this.AvailableWidth = this.Width - this.BorderWidth * 2;
   }
   public static readonly DependencyProperty AvailableWidthProperty;
+  private static readonly DependencyPropertyKey AvailableWidthPropertyKey;
   public static readonly DependencyProperty BorderWidthProperty;
   static MyControl()
   {
     BorderWidthProperty = DependencyProperty.Register("BorderWidth", typeof(double), typeof(MyControl), new PropertyMetadata((d, e) => ((MyControl)d).OnBorderWidthChanged()));
-    AvailableWidthProperty = DependencyProperty.Register("AvailableWidth", typeof(double), typeof(MyControl));
+    AvailableWidthPropertyKey = DependencyProperty.RegisterReadOnly("AvailableWidth", typeof(double), typeof(MyControl), null);
+    AvailableWidthProperty = AvailableWidthPropertyKey.DependencyProperty;
   }
 }

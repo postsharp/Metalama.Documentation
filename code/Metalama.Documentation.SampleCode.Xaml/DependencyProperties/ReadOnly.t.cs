@@ -13,12 +13,14 @@ internal class MyControl : UserControl
     }
     private set
     {
-      this.SetValue(BorderWidthProperty, value);
+      this.SetValue(BorderWidthPropertyKey, value);
     }
   }
   public static readonly DependencyProperty BorderWidthProperty;
+  private static readonly DependencyPropertyKey BorderWidthPropertyKey;
   static MyControl()
   {
-    BorderWidthProperty = DependencyProperty.Register("BorderWidth", typeof(double), typeof(MyControl));
+    BorderWidthPropertyKey = DependencyProperty.RegisterReadOnly("BorderWidth", typeof(double), typeof(MyControl), null);
+    BorderWidthProperty = BorderWidthPropertyKey.DependencyProperty;
   }
 }
