@@ -6,10 +6,10 @@
     <Nullable>enable</Nullable>
     <OutputType>Exe</OutputType>
   </PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="Metalama.Framework" Version="2023.0.101-rc" />
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Metalama.Documentation.QuickStart" Version="$(MetalamaSamplesVersion)"/>
-	</ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Metalama.Documentation.QuickStart" />
+    <PackageReference Include="Metalama.Framework" />
+  </ItemGroup>
+
 </Project>

@@ -5,17 +5,8 @@
     <Import Project="MainVersion.props" />
     
     <PropertyGroup>
-        <AzureIdentityVersion>1.10.1</AzureIdentityVersion>
-        <AzureSecurityKeyVaultSecretsVersion>4.5.0</AzureSecurityKeyVaultSecretsVersion>
-
         <MetalamaDocumentationVersion>$(MainVersion)$(PackageVersionSuffix)</MetalamaDocumentationVersion>
         <MetalamaDocumentationAssemblyVersion>$(MainVersion)</MetalamaDocumentationAssemblyVersion>
-    </PropertyGroup>
-
-    <!-- Set the default versions of dependencies -->
-    <PropertyGroup>
-        <PostSharpEngineeringVersion>2023.2.106</PostSharpEngineeringVersion>
-        <NuGetCommandLineVersion>6.9.1</NuGetCommandLineVersion>
     </PropertyGroup>
 
     <!-- Set the deafult versions of auto-updated dependencies -->
@@ -29,5 +20,8 @@
         <AssemblyVersion>$(MetalamaDocumentationAssemblyVersion)</AssemblyVersion>
         <Version>$(MetalamaDocumentationVersion)</Version>
     </PropertyGroup>
+
+    <!-- Versions of other dependencies are set in Directory.Packages.props. -->
+    <!-- See https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management. -->
 
 </Project>
