@@ -21,25 +21,16 @@ namespace Metalama.Documentation.Helpers.Redis;
 /// </summary>
 public class LocalRedisServer : IDisposable
 {
-    private static int _instanceCounter;
-    internal static readonly ConcurrentBag<WeakReference<LocalRedisServer>> Instances = new();
     private readonly Process _process;
     private readonly TemporaryFile _executable;
     private readonly Config _config;
-
-    public string Name { get; }
-
-    internal bool IsDisposed { get; private set; }
-
+    private bool _isDisposed;
+    
+    
     public int Port => this._config.Port;
 
     public LocalRedisServer()
     {
-        var counter = Interlocked.Increment( ref _instanceCounter );
-        this.Name = $"{counter}";
-
-        Instances.Add( new WeakReference<LocalRedisServer>( this ) );
-
         Stream executableStream;
         string extension;
 
@@ -172,16 +163,16 @@ public class LocalRedisServer : IDisposable
             throw new Exception( $"Redis process exited without being initialized properly. Last received line: {Volatile.Read( ref lastLine )}" );
         }
     }
-
+    
     internal EndPoint Endpoint => new IPEndPoint( IPAddress.Loopback, this._config.Port );
 
     protected virtual void Dispose( bool disposing )
     {
-        if ( this.IsDisposed )
+        if ( this._isDisposed )
         {
             return;
         }
-
+        
         try
         {
             this._process.CancelOutputRead();
@@ -194,7 +185,6 @@ public class LocalRedisServer : IDisposable
 
             if ( disposing )
             {
-                this._process.WaitForExit();
                 this._process.Dispose();
                 this._executable.Dispose();
             }
@@ -204,7 +194,7 @@ public class LocalRedisServer : IDisposable
             this._config.Logger.Invoke( ex.ToString() );
         }
 
-        this.IsDisposed = true;
+        this._isDisposed = true;
     }
 
     ~LocalRedisServer()

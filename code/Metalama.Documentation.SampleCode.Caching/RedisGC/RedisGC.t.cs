@@ -13,7 +13,7 @@ public sealed class Program
   {
     var appBuilder = Host.CreateApplicationBuilder();
     // Add a local Redis server with a random-assigned port. You don't need this in your code.
-    appBuilder.Services.AddLocalRedisServer();
+    using var redis = appBuilder.Services.AddLocalRedisServer();
     // Add the garbage collected service, implemented as IHostedService.
     appBuilder.Services.AddRedisCacheDependencyGarbageCollector(serviceProvider =>
     {

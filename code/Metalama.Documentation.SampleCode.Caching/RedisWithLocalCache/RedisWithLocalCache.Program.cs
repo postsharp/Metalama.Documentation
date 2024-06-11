@@ -19,7 +19,7 @@ internal static class Program
         var builder = ConsoleApp.CreateBuilder();
 
         // Add a local Redis server with a random-assigned port. You don't need this in your code.
-        builder.Services.AddLocalRedisServer();
+        using var redis = builder.Services.AddLocalRedisServer();
 
         // Add the caching service.                         
         builder.Services.AddMetalamaCaching( /*<AddMetalamaCaching>*/

@@ -6,10 +6,11 @@ namespace Metalama.Documentation.Helpers.Redis;
 
 public static class LocalRedisServerFactory
 {
-    public static IServiceCollection AddLocalRedisServer( this IServiceCollection serviceCollection )
+    public static LocalRedisServer AddLocalRedisServer( this IServiceCollection serviceCollection )
     {
-        serviceCollection.AddSingleton<LocalRedisServer>();
+        var server = new LocalRedisServer();
+        serviceCollection.AddSingleton(server);
 
-        return serviceCollection;
+        return server;
     }
 }
