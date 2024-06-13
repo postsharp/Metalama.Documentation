@@ -8,8 +8,8 @@
     <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Metalama.Documentation.QuickStart" Version="$(MetalamaSamplesVersion)"/>
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Metalama.Documentation.QuickStart" />
+  </ItemGroup>
 
 </Project>

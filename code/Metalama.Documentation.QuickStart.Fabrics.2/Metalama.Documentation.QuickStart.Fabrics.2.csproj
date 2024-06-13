@@ -5,8 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-	<ItemGroup>
-		  <PackageReference Include="Metalama.Documentation.QuickStart" Version="$(MetalamaSamplesVersion)"/>
-	  </ItemGroup>
-  
+
+  <ItemGroup>
+    <PackageReference Include="Metalama.Documentation.QuickStart" />
+  </ItemGroup>
+
 </Project>
