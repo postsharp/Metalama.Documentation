@@ -22,8 +22,8 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
     // Note that we don't build Metalama.Samples ourselves. We expect it to be built from the repo itself.
     // HTML artifacts should be restored from artifacts.
 
-    Solutions = new Solution[]
-    {
+    Solutions =
+    [
         new DotNetSolution( "code\\Metalama.Documentation.Prerequisites.sln" ) { CanFormatCode = true },
         new DotNetSolution( "code\\Metalama.Documentation.Snippets.TestBased.sln" )
         {
@@ -34,17 +34,17 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
             CanFormatCode = true, BuildMethod = BuildMethod.Build,
         },
         new DocFxSolution( "docfx.json", docPackageFileName )
-    },
+    ],
     PublicArtifacts = Pattern.Create(
         docPackageFileName ),
     Dependencies =
-        new[]
-        {
-            DevelopmentDependencies.PostSharpEngineering,
-//            MetalamaDependencies.MetalamaMigration,
-            MetalamaDependencies.MetalamaPatterns, MetalamaDependencies.MetalamaLinqPad,
+    [
+        DevelopmentDependencies.PostSharpEngineering,
+            MetalamaDependencies.MetalamaMigration,
+            MetalamaDependencies.MetalamaPatterns,
+            MetalamaDependencies.MetalamaLinqPad,
             MetalamaDependencies.MetalamaSamples
-        },
+    ],
     SourceDependencies = new[] { MetalamaDependencies.MetalamaSamples, MetalamaDependencies.MetalamaCommunity },
     AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
     Configurations = Product.DefaultConfigurations

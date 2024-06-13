@@ -11,14 +11,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-		<PackageReference Include="NuGet.CommandLine" Version="$(NuGetCommandLineVersion)" GeneratePathProperty="True">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="PostSharp.Engineering.BuildTools" Version="$(PostSharpEngineeringVersion)" />
-        <Content Include="$(PkgNuGet_CommandLine)\tools\nuget.exe">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
+      <PackageReference Include="NuGet.CommandLine" GeneratePathProperty="True">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="PostSharp.Engineering.BuildTools" />
+      <Content Include="$(PkgNuGet_CommandLine)\tools\nuget.exe">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
