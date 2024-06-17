@@ -23,6 +23,17 @@
         <PackageReference Include="Metalama.Testing.AspectTesting" Version="$(MetalamaVersion)" />
     </ItemGroup>
 
+    
+
+    <ItemGroup>
+      <Compile Update="SwitchStatementBuilder.Aspect.cs">
+        <DependentUpon>SwitchStatementBuilder.Aspect.cs</DependentUpon>
+      </Compile>
+      <Compile Update="SwitchStatementBuilder.cs">
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
 
 
   

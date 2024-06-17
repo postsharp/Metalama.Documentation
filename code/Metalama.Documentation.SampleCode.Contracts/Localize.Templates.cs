@@ -10,11 +10,11 @@ namespace Doc.Localize;
 
 internal class FrenchTemplates : ContractTemplates
 {
-    public override void OnPhoneContractViolated( dynamic? value )
+    public override void OnPhoneContractViolated( dynamic? value, ContractContext context ) 
     {
         if ( meta.Target.ContractDirection == ContractDirection.Input )
         {
-            throw new ArgumentException( "La valeur doit être un numéro de téléphone correct.", TargetParameterName );
+            throw new ArgumentException( "La valeur doit être un numéro de téléphone correct.", context.TargetParameterName );
         }
         else
         {

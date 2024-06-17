@@ -6,7 +6,7 @@ namespace Doc.NumericContracts;
 
 public class OrderLine
 {
-    [Positive]
+    [NonNegative]
     public decimal NominalPrice { get; }
 
     [StrictlyPositive]

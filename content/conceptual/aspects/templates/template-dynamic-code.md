@@ -137,16 +137,35 @@ The following example shows how an <xref:Metalama.Framework.Code.SyntaxBuilders.
  
 > [!div id="parsing" class="anchor"]
 
-## Parsing C# expressions
+## Generating expressions using a StringBuilder-like API
 
-Sometimes it is easier to generate the run-time code as a simple text instead of using a complex meta API. If you want to use C# code represented as a `string` in your code, use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Parse*?text=ExpressionFactory.Parse> method. This method returns an <xref:Metalama.Framework.Code.IExpression>, which is a compile-time object that you can use anywhere in compile-time code. The <xref:Metalama.Framework.Code.IExpression> interface exposes the run-time expression in the <xref:Metalama.Framework.Code.IExpression.Value> property.
+It is sometimes easier to generate the run-time code as a simple text instead of using a complex meta API. In this situation, you can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> class. It offers convenient methods like <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral*>, <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName*> or <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression*>. The <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim*> method must be used for anything else, such as keywords or punctuation.
+
+When you are done building the expression, call the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression*> method. It will return an <xref:Metalama.Framework.Code.IExpression> object. The <xref:Metalama.Framework.Code.IExpression.Value?text=IExpression.Value> property is `dynamic` and can be used in run-time code.
+
+> [!NOTE]
+> A major benefit of <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> is that it can be used in a compile-time method that is not a template.
+
+### Example: ExpressionBuilder
+
+The following example uses an <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> to build a pattern comparing an input value to several forbidden values. Notice the use of <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral*>, <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression*> and <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim*>.
+
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ExpressionBuilder.cs name="ExpressionBuilder"]
 
 
->[!NOTE] 
-> The string expression is inserted _as is_ without validation or transformation. Always specify the full namespace of any declaration used in a text expression.
+## Generating statements using a StringBuilder-like API
 
->[!NOTE]
-> Instead of the traditional `StringBuilder` you can use <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> to build an expression. It offers convenient methods like `AppendLiteral`, `AppendTypeName` or `AppendExpression`. To add a statement to the generated code, use <xref:Metalama.Framework.Code.SyntaxBuilders.StatementBuilder> to create the statement and then `meta.InsertStatement` from the template at the place where the statement should be inserted.
+<xref:Metalama.Framework.Code.SyntaxBuilders.StatementBuilder> is to statements what <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> is to expressions. Note that it also allows you to generate _blocks_ thanks to its <xref:Metalama.Framework.Code.SyntaxBuilders.StatementBuilder.BeginBlock*> and <xref:Metalama.Framework.Code.SyntaxBuilders.StatementBuilder.EndBlock*> methods. 
+
+> [!WARNING]
+> Do not forget the trailing semicolon at the end of the statement.
+
+When you are done, call the <xref:Metalama.Framework.Code.SyntaxBuilders.IStatementBuilder.ToStatement*> method. You can use inject the returned <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement> in run-time code by calling the <xref:Metalama.Framework.Aspects.meta.InsertStatement*> method in the template.
+
+
+## Parsing C# expressions and statements
+
+If you already have a string representing an expression or a statement, you can turn it into an <xref:Metalama.Framework.Code.IExpression> or <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement> using the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Parse*?text=ExpressionFactory.Parse> or <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.Parse*?text=StatementFactory.Parse> method, respectively.
 
 ### Example: parsing expressions
 
@@ -154,14 +173,16 @@ The `_logger` field is accessed through a parsed expression in the following exa
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ParseExpression.cs name="ParseExpression"]
 
-## Parsing C# statements
 
-You can generate an arbitrary C# statement by building a `string` a parsing it using the <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.Parse*?text=StatementFactory.Parse> method. The generated <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement> can then be inserted in the template using the <xref:Metalama.Framework.Aspects.meta.InsertStatement*> method.
+## Generating switch statements
 
-To create a block, enclose several statements with  `{` and `}` braces.
+You can use the `Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder` class to generate `switch` statements. Note that it is limited to _constant_ and _default_ labels, i.e. patterns are not supported. Tuple matching is supported.
 
-> [!WARNING]
-> Do not forget the trailing semicolon at the end of the statement.
+### Example: SwitchStatementBuilder
+
+The following example generates an `Execute` method which has two arguments: a message name and an opaque argument. The aspect must be used on a class with one or many `ProcessFoo` methods, where `Foo` is the message name. The aspect generates a `switch` statement that dispatches the message to the proper method.
+
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/SwitchStatementBuilder.cs name="SwitchStatementBuilder"]
 
 ## Converting run-time expressions into compile-time IExpression
 
@@ -190,14 +211,14 @@ Two approaches are available depending on the situation:
     {
         baseCall = (IExpression) meta.Base.MemberwiseClone();
     }
-    
-    // Define a local variable of the same type as the target type.
-    var clone = meta.Cast(meta.Target.Type, baseCall);
     ```
 
     This template generates either `var clone = (TargetType) base.Clone();` or `var clone = (TargetType) this.MemberwiseClone();` depending on the condition.
 
 * Otherwise, use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Capture*?text=ExpressionFactory.Capture> method. 
+
+ You can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType*> and <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability*> extension methods to modify the return type of the returned <xref:Metalama.Framework.Code.IExpression>.
+
 
 
 ## Converting compile-time values to run-time values
@@ -230,4 +251,3 @@ You can have classes that exist both at compile and run time. To allow Metalama 
 ### Example: custom converter
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/CustomSyntaxSerializer.cs name="Custom Syntax Serializer"]
-

@@ -4,7 +4,7 @@ namespace Doc.NumericContracts;
 public class OrderLine
 {
   private readonly decimal _nominalPrice;
-  [Positive]
+  [NonNegative]
   public decimal NominalPrice
   {
     get
@@ -13,7 +13,7 @@ public class OrderLine
     }
     private init
     {
-      if (value is < 0M)
+      if (value < 0M)
       {
         throw new ArgumentOutOfRangeException("value", "The 'NominalPrice' property must be greater than or equal to 0.");
       }
@@ -30,7 +30,7 @@ public class OrderLine
     }
     private init
     {
-      if (value is <= 0M)
+      if (value <= 0M)
       {
         throw new ArgumentOutOfRangeException("value", "The 'Quantity' property must be strictly greater than 0.");
       }

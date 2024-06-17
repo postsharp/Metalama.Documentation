@@ -50,7 +50,11 @@ To suppress a diagnostic:
 
 2. Define a `static` field of type <xref:Metalama.Framework.Diagnostics.SuppressionDefinition> in your aspect class. <xref:Metalama.Framework.Diagnostics.SuppressionDefinition> specifies the identifier of the diagnostic to suppress.
 
-3. Call the <xref:Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Suppress*> method using `builder.Diagnostics.Suppress(...)` in the `BuildAspect` method.
+3. Call the <xref:Metalama.Framework.Diagnostics.ScopedDiagnosticSink.Suppress*> method using `builder.Diagnostics.Suppress(...)` in the `BuildAspect` method and supply the <xref:Metalama.Framework.Diagnostics.SuppressionDefinition> created above. The suppression will apply to the current target of the aspect unless you specify a different scope as an argument.
+
+These steps will suppress _all_ warnings of the specified ID in the scope of the current target of the aspect. If you want to filter the warnings by text or argument, use the <xref:Metalama.Framework.Diagnostics.SuppressionDefinition.WithFilter*?text=SuppressionDefinition.WithFilter> method.
+
+
 
 ### Example
 

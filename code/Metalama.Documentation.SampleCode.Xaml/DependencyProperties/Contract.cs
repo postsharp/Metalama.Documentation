@@ -9,6 +9,6 @@ namespace Doc.DependencyProperties.Contract;
 internal class MyControl : UserControl
 {
     [DependencyProperty]
-    [Positive]
+    [NonNegative]
     public double BorderWidth { get; set; }
 }

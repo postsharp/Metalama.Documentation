@@ -7,11 +7,11 @@ namespace Doc.DependencyProperties.Validate;
 internal class MyControl : UserControl
 {
   [DependencyProperty]
-  public string Title
+  public string? Title
   {
     get
     {
-      return (string)GetValue(TitleProperty);
+      return (string? )GetValue(TitleProperty);
     }
     set
     {
@@ -30,7 +30,7 @@ internal class MyControl : UserControl
   {
     TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(MyControl), new PropertyMetadata() { CoerceValueCallback = (d, value_1) =>
     {
-      ((MyControl)d).ValidateTitle((string)value_1);
+      ((MyControl)d).ValidateTitle((string? )value_1);
       return value_1;
     } });
   }

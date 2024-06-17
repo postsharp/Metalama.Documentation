@@ -8,7 +8,7 @@ namespace Doc.Contracts.RefParameter;
 
 public interface IWordCounter
 {
-    void CountWords( string text, [Positive( Direction = ContractDirection.Both )] ref int wordCount );
+    void CountWords( string text, [NonNegative( Direction = ContractDirection.Both )] ref int wordCount );
 }
 
 public class WordCounter : IWordCounter

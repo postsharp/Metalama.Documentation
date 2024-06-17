@@ -7,7 +7,7 @@ namespace Doc.DependencyProperties.Contract;
 internal class MyControl : UserControl
 {
   [DependencyProperty]
-  [Positive]
+  [NonNegative]
   public double BorderWidth
   {
     get
@@ -30,7 +30,7 @@ internal class MyControl : UserControl
   }
   private static double ApplyBorderWidthContracts(double value)
   {
-    if (value is < 0)
+    if (value < 0)
     {
       throw new ArgumentOutOfRangeException("value", "The 'value' parameter must be greater than or equal to 0.");
     }

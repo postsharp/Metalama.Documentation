@@ -88,16 +88,20 @@ The following contracts can be used to verify that a value falls within a specif
 
 | Attribute                                                 | Description |
 |-----------------------------------------------------------|-------------|
-| <xref:Metalama.Patterns.Contracts.LessThanAttribute>     | Verifies that the value is less than or equal to the specified maximum.
-| <xref:Metalama.Patterns.Contracts.GreaterThanAttribute>  |  Verifies that the value is greater than or equal to the specified minimum.
-| <xref:Metalama.Patterns.Contracts.NegativeAttribute>     | Verifies that the value is less than or equal to zero.
-| <xref:Metalama.Patterns.Contracts.PositiveAttribute>     | Verifies that the value is greater than or equal to zero.
-| <xref:Metalama.Patterns.Contracts.RangeAttribute>     | Verifies that the value is greater than or equal to a specified minimum and less than or equal to a specified maximum.
+| <xref:Metalama.Patterns.Contracts.LessThanOrEqualAttribute>     | Verifies that the value is less than or equal to the specified maximum.
+| <xref:Metalama.Patterns.Contracts.GreaterThanOrEqualAttribute>  |  Verifies that the value is greater than or equal to the specified minimum.
+| <xref:Metalama.Patterns.Contracts.NonNegativeAttribute>     | Verifies that the value is greater than or equal to zero.
+| <xref:Metalama.Patterns.Contracts.NonPositiveAttribute>     | Verifies that the value is less than or equal to zero.
 | <xref:Metalama.Patterns.Contracts.StrictlyLessThanAttribute>     | Verifies that the value is strictly less than the specified maximum.
 | <xref:Metalama.Patterns.Contracts.StrictlyGreaterThanAttribute>  |  Verifies that the value is strictly greater than the specified minimum.
 | <xref:Metalama.Patterns.Contracts.StrictlyNegativeAttribute>     | Verifies that the value is strictly less than zero.
 | <xref:Metalama.Patterns.Contracts.StrictlyPositiveAttribute>     | Verifies that the value is strictly greater than zero.
 | <xref:Metalama.Patterns.Contracts.StrictRangeAttribute>     | Verifies that the value is strictly greater than a specified minimum and strictly less than a specified maximum.
+| <xref:Metalama.Patterns.Contracts.RangeAttribute>     | Verifies that the value is greater than or equal to a specified minimum and less than or equal to a specified maximum.
+
+> [!WARNING]
+> The library also contains the contracts <xref:Metalama.Patterns.Contracts.PositiveAttribute?text=[Positive]>, <xref:Metalama.Patterns.Contracts.NegativeAttribute?text=[Negative]>, <xref:Metalama.Patterns.Contracts.LessThanAttribute?text=[LessThan]> and <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThan]> for backward compatibility. These contracts are oddly named; they enforce a non-strict inequality while the English convention mandates to enforce strict inequalities. Using any of these contracts will result in a warning requesting you to specify the strictness by using one of the contracts listed above or by setting the <xref:Metalama.Patterns.Contracts.ContractOptions.DefaultInequalityStrictness> contract option is set using the <xref:Metalama.Patterns.Contracts.ContractConfigurationExtensions.ConfigureContracts*> fabric extension method.
+
 
 ### Example: numeric contracts
 

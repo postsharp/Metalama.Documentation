@@ -244,7 +244,35 @@ graph BT
     Foo -- references --> Foo.Dependency
 ```
 
-### Running tests in Rider or ReSharper
+## Configuring the external diff tool
+
+By default, the test framework will open your visual diff tool when an aspect test fails, i.e., the expected snapshot is different than the actual one. The feature works thanks to the [DiffEngine](https://github.com/VerifyTests/DiffEngine) project. It is most useful when used with [DiffEngineTray](https://github.com/VerifyTests/DiffEngine/blob/main/docs/tray.md). Please refer to the documentation of these projects to learn about how to configure them.
+
+For further configuration settings, use this approach:
+
+1. Install the `metalama` CLI tool as described in <xref:dotnet-tool>.
+2. Run the following command:
+
+    ```powershell
+    metalama config edit testRunner
+    ```
+
+These steps open the `testRunner.json` file, whose default content is the following:
+
+```json
+{
+  "LaunchDiffTool": true,
+  "MaxDiffToolInstances": 1
+}
+```
+
+It supports the following settings:
+
+* `LaunchDiffTool`, when set to `false`, allows to disable the feature.
+* `MaxDiffToolInstances` determines the maximum number of instances of the diff tool that can be opened at the same time.
+
+
+## Running tests in Rider or ReSharper
 
 > [!NOTE]
 > Running aspect tests in Rider and ReSharper is only supported starting with Metalama 2023.1.
