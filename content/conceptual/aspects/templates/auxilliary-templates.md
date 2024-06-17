@@ -39,7 +39,7 @@ The following example is a simple caching aspect. The aspect is intended to be u
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/AuxiliaryTemplate.cs]
 
-## Return statements in auxiliary templates
+## Using return statements in auxiliary templates
 
 The behavior of `return` statements in auxiliary templates can sometimes be confusing compared to normal templates. Their nominal processing by the T# compiler is identical (indeed the T# compiler does not differentiate auxiliary templates from normal templates as their difference is only in usage): `return` statements in any template result in `return` statements in the output.
 
@@ -56,7 +56,7 @@ The following example is a variation of our previous caching example, but we abs
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/AuxiliaryTemplate_Return.cs]
 
-## Dynamic invocation of generic templates
+## Invoking generic templates
 
 Auxiliary templates can be beneficial when you need to call a generic API from a `foreach` loop and the type parameter must be bound to a type that depends on the iterator variable.
 
@@ -73,13 +73,13 @@ meta.InvokeTemplate( nameof(CompareFieldOrProperty), args:
 
 This is illustrated by the following example:
 
-### Example: invoke generic template
+### Example: invoking a generic template
 
 The following aspect implements the `Equals` method by comparing all fields or automatic properties. For the sake of the exercise, we want to call the `EqualityComparer<T>.Default.Equals` method with the proper value of `T` for each field or property. This is achieved by use of an auxiliary template and the <xref:Metalama.Framework.Aspects.meta.InvokeTemplate*?text=meta.InvokeTemplate> method.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/AuxiliaryTemplate_StructurallyComparable.cs]
 
-## Delegate-like invocation
+## Encapsulating a template invocation invocation as a delegate
 
 Calls to auxiliary templates can be encapsulated into an object of type <xref:Metalama.Framework.Aspects.TemplateInvocation>, similar to the encapsulation of a method call into a delegate. The <xref:Metalama.Framework.Aspects.TemplateInvocation> can be passed as an argument to another auxiliary template and invoked by the <xref:Metalama.Framework.Aspects.meta.InvokeTemplate*?text=meta.InvokeTemplate> method.
 
@@ -94,4 +94,15 @@ The following code shows a base caching aspect named `CacheAttribute` that allow
 This example is contrived in two regards. First, it would make sense in this case to use two aspects. Second, the use of a `protected` method invoked by `AroundCaching` would be preferable in this case. The use of <xref:Metalama.Framework.Aspects.TemplateInvocation> makes sense when the template to call is not a part of the same class &mdash; for instance if the caching aspect accepts options that can be set from a fabric, and that would allow users to supply a different implementation of this logic without overriding the caching attribute itself.
 
 
+## Evaluating a template into an IStatement
 
+If you want to use templates with facilities like <xref:Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder>, you will need an <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement>. To wrap a template invocation into an <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement>, use <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.FromTemplate*?text=StatementFactory.FromTemplate>. 
+
+You can call <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.UnwrapBlock*> to remove braces from the template output, which will return an <xref:Metalama.Framework.Code.SyntaxBuilders.IStatementList>.
+
+### Example: SwitchExpressionBuilder
+
+The following example generates an `Execute` method which has two arguments: a message name and an opaque argument. The aspect must be used on a class with one or many `ProcessFoo` methods, where `Foo` is the message name. The aspect generates a `switch` statement that dispatches the message to the proper method. We use the <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.FromTemplate*?text=StatementFactory.FromTemplate> method to pass templates to the <xref:Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder>.
+
+
+[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/SwitchStatementBuilder_FullTemplate.cs]

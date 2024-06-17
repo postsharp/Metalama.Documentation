@@ -21,4 +21,11 @@
         <PackageReference Include="Metalama.Testing.AspectTesting" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="SwitchStatementBuilder_FullTemplate.Aspect.cs">
+        <DependentUpon>SwitchStatementBuilder_FullTemplate.cs</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
 </Project>

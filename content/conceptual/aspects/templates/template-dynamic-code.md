@@ -99,6 +99,43 @@ The following example is a variation of the previous one. The aspect no longer a
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/DynamicCodeModel.cs name="Invokers"]
 
+## Converting run-time expressions into compile-time IExpression
+
+Instead of using techniques like parsing to generate <xref:Metalama.Framework.Code.IExpression> objects, it can be convenient to write the expression in T#/C# and to convert it. This allows you to have expressions that depend on compile-time conditions and control flows.
+
+Two approaches are available depending on the situation:
+
+* When the expression is `dynamic`, you can simply use an explicit cast to <xref:Metalama.Framework.Code.IExpression>. For instance:
+
+    ```cs
+    var thisParameter = meta.Target.Method.IsStatic 
+                            ? meta.Target.Method.Parameters.First() 
+                            : (IExpression) meta.This;
+    ```
+
+  This also works when the cast is implicit, for instance:
+
+    ```cs
+    IExpression baseCall;
+    
+    if (meta.Target.Method.IsOverride)
+    {
+        baseCall = (IExpression) meta.Base.Clone();
+    }
+    else
+    {
+        baseCall = (IExpression) meta.Base.MemberwiseClone();
+    }
+    ```
+
+    This template generates either `var clone = (TargetType) base.Clone();` or `var clone = (TargetType) this.MemberwiseClone();` depending on the condition.
+
+* Otherwise, use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Capture*?text=ExpressionFactory.Capture> method. 
+
+ You can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType*> and <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability*> extension methods to modify the return type of the returned <xref:Metalama.Framework.Code.IExpression>.
+
+
+
 ## Generating run-time arrays
 
 The first way to generate a run-time array is to declare a variable of array type and to use a statement to set each element, for instance:
@@ -176,48 +213,13 @@ The `_logger` field is accessed through a parsed expression in the following exa
 
 ## Generating switch statements
 
-You can use the `Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder` class to generate `switch` statements. Note that it is limited to _constant_ and _default_ labels, i.e. patterns are not supported. Tuple matching is supported.
+You can use the <xref:Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder> class to generate `switch` statements. Note that it is limited to _constant_ and _default_ labels, i.e. patterns are not supported. Tuple matching is supported.
 
 ### Example: SwitchStatementBuilder
 
 The following example generates an `Execute` method which has two arguments: a message name and an opaque argument. The aspect must be used on a class with one or many `ProcessFoo` methods, where `Foo` is the message name. The aspect generates a `switch` statement that dispatches the message to the proper method.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/SwitchStatementBuilder.cs name="SwitchStatementBuilder"]
-
-## Converting run-time expressions into compile-time IExpression
-
-Instead of using techniques like parsing to generate <xref:Metalama.Framework.Code.IExpression> objects, it can be convenient to write the expression in T#/C# and to convert it. This allows you to have expressions that depend on compile-time conditions and control flows.
-
-Two approaches are available depending on the situation:
-
-* When the expression is `dynamic`, you can simply use an explicit cast to <xref:Metalama.Framework.Code.IExpression>. For instance:
-
-    ```cs
-    var thisParameter = meta.Target.Method.IsStatic 
-                            ? meta.Target.Method.Parameters.First() 
-                            : (IExpression) meta.This;
-    ```
-
-  This also works when the cast is implicit, for instance:
-
-    ```cs
-    IExpression baseCall;
-    
-    if (meta.Target.Method.IsOverride)
-    {
-        baseCall = (IExpression) meta.Base.Clone();
-    }
-    else
-    {
-        baseCall = (IExpression) meta.Base.MemberwiseClone();
-    }
-    ```
-
-    This template generates either `var clone = (TargetType) base.Clone();` or `var clone = (TargetType) this.MemberwiseClone();` depending on the condition.
-
-* Otherwise, use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Capture*?text=ExpressionFactory.Capture> method. 
-
- You can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType*> and <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability*> extension methods to modify the return type of the returned <xref:Metalama.Framework.Code.IExpression>.
 
 
 
