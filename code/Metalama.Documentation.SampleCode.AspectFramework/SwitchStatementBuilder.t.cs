@@ -15,9 +15,9 @@ public class FruitProcessor
   private void ProcessPear(string args)
   {
   }
-  public void Execute(string method, string args)
+  public void Execute(string messageName, string args)
   {
-    switch (method)
+    switch (messageName)
     {
       case "Apple":
         ProcessApple(args);
