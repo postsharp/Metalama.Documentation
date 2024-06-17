@@ -52,7 +52,7 @@ To work around this situation, you can make the subtemplate `void` and call the 
 
 ### Example: meta.Return
 
-The following example is a variation of our previous caching example, but we abstract the entire caching logic instead of just the logging part. The aspect has two auxiliary templates: `GetFromCache` and `AddToCache`. The first template is problematic because the cache hit branch must have a `return` statement while the cache miss branch must continue the execution. Therefore we designed `GetFromCache` as a `void` template and used <xref:Metalama.Framework.Aspects.meta.Return*?text=meta.Return> to generate the `return` statement.
+The following example is a variation of our previous caching example, but we abstract the entire caching logic instead of just the logging part. The aspect has two auxiliary templates: `GetFromCache` and `AddToCache`. The first template is problematic because the cache hit branch must have a `return` statement while the cache miss branch must continue the execution. Therefore, we designed `GetFromCache` as a `void` template and used <xref:Metalama.Framework.Aspects.meta.Return*?text=meta.Return> to generate the `return` statement.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/AuxiliaryTemplate_Return.cs]
 
@@ -75,11 +75,11 @@ This is illustrated by the following example:
 
 ### Example: invoking a generic template
 
-The following aspect implements the `Equals` method by comparing all fields or automatic properties. For the sake of the exercise, we want to call the `EqualityComparer<T>.Default.Equals` method with the proper value of `T` for each field or property. This is achieved by use of an auxiliary template and the <xref:Metalama.Framework.Aspects.meta.InvokeTemplate*?text=meta.InvokeTemplate> method.
+The following aspect implements the `Equals` method by comparing all fields or automatic properties. For the sake of the exercise, we want to call the `EqualityComparer<T>.Default.Equals` method with the proper value of `T` for each field or property. This is achieved by the use of an auxiliary template and the <xref:Metalama.Framework.Aspects.meta.InvokeTemplate*?text=meta.InvokeTemplate> method.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/AuxiliaryTemplate_StructurallyComparable.cs]
 
-## Encapsulating a template invocation invocation as a delegate
+## Encapsulating a template invocation as a delegate
 
 Calls to auxiliary templates can be encapsulated into an object of type <xref:Metalama.Framework.Aspects.TemplateInvocation>, similar to the encapsulation of a method call into a delegate. The <xref:Metalama.Framework.Aspects.TemplateInvocation> can be passed as an argument to another auxiliary template and invoked by the <xref:Metalama.Framework.Aspects.meta.InvokeTemplate*?text=meta.InvokeTemplate> method.
 
@@ -91,18 +91,16 @@ The following code shows a base caching aspect named `CacheAttribute` that allow
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/AuxiliaryTemplate_TemplateInvocation.cs]
 
-This example is contrived in two regards. First, it would make sense in this case to use two aspects. Second, the use of a `protected` method invoked by `AroundCaching` would be preferable in this case. The use of <xref:Metalama.Framework.Aspects.TemplateInvocation> makes sense when the template to call is not a part of the same class &mdash; for instance if the caching aspect accepts options that can be set from a fabric, and that would allow users to supply a different implementation of this logic without overriding the caching attribute itself.
-
+This example is contrived in two regards. First, it would make sense in this case to use two aspects. Second, the use of a `protected` method invoked by `AroundCaching` would be preferable in this case. The use of <xref:Metalama.Framework.Aspects.TemplateInvocation> makes sense when the template to call is not a part of the same class &mdash; for instance, if the caching aspect accepts options that can be set from a fabric, and that would allow users to supply a different implementation of this logic without overriding the caching attribute itself.
 
 ## Evaluating a template into an IStatement
 
-If you want to use templates with facilities like <xref:Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder>, you will need an <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement>. To wrap a template invocation into an <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement>, use <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.FromTemplate*?text=StatementFactory.FromTemplate>. 
+If you want to use templates with facilities like <xref:Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder>, you will need an <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement>. To wrap a template invocation into an <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement>, use <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.FromTemplate*?text=StatementFactory.FromTemplate>.
 
 You can call <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.UnwrapBlock*> to remove braces from the template output, which will return an <xref:Metalama.Framework.Code.SyntaxBuilders.IStatementList>.
 
 ### Example: SwitchExpressionBuilder
 
 The following example generates an `Execute` method which has two arguments: a message name and an opaque argument. The aspect must be used on a class with one or many `ProcessFoo` methods, where `Foo` is the message name. The aspect generates a `switch` statement that dispatches the message to the proper method. We use the <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.FromTemplate*?text=StatementFactory.FromTemplate> method to pass templates to the <xref:Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder>.
-
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/SwitchStatementBuilder_FullTemplate.cs]

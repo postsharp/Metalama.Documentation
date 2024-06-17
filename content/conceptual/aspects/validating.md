@@ -52,7 +52,6 @@ To create an aspect that validates references:
    2. Select declarations to be validated using the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> and <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> methods,
    3. Call the <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateOutboundReferences*> method. Pass a delegate to the validation method or an instance of the validator class and the <xref:Metalama.Framework.Validation.ReferenceGranularity>.
 
-
 > [!NOTE]
 > The delegate passed to the <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateOutboundReferences*> method must point to a named method of the aspect.
 
@@ -61,4 +60,3 @@ To create an aspect that validates references:
 The following example implements a custom attribute `[ForTestOnly]` that enforces that the target of this attribute can only be used from a namespace that ends with `.Tests.`.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/ForTestOnly.cs name="For Test Only, Aspect Implementation"]
-

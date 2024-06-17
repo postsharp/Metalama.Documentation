@@ -21,9 +21,9 @@ In a template, it is not possible to generate code that employs `dynamic` typing
 
 ## Dynamic code
 
-The `meta` API exposes some properties of `dynamic` type and some methods returning `dynamic` values. These members are compile-time, but they produce a _C# expression_ that can be used in the run-time code of the template. Because these members return a `dynamic` value, they can be utilized anywhere in your template. The code will not be validated when the template is compiled but when the template is applied.
+The `meta` API exposes some properties of the `dynamic` type and some methods returning `dynamic` values. These members are compile-time, but they produce a _C# expression_ that can be used in the run-time code of the template. Because these members return a `dynamic` value, they can be utilized anywhere in your template. The code will not be validated when the template is compiled but when the template is applied.
 
-For instance, `meta.This` returns a `dynamic` object that represents the expression `this`. Because `meta.This` is `dynamic`, you can write `meta.This._logger` in your template, which will translate to `this._logger`. This will work even if your template does not contain a member named `_logger` because `meta.This` returns a `dynamic`, therefore any field or method referenced on the right hand of the `meta.This` expression will not be validated when the template is compiled (or in the IDE), but when the template is _expanded_, in the context of a specific target declaration.
+For instance, `meta.This` returns a `dynamic` object that represents the expression `this`. Because `meta.This` is `dynamic`, you can write `meta.This._logger` in your template, which will translate to `this._logger`. This will work even if your template does not contain a member named `_logger` because `meta.This` returns a `dynamic`; therefore, any field or method referenced on the right hand of the `meta.This` expression will not be validated when the template is compiled (or in the IDE) but when the template is _expanded_, in the context of a specific target declaration.
 
 Here are a few examples of APIs that return a `dynamic`:
 
@@ -31,14 +31,14 @@ Here are a few examples of APIs that return a `dynamic`:
   * <xref:Metalama.Framework.Aspects.meta.This?text=meta.This>, equivalent to the `this` keyword, allows calling arbitrary _instance_ members of the target type.
   * <xref:Metalama.Framework.Aspects.meta.Base?text=meta.Base>, equivalent to the `base` keyword, allows calling arbitrary _instance_ members of the _base_ of the target type.
   * <xref:Metalama.Framework.Aspects.meta.ThisType?text=meta.ThisType> allows calling arbitrary _static_ members of the target type.
-  * <xref:Metalama.Framework.Aspects.meta.BaseType?text=meta.BaseType>, allows calling arbitrary _static_ members of the _base_ of the target type.
+  * <xref:Metalama.Framework.Aspects.meta.BaseType?text=meta.BaseType> allows calling arbitrary _static_ members of the _base_ of the target type.
 * <xref:Metalama.Framework.Code.IExpression.Value?text=IExpression.Value> allows getting or setting the value of a compile-time expression in run-time code. It is implemented, for instance, by:
-  * `meta.Target.Field.Value`, `meta.Target.Property.Value` or `meta.Target.FieldOrProperty.Value` allow getting or setting the value of the target field or property.
+  * `meta.Target.Field.Value`, `meta.Target.Property.Value`, or `meta.Target.FieldOrProperty.Value` allow getting or setting the value of the target field or property.
   * `meta.Target.Parameter.Value` allows getting or setting the value of the target parameter.
   * `meta.Target.Method.Parameters[*].Value` allows getting or setting the value of a target method's parameter.
 
 > [!WARNING]
-> Due to the limitations of the C# language, you cannot use extension methods on the right part of a dynamic expression. In this case, you must call the extension method in the traditional way, by specifying its type name on the left and passing the dynamic expression as an argument. An alternative approach is to cast the dynamic expression to a specified type, if it is well-known.
+> Due to the limitations of the C# language, you cannot use extension methods on the right part of a dynamic expression. In this case, you must call the extension method in the traditional way, by specifying its type name on the left and passing the dynamic expression as an argument. An alternative approach is to cast the dynamic expression to a specified type if it is well-known.
 
 ### Using dynamic expressions
 
@@ -86,10 +86,10 @@ When the template is expanded, `dynamic` variables are transformed into `var` va
 
 When you have a <xref:Metalama.Framework.Code> representation of a declaration, you may want to access it from your generated run-time code. You can do this by using one of the following methods or properties:
 
-*  <xref:Metalama.Framework.Code.IExpression.Value?text=IExpression.Value> to generate code that represents a field, property, or parameter, because these declarations are <xref:Metalama.Framework.Code.IExpression>.
-*  <xref:Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke*?text=method.Invoke> to generate code that invokes a method,
-* <xref:Metalama.Framework.Code.Invokers.IIndexerInvoker.GetValue*?text=indexer.GetValue>> or <xref:Metalama.Framework.Code.Invokers.IIndexerInvoker.SetValue*?text=indexer.SetValue> to generate code that gets or sets the value of an accessor.
-* <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Add*?text=event.Add>, <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Remove*?text=event.Remove> or <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Raise*?text=event.Raise> to generate code that interacts with an event.
+* <xref:Metalama.Framework.Code.IExpression.Value?text=IExpression.Value> to generate code that represents a field, property, or parameter, because these declarations are <xref:Metalama.Framework.Code.IExpression>.
+* <xref:Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke*?text=method.Invoke> to generate code that invokes a method.
+* <xref:Metalama.Framework.Code.Invokers.IIndexerInvoker.GetValue*?text=indexer.GetValue> or <xref:Metalama.Framework.Code.Invokers.IIndexerInvoker.SetValue*?text=indexer.SetValue> to generate code that gets or sets the value of an accessor.
+* <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Add*?text=event.Add>, <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Remove*?text=event.Remove>, or <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Raise*?text=event.Raise> to generate code that interacts with an event.
 
 By default, when used with an instance member, all the methods and properties above generate calls for the current (`this`) instance. To specify a different instance, use the `With` method.
 
@@ -97,7 +97,7 @@ By default, when used with an instance member, all the methods and properties ab
 
 The following example is a variation of the previous one. The aspect no longer assumes the logger field is named `_logger`. Instead, it looks for any field of type `TextWriter`. Because it does not know the field's name upfront, the aspect must use the <xref:Metalama.Framework.Code.IExpression.Value?text=IExpression.Value> property to get an expression allowing it to access the field. This property returns a `dynamic` object, but we cast it to `TextWriter` because we know its actual type. When the template is expanded, Metalama recognizes that the cast is redundant and simplifies it. However, the cast is useful in the T# template to get as much strongly-typed code as we can.
 
-[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/DynamicCodeModel.cs name="Invokers"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/DynamicCodeModel.cs name="Invokers"]
 
 ## Converting run-time expressions into compile-time IExpression
 
@@ -108,8 +108,8 @@ Two approaches are available depending on the situation:
 * When the expression is `dynamic`, you can simply use an explicit cast to <xref:Metalama.Framework.Code.IExpression>. For instance:
 
     ```cs
-    var thisParameter = meta.Target.Method.IsStatic 
-                            ? meta.Target.Method.Parameters.First() 
+    var thisParameter = meta.Target.Method.IsStatic
+                            ? meta.Target.Method.Parameters.First()
                             : (IExpression) meta.This;
     ```
 
@@ -117,7 +117,7 @@ Two approaches are available depending on the situation:
 
     ```cs
     IExpression baseCall;
-    
+
     if (meta.Target.Method.IsOverride)
     {
         baseCall = (IExpression) meta.Base.Clone();
@@ -130,11 +130,9 @@ Two approaches are available depending on the situation:
 
     This template generates either `var clone = (TargetType) base.Clone();` or `var clone = (TargetType) this.MemberwiseClone();` depending on the condition.
 
-* Otherwise, use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Capture*?text=ExpressionFactory.Capture> method. 
+* Otherwise, use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.Capture*?text=ExpressionFactory.Capture> method.
 
- You can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType*> and <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability*> extension methods to modify the return type of the returned <xref:Metalama.Framework.Code.IExpression>.
-
-
+You can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType*> and <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability*> extension methods to modify the return type of the returned <xref:Metalama.Framework.Code.IExpression>.
 
 ## Generating run-time arrays
 
@@ -170,13 +168,12 @@ Instead of generating a string as an array separately and using `string.Format`,
 
 The following example shows how an <xref:Metalama.Framework.Code.SyntaxBuilders.InterpolatedStringBuilder> can be used to implement the `ToString` method automatically.
 
-[!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ToString.cs name="ToString"]
- 
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/ToString.cs name="ToString"]
+
 > [!div id="parsing" class="anchor"]
 
 ## Generating expressions using a StringBuilder-like API
-
-It is sometimes easier to generate the run-time code as a simple text instead of using a complex meta API. In this situation, you can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> class. It offers convenient methods like <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral*>, <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName*> or <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression*>. The <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim*> method must be used for anything else, such as keywords or punctuation.
+It is sometimes easier to generate the run-time code as simple text instead of using a complex meta API. In this situation, you can use the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> class. It offers convenient methods like <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral*>, <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendTypeName*>, or <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression*>. The <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim*> method must be used for anything else, such as keywords or punctuation.
 
 When you are done building the expression, call the <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder.ToExpression*> method. It will return an <xref:Metalama.Framework.Code.IExpression> object. The <xref:Metalama.Framework.Code.IExpression.Value?text=IExpression.Value> property is `dynamic` and can be used in run-time code.
 
@@ -185,20 +182,18 @@ When you are done building the expression, call the <xref:Metalama.Framework.Cod
 
 ### Example: ExpressionBuilder
 
-The following example uses an <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> to build a pattern comparing an input value to several forbidden values. Notice the use of <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral*>, <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression*> and <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim*>.
+The following example uses an <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> to build a pattern comparing an input value to several forbidden values. Notice the use of <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendLiteral*>, <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendExpression*>, and <xref:Metalama.Framework.Code.SyntaxBuilders.SyntaxBuilder.AppendVerbatim*>.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ExpressionBuilder.cs name="ExpressionBuilder"]
 
-
 ## Generating statements using a StringBuilder-like API
 
-<xref:Metalama.Framework.Code.SyntaxBuilders.StatementBuilder> is to statements what <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> is to expressions. Note that it also allows you to generate _blocks_ thanks to its <xref:Metalama.Framework.Code.SyntaxBuilders.StatementBuilder.BeginBlock*> and <xref:Metalama.Framework.Code.SyntaxBuilders.StatementBuilder.EndBlock*> methods. 
+<xref:Metalama.Framework.Code.SyntaxBuilders.StatementBuilder> is to statements what <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionBuilder> is to expressions. Note that it also allows you to generate _blocks_ thanks to its <xref:Metalama.Framework.Code.SyntaxBuilders.StatementBuilder.BeginBlock*> and <xref:Metalama.Framework.Code.SyntaxBuilders.StatementBuilder.EndBlock*> methods.
 
 > [!WARNING]
 > Do not forget the trailing semicolon at the end of the statement.
 
-When you are done, call the <xref:Metalama.Framework.Code.SyntaxBuilders.IStatementBuilder.ToStatement*> method. You can use inject the returned <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement> in run-time code by calling the <xref:Metalama.Framework.Aspects.meta.InsertStatement*> method in the template.
-
+When you are done, call the <xref:Metalama.Framework.Code.SyntaxBuilders.IStatementBuilder.ToStatement*> method. You can inject the returned <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement> in run-time code by calling the <xref:Metalama.Framework.Aspects.meta.InsertStatement*> method in the template.
 
 ## Parsing C# expressions and statements
 
@@ -210,18 +205,15 @@ The `_logger` field is accessed through a parsed expression in the following exa
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/ParseExpression.cs name="ParseExpression"]
 
-
 ## Generating switch statements
 
-You can use the <xref:Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder> class to generate `switch` statements. Note that it is limited to _constant_ and _default_ labels, i.e. patterns are not supported. Tuple matching is supported.
+You can use the <xref:Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder> class to generate `switch` statements. Note that it is limited to _constant_ and _default_ labels, i.e., patterns are not supported. Tuple matching is supported.
 
 ### Example: SwitchStatementBuilder
 
 The following example generates an `Execute` method which has two arguments: a message name and an opaque argument. The aspect must be used on a class with one or many `ProcessFoo` methods, where `Foo` is the message name. The aspect generates a `switch` statement that dispatches the message to the proper method.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/SwitchStatementBuilder.cs name="SwitchStatementBuilder"]
-
-
 
 ## Converting compile-time values to run-time values
 
@@ -234,8 +226,8 @@ You can utilize `meta.RunTime(expression)` to convert the result of a compile-ti
 - Reflection objects: <xref:System.Type>, <xref:System.Reflection.MethodInfo>, <xref:System.Reflection.ConstructorInfo>, <xref:System.Reflection.EventInfo>, <xref:System.Reflection.PropertyInfo>, <xref:System.Reflection.FieldInfo>;
 - <xref:System.Guid>;
 - Generic collections: <xref:System.Collections.Generic.List`1> and <xref:System.Collections.Generic.Dictionary`2>;
-- <xref:System.DateTime> and <xref:System.TimeSpan>.
-- Immutable collections: <xref:System.Collections.Immutable.ImmutableArray`1> and <xref:System.Collections.Immutable.ImmutableDictionary`2>.
+- <xref:System.DateTime> and <xref:System.TimeSpan>;
+- Immutable collections: <xref:System.Collections.Immutable.ImmutableArray`1> and <xref:System.Collections.Immutable.ImmutableDictionary`2>;
 - Custom objects implementing the <xref:Metalama.Framework.Code.SyntaxBuilders.IExpressionBuilder> interface (see [Converting custom objects from compile-time to run-time values](#custom-conversion) for details).
 
 ### Example: conversions

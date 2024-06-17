@@ -82,11 +82,8 @@ graph BT
 When you import the `Metalama.Testing.AspectTesting` package into a project, the following occurs:
 
 1. The `MetalamaEnabled` project property is set to `False`, which completely disables Metalama for the project. Therefore, the `METALAMA` compilation symbol (usable in a directive like `#if METALAMA`) is no longer defined.
-
 2. Expected test results (`*.t.cs`) are excluded from the compilation.
-
 3. The Xunit test framework is customized to execute tests from standalone _files_ instead of from methods annotated with `[Fact]` or `[Theory].`
-
 
 ## Step 2. Add a test case
 
@@ -144,7 +141,6 @@ When you create a new test file, your IDE does not automatically discover it. To
 > [!NOTE]
 > If you are using Rider, you must first configure the xUnit adapter. To achieve this, open settings, go to _Build, Execution, Deployment_ > _Unit Testing_ > _xUnit.net_ and select **Test Runner** instead of metadata for test discovery.
 
-
 You can also run the tests using `dotnet test`.
 
 You can find the output code, transformed by your aspects, at two locations:
@@ -168,7 +164,6 @@ Once the `.t.cs` file is satisfactory, copy the test output to this file. For in
 To accept the output of all tests:
 
 1. Commit or stage the changes in your repository, so you can review and possibly roll back the consequences of the next steps.
-
 2. Run the following sequence of commands:
 
     ```powershell
@@ -203,7 +198,6 @@ All files in a compile-time test project are turned into test input files by def
 ```json
 { "Exclude": true }
 ```
-
 ### Specifying test options
 
 The Metalama test framework supports several test options. They are documented in the <xref:Metalama.Testing.AspectTesting.TestOptions> class.
@@ -271,7 +265,6 @@ It supports the following settings:
 * `LaunchDiffTool`, when set to `false`, allows to disable the feature.
 * `MaxDiffToolInstances` determines the maximum number of instances of the diff tool that can be opened at the same time.
 
-
 ## Running tests in Rider or ReSharper
 
 > [!NOTE]
@@ -291,4 +284,3 @@ The `[CurrentDirectory]` attribute will automatically provide test data for all 
 
 > [!div class="see-also"]
 > <xref:video-testing>
-

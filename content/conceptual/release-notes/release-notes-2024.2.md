@@ -8,7 +8,7 @@ summary: ""
 > [!WARNING]
 > This release is under development.
 
-Metalama 2024.2 has two focal points. The first is the ability to introduce classes, which closes the biggest gap with Roslyn source generator and finally makes it possible to implement patterns like memento or enum view-model. The second priority is to finalize and document the `Metalama.Patterns.Observability` and `Metalama.Patterns.Xaml` packages.
+Metalama 2024.2 has two focal points. The first is the ability to introduce classes, which closes the biggest gap with Roslyn source generators and finally makes it possible to implement patterns like memento or enum view-model. The second priority is to finalize and document the `Metalama.Patterns.Observability` and `Metalama.Patterns.Xaml` packages.
 
 We had to make dozens of smaller improvements to the framework to reach these objectives, and they will benefit everyone.
 
@@ -112,7 +112,7 @@ The following changes improve your ability to generate code with Metalama:
 
 ### Improvements in Metalama.Patterns.Contracts
 
-We are finally addressing the problem that the <xref:Metalama.Patterns.Contracts.PositiveAttribute?text=[Positive]>, <xref:Metalama.Patterns.Contracts.NegativeAttribute?text=[Negative]>, <xref:Metalama.Patterns.Contracts.LessThanAttribute?text=[LessThan]> and <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThan]> aspects had a non-standard behavior because they behave as if the inequality were _unstrict_ while the standard interpretation is _strict_. This mistake was performed in PostSharp back in 2013, and dragged until now for backward compatibility reasons, but we eventually decided to address it. 
+We are finally addressing the problem that the <xref:Metalama.Patterns.Contracts.PositiveAttribute?text=[Positive]>, <xref:Metalama.Patterns.Contracts.NegativeAttribute?text=[Negative]>, <xref:Metalama.Patterns.Contracts.LessThanAttribute?text=[LessThan]> and <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThan]> aspects had a non-standard behavior because they behave as if the inequality were _unstrict_ while the standard interpretation is _strict_. This mistake was performed in PostSharp back in 2013, and dragged until now for backward compatibility reasons, but we eventually decided to address it.
 
 Starting from Metalama 2024.2, using any of the <xref:Metalama.Patterns.Contracts.PositiveAttribute?text=[Positive]>, <xref:Metalama.Patterns.Contracts.NegativeAttribute?text=[Negative]>, <xref:Metalama.Patterns.Contracts.LessThanAttribute?text=[LessThan]> or <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThan]> attributes will report a warning saying that the strictness of the inequality is ambiguous. You have two options to resolve the warning:
 
@@ -124,7 +124,6 @@ Starting from Metalama 2024.2, using any of the <xref:Metalama.Patterns.Contract
 If you don't address the warning, the behavior of the ambiguous contracts will remain backward-compatible, i.e. non-standard.
 
 We will change the default behavior and the warning in a future release.
-
 
 ### Improvements in supportability
 
@@ -138,5 +137,5 @@ For details, see <xref:creating-logs>.
 * <xref:Metalama.Framework.Validation.ReferenceValidationContext> no longer reports several <xref:System.String,Metalama.Framework.Validation.ReferenceKinds>, but only the deepest one. For instance, in `class A : List<C>;`, the reference to `C` is of kind `GenericArgument` and no longer `BaseType | GenericArgument`. Combined flags added complexity, and we did not see a use case for them.
 * Projects that were using transitive reference validators (or architecture constraints), if they were built with a previous version of Metalama, must be rebuilt.
 * Relationships specified with <xref:Metalama.Framework.Aspects.AspectOrderAttribute> are now applied to derived aspect classes by default. To revert to the previous behavior, set the <xref:Metalama.Framework.Aspects.AspectOrderAttribute.ApplyToDerivedTypes> property to `false`.
-* An error will be reported when attempting to use some compile-time methods (for instance `meta.CompileTime`) from a method that is not a template. In prior versions, these methods had no effect and were only confusing.
+* An error will be reported when attempting to use some compile-time methods (for instance, `meta.CompileTime`) from a method that is not a template. In prior versions, these methods had no effect and were only confusing.
 * `Metalama.Patterns.Contracts`: Some virtual methods of the <xref:Metalama.Patterns.Contracts.RangeAttribute> and <xref:Metalama.Patterns.Contracts.ContractTemplates> classes have changed; overrides must be adapted.
