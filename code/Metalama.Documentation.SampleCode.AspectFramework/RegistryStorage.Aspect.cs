@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Microsoft.Win32;
@@ -21,7 +22,7 @@ internal class RegistryStorageAttribute : TypeAspect
     {
         foreach ( var property in builder.Target.FieldsAndProperties.Where( p => !p.IsImplicitlyDeclared && p.IsAutoPropertyOrField == true ) )
         {
-            builder.Advice.Override( property, nameof(this.OverrideProperty) );
+            builder.With( property ).Override( nameof(this.OverrideProperty) );
         }
     }
 

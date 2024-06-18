@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Fabrics;
@@ -19,7 +20,7 @@ internal class NotNullAttribute : MethodAspect
                           && p.Type.IsNullable != true
                           && p.Type.IsReferenceType == true ) )
         {
-            builder.Advice.AddContract( parameter, nameof(this.Validate), args: new { parameterName = parameter.Name } );
+            builder.With( parameter ).AddContract( nameof(this.Validate), args: new { parameterName = parameter.Name } );
         }
     }
 

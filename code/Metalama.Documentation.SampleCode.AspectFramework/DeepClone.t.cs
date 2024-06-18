@@ -15,7 +15,7 @@ internal class AutomaticallyCloneable : ICloneable
   private AutomaticallyCloneable? _c;
   public virtual AutomaticallyCloneable Clone()
   {
-    var clone = ((AutomaticallyCloneable)this.MemberwiseClone())!;
+    var clone = (AutomaticallyCloneable)this.MemberwiseClone();
     clone._b = (ManuallyCloneable? )_b?.Clone()!;
     clone._c = _c?.Clone()!;
     return clone;
@@ -30,7 +30,7 @@ internal class DerivedCloneable : AutomaticallyCloneable
   private string? _d;
   public override DerivedCloneable Clone()
   {
-    var clone = ((DerivedCloneable)base.Clone())!;
+    var clone = (DerivedCloneable)base.Clone();
     return clone;
   }
 }

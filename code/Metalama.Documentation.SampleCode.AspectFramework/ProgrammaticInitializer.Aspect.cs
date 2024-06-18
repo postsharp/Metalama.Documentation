@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Code.SyntaxBuilders;
@@ -20,8 +21,7 @@ internal class AddMethodNamesAspect : TypeAspect
         }
 
         // Introduce a field and initialize it to that array.
-        builder.Advice.IntroduceField(
-            builder.Target,
+        builder.IntroduceField(
             "_methodNames",
             typeof(string[]),
             buildField: f => f.InitializerExpression = arrayBuilder.ToExpression() );

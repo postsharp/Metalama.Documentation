@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System.ComponentModel;
@@ -10,13 +11,10 @@ internal class IntroducePropertyChangedAspect : TypeAspect
 {
     public override void BuildAspect( IAspectBuilder<INamedType> builder )
     {
-        var propertyChangedEvent = builder.Advice.IntroduceEvent(
-                builder.Target,
-                nameof(this.PropertyChanged) )
+        var propertyChangedEvent = builder.IntroduceEvent( nameof(this.PropertyChanged) )
             .Declaration;
 
-        builder.Advice.IntroduceMethod(
-            builder.Target,
+        builder.IntroduceMethod(
             nameof(this.OnPropertyChanged),
             args: new { theEvent = propertyChangedEvent } );
     }

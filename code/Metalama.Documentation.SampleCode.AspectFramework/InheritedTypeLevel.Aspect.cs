@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
@@ -13,7 +14,7 @@ internal class InheritedAspectAttribute : TypeAspect
     {
         foreach ( var method in builder.Target.Methods )
         {
-            builder.Advice.Override( method, nameof(this.MethodTemplate) );
+            builder.With( method ).Override( nameof(this.MethodTemplate) );
         }
     }
 

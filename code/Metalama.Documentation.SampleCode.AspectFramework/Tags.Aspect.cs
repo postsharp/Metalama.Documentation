@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
@@ -10,8 +11,7 @@ internal class TagsAspect : MethodAspect
 {
     public override void BuildAspect( IAspectBuilder<IMethod> builder )
     {
-        builder.Advice.Override(
-            builder.Target,
+        builder.Override(
             nameof(this.OverrideMethod),
             tags: new { ParameterCount = builder.Target.Parameters.Count } );
     }

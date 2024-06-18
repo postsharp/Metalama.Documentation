@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
@@ -11,12 +12,12 @@ public class LogAttribute : Aspect, IAspect<IMethod>, IAspect<IFieldOrProperty>
 {
     public void BuildAspect( IAspectBuilder<IMethod> builder )
     {
-        builder.Advice.Override( builder.Target, nameof(this.OverrideMethod) );
+        builder.Override( nameof(this.OverrideMethod) );
     }
 
     public void BuildAspect( IAspectBuilder<IFieldOrProperty> builder )
     {
-        builder.Advice.Override( builder.Target, nameof(this.OverrideFieldOrProperty) );
+        builder.Override( nameof(this.OverrideFieldOrProperty) );
     }
 
     [Template]

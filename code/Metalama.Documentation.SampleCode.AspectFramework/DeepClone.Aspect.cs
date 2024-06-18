@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
@@ -12,8 +13,7 @@ public class DeepCloneAttribute : TypeAspect
 {
     public override void BuildAspect( IAspectBuilder<INamedType> builder )
     {
-        builder.Advice.IntroduceMethod(
-            builder.Target,
+        builder.IntroduceMethod(
             nameof(this.CloneImpl),
             whenExists: OverrideStrategy.Override,
             buildMethod: t =>
@@ -22,8 +22,7 @@ public class DeepCloneAttribute : TypeAspect
                 t.ReturnType = builder.Target;
             } );
 
-        builder.Advice.ImplementInterface(
-            builder.Target,
+        builder.ImplementInterface(
             typeof(ICloneable),
             whenExists: OverrideStrategy.Ignore );
     }

@@ -11,16 +11,27 @@ Certain aspects necessitate modifying the target type to implement a new interfa
 
 Within your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, invoke the <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> method.
 
-## Step 2. Add interface members to the aspect class
+You might need to pass a value to the <xref:Metalama.Framework.Aspects.OverrideStrategy> parameter to cope with the situation where the target type, or any of its ancestors, already implements the interface. The most common behavior is `OverrideStrategy.Ignore`, but the default value is `OverrideStrategy.Fail` consistently with other advice kinds.
 
-Incorporate all interface members into the aspect class and label them with the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute?text=[InterfaceMember]> custom attribute. It is not necessary for the aspect class to implement the introduced interface.
+> [!NOTE]
+>  Unlike in PostSharp, It is not necessary in Metalama for the aspect class to implement the introduced interface.
 
-The following rules pertain to interface members:
+## Step 2, Option A. Add interface members to the aspect class, declaratively
 
-- The name and signature of all template interface members must precisely match those of the introduced interface.
-- The accessibility of introduced members is inconsequential. The aspect framework will generate public members unless the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute.IsExplicit> property is set to true. In this scenario, an explicit implementation is created.
+The next step is to ensure that the aspect class generates all interface members. We can do this declaratively or programmatically, and add implicit or explicit implementations.
 
-Implementing an interface in an entirely dynamic manner, that is, when the aspect does not already recognize the interface, is currently unsupported.
+> [!NOTE]
+> The <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> method does not verify if the aspect generates all required members. If your aspect commits to introduce a member, the C# compiler will report errors.
+
+Let's start with the declarative approach.
+
+Implement all interface members in the aspect and annotate them with the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute?text=[InterfaceMember]> custom attribute. This attribute instructs Metalama to introduce the member to the target class but _only_ if the <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> succeeds. If the advice is ignored because the type already implements the interface and `OverrideStrategy.Ignore` has been used, the member will _not_ be introduced to the target type. 
+
+By default, an implicit (public) implementation is created. You can use the <xref:Metalama.Framework.Aspects.InterfaceMemberAttribute.IsExplicit> property to specify that an explicit implementaiton must be created instead of a public method.
+
+> [!NOTE]
+> Using the <xref:Metalama.Framework.Aspects.IntroduceAttribute?text=[Introduce]> also works but is not recommended in this case because, this approach ignores the result of the <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> method. 
+
 
 ## Example: IDisposable
 
@@ -31,6 +42,21 @@ In the subsequent example, the aspect introduces the `IDisposable` interface. Th
 ## Example: Deep cloning
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/DeepClone.cs name="Deep Clone"]
+
+
+## Step 2, Option B. Add interface members to the aspect class, programmatically
+
+This approach can be used instead or in complement of the declarative one.
+
+It is useful in the following situations:
+
+* when the introduced interface is unkown to the aspect's author, e.g. when it can be dynamically specified by the aspect's user;
+* when introducing a generic interface thanks to the ability to use generic templates (see <xref:template-parameters>).
+
+To programmatically add interface members, use one of the `Introduce` methods of the <xref:xref:Metalama.Framework.Advising.IAdviceFactory> interface, as explained in <xref:introducing-members>. Make sure than these members are public. 
+
+If instead of adding public members you need to add explicit implementations, use the <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult.ExplicitImplementation> property of the <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult> returned by the <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> method, and call any of its `Introduce` methods.
+
 
 
 ## Referencing interface members in other templates
@@ -53,7 +79,12 @@ this.Dispose();
 meta.This.Dispose();
 ```
 
-## Accessing explicit implementations
+### Option 3. Use invokers
+
+If the members have been added programmatically, you use invoker APIs like <xref:Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke*?text=IMethod.Invoke> for methods or <xref:Metalama.Framework.Code.IExpression.Value> for properties.
+
+
+### Accessing explicit implementations
 
 The following strategies can be employed to access explicit implementations:
 

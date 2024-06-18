@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Eligibility;
@@ -12,7 +13,7 @@ public abstract class OverrideMethodAspect : Attribute, IAspect<IMethod>
 {
     public virtual void BuildAspect( IAspectBuilder<IMethod> builder )
     {
-        builder.Advice.Override( builder.Target, nameof(this.OverrideMethod) );
+        builder.Override( nameof(this.OverrideMethod) );
     }
 
     public virtual void BuildEligibility( IEligibilityBuilder<IMethod> builder )

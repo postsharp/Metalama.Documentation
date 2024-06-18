@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
@@ -12,7 +13,7 @@ internal class LogConstructorsAttribute : TypeAspect
     {
         foreach ( var constructor in builder.Target.Constructors )
         {
-            builder.Advice.Override( constructor, nameof(this.OverrideConstructorTemplate) );
+            builder.With( constructor ).Override( nameof(this.OverrideConstructorTemplate) );
         }
     }
 

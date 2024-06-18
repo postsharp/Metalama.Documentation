@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Code.DeclarationBuilders;
@@ -15,8 +16,7 @@ public class AddEditorHiddenFieldAttribute : TypeAspect
             typeof(EditorBrowsableAttribute),
             new object[] { EditorBrowsableState.Never } );
 
-        builder.Advice.IntroduceField(
-            builder.Target,
+        builder.IntroduceField(
             "__HiddenField",
             typeof(int),
             buildField: f => f.AddAttribute( attribute ) );

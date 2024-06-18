@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System.Linq;
@@ -12,7 +13,7 @@ internal class SynchronizedAttribute : TypeAspect
     {
         foreach ( var method in builder.Target.Methods.Where( m => !m.IsStatic ) )
         {
-            builder.Advice.Override( method, nameof(this.OverrideMethod) );
+            builder.With( method ).Override( nameof(this.OverrideMethod) );
         }
     }
 

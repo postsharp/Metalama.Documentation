@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Code.DeclarationBuilders;
@@ -23,7 +24,7 @@ public class HideFieldsFromEditorAttribute : TypeAspect
         foreach ( var field in builder.Target.Fields
                      .Where( f => f.Name.StartsWith( "__" ) && !f.IsImplicitlyDeclared ) )
         {
-            builder.Advice.IntroduceAttribute( field, attribute );
+            builder.With( field ).IntroduceAttribute( attribute );
         }
     }
 }

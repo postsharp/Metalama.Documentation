@@ -1,6 +1,7 @@
 ﻿// This is public domain Metalama sample code.
 
 using Doc.Ordering;
+using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
@@ -16,7 +17,7 @@ internal class Aspect1 : TypeAspect
     {
         foreach ( var m in builder.Target.Methods )
         {
-            builder.Advice.Override( m, nameof(this.Override) );
+            builder.With( m ).Override( nameof(this.Override) );
         }
     }
 
@@ -43,7 +44,7 @@ internal class Aspect2 : TypeAspect
     {
         foreach ( var m in builder.Target.Methods )
         {
-            builder.Advice.Override( m, nameof(this.Override) );
+            builder.With( m ).Override( nameof(this.Override) );
         }
     }
 
