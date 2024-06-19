@@ -1,6 +1,8 @@
 ﻿// This is public domain Metalama sample code.
 
+#if TEST_OPTIONS
 // @Skipped(Bug 30453)
+#endif
 
 namespace Doc.InheritedMethodLevel;
 
