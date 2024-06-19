@@ -12,6 +12,7 @@ public class Vector
 
     public double Y { get; set; }
     
+    // TODO: This is a bad example because ComputeNorm depends on mutable properties.
     [SuppressObservabilityWarnings]
     public double Norm => VectorHelper.ComputeNorm( this );
 }

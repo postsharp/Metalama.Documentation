@@ -57,7 +57,6 @@ public class ProxyAspect : TypeAspect
         // Add the constructor.
         builder.IntroduceConstructor(
             nameof(this.Constructor),
-            IntroductionScope.Instance,
             buildConstructor: constructorBuilder => constructorBuilder.AddParameter( "intercepted", this._interfaceType ),
             args: new { interceptedField } );
     }

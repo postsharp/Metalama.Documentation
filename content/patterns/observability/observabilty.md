@@ -4,6 +4,9 @@ uid: observability
 
 # Metalama.Patterns.Observability
 
+> [!WARNING]
+> This article should still be reviewed and corrected.
+
 The Observable pattern is widely used for binding user interface controls to their underlying data, especially in projects that adhere to the MVVM architecture. In .NET, the standard interface for the Observable pattern is <xref:System.ComponentModel.INotifyPropertyChanged>. Typically, this interface is implemented by the types of the Model and View-Model layers. When a property of a Model object changes, it triggers the <xref:System.ComponentModel.INotifyPropertyChanged.PropertyChanged> event. This Model event is observed by the View-Model layer. If a property of a View-Model object is affected by this change, it subsequently triggers the <xref:System.ComponentModel.INotifyPropertyChanged.PropertyChanged> event. The View-Model event is eventually observed by the View layer, which updates the UI.
 
 A second common element of the Observable pattern is the `OnPropertyChanged` method, the name of which can vary across different MVVM frameworks. A third element of this pattern is conventions about how the property setters should be initialized, possibly with some helper methods.

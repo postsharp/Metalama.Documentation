@@ -52,11 +52,39 @@ In the following example, the automatic property has a private setter. The <xref
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/ReadOnly.cs]
 
+## Adding validation through a contract
+
+The most straightforward way to add validation to a contract is to add an aspect of the `Metalama.Patterns.Contracts` package.
+
 ### Example: a dependency property with contracts
 
 In the following example, a `[Positive]` contract is added to the automatic property. You can see how the <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute?text=[DependencyProperty]> aspect generates code to enforce this precondition.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/Contract.cs]
+
+
+## Adding validation through a callback method
+
+The second way to add validation to a dependency property is by adding a callback method to your code. For a property named `Foo`, the validation method must be named `ValidateFoo` and have one of the following signatures:
+
+* `static void ValidateFoo(TPropertyType value)`
+* `static void ValidateFoo(DependencyProperty property, TPropertyType value)`
+* `static void ValidateFoo(TDeclaringType instance, TPropertyType value)`
+* `static void ValidateFoo(DependencyProperty property, TDeclaringType instance, TPropertyType value)`
+* `void ValidateFoo(TPropertyType value)`
+* `void ValidateFoo(DependencyProperty property, TPropertyType value)`
+
+where `TDeclaringType` is the declaring type of the target property, `DependencyObject`, or `object`, and where `TPropertyType` is any type assignable from the actual type of the target property. `TPropertyType` can also be a generic type parameter, in which case the method must have exactly one generic parameter.
+
+If you prefer specifying the validation method explicitly instead of relying on a naming convention, you can do it using the <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute.ValidateMethod?text=DependencyPropertyAttribute.ValidateMethod> property.
+
+These methods must throw an exception in case of invalid value.
+
+### Example: validation callback
+
+The following example implements a profanity filter on a dependency filter. If the value contains the word `foo`, it will throw an exception.
+
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/Validate.cs]
 
 ## Handling of default values
 
@@ -71,28 +99,6 @@ The following example demonstrates the code generation pattern when an automatic
 
 If you don't want the property initial value to be interpreted as the default value of the dependency property, you can disable this behavior by setting the <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute.InitializerProvidesDefaultValue> property to `false`. This property is available from the <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute> class from the <xref:Metalama.Patterns.Xaml.Configuration.DependencyPropertyExtensions.ConfigureDependencyProperty*> fabric extension method.
 
-## Adding a validation callback
-
-The simplest way to validate the value assigned to a dependency property is to add a contract from the `Metalama.Patterns.Contracts` package to the automatic property.
-
-Alternatively, you can add a custom validation method. For a property named `Foo`, the validation method must be named `ValidateFoo` and have one of the following signatures:
-
-* `static bool ValidateFoo(TPropertyType value)`
-* `static bool ValidateFoo(DependencyProperty property, TPropertyType value)`
-* `static bool ValidateFoo(TDeclaringType instance, TPropertyType value)`
-* `static bool ValidateFoo(DependencyProperty property, TDeclaringType instance, TPropertyType value)`
-* `bool ValidateFoo(TPropertyType value)`
-* `bool ValidateFoo(DependencyProperty property, TPropertyType value)`
-
-where `TDeclaringType` is the declaring type of the target property, `DependencyObject`, or `object`, and where `TPropertyType` is any type assignable from the actual type of the target property. `TPropertyType` can also be a generic type parameter, in which case the method must have exactly one generic parameter.
-
-If you prefer specifying the validation method explicitly instead of relying on a naming convention, you can do it using the <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute.ValidateMethod?text=DependencyPropertyAttribute.ValidateMethod> property.
-
-### Example: validation callback
-
-The following example implements a profanity filter on a dependency filter. If the value contains the word `foo`, it will throw an exception.
-
-[!metalama-test ~/code/Metalama.Documentation.SampleCode.Xaml/DependencyProperties/Validate.cs]
 
 ## Adding a PropertyChanged callback
 
