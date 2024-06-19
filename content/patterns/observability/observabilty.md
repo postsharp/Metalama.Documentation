@@ -51,7 +51,7 @@ Here are different ways to cope with these warnings:
 
 ### Ignoring the warning
 
-If you consider the warning to be a false positive, you can ignore it using the classic `#pragma disable warning` syntax.
+If you consider the warning to be a false positive, you can ignore it using the classic `#pragma warning disable` syntax.
 
 If you want to disable all warnings in a member, you can also use the <xref:Metalama.Patterns.Observability.SuppressObservabilityWarningsAttribute?text=[SuppressObservabilityWarnings]> attribute, which is provided for find-and-replace-all compatibility with PostSharp.
 
