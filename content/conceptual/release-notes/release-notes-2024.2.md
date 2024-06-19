@@ -46,8 +46,8 @@ For details, see <xref:immutability>.
 
 ## Introduction of classes and constructors
 
-* It is now possible to introduce whole classes by using the <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceClass*?text=IAdviceFactory.IntroduceClass> method. This method returns an <xref:Metalama.Framework.Advising.IAdviser`1>`<INamedType>`, which you can then use to add members to the new type.
-* New advice method <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceConstructor*?text=IAdviceFactory.IntroduceConstructor> to introduce a constructor into an existing or new type.
+* It is now possible to introduce whole classes by using the <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceClass*?text=AdviserExtensions.IntroduceClass> method. This method returns an <xref:Metalama.Framework.Advising.IAdviser`1>`<INamedType>`, which you can then use to add members to the new type.
+* New advice method <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceConstructor*?text=AdviserExtensions.IntroduceConstructor> to introduce a constructor into an existing or new type.
 
 ## Improvements in fabrics and IAspectReceiver
 
@@ -107,7 +107,7 @@ The following changes improve your ability to generate code with Metalama:
 * An error will be reported when attempting to use some template-only methods from a method that is not a template.
 
 ### Changes in interface implementation
-* The <xref:Metalama.Framework.Advising.IAdviceFactory.ImplementInterface*> advice no longer verifies if all interface members are present. Errors will appear during compilation. Interface members can be introduced using `[InterfaceMember]` as before, but also using `[Introduce]`, or programmatically using `IAdviceFactory.IntroduceMethod`.
+* The <xref:Metalama.Framework.Advising.AdviserExtensions.ImplementInterface*> advice no longer verifies if all interface members are present. Errors will appear during compilation. Interface members can be introduced using `[InterfaceMember]` as before, but also using `[Introduce]`, or programmatically using `AdviserExtensions.IntroduceMethod`.
 * The <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult> interface now has a <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult.ExplicitImplementation> property of type `IAdviser<INamedType>`, which allows introducing explicit (private) members.
 
 ### Improvements in Metalama.Patterns.Contracts

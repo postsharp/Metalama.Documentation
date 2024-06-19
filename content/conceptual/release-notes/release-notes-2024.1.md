@@ -39,7 +39,7 @@ We also have added toast notifications for unhandled exceptions.
 
 ## Overriding constructors
 
-You can now override instance constructors from the aspect's `BuildAspect` method by calling the <xref:Metalama.Framework.Advising.IAdviceFactory.Override*?text=IAdviceFactory.Override> method and passing an <xref:Metalama.Framework.Code.IConstructor>.
+You can now override instance constructors from the aspect's `BuildAspect` method by calling the <xref:Metalama.Framework.Advising.AdviserExtensions.Override*?text=AdviserExtensions.Override> method and passing an <xref:Metalama.Framework.Code.IConstructor>.
 
 This will work for both standard constructors and primary constructors. If you attempt to override the primary constructor, it will be transparently expanded into a standard constructor.
 

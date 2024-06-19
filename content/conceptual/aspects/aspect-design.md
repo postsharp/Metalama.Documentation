@@ -19,19 +19,19 @@ classDiagram
 
     class IAspect {
         BuildAspect(IAspectBuilder)
+        BuildEligibility(IEligibilityBuilder)
     }
 
     class IAspectBuilder {
         SkipAspect()
         TargetDeclaration
-        AdviceFactory
     }
 
-    class IAdviceFactory {
-        Override*(...)
-        Introduce*(...)
-        AddInitializer*(...)
+    class IAdviser {
+        Target
+        With(declaration)
     }
+
 
     class ScopedDiagnosticSink {
         Report(...)
@@ -39,9 +39,33 @@ classDiagram
         Suggest(...)
     }
 
+    class AdviserExtensions {
+        <<static>>
+        Override(...)
+        Introduce*(...)
+        ImplementInterface(...)
+        AddContract(...)
+        AddInitializer(...)
+    }
+
+    class IAspectReceiver {
+        Select(...)
+        SelectMany(...)
+        Where(...)
+        AddAspect(...)
+        AddAspectIfEligible(...)
+        Validate(...)
+        ValidateOutboundReferences(...)
+        ReportDiagnostic(...)
+        SuppressDiagnostic(...)
+        SuggestCodeFix(...)
+    }
+
     IAspect --> IAspectBuilder : BuildAspect() receives
-    IAspectBuilder --> IAdviceFactory : exposes
+    IAspectBuilder --|> IAdviser : inherits 
     IAspectBuilder --> ScopedDiagnosticSink : exposes
+    IAspectBuilder --> IAspectReceiver : exposes
+    AdviserExtensions --> IAdviser : provides extension\nmethods
 
 ```
 
@@ -57,21 +81,29 @@ Aspects can perform the following transformations to code:
 
 For more details, refer to <xref:advising-code>.
 
-### 2. Reporting and suppressing diagnostics
+### 2. Reporting, suppressing diagnostics and suggesting code fixes
 
 Aspects can report diagnostics (a term encompassing errors, warnings, and information messages) and suppress diagnostics reported by the C# compiler, analyzers, or other aspects.
 
-For more information about this feature, refer to <xref:diagnostics>.
-
-### 3. Suggesting code fixes
-
 Aspects can suggest code fixes for any diagnostic they report or propose code refactorings.
 
-### 4. Validating the code that references the target declaration
 
-Aspects can validate not only the target code but also any _reference_ to the target declaration.
+For more information about this feature, refer to <xref:diagnostics>.
+
+### 3. Performed advanced code validations
+
+The <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound?text=builder.Outbound> property allows to register validators for advanced scenarios:
+
+* validate the target declaration after it will be transformed by all aspects,
+* validate any _references_ to the target declaration.
 
 Refer to <xref:aspect-validating>.
+
+### 4. Adding other aspects to be applied
+
+The <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound?text=builder.Outbound> property also allows to add other aspects to the target code.
+
+Refer to <xref:child-aspects>.
 
 ### 5. Defining its eligibility
 
@@ -79,11 +111,6 @@ Aspects can define which declarations they can be legally applied to.
 
 Refer to <xref:eligibility>.
 
-### 6. Adding other aspects to be applied
-
-Aspects can add other aspects to the target code.
-
-Refer to <xref:child-aspects>.
 
 ### 7. Disabling itself
 

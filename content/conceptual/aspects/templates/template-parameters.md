@@ -21,7 +21,7 @@ To define and use a compile-time parameter in a template method:
 
 1. Add one or more parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The parameter type must not be run-time-only. If the parameter type is compile-time-only (for instance, `IField`), the custom attribute is superfluous.
 
-2. In your `BuildAspect` method implementation, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument. For instance, `args: new { a = "", b = 3, c = field }` where `a`, `b`, and `c` are the exact names of the template parameters (the name matching is case-sensitive).
+2. In your `BuildAspect` method implementation, when calling an advice method, pass the parameter values as an anonymous object to the `args` argument. For instance, `args: new { a = "", b = 3, c = field }` where `a`, `b`, and `c` are the exact names of the template parameters (the name matching is case-sensitive).
 
 ### Alternative: tags
 
@@ -35,7 +35,7 @@ To define and use a compile-time type parameter in a template method, follow the
 
 1. Add one or more type parameters to the template method and annotate them with the <xref:Metalama.Framework.Aspects.CompileTimeAttribute> custom attribute. The type parameter can have arbitrary constraints. The current version of Metalama will ignore them when expanding the template.
 
-2. In your `BuildAspect` method implementation, when adding the advice by calling a method of the <xref:Metalama.Framework.Advising.IAdviceFactory> interface, pass the parameter values as an anonymous object to the `args` argument. For instance, `args: new { T1 = typeof(int), T2 = field.Type }` where `T1` and `T2` are the exact names of the template parameters (note that the name matching is case-sensitive).
+2. In your `BuildAspect` method implementation, when calling an advice method, pass the parameter values as an anonymous object to the `args` argument. For instance, `args: new { T1 = typeof(int), T2 = field.Type }` where `T1` and `T2` are the exact names of the template parameters (note that the name matching is case-sensitive).
 
 ### Alternative: dynamic typing
 

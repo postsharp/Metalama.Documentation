@@ -20,7 +20,7 @@ We recommend overriding constructors only if none of the following approaches wo
 
 Overriding a constructor works in a similar way to overriding a method.
 
-Your aspect must implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke the <xref:Metalama.Framework.Advising.IAdviceFactory.Override(Metalama.Framework.Code.IConstructor,System.String,System.Object,System.Object)?text=builder.Advice.Override> method.
+Your aspect must implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke the <xref:Metalama.Framework.Advising.AdviserExtensions.Override(Metalama.Framework.Code.IConstructor,System.String,System.Object,System.Object)?text=builder.Advice.Override> method.
 
 To invoke the original implementation, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed>. Note that, unlike methods, you can <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed> only once when overriding a constructor.
 

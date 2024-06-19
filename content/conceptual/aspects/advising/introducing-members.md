@@ -53,14 +53,14 @@ There are two steps to introduce a member programmatically:
 
 Implement the template in your aspect class and annotate it with the <xref:Metalama.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute. The template does not need to have the final signature.
 
-### Step 2. Invoke IAdviceFactory.Introduce*
+### Step 2. Invoke AdviserExtensions.Introduce*
 
 In your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, call one of the following methods and store the return value in a variable:
 
-- <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceMethod*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder>
-- <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceProperty*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IPropertyBuilder>
-- <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceEvent*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IEventBuilder>
-- <xref:Metalama.Framework.Advising.IAdviceFactory.IntroduceField*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder>
+- <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceMethod*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IMethodBuilder>
+- <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceProperty*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IPropertyBuilder>
+- <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceEvent*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IEventBuilder>
+- <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceField*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder>
 
 A call to one of these methods creates a member by default that has the same characteristics as the template (name, signature, etc.), taking into account the properties of the <xref:Metalama.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute.
 

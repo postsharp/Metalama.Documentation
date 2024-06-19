@@ -15,7 +15,7 @@ public class DispatchAttribute : TypeAspect
     {
         var switchBuilder = new SwitchStatementBuilder( ExpressionFactory.Capture( messageName ) );
 
-        var processMethods = meta.Target.Type.Methods.Where( m => m.Name.StartsWith( "Process" ) );
+        var processMethods = meta.Target.Type.Methods.Where( m => m.Name.StartsWith( "Process", StringComparison.OrdinalIgnoreCase ) );
 
         foreach ( var processMethod in processMethods )
         {

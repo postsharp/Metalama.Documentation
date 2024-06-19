@@ -25,22 +25,29 @@ Metalama adheres to the "matryoshka" model: your source code is the innermost do
 
 ![](matryoshka.png "CC BY-SA 3.0 by Wikipedia user Fanghong")
 
-It's crucial to remember that while Metalama constructs the matryoshka from the inside out, the code is executed from the outside in; in other words, the source code is executed _last_.
+It's crucial to remember that while Metalama, at _build time_, constructs the matryoshka from the inside out, at _run time_ the code is executed from the outside in; in other words, the source code is executed _last_.
 
-Therefore, the aspect application order and the aspect execution order are _opposite_.
+Therefore, the build-time order of applying aspects order and the run-time order of executing aspects are usually _opposite_. 
 
 ## Specifying the execution order
 
-By default, the execution order of aspects is alphabetical. This order is not intended to be correct but at least it is deterministic.
+By default, the run-time execution order of aspects is alphabetical. This order is not intended to be correct but at least it is deterministic.
 
-The execution order of aspects must be defined using the <xref:Metalama.Framework.Aspects.AspectOrderAttribute> assembly-level custom attribute. The order of the aspect classes in the attribute corresponds to their execution order.
+The execution order of aspects must be defined using the <xref:Metalama.Framework.Aspects.AspectOrderAttribute> assembly-level custom attribute. The order of the aspect classes in the attribute corresponds to their execution order. To avoid ambiguities, you must explicitly supply the <xref:Metalama.Framework.Aspects.AspectOrderDirection> value (`RunTime` or `CompileTime`) for which you are specifying the aspect order.
+
+The two following snippets are equivalent:
 
 ```cs
 using Metalama.Framework.Aspects;
-[assembly: AspectOrder( typeof(Aspect1), typeof(Aspect2), typeof(Aspect3))]
+[assembly: AspectOrder( AspectOrderDirection.RunTime, typeof(Aspect1), typeof(Aspect2), typeof(Aspect3))]
 ```
 
-This custom attribute defines the following relationships:
+```cs
+using Metalama.Framework.Aspects;
+[assembly: AspectOrder( AspectOrderDirection.CompileTime, typeof(Aspect3), typeof(Aspect2), typeof(Aspect1))]
+```
+
+This custom attribute defines the run-time execution order:
 
 
 ```mermaid
@@ -51,14 +58,17 @@ Aspect2 --> Aspect3
 
 ```
 
+
+### Partial relationships
+
 You can specify _partial_ order relationships. The aspect framework will merge all partial relationships and determine the global order for the current project.
 
-For instance, the following code snippet is equivalent to the previous one:
+For instance, the following code snippet is equivalent to the previous ones:
 
 ```cs
 using Metalama.Framework.Aspects;
-[assembly: AspectOrder( typeof(Aspect1), typeof(Aspect2))]
-[assembly: AspectOrder( typeof(Aspect2), typeof(Aspect3))]
+[assembly: AspectOrder( AspectOrderDirection.RunTime, typeof(Aspect1), typeof(Aspect2))]
+[assembly: AspectOrder( AspectOrderDirection.RunTime, typeof(Aspect2), typeof(Aspect3))]
 ```
 
 These two attributes define the following relationships:
@@ -70,9 +80,48 @@ If you specify conflicting relationships or import an aspect library that define
 > [!NOTE]
 > Metalama will merge all `[assembly: AspectOrder(...)]` attributes that it finds not only in the current project but also in all referenced projects or libraries. Therefore, you don't need to repeat the `[assembly: AspectOrder(...)]` attributes in all projects that use aspects. It is sufficient to define them in projects that define aspects.
 
+### Inherited aspects
+
+By default, relationships specified with <xref:Metalama.Framework.Aspects.AspectOrderAttribute> also apply to derived aspect classes. 
+
+For instance, consider the following aspects:
+
+```c#
+abstract class ExceptionHandlingAspect;
+class RetryAspect : ExceptionHandlingAspect;
+class WrapExceptionAspect : ExceptionHandlingAspect;
+
+abstract class CacheAspect;
+class B1 : MemoryCacheAspect;
+class B2 : RedisCacheAspect;
+```
+
+Consider the following order attributes, ordering only abstract aspects:
+
+```cs
+using Metalama.Framework.Aspects;
+[assembly: AspectOrder( AspectOrderDirection.RunTime, typeof(CacheAspect), typeof(ExceptionHandlingAspect))]
+```
+
+We don't explicitly order concrete aspect classes, so alphabetical ordering will automatically apply.
+
+The resulting run-time aspect order will be the following:
+
+```mermaid
+flowchart LR
+
+MemoryCacheAspect --> RedisCacheAspect --> RetryAspect --> WrapExceptionAspect
+```
+
+
+
+To disable this behavior, set the <xref:Metalama.Framework.Aspects.AspectOrderAttribute.ApplyToDerivedTypes> property to `false`.
+
+### How does it work?
+
 Under the hood, Metalama performs a [topological sort](https://en.wikipedia.org/wiki/Topological_sorting) on a graph composed of all relationships found in the current project and all its dependencies.
 
-When a pair of aspects do not have any specific ordering relationship, Metalama falls back to _alphabetical_ ordering.
+When a pair of aspects do not have any specific ordering relationship, from any source, Metalama falls back to _alphabetical_ ordering to avoid any non-determinism.
 
 
 ### Example

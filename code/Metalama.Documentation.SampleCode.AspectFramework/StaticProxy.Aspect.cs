@@ -34,7 +34,7 @@ public class ProxyAspect : TypeAspect
 
         foreach ( var method in namedType.Methods )
         {
-            implementInterfaceResult.ExplicitImplementation.IntroduceMethod(
+            implementInterfaceResult.ExplicitMembers.IntroduceMethod(
                 method.ReturnType.Is( SpecialType.Void ) ? nameof(this.VoidTemplate) : nameof(this.NonVoidTemplate),
                 IntroductionScope.Instance,
                 buildMethod: methodBuilder =>

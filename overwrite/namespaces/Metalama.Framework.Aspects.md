@@ -30,33 +30,59 @@ To create an aspect, you need to create a class that derives from <xref:System.A
 
 ### Aspect builders
 
+
 ```mermaid
 classDiagram
 
     class IAspect {
         BuildAspect(IAspectBuilder)
+        BuildEligibility(IEligibilityBuilder)
     }
 
     class IAspectBuilder {
         SkipAspect()
         TargetDeclaration
-        AdviceFactory
     }
 
-    class IAdviceFactory {
-        Override(...)
-        Introduce*(...)
-        AddInitializer*(...)
+    class IAdviser {
+        Target
+        With(declaration)
     }
+
 
     class ScopedDiagnosticSink {
         Report(...)
         Suppress(...)
+        Suggest(...)
     }
 
-    IAspectBuilder <-- IAspect : BuildAspect() receives
-    IAdviceFactory <-- IAspectBuilder : exposes
-    ScopedDiagnosticSink <-- IAspectBuilder : exposes
+    class AdviserExtensions {
+        <<static>>
+        Override(...)
+        Introduce*(...)
+        ImplementInterface(...)
+        AddContract(...)
+        AddInitializer(...)
+    }
+
+    class IAspectReceiver {
+        Select(...)
+        SelectMany(...)
+        Where(...)
+        AddAspect(...)
+        AddAspectIfEligible(...)
+        Validate(...)
+        ValidateOutboundReferences(...)
+        ReportDiagnostic(...)
+        SuppressDiagnostic(...)
+        SuggestCodeFix(...)
+    }
+
+    IAspect --> IAspectBuilder : BuildAspect() receives
+    IAspectBuilder --|> IAdviser : inherits 
+    IAspectBuilder --> ScopedDiagnosticSink : exposes
+    IAspectBuilder --> IAspectReceiver : exposes
+    AdviserExtensions --> IAdviser : provides extension\nmethods
 
 ```
 
@@ -66,41 +92,22 @@ classDiagram
 classDiagram
 
 ScopeAttribute <|-- CompileTimeAttribute  : derives from
-ScopeAttribute <|-- RunTimeOnlyAttribute  : derives from
-CompileTimeAttribute <|-- TemplateAttribute  : derives from
-TemplateAttribute <|-- AdviceAttribute  : derives from
-AdviceAttribute <|-- IntroduceAttribute  : derives from
-TemplateAttribute <|-- InterfaceMemberAttribute  : derives from
+ScopeAttribute <|-- RunTimeOrCompileTimeAttribute  : derives from
 
-class CompileTimeAttribute
-class RunTimeOnlyAttribute
 
 ```
 
-### Adding child aspects and validators
+### Advice and template attributes
 
 ```mermaid
 classDiagram
 
-    IAspectBuilder <-- IAspect : receives
-
-    class IAspectBuilder {
-    }
-
-    class IDeclarationSelector {
-        With()
-    }
-
-    IDeclarationSelector <|-- IAspectBuilder : derives from
-
-    class IDeclarationSelection {
-        AddAspect()
-        AddAnnotation()
-        RegisterValidator()
-        RequireAspect()
-    }
-
-    IDeclarationSelection <-- IDeclarationSelector : creates
+IAdviceAttribute <|-- ITemplateAttribute : derives from
+IAdviceAttribute <| -- DeclarativeAdviceAttribute : derives from
+ITemplateAttribute <|-- TemplateAttribute  : derives from
+DeclarativeAdviceAttribute <|-- IntroduceAttribute  : derives from
+DeclarativeAdviceAttribute <|-- IntroduceDependencyAttribute  : derives from
+ITemplateAttribute <|-- InterfaceMemberAttribute  : derives from
 ```
 
 ### IAspectInstance, IAspectPredecessor
