@@ -34,11 +34,16 @@ public sealed class ConsoleMain : IAsyncConsoleMain
             }
 
             // Updating the product.
-            var updatedCorn = new Product( "corn", 100 + Random.Shared.Next( 20 ), $"Updated by {this._appName}, i={i}" );
+            var updatedCorn = new Product(
+                "corn",
+                100 + Random.Shared.Next( 20 ),
+                $"Updated by {this._appName}, i={i}" );
+
             Console.WriteLine( $"{this._appName} update {updatedCorn}." );
             this._productCatalogue.Update( updatedCorn );
         }
 
-        Console.WriteLine( $"In total, CloudCalculator in {this._appName} performed {this._productCatalogue.DbOperationCount} database operation(s)." );
+        Console.WriteLine(
+            $"In total, CloudCalculator in {this._appName} performed {this._productCatalogue.DbOperationCount} database operation(s)." );
     }
 }

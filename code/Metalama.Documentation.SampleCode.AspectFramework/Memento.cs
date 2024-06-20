@@ -10,6 +10,8 @@ namespace Doc.Memento;
 public class Vehicle
 {
     public string Name { get; }
+
     public decimal Payload { get; set; }
+
     public string Fuel { get; set; }
 }

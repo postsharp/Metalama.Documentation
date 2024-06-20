@@ -20,7 +20,8 @@ internal class NotNullAttribute : MethodAspect
                           && p.Type.IsNullable != true
                           && p.Type.IsReferenceType == true ) )
         {
-            builder.With( parameter ).AddContract( nameof(this.Validate), args: new { parameterName = parameter.Name } );
+            builder.With( parameter )
+                .AddContract( nameof(this.Validate), args: new { parameterName = parameter.Name } );
         }
     }
 

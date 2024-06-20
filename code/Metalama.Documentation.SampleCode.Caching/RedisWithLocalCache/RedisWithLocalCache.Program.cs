@@ -38,7 +38,8 @@ internal static class Program
                     var keyPrefix = $"{thisAssembly.Name}.{thisAssembly.Version}";
 
                     // Finally, build the Redis caching back-end. Add an L1 cache.
-                    return backend.Redis( new RedisCachingBackendConfiguration( redisConnectionOptions, keyPrefix ) ).WithL1();
+                    return backend.Redis( new RedisCachingBackendConfiguration( redisConnectionOptions, keyPrefix ) )
+                        .WithL1();
                 } ) ); /*</AddMetalamaCaching>*/
 
         // Add other components as usual.

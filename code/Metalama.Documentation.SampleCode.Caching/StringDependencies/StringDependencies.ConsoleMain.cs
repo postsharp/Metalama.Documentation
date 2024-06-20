@@ -32,7 +32,9 @@ public sealed class ConsoleMain : IConsoleMain
         Console.WriteLine( "Read the price catalogue a first time." );
         this.PrintCatalogue();
 
-        Console.WriteLine( "Read the price catalogue a second time time. It should be completely performed from cache." );
+        Console.WriteLine(
+            "Read the price catalogue a second time time. It should be completely performed from cache." );
+
         var operationsBefore = this._catalogue.DbOperationCount;
         this.PrintCatalogue();
         var operationsAfter = this._catalogue.DbOperationCount;

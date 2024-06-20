@@ -29,7 +29,8 @@ public class CacheAttribute : OverrideMethodAspect
     private void CacheOrExecuteCore()
     {
         // Naive implementation of a caching key.
-        var cacheKey = $"{meta.Target.Method.Name}({string.Join( ", ", meta.Target.Method.Parameters.ToValueArray() )})";
+        var cacheKey =
+            $"{meta.Target.Method.Name}({string.Join( ", ", meta.Target.Method.Parameters.ToValueArray() )})";
 
         if ( !this._cache.TryGetValue( cacheKey, out var returnValue ) )
         {

@@ -7,7 +7,8 @@ namespace Doc.ValueAdapter;
 
 internal class StringBuilderAdapter : ValueAdapter<StringBuilder>
 {
-    public override StringBuilder? GetExposedValue( object? storedValue ) => storedValue == null ? null : new StringBuilder( (string) storedValue );
+    public override StringBuilder? GetExposedValue( object? storedValue )
+        => storedValue == null ? null : new StringBuilder( (string) storedValue );
 
     public override object? GetStoredValue( StringBuilder? value ) => value?.ToString();
 }

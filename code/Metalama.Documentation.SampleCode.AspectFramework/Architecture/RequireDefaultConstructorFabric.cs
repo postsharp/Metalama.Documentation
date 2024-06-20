@@ -20,7 +20,10 @@ internal static class ArchitectureExtensions
     public static void MustHaveDefaultConstructor( this IAspectReceiver<INamedType> verifier )
     {
         verifier
-            .Where( t => !t.IsStatic && t.Constructors.FirstOrDefault( c => c.Parameters.Count == 0 ) is null or { Accessibility: not Accessibility.Public } )
+            .Where(
+                t => !t.IsStatic
+                     && t.Constructors.FirstOrDefault( c => c.Parameters.Count == 0 ) is null or
+                         { Accessibility: not Accessibility.Public } )
             .ReportDiagnostic( t => _warning.WithArguments( t ) );
     }
 }

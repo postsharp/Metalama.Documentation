@@ -13,7 +13,8 @@ public class StructuralEquatableAttribute : TypeAspect
     [Introduce( Name = nameof(Equals), WhenExists = OverrideStrategy.Override )]
     public bool EqualsImpl( object? other )
     {
-        foreach ( var fieldOrProperty in meta.Target.Type.FieldsAndProperties.Where( t => t.IsAutoPropertyOrField == true && t.IsImplicitlyDeclared == false ) )
+        foreach ( var fieldOrProperty in meta.Target.Type.FieldsAndProperties.Where(
+                     t => t.IsAutoPropertyOrField == true && t.IsImplicitlyDeclared == false ) )
         {
             meta.InvokeTemplate(
                 nameof(this.CompareFieldOrProperty),
@@ -24,9 +25,13 @@ public class StructuralEquatableAttribute : TypeAspect
     }
 
     [Template]
-    private void CompareFieldOrProperty<[CompileTime] TFieldOrProperty>( IFieldOrProperty fieldOrProperty, IExpression other )
+    private void CompareFieldOrProperty<[CompileTime] TFieldOrProperty>(
+        IFieldOrProperty fieldOrProperty,
+        IExpression other )
     {
-        if ( !EqualityComparer<TFieldOrProperty>.Default.Equals( fieldOrProperty.Value, fieldOrProperty.With( other ).Value ) )
+        if ( !EqualityComparer<TFieldOrProperty>.Default.Equals(
+                fieldOrProperty.Value,
+                fieldOrProperty.With( other ).Value ) )
         {
             meta.Return( false );
         }
@@ -37,7 +42,8 @@ public class StructuralEquatableAttribute : TypeAspect
     {
         var hashCode = new HashCode();
 
-        foreach ( var fieldOrProperty in meta.Target.Type.FieldsAndProperties.Where( t => t.IsAutoPropertyOrField == true && t.IsImplicitlyDeclared == false ) )
+        foreach ( var fieldOrProperty in meta.Target.Type.FieldsAndProperties.Where(
+                     t => t.IsAutoPropertyOrField == true && t.IsImplicitlyDeclared == false ) )
         {
             hashCode.Add( fieldOrProperty.Value );
         }

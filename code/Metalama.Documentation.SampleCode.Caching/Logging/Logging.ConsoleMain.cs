@@ -23,6 +23,7 @@ public sealed class ConsoleMain : IConsoleMain
             Console.WriteLine( $"CloudCalculator returned {value}." );
         }
 
-        Console.WriteLine( $"In total, CloudCalculator performed {this._cloudCalculator.OperationCount} operation(s)." );
+        Console.WriteLine(
+            $"In total, CloudCalculator performed {this._cloudCalculator.OperationCount} operation(s)." );
     }
 }

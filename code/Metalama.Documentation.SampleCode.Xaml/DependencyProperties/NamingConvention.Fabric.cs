@@ -10,10 +10,11 @@ internal class Fabric : ProjectFabric
     public override void AmendProject( IProjectAmender amender )
     {
         amender.ConfigureDependencyProperty(
-            builder => 
-                builder.AddNamingConvention( new DependencyPropertyNamingConvention( "czech" )
-                {
-                    ValidatePattern = "Kontrolovat{PropertyName}"
-                } ) );
+            builder =>
+                builder.AddNamingConvention(
+                    new DependencyPropertyNamingConvention( "czech" )
+                    {
+                        ValidatePattern = "Kontrolovat{PropertyName}"
+                    } ) );
     }
 }

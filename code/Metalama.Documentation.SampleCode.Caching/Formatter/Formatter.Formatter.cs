@@ -9,5 +9,6 @@ internal class FileInfoFormatter : Formatter<FileInfo>
 {
     public FileInfoFormatter( IFormatterRepository repository ) : base( repository ) { }
 
-    public override void Format( UnsafeStringBuilder stringBuilder, FileInfo? value ) => stringBuilder.Append( value?.FullName ?? "<null>" );
+    public override void Format( UnsafeStringBuilder stringBuilder, FileInfo? value )
+        => stringBuilder.Append( value?.FullName ?? "<null>" );
 }

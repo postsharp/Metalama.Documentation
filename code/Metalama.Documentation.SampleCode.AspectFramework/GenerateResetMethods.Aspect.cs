@@ -13,7 +13,8 @@ public class GenerateResetMethodsAttribute : TypeAspect
     {
         base.BuildAspect( builder );
 
-        foreach ( var field in builder.Target.FieldsAndProperties.Where( f => !f.IsImplicitlyDeclared && f.Writeability != Writeability.None ) )
+        foreach ( var field in builder.Target.FieldsAndProperties.Where(
+                     f => !f.IsImplicitlyDeclared && f.Writeability != Writeability.None ) )
         {
             builder.IntroduceMethod(
                 nameof(this.Reset),

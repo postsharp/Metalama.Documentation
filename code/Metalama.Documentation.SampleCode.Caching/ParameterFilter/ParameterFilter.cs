@@ -9,8 +9,10 @@ namespace Doc.ParameterFilter;
 public class PricingService
 {
     [Cache]
-    public decimal GetProductPrice( string productId, [NotCacheKey] string? correlationId ) => throw new NotImplementedException();
+    public decimal GetProductPrice( string productId, [NotCacheKey] string? correlationId )
+        => throw new NotImplementedException();
 
     [Cache]
-    public string[] GetProducts( string productId, [NotCacheKey] string? correlationId ) => throw new NotImplementedException();
+    public string[] GetProducts( string productId, [NotCacheKey] string? correlationId )
+        => throw new NotImplementedException();
 }

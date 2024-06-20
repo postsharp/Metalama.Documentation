@@ -11,6 +11,8 @@ internal class ImportAttribute : OverrideFieldOrPropertyAspect
     {
         get => ServiceLocator.ServiceProvider.GetService( meta.Target.FieldOrProperty.Type.ToType() );
 
-        set => throw new NotSupportedException( $"{meta.Target.FieldOrProperty.Name} should not be set from source code." );
+        set
+            => throw new NotSupportedException(
+                $"{meta.Target.FieldOrProperty.Name} should not be set from source code." );
     }
 }

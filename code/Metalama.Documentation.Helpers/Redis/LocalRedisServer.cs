@@ -25,8 +25,7 @@ public class LocalRedisServer : IDisposable
     private readonly TemporaryFile _executable;
     private readonly Config _config;
     private bool _isDisposed;
-    
-    
+
     public int Port => this._config.Port;
 
     public LocalRedisServer()
@@ -92,13 +91,17 @@ public class LocalRedisServer : IDisposable
                 }
 
                 // This not the best way, but it's a quick way to know it's properly started.
-                if ( eventArgs.Data.IndexOf( $"The server is now ready to accept connections on port {this._config.Port}", StringComparison.Ordinal ) != -1 )
+                if ( eventArgs.Data.IndexOf(
+                        $"The server is now ready to accept connections on port {this._config.Port}",
+                        StringComparison.Ordinal ) != -1 )
                 {
                     serverStartupEvent.Set();
                 }
 
                 // This is to recognize port conflicts and restart quickly.
-                if ( eventArgs.Data.IndexOf( $":{this._config.Port}: bind: No such file or directory", StringComparison.Ordinal ) != -1 )
+                if ( eventArgs.Data.IndexOf(
+                        $":{this._config.Port}: bind: No such file or directory",
+                        StringComparison.Ordinal ) != -1 )
                 {
                     Volatile.Write( ref portError, true );
                     serverStartupEvent.Set();
@@ -160,10 +163,11 @@ public class LocalRedisServer : IDisposable
 
         if ( Volatile.Read( ref exited ) )
         {
-            throw new Exception( $"Redis process exited without being initialized properly. Last received line: {Volatile.Read( ref lastLine )}" );
+            throw new Exception(
+                $"Redis process exited without being initialized properly. Last received line: {Volatile.Read( ref lastLine )}" );
         }
     }
-    
+
     internal EndPoint Endpoint => new IPEndPoint( IPAddress.Loopback, this._config.Port );
 
     protected virtual void Dispose( bool disposing )
@@ -172,7 +176,7 @@ public class LocalRedisServer : IDisposable
         {
             return;
         }
-        
+
         try
         {
             this._process.CancelOutputRead();

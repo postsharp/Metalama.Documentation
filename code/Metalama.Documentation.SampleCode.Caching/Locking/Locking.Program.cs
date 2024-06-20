@@ -17,7 +17,11 @@ internal static class Program
         // Add the caching service.
         builder.Services.AddMetalamaCaching( /*<AddMetalamaCaching>*/
             caching =>
-                caching.AddProfile( new CachingProfile( "Locking" ) { LockingStrategy = new LocalLockingStrategy() } ) ); /*</AddMetalamaCaching>*/
+                caching.AddProfile(
+                    new CachingProfile( "Locking" )
+                    {
+                        LockingStrategy = new LocalLockingStrategy()
+                    } ) ); /*</AddMetalamaCaching>*/
 
         // Add other components as usual, then run the application.
         builder.Services.AddConsoleMain<ConsoleMain>();

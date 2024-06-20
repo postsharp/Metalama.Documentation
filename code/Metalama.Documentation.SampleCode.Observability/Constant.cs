@@ -18,5 +18,5 @@ public class Vector
 public static class VectorHelper
 {
     //[Constant]
-    public static double ComputeNorm( double x, double y ) => Math.Sqrt( ( x * x ) + ( y * y ) );
+    public static double ComputeNorm( double x, double y ) => Math.Sqrt( (x * x) + (y * y) );
 }

@@ -8,12 +8,11 @@ using System.Linq;
 
 namespace Doc.Memento;
 
-
 public class MementoAttribute : TypeAspect
 {
     [CompileTime]
-    private sealed record Tags( 
-        INamedType SnapshopType, 
+    private sealed record Tags(
+        INamedType SnapshopType,
         IReadOnlyList<(IFieldOrProperty Source, IField Snapshot)> Fields );
 
     public override void BuildAspect( IAspectBuilder<INamedType> builder )
@@ -26,8 +25,12 @@ public class MementoAttribute : TypeAspect
         var fields = new List<(IFieldOrProperty Source, IField Snapshot)>();
 
         var sourceFields = builder.Target.FieldsAndProperties
-            .Where( f => f is { IsAutoPropertyOrField: true, IsImplicitlyDeclared: false, Writeability: Writeability.All } );
-        
+            .Where(
+                f => f is
+                {
+                    IsAutoPropertyOrField: true, IsImplicitlyDeclared: false, Writeability: Writeability.All
+                } );
+
         foreach ( var sourceField in sourceFields )
         {
             var fieldIntroduction = snapshotType.IntroduceField(
@@ -60,7 +63,7 @@ public class MementoAttribute : TypeAspect
     {
         var tags = (Tags) meta.Tags.Source!;
 
-        return tags.SnapshopType.Constructors.Single().Invoke( tags.Fields.Select( f=>f.Source ) )!;
+        return tags.SnapshopType.Constructors.Single().Invoke( tags.Fields.Select( f => f.Source ) )!;
     }
 
     [Introduce]

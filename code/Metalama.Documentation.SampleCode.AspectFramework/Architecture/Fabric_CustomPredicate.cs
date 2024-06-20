@@ -30,7 +30,8 @@ internal class MethodNamePredicate : ReferenceEndPredicate
 [CompileTime]
 public static class Extensions
 {
-    public static ReferencePredicate MethodNameEndsWith( this ReferencePredicateBuilder builder, string suffix ) => new MethodNamePredicate( builder, suffix );
+    public static ReferencePredicate MethodNameEndsWith( this ReferencePredicateBuilder builder, string suffix )
+        => new MethodNamePredicate( builder, suffix );
 }
 
 // Here is how your new predicate can be used.
@@ -38,7 +39,8 @@ internal class Fabric : ProjectFabric
 {
     public override void AmendProject( IProjectAmender amender )
     {
-        amender.SelectReflectionType( typeof(CofeeMachine) ).CanOnlyBeUsedFrom( r => r.MethodNameEndsWith( "Politely" ) );
+        amender.SelectReflectionType( typeof(CofeeMachine) )
+            .CanOnlyBeUsedFrom( r => r.MethodNameEndsWith( "Politely" ) );
     }
 }
 

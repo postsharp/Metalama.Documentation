@@ -24,7 +24,9 @@ public class ToStringAttribute : TypeAspect
         {
             if ( !field.Attributes.Any( a => a.Type.Is( typeof(NotToStringAttribute) ) ) )
             {
-                builder.Diagnostics.Suggest( CodeFixFactory.AddAttribute( field, typeof(NotToStringAttribute), "Exclude from [ToString]" ), field );
+                builder.Diagnostics.Suggest(
+                    CodeFixFactory.AddAttribute( field, typeof(NotToStringAttribute), "Exclude from [ToString]" ),
+                    field );
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿// This is public domain Metalama sample code.
+
 // ReSharper disable ConvertToAutoProperty
 
 using Metalama.Patterns.Observability;

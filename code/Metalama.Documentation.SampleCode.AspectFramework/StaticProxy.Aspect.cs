@@ -24,7 +24,8 @@ public class ProxyAspect : TypeAspect
         base.BuildAspect( builder );
 
         // Add a field with the intercepted object.
-        var interceptedField = builder.IntroduceField( "_intercepted", this._interfaceType, IntroductionScope.Instance ).Declaration;
+        var interceptedField = builder.IntroduceField( "_intercepted", this._interfaceType, IntroductionScope.Instance )
+            .Declaration;
 
         // Implement the interface.
         var implementInterfaceResult = builder.ImplementInterface( this._interfaceType );
@@ -51,13 +52,15 @@ public class ProxyAspect : TypeAspect
                     }
                 },
                 args:
-                /*method.ReturnType.Is( SpecialType.Void ) ? new { method, interceptedField } :*/ new { T = method.ReturnType, method, interceptedField } );
+                /*method.ReturnType.Is( SpecialType.Void ) ? new { method, interceptedField } :*/
+                new { T = method.ReturnType, method, interceptedField } );
         }
 
         // Add the constructor.
         builder.IntroduceConstructor(
             nameof(this.Constructor),
-            buildConstructor: constructorBuilder => constructorBuilder.AddParameter( "intercepted", this._interfaceType ),
+            buildConstructor: constructorBuilder
+                => constructorBuilder.AddParameter( "intercepted", this._interfaceType ),
             args: new { interceptedField } );
     }
 

@@ -11,6 +11,8 @@ namespace Doc.SwitchStatementBuilder_FullTemplate;
 public class FruitProcessor
 {
     private void ProcessApple( string args ) { }
+
     private void ProcessOrange( string args ) { }
+
     private void ProcessPear( string args ) { }
 }

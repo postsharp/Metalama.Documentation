@@ -74,5 +74,6 @@ public class EnumViewModelAttribute : CompilationAspect
     }
 
     [Template]
-    public bool IsEnumValue( [CompileTime] IField enumMember, [CompileTime] IField underlyingValueField ) => underlyingValueField.Value == enumMember.Value;
+    public bool IsEnumValue( [CompileTime] IField enumMember, [CompileTime] IField underlyingValueField )
+        => underlyingValueField.Value == enumMember.Value;
 }

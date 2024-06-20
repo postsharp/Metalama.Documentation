@@ -13,8 +13,9 @@ internal static class Program
         var builder = ConsoleApp.CreateBuilder();
 
         // Add the caching service.
-        builder.Services.AddMetalamaCaching(                                                                 /*<Registration>*/
-            caching => caching.WithKeyBuilder( ( formatters, _ ) => new HashingKeyBuilder( formatters ) ) ); /*</Registration>*/
+        builder.Services.AddMetalamaCaching( /*<Registration>*/
+            caching => caching.WithKeyBuilder(
+                ( formatters, _ ) => new HashingKeyBuilder( formatters ) ) ); /*</Registration>*/
 
         // Add other components as usual.
         builder.Services.AddConsoleMain<ConsoleMain>();

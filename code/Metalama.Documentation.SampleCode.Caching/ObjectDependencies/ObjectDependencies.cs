@@ -24,7 +24,8 @@ public record Product( string Name, decimal Price ) : ICacheDependency
     string ICacheDependency.GetCacheKey( ICachingService cachingService ) => this.Name;
 
     // Means that when we invalidate the current product in cache, we should also invalidate the product catalogue.
-    IReadOnlyCollection<ICacheDependency> ICacheDependency.CascadeDependencies { get; } = new[] { GlobalDependencies.ProductCatalogue };
+    IReadOnlyCollection<ICacheDependency> ICacheDependency.CascadeDependencies { get; } =
+        new[] { GlobalDependencies.ProductCatalogue };
 }
 
 public sealed class ProductCatalogue

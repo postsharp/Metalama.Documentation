@@ -8,5 +8,6 @@ namespace Doc.ParameterFilter;
 internal class Fabric : ProjectFabric
 {
     public override void AmendProject( IProjectAmender amender )
-        => amender.ConfigureCaching( caching => caching.AddParameterClassifier( "ILogger", new LoggerParameterClassifier() ) );
+        => amender.ConfigureCaching(
+            caching => caching.AddParameterClassifier( "ILogger", new LoggerParameterClassifier() ) );
 }

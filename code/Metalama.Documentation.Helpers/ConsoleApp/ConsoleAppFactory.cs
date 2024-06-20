@@ -10,7 +10,9 @@ public static class ConsoleAppFactory
         where T : class, IConsoleMain
         => collection.AddSingleton<IConsoleMain, T>();
 
-    public static IServiceCollection AddConsoleMain( this IServiceCollection collection, Func<IServiceProvider, IConsoleMain> factory )
+    public static IServiceCollection AddConsoleMain(
+        this IServiceCollection collection,
+        Func<IServiceProvider, IConsoleMain> factory )
         => collection.AddSingleton( factory );
 
     public static IServiceCollection AddAsyncConsoleMain<T>( this IServiceCollection collection )

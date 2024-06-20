@@ -37,7 +37,8 @@ public class Vector : INotifyPropertyChanged
       }
     }
   }
-  // TODO: This is a bad example because ComputeNorm depends on mutable properties.
+  // Note that we are suppressing the warning, but dependencies to X and Y are not
+  // taken into account!
   [SuppressObservabilityWarnings]
   public double Norm => VectorHelper.ComputeNorm(this);
   protected virtual void OnPropertyChanged(string propertyName)

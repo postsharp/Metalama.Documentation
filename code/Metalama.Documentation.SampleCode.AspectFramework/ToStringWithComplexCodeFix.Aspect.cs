@@ -25,7 +25,9 @@ public class ToStringAttribute : TypeAspect
         if ( builder.AspectInstance.Predecessors[0].Instance is IAttribute attribute )
         {
             builder.Diagnostics.Suggest(
-                new CodeFix( "Switch to manual implementation", codeFixBuilder => this.ImplementManually( codeFixBuilder, builder.Target ) ),
+                new CodeFix(
+                    "Switch to manual implementation",
+                    codeFixBuilder => this.ImplementManually( codeFixBuilder, builder.Target ) ),
                 attribute );
         }
     }

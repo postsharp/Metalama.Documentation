@@ -1,5 +1,7 @@
 [*.cs]
 
+max_line_length = 120
+
 # File header
 file_header_template = This is public domain Metalama sample code.
 dotnet_diagnostic.CA1822.severity = silent
