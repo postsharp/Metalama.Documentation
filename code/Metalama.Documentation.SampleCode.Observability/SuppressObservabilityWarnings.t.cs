@@ -37,6 +37,7 @@ public class Vector : INotifyPropertyChanged
       }
     }
   }
+  // TODO: This is a bad example because ComputeNorm depends on mutable properties.
   [SuppressObservabilityWarnings]
   public double Norm => VectorHelper.ComputeNorm(this);
   protected virtual void OnPropertyChanged(string propertyName)
