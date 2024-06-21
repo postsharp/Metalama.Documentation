@@ -5,9 +5,6 @@ summary: ""
 
 # Metalama 2024.2
 
-> [!WARNING]
-> This release is under development.
-
 Metalama 2024.2 has two focal points. The first is the ability to introduce classes, which closes the biggest gap with Roslyn source generators and finally makes it possible to implement patterns like memento or enum view-model. The second priority is to finalize and document the `Metalama.Patterns.Observability` and `Metalama.Patterns.Xaml` packages.
 
 We had to make dozens of smaller improvements to the framework to reach these objectives, and they will benefit everyone.
@@ -48,6 +45,8 @@ For details, see <xref:immutability>.
 
 * It is now possible to introduce whole classes by using the <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceClass*?text=AdviserExtensions.IntroduceClass> method. This method returns an <xref:Metalama.Framework.Advising.IAdviser`1>`<INamedType>`, which you can then use to add members to the new type.
 * New advice method <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceConstructor*?text=AdviserExtensions.IntroduceConstructor> to introduce a constructor into an existing or new type.
+
+For details, see <xref:introducing-types>.
 
 ## Improvements in fabrics and IAspectReceiver
 
@@ -134,7 +133,7 @@ For details, see <xref:creating-logs>.
 ## Breaking Changes
 
 * The <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicate> class has a new abstract property <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicate>. Its constructor now requires a <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateBuilder>.
-* <xref:Metalama.Framework.Validation.ReferenceValidationContext> no longer reports several <xref:System.String,Metalama.Framework.Validation.ReferenceKinds>, but only the deepest one. For instance, in `class A : List<C>;`, the reference to `C` is of kind `GenericArgument` and no longer `BaseType | GenericArgument`. Combined flags added complexity, and we did not see a use case for them.
+* <xref:Metalama.Framework.Validation.ReferenceValidationContext> no longer reports several <xref:Metalama.Framework.Validation.ReferenceKinds>, but only the deepest one. For instance, in `class A : List<C>;`, the reference to `C` is of kind `GenericArgument` and no longer `BaseType | GenericArgument`. Combined flags added complexity, and we did not see a use case for them.
 * Projects that were using transitive reference validators (or architecture constraints), if they were built with a previous version of Metalama, must be rebuilt.
 * Relationships specified with <xref:Metalama.Framework.Aspects.AspectOrderAttribute> are now applied to derived aspect classes by default. To revert to the previous behavior, set the <xref:Metalama.Framework.Aspects.AspectOrderAttribute.ApplyToDerivedTypes> property to `false`.
 * An error will be reported when attempting to use some compile-time methods (for instance, `meta.CompileTime`) from a method that is not a template. In prior versions, these methods had no effect and were only confusing.

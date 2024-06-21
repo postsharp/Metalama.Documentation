@@ -175,6 +175,29 @@ items:
           topicUid: fabrics-advising
         - name: Distributing projects that use aspects
           topicUid: distributing
+
+        - name: Extending Metalama
+          topicUid: sdk
+          items:
+            - name: Aspect weavers
+              topicUid: aspect-weavers
+            - name: Using the Roslyn API from aspects
+              topicUid: roslyn-api
+            - name: Custom metrics
+              topicUid: custom-metrics
+            
+        - name: Under the hood
+          topicUid: implementation
+          items:
+            - name: NuGet packages
+              topicUid: packages
+            - name: Pipeline
+              topicUid: pipeline
+            - name: Aspect composition
+              topicUid: aspect-composition
+            - name: Execution order of fabrics
+              topicUid: fabrics-execution-order              
+
     - name: Verifying architecture
       topicUid: validation
       items:  
@@ -188,6 +211,7 @@ items:
           topicUid: experimental
         - name: Extending the validation API
           topicUid: validation-extending
+
     - name: Configuring and troubleshooting
       topicUid: configuration 
       items: 
@@ -205,15 +229,7 @@ items:
           topicUid: telemetry
         - name: Inspecting projects using LINQPad
           topicUid: linqpad
-    - name: Extending Metalama
-      topicUid: sdk
-      items:
-        - name: Aspect weavers
-          topicUid: aspect-weavers
-        - name: Using the Roslyn API from aspects
-          topicUid: roslyn-api
-        - name: Custom metrics
-          topicUid: custom-metrics
+
     - name: Migrating from PostSharp
       topicUid: migration
       items:
@@ -231,18 +247,7 @@ items:
           topicUid: migrating-multicasting
         - name: Migrating configuraiton
           topicUid: migrating-configuration
-          
-    - name: Under the hood
-      topicUid: implementation
-      items:
-        - name: NuGet packages
-          topicUid: packages
-        - name: Pipeline
-          topicUid: pipeline
-        - name: Aspect composition
-          topicUid: aspect-composition
-        - name: Execution order of fabrics
-          topicUid: fabrics-execution-order
 
-    - name: Divorcing
+
+    - name: Divorcing from Metalama
       topicUid: divorcing

@@ -37,7 +37,7 @@ This example builds on the previous one, but the dependency is stored in the fie
 
 Similar to methods, to override one or more fields or properties from a single aspect, your aspect needs to implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method exposed on `builder.Advice`. Your implementation must then call the <xref:Metalama.Framework.Advising.AdviserExtensions.Override*?text=builder.Advice.Override> method.
 
-Alternatively, you can call the <xref:Metalama.Framework.Advising.AdviserExtensions.OverrideAccessors(Metalama.Framework.Code.IFieldOrPropertyOrIndexer,Metalama.Framework.Advising.GetterTemplateSelector@,System.String,System.Object,System.Object)?text=builder.Advice.OverrideAccessors> method, which accepts one or two _accessor_ templates, i.e., one template _method_ for the getter and/or one other method for the setter.
+Alternatively, you can call the <xref:Metalama.Framework.Advising.AdviserExtensions.OverrideAccessors*?text=builder.Advice.OverrideAccessors> method, which accepts one or two _accessor_ templates, i.e., one template _method_ for the getter and/or one other method for the setter.
 
 ### Using a property template
 
