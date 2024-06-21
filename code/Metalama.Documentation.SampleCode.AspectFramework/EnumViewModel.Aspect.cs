@@ -24,7 +24,7 @@ public class EnumViewModelAttribute : CompilationAspect
         var enumType = (INamedType) TypeFactory.GetType( this._enumType );
 
         // Get or create the namespace.
-        var ns = builder.IntroduceNamespace( this._targetNamespace );
+        var ns = builder.WithNamespace( this._targetNamespace );
 
         // Introduce the type.
         var viewModelType = ns.IntroduceClass( enumType.Name + "ViewModel" );

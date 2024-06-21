@@ -22,10 +22,23 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="SwitchStatementBuilder_FullTemplate.Aspect.cs">
-        <DependentUpon>SwitchStatementBuilder_FullTemplate.cs</DependentUpon>
+      <Compile Update="IntroduceTopLevelClass.Aspect.cs">
+        <DependentUpon>IntroduceTopLevelClass.cs</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="IntroduceNestedClass_BaseClass.Aspect.cs">
+        <DependentUpon>IntroduceNestedClass_BaseClass.cs</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="IntroduceNestedClass_Members.Aspect.cs">
+        <DependentUpon>IntroduceNestedClass_Members.cs</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Builder.Aspect.cs">
+        <DependentUpon>Builder.cs</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>
+    
 
 </Project>

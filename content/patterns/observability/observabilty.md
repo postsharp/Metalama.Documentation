@@ -15,10 +15,20 @@ Metalama provides an open-source implementation of the Observable pattern in the
 
 The primary benefits of using `Metalama.Patterns.Observability` include:
 
-* Support for both automatic and explicitly-implemented properties.
-* Support for computed properties that depend on **child objects**, a common scenario in MVVM architectures.
-* Support for computed properties that depend on **methods**.
-* Safety: the package reports warnings if a dependency or code construct is not supported.
+* Dramatic reduction of the boilerplate code linked to <xref:System.ComponentModel.INotifyPropertyChanged>.
+* Safety from human errors: 
+    * Never forget to raise a notification again.
+    * The package reports warnings if a dependency or code construct is not supported.
+* Idiomatic source code.
+* Almost idiomatic code generation.
+* Support for complex code constructs:
+     * Automatic properties,
+     * Explicitly-implemented properties,
+     * Field-backed properties,
+     * Properties that depend on **child objects**, a common scenario in MVVM architectures,
+     * Properties that depend on **methods**.
+     * Constant methods and immutable objects.
+* Compatibility with most MVVM frameworks.
 
 The principal artifacts in this package are:
 
@@ -68,7 +78,7 @@ In the following example, we skip the warning using <xref:Metalama.Patterns.Obse
 
 To exclude a property from the change-notification mechanism, use the <xref:Metalama.Patterns.Observability.NotObservableAttribute?text=[NotObservable]> attribute.
 
-### Example: NotObservable
+#### Example: NotObservable
 
 In this example, we exclude a property that depends on `DateTime.Now`. Since the value of this property changes every instance, another method of notifying changes should be implemented &mdash; for instance, using a timer.
 
@@ -86,9 +96,14 @@ The following methods are considered _constant_:
 
 One way to mark a method as constant is to add the <xref:Metalama.Patterns.Observability.ConstantAttribute?text=[Constant]> custom attribute.
 
+If you want to mark many methods as constant, it may be more convenient to use the <xref:Metalama.Patterns.Observability.Configuration.ObservabilityExtensions.ConfigureObservability*> fabric method instead of adding the `[Constant]` attribute to each of them, and set the <xref:Metalama.Patterns.Observability.Configuration.ObservabilityTypeOptionsBuilder.ObservabilityContract> property to `ObservabilityContract.Constant`.
+
+
+#### Example: marking a method as constant using a custom attribute
+
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Observability/Constant.cs]
 
-If you want to mark many methods as constant, it may be more convenient to use the <xref:Metalama.Patterns.Observability.Configuration.ObservabilityExtensions.ConfigureObservability*> fabric method instead of adding the `[Constant]` attribute to each of them, and set the <xref:Metalama.Patterns.Observability.Configuration.ObservabilityTypeOptionsBuilder.ObservabilityContract> property to `ObservabilityContract.Constant`.
+#### Example: marking several methods as constant using a fabric
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Observability/Constant_Fabric.cs]
 
