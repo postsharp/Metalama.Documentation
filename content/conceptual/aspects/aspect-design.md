@@ -62,7 +62,7 @@ classDiagram
     }
 
     IAspect --> IAspectBuilder : BuildAspect() receives
-    IAspectBuilder --|> IAdviser : inherits 
+    IAspectBuilder --|> IAdviser : inherits
     IAspectBuilder --> ScopedDiagnosticSink : exposes
     IAspectBuilder --> IAspectReceiver : exposes
     AdviserExtensions --> IAdviser : provides extension\nmethods
@@ -81,27 +81,26 @@ Aspects can perform the following transformations to code:
 
 For more details, refer to <xref:advising-code>.
 
-### 2. Reporting, suppressing diagnostics and suggesting code fixes
+### 2. Reporting, suppressing diagnostics, and suggesting code fixes
 
 Aspects can report diagnostics (a term encompassing errors, warnings, and information messages) and suppress diagnostics reported by the C# compiler, analyzers, or other aspects.
 
 Aspects can suggest code fixes for any diagnostic they report or propose code refactorings.
 
-
 For more information about this feature, refer to <xref:diagnostics>.
 
-### 3. Performed advanced code validations
+### 3. Performing advanced code validations
 
-The <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound?text=builder.Outbound> property allows to register validators for advanced scenarios:
+The <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound?text=builder.Outbound> property allows registering validators for advanced scenarios:
 
-* validate the target declaration after it will be transformed by all aspects,
-* validate any _references_ to the target declaration.
+* Validate the target declaration after it has been transformed by all aspects.
+* Validate any _references_ to the target declaration.
 
 Refer to <xref:aspect-validating>.
 
 ### 4. Adding other aspects to be applied
 
-The <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound?text=builder.Outbound> property also allows to add other aspects to the target code.
+The <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound?text=builder.Outbound> property also allows adding other aspects to the target code.
 
 Refer to <xref:child-aspects>.
 
@@ -110,7 +109,6 @@ Refer to <xref:child-aspects>.
 Aspects can define which declarations they can be legally applied to.
 
 Refer to <xref:eligibility>.
-
 
 ### 7. Disabling itself
 
@@ -129,6 +127,3 @@ By default, an aspect class is represented in the IDE by the class name trimmed 
 The following example demonstrates an aspect that targets methods, fields, and properties with a single implementation class.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/LogMethodAndProperty.cs name="Aspect Targeting Methods, Fields and Properties"]
-
-
-

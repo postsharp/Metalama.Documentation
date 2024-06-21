@@ -23,8 +23,7 @@ To access the _value_ of the field or property, you can use the `meta.Target.Fie
 
 The following example is a simplified implementation of the service locator pattern.
 
-The `Import` aspect overrides the getter of a property to make a call to a global service locator. The type of the service is determined from the type of the field or property, using `meta.Target.FieldOrProperty.Type`.
-The dependency is not stored, so the service locator must be called every time the property is evaluated.
+The `Import` aspect overrides the getter of a property to make a call to a global service locator. The type of the service is determined from the type of the field or property, using `meta.Target.FieldOrProperty.Type`. The dependency is not stored, so the service locator must be called every time the property is evaluated.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/GlobalImport.cs name="Import Service"]
 

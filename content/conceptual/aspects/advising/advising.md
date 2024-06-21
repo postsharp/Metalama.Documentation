@@ -17,6 +17,7 @@ In <xref:simple-aspects>, you learned how to build simple aspects composed of a 
 | <xref:contracts> | This article introduces advanced techniques for validating the values of fields, properties, or parameters using contracts. It is the continuation of <xref:simple-contracts>. |
 | <xref:introducing-members> | This article explains how to introduce new members to an existing type using aspects. |
 | <xref:implementing-interfaces> | This article details how to make an existing type implement a new interface using aspects. |
+| <xref:introducing-types> | This article explains how to introduce new types (both top-level types or nested types). |
 | <xref:initializers> | This article describes how to add initialization logic to constructors. |
 | <xref:introducing-constructor-parameters> | This article explains how to add new parameters to constructors and retrieve their value from constructors of derived classes. |
 | <xref:overriding-constructors> | This article explains how to override constructors. |

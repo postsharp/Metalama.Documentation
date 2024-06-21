@@ -114,6 +114,8 @@ items:
             topicUid: introducing-members
           - name: Implementing interfaces
             topicUid: implementing-interfaces
+          - name: Introducing types
+            topicUid: introducing-types
           - name: Adding initializers
             topicUid: initializers
           - name: Introducing constructor parameters

@@ -128,7 +128,6 @@ yield break;</pre>
    </tr>
 </table>
 
-
 As you can see, the buffering of iterators is performed by the <xref:Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer*> and <xref:Metalama.Framework.RunTime.RunTimeAspectHelper.BufferAsync*> methods.
 
 ### Example: the default template applied to all kinds of methods
@@ -178,15 +177,14 @@ Here is the simplified source code of the <xref:Metalama.Framework.Aspects.Overr
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs name="Main"]
 
 You will often want your aspect to override _many_ methods. For instance, a _synchronized object_ aspect has to override all public instance methods and wrap them with a `lock` statement.
-
 To override one or more methods, your aspect must implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke the <xref:Metalama.Framework.Advising.AdviserExtensions.Override(Metalama.Framework.Code.IMethod,Metalama.Framework.Advising.MethodTemplateSelector@,System.Object,System.Object)?text=builder.Advice.Override> method.
 
 The _first argument_ of `Override` is the <xref:Metalama.Framework.Code.IMethod> that you want to override. This method must be in the type targeted by the current aspect instance.
 
 The _second argument_ of `Override` is the name of the template method. This method must exist in the aspect class and, additionally:
 
-* The template method must be annotated with the `[Template]` attribute,
-* The template method must have a compatible return type and only parameters that exist in the target method with a compatible type. When the type is unknown, `dynamic` can be used. For instance, the following template method will match any method because it has no parameter (therefore will check any parameter list) and have the universal `dynamic` return type, which also matches `void`.
+* The template method must be annotated with the `[Template]` attribute.
+* The template method must have a compatible return type and only parameters that exist in the target method with a compatible type. When the type is unknown, `dynamic` can be used. For instance, the following template method will match any method because it has no parameter (therefore will check any parameter list) and has the universal `dynamic` return type, which also matches `void`.
 
     ```cs
     dynamic? Template()
@@ -197,13 +195,12 @@ The _second argument_ of `Override` is the name of the template method. This met
 The following aspect wraps all instance methods with a `lock( this )` statement.
 
 > [!NOTE]
-> In a production-ready implementation, you should not lock `this` but a private field. You can introduce this field as described in <xref:introducing-members>. A product-ready implementation should also wrap properties.
+> In a production-ready implementation, you should not lock `this` but a private field. You can introduce this field as described in <xref:introducing-members>. A production-ready implementation should also wrap properties.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Synchronized.cs name="Synchronized"]
 
-### Specifying templates for async and iterator methods
+### Specifying Templates for Async and Iterator Methods
 
 Instead of providing a single template method, you can give several of them and let the framework choose the most suitable one. The principle of this feature is described above. Instead of passing a string to the second argument of `OverrideMethod`, you can pass a <xref:Metalama.Framework.Advising.MethodTemplateSelector> and initialize it with many templates. See the reference documentation of <xref:Metalama.Framework.Advising.AdviserExtensions.Override*?displayProperty=nameWithType> and <xref:Metalama.Framework.Advising.MethodTemplateSelector> for details.
 
 [comment]: # (TODO: example)
-

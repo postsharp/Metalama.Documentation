@@ -25,7 +25,6 @@ This new options framework is pivotal to Metalama Contracts, Metalama Caching, a
 
 Explore <xref:aspect-configuration> for an in-depth guide.
 
-
 ### Metalama Contracts
 
 With v2023.4, we're unveiling the first stable release of Metalama Contracts. This framework streamlines the application of Contract-Based Programming principles, a software engineering practice that significantly enhances software reliability and clarity. Within this paradigm, a contract establishes a series of obligations and expectations between a caller and a callee.
@@ -33,7 +32,6 @@ With v2023.4, we're unveiling the first stable release of Metalama Contracts. Th
 Metalama Contracts implements three core tenets of contract-based programming: preconditions, postconditions, and invariants.
 
 For details, see <xref:contract-patterns>.
-
 
 ### Metalama Caching
 
@@ -45,7 +43,7 @@ Dive into <xref:caching> for further insights.
 
 ### Memorization
 
-Memoization is a simple yet highly efficient form of caching applicable to computed properties and parameterless methods. Unlike the key-value store approach of Metalama Caching, memoization stores values directly within the object itself and has no concept of a caching key whatsoever. 
+Memoization is a simple yet highly efficient form of caching applicable to computed properties and parameterless methods. Unlike the key-value store approach of Metalama Caching, memoization stores values directly within the object itself and has no concept of a caching key whatsoever.
 
 Consult <xref:memoization> for detailed information.
 
@@ -59,7 +57,7 @@ We are releasing a preview of our <xref:Metalama.Patterns.Observability.Observab
 * Added MSBuild properties `MetalamaCompileTimeTargetFrameworks` and `MetalamaRestoreSources` to configure the compile-time target frameworks and to specify the package restore sources, respectively.
 * Added MSBuild property `MetalamaCreateLamaDebugConfiguration` to disable the creation of the LamaDebug build configuration.
 * Added new member <xref:Metalama.Framework.Code.ICompilation.Cache?text=ICompilation.Cache> to cache often-used declarations across aspect instances.
-* Dependency Injection aspect:  <xref:Metalama.Extensions.DependencyInjection.IntroduceDependencyAttribute.IsRequired> default value follows the nullability of the target field.
+* Dependency Injection aspect: <xref:Metalama.Extensions.DependencyInjection.IntroduceDependencyAttribute.IsRequired> default value follows the nullability of the target field.
 * Added an environment variable `METALAMA_TEMP` to customize the location of Metalama temp directory.
 * Annotations: a facility to add and query custom annotations. See <xref:Metalama.Framework.Code.IAnnotation>, <xref:Metalama.Framework.Advising.AdviserExtensions.AddAnnotation*?text=AdviserExtensions.AddAnnotation> and <xref:Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations*?text=declaration.Enhancements().GetAnnotations()`.
 * <xref:Metalama.Framework.Code.GenericExtensions.GetBase*?text=IMemberOrNamedType.GetBase> extension method: gets the base type or overridden member.
@@ -67,7 +65,6 @@ We are releasing a preview of our <xref:Metalama.Patterns.Observability.Observab
 * <xref:Metalama.Framework.Code.ICompilation.GetAllAttributesOfType*?text=ICompilation.GetAllAttributesOfType>: gets all attributes of a given type in a project.
 * <xref:Metalama.Framework.Code.IMemberOrNamedType.Definition?text=IMemberOrNamedType.Definition>: navigates to the generic definition.
 * <xref:Metalama.Framework.Engine.Diagnostics.LocationExtensions.ToDiagnosticLocation*?text=Location.ToDiagnosticLocation>: converts a Roslyn `Location` into a Metalama <xref:Metalama.Framework.Diagnostics.IDiagnosticLocation>.
-
 
 ## Breaking Changes
 
@@ -89,4 +86,3 @@ We fixed 39 bugs before the GA of this version. For details, see the pre-release
 * [2023.4.3-preview](https://github.com/orgs/postsharp/discussions/227)
 * [2023.4.2-preview](https://github.com/orgs/postsharp/discussions/224)
 * [2024.4.1-preview](https://github.com/orgs/postsharp/discussions/219)
-

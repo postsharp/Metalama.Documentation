@@ -78,8 +78,8 @@ The following aspect introduces an `Update` method that assigns all writable fie
 
 When you want to introduce a member to a type, it may happen that the same member is already defined in this type or in a parent type. The default strategy of the aspect framework in this case is simply to report an error and fail the build. You can change this behavior by setting the <xref:Metalama.Framework.Aspects.OverrideStrategy> for this advice:
 
-- For declarative advice, set the <xref:Metalama.Framework.Aspects.IntroduceAttribute.WhenExists> property of the custom attribute
-- For programmatic advice, set the _whenExists_ optional parameter of the advice factory method
+- For declarative advice, set the <xref:Metalama.Framework.Aspects.IntroduceAttribute.WhenExists> property of the custom attribute.
+- For programmatic advice, set the _whenExists_ optional parameter of the advice factory method.
 
 [comment]: # (TODO: The implementation and documentation are not final. Another property and parameter should be defined to cope with the case when the member is inherited.)
 
@@ -87,10 +87,10 @@ When you want to introduce a member to a type, it may happen that the same membe
 
 Most of the time, when you override a method, you will want to invoke the base implementation. The same applies to properties and events. In plain C#, when you override a base-class member in a derived class, you call the member with the `base` prefix. A similar approach exists in Metalama.
 
-- To invoke the base method or accessor with exactly the same arguments, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed>
-- To invoke the base method with different arguments, use <xref:Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke(System.Object[])?text=meta.Target.Method.Invoke>
-- To call the base property getter or setter, use <xref:Metalama.Framework.Code.IExpression.Value?text=meta.Property.Value>
-- To access the base event, use <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Add*?text=meta.Event.Add>, <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Remove*?text=meta.Event.Remove> or <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Raise*?text=meta.Event.Raise>
+- To invoke the base method or accessor with exactly the same arguments, call <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed>.
+- To invoke the base method with different arguments, use <xref:Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke(System.Object[])?text=meta.Target.Method.Invoke>.
+- To call the base property getter or setter, use <xref:Metalama.Framework.Code.IExpression.Value?text=meta.Property.Value>.
+- To access the base event, use <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Add*?text=meta.Event.Add>, <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Remove*?text=meta.Event.Remove> or <xref:Metalama.Framework.Code.Invokers.IEventInvoker.Raise*?text=meta.Event.Raise>.
 
 [comment]: # (TODO: When it will work, Disposable example.)
 
@@ -125,4 +125,5 @@ If the user does not add the `partial` keyword, Metalama will report a warning a
 
 > [!NOTE]
 > In __test projects__ built using `Metalama.Testing.AspectTesting`, the Metalama compiler is _not_ activated. Therefore, the source code of test projects cannot reference introduced declarations. Since the present documentation relies on `Metalama.Testing.AspectTesting` for all examples, we cannot include an example here.
+
 

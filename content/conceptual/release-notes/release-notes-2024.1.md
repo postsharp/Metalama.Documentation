@@ -11,7 +11,7 @@ The primary objective of Metalama 2024.1 is to enhance the user interface, with 
 
 ### Unification of Visual Studio Tools for Metalama and PostSharp
 
-Previously, Metalama and PostSharp each had their own Visual Studio extension, each with a unique set of features and user experience. In Metalama 2024.1, we have merged these two extensions into one, unifying the development experience. Thus, regardless of whether you are using Metalama, PostSharp, or both, you should now install a _single_ extension named _Visual Studio Tools for Metalama and PostSharp_, or, in short, _Metalama + PostSharp_.
+Previously, Metalama and PostSharp each had their own Visual Studio extension, each with a unique set of features and user experiences. In Metalama 2024.1, we have merged these two extensions into one, unifying the development experience. Thus, regardless of whether you are using Metalama, PostSharp, or both, you should now install a _single_ extension named _Visual Studio Tools for Metalama and PostSharp_, or, in short, _Metalama + PostSharp_.
 
 #### Aspect Explorer
 
@@ -33,7 +33,7 @@ Visual Studio Tools for Metalama and PostSharp function seamlessly on an ARM64 d
 
 ### Licensing UI
 
-When using Metalama for the first time, a UI will guide you through the process of registering your license key or choosing between the trial and the free edition. You will also have the option to subscribe to a newsletter and the Metalama e-mail course.
+When using Metalama for the first time, a UI will guide you through the process of registering your license key or choosing between the trial and the free edition. You will also have the option to subscribe to a newsletter and the Metalama email course.
 
 We also have added toast notifications for unhandled exceptions.
 
@@ -55,7 +55,6 @@ For details, see <xref:overriding-constructors>.
 
 * Initializers are now all executed before constructor parameter contracts. Previously, initializers and contracts on constructors could be interleaved.
 * The ordering of contracts within the same method has been fixed.
-* Contracts are now uneligible on unimplemented partial methods.
-* In <xref:Metalama.Framework.Code.TypeFactory>, the generic methods `public static T ToNullableType<T>( this T type )  where T : IType` and `public static T ToNonNullableType<T>( this T type )  where T : IType` have been replaced by a set non-generic of non-generic overloads  (see <xref:Metalama.Framework.Code.TypeFactory.ToNullableType*> and <xref:Metalama.Framework.Code.TypeFactory.ToNonNullableType*>), taking into account the fact that the nullable type of an <xref:Metalama.Framework.Code.ITypeParameter> is not an <xref:Metalama.Framework.Code.ITypeParameter> if the type parameter has a `struct` constraint.
-* The <xref:Metalama.Framework.Code.INamedType.UnderlyingType> property, when the <xref:Metalama.Framework.Code.INamedType> represents a `Nullable<T>` (i.e. a nullable value type) no longer returns `T` but `Nullable<T>`. This behavior is now consistent with other generic types but no longer consistent with nullable reference types.
-
+* Contracts are now ineligible on unimplemented partial methods.
+* In <xref:Metalama.Framework.Code.TypeFactory>, the generic methods `public static T ToNullableType<T>( this T type ) where T : IType` and `public static T ToNonNullableType<T>( this T type ) where T : IType` have been replaced by a set of non-generic overloads (see <xref:Metalama.Framework.Code.TypeFactory.ToNullableType*> and <xref:Metalama.Framework.Code.TypeFactory.ToNonNullableType*>), taking into account the fact that the nullable type of an <xref:Metalama.Framework.Code.ITypeParameter> is not an <xref:Metalama.Framework.Code.ITypeParameter> if the type parameter has a `struct` constraint.
+* The <xref:Metalama.Framework.Code.INamedType.UnderlyingType> property, when the <xref:Metalama.Framework.Code.INamedType> represents a `Nullable<T>` (i.e., a nullable value type), no longer returns `T` but `Nullable<T>`. This behavior is now consistent with other generic types but no longer consistent with nullable reference types.

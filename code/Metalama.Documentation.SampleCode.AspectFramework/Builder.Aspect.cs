@@ -42,7 +42,8 @@ public class BuilderAttribute : TypeAspect
     {
         base.BuildAspect( aspectBuilder );
 
-        var mapping = aspectBuilder.Target.Properties.Where(
+        // Create a list of PropertyMapping items for all properties that we want to build using the Builder.
+        var properties = aspectBuilder.Target.Properties.Where(
                 p => p.Writeability != Writeability.None &&
                      !p.IsStatic )
             .Select(
@@ -51,12 +52,13 @@ public class BuilderAttribute : TypeAspect
                     p.Attributes.OfAttributeType( typeof(RequiredAttribute) ).Any() ) )
             .ToList();
 
+        // Introduce the Builder nested type.
         var builderType = aspectBuilder.IntroduceClass(
             "Builder",
             buildType: t => t.Accessibility = Accessibility.Public );
 
         // Add builder properties and update the mapping.
-        foreach ( var property in mapping )
+        foreach ( var property in properties )
         {
             property.BuilderProperty =
                 builderType.IntroduceAutomaticProperty(
@@ -67,13 +69,13 @@ public class BuilderAttribute : TypeAspect
         }
 
         // Add a builder constructor accepting the required properties and update the mapping.
-        if ( mapping.Any( m => m.IsRequired ) )
+        if ( properties.Any( m => m.IsRequired ) )
         {
             builderType.IntroduceConstructor(
                 nameof(this.BuilderConstructorTemplate),
                 buildConstructor: c =>
                 {
-                    foreach ( var property in mapping.Where( m => m.IsRequired ) )
+                    foreach ( var property in properties.Where( m => m.IsRequired ) )
                     {
                         property.BuilderConstructorParameterIndex = c.AddParameter(
                                 property.SourceProperty.Name,
@@ -93,7 +95,7 @@ public class BuilderAttribute : TypeAspect
                 m.Accessibility = Accessibility.Public;
                 m.ReturnType = aspectBuilder.Target;
 
-                foreach ( var property in mapping )
+                foreach ( var property in properties )
                 {
                     property.BuilderConstructorParameterIndex =
                         m.AddParameter( property.SourceProperty.Name, property.SourceProperty.Type ).Index;
@@ -107,7 +109,7 @@ public class BuilderAttribute : TypeAspect
                 {
                     c.Accessibility = Accessibility.Private;
 
-                    foreach ( var property in mapping )
+                    foreach ( var property in properties )
                     {
                         property.SourceConstructorParameterIndex = c.AddParameter(
                                 property.SourceProperty.Name,
@@ -117,7 +119,7 @@ public class BuilderAttribute : TypeAspect
                 } )
             .Declaration;
 
-        aspectBuilder.Tags = new Tags( mapping, constructor );
+        aspectBuilder.Tags = new Tags( properties, constructor );
     }
 
     [Template]

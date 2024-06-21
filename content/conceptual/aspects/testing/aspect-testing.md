@@ -240,7 +240,7 @@ graph BT
 
 ## Configuring the external diff tool
 
-By default, the test framework will open your visual diff tool when an aspect test fails, i.e., the expected snapshot is different than the actual one. The feature works thanks to the [DiffEngine](https://github.com/VerifyTests/DiffEngine) project. It is most useful when used with [DiffEngineTray](https://github.com/VerifyTests/DiffEngine/blob/main/docs/tray.md). Please refer to the documentation of these projects to learn about how to configure them.
+By default, the test framework will open your visual diff tool when an aspect test fails, i.e., the expected snapshot is different from the actual one. The feature works thanks to the [DiffEngine](https://github.com/VerifyTests/DiffEngine) project. It is most useful when used with [DiffEngineTray](https://github.com/VerifyTests/DiffEngine/blob/main/docs/tray.md). Please refer to the documentation of these projects to learn about how to configure them.
 
 For further configuration settings, use this approach:
 
@@ -262,7 +262,7 @@ These steps open the `testRunner.json` file, whose default content is the follow
 
 It supports the following settings:
 
-* `LaunchDiffTool`, when set to `false`, allows to disable the feature.
+* `LaunchDiffTool`, when set to `false`, allows disabling the feature.
 * `MaxDiffToolInstances` determines the maximum number of instances of the diff tool that can be opened at the same time.
 
 ## Running tests in Rider or ReSharper

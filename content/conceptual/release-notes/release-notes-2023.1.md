@@ -7,13 +7,11 @@ summary: "The Metalama 2023.1 update focuses on bugfixes and minor enhancements,
 
 Metalama 2023.2 focuses on bugfixes and minor enhancements.
 
-
 ## Platform updates
 
 * Visual Studio 17.6
 * Roslyn 4.6
-* .NET SDK 7.0.300.
-
+* .NET SDK 7.0.300
 
 ## Enhancements
 
@@ -26,4 +24,3 @@ Metalama 2023.2 focuses on bugfixes and minor enhancements.
 - Enhanced error message when referencing a non-existing type in compile-time code.
 - In templates, `foreach` loops are now allowed in run-time-conditional blocks.
 - Better error reporting when the `[Template]` attribute is used on accessors.
-

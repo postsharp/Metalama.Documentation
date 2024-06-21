@@ -31,11 +31,11 @@ The T# template language can also be used inside analyzers of fields or properti
 
 ### Initialization of programmatic advice
 
-If you use the programmatic advice <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceProperty*>, <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceField*> or <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceEvent*>, you can set the <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldOrPropertyBuilder.InitializerExpression> in the lambda passed to the `build*` parameter of these advice methods.
+If you use the programmatic advice <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceProperty*>, <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceField*>, or <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceEvent*>, you can set the <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldOrPropertyBuilder.InitializerExpression> in the lambda passed to the `build*` parameter of these advice methods.
 
 #### Example: initializing a programmatically introduced field
 
-In the following example, the aspect introduces a field using the <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceField*> programmatic advice and sets its initializer expression to an array that contains the name of all methods in the target type.
+In the following example, the aspect introduces a field using the <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceField*> programmatic advice and sets its initializer expression to an array that contains the names of all methods in the target type.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/ProgrammaticInitializer.cs name="Programmatic Initializer"]
 
@@ -63,6 +63,3 @@ If you wish to insert logic into a specific constructor, call the <xref:Metalama
 ## Before the type constructor
 
 The same approach can be used to add logic to the type constructor (i.e., static constructor) instead of the object constructor. In this case, the `InitializerType.BeforeTypeConstructor` value should be used.
-
-
-

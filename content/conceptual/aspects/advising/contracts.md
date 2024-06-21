@@ -34,7 +34,7 @@ To change the filter direction, override the <xref:Metalama.Framework.Aspects.Co
 For information on customizing eligibility for different contract directions than the default one, see the remarks in the documentation of the <xref:Metalama.Framework.Aspects.ContractAspect> class. To learn about eligibility, visit <xref:eligibility>.
 
 > [!NOTE]
-> Prior to Metalama 2023.4, the <xref:Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection*> method did not exist, Instead, implementations could specify the contract direction in the <xref:Metalama.Framework.Aspects.ContractAspect>  constructor or set a property named `Direction`. Both this property and this constructor are now obsolete.
+> Prior to Metalama 2023.4, the <xref:Metalama.Framework.Aspects.ContractAspect.GetDefinedDirection*> method did not exist. Instead, implementations could specify the contract direction in the <xref:Metalama.Framework.Aspects.ContractAspect> constructor or set a property named `Direction`. Both this property and this constructor are now obsolete.
 
 ### Example: NotNull for output parameters and return values
 
@@ -56,7 +56,6 @@ The following snippet demonstrates how to automatically add precondition checks 
 The [fabric](xref:fabrics) adds a method-level aspect to all exposed methods. Then, the aspect adds individual contracts using the <xref:Metalama.Framework.Advising.AdviserExtensions.AddContract*> method.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/NotNullFabric.cs name="NotNull Fabric"]
-
 
 > [!NOTE]
 > For a production-ready version of this use case, see <xref:enforcing-non-nullability>.

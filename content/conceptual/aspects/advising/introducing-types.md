@@ -60,6 +60,29 @@ When you call <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceClass
 
 ### Example: adding properties
 
-The following aspect copies properties of the source object to the introduced `Builder` type.
+The following aspect copies the properties of the source object into the introduced `Builder` type.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceNestedClass.cs name="Introducing a nested class"]
+
+### Final example: the Builder pattern
+
+Let's finish this article with a complete implementation of the `Builder` pattern, whose a few fragments were illustrated here above.
+
+The input code for this pattern is an anemic class with get-only automatic properties.
+
+The Builder aspect generates the following artifacts:
+
+* A `Builder` nested class with:
+    * A public constructor accepting all required properties,
+    * Writable properties corresponding to all automatic properties of the source class,
+    * A `Build` method that instantiates the source type,
+* A private constructor in the source class, called by the `Builder.Build` method.
+
+Ideally, the aspect should also test that the source type does not have another constructor or any settable property, but this is skipped in this example.
+
+A key element of design in the aspect is the `PropertyMapping` record, which maps a property of the source type to the corresponding property in the `Builder` type, the corresponding constructor parameter in the `Builder` type, and the corresponding parameter in the source type. We build this list in the `BuildAspect` method.
+
+We use the `aspectBuilder.Tags` property to share this list with the template implementations, which can then read it from `meta.Tags.Source`.
+
+
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Builder.cs name="The Builder pattern"]
