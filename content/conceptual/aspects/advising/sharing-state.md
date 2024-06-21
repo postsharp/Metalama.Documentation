@@ -6,7 +6,7 @@ summary: "The document provides strategies for sharing compile-time state betwee
 
 # Sharing state with advice
 
-When you need to share _compile-time_ state between different pieces of advice, or between your implementation of the `BuildAspect` method and the advice, there are several strategies available to you.
+When you need to share _compile-time_ state between different pieces of advice or between your implementation of the `BuildAspect` method and the advice, there are several strategies available to you.
 
 > [!NOTE]
 > This article is about sharing _compile-time_ state. If you need to share _run-time_ state with advice, a different strategy must be adopted. For instance, you could introduce a field in the target type and utilize it from several advice methods.
@@ -37,7 +37,7 @@ There are two ways to add tags from the `BuildAspect` method:
 
 When you use both ways at the same time, the tags will be merged into a single dictionary.
 
-In your template implementation, you can read the tags by calling the <xref:Metalama.Framework.Aspects.meta.Tags?text=meta.Tags> API, which returns an <xref:Metalama.Framework.Aspects.IObjectReader>. This interface derives from `IReadOnlyDictionary<string,object?>`. For instance, you would use the `meta.Tags["A"]` expression to access the tag named `A` that you defined in the previous step.
+In your template implementation, you can read the tags by calling the <xref:Metalama.Framework.Aspects.meta.Tags?text=meta.Tags> API, which returns an <xref:Metalama.Framework.Aspects.IObjectReader>. This interface derives from `IReadOnlyDictionary<string, object?>`. For instance, you would use the `meta.Tags["A"]` expression to access the tag named `A` that you defined in the previous step.
 
 The <xref:Metalama.Framework.Aspects.IObjectReader> interface has an additional property <xref:Metalama.Framework.Aspects.IObjectReader.Source> that exposes the original object, not flattened as a dictionary.
 
@@ -55,7 +55,7 @@ In the following example, the tags are set by setting the <xref:Metalama.Framewo
 
 ## Sharing state with the AspectState property
 
-When you want to share state not from templates inside the current aspect instance, but with other aspect instances, you set the <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState?text=IAspectBuilder.AspectState> property. Its value is exposed for read-only access on the <xref:Metalama.Framework.Aspects.IAspectInstance.AspectState?text=IAspectInstance.AspectState> property. It is therefore visible to child aspects and aspects that inherit from them through (i.e., successors) through the <xref:Metalama.Framework.Aspects.IAspectPredecessor.Predecessors> property.
+When you want to share state not from templates inside the current aspect instance, but with other aspect instances, you set the <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState?text=IAspectBuilder.AspectState> property. Its value is exposed for read-only access on the <xref:Metalama.Framework.Aspects.IAspectInstance.AspectState?text=IAspectInstance.AspectState> property. It is therefore visible to child aspects and aspects that inherit from them (i.e., successors) through the <xref:Metalama.Framework.Aspects.IAspectPredecessor.Predecessors> property.
 
 This property is opaque to the Metalama framework. You can use it for any purpose but at your own risk. You are responsible for thread safety if you choose to have any mutable state in your aspect state.
 

@@ -1,11 +1,11 @@
 ---
 uid: release-notes-2023.1
-summary: "The Metalama 2023.1 update focuses on bugfixes and minor enhancements, including improved support for Visual Studio 17.6, Roslyn 4.6, and .NET SDK 7.0.300, and better error reporting."
+summary: "The Metalama 2023.1 update focuses on bug fixes and minor enhancements, including improved support for Visual Studio 17.6, Roslyn 4.6, and .NET SDK 7.0.300, and better error reporting."
 ---
 
 # Metalama 2023.1
 
-Metalama 2023.2 focuses on bugfixes and minor enhancements.
+Metalama 2023.2 focuses on bug fixes and minor enhancements.
 
 ## Platform updates
 

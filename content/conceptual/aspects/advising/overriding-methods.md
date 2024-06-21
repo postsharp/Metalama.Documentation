@@ -192,7 +192,7 @@ The _second argument_ of `Override` is the name of the template method. This met
 
 ### Example: synchronized object
 
-The following aspect wraps all instance methods with a `lock( this )` statement.
+The following aspect wraps all instance methods with a `lock(this)` statement.
 
 > [!NOTE]
 > In a production-ready implementation, you should not lock `this` but a private field. You can introduce this field as described in <xref:introducing-members>. A production-ready implementation should also wrap properties.

@@ -11,7 +11,7 @@ Certain aspects necessitate modifying the target type to implement a new interfa
 
 Within your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, invoke the <xref:Metalama.Framework.Advising.AdviserExtensions.ImplementInterface*> method.
 
-You might need to pass a value to the <xref:Metalama.Framework.Aspects.OverrideStrategy> parameter to cope with the situation where the target type, or any of its ancestors, already implements the interface. The most common behavior is `OverrideStrategy.Ignore`, but the default value is `OverrideStrategy.Fail` consistently with other advice kinds.
+You might need to pass a value to the <xref:Metalama.Framework.Aspects.OverrideStrategy> parameter to cope with the situation where the target type, or any of its ancestors, already implements the interface. The most common behavior is `OverrideStrategy.Ignore`, but the default value is `OverrideStrategy.Fail`, consistent with other advice kinds.
 
 > [!NOTE]
 > Unlike in PostSharp, it is not necessary in Metalama for the aspect class to implement the introduced interface.
@@ -21,7 +21,7 @@ You might need to pass a value to the <xref:Metalama.Framework.Aspects.OverrideS
 The next step is to ensure that the aspect class generates all interface members. We can do this declaratively or programmatically and add implicit or explicit implementations.
 
 > [!NOTE]
-> The <xref:Metalama.Framework.Advising.AdviserExtensions.ImplementInterface*> method does not verify if the aspect generates all required members. If your aspect commits to introduce a member, the C# compiler will report errors.
+> The <xref:Metalama.Framework.Advising.AdviserExtensions.ImplementInterface*> method does not verify if the aspect generates all required members. If your aspect fails to introduce a member, the C# compiler will report errors.
 
 Let's start with the declarative approach.
 
@@ -53,7 +53,7 @@ It is useful in the following situations:
 
 To programmatically add interface members, use one of the `Introduce` methods of the <xref:Metalama.Framework.Advising.AdviserExtensions> class, as explained in <xref:introducing-members>. Make sure that these members are public.
 
-If instead of adding public members you need to add explicit implementations, use the <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult.ExplicitImplementation> property of the <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult> returned by the <xref:Metalama.Framework.Advising.AdviserExtensions.ImplementInterface*> method, and call any of its `Introduce` methods.
+If instead of adding public members you need to add explicit implementations, use the <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult.ExplicitMembers> property of the <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult> returned by the <xref:Metalama.Framework.Advising.AdviserExtensions.ImplementInterface*> method, and call any of its `Introduce` methods.
 
 ## Referencing interface members in other templates
 

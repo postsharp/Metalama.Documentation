@@ -30,7 +30,7 @@ The following methods are available:
 * <xref:Metalama.Framework.Advising.AdviserExtensions.AddInitializer*> allows you to add an initialization statement in the constructor or static constructor. See <xref:initializers> for details.
 * <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceParameter*> allows you to append a parameter to a constructor and pull them from constructors of derived classes. See <xref:introducing-constructor-parameters> for details.
 
-Please refer to the <xref:Metalama.Framework.Advising.AdvisingExtensions> class for a complete list of methods.
+Please refer to the <xref:Metalama.Framework.Advising.AdviserExtensions> class for a complete list of methods.
 
 To advise a member of the current declaration (for instance, to override a method in the current type), you can get an adviser for the member by calling the <xref:Metalama.Framework.Advising.IAdviser`1.With*?text=IAdviser.With> method.
 

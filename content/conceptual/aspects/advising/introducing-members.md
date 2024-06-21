@@ -1,7 +1,7 @@
 ---
 uid: introducing-members
 level: 300
-summary: "The document provides a comprehensive guide on how to add new members to an existing type using the Metalama Framework. It covers both declarative and programmatic methods, and includes instructions for overriding existing implementations and referencing introduced members."
+summary: "The document provides a comprehensive guide on how to add new members to an existing type using the Metalama Framework. It covers both declarative and programmatic methods and includes instructions for overriding existing implementations and referencing introduced members."
 ---
 
 # Introducing members
@@ -11,6 +11,7 @@ In previous articles, you learned how to override the implementation of existing
 Currently, you can add the following types of members:
 
 - Methods
+- Constructors
 - Fields
 - Properties
 - Events
@@ -32,6 +33,9 @@ The simplest way to introduce a member from an aspect is to implement this membe
 | <xref:Metalama.Framework.Aspects.TemplateAttribute.Accessibility> | Determines if the member will be `private`, `protected`, `public`, etc. By default, the accessibility of the template is copied. |
 | <xref:Metalama.Framework.Aspects.TemplateAttribute.IsVirtual> | Determines if the member will be `virtual`. By default, the characteristic of the template is copied. |
 | <xref:Metalama.Framework.Aspects.TemplateAttribute.IsSealed> | Determines if the member will be `sealed`. By default, the characteristic of the template is copied. |
+
+> [!NOTE]
+> Constructors cannot be introduced declaratively.
 
 ### Example: ToString
 
@@ -61,6 +65,7 @@ In your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAs
 - <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceProperty*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IPropertyBuilder>
 - <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceEvent*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IEventBuilder>
 - <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceField*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IFieldBuilder>
+- <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceConstructor*> returning an <xref:Metalama.Framework.Code.DeclarationBuilders.IConstructorBuilder>
 
 A call to one of these methods creates a member by default that has the same characteristics as the template (name, signature, etc.), taking into account the properties of the <xref:Metalama.Framework.Aspects.TemplateAttribute?text=[Template]> custom attribute.
 
@@ -119,11 +124,9 @@ For more details, see <xref:Metalama.Framework.Code.Invokers>.
 
 ## Referencing introduced members from source code
 
-If you want the _source_ code (not your aspect code) to reference declarations introduced by your aspect, the _user_ of your aspect needs to make the target types `partial`. Without this keyword, the introduced declarations will not be visible at design time in syntax completion, and the IDE will report errors. Note that the _compiler_ will not complain because Metalama replaces the compiler, but the IDE will because it does not know about Metalama, and here Metalama, and therefore your aspect, has to follow the rules of the C# compiler. However inconvenient it may be, there is nothing you as an aspect author, or us as the authors of Metalama, can do.
+If you want the _source_ code (not your aspect code) to reference declarations introduced by your aspect, the _user_ of your aspect needs to make the target types `partial`. Without this keyword, the introduced declarations will not be visible at design time in syntax completion, and the IDE will report errors. Note that the _compiler_ will not complain because Metalama replaces the compiler, but the IDE will because it does not know about Metalama, and therefore your aspect has to follow the rules of the C# compiler. However inconvenient it may be, there is nothing you as an aspect author, or us as the authors of Metalama, can do.
 
 If the user does not add the `partial` keyword, Metalama will report a warning and offer a code fix.
 
 > [!NOTE]
 > In __test projects__ built using `Metalama.Testing.AspectTesting`, the Metalama compiler is _not_ activated. Therefore, the source code of test projects cannot reference introduced declarations. Since the present documentation relies on `Metalama.Testing.AspectTesting` for all examples, we cannot include an example here.
-
-

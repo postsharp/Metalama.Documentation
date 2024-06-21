@@ -21,7 +21,7 @@ The <xref:Metalama.Framework.Aspects.meta> static class exposes the following me
 - The <xref:Metalama.Framework.Aspects.meta.Target?text=meta.Target> property, which provides access to the declaration to which the template is applied.
 - The <xref:Metalama.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> property, which provides access to the current method or accessor parameters.
 - The <xref:Metalama.Framework.Aspects.meta.This?text=meta.This> property, which represents the `this` instance. Used in conjunction with <xref:Metalama.Framework.Aspects.meta.Base?text=meta.Base>, <xref:Metalama.Framework.Aspects.meta.ThisType?text=meta.ThisType>, and <xref:Metalama.Framework.Aspects.meta.BaseType?text=meta.BaseType> properties, `meta.This` enables your template to access members of the target class using dynamic code.
-- The <xref:Metalama.Framework.Aspects.meta.Tags?text=meta.Tags> property, which provides access to an arbitrary dictionary passed to the advice factory method. See <xref:sharing-state-with-advice#sharing-state-with-the-tags-property> for more details.
+- The <xref:Metalama.Framework.Aspects.meta.Tags?text=meta.Tags> property, which provides access to an arbitrary dictionary passed to the advice factory method. See <xref:sharing-state-with-advice> for more details.
 - The <xref:Metalama.Framework.Aspects.meta.CompileTime*?text=meta.CompileTime> method, which coerces a neutral expression into a compile-time expression.
 - The <xref:Metalama.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method, which converts the result of a compile-time expression into a run-time value.
 

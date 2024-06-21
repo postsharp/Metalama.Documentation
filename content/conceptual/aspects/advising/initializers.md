@@ -10,7 +10,7 @@ summary: "The document provides instructions on how to add initializers to field
 
 ### Inline initialization of declarative advice
 
-A simple way to initialize a field or property introduced by an aspect is to add an initializer to the template. For instance, if your aspects introduce a field `int f` and you wish to initialize it to `1`, you would write:
+A simple way to initialize a field or property introduced by an aspect is to add an initializer to the template. For instance, if your aspect introduces a field `int f` and you wish to initialize it to `1`, you would write:
 
  ```cs
  [Introduce]

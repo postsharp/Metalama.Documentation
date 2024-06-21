@@ -51,7 +51,7 @@ For details, see <xref:immutability>.
 
 ## Improvements in fabrics and IAspectReceiver
 
-* The <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound?text=IAmender.Outbound> property is now redundant and has been marked as `[Obsolete]`. The <xref:Metalama.Framework.Fabrics.IAmender`1> interface now directly derives from <xref:Metalama.Framework.Aspects.IAspectReceiver> instead of exposing it on the <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound> property. The use of the <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound> property is still required for <xref:Metalama.Framework.Aspects.IAspectBuilder`1>.
+* The <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound?text=IAmender.Outbound> property is now redundant and has been marked as `[Obsolete]`. The <xref:Metalama.Framework.Fabrics.IAmender`1> interface now directly derives from <xref:Metalama.Framework.Aspects.IAspectReceiver`1> instead of exposing it on the <xref:Metalama.Framework.Fabrics.IAmender`1.Outbound> property. The use of the <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound> property is still required for <xref:Metalama.Framework.Aspects.IAspectBuilder`1>.
 * New method <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Tag*?text=IAspectReceiver.Tag>: adds an arbitrary tag that is carried on and available for all lambdas on the right side of the `Tag` method for new overloads of all (or most) `IAspectReceiver` methods.
 * New method <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectTypes*?text=IAspectReceiver.SelectTypes>: gets all types in the current context (typically namespace, compilation, or current type).
 * New method <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectTypesDerivedFrom*?text=IAspectReceiver.SelectTypesDerivedFrom>: gets all types in the current context derived from a given type.
@@ -86,7 +86,7 @@ The following changes improve your ability to generate code with Metalama:
 
 * Adding <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithType*> and <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory.WithNullability*> extension methods for <xref:Metalama.Framework.Code.IType> to override the inferred type or nullability of a captured expression.
 * Ability to evaluate a T# template into an <xref:Metalama.Framework.Code.SyntaxBuilders.IStatement> thanks to the <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.FromTemplate*?text=StatementFactory.FromTemplate> method.
-* New concept <xref:Metalama.Framework.Code.SyntaxBuilders.IStatementList> to represent an unresolved list of statements. Statement lists can be built from an `IStatement` or `IEnumerable<IStatement>` using the new extension method <xref:Metalama.Framework.Code.SyntaxBuilders.StatementExtensions.AsList*> and <xref:Metalama.Framework.Code.SyntaxBuilders.StatementExtensions.UnwrapBlock*> or with the new class <xref:Metalama.Framework.Code.SyntaxBuilders.StatementListBuilder>.
+* New concept <xref:Metalama.Framework.Code.SyntaxBuilders.IStatementList> to represent an unresolved list of statements. Statement lists can be built from an `IStatement` or `IEnumerable<IStatement>` using the new extension methods <xref:Metalama.Framework.Code.SyntaxBuilders.StatementExtensions.AsList*> and <xref:Metalama.Framework.Code.SyntaxBuilders.StatementExtensions.UnwrapBlock*> or with the new class <xref:Metalama.Framework.Code.SyntaxBuilders.StatementListBuilder>.
 * New class <xref:Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder> to dynamically create a `switch` statement (cases can be added programmatically &mdash; only literal case labels are currently supported).
 
 * New method <xref:Metalama.Framework.Code.Invokers.IMethodInvoker.CreateInvokeExpression*> generating an <xref:Metalama.Framework.Code.IExpression> that represents a method invocation. Can be called outside of a template context.
@@ -108,20 +108,20 @@ The following changes improve your ability to generate code with Metalama:
 
 ### Changes in interface implementation
 * The <xref:Metalama.Framework.Advising.AdviserExtensions.ImplementInterface*> advice no longer verifies if all interface members are present. Errors will appear during compilation. Interface members can be introduced using `[InterfaceMember]` as before, but also using `[Introduce]`, or programmatically using `AdviserExtensions.IntroduceMethod`.
-* The <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult> interface now has a <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult.ExplicitImplementation> property of type `IAdviser<INamedType>`, which allows introducing explicit (private) members.
+* The <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult> interface now has a <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult.ExplicitMembers> property of type `IAdviser<INamedType>`, which allows introducing explicit (private) members.
 
 ### Improvements in Metalama.Patterns.Contracts
 
-We are finally addressing the problem that the <xref:Metalama.Patterns.Contracts.PositiveAttribute?text=[Positive]>, <xref:Metalama.Patterns.Contracts.NegativeAttribute?text=[Negative]>, <xref:Metalama.Patterns.Contracts.LessThanAttribute?text=[LessThan]> and <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThan]> aspects had a non-standard behavior because they behave as if the inequality were _unstrict_ while the standard interpretation is _strict_. This mistake was performed in PostSharp back in 2013, and dragged until now for backward compatibility reasons, but we eventually decided to address it.
+We are finally addressing the problem that the <xref:Metalama.Patterns.Contracts.PositiveAttribute?text=[Positive]>, <xref:Metalama.Patterns.Contracts.NegativeAttribute?text=[Negative]>, <xref:Metalama.Patterns.Contracts.LessThanAttribute?text=[LessThan]> and <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThan]> aspects had a non-standard behavior because they behave as if the inequality were _unstrict_ while the standard interpretation is _strict_. This mistake was performed in PostSharp back in 2013 and dragged until now for backward compatibility reasons, but we eventually decided to address it.
 
 Starting from Metalama 2024.2, using any of the <xref:Metalama.Patterns.Contracts.PositiveAttribute?text=[Positive]>, <xref:Metalama.Patterns.Contracts.NegativeAttribute?text=[Negative]>, <xref:Metalama.Patterns.Contracts.LessThanAttribute?text=[LessThan]> or <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThan]> attributes will report a warning saying that the strictness of the inequality is ambiguous. You have two options to resolve the warning:
 
 * Use one of the variants where the strictness is made explicit:
    * Strict: <xref:Metalama.Patterns.Contracts.StrictlyPositiveAttribute?text=[StrictlyPositive]>, <xref:Metalama.Patterns.Contracts.StrictlyNegativeAttribute?text=[StrictlyNegative]>, <xref:Metalama.Patterns.Contracts.StrictlyLessThanAttribute?text=[StrictlyLessThan]> and <xref:Metalama.Patterns.Contracts.StrictlyGreaterThanAttribute?text=[StrictlyGreaterThan]>
     * Non-strict: <xref:Metalama.Patterns.Contracts.NonNegativeAttribute?text=[NonNegative]>, <xref:Metalama.Patterns.Contracts.NonPositiveAttribute?text=[NonPositive]>, <xref:Metalama.Patterns.Contracts.LessThanOrEqualAttribute?text=[LessThanOrEqual]> and <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThanOrEqual].
-* Or set the <xref:Metalama.Patterns.Contracts.ContractOptions.DefaultInequalityStrictness> contract option is set using the <xref:Metalama.Patterns.Contracts.ContractConfigurationExtensions.ConfigureContracts*> fabric extension method.
+* Or set the <xref:Metalama.Patterns.Contracts.ContractOptions.DefaultInequalityStrictness> contract option using the <xref:Metalama.Patterns.Contracts.ContractConfigurationExtensions.ConfigureContracts*> fabric extension method.
 
-If you don't address the warning, the behavior of the ambiguous contracts will remain backward-compatible, i.e. non-standard.
+If you don't address the warning, the behavior of the ambiguous contracts will remain backward-compatible, i.e., non-standard.
 
 We will change the default behavior and the warning in a future release.
 
