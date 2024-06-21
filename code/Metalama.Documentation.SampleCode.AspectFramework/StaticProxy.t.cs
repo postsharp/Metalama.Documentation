@@ -1,4 +1,3 @@
-// Warning CS8618 on `ProxyAspect`: `Non-nullable field '_interceptor' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.`
 using Metalama.Framework.CompileTimeContracts;
 using System;
 namespace Doc.StaticProxy;
