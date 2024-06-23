@@ -1,9 +1,5 @@
 ﻿// This is public domain Metalama sample code.
 
-#if TEST_OPTIONS
-// @OutputAllSyntaxTrees
-#endif
-
 namespace Doc.IntroduceTopLevelClass;
 
 [Builder]

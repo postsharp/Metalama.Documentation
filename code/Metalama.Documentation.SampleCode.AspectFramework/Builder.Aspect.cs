@@ -1,9 +1,5 @@
 ﻿// This is public domain Metalama sample code.
 
-#if TEST_OPTIONS
-// @OutputAllSyntaxTrees
-#endif
-
 using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
