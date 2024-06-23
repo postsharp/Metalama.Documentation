@@ -45,36 +45,26 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
 
         var tabGroup = new AspectTestTabGroup( id );
 
-        void AddCodeTab( string tabId, string suffix, SandboxFileKind kind, DiffSide diffSide = DiffSide.Both )
+        void AddCodeTab( string tabId, string suffix, SandboxFileKind sandboxFileKind, DiffSide diffSide )
         {
             var tabPath = suffix == "" ? token.Src : Path.ChangeExtension( token.Src, suffix + ".cs" );
 
-            if ( File.Exists( tabPath ) )
+            switch ( diffSide )
             {
-                if ( kind == SandboxFileKind.TargetCode )
-                {
-                    switch ( diffSide )
-                    {
-                        case DiffSide.Both:
-                            tabGroup.Tabs.Add( new CompareTab( tabId, "Target Code", tabPath ) );
+                case DiffSide.Both:
+                    tabGroup.Tabs.Add( new CompareTab( tabId, "Target Code", tabPath ) );
 
-                            break;
+                    break;
 
-                        case DiffSide.Source:
-                            tabGroup.Tabs.Add( new CodeTab( tabId, tabPath, suffix, kind ) );
+                case DiffSide.Source:
+                    tabGroup.Tabs.Add( new CodeTab( tabId, tabPath, suffix, sandboxFileKind ) );
 
-                            break;
+                    break;
 
-                        case DiffSide.Transformed:
-                            tabGroup.Tabs.Add( new TransformedSingleFileCodeTab( tabPath ) );
+                case DiffSide.Transformed:
+                    tabGroup.Tabs.Add( new TransformedSingleFileCodeTab( tabPath ) );
 
-                            break;
-                    }
-                }
-                else
-                {
-                    tabGroup.Tabs.Add( new CodeTab( tabId, tabPath, suffix, kind ) );
-                }
+                    break;
             }
         }
 
@@ -100,20 +90,23 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
             var isCompileTime = _compileTimeNamespaces.Any( ns => text.Contains( ns ) );
 
             var fileName = Path.GetFileNameWithoutExtension( file );
-            var fileKind = fileName.Substring( fileName.LastIndexOf( '.' ) + 1 );
+            var fileNameParts = fileName.Split( '.' );
+            var fileKind = fileNameParts[^1];
+            var fileSuffix = string.Join( ".", fileNameParts.Skip( 1 ) );
 
-            var sandboxFileKind = (fileKind.ToLowerInvariant(), isCompileTime)
+            var (sandboxFileKind,diffSide) = (fileKind.ToLowerInvariant(), isCompileTime)
                 switch
                 {
-                    ("dependency", _) => SandboxFileKind.Incompatible,
-                    (_, true) => SandboxFileKind.AspectCode,
-                    (_, false) => SandboxFileKind.ExtraCode
+                    ("i", _) => (SandboxFileKind.None, DiffSide.Transformed), // Introduced code
+                    ("dependency", _) => (SandboxFileKind.Incompatible, DiffSide.Both),
+                    (_, true) => (SandboxFileKind.AspectCode, DiffSide.Source),
+                    (_, false) => (SandboxFileKind.ExtraCode, DiffSide.Source)
                 };
 
-            AddCodeTab( fileKind.ToLowerInvariant(), fileKind, sandboxFileKind );
+            AddCodeTab( fileKind.ToLowerInvariant(), fileSuffix, sandboxFileKind, diffSide );
         }
 
-        AddCodeTab( "target", "", SandboxFileKind.TargetCode );
+        AddCodeTab( "target", "", SandboxFileKind.TargetCode, DiffSide.Both );
 
         AddOtherTab( ".t.txt", p => new ProgramOutputTab( p ) );
 

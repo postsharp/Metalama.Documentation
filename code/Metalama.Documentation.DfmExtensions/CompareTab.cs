@@ -28,13 +28,13 @@ internal class CompareTab : BaseTab
         var stringBuilder = new StringBuilder();
         stringBuilder.AppendLine( $@"<div id=""compare-{this.TabId}"" class=""compare"">" );
         stringBuilder.AppendLine( $@"  <div class=""left"">" );
-        stringBuilder.AppendLine( $@"  <div class=""compare-header"">Source Code</div>" );
+        stringBuilder.AppendLine( $@"    <div class=""compare-header"">Source Code</div>" );
         stringBuilder.AppendLine( sourceTab.GetTabContent( false ) );
-        stringBuilder.AppendLine( $@"  </div>" ); // <div class="left">
+        stringBuilder.AppendLine( $@"    </div>" ); // <div class="left">
         stringBuilder.AppendLine( $@"  <div class=""right"">" );
-        stringBuilder.AppendLine( $@"  <div class=""compare-header"">Transformed Code</div>" );
+        stringBuilder.AppendLine( $@"    <div class=""compare-header"">Transformed Code</div>" );
         stringBuilder.AppendLine( transformedTab.GetTabContent( false ) );
-        stringBuilder.AppendLine( $@"  </div>" ); // <div class="right">
+        stringBuilder.AppendLine( $@"    </div>" ); // <div class="right">
         stringBuilder.AppendLine( $@"</div>" );   // top div
 
         return stringBuilder.ToString();

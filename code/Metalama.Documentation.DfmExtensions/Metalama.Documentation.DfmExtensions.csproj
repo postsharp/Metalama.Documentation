@@ -4,6 +4,7 @@
         <TargetFramework>net472</TargetFramework>
         <OutDir>bin\$(Configuration)\plugins</OutDir>
         <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,6 +12,10 @@
         <PackageReference Include="Microsoft.DocAsCode.Dfm" />
         <PackageReference Include="Microsoft.Composition" />
         <PackageReference Include="PKT.LZStringCSharp" />
+        <PackageReference Include="PolySharp">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <Target Name="CheckConfiguration">
