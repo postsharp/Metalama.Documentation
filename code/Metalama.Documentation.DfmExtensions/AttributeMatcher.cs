@@ -8,7 +8,8 @@ namespace Metalama.Documentation.DfmExtensions;
 
 internal static class AttributeMatcher
 {
-    private static readonly Regex _oneAttributeRegex = new( @"(?<name>[\w-]+)=(""(?<quoted_value>[^""]*)""|(?<unquoted_value>\w+))" );
+    private static readonly Regex _oneAttributeRegex =
+        new( @"(?<name>[\w-]+)=(""(?<quoted_value>[^""]*)""|(?<unquoted_value>\w+))" );
 
     public static Dictionary<string, string> ParseAttributes( string attributes )
     {
@@ -17,7 +18,10 @@ internal static class AttributeMatcher
         foreach ( Match attributeMatch in _oneAttributeRegex.Matches( attributes ) )
         {
             var attributeName = attributeMatch.Groups["name"].Value;
-            var attributeValue = (attributeMatch.Groups["quoted_value"] ?? attributeMatch.Groups["unquoted_value"]).Value;
+
+            var attributeValue = (attributeMatch.Groups["quoted_value"] ?? attributeMatch.Groups["unquoted_value"])
+                .Value;
+
             dictionary[attributeName] = attributeValue;
         }
 

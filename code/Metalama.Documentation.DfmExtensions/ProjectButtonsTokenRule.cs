@@ -7,7 +7,8 @@ namespace Metalama.Documentation.DfmExtensions;
 
 public sealed class ProjectButtonsTokenRule : IMarkdownRule
 {
-    private static readonly Regex _regex = new( @"^\s*\[!metalama-project-buttons +(?<path>[^\s\]]+)\s*(?<attributes>[^\]]*)\]" );
+    private static readonly Regex _regex = new(
+        @"^\s*\[!metalama-project-buttons +(?<path>[^\s\]]+)\s*(?<attributes>[^\]]*)\]" );
 
     public IMarkdownToken? TryMatch( IMarkdownParser parser, IMarkdownParsingContext context )
     {

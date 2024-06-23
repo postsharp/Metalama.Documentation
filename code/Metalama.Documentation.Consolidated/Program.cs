@@ -12,5 +12,10 @@ Console.WriteLine( "Hello, World!" );
 // // This is to make sure that all packages are properly referenced.
 _ = new[]
 {
-    typeof(IAspect), typeof(AspectWeaverContext), typeof(Workspace), typeof(IIntrospectionAspectClass), typeof(ISourceTransformer), typeof(MetalamaDriver)
+    typeof(IAspect),
+    typeof(AspectWeaverContext),
+    typeof(Workspace),
+    typeof(IIntrospectionAspectClass),
+    typeof(ISourceTransformer),
+    typeof(MetalamaDriver)
 };

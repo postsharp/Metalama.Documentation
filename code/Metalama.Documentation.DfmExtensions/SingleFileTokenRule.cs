@@ -8,7 +8,8 @@ namespace Metalama.Documentation.DfmExtensions;
 
 public sealed class SingleFileTokenRule : IMarkdownRule
 {
-    private static readonly Regex _regex = new( @"^\s*\[!metalama-file +(?<path>[^\s\]]+)\s*(?<transformed>transformed)?\s*(?<attributes>[^\]]*)\]" );
+    private static readonly Regex _regex = new(
+        @"^\s*\[!metalama-file +(?<path>[^\s\]]+)\s*(?<transformed>transformed)?\s*(?<attributes>[^\]]*)\]" );
 
     public IMarkdownToken? TryMatch( IMarkdownParser parser, IMarkdownParsingContext context )
     {

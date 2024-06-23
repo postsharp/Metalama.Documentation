@@ -10,8 +10,16 @@ public class RuleTests
     [Theory]
     [InlineData( "not a match", false, null, null )]
     [InlineData( "[!metalama-test some/path/to/somewhere.cs]", true, "c:\\src\\Foo\\some\\path\\to\\somewhere.cs", "" )]
-    [InlineData( "[!metalama-test ~/some/path/to/somewhere.cs]", true, "c:\\src\\Foo\\some\\path\\to\\somewhere.cs", "" )]
-    [InlineData( "[!metalama-test ~/some/path/to/somewhere.cs name=\"the name\"]", true, "c:\\src\\Foo\\some\\path\\to\\somewhere.cs", "the name" )]
+    [InlineData(
+        "[!metalama-test ~/some/path/to/somewhere.cs]",
+        true,
+        "c:\\src\\Foo\\some\\path\\to\\somewhere.cs",
+        "" )]
+    [InlineData(
+        "[!metalama-test ~/some/path/to/somewhere.cs name=\"the name\"]",
+        true,
+        "c:\\src\\Foo\\some\\path\\to\\somewhere.cs",
+        "the name" )]
     [InlineData(
         "[!metalama-test ~/some/path/to/somewhere.cs name=\"the name\" title=\"the title\"]",
         true,

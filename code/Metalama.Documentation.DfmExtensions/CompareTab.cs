@@ -11,16 +11,17 @@ internal class CompareTab : BaseTab
         this.TabHeader = tabHeader;
     }
 
-    private CodeTab GetSourceTab() => new( "source", this.FullPath, this.TabId, SandboxFileKind.TargetCode );
+    private CodeTab GetSourceTab() => new( "source", this.FullPath, SandboxFileKind.TargetCode );
 
     public override string GetTabContent( bool fallbackToSource = true )
     {
         var sourceTab = this.GetSourceTab();
-        var transformedTab = new TransformedSingleFileCodeTab( this.FullPath );
+        var transformedTab = new TransformedSingleFileCodeTab( this.TabId, this.FullPath, "(Header)" );
 
         string NormalizeCode( string s ) => s.Replace( " ", "" );
 
-        if ( !transformedTab.Exists() || NormalizeCode( sourceTab.GetCodeForComparison() ) == NormalizeCode( transformedTab.GetCodeForComparison() ) )
+        if ( !transformedTab.Exists() || NormalizeCode( sourceTab.GetCodeForComparison() )
+            == NormalizeCode( transformedTab.GetCodeForComparison() ) )
         {
             return sourceTab.GetTabContent( fallbackToSource );
         }
@@ -35,7 +36,7 @@ internal class CompareTab : BaseTab
         stringBuilder.AppendLine( $@"    <div class=""compare-header"">Transformed Code</div>" );
         stringBuilder.AppendLine( transformedTab.GetTabContent( false ) );
         stringBuilder.AppendLine( $@"    </div>" ); // <div class="right">
-        stringBuilder.AppendLine( $@"</div>" );   // top div
+        stringBuilder.AppendLine( $@"</div>" );     // top div
 
         return stringBuilder.ToString();
     }

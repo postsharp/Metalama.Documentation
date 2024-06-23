@@ -19,7 +19,9 @@ internal abstract class TabGroup
     {
         if ( tabGroupId.Contains( ' ' ) || tabGroupId.Contains( '.' ) )
         {
-            throw new ArgumentOutOfRangeException( nameof(tabGroupId), $"The id '{tabGroupId}' contains an invalid character." );
+            throw new ArgumentOutOfRangeException(
+                nameof(tabGroupId),
+                $"The id '{tabGroupId}' contains an invalid character." );
         }
 
         this.TabGroupId = tabGroupId;
@@ -49,7 +51,9 @@ internal abstract class TabGroup
 
             if ( sandboxPayload != null )
             {
-                stringBuilder.AppendLine( $@"  <a class=""try"" onclick=""openSandbox('{sandboxPayload}');"" role=""button"">Open in sandbox</a>" );
+                stringBuilder.AppendLine(
+                    $@"  <a class=""try"" onclick=""openSandbox('{sandboxPayload}');"" role=""button"">Open in sandbox</a>" );
+
                 stringBuilder.AppendLine( "<span class='separator'>|</span>" );
             }
 
@@ -102,14 +106,18 @@ internal abstract class TabGroup
 
     private List<BaseTab> GetEnabledTabs( TabGroupBaseToken token )
     {
-        bool IsTabEnabled( BaseTab tab ) => (token.Tabs.Length == 0 || token.Tabs.Contains( tab.TabId )) && !tab.IsEmpty();
+        bool IsTabEnabled( BaseTab tab )
+            => (token.Tabs.Length == 0 || token.Tabs.Contains( tab.TabId )) && !tab.IsEmpty();
 
-        var tabs = this.Tabs.Where( IsTabEnabled ).ToList();
+        var tabs = this.Tabs
+            .Where( IsTabEnabled )
+            .ToList();
 
         return tabs;
     }
 
-    public string? GetSandboxPayload( TabGroupBaseToken token ) => this.GetSandboxPayload( this.GetEnabledTabs( token ) );
+    public string? GetSandboxPayload( TabGroupBaseToken token )
+        => this.GetSandboxPayload( this.GetEnabledTabs( token ) );
 
     private string? GetSandboxPayload( List<BaseTab> tabs )
     {
@@ -129,7 +137,7 @@ internal abstract class TabGroup
 
                 if ( codeTab.SandboxFileKind != SandboxFileKind.None )
                 {
-                    var fileName = codeTab.Name;
+                    var fileName = codeTab.TabId;
 
                     if ( !fileName.EndsWith( ".cs" ) )
                     {
@@ -144,7 +152,8 @@ internal abstract class TabGroup
                 // Try currently requires that the code that is executed is in Program.cs.
                 var fileName = "Program.cs";
 
-                sandboxFiles.Add( new SandboxFile( fileName, compareTab.GetSandboxCode(), SandboxFileKind.TargetCode ) );
+                sandboxFiles.Add(
+                    new SandboxFile( fileName, compareTab.GetSandboxCode(), SandboxFileKind.TargetCode ) );
             }
         }
 

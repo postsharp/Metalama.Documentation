@@ -26,7 +26,8 @@ public sealed class AspectTestTokenRule : IMarkdownRule
             attributes.TryGetValue( "title", out var title );
             attributes.TryGetValue( "tabs", out var tabs );
 
-            if ( !attributes.TryGetValue( "diff-side", out var diffSideString ) || !Enum.TryParse<DiffSide>( diffSideString, out var diffSide ) )
+            if ( !attributes.TryGetValue( "diff-side", out var diffSideString )
+                 || !Enum.TryParse<DiffSide>( diffSideString, out var diffSide ) )
             {
                 diffSide = DiffSide.Both;
             }

@@ -13,7 +13,8 @@ internal abstract class BaseTab
 
     public string FullPath { get; }
 
-    public virtual bool IsEmpty() => !File.Exists( this.FullPath ) || this.IsContentEmpty( File.ReadAllLines( this.FullPath ) );
+    public bool IsEmpty()
+        => !File.Exists( this.FullPath ) || this.IsContentEmpty( File.ReadAllLines( this.FullPath ) );
 
     protected virtual bool IsContentEmpty( string[] lines ) => lines.All( string.IsNullOrWhiteSpace );
 
@@ -25,7 +26,9 @@ internal abstract class BaseTab
 
     protected string GetProjectDirectory()
     {
-        for ( var directory = Path.GetDirectoryName( this.FullPath ); directory != null; directory = Path.GetDirectoryName( directory ) )
+        for ( var directory = Path.GetDirectoryName( this.FullPath );
+              directory != null;
+              directory = Path.GetDirectoryName( directory ) )
         {
             if ( Directory.GetFiles( directory, "*.csproj" ).Any() )
             {

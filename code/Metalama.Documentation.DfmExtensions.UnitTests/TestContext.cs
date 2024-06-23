@@ -28,9 +28,11 @@ internal class TestParser : IMarkdownParser
 
 internal class TestMarkdownContext : IMarkdownContext
 {
-    public IMarkdownContext CreateContext( ImmutableDictionary<string, object> variables ) => throw new NotImplementedException();
+    public IMarkdownContext CreateContext( ImmutableDictionary<string, object> variables )
+        => throw new NotImplementedException();
 
     public ImmutableList<IMarkdownRule> Rules => throw new NotImplementedException();
 
-    public ImmutableDictionary<string, object> Variables { get; } = ImmutableDictionary<string, object>.Empty.Add( "BaseFolder", "c:\\src\\Foo" );
+    public ImmutableDictionary<string, object> Variables { get; } =
+        ImmutableDictionary<string, object>.Empty.Add( "BaseFolder", "c:\\src\\Foo" );
 }

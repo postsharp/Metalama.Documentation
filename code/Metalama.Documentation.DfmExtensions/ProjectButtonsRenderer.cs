@@ -20,7 +20,9 @@ internal class ProjectButtonsRenderer : BaseRenderer<ProjectButtonsToken>
         {
             var lines = File.ReadAllLines( file );
 
-            var kind = lines.Any( l => l.StartsWith( "using Metalama.Framework" ) ) ? SandboxFileKind.AspectCode : SandboxFileKind.None;
+            var kind = lines.Any( l => l.StartsWith( "using Metalama.Framework" ) )
+                ? SandboxFileKind.AspectCode
+                : SandboxFileKind.None;
 
             if ( kind == SandboxFileKind.None )
             {
@@ -38,7 +40,7 @@ internal class ProjectButtonsRenderer : BaseRenderer<ProjectButtonsToken>
                 }
             }
 
-            tabGroup.Tabs.Add( new CodeTab( Path.GetFileNameWithoutExtension( file ).ToLowerInvariant(), file, Path.GetFileName( file ), kind ) );
+            tabGroup.Tabs.Add( new CodeTab( Path.GetFileNameWithoutExtension( file ).ToLowerInvariant(), file, kind ) );
         }
 
         var sandboxPayload = tabGroup.GetSandboxPayload( token );

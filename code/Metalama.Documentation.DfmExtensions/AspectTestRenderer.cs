@@ -2,6 +2,7 @@
 
 using Microsoft.DocAsCode.MarkdownLite;
 using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.IO;
@@ -29,6 +30,16 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
         "using Metalama.Framework.Serialization",
         "using Metalama.Framework.CodeFixes" );
 
+    private enum TabOrder
+    {
+        Aspect,
+        Target,
+        Introduced,
+        Dependency,
+        Auxiliary,
+        ProgramOutput
+    }
+
     public override string Name => nameof(AspectTestRenderer);
 
     protected override StringBuffer RenderCore(
@@ -43,38 +54,44 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
         var id = Path.GetFileNameWithoutExtension( token.Src ).ToLowerInvariant().Replace( '.', '_' );
         var directory = Path.GetDirectoryName( token.Src )!;
 
-        var tabGroup = new AspectTestTabGroup( id );
+        List<(BaseTab Tab, TabOrder Order)> tabs = [];
 
-        void AddCodeTab( string tabId, string suffix, SandboxFileKind sandboxFileKind, DiffSide diffSide )
+        void AddCodeTab(
+            string tabId,
+            string suffix,
+            SandboxFileKind sandboxFileKind,
+            DiffSide diffSide,
+            string tabHeader,
+            TabOrder order )
         {
             var tabPath = suffix == "" ? token.Src : Path.ChangeExtension( token.Src, suffix + ".cs" );
 
             switch ( diffSide )
             {
                 case DiffSide.Both:
-                    tabGroup.Tabs.Add( new CompareTab( tabId, "Target Code", tabPath ) );
+                    tabs.Add( (new CompareTab( tabId, tabHeader, tabPath ), order) );
 
                     break;
 
                 case DiffSide.Source:
-                    tabGroup.Tabs.Add( new CodeTab( tabId, tabPath, suffix, sandboxFileKind ) );
+                    tabs.Add( (new CodeTab( tabId, tabPath, sandboxFileKind ), order) );
 
                     break;
 
                 case DiffSide.Transformed:
-                    tabGroup.Tabs.Add( new TransformedSingleFileCodeTab( tabPath ) );
+                    tabs.Add( (new TransformedSingleFileCodeTab( tabId, tabPath, tabHeader ), order) );
 
                     break;
             }
         }
 
-        void AddOtherTab( string extension, Func<string, BaseTab> createTab )
+        void AddOtherTab( string extension, Func<string, BaseTab> createTab, TabOrder order )
         {
             var tabPath = Path.ChangeExtension( token.Src, extension );
 
             if ( File.Exists( tabPath ) )
             {
-                tabGroup.Tabs.Add( createTab( tabPath ) );
+                tabs.Add( (createTab( tabPath ), order) );
             }
         }
 
@@ -94,23 +111,28 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
             var fileKind = fileNameParts[^1];
             var fileSuffix = string.Join( ".", fileNameParts.Skip( 1 ) );
 
-            var (sandboxFileKind,diffSide) = (fileKind.ToLowerInvariant(), isCompileTime)
+            var (sandboxFileKind, diffSide, tabHeader, order) = (fileKind.ToLowerInvariant(), isCompileTime)
                 switch
                 {
-                    ("i", _) => (SandboxFileKind.None, DiffSide.Transformed), // Introduced code
-                    ("dependency", _) => (SandboxFileKind.Incompatible, DiffSide.Both),
-                    (_, true) => (SandboxFileKind.AspectCode, DiffSide.Source),
-                    (_, false) => (SandboxFileKind.ExtraCode, DiffSide.Source)
+                    ("i", _) => (SandboxFileKind.None, DiffSide.Transformed,
+                                 fileNameParts[1] + " (Introduced)", TabOrder.Introduced), // Introduced code
+                    ("dependency", _) => (SandboxFileKind.Incompatible, DiffSide.Both, "Referenced Project",
+                                          TabOrder.Dependency),
+                    (_, true) => (SandboxFileKind.AspectCode, DiffSide.Source, "Aspect Code", TabOrder.Aspect),
+                    (_, false) => (SandboxFileKind.ExtraCode, DiffSide.Source, "Extra Code", TabOrder.ProgramOutput)
                 };
 
-            AddCodeTab( fileKind.ToLowerInvariant(), fileSuffix, sandboxFileKind, diffSide );
+            AddCodeTab( fileNameParts[1], fileSuffix, sandboxFileKind, diffSide, tabHeader, order );
         }
 
-        AddCodeTab( "target", "", SandboxFileKind.TargetCode, DiffSide.Both );
+        AddCodeTab( "target", "", SandboxFileKind.TargetCode, DiffSide.Both, "Target Code", TabOrder.Target );
 
-        AddOtherTab( ".t.txt", p => new ProgramOutputTab( p ) );
+        AddOtherTab( ".t.txt", p => new ProgramOutputTab( p ), TabOrder.ProgramOutput );
 
         var stringBuilder = new StringBuilder();
+
+        var tabGroup = new AspectTestTabGroup( id );
+        tabGroup.Tabs.AddRange( tabs.OrderBy( t => (int) t.Order ).ThenBy( t => t.Tab.TabId ).Select( t => t.Tab ) );
         tabGroup.Render( stringBuilder, token );
 
         return stringBuilder.ToString();

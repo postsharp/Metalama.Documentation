@@ -11,7 +11,14 @@ public sealed class MultipleFilesToken : TabGroupBaseToken
 
     public TabMode Mode { get; }
 
-    public MultipleFilesToken( IMarkdownRule rule, IMarkdownContext context, SourceInfo sourceInfo, string name, string[] files, TabMode mode, bool addLinks )
+    public MultipleFilesToken(
+        IMarkdownRule rule,
+        IMarkdownContext context,
+        SourceInfo sourceInfo,
+        string name,
+        string[] files,
+        TabMode mode,
+        bool addLinks )
         : base( rule, context, sourceInfo, name, "", "", addLinks )
     {
         this.Files = files.Select( f => PathHelper.ResolveTokenPath( f, context, sourceInfo ) ).ToArray();

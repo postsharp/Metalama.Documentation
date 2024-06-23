@@ -11,7 +11,8 @@ namespace Metalama.Documentation.DfmExtensions;
 
 public sealed class MultipleFilesTokenRule : IMarkdownRule
 {
-    private static readonly Regex _regex = new( @"^\s*\[!metalama-files(?<paths>(\s+[^\s\]=]+)+)*(?<attributes>\s(?=\w+=)+[^\]]*)?\s*\]" );
+    private static readonly Regex _regex = new(
+        @"^\s*\[!metalama-files(?<paths>(\s+[^\s\]=]+)+)*(?<attributes>\s(?=\w+=)+[^\]]*)?\s*\]" );
 
     public IMarkdownToken? TryMatch( IMarkdownParser parser, IMarkdownParsingContext context )
     {
@@ -21,7 +22,11 @@ public sealed class MultipleFilesTokenRule : IMarkdownRule
         {
             var sourceInfo = context.Consume( match.Length );
 
-            var paths = match.Groups["paths"].Value.Split( ' ' ).Select( x => x.Trim() ).Where( x => !string.IsNullOrEmpty( x ) ).ToArray();
+            var paths = match.Groups["paths"]
+                .Value.Split( ' ' )
+                .Select( x => x.Trim() )
+                .Where( x => !string.IsNullOrEmpty( x ) )
+                .ToArray();
 
             var attributes = AttributeMatcher.ParseAttributes( match.Groups["attributes"].Value );
 

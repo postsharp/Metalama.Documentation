@@ -42,7 +42,9 @@ internal static class GitHelper
 
     public static string GetGitDirectory( string path )
     {
-        for ( var directory = Path.GetDirectoryName( path ); directory != null; directory = Path.GetDirectoryName( directory ) )
+        for ( var directory = Path.GetDirectoryName( path );
+              directory != null;
+              directory = Path.GetDirectoryName( directory ) )
         {
             if ( Directory.Exists( Path.Combine( directory, ".git" ) ) )
             {

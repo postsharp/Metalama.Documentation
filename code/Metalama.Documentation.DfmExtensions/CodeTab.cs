@@ -11,13 +11,15 @@ namespace Metalama.Documentation.DfmExtensions;
 
 internal class CodeTab : BaseTab
 {
-    private static readonly Regex _htmlStartMarkerRegex = new( """<span class="[^\"]*">\/\*&lt;([\w+]+)&gt;\*\/<\/span>""" );
-    private static readonly Regex _htmlEndMarkerRegex = new( """<span class="[^\"]*">\/\*&lt;\/([\w+]+)&gt;\*\/<\/span>""" );
+    private static readonly Regex _htmlStartMarkerRegex =
+        new( """<span class="[^\"]*">\/\*&lt;([\w+]+)&gt;\*\/<\/span>""" );
+
+    private static readonly Regex _htmlEndMarkerRegex =
+        new( """<span class="[^\"]*">\/\*&lt;\/([\w+]+)&gt;\*\/<\/span>""" );
+
     private static readonly Regex _anyMarkerRegex = new( """\/\*\<\/?([\w+]+)\>\*\/""" );
     private static readonly Regex _memberRegex = new( """<span class='line-number' data-member='([^']*)'>""" );
     private static readonly Regex _emptyLineRegex = new( """<span class='line-number'[^>]*>\d+<\/span>\s*$""" );
-
-    public string Name { get; }
 
     public SandboxFileKind SandboxFileKind { get; }
 
@@ -28,23 +30,24 @@ internal class CodeTab : BaseTab
     public CodeTab(
         string tabId,
         string fullPath,
-        string name,
         SandboxFileKind sandboxFileKind,
         string? marker = null,
-        string? member = null ) : base(
+        string? member = null,
+        string? tabHeader = null ) : base(
         tabId,
         fullPath )
     {
-        this.Name = name;
         this.SandboxFileKind = sandboxFileKind;
         this.Member = member;
-        this.TabHeader = name + " Code";
+        this.TabHeader = tabHeader ?? tabId + " Code";
         this.Marker = marker;
     }
 
-    protected override bool IsContentEmpty( string[] lines ) => base.IsContentEmpty( lines ) || lines.All( l => l.TrimStart().StartsWith( "//" ) );
+    protected override bool IsContentEmpty( string[] lines )
+        => base.IsContentEmpty( lines ) || lines.All( l => l.TrimStart().StartsWith( "//" ) );
 
-    private string? GetHtmlPath() => PathHelper.GetObjPath( this.GetProjectDirectory(), this.FullPath, this.HtmlExtension );
+    private string? GetHtmlPath()
+        => PathHelper.GetObjPath( this.GetProjectDirectory(), this.FullPath, this.HtmlExtension );
 
     protected virtual string HtmlExtension => ".cs.html";
 
@@ -88,7 +91,10 @@ internal class CodeTab : BaseTab
 
                     if ( isWithinMarker )
                     {
-                        var cleanedLine = _htmlStartMarkerRegex.Replace( _htmlEndMarkerRegex.Replace( htmlLine, "" ), "" );
+                        var cleanedLine = _htmlStartMarkerRegex.Replace(
+                            _htmlEndMarkerRegex.Replace( htmlLine, "" ),
+                            "" );
+
                         outputLines.Add( cleanedLine );
 
                         var matchEndMarker = _htmlEndMarkerRegex.Match( htmlLine );
@@ -104,12 +110,14 @@ internal class CodeTab : BaseTab
                 // Check that we found the markers.
                 if ( this.Marker != null && !foundStartMarker )
                 {
-                    throw new InvalidOperationException( $"The '/*<{this.Marker}>*/' marker was not found in '{htmlPath}'." );
+                    throw new InvalidOperationException(
+                        $"The '/*<{this.Marker}>*/' marker was not found in '{htmlPath}'." );
                 }
 
                 if ( this.Marker != null && !foundEndMarker )
                 {
-                    throw new InvalidOperationException( $"The '/*</{this.Marker}>*/' marker was not found in '{htmlPath}'." );
+                    throw new InvalidOperationException(
+                        $"The '/*</{this.Marker}>*/' marker was not found in '{htmlPath}'." );
                 }
 
                 if ( this.Member != null && !foundMember )
@@ -156,9 +164,13 @@ internal class CodeTab : BaseTab
     public string GetCodeForComparison()
     {
         var document = new HtmlDocument();
-        document.Load( this.GetHtmlPath() ?? throw new FileNotFoundException( $"Cannot find the HTML file for {this.FullPath}." ) );
 
-        var diagLines = document.DocumentNode.SelectNodes( "//span[@class='diagLines']" )?.ToList() ?? new List<HtmlNode>();
+        document.Load(
+            this.GetHtmlPath()
+            ?? throw new FileNotFoundException( $"Cannot find the HTML file for {this.FullPath}." ) );
+
+        var diagLines = document.DocumentNode.SelectNodes( "//span[@class='diagLines']" )?.ToList()
+                        ?? new List<HtmlNode>();
 
         foreach ( var diag in diagLines )
         {

@@ -16,7 +16,11 @@ public class DfmEngineCustomizer : IDfmEngineCustomizer
 {
     public void Customize( DfmEngineBuilder builder, IReadOnlyDictionary<string, object> parameters )
     {
-        var includePosition = builder.BlockRules.Select( ( r, i ) => (r, i) ).Single( x => x.r.Name == "DfmIncludeBlock" ).i;
+//        Debugger.Launch();
+
+        var includePosition = builder.BlockRules.Select( ( r, i ) => (r, i) )
+            .Single( x => x.r.Name == "DfmIncludeBlock" )
+            .i;
 
         builder.BlockRules = builder.BlockRules.InsertRange(
             includePosition,

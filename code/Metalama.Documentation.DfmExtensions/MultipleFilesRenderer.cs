@@ -21,7 +21,7 @@ internal class MultipleFilesRenderer : BaseRenderer<MultipleFilesToken>
             switch ( token.Mode )
             {
                 case TabMode.Source:
-                    tabGroup.Tabs.Add( new CodeTab( tabId, file, tabName, SandboxFileKind.Incompatible ) );
+                    tabGroup.Tabs.Add( new CodeTab( tabId, file, SandboxFileKind.Incompatible ) );
 
                     break;
 
@@ -32,7 +32,7 @@ internal class MultipleFilesRenderer : BaseRenderer<MultipleFilesToken>
                     break;
 
                 case TabMode.Transformed:
-                    tabGroup.Tabs.Add( new TransformedSingleFileCodeTab( file ) );
+                    tabGroup.Tabs.Add( new TransformedSingleFileCodeTab( tabId, file, tabName + " (Transformed)" ) );
 
                     break;
             }
