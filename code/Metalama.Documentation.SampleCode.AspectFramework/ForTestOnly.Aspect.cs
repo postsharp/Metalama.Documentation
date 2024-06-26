@@ -21,7 +21,7 @@ public class ForTestOnlyAttribute : Attribute, IAspect<IMember>
 
     public void BuildAspect( IAspectBuilder<IMember> builder )
     {
-        builder.Outbound.ValidateOutboundReferences( this.ValidateReference, ReferenceGranularity.Namespace );
+        builder.Outbound.ValidateInboundReferences( this.ValidateReference, ReferenceGranularity.Namespace );
     }
 
     private void ValidateReference( ReferenceValidationContext context )

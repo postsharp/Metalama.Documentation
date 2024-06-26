@@ -8,7 +8,7 @@ This namespace enables validation of your code, the code that utilizes your aspe
 
 Aspects can register validators from their implementation of <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*?text=IAspect.BuildAspect>, and fabrics from their implementation of <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*>, <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*>.
 
-From these methods, invoke the <xref:Metalama.Framework.Validation.IValidatorReceiver`1.SelectMany*?text=amender.SelectMany> method exposed on the `builder` or `amender` parameter, combined with further calls to <xref:Metalama.Framework.Validation.IValidatorReceiver`1.Where*>, <xref:Metalama.Framework.Validation.IValidatorReceiver`1.Select*> or <xref:Metalama.Framework.Validation.IValidatorReceiver`1.SelectMany*>, then call <xref:Metalama.Framework.Validation.IValidatorReceiver.Validate*> or <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ValidateOutboundReferences*>. These methods allow you to register a delegate. This delegate is subsequently called and receives a context object of type <xref:Metalama.Framework.Validation.DeclarationValidationContext> or <xref:Metalama.Framework.Validation.ReferenceValidationContext>. The delegate can then analyze the code or reference, and report diagnostics.
+From these methods, invoke the <xref:Metalama.Framework.Validation.IValidatorReceiver`1.SelectMany*?text=amender.SelectMany> method exposed on the `builder` or `amender` parameter, combined with further calls to <xref:Metalama.Framework.Validation.IValidatorReceiver`1.Where*>, <xref:Metalama.Framework.Validation.IValidatorReceiver`1.Select*> or <xref:Metalama.Framework.Validation.IValidatorReceiver`1.SelectMany*>, then call <xref:Metalama.Framework.Validation.IValidatorReceiver.Validate*> or <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ValidateInboundReferences*>. These methods allow you to register a delegate. This delegate is subsequently called and receives a context object of type <xref:Metalama.Framework.Validation.DeclarationValidationContext> or <xref:Metalama.Framework.Validation.ReferenceValidationContext>. The delegate can then analyze the code or reference, and report diagnostics.
 
 The <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ReportDiagnostic*>, <xref:Metalama.Framework.Validation.IValidatorReceiver`1.SuppressDiagnostic*> and <xref:Metalama.Framework.Validation.IValidatorReceiver`1.SuggestCodeFix*> methods are provided for convenience and utilize <xref:Metalama.Framework.Validation.IValidatorReceiver.Validate*>.
 
@@ -53,7 +53,7 @@ classDiagram
         Syntax
     }
 
-class OutboundReferenceValidator {
+class InboundReferenceValidator {
     ValidateReferences
 }
 
@@ -80,7 +80,7 @@ class OutboundReferenceValidator {
         Where()
         AfterAllAspects()
         BeforeAnyAspect()
-        ValidateOutboundReferences()
+        ValidateInboundReferences()
         Validate()
         ReportDiagnostic()
         SuppressDiagnostic()
@@ -93,10 +93,10 @@ class OutboundReferenceValidator {
 
     ValidatorDelegate~DeclarationValidationContext~ <-- IValidatorReceiver : registers
     ` ValidatorDelegate~ReferenceValidationContext~` <-- IValidatorReceiver : registers
-    OutboundReferenceValidator <-- IValidatorReceiver : registers
+    InboundReferenceValidator <-- IValidatorReceiver : registers
 
     DeclarationValidationContext <-- ValidatorDelegate~DeclarationValidationContext~  : receives
-    DeclarationValidationContext <-- OutboundReferenceValidator : receives
+    DeclarationValidationContext <-- InboundReferenceValidator : receives
     ReferenceValidationContext <-- ` ValidatorDelegate~ReferenceValidationContext~` : receives
     ReferenceValidationContext o-- ReferenceEnd
     ReferenceEnd o-- ReferenceInstance

@@ -72,7 +72,7 @@ classDiagram
         AddAspect(...)
         AddAspectIfEligible(...)
         Validate(...)
-        ValidateOutboundReferences(...)
+        ValidateInboundReferences(...)
         ReportDiagnostic(...)
         SuppressDiagnostic(...)
         SuggestCodeFix(...)

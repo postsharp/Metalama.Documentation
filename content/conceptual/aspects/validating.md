@@ -46,14 +46,14 @@ In order to optimize performance, Metalama tries to avoid validating every singl
 To create an aspect that validates references:
 
 1. In the aspect class, define one or more static fields of type <xref:Metalama.Framework.Diagnostics.DiagnosticDefinition> as explained in <xref:diagnostics>.
-2. Create a method of arbitrary name with the signature `void ValidateReference( ReferenceValidationContext context )`. Implement the validation logic in this method. All the data you need is in the <xref:Metalama.Framework.Validation.ReferenceValidationContext> object. When you detect a rule violation, report a diagnostic as described in <xref:diagnostics>. Alternatively, you can create a class implementing the <xref:Metalama.Framework.Validation.OutboundReferenceValidator> abstract class.
+2. Create a method of arbitrary name with the signature `void ValidateReference( ReferenceValidationContext context )`. Implement the validation logic in this method. All the data you need is in the <xref:Metalama.Framework.Validation.ReferenceValidationContext> object. When you detect a rule violation, report a diagnostic as described in <xref:diagnostics>. Alternatively, you can create a class implementing the <xref:Metalama.Framework.Validation.InboundReferenceValidator> abstract class.
 3. Override or implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method of your aspect. From this method:
    1. Access the <xref:Metalama.Framework.Aspects.IAspectBuilder`1.Outbound*?text=builder.Outbound> property,
    2. Select declarations to be validated using the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*> and <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> methods,
-   3. Call the <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateOutboundReferences*> method. Pass a delegate to the validation method or an instance of the validator class and the <xref:Metalama.Framework.Validation.ReferenceGranularity>.
+   3. Call the <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateInboundReferences*> method. Pass a delegate to the validation method or an instance of the validator class and the <xref:Metalama.Framework.Validation.ReferenceGranularity>.
 
 > [!NOTE]
-> The delegate passed to the <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateOutboundReferences*> method must point to a named method of the aspect.
+> The delegate passed to the <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateInboundReferences*> method must point to a named method of the aspect.
 
 ### Example: ForTestOnly, aspect implementation
 
