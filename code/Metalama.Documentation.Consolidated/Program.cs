@@ -17,5 +17,5 @@ _ = new[]
     typeof(Workspace),
     typeof(IIntrospectionAspectClass),
     typeof(ISourceTransformer),
-    typeof(MetalamaDriver)
+    typeof(MetalamaWorkspaceDriver)
 };
