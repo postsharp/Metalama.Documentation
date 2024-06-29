@@ -54,14 +54,14 @@ Introduced types work exactly like source-defined ones.
 
 When you call <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceClass*>, it returns an <xref:Metalama.Framework.Advising.IClassIntroductionAdviceResult>. This interface derives from `IAdviser<INamedType>`, which has familiar extension methods like <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceMethod*>, <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceField*>, <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceProperty*> and so on.
 
-> [!INFO]
+> [!NOTE]
 > All programmatic techniques described in <xref:introducing-members> also work with introduced types through the `IAdviser<INamedType>` interface.
 
 ### Example: adding properties
 
 The following aspect copies the properties of the source object into the introduced `Builder` type.
 
-[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceNestedClass.cs name="Introducing a nested class"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceNestedClass_Members.cs name="Introducing a nested class"]
 
 ### Final example: the Builder pattern
 
