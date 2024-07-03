@@ -124,6 +124,13 @@ If you don't address the warning, the behavior of the ambiguous contracts will r
 
 We will change the default behavior and the warning in a future release.
 
+
+### Improvements in Metalama.Patterns.Caching
+
+* The Redis backend now consumes the `IConnectionMultiplexer` from the `IServiceProvider` by default, which makes it easier to use with .NET Aspire.
+
+* The cache key prefix now always includes the version of the serialization protocol.
+
 ### Improvements in supportability
 
 When troubleshooting Metalama, it is now possible to enable tracing and direct it to the standard output just using an environment variable.
