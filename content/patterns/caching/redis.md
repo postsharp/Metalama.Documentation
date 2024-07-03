@@ -108,7 +108,7 @@ If you choose to enable dependencies with Redis, you need to ensure that at leas
 To enable dependencies, set the <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsDependencies?text=RedisCachingBackendConfiguration.SupportsDependencies> property to `true` when initializing the Redis caching back-end.
 
 > [!WARNING]
-> Caching dependencies cannot be used on a Redis cluster where the data is distributed among nodes. Only the master-replica topology, where all nodes contain all data, is supported with caching dependencies.
+> Caching dependencies cannot be used on a [Redis cluster](https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/). Only the [master-replica](https://redis.io/docs/latest/operate/oss_and_stack/management/replication/) topology is supported with caching dependencies. The cause of this limitation is that a cache operation with depedencies is implemented as a transaction of several operations, which must all reside on the same node.
 
 ### Running the dependency GC process
 
