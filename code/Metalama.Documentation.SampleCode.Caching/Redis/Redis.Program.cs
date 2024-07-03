@@ -22,14 +22,14 @@ internal static class Program
         var endpoint = redis.Endpoint;
 
         // Add Redis.                                                          
-        builder.Services.AddSingleton<IConnectionMultiplexer>(                          /*<AddRedis>*/
+        builder.Services.AddSingleton<IConnectionMultiplexer>( /*<AddRedis>*/
             _ =>
             {
                 var redisConnectionOptions = new ConfigurationOptions();
                 redisConnectionOptions.EndPoints.Add( endpoint.Address, endpoint.Port );
 
                 return ConnectionMultiplexer.Connect( redisConnectionOptions );
-            } );                                                                         /*</AddRedis>*/
+            } ); /*</AddRedis>*/
 
         // Add the caching service.                         
         builder.Services.AddMetalamaCaching(                                /*<AddMetalamaCaching>*/

@@ -30,10 +30,10 @@ internal static class Program
                 redisConnectionOptions.EndPoints.Add( endpoint.Address, endpoint.Port );
 
                 return ConnectionMultiplexer.Connect( redisConnectionOptions );
-            } );                                                                       /*</AddRedis>*/
+            } ); /*</AddRedis>*/
 
         // Add the caching service.                         
-        builder.Services.AddMetalamaCaching(                                /*<AddMetalamaCaching>*/
+        builder.Services.AddMetalamaCaching(                                         /*<AddMetalamaCaching>*/
             caching => caching.WithBackend( backend => backend.Redis().WithL1() ) ); /*</AddMetalamaCaching>*/
 
         // Add other components as usual.

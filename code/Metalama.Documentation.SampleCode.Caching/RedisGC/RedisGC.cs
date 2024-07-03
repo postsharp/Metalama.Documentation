@@ -36,7 +36,10 @@ public sealed class Program
                 // The KeyPrefix must match _exactly_ the one used by the caching back-end.
                 var keyPrefix = "TheApp.1.0.0";
 
-                return new RedisCachingBackendConfiguration { NewConnectionOptions = redisConnectionOptions, KeyPrefix = keyPrefix };
+                return new RedisCachingBackendConfiguration
+                {
+                    NewConnectionOptions = redisConnectionOptions, KeyPrefix = keyPrefix
+                };
             } );
 
         var host = appBuilder.Build();
