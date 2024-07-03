@@ -38,13 +38,22 @@ The first step is to prepare your Redis server for use with Metalama caching. Fo
 
 ## Configuring the caching backend in Metalama
 
-The second step is to configure Metalama Caching to use Redis. Follow these steps:
+The second step is to configure Metalama Caching to use Redis. 
+
+### With dependency injection
+
+Follow these steps:
 
 1. Add a reference to the [Metalama.Patterns.Caching.Backends.Redis](https://www.nuget.org/packages/Metalama.Patterns.Caching.Backends.Redis/) package.
 
-2. Create an instance of [StackExchange.Redis.ConnectionMultiplexer](https://stackexchange.github.io/StackExchange.Redis/Configuration).
+2. Create a [StackExchange.Redis.ConnectionMultiplexer](https://stackexchange.github.io/StackExchange.Redis/Configuration) and add it to the service collection as a singleton of the `IConnectionMultiplexer` interface type.
 
-3. Go back to the code that initialized Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*?text=serviceCollection.AddMetalamaCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithBackend*> method, and supply a delegate that calls the <xref:Metalama.Patterns.Caching.Building.CachingBackendFactory.Memory*> method, then immediately call the <xref:Metalama.Patterns.Caching.Backends.Azure.AzureCachingFactory.WithAzureSynchronization*> method. Pass the topic connection string as a parameter.
+    [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/Redis/Redis.Program.cs marker="AddRedis"]
+
+    > [!NOTE]
+    > If you are using .NET Aspire, simply call `UseRedis()`.    
+
+3. Go back to the code that initialized Metalama Caching by calling <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*?text=serviceCollection.AddMetalamaCaching>. Call the <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithBackend*> method, and supply a delegate that calls the <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.Redis*> method.
 
     Here is an example of the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*> code.
 
@@ -60,6 +69,14 @@ The second step is to configure Metalama Caching to use Redis. Follow these step
 Here is an update of the example used in <xref:caching-getting-started>, modified to use Redis instead of `MemoryCache` as the caching back-end.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Caching/Redis/Redis.cs]
+
+### Without dependency injection
+
+If you are not using dependency injection:
+
+1. Create a [StackExchange.Redis.ConnectionMultiplexer](https://stackexchange.github.io/StackExchange.Redis/Configuration).
+
+2. Call <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create>, then <xref:Metalama.Patterns.Caching.Building.ICachingServiceBuilder.WithBackend*> method, supply a delegate that calls the <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.Redis*> method. Pass a <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration> and set the <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.Connection> property to your `ConnectionMultiplexer`.
 
 
 ## Adding a local in-memory cache in front of your Redis cache

@@ -34,12 +34,12 @@ public class BuilderAttribute : TypeAspect
     [CompileTime]
     private record Tags( IReadOnlyList<PropertyMapping> Properties, IConstructor SourceConstructor );
 
-    public override void BuildAspect( IAspectBuilder<INamedType> aspectBuilder )
+    public override void BuildAspect( IAspectBuilder<INamedType> builder )
     {
-        base.BuildAspect( aspectBuilder );
+        base.BuildAspect( builder );
 
         // Create a list of PropertyMapping items for all properties that we want to build using the Builder.
-        var properties = aspectBuilder.Target.Properties.Where(
+        var properties = builder.Target.Properties.Where(
                 p => p.Writeability != Writeability.None &&
                      !p.IsStatic )
             .Select(
@@ -49,7 +49,7 @@ public class BuilderAttribute : TypeAspect
             .ToList();
 
         // Introduce the Builder nested type.
-        var builderType = aspectBuilder.IntroduceClass(
+        var builderType = builder.IntroduceClass(
             "Builder",
             buildType: t => t.Accessibility = Accessibility.Public );
 
@@ -89,7 +89,7 @@ public class BuilderAttribute : TypeAspect
             {
                 m.Name = "Build";
                 m.Accessibility = Accessibility.Public;
-                m.ReturnType = aspectBuilder.Target;
+                m.ReturnType = builder.Target;
 
                 foreach ( var property in properties )
                 {
@@ -99,7 +99,7 @@ public class BuilderAttribute : TypeAspect
             } );
 
         // Add a constructor to the source type with all properties.
-        var constructor = aspectBuilder.IntroduceConstructor(
+        var constructor = builder.IntroduceConstructor(
                 nameof(this.SourceConstructorTemplate),
                 buildConstructor: c =>
                 {
@@ -115,7 +115,7 @@ public class BuilderAttribute : TypeAspect
                 } )
             .Declaration;
 
-        aspectBuilder.Tags = new Tags( properties, constructor );
+        builder.Tags = new Tags( properties, constructor );
     }
 
     [Template]

@@ -26,8 +26,7 @@ public class LocalRedisServer : IDisposable
     private readonly Config _config;
     private bool _isDisposed;
 
-    public int Port => this._config.Port;
-
+    
     public LocalRedisServer()
     {
         Stream executableStream;
@@ -168,7 +167,7 @@ public class LocalRedisServer : IDisposable
         }
     }
 
-    internal EndPoint Endpoint => new IPEndPoint( IPAddress.Loopback, this._config.Port );
+    public IPEndPoint Endpoint => new IPEndPoint( IPAddress.Loopback, this._config.Port );
 
     protected virtual void Dispose( bool disposing )
     {

@@ -23,22 +23,20 @@ public sealed class Program
 
         // Add a local Redis server with a random-assigned port. You don't need this in your code.
         using var redis = appBuilder.Services.AddLocalRedisServer();
+        var endpoint = redis.Endpoint;
 
         // Add the garbage collected service, implemented as IHostedService.
         appBuilder.Services.AddRedisCacheDependencyGarbageCollector(
-            serviceProvider =>
+            _ =>
             {
-                // Get the random port of the test Redis server. You don't need this in your code.
-                var redisServer = serviceProvider.GetRequiredService<LocalRedisServer>();
-
                 // Build the Redis connection options.
                 var redisConnectionOptions = new ConfigurationOptions();
-                redisConnectionOptions.EndPoints.Add( "localhost", redisServer.Port );
+                redisConnectionOptions.EndPoints.Add( endpoint.Address, endpoint.Port );
 
                 // The KeyPrefix must match _exactly_ the one used by the caching back-end.
                 var keyPrefix = "TheApp.1.0.0";
 
-                return new RedisCachingBackendConfiguration( redisConnectionOptions, keyPrefix );
+                return new RedisCachingBackendConfiguration { NewConnectionOptions = redisConnectionOptions, KeyPrefix = keyPrefix };
             } );
 
         var host = appBuilder.Build();
