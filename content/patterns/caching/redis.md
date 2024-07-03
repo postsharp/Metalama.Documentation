@@ -3,7 +3,7 @@ uid: caching-redis
 summary: "The document provides a guide on how to use Redis as a distributed server for caching in a Metalama application, including configuration, enabling local in-memory cache, and handling dependencies."
 ---
 
-# Using Redis as a distributed server
+# Using Redis as a distributed cache
 
 If you have a distributed application where several instances run in parallel, [Redis](https://redis.io/) is an excellent choice for implementing caching due to the following reasons:
 
@@ -106,6 +106,9 @@ Metalama Caching's Redis back-end supports dependencies (see <xref:caching-depen
 If you choose to enable dependencies with Redis, you need to ensure that at least one instance of the cache GC process is running. It is legal to have several instances of this process running, but since all instances will compete to process the same messages, it is better to ensure that only a small number of instances (ideally one) is running.
 
 To enable dependencies, set the <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingBackendConfiguration.SupportsDependencies?text=RedisCachingBackendConfiguration.SupportsDependencies> property to `true` when initializing the Redis caching back-end.
+
+> [!WARNING]
+> Caching dependencies cannot be used on a Redis cluster where the data is distributed among nodes. Only the master-replica topology, where all nodes contain all data, is supported with caching dependencies.
 
 ### Running the dependency GC process
 
