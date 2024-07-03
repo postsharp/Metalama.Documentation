@@ -241,6 +241,9 @@ items:
           topicUid: when-migrate
         - name: Feature status
           topicUid: migration-feature-status
+          items:
+            - name: NotifyPropertyChanged
+              topicUid: migrating-inpc
         - name: Architectural differences from PostSharp
           topicUid: differences-from-postsharp
         - name: Migrating attribute multicasting

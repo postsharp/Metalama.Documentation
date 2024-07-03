@@ -177,7 +177,7 @@ Here is the simplified source code of the <xref:Metalama.Framework.Aspects.Overr
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodAspect.cs name="Main"]
 
 You will often want your aspect to override _many_ methods. For instance, a _synchronized object_ aspect has to override all public instance methods and wrap them with a `lock` statement.
-To override one or more methods, your aspect must implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke the <xref:Metalama.Framework.Advising.AdviserExtensions.Override*?text=builder.Advice.Override> method.
+To override one or more methods, your aspect must implement the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method and invoke the <xref:Metalama.Framework.Advising.AdviserExtensions.Override*?text=builder.Override> method.
 
 The _first argument_ of `Override` is the <xref:Metalama.Framework.Code.IMethod> that you want to override. This method must be in the type targeted by the current aspect instance.
 

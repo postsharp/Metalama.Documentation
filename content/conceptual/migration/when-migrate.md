@@ -5,9 +5,6 @@ summary: "The document provides guidance on when to migrate from PostSharp to Me
 
 # When to migrate from PostSharp to Metalama
 
-> [!WARNING]
-> Migrating your existing projects from PostSharp to Metalama currently may not be the best option. This decision should be thoroughly considered.
-
 Before deciding to migrate your code from PostSharp to Metalama, it's crucial to evaluate whether it's the right time to do so. Given that PostSharp will continue to be maintained for several more years, there may not be an immediate need to switch to Metalama.
 
 ## Avoid mixing PostSharp and Metalama in the same project

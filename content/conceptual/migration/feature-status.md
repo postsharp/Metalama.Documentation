@@ -7,15 +7,14 @@ summary: "The document provides an update on the migration of PostSharp features
 
 ## PostSharp Aspect Framework
 
-The PostSharp Framework has been entirely ported to Metalama, with a few notable differences:
+The PostSharp Framework has been entirely ported to Metalama, with a few notable limitations:
 
 * Methods from an external assembly cannot be intercepted; only those from the current project can be.
 * The event of suspending and resuming an `async` state machine, as in PostSharp, cannot be advised. Specifically, the `await` keyword cannot be advised.
 * The _raise_ semantic of an event cannot be intercepted, only the _add_ and _remove_ semantics can be.
 * Some constructor-related advice types are not yet implemented:
 
-    * Around constructor body
-    * After last constructor
+    * After the last constructor
     * After MemberwiseClone
 
 ## PostSharp Architecture Framework
@@ -26,13 +25,15 @@ See <xref:validation> for details.
 
 ## PostSharp Patterns
 
-| Library                | Migration Status | Description                                                                                                                                    |
-| ---------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| Contracts              | Completed. All features matched.        | See <xref:contract-patterns>.                                                                                                                  |
-| Caching                | Completed. All features matched.        | See <xref:caching>.                                                                                                                            |
-| INotifyPropertyChanged | In progress      | See <xref:Metalama.Patterns.Observability.ObservableAttribute>.                                                                                |
-| XAML                   | In progress      | See the [GitHub repo](https://github.com/postsharp/Metalama.Patterns/tree/develop/2024.0/src/Metalama.Patterns.Xaml) for the work in progress. |
-| Undo/Redo | Not started | |
-| Multi-threading | Not started | |
-| Aggregatable | Not started | |
-| Weak event | Not started | |
+| Library                | Migration Status | Documentation            | Feature gaps                                                       |
+| ---------------------- | ---------------- | ------------------------ | ------------------------------------------------------------------ |
+| Contracts              | Completed        | <xref:contract-patterns> | None                                                               |
+| Caching                | Completed        | <xref:caching>           | None                                                               |
+| INotifyPropertyChanged | Completed        | <xref:observability>     | See <xref:migrating-inpc>        |
+| XAML                   | Completed        | <xref:xaml>              | None                                                               |
+| Undo/Redo              | Not started      |                          |                                                                    |
+| Diagnostics (logging)  | Not started      |                          |                                                                    |
+| Multi-threading        | Not started      |                          |                                                                    |
+| Aggregatable           | Not started      |                          |                                                                    |
+| Weak event             | Not started      |                          |                                                                    |
+

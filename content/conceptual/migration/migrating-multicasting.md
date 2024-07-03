@@ -51,7 +51,7 @@ Example:
     {
         this.Implementation.BuildAspect(
             builder,
-            b => b.Advice.Override( b.Target, nameof(this.TheTemplate) ) );
+            b => b.Override( nameof(this.TheTemplate) ) );
     }
 ```
 
