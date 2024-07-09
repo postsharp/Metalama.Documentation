@@ -8,7 +8,8 @@ internal class Foo
 {
     public void Method1( [Trim] string nonNullableString, [Trim] string? nullableString )
     {
-        Console.WriteLine( $"nonNullableString='{nonNullableString}', nullableString='{nullableString}'" );
+        Console.WriteLine(
+            $"nonNullableString='{nonNullableString}', nullableString='{nullableString}'" );
     }
 
     public string Property { get; set; }

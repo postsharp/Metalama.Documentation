@@ -32,6 +32,7 @@ public sealed class ConsoleMain : IConsoleMain
             }
         }
 
-        Console.WriteLine( $"ProductCatalogue performed {this._catalogue.OperationCount} operations in total." );
+        Console.WriteLine(
+            $"ProductCatalogue performed {this._catalogue.OperationCount} operations in total." );
     }
 }

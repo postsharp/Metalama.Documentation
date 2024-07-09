@@ -13,7 +13,9 @@ namespace Doc.Architecture.Fabric_ForbidFloat
         {
             amender
                 .SelectReflectionTypes( typeof(float), typeof(double) )
-                .CannotBeUsedFrom( r => r.Namespace( "**.Invoicing" ), "Use decimal numbers instead." );
+                .CannotBeUsedFrom(
+                    r => r.Namespace( "**.Invoicing" ),
+                    "Use decimal numbers instead." );
         }
     }
 

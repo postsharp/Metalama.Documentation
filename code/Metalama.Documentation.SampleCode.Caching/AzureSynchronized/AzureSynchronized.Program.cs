@@ -33,7 +33,9 @@ internal static class Program
             caching =>
                 caching.WithBackend(
                     backend =>
-                        backend.Memory().WithAzureSynchronization( connectionString ) ) ); /*</AddMetalamaCaching>*/
+                        backend.Memory()
+                            .WithAzureSynchronization(
+                                connectionString ) ) ); /*</AddMetalamaCaching>*/
 
         // Add other components as usual.
         builder.Services.AddAsyncConsoleMain<ConsoleMain>();

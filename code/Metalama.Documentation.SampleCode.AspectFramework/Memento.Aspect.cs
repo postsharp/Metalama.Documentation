@@ -28,7 +28,8 @@ public class MementoAttribute : TypeAspect
             .Where(
                 f => f is
                 {
-                    IsAutoPropertyOrField: true, IsImplicitlyDeclared: false, Writeability: Writeability.All
+                    IsAutoPropertyOrField: true, IsImplicitlyDeclared: false,
+                    Writeability: Writeability.All
                 } );
 
         foreach ( var sourceField in sourceFields )
@@ -63,7 +64,8 @@ public class MementoAttribute : TypeAspect
     {
         var tags = (Tags) meta.Tags.Source!;
 
-        return tags.SnapshopType.Constructors.Single().Invoke( tags.Fields.Select( f => f.Source ) )!;
+        return tags.SnapshopType.Constructors.Single()
+            .Invoke( tags.Fields.Select( f => f.Source ) )!;
     }
 
     [Introduce]

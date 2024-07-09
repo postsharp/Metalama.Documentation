@@ -17,7 +17,8 @@ public static class Program
         // Add the caching service.
         builder.Services.AddMetalamaCaching( /*<Registration>*/
             caching => caching
-                .AddProfile( new CachingProfile { AbsoluteExpiration = TimeSpan.FromMinutes( 60 ) } )
+                .AddProfile(
+                    new CachingProfile { AbsoluteExpiration = TimeSpan.FromMinutes( 60 ) } )
                 .AddProfile(
                     new CachingProfile( "Hot" )
                     {

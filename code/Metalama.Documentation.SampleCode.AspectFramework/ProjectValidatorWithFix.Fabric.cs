@@ -21,9 +21,11 @@ internal class MyProjectFabric : ProjectFabric
         amender.SelectMany(
                 p => p.Types.SelectMany(
                     t => t.Fields.Where(
-                        f => f.Accessibility != Accessibility.Private && f.Type.Is( typeof(TextWriter) ) ) ) )
+                        f => f.Accessibility != Accessibility.Private
+                             && f.Type.Is( typeof(TextWriter) ) ) ) )
             .ReportDiagnostic(
                 f => _warning.WithArguments( f )
-                    .WithCodeFixes( CodeFixFactory.ChangeAccessibility( f, Accessibility.Private ) ) );
+                    .WithCodeFixes(
+                        CodeFixFactory.ChangeAccessibility( f, Accessibility.Private ) ) );
     }
 }

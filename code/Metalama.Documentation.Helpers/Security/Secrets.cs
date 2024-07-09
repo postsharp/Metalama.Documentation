@@ -14,5 +14,6 @@ public static class Secrets
 
     private static readonly ConcurrentDictionary<string, string> _secrets = new();
 
-    public static string Get( string name ) => _secrets.GetOrAdd( name, n => _client.GetSecret( n ).Value.Value );
+    public static string Get( string name )
+        => _secrets.GetOrAdd( name, n => _client.GetSecret( n ).Value.Value );
 }

@@ -49,7 +49,8 @@ public class LogAttribute : OverrideMethodAspect
         {
             while ( enumerator.MoveNext() )
             {
-                Console.WriteLine( $"{meta.Target.Method.Name}: intercepted {enumerator.Current}." );
+                Console.WriteLine(
+                    $"{meta.Target.Method.Name}: intercepted {enumerator.Current}." );
 
                 yield return enumerator.Current;
             }
@@ -80,7 +81,8 @@ public class LogAttribute : OverrideMethodAspect
         {
             while ( await enumerator.MoveNextAsync() )
             {
-                Console.WriteLine( $"{meta.Target.Method.Name}: intercepted {enumerator.Current}." );
+                Console.WriteLine(
+                    $"{meta.Target.Method.Name}: intercepted {enumerator.Current}." );
 
                 yield return enumerator.Current;
             }

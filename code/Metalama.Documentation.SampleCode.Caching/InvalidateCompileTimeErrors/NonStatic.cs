@@ -11,5 +11,6 @@ public sealed class ProductCatalogue
     public decimal GetPrice( string productId ) => throw new NotImplementedException();
 
     [InvalidateCache( nameof(GetPrice) )]
-    public static void UpdatePrice( string product, decimal price ) => throw new NotImplementedException();
+    public static void UpdatePrice( string product, decimal price )
+        => throw new NotImplementedException();
 }

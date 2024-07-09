@@ -15,7 +15,9 @@ namespace Doc.ObjectDependencies;
 
 internal static class GlobalDependencies
 {
-    public static ICacheDependency ProductCatalogue = new StringDependency( nameof(ProductCatalogue) );
+    public static ICacheDependency ProductCatalogue =
+        new StringDependency( nameof(ProductCatalogue) );
+
     public static ICacheDependency ProductList = new StringDependency( nameof(ProductList) );
 }
 
@@ -30,7 +32,8 @@ public record Product( string Name, decimal Price ) : ICacheDependency
 
 public sealed class ProductCatalogue
 {
-    private readonly Dictionary<string, Product> _dbSimulator = new() { ["corn"] = new Product( "corn", 100 ) };
+    private readonly Dictionary<string, Product> _dbSimulator =
+        new() { ["corn"] = new Product( "corn", 100 ) };
 
     public int DbOperationCount { get; private set; }
 

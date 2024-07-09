@@ -18,6 +18,9 @@ public class LoggingOptions : IHierarchicalOptions<IMethod>, IHierarchicalOption
     {
         var other = (LoggingOptions) changes;
 
-        return new LoggingOptions { Category = other.Category ?? this.Category, Level = other.Level ?? this.Level };
+        return new LoggingOptions
+        {
+            Category = other.Category ?? this.Category, Level = other.Level ?? this.Level
+        };
     }
 }

@@ -9,7 +9,8 @@ using System.IO;
 using System.Linq;
 
 // Note that aspects are applied in inverse order than they appear in the next line.
-[assembly: AspectOrder( AspectOrderDirection.RunTime, typeof(AddLoggerAttribute), typeof(LogAttribute) )]
+[assembly:
+    AspectOrder( AspectOrderDirection.RunTime, typeof(AddLoggerAttribute), typeof(LogAttribute) )]
 
 namespace Doc.ValidateAfterAllAspects;
 
@@ -22,7 +23,9 @@ internal class LogAttribute : OverrideMethodAspect
 
     public override void BuildAspect( IAspectBuilder<IMethod> builder )
     {
-        builder.Outbound.AfterAllAspects().Select( m => m.DeclaringType ).Validate( this.ValidateDeclaringType );
+        builder.Outbound.AfterAllAspects()
+            .Select( m => m.DeclaringType )
+            .Validate( this.ValidateDeclaringType );
     }
 
     private void ValidateDeclaringType( in DeclarationValidationContext context )

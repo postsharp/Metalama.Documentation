@@ -52,7 +52,8 @@ public class EnumViewModelAttribute : CompilationAspect
             args: new { underlyingValueField } );
 
         // Introduce properties.
-        foreach ( var enumMember in enumType.Fields.Where( f => f.Accessibility == Accessibility.Public ) )
+        foreach ( var enumMember in enumType.Fields.Where(
+                     f => f.Accessibility == Accessibility.Public ) )
         {
             viewModelType.IntroduceProperty(
                 "Is" + enumMember.Name,
@@ -74,6 +75,8 @@ public class EnumViewModelAttribute : CompilationAspect
     }
 
     [Template]
-    public bool IsEnumValue( [CompileTime] IField enumMember, [CompileTime] IField underlyingValueField )
+    public bool IsEnumValue(
+        [CompileTime] IField enumMember,
+        [CompileTime] IField underlyingValueField )
         => underlyingValueField.Value == enumMember.Value;
 }

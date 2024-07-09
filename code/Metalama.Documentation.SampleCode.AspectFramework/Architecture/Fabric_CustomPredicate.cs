@@ -23,14 +23,18 @@ internal class MethodNamePredicate : ReferenceEndPredicate
     public override ReferenceGranularity Granularity => ReferenceGranularity.Member;
 
     public override bool IsMatch( ReferenceEnd referenceEnd )
-        => referenceEnd.Member is IMethod method && method.Name.EndsWith( this._suffix, StringComparison.Ordinal );
+        => referenceEnd.Member is IMethod method && method.Name.EndsWith(
+            this._suffix,
+            StringComparison.Ordinal );
 }
 
 // This class exposes the predicate as an extension method. It is your public API.
 [CompileTime]
 public static class Extensions
 {
-    public static ReferencePredicate MethodNameEndsWith( this ReferencePredicateBuilder builder, string suffix )
+    public static ReferencePredicate MethodNameEndsWith(
+        this ReferencePredicateBuilder builder,
+        string suffix )
         => new MethodNamePredicate( builder, suffix );
 }
 

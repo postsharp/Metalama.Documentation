@@ -16,7 +16,9 @@ public class RegisterInstanceAttribute : TypeAspect
     {
         base.BuildAspect( builder );
 
-        builder.AddInitializer( nameof(this.BeforeInstanceConstructor), InitializerKind.BeforeInstanceConstructor );
+        builder.AddInitializer(
+            nameof(this.BeforeInstanceConstructor),
+            InitializerKind.BeforeInstanceConstructor );
     }
 
     [Template]

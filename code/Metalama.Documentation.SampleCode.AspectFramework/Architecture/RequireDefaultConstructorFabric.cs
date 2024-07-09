@@ -34,7 +34,9 @@ internal class Fabric : ProjectFabric
     {
         // Using the reusable MustHaveDefaultConstructor rule.
         // Note that we only apply the rule to public types. 
-        amender.SelectTypes().Where( t => t.Accessibility == Accessibility.Public ).MustHaveDefaultConstructor();
+        amender.SelectTypes()
+            .Where( t => t.Accessibility == Accessibility.Public )
+            .MustHaveDefaultConstructor();
     }
 }
 

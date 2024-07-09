@@ -25,7 +25,8 @@ public sealed class ConsoleMain : IConsoleMain
 
             Task.WaitAll( task1, task2 );
 
-            Console.WriteLine( $"Returned same array: {ReferenceEquals( task1.Result, task2.Result )}" );
+            Console.WriteLine(
+                $"Returned same array: {ReferenceEquals( task1.Result, task2.Result )}" );
         }
 
         Console.WriteLine( "Without lock" );

@@ -32,8 +32,9 @@ internal static class Program
             } ); /*</AddRedis>*/
 
         // Add the caching service.                         
-        builder.Services.AddMetalamaCaching(                                /*<AddMetalamaCaching>*/
-            caching => caching.WithBackend( backend => backend.Redis() ) ); /*</AddMetalamaCaching>*/
+        builder.Services.AddMetalamaCaching( /*<AddMetalamaCaching>*/
+            caching => caching.WithBackend(
+                backend => backend.Redis() ) ); /*</AddMetalamaCaching>*/
 
         // Add other components as usual.
         builder.Services.AddAsyncConsoleMain<ConsoleMain>();

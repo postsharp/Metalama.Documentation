@@ -10,7 +10,8 @@ internal class Fabric : ProjectFabric
 {
     public override void AmendProject( IProjectAmender amender )
     {
-        amender.SelectTypesDerivedFrom( typeof(TextReader) ).MustRespectNamingConvention( "*Reader" );
+        amender.SelectTypesDerivedFrom( typeof(TextReader) )
+            .MustRespectNamingConvention( "*Reader" );
     }
 }
 

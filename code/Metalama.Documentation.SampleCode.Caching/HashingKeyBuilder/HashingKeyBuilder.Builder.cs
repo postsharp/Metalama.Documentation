@@ -15,10 +15,15 @@ internal sealed class HashingKeyBuilder : ICacheKeyBuilder, IDisposable
 
     public HashingKeyBuilder( IFormatterRepository formatters )
     {
-        this._underlyingBuilder = new CacheKeyBuilder( formatters, new CacheKeyBuilderOptions() { MaxKeySize = 8000 } );
+        this._underlyingBuilder = new CacheKeyBuilder(
+            formatters,
+            new CacheKeyBuilderOptions() { MaxKeySize = 8000 } );
     }
 
-    public string BuildMethodKey( CachedMethodMetadata metadata, object? instance, IList<object?> arguments )
+    public string BuildMethodKey(
+        CachedMethodMetadata metadata,
+        object? instance,
+        IList<object?> arguments )
     {
         var fullKey = this._underlyingBuilder.BuildMethodKey( metadata, instance, arguments );
 

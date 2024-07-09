@@ -22,6 +22,8 @@ internal class TagsAspect : TypeAspect
     private void PrintInfo()
     {
         var tags = (Tags) meta.Tags.Source!;
-        Console.WriteLine( $"This method has {tags.NumberOfFields} fields and {tags.NumberOfProperties} properties." );
+
+        Console.WriteLine(
+            $"This method has {tags.NumberOfFields} fields and {tags.NumberOfProperties} properties." );
     }
 }

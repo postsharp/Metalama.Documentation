@@ -19,6 +19,7 @@ internal static class Program
             Console.WriteLine( $"CloudCalculator returned {value}." );
         }
 
-        Console.WriteLine( $"In total, CloudCalculator performed {CloudCalculator.OperationCount} operation(s)." );
+        Console.WriteLine(
+            $"In total, CloudCalculator performed {CloudCalculator.OperationCount} operation(s)." );
     }
 }

@@ -19,7 +19,9 @@ public class BuilderAttribute : TypeAspect
         var nestedType = builder.IntroduceClass( "Builder" );
 
         // Introduce properties.
-        var properties = builder.Target.Properties.Where( p => p.Writeability != Writeability.None && !p.IsStatic );
+        var properties =
+            builder.Target.Properties.Where(
+                p => p.Writeability != Writeability.None && !p.IsStatic );
 
         foreach ( var property in properties )
         {

@@ -9,7 +9,9 @@ internal class ImportAttribute : OverrideFieldOrPropertyAspect
 {
     public override dynamic? OverrideProperty
     {
-        get => ServiceLocator.ServiceProvider.GetService( meta.Target.FieldOrProperty.Type.ToType() );
+        get
+            => ServiceLocator.ServiceProvider.GetService(
+                meta.Target.FieldOrProperty.Type.ToType() );
 
         set
             => throw new NotSupportedException(

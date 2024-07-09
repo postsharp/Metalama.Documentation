@@ -16,7 +16,8 @@ public class DispatchAttribute : TypeAspect
         var switchBuilder = new SwitchStatementBuilder( ExpressionFactory.Capture( messageName ) );
 
         var processMethods =
-            meta.Target.Type.Methods.Where( m => m.Name.StartsWith( "Process", StringComparison.OrdinalIgnoreCase ) );
+            meta.Target.Type.Methods.Where(
+                m => m.Name.StartsWith( "Process", StringComparison.OrdinalIgnoreCase ) );
 
         foreach ( var processMethod in processMethods )
         {
@@ -29,7 +30,9 @@ public class DispatchAttribute : TypeAspect
                 StatementFactory.FromExpression( invokeExpression ).AsList() );
         }
 
-        switchBuilder.AddDefault( StatementFactory.FromTemplate( nameof(this.DefaultCase) ).UnwrapBlock(), false );
+        switchBuilder.AddDefault(
+            StatementFactory.FromTemplate( nameof(this.DefaultCase) ).UnwrapBlock(),
+            false );
 
         meta.InsertStatement( switchBuilder.ToStatement() );
     }

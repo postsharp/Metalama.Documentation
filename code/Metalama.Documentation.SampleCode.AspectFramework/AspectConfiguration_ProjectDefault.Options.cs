@@ -25,10 +25,14 @@ public class LoggingOptions : IHierarchicalOptions<IMethod>, IHierarchicalOption
     {
         var other = (LoggingOptions) changes;
 
-        return new LoggingOptions { Category = other.Category ?? this.Category, Level = other.Level ?? this.Level };
+        return new LoggingOptions
+        {
+            Category = other.Category ?? this.Category, Level = other.Level ?? this.Level
+        };
     }
 
-    IHierarchicalOptions IHierarchicalOptions.GetDefaultOptions( OptionsInitializationContext context )
+    IHierarchicalOptions IHierarchicalOptions.GetDefaultOptions(
+        OptionsInitializationContext context )
     {
         context.Project.TryGetProperty( "DefaultLogCategory", out var defaultCategory );
 
@@ -53,7 +57,9 @@ public class LoggingOptions : IHierarchicalOptions<IMethod>, IHierarchicalOption
         {
             if ( !Enum.TryParse( defaultLogLevelString.Trim(), out defaultLogLevel ) )
             {
-                context.Diagnostics.Report( _invalidLogLevelWarning.WithArguments( defaultLogLevelString ) );
+                context.Diagnostics.Report(
+                    _invalidLogLevelWarning.WithArguments( defaultLogLevelString ) );
+
                 defaultLogLevel = TraceLevel.Verbose;
             }
         }

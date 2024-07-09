@@ -14,8 +14,10 @@ internal static class Program
 
         // Add the caching service.
         builder.Services.AddMetalamaCaching(
-            caching => caching.ConfigureFormatters(                                           /*<Registration>*/
-                formatters => formatters.AddFormatter( r => new FileInfoFormatter( r ) ) ) ); /*</Registration>*/
+            caching => caching.ConfigureFormatters( /*<Registration>*/
+                formatters
+                    => formatters.AddFormatter(
+                        r => new FileInfoFormatter( r ) ) ) ); /*</Registration>*/
 
         // Add other components as usual.
         builder.Services.AddConsoleMain<ConsoleMain>();

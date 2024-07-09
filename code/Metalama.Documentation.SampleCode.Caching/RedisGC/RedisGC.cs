@@ -49,7 +49,10 @@ public sealed class Program
         if ( args.Contains( "--full" ) )
         {
             Console.WriteLine( "Performing full collection." );
-            var collector = host.Services.GetRequiredService<RedisCacheDependencyGarbageCollector>();
+
+            var collector =
+                host.Services.GetRequiredService<RedisCacheDependencyGarbageCollector>();
+
             await collector.PerformFullCollectionAsync();
             Console.WriteLine( "Full collection completed." );
         }

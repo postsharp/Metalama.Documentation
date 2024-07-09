@@ -35,7 +35,8 @@ public class Profile : OverrideMethodAspect
         }
         finally
         {
-            Console.WriteLine( $"{meta.Target.Method} completed in {stopwatch.ElapsedMilliseconds}." );
+            Console.WriteLine(
+                $"{meta.Target.Method} completed in {stopwatch.ElapsedMilliseconds}." );
         }
     }
 }

@@ -51,7 +51,8 @@ public class DeepCloneAttribute : TypeAspect
         var clonableFields =
             meta.Target.Type.FieldsAndProperties.Where(
                 f => f.IsAutoPropertyOrField == true &&
-                     ((f.Type.Is( typeof(ICloneable) ) && f.Type.SpecialType != SpecialType.String) ||
+                     ((f.Type.Is( typeof(ICloneable) ) && f.Type.SpecialType != SpecialType.String)
+                      ||
                       (f.Type is INamedType { BelongsToCurrentProject: true } fieldNamedType &&
                        fieldNamedType.Enhancements().HasAspect<DeepCloneAttribute>())) );
 

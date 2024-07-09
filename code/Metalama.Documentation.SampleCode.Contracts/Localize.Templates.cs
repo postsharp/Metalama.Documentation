@@ -20,7 +20,8 @@ internal class FrenchTemplates : ContractTemplates
         }
         else
         {
-            throw new PostconditionViolationException( "La valeur doit être un numéro de téléphone correct." );
+            throw new PostconditionViolationException(
+                "La valeur doit être un numéro de téléphone correct." );
         }
     }
 }

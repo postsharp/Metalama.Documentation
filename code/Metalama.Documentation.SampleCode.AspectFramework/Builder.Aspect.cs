@@ -32,7 +32,9 @@ public class BuilderAttribute : TypeAspect
     }
 
     [CompileTime]
-    private record Tags( IReadOnlyList<PropertyMapping> Properties, IConstructor SourceConstructor );
+    private record Tags(
+        IReadOnlyList<PropertyMapping> Properties,
+        IConstructor SourceConstructor );
 
     public override void BuildAspect( IAspectBuilder<INamedType> builder )
     {
@@ -94,7 +96,8 @@ public class BuilderAttribute : TypeAspect
                 foreach ( var property in properties )
                 {
                     property.BuilderConstructorParameterIndex =
-                        m.AddParameter( property.SourceProperty.Name, property.SourceProperty.Type ).Index;
+                        m.AddParameter( property.SourceProperty.Name, property.SourceProperty.Type )
+                            .Index;
                 }
             } );
 

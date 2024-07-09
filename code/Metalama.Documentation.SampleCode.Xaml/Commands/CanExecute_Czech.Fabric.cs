@@ -25,7 +25,9 @@ public class Fabric : ProjectFabric
                 builder.AddNamingConvention(
                     new CommandNamingConvention( "czech-2" )
                     {
-                        CanExecutePatterns = ["Můžeme{CommandName}"], CommandPropertyName = "{CommandName}Příkaz"
+                        CanExecutePatterns =
+                            ["Můžeme{CommandName}"],
+                        CommandPropertyName = "{CommandName}Příkaz"
                     } );
             } );
     }

@@ -20,7 +20,8 @@ internal class ImportAttribute : OverrideFieldOrPropertyAspect
                 service =
                     meta.Cast(
                         meta.Target.FieldOrProperty.Type,
-                        ServiceLocator.ServiceProvider.GetService( meta.Target.FieldOrProperty.Type.ToType() ) );
+                        ServiceLocator.ServiceProvider.GetService(
+                            meta.Target.FieldOrProperty.Type.ToType() ) );
 
                 // Set the field or property to the new value.
                 meta.Target.FieldOrProperty.Value = service;

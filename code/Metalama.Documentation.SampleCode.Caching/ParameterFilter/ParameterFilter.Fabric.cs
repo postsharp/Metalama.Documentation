@@ -9,5 +9,7 @@ internal class Fabric : ProjectFabric
 {
     public override void AmendProject( IProjectAmender amender )
         => amender.ConfigureCaching(
-            caching => caching.AddParameterClassifier( "ILogger", new LoggerParameterClassifier() ) );
+            caching => caching.AddParameterClassifier(
+                "ILogger",
+                new LoggerParameterClassifier() ) );
 }

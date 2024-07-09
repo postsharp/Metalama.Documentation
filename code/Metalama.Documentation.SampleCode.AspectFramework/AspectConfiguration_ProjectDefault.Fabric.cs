@@ -12,10 +12,13 @@ public class Fabric : ProjectFabric
     public override void AmendProject( IProjectAmender amender )
     {
         amender
-            .SetOptions( new LoggingOptions { Category = "GeneralCategory", Level = TraceLevel.Info } );
+            .SetOptions(
+                new LoggingOptions { Category = "GeneralCategory", Level = TraceLevel.Info } );
 
         amender
-            .Select( x => x.GlobalNamespace.GetDescendant( "Doc.AspectConfiguration_ProjectDefault.ChildNamespace" )! )
+            .Select(
+                x => x.GlobalNamespace.GetDescendant(
+                    "Doc.AspectConfiguration_ProjectDefault.ChildNamespace" )! )
             .SetOptions( new LoggingOptions() { Category = "ChildCategory" } );
 
         // Adds the aspect to all members.

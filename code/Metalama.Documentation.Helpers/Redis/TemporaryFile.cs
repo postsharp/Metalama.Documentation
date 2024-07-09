@@ -28,7 +28,9 @@ internal sealed class TemporaryFile : IDisposable
                     : prefix + Guid.NewGuid().ToString( "N" ) + "." + extension ) );
     }
 
-    public TemporaryFile( Stream stream, string prefix = "", string extension = "tmp" ) : this( prefix, extension )
+    public TemporaryFile( Stream stream, string prefix = "", string extension = "tmp" ) : this(
+        prefix,
+        extension )
     {
         using ( stream )
         using ( var destination = this.FileInfo.OpenWrite() )

@@ -23,6 +23,7 @@ public sealed class ConsoleMain : IConsoleMain
             Console.WriteLine( $"FileSystem returned {value.Length} bytes." );
         }
 
-        Console.WriteLine( $"In total, FileSystem performed {this._fileSystem.OperationCount} operation(s)." );
+        Console.WriteLine(
+            $"In total, FileSystem performed {this._fileSystem.OperationCount} operation(s)." );
     }
 }

@@ -15,7 +15,8 @@ internal class CompileTimeIfAttribute : OverrideMethodAspect
         }
         else
         {
-            Console.WriteLine( $"Invoking {meta.Target.Method.ToDisplayString()} on instance {meta.This.ToString()}." );
+            Console.WriteLine(
+                $"Invoking {meta.Target.Method.ToDisplayString()} on instance {meta.This.ToString()}." );
         }
 
         return meta.Proceed();

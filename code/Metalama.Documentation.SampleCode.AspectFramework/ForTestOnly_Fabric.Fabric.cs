@@ -19,16 +19,21 @@ namespace Doc.ForTestOnly_Fabric
 
             public override void AmendNamespace( INamespaceAmender amender )
             {
-                amender.ValidateInboundReferences( this.ValidateReference, ReferenceGranularity.Namespace );
+                amender.ValidateInboundReferences(
+                    this.ValidateReference,
+                    ReferenceGranularity.Namespace );
             }
 
             private void ValidateReference( ReferenceValidationContext context )
             {
                 if (
                     context.Origin.Namespace != context.Destination.Declaration &&
-                    !context.Origin.Namespace.FullName.EndsWith( ".Tests", StringComparison.Ordinal ) )
+                    !context.Origin.Namespace.FullName.EndsWith(
+                        ".Tests",
+                        StringComparison.Ordinal ) )
                 {
-                    context.Diagnostics.Report( _warning.WithArguments( context.Destination.Declaration ) );
+                    context.Diagnostics.Report(
+                        _warning.WithArguments( context.Destination.Declaration ) );
                 }
             }
         }

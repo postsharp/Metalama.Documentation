@@ -26,5 +26,6 @@ public abstract class Entity
 public class EntityService
 {
     [Cache]
-    public IEnumerable<Entity> GetRelatedEntities( Entity entity ) => throw new NotImplementedException();
+    public IEnumerable<Entity> GetRelatedEntities( Entity entity )
+        => throw new NotImplementedException();
 }

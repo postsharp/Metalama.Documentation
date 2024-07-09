@@ -18,7 +18,12 @@ public class StructuralEquatableAttribute : TypeAspect
         {
             meta.InvokeTemplate(
                 nameof(this.CompareFieldOrProperty),
-                args: new { TFieldOrProperty = fieldOrProperty.Type, fieldOrProperty, other = (IExpression) other! } );
+                args: new
+                {
+                    TFieldOrProperty = fieldOrProperty.Type,
+                    fieldOrProperty,
+                    other = (IExpression) other!
+                } );
         }
 
         return true;

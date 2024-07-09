@@ -10,7 +10,9 @@ namespace Doc.Architecture.Type_ForTestOnly
 
         public Foo() { }
 
-        [CanOnlyBeUsedFrom( Namespaces = new[] { "**.Tests" }, Description = "Use this constructor in tests only." )]
+        [CanOnlyBeUsedFrom(
+            Namespaces = new[] { "**.Tests" },
+            Description = "Use this constructor in tests only." )]
         public Foo( bool isTest )
         {
             this._isTest = isTest;

@@ -24,7 +24,10 @@ public class ProxyAspect : TypeAspect
         base.BuildAspect( builder );
 
         // Add a field with the intercepted object.
-        var interceptedField = builder.IntroduceField( "_intercepted", this._interfaceType, IntroductionScope.Instance )
+        var interceptedField = builder.IntroduceField(
+                "_intercepted",
+                this._interfaceType,
+                IntroductionScope.Instance )
             .Declaration;
 
         // Implement the interface.
@@ -36,7 +39,9 @@ public class ProxyAspect : TypeAspect
         foreach ( var method in namedType.Methods )
         {
             implementInterfaceResult.ExplicitMembers.IntroduceMethod(
-                method.ReturnType.Is( SpecialType.Void ) ? nameof(this.VoidTemplate) : nameof(this.NonVoidTemplate),
+                method.ReturnType.Is( SpecialType.Void )
+                    ? nameof(this.VoidTemplate)
+                    : nameof(this.NonVoidTemplate),
                 IntroductionScope.Instance,
                 buildMethod: methodBuilder =>
                 {
@@ -67,7 +72,8 @@ public class ProxyAspect : TypeAspect
     [Template]
     private T NonVoidTemplate<[CompileTime] T>( IMethod method, IField interceptedField )
     {
-        return this._interceptor.Invoke( () => (T) method.With( interceptedField ).Invoke( method.Parameters )! );
+        return this._interceptor.Invoke(
+            () => (T) method.With( interceptedField ).Invoke( method.Parameters )! );
     }
 
     [Template]

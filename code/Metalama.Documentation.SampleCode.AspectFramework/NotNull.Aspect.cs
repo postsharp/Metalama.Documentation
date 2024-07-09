@@ -17,7 +17,8 @@ internal class NotNullAttribute : ContractAspect
             }
             else
             {
-                throw new PostConditionFailedException( $"'{nameof(value)}' cannot be null when the method returns." );
+                throw new PostConditionFailedException(
+                    $"'{nameof(value)}' cannot be null when the method returns." );
             }
         }
     }

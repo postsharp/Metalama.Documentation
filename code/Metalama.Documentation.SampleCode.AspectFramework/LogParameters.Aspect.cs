@@ -58,7 +58,10 @@ public class LogAttribute : OverrideMethodAspect
     private static InterpolatedStringBuilder BuildInterpolatedString()
     {
         var stringBuilder = new InterpolatedStringBuilder();
-        stringBuilder.AddText( meta.Target.Type.ToDisplayString( CodeDisplayFormat.MinimallyQualified ) );
+
+        stringBuilder.AddText(
+            meta.Target.Type.ToDisplayString( CodeDisplayFormat.MinimallyQualified ) );
+
         stringBuilder.AddText( "." );
         stringBuilder.AddText( meta.Target.Method.Name );
         stringBuilder.AddText( "(" );

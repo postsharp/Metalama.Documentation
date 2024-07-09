@@ -34,7 +34,8 @@ public class LocalRedisServer : IDisposable
         if ( RuntimeInformation.IsOSPlatform( OSPlatform.Windows ) )
         {
             executableStream =
-                this.GetType().Assembly.GetManifestResourceStream( this.GetType(), "redis-server.exe" )!;
+                this.GetType()
+                    .Assembly.GetManifestResourceStream( this.GetType(), "redis-server.exe" )!;
 
             extension = "exe";
         }

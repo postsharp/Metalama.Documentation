@@ -22,9 +22,11 @@ public class RequireDefaultConstructorAttribute : TypeAspect
             return;
         }
 
-        var defaultConstructor = builder.Target.Constructors.SingleOrDefault( c => c.Parameters.Count == 0 );
+        var defaultConstructor =
+            builder.Target.Constructors.SingleOrDefault( c => c.Parameters.Count == 0 );
 
-        if ( defaultConstructor == null || defaultConstructor.Accessibility != Accessibility.Public )
+        if ( defaultConstructor == null
+             || defaultConstructor.Accessibility != Accessibility.Public )
         {
             builder.Diagnostics.Report( _warning.WithArguments( builder.Target ) );
         }

@@ -13,6 +13,8 @@ internal class IntroducePropertyChangedAspect : TypeAspect
     [Introduce]
     protected virtual void OnPropertyChanged( string propertyName )
     {
-        meta.This.PropertyChanged?.Invoke( meta.This, new PropertyChangedEventArgs( propertyName ) );
+        meta.This.PropertyChanged?.Invoke(
+            meta.This,
+            new PropertyChangedEventArgs( propertyName ) );
     }
 }

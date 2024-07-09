@@ -25,5 +25,6 @@ internal class ServiceLocator : IServiceProvider
         return value;
     }
 
-    public static void AddService<T>( T service ) where T : class => _instance._services[typeof(T)] = service;
+    public static void AddService<T>( T service ) where T : class
+        => _instance._services[typeof(T)] = service;
 }

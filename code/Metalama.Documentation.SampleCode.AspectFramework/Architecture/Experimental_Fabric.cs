@@ -13,7 +13,9 @@ namespace Doc.Architecture.Experimental_Fabric
         {
             public override void AmendNamespace( INamespaceAmender amender )
             {
-                amender.SelectTypes().Where( t => t.Accessibility == Accessibility.Public ).Experimental();
+                amender.SelectTypes()
+                    .Where( t => t.Accessibility == Accessibility.Public )
+                    .Experimental();
             }
         }
 

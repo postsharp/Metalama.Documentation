@@ -11,7 +11,9 @@ public class Submenu
 
     public IReadOnlyCollection<MenuItem> Items { get; }
 
-    public Submenu( [Required] string name, [NotNull] [NotEmpty] IReadOnlyCollection<MenuItem> items )
+    public Submenu(
+        [Required] string name,
+        [NotNull] [NotEmpty] IReadOnlyCollection<MenuItem> items )
     {
         this.Name = name;
         this.Items = items;

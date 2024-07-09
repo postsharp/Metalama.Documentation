@@ -11,13 +11,16 @@ namespace Doc.LogCustomFramework;
 public class LoggerDependencyInjectionFramework : DefaultDependencyInjectionFramework
 {
     // Returns true if we want to handle this dependency, i.e. if is a dependency of type ILogger.
-    public override bool CanHandleDependency( DependencyProperties properties, in ScopedDiagnosticSink diagnostics )
+    public override bool CanHandleDependency(
+        DependencyProperties properties,
+        in ScopedDiagnosticSink diagnostics )
     {
         return properties.DependencyType.Is( typeof(ILogger) );
     }
 
     // Return our own customized strategy.
-    protected override DefaultDependencyInjectionStrategy GetStrategy( DependencyProperties properties )
+    protected override DefaultDependencyInjectionStrategy GetStrategy(
+        DependencyProperties properties )
     {
         return new InjectionStrategy( properties );
     }
@@ -28,7 +31,8 @@ public class LoggerDependencyInjectionFramework : DefaultDependencyInjectionFram
     {
         public InjectionStrategy( DependencyProperties properties ) : base( properties ) { }
 
-        protected override IPullStrategy GetPullStrategy( IFieldOrProperty introducedFieldOrProperty )
+        protected override IPullStrategy GetPullStrategy(
+            IFieldOrProperty introducedFieldOrProperty )
         {
             return new LoggerPullStrategy( this.Properties, introducedFieldOrProperty );
         }
@@ -37,7 +41,9 @@ public class LoggerDependencyInjectionFramework : DefaultDependencyInjectionFram
     // Our customized pull strategy. Decides how to assign the field or property from the constructor.
     private class LoggerPullStrategy : DefaultPullStrategy
     {
-        public LoggerPullStrategy( DependencyProperties properties, IFieldOrProperty introducedFieldOrProperty ) : base(
+        public LoggerPullStrategy(
+            DependencyProperties properties,
+            IFieldOrProperty introducedFieldOrProperty ) : base(
             properties,
             introducedFieldOrProperty ) { }
 
