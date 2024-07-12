@@ -23,7 +23,7 @@
               "Metalama.Patterns.Memoization.dll",
               "Metalama.Patterns.Immutability.dll",
               "Metalama.Patterns.Observability.dll",
-              "Metalama.Patterns.Xaml.dll",
+              "Metalama.Patterns.Wpf.dll",
               "Metalama.Patterns.Caching.dll",
               "Metalama.Patterns.Caching.Backend.dll",
               "Metalama.Patterns.Caching.Aspects.dll",

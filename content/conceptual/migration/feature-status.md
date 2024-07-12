@@ -30,7 +30,7 @@ See <xref:validation> for details.
 | Contracts              | Completed        | <xref:contract-patterns> | None                                                               |
 | Caching                | Completed        | <xref:caching>           | None                                                               |
 | INotifyPropertyChanged | Completed        | <xref:observability>     | See <xref:migrating-inpc>        |
-| XAML                   | Completed        | <xref:xaml>              | None                                                               |
+| WPF                   | Completed        | <xref:wpf>              | None                                                               |
 | Undo/Redo              | Not started      |                          |                                                                    |
 | Diagnostics (logging)  | Not started      |                          |                                                                    |
 | Multi-threading        | Not started      |                          |                                                                    |

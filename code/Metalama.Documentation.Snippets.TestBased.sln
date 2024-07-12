@@ -28,7 +28,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.Samp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metalama.Documentation.SampleCode.Observability", "Metalama.Documentation.SampleCode.Observability\Metalama.Documentation.SampleCode.Observability.csproj", "{AF5A550A-BD31-4FA5-BE13-1884D5B7FB8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.SampleCode.Xaml", "Metalama.Documentation.SampleCode.Xaml\Metalama.Documentation.SampleCode.Xaml.csproj", "{7E73DAE2-3C8F-4357-AED1-DE2AB1989C47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.SampleCode.Wpf", "Metalama.Documentation.SampleCode.Wpf\Metalama.Documentation.SampleCode.Wpf.csproj", "{7E73DAE2-3C8F-4357-AED1-DE2AB1989C47}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.SampleCode.Immutability", "Metalama.Documentation.SampleCode.Immutability\Metalama.Documentation.SampleCode.Immutability.csproj", "{81D3D307-CDE2-4CBA-B53A-6D7EB033B8B5}"
 EndProject

@@ -10,7 +10,7 @@ This chapter provides a high-level changelog for all Metalama releases. It does 
 
 | Version | Status                | Highlights                                                                                                                                                            | Release Notes               |
 | ------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| 2024.2  | Preview               | Type introduction, `Metalama.Patterns.Observability`, `Metalama.Patterns.Xaml`, `Metalama.Patterns.Immutability` and dozens of other improvements.                    | <xref:release-notes-2024.2> |
+| 2024.2  | Preview               | Type introduction, `Metalama.Patterns.Observability`, `Metalama.Patterns.Wpf`, `Metalama.Patterns.Immutability` and dozens of other improvements.                    | <xref:release-notes-2024.2> |
 | 2024.1  | Stable and maintained | Visual Studio tooling, Activation UI, Overriding constructors, performance improvements                                                                               | <xref:release-notes-2024.1> |
 | 2024.0  | Stable and maintained | C# 12                                                                                                                                                                 | <xref:release-notes-2024.0> |
 | 2023.4  | Deprecated            | Configuration framework, `Metalama.Patterns.Contracts`, `Metalama.Patterns.Caching`, `Metalama.Patterns.Memoization`, source-available, minor enhancements, bug fixes | <xref:release-notes-2023.4> |

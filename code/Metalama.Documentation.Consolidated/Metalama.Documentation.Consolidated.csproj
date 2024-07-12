@@ -27,7 +27,7 @@
 		<PackageReference Include="Metalama.Patterns.Contracts" />
 		<PackageReference Include="Metalama.Patterns.Memoization" />
 		<PackageReference Include="Metalama.Patterns.Observability" />
-		<PackageReference Include="Metalama.Patterns.Xaml" />
+		<PackageReference Include="Metalama.Patterns.Wpf" />
 		<PackageReference Include="Metalama.Patterns.Immutability" />
 		<PackageReference Include="Metalama.Patterns.Caching" />
 		<PackageReference Include="Metalama.Patterns.Caching.Backend" />

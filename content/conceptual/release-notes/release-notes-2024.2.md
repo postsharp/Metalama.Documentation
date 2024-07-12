@@ -5,7 +5,7 @@ summary: ""
 
 # Metalama 2024.2
 
-Metalama 2024.2 has two focal points. The first is the ability to introduce classes, which closes the biggest gap with Roslyn source generators and finally makes it possible to implement patterns like memento or enum view-model. The second priority is to finalize and document the `Metalama.Patterns.Observability` and `Metalama.Patterns.Xaml` packages.
+Metalama 2024.2 has two focal points. The first is the ability to introduce classes, which closes the biggest gap with Roslyn source generators and finally makes it possible to implement patterns like memento or enum view-model. The second priority is to finalize and document the `Metalama.Patterns.Observability` and `Metalama.Patterns.Wpf` packages.
 
 We had to make dozens of smaller improvements to the framework to reach these objectives, and they will benefit everyone.
 
@@ -27,13 +27,13 @@ Where competing solutions stop at automatic properties, our implementation suppo
 
 For details, see <xref:observability>.
 
-## Metalama.Patterns.Xaml
+## Metalama.Patterns.Wpf
 
-The `Metalama.Patterns.Xaml` package is now stable and fully supported.
+The `Metalama.Patterns.Wpf` package is now stable and fully supported.
 
-It contains two aspects: <xref:Metalama.Patterns.Xaml.CommandAttribute?text=[Command]> and <xref:Metalama.Patterns.Xaml.DependencyPropertyAttribute?text=[DependencyAttribute]> to reduce the XAML boilerplate code.
+It contains two aspects: <xref:Metalama.Patterns.Wpf.CommandAttribute?text=[Command]> and <xref:Metalama.Patterns.Wpf.DependencyPropertyAttribute?text=[DependencyAttribute]> to reduce the WPF boilerplate code.
 
-For details, see <xref:xaml>.
+For details, see <xref:wpf>.
 
 ## Metalama.Patterns.Immutability
 

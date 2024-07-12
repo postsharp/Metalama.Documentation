@@ -23,5 +23,5 @@ The following libraries are currently available:
 | <xref:memoization> | Implements a simple and high-performance alternative to caching limited to get-only properties and paramerless methods. |
 | <xref:immutability> | Represents the concept of Immutable Type.
 | <xref:observability> | Contains an aspect that implements the <xref:System.ComponentModel.INotifyPropertyChanged> interface. Supports explicit properties, type inheritance, and child objects. |
-| <xref:xaml> | Two aspects to simplify the work with XAML: Command and Dependency Property. |
+| <xref:wpf> | Two aspects to simplify the work with WPF: Command and Dependency Property. |
 

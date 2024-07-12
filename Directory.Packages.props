@@ -35,7 +35,7 @@
     <PackageVersion Include="Metalama.Patterns.Immutability" Version="$(MetalamaPatternsVersion)" />
     <PackageVersion Include="Metalama.Patterns.Memoization" Version="$(MetalamaPatternsVersion)" />
     <PackageVersion Include="Metalama.Patterns.Observability" Version="$(MetalamaPatternsVersion)" />
-    <PackageVersion Include="Metalama.Patterns.Xaml" Version="$(MetalamaPatternsVersion)" />
+    <PackageVersion Include="Metalama.Patterns.Wpf" Version="$(MetalamaPatternsVersion)" />
     <PackageVersion Include="Metalama.Testing.AspectTesting" Version="$(MetalamaVersion)" />
     <PackageVersion Include="Metalama.Testing.UnitTesting" Version="$(MetalamaVersion)" />
     <PackageVersion Include="Microsoft.Composition" Version="1.0.31" />
