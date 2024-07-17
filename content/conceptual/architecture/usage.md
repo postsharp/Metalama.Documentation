@@ -80,16 +80,16 @@ Follow these steps:
 
 3. Import the <xref:Metalama.Extensions.Architecture.Fabrics> and <xref:Metalama.Extensions.Architecture.Predicates> namespaces to benefit from extension methods.
 
-4. Edit the  <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*>,  <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> of this method. Start by calling [amender.Verify()](xref:Metalama.Extensions.Architecture.Fabrics.AmenderExtensions.Verify*).
+4. Edit the  <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*>,  <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> of this method.
 
 5. Call one of the following methods:
 
     | Attribute | Description |
     |-----------|-------------|
-    | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.CanOnlyBeUsedFrom*> | Reports a warning when the target declaration is accessed from outside the given scope.
-    | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.InternalsCanOnlyBeUsedFrom*> |  Reports a warning when any `internal` member of the type is accessed from outside of the given scope.
-    | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.CannotBeUsedFrom*> | Reports a warning when the target declaration is accessed from the given scope.
-    | <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.InternalsCannotBeUsedFrom*> | Reports a warning when any `internal` member of the type is accessed from the given scope.
+    | <xref:Metalama.Extensions.Architecture.ArchitectureExtensions.CanOnlyBeUsedFrom*> | Reports a warning when the target declaration is accessed from outside the given scope.
+    | <xref:Metalama.Extensions.Architecture.ArchitectureExtensions.InternalsCanOnlyBeUsedFrom*> |  Reports a warning when any `internal` member of the type is accessed from outside of the given scope.
+    | <xref:Metalama.Extensions.Architecture.ArchitectureExtensions.CannotBeUsedFrom*> | Reports a warning when the target declaration is accessed from the given scope.
+    | <xref:Metalama.Extensions.Architecture.ArchitectureExtensions.InternalsCannotBeUsedFrom*> | Reports a warning when any `internal` member of the type is accessed from the given scope.
 
 6. Pass a delegate like `r => r.ScopeMethod()` where `ScopeMethod` is one of the following methods:
 
@@ -103,7 +103,7 @@ Follow these steps:
     For instance:
 
     ```cs
-    amender.Verify().CanOnlyBeUsedFrom( r => r.CurrentNamespace() );
+    amender.CanOnlyBeUsedFrom( r => r.CurrentNamespace() );
     ```
 
     You can create complex conditions thanks to the <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.And*>, <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.Or*> and <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.Not*> methods.

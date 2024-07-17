@@ -20,7 +20,15 @@ class MyClass
 }
 ```
 
-Instead of writing this boilerplate, you can simply add the <xref:Metalama.Patterns.Wpf.DependencyPropertyAttribute?text=[DependencyProperty]> aspect to a C# automatic property to convert it into a WPF dependency property.
+Instead of writing this boilerplate, you can simply add the <xref:Metalama.Patterns.Wpf.DependencyPropertyAttribute?text=[DependencyProperty]> aspect to a C# automatic property to convert it into a WPF dependency property:
+
+```cs
+class MyClass
+{
+    [DependencyProperty]
+    public bool IsEnabled { get; set; }
+}
+```
 
 The <xref:Metalama.Patterns.Wpf.DependencyPropertyAttribute?text=[DependencyProperty]> aspect implements the following features and benefits:
 
