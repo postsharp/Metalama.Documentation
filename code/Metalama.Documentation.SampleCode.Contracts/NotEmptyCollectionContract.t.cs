@@ -16,7 +16,7 @@ public class Submenu
       }
       else
       {
-        throw new ArgumentOutOfRangeException("name", "The 'name' parameter is required.");
+        throw new ArgumentException("The 'name' parameter is required.", "name");
       }
     }
     if (items == null !)

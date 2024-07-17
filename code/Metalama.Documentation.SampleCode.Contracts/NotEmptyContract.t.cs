@@ -63,7 +63,7 @@ public class Instrument
         }
         else
         {
-          throw new ArgumentOutOfRangeException("value", "The 'Currency' property is required.");
+          throw new ArgumentException("The 'Currency' property is required.", "value");
         }
       }
       _currency = value;

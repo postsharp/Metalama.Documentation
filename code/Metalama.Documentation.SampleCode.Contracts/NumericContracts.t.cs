@@ -15,7 +15,7 @@ public class OrderLine
     {
       if (value < 0M)
       {
-        throw new ArgumentOutOfRangeException("value", "The 'NominalPrice' property must be greater than or equal to 0.");
+        throw new ArgumentOutOfRangeException("value", value, "The 'NominalPrice' property must be greater than or equal to 0.");
       }
       _nominalPrice = value;
     }
@@ -32,7 +32,7 @@ public class OrderLine
     {
       if (value <= 0M)
       {
-        throw new ArgumentOutOfRangeException("value", "The 'Quantity' property must be strictly greater than 0.");
+        throw new ArgumentOutOfRangeException("value", value, "The 'Quantity' property must be strictly greater than 0.");
       }
       _quantity = value;
     }
@@ -49,7 +49,7 @@ public class OrderLine
     {
       if (value is < 0 or > 100)
       {
-        throw new ArgumentOutOfRangeException("The 'Discount' property must be in the range [0, 100].", "value");
+        throw new ArgumentOutOfRangeException("value", value, "The 'Discount' property must be in the range [0, 100].");
       }
       _discount = value;
     }
