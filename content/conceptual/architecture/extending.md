@@ -77,15 +77,14 @@ Follow this procedure:
 1. Create a `static` class containing your extension methods. Name it, for instance, `ArchitectureExtensions`.
 2. Add the [<xref:Metalama.Framework.Aspects.CompileTimeAttribute?text=CompileTime>] custom attribute to the class.
 3. For each error or warning you plan to report, add a static field of type <xref:Metalama.Framework.Diagnostics.DiagnosticDefinition> to your fabric class, as described in <xref:diagnostics>.
-4. Create a `public static` extension method with a `this` parameter and name it `verifier`.
+4. Create a `public static` extension method with a `this` parameter of type <xref:Metalama.Framework.Validation.IValidatorReceiver`1> where `T` is the type of declarations you want to validate. Name it for instance `verifier`.
+5. If you need to apply the rule to _contained_ declarations, select them using the  <xref:Metalama.Framework.Validation.IValidatorReceiver`1.Select*>,  <xref:Metalama.Framework.Validation.IValidatorReceiver`1.SelectMany*> and  <xref:Metalama.Framework.Validation.IValidatorReceiver`1.Where*> methods.
+6. From here, you have several options:
+ * If you already know, based on the <xref:Metalama.Framework.Validation.IValidatorReceiver`1.Select*>,  <xref:Metalama.Framework.Validation.IValidatorReceiver`1.SelectMany*> and  <xref:Metalama.Framework.Validation.IValidatorReceiver`1.Where*> methods, that the declaration violates the rule, you can immediately report a warning or error using the <xref:Metalama.Framework.Validation.IValidatorReceiver`1.ReportDiagnostic*> method.
+ * To validate references (i.e. dependencies), use <xref:Metalama.Framework.Validation.IValidatorReceiver.ValidateInboundReferences*>.
+ * If your validation logic depends on which aspects were applied, or how aspects transformed the code, call <xref:Metalama.Framework.Validation.IValidatorReceiver`1.AfterAllAspects> and then register a validator using  <xref:Metalama.Framework.Validation.IValidatorReceiver.Validate*>.
 
-   If you need to validate <xref:Metalama.Framework.Code.ICompilation>, <xref:Metalama.Framework.Code.INamespace> or <xref:Metalama.Framework.Code.INamedType>, this parameter type should be `ITypeSetVerifier<IDeclaration>`.  Most of the time, you will want to validate the types contained in the type set of the `receiver` parameter. To access these types, use the <xref:Metalama.Extensions.Architecture.Fabrics.ITypeSetVerifier`1.TypeReceiver?text=verifier.TypeReceiver> property.
-
-   If, however, you need to validate declarations that are not types or type sets the type of the `verifier` should be `ITypeSetVerifier`, where `T` is the base interface that you want to validate. The receiver that allows you to add validators or report diagnostics is available on the <xref:Metalama.Extensions.Architecture.Fabrics.IVerifier`1.Receiver?text=verifier.TypeReceiver> property.
-
-5. You can filter the receiver (i.e. either `verifier.TypeReceiver` or `ver
-
-
+To learn more, it's best to study the [source code](https://github.com/postsharp/Metalama.Extensions/tree/HEAD/src/Metalama.Extensions.Architecture/Fabrics) of the `Metalama.Extensions.Architecture` namespace.
 
 > [!div class="see-also"]
 > <xref:video-custom-architecture-rules>
