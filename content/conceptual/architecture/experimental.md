@@ -8,7 +8,7 @@ summary: "The document explains how to mark APIs as experimental using Metalama'
 
 The [[Obsolete]](xref:System.ObsoleteAttribute) attribute is a familiar custom attribute that generates a warning when the marked declaration is used, unless the referencing declaration is also marked as `[Obsolete]`.
 
-There may be situations where a warning for an experimental API that may be changed or removed later is necessary. The `[Obsolete]` attribute may not be the best choice for this, as the error message it generates could mislead users. As an alternative, Metalama provides the <xref:Metalama.Extensions.Architecture.Aspects.ExperimentalAttribute> attribute and the <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.Experimental*> compile-time method, which are better suited for this purpose.
+There may be situations where a warning for an experimental API that may be changed or removed later is necessary. The `[Obsolete]` attribute may not be the best choice for this, as the error message it generates could mislead users. As an alternative, Metalama provides the <xref:Metalama.Extensions.Architecture.Aspects.ExperimentalAttribute> attribute and the <xref:Metalama.Extensions.Architecture.ArchitectureExtensions.Experimental*> compile-time method, which are better suited for this purpose.
 
 ## Marking a specific API as experimental
 
@@ -34,11 +34,11 @@ If you wish to mark several APIs as experimental using a programmatic rule inste
 
 3. Import the <xref:Metalama.Extensions.Architecture.Fabrics> namespace to benefit from extension methods.
 
-4. Edit the  <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*>,  <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> of this method. Begin by calling [amender.Verify()](xref:Metalama.Extensions.Architecture.Fabrics.AmenderExtensions.Verify*).
+4. Edit the  <xref:Metalama.Framework.Fabrics.ProjectFabric.AmendProject*>,  <xref:Metalama.Framework.Fabrics.NamespaceFabric.AmendNamespace*> or  <xref:Metalama.Framework.Fabrics.TypeFabric.AmendType*> of this method. 
 
-5. Select the experimental APIs using the <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.Select*>, <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.SelectMany*>  and <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.Where*> methods.
+5. Select the experimental APIs using the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*>, <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*>  and <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Where*> methods.
 
-6. Call the <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.Experimental*> method.
+6. Call the <xref:Metalama.Extensions.Architecture.ArchitectureExtensions.Experimental*> method.
 
 ### Example: Using the Experimental compile-time method
 

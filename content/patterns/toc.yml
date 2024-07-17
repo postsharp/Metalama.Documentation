@@ -58,10 +58,10 @@ items:
           - name: Memoization
             topicUid: memoization
 
-          - name: XAML
-            topicUid: xaml
+          - name: WPF
+            topicUid: wpf
             items:
               - name: Command
-                topicUid: xaml-command
+                topicUid: wpf-command
               - name: Dependency Property
-                topicUid: xaml-dependency-property
+                topicUid: wpf-dependency-property
