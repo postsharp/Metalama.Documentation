@@ -12,13 +12,13 @@ public class WordCounter : IWordCounter
   {
     if (wordCount < 0)
     {
-      throw new PostconditionViolationException("The 'wordCount' parameter must be greater than or equal to 0.");
+      throw new PostconditionViolationException("The 'wordCount' parameter must be greater than or equal to 0.", wordCount);
     }
     var regex = new Regex(@"\b\w+\b");
     wordCount += regex.Matches(text).Count;
     if (wordCount < 0)
     {
-      throw new PostconditionViolationException("The 'wordCount' parameter must be greater than or equal to 0.");
+      throw new PostconditionViolationException("The 'wordCount' parameter must be greater than or equal to 0.", wordCount);
     }
   }
 }
