@@ -18,10 +18,6 @@ Currently, you can add the following types of members:
 - Operators
 - Conversions
 
-However, the following types of members are _not_ yet supported:
-
-- Constructors
-
 ## Introducing members declaratively
 
 The simplest way to introduce a member from an aspect is to implement this member in the aspect and annotate it with the <xref:Metalama.Framework.Aspects.IntroduceAttribute?text=[Introduce]> custom attribute. This custom attribute has the following notable properties:
