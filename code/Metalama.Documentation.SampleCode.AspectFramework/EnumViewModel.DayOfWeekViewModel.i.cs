@@ -1,7 +1,7 @@
 using System;
 namespace Doc.EnumViewModel
 {
-  class DayOfWeekViewModel : object
+  class DayOfWeekViewModel
   {
     private readonly DayOfWeek _value;
     public DayOfWeekViewModel(DayOfWeek underlying)

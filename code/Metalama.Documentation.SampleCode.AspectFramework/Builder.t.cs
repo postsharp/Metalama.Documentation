@@ -11,7 +11,7 @@ internal class Material
     this.Name = Name;
     this.Density = Density;
   }
-  public class Builder : object
+  public class Builder
   {
     private Builder(string Name)
     {

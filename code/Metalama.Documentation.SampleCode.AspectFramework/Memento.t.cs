@@ -14,7 +14,7 @@ public class Vehicle
   {
     return new Snapshot(Payload, Fuel);
   }
-  private class Snapshot : object
+  private class Snapshot
   {
     public readonly string Fuel;
     public readonly decimal Payload;
