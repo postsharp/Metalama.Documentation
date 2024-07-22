@@ -1,6 +1,7 @@
 ---
 uid: distributing
 summary: "The document provides instructions on how to manage aspect usage in projects, either by allowing it to flow to other projects or preventing its transitive use with the help of Metalama.Framework and Metalama.Framework.Redist packages."
+level: 200
 ---
 
 # Distributing projects that use aspects

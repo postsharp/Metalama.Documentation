@@ -1,5 +1,6 @@
 ---
 uid: wpf
+level: 100
 ---
 
 # Metalama.Patterns.Wpf

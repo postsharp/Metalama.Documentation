@@ -1,5 +1,6 @@
 ---
 uid: wpf-dependency-property
+level: 100
 ---
 
 # WPF Dependency Property

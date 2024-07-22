@@ -1,5 +1,6 @@
 ---
 uid: wpf-command
+level: 100
 ---
 
 # WPF Command

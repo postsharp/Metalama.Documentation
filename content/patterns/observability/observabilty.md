@@ -1,5 +1,6 @@
 ---
 uid: observability
+level: 100
 ---
 
 # Metalama.Patterns.Observability

@@ -1,6 +1,7 @@
 ---
 uid: contract-patterns
 summary: "Metalama Contracts facilitate contract-based programming, enhancing software reliability and clarity. They enforce preconditions, postconditions, and type invariants, aiding in error detection and promoting modular design. They are more readable, inheritable, and customizable than hand-written precondition checks. "
+level: 100
 ---
 
 # Metalama.Patterns.Contracts

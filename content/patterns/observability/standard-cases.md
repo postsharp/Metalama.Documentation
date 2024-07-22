@@ -1,5 +1,6 @@
 ---
 uid: observability-standard-cases
+level: 200
 ---
 
 # Scenarios Supported by the Observable Aspect

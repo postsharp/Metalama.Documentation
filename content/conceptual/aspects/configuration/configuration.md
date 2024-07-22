@@ -1,6 +1,7 @@
 ---
 uid: aspect-configuration
 summary: "The document discusses the benefits of implementing a configuration for aspects in a project, such as centralized aspect options and improved run-time performance. It also mentions two mechanisms for configuration: the configuration API and MSBuild properties."
+level: 200
 ---
 
 # Making aspects configurable

@@ -1,6 +1,7 @@
 ---
 uid: value-contracts
 summary: "The document provides a detailed guide on how to validate input and output values of fields, properties, or parameters using Metalama.Patterns.Contracts package in coding. It covers contract inheritance, return values, out parameters, ref parameters, and fields and properties."
+level: 100
 ---
 
 # Validating field, property, and parameter values

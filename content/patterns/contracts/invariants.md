@@ -1,6 +1,7 @@
 ---
 uid: invariants
 summary: "The document explains how to check type invariants in Metalama, including adding invariants, opting out from invariant checking, and suspending enforcement of invariants, with examples provided."
+level: 200
 ---
 
 # Checking type invariants

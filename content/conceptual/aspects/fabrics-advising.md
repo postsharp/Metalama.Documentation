@@ -1,6 +1,7 @@
 ---
 uid: fabrics-advising
 summary: "The document provides a guide on how to advise a type using a type fabric, a compile-time nested class, in the Metalama Framework. It includes a step-by-step process and an example."
+level: 300
 ---
 
 # Advising a single type with a fabric

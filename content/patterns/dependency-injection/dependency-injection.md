@@ -1,6 +1,7 @@
 ---
 uid: dependency-injection-aspect
 summary: "The document discusses the use of `Microsoft.Extensions.DependencyInjection` in .NET for dependency injection. It highlights the advantages of using `Metalama.Extensions.DependencyInjection.DependencyAttribute` to reduce boilerplate code, simplify migration, and ensure compatibility."
+level: 100
 ---
 
 # Metalama.Extensions.DependencyInjection

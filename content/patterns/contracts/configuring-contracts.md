@@ -1,6 +1,7 @@
 ---
 uid: configuring-contracts
 summary: "The document provides guidance on configuring contracts in Metalama, covering both compile-time and run-time settings. It explains how to change validation logic, enable/disable contracts, customize inheritance or contract direction, and customize exception types or messages."
+level: 200
 ---
 
 # Configuring contracts

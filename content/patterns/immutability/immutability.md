@@ -1,5 +1,6 @@
 ---
 uid: immutability
+level: 200
 ---
 
 # Metalama.Patterns.Immutability

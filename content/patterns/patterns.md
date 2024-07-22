@@ -1,6 +1,7 @@
 ---
 uid: patterns
 summary: "Metalama Patterns are libraries of design patterns for C#, developed by the Metalama team, and are available on GitHub under the MIT license."
+level: 100
 ---
 
 # Metalama Patterns
