@@ -42,7 +42,7 @@ By default, the <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceCla
 
 ### Example: setting up the type
 
-In the following aspect, we continue the nested type example, add the `sealed` modifier to the introduced type, and set its base type to `BaseFactory`.
+In the following aspect, we continue the nested type example, make it `public`, and set its base type to `Builder` nested type of the base class, if any.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/IntroduceNestedClass.cs name="Introducing a nested class"]
 
