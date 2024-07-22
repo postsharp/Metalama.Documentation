@@ -63,7 +63,7 @@ public class Customer : ICustomer
     {
       if (value is < 1900 or > 2100)
       {
-        throw new ArgumentOutOfRangeException("The 'BirthYear' property must be in the range [1900, 2100].", "value");
+        throw new ArgumentOutOfRangeException("value", value, "The 'BirthYear' property must be in the range [1900, 2100].");
       }
       _birthYear = value;
     }
@@ -85,7 +85,7 @@ public class Customer : ICustomer
         }
         else
         {
-          throw new ArgumentOutOfRangeException("value", "The 'FirstName' property is required.");
+          throw new ArgumentException("The 'FirstName' property is required.", "value");
         }
       }
       _firstName = value;
@@ -108,7 +108,7 @@ public class Customer : ICustomer
         }
         else
         {
-          throw new ArgumentOutOfRangeException("value", "The 'LastName' property is required.");
+          throw new ArgumentException("The 'LastName' property is required.", "value");
         }
       }
       _lastName = value;
@@ -124,7 +124,7 @@ public class Customer : ICustomer
       }
       else
       {
-        throw new ArgumentOutOfRangeException("firstName", "The 'firstName' parameter is required.");
+        throw new ArgumentException("The 'firstName' parameter is required.", "firstName");
       }
     }
     if (string.IsNullOrWhiteSpace(lastName))
@@ -135,7 +135,7 @@ public class Customer : ICustomer
       }
       else
       {
-        throw new ArgumentOutOfRangeException("lastName", "The 'lastName' parameter is required.");
+        throw new ArgumentException("The 'lastName' parameter is required.", "lastName");
       }
     }
     this.FirstName = firstName;

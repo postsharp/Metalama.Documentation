@@ -32,7 +32,7 @@ internal class MyControl : UserControl
   {
     if (value < 0)
     {
-      throw new ArgumentOutOfRangeException("value", "The 'value' parameter must be greater than or equal to 0.");
+      throw new ArgumentOutOfRangeException("value", value, "The 'value' parameter must be greater than or equal to 0.");
     }
     return value;
   }

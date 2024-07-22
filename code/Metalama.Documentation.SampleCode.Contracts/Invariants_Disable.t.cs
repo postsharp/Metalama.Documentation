@@ -19,7 +19,7 @@ namespace Doc.Invariants_Disable
         {
           if (value is < 0 or > 100)
           {
-            throw new ArgumentOutOfRangeException("The 'DiscountPercent' property must be in the range [0, 100].", "value");
+            throw new ArgumentOutOfRangeException("value", value, "The 'DiscountPercent' property must be in the range [0, 100].");
           }
           _discountPercent = value;
         }
@@ -36,7 +36,7 @@ namespace Doc.Invariants_Disable
         {
           if (value is < 0M or > 100M)
           {
-            throw new ArgumentOutOfRangeException("The 'DiscountAmount' property must be in the range [0, 100].", "value");
+            throw new ArgumentOutOfRangeException("value", value, "The 'DiscountAmount' property must be in the range [0, 100].");
           }
           _discountAmount = value;
         }

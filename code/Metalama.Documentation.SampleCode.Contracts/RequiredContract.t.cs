@@ -21,7 +21,7 @@ public class Instrument
         }
         else
         {
-          throw new ArgumentOutOfRangeException("value", "The 'Name' property is required.");
+          throw new ArgumentException("The 'Name' property is required.", "value");
         }
       }
       _name = value;
@@ -54,7 +54,7 @@ public class Instrument
       }
       else
       {
-        throw new ArgumentOutOfRangeException("name", "The 'name' parameter is required.");
+        throw new ArgumentException("The 'name' parameter is required.", "name");
       }
     }
     if (category == null !)
