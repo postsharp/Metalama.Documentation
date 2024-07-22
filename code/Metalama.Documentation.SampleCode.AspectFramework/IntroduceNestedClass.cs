@@ -9,3 +9,10 @@ internal class Material
 
     public double Density { get; }
 }
+
+internal class Metal : Material
+{
+    public double MeltingPoint { get; }
+
+    public double ElectricalConductivity { get; }
+}

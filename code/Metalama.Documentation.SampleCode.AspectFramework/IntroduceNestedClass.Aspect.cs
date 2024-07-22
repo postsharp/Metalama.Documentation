@@ -5,16 +5,28 @@
 using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using System.Linq;
 
 namespace Doc.IntroduceNestedClass;
 
+[Inheritable]
 public class BuilderAttribute : TypeAspect
 {
     public override void BuildAspect( IAspectBuilder<INamedType> builder )
     {
         base.BuildAspect( builder );
+        
+        // Find the Builder class of the base class, if any.
+        var baseBuilderClass =
+            builder.Target.BaseType?.Types.OfName( "Builder" ).SingleOrDefault();
 
-        // Introduce a nested type.
-        builder.IntroduceClass( "Builder" );
+        // Introduce a public nested type.
+        builder.IntroduceClass(
+            "Builder",
+            type =>
+            {
+                type.Accessibility = Accessibility.Public;
+                type.BaseType = baseBuilderClass;
+            } );
     }
 }
