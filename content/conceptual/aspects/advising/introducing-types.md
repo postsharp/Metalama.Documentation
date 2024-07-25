@@ -1,5 +1,6 @@
 ---
 uid: introducing-types
+level: 300
 ---
 
 # Introducing types

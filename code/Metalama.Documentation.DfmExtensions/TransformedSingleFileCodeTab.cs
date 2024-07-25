@@ -1,5 +1,6 @@
 ﻿// This is public domain Metalama sample code.
 
+using System.Collections.Generic;
 using System.IO;
 
 namespace Metalama.Documentation.DfmExtensions;
@@ -12,5 +13,5 @@ internal class TransformedSingleFileCodeTab : CodeTab
         SandboxFileKind.None,
         tabHeader: tabHeader ) { }
 
-    protected override string HtmlExtension => ".t.cs.html";
+    protected override IEnumerable<string> HtmlExtensions => [".t.cs.html", ".i.cs.html"];
 }

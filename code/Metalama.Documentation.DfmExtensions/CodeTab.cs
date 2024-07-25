@@ -2,6 +2,7 @@
 
 using HtmlAgilityPack;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,8 +19,12 @@ internal class CodeTab : BaseTab
         new( """<span class="[^\"]*">\/\*&lt;\/([\w+]+)&gt;\*\/<\/span>""" );
 
     private static readonly Regex _anyMarkerRegex = new( """\/\*\<\/?([\w+]+)\>\*\/""" );
-    private static readonly Regex _memberRegex = new( """<span class='line-number' data-member='([^']*)'>""" );
-    private static readonly Regex _emptyLineRegex = new( """<span class='line-number'[^>]*>\d+<\/span>\s*$""" );
+
+    private static readonly Regex _memberRegex =
+        new( """<span class='line-number' data-member='([^']*)'>""" );
+
+    private static readonly Regex _emptyLineRegex =
+        new( """<span class='line-number'[^>]*>\d+<\/span>\s*$""" );
 
     public SandboxFileKind SandboxFileKind { get; }
 
@@ -46,16 +51,34 @@ internal class CodeTab : BaseTab
     protected override bool IsContentEmpty( string[] lines )
         => base.IsContentEmpty( lines ) || lines.All( l => l.TrimStart().StartsWith( "//" ) );
 
-    private string? GetHtmlPath()
-        => PathHelper.GetObjPath( this.GetProjectDirectory(), this.FullPath, this.HtmlExtension );
+    private IEnumerable<string> GetPossibleHtmlPaths()
+        => this.HtmlExtensions
+            .SelectMany(
+                e => PathHelper.GetObjPaths( this.GetProjectDirectory(), this.FullPath, e ) );
 
-    protected virtual string HtmlExtension => ".cs.html";
+    private string? GetExistingHtmlPath( bool throwIfMissing )
+    {
+        var possibleHtmlPaths = this.GetPossibleHtmlPaths().ToList();
 
-    public bool Exists() => this.GetHtmlPath() != null;
+        var htmlPath = possibleHtmlPaths.FirstOrDefault( File.Exists );
+
+        if ( htmlPath == null && throwIfMissing )
+        {
+            throw new FileNotFoundException(
+                $"No HTML file for '{this.FullPath}' could be found. The following locations were tried: {string.Join( ", ", possibleHtmlPaths )}",
+                htmlPath );
+        }
+
+        return htmlPath;
+    }
+
+    protected virtual IEnumerable<string> HtmlExtensions => [".cs.html"];
+
+    public bool Exists() => this.GetPossibleHtmlPaths().Any( File.Exists );
 
     public override string GetTabContent( bool fallbackToSource = true )
     {
-        var htmlPath = this.GetHtmlPath();
+        var htmlPath = this.GetExistingHtmlPath( !fallbackToSource );
 
         if ( htmlPath != null )
         {
@@ -73,7 +96,8 @@ internal class CodeTab : BaseTab
                 {
                     var matchStartMarker = _htmlStartMarkerRegex.Match( htmlLine );
 
-                    if ( matchStartMarker.Success && matchStartMarker.Groups[1].Value == this.Marker )
+                    if ( matchStartMarker.Success
+                         && matchStartMarker.Groups[1].Value == this.Marker )
                     {
                         isWithinMarker = true;
                         foundStartMarker = true;
@@ -81,7 +105,9 @@ internal class CodeTab : BaseTab
                     else if ( !string.IsNullOrEmpty( this.Member ) )
                     {
                         var matchMember = _memberRegex.Match( htmlLine );
-                        isWithinMarker = matchMember.Success && this.Member == matchMember.Groups[1].Value;
+
+                        isWithinMarker = matchMember.Success
+                                         && this.Member == matchMember.Groups[1].Value;
 
                         if ( isWithinMarker )
                         {
@@ -99,7 +125,8 @@ internal class CodeTab : BaseTab
 
                         var matchEndMarker = _htmlEndMarkerRegex.Match( htmlLine );
 
-                        if ( matchEndMarker.Success && matchEndMarker.Groups[1].Value == this.Marker )
+                        if ( matchEndMarker.Success
+                             && matchEndMarker.Groups[1].Value == this.Marker )
                         {
                             isWithinMarker = false;
                             foundEndMarker = true;
@@ -122,7 +149,8 @@ internal class CodeTab : BaseTab
 
                 if ( this.Member != null && !foundMember )
                 {
-                    throw new InvalidOperationException( $"The member '{this.Member}' was not found in '{htmlPath}'." );
+                    throw new InvalidOperationException(
+                        $"The member '{this.Member}' was not found in '{htmlPath}'." );
                 }
 
                 // Trim.
@@ -131,31 +159,33 @@ internal class CodeTab : BaseTab
                     outputLines.RemoveAt( 0 );
                 }
 
-                while ( outputLines.Count > 0 && _emptyLineRegex.IsMatch( outputLines[outputLines.Count - 1] ) )
+                while ( outputLines.Count > 0
+                        && _emptyLineRegex.IsMatch( outputLines[outputLines.Count - 1] ) )
                 {
                     outputLines.RemoveAt( outputLines.Count - 1 );
                 }
 
                 // Return the final html.
 
-                return "<pre><code class=\"nohighlight\">" + string.Join( "\n", outputLines ) + "</code></pre>";
+                return "<pre><code class=\"nohighlight\">" + string.Join( "\n", outputLines )
+                                                           + "</code></pre>";
             }
             else
             {
                 var html = File.ReadAllText( htmlPath );
-                var cleanHtml = _htmlStartMarkerRegex.Replace( _htmlEndMarkerRegex.Replace( html, "" ), "" );
+
+                var cleanHtml = _htmlStartMarkerRegex.Replace(
+                    _htmlEndMarkerRegex.Replace( html, "" ),
+                    "" );
 
                 return cleanHtml;
             }
         }
-        else if ( fallbackToSource )
-        {
-            // When the HTML file does not exist, we will rely on run-time formatting.
-            return "<pre><code class=\"lang-csharp\">" + File.ReadAllText( this.FullPath ) + "<code></pre>";
-        }
         else
         {
-            throw new FileNotFoundException( $"No HTML file for '{this.FullPath}' could be found.", htmlPath );
+            // When the HTML file does not exist, we will rely on run-time formatting.
+            return "<pre><code class=\"lang-csharp\">" + File.ReadAllText( this.FullPath )
+                                                       + "<code></pre>";
         }
     }
 
@@ -165,9 +195,9 @@ internal class CodeTab : BaseTab
     {
         var document = new HtmlDocument();
 
-        document.Load(
-            this.GetHtmlPath()
-            ?? throw new FileNotFoundException( $"Cannot find the HTML file for {this.FullPath}." ) );
+        var htmlPath = this.GetExistingHtmlPath( true )!;
+
+        document.Load( htmlPath );
 
         var diagLines = document.DocumentNode.SelectNodes( "//span[@class='diagLines']" )?.ToList()
                         ?? new List<HtmlNode>();

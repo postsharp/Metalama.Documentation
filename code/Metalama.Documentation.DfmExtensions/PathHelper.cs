@@ -2,6 +2,7 @@
 
 using Microsoft.DocAsCode.MarkdownLite;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -10,13 +11,17 @@ namespace Metalama.Documentation.DfmExtensions;
 internal static class PathHelper
 {
     public static string GetRelativePath( string projectDir, string targetPath )
-        => new Uri( Path.Combine( projectDir, "_" ) ).MakeRelativeUri( new Uri( targetPath ) ).ToString();
+        => new Uri( Path.Combine( projectDir, "_" ) ).MakeRelativeUri( new Uri( targetPath ) )
+            .ToString();
 
-    public static string? GetObjPath( string projectDir, string targetPath, string extension )
+    public static IReadOnlyList<string> GetObjPaths(
+        string projectDir,
+        string targetPath,
+        string extension )
     {
         var relativePath = GetRelativePath( projectDir, targetPath );
 
-        var possiblePaths = DotNetVersions.Versions.Select(
+        return DotNetVersions.Versions.Select(
                 v => Path.GetFullPath(
                     Path.Combine(
                         projectDir,
@@ -25,19 +30,12 @@ internal static class PathHelper
                         v,
                         Path.ChangeExtension( relativePath, extension ) ) ) )
             .ToArray();
-
-        foreach ( var path in possiblePaths )
-        {
-            if ( File.Exists( path ) )
-            {
-                return path;
-            }
-        }
-
-        return null;
     }
 
-    public static string ResolveTokenPath( string path, IMarkdownContext context, SourceInfo sourceInfo )
+    public static string ResolveTokenPath(
+        string path,
+        IMarkdownContext context,
+        SourceInfo sourceInfo )
     {
         if ( context == null! )
         {

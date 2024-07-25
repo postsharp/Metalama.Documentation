@@ -9,10 +9,15 @@ namespace Metalama.Documentation.DfmExtensions;
 
 internal class ProjectButtonsRenderer : BaseRenderer<ProjectButtonsToken>
 {
-    protected override StringBuffer RenderCore( ProjectButtonsToken token, MarkdownBlockContext context )
+    protected override StringBuffer RenderCore(
+        ProjectButtonsToken token,
+        MarkdownBlockContext context )
     {
         var directory = token.Directory;
-        var id = Path.GetFileNameWithoutExtension( directory ).ToLowerInvariant().Replace( '.', '_' );
+
+        var id = Path.GetFileNameWithoutExtension( directory )
+            .ToLowerInvariant()
+            .Replace( '.', '_' );
 
         var tabGroup = new DirectoryTabGroup( id, directory );
 
@@ -28,9 +33,11 @@ internal class ProjectButtonsRenderer : BaseRenderer<ProjectButtonsToken>
             {
                 // We need to try harder to find the good category.
 
-                var outHtmlPath = PathHelper.GetObjPath( token.Directory, file, ".t.cs.html" );
+                var outHtmlPath = PathHelper.GetObjPaths( token.Directory, file, ".t.cs.html" )
+                    .FirstOrDefault( File.Exists );
 
-                if ( outHtmlPath == null || !File.ReadAllText( outHtmlPath ).Contains( "cr-GeneratedCode" ) )
+                if ( outHtmlPath == null
+                     || !File.ReadAllText( outHtmlPath ).Contains( "cr-GeneratedCode" ) )
                 {
                     kind = SandboxFileKind.ExtraCode;
                 }
@@ -40,7 +47,11 @@ internal class ProjectButtonsRenderer : BaseRenderer<ProjectButtonsToken>
                 }
             }
 
-            tabGroup.Tabs.Add( new CodeTab( Path.GetFileNameWithoutExtension( file ).ToLowerInvariant(), file, kind ) );
+            tabGroup.Tabs.Add(
+                new CodeTab(
+                    Path.GetFileNameWithoutExtension( file ).ToLowerInvariant(),
+                    file,
+                    kind ) );
         }
 
         var sandboxPayload = tabGroup.GetSandboxPayload( token );
