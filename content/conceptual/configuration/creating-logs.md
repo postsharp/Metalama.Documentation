@@ -5,6 +5,9 @@ summary: "The document provides instructions on how to generate log files for re
 
 # Enabling logging
 
+> [!NOTE]
+> This procedure is suitable for development machines. For build servers
+
 When reporting a Metalama bug, it is often helpful to attach Metalama log files. This document provides instructions on how to generate these logs.
 
 There are possible approaches: produce log files, or write the logging output to the console.
@@ -85,53 +88,3 @@ Perform the sequence of actions that you wish to log.
 You can find the log in the `%TEMP%\Metalama\Logs` directory.
 
 
-## Logging to the Console
-
-To diagnose the build on build agents, the above procedure may be cumbersome because of the need to upload the logs from the build agent to some artifact repository.
-
-It may be instead preferable to log directly to the console.
-
-To enable console logging, set the `METALAMA_CONSOLE_TRACE` environment variable to `*` or to a comma-separated list of trace categories.
-
-Note that `dotnet build` or `msbuild` process, as well as the Metalama compiler process, reuse background processes by default. These processes may fail to receive the `METALAMA_CONSOLE_TRACE` environment variable. To ensure that the Metalama compiler process receives the environment variable, you must disable build servers using the `--disable-build-servers` flag.
-
-It is also important to enable detailed verbosity in `dotnet build` or `msbuild` because the default verbosity does not pass through the standard output of the compiler process.
-
-### Example: PowerShell
-Combining all these notes, here is how to enable console logging for all categories:
-
-```powershell
-$env:METALAMA_CONSOLE_TRACE="*"
-dotnet build -t:rebuild --disable-build-servers -v:detailed
-```
-
-### Example: GitHub action
-
-```yaml
-name: Build and Test
-on:
-    push:
-        branches:
-        - master
-env:
-    METALAMA_CONSOLE_TRACE: '*'
-jobs:
-    build-and-test:
-        strategy:
-            fail-fast: false
-            matrix:
-                os: [ubuntu-latest, windows-latest, macos-latest]
-                dotnet-version: ['8.x']
-        runs-on: ${{ matrix.os }}
-        name: Build and Test on ${{ matrix.os }} with .NET Core ${{ matrix.dotnet-version }}
-
-        steps:
-            - uses: actions/checkout@v4
-            - name: Setup .NET Core
-              uses: actions/setup-dotnet@v4
-              with:
-                  dotnet-version: ${{ matrix.dotnet-version }}
-            - run: dotnet restore
-            - run: dotnet build --configuration Debug --no-restore -v:detailed --disable-build-servers
-            - run: dotnet test --configuration Release --no-restore -v:detailed --disable-build-servers 
-```
