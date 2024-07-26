@@ -23,6 +23,7 @@ public class BuilderAttribute : TypeAspect
         // Introduce a public nested type.
         builder.IntroduceClass(
             "Builder",
+            OverrideStrategy.New,
             buildType:
             type =>
             {

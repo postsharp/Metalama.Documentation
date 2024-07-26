@@ -12,7 +12,7 @@ internal class Metal : Material
 {
   public double MeltingPoint { get; }
   public double ElectricalConductivity { get; }
-  public class Builder : Material.Builder
+  public new class Builder : Material.Builder
   {
   }
 }
