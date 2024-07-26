@@ -14,6 +14,7 @@ public class BuilderAttribute : TypeAspect
 
         builder.IntroduceClass(
             "Builder",
+            buildType:
             typeBuilder =>
             {
                 typeBuilder.IsSealed = false;
