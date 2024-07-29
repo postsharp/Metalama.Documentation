@@ -5,19 +5,22 @@ level: 100
 
 # Metalama.Patterns.Observability
 
-> [!WARNING]
-> This article should still be reviewed and corrected.
-
 The Observable pattern is widely used for binding user interface controls to their underlying data, especially in projects that adhere to the MVVM architecture. In .NET, the standard interface for the Observable pattern is <xref:System.ComponentModel.INotifyPropertyChanged>. Typically, this interface is implemented by the types of the Model and View-Model layers. When a property of a Model object changes, it triggers the <xref:System.ComponentModel.INotifyPropertyChanged.PropertyChanged> event. This Model event is observed by the View-Model layer. If a property of a View-Model object is affected by this change, it subsequently triggers the <xref:System.ComponentModel.INotifyPropertyChanged.PropertyChanged> event. The View-Model event is eventually observed by the View layer, which updates the UI.
 
-A second common element of the Observable pattern is the `OnPropertyChanged` method, the name of which can vary across different MVVM frameworks. A third element of this pattern is conventions about how the property setters should be initialized, possibly with some helper methods.
+A second common element of the Observable pattern is the `OnPropertyChanged` method, the name of which can vary across different MVVM frameworks. A third element of this pattern is conventions about how the property setters should be implemented, possibly with some helper methods.
 
-Metalama provides an open-source implementation of the Observable pattern in the `Metalama.Patterns.Observability` package.
+Metalama provides an open-source implementation of the Observable pattern in the `Metalama.Patterns.Observability` package. The principal artifacts in this package are:
+
+* The <xref:Metalama.Patterns.Observability.ObservableAttribute?text=[Observable]> aspect, which automatically implements the <xref:System.ComponentModel.INotifyPropertyChanged> interface for the target type.
+* The <xref:Metalama.Patterns.Observability.Configuration.ObservabilityExtensions.ConfigureObservability*> extension methods, designed to be called from a fabric.
+* The <xref:Metalama.Patterns.Observability.ConstantAttribute?text=[Constant]> attribute, which ensures that the output of a method is constant for identical parameters.
+
+## Benefits
 
 The primary benefits of using `Metalama.Patterns.Observability` include:
 
 * Dramatic reduction of the boilerplate code linked to <xref:System.ComponentModel.INotifyPropertyChanged>.
-* Safety from human errors: 
+* Safety from human errors:
     * Never forget to raise a notification again.
     * The package reports warnings if a dependency or code construct is not supported.
 * Idiomatic source code.
@@ -27,15 +30,9 @@ The primary benefits of using `Metalama.Patterns.Observability` include:
      * Explicitly-implemented properties,
      * Field-backed properties,
      * Properties that depend on **child objects**, a common scenario in MVVM architectures,
-     * Properties that depend on **methods**.
+     * Properties that depend on **methods**,
      * Constant methods and immutable objects.
 * Compatibility with most MVVM frameworks.
-
-The principal artifacts in this package are:
-
-* The <xref:Metalama.Patterns.Observability.ObservableAttribute?text=[Observable]> aspect, which automatically implements the <xref:System.ComponentModel.INotifyPropertyChanged> interface for the target type.
-* The <xref:Metalama.Patterns.Observability.Configuration.ObservabilityExtensions.ConfigureObservability*> extension methods, designed to be called from a fabric.
-* The <xref:Metalama.Patterns.Observability.ConstantAttribute?text=[Constant]> attribute, which ensures that the output of a method is constant for identical parameters.
 
 ## Implementing INotifyPropertyChanged for a class hierarchy
 
@@ -99,7 +96,6 @@ One way to mark a method as constant is to add the <xref:Metalama.Patterns.Obser
 
 If you want to mark many methods as constant, it may be more convenient to use the <xref:Metalama.Patterns.Observability.Configuration.ObservabilityExtensions.ConfigureObservability*> fabric method instead of adding the `[Constant]` attribute to each of them, and set the <xref:Metalama.Patterns.Observability.Configuration.ObservabilityTypeOptionsBuilder.ObservabilityContract> property to `ObservabilityContract.Constant`.
 
-
 #### Example: marking a method as constant using a custom attribute
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Observability/Constant.cs]
@@ -110,12 +106,23 @@ If you want to mark many methods as constant, it may be more convenient to use t
 
 ## Coping with manual implementations of INotifyPropertyChanged
 
-The <xref:Metalama.Patterns.Observability.ObservableAttribute?text=Observable> also works when the type already implements the <xref:System.ComponentModel.INotifyPropertyChanged> interface. In this case, the aspect will only instrument the fields and properties.
+The <xref:Metalama.Patterns.Observability.ObservableAttribute?text=Observable> aspect also works when the type already implements the <xref:System.ComponentModel.INotifyPropertyChanged> interface. In this case, the aspect will only instrument the fields and properties.
 
 However, if the type already implements the <xref:System.ComponentModel.INotifyPropertyChanged> interface, then the type must contain a method with exactly the following signature:
 
 ```cs
-protected virtual void OnPropertyChanged( string propertyName );
+protected void OnPropertyChanged( string propertyName );
 ```
 
 For compatibility with MVVM frameworks, this method can be named `NotifyOfPropertyChange` or `RaisePropertyChanged` instead of `OnPropertyChanged`.
+
+This method will be used to _raise_ notifications.
+
+To _react_ to notifications raised by the base class, the <xref:Metalama.Patterns.Observability.ObservableAttribute?text=Observable> aspect relies on overriding a `virtual` method with one of these signatures:
+
+```cs
+protected virtual void OnPropertyChanged( string propertyName );
+protected virtual void OnPropertyChanged( PropertyChangedEventArgs args );
+```
+
+This method can also be named `NotifyOfPropertyChange` or `RaisePropertyChanged` instead of `OnPropertyChanged`.
