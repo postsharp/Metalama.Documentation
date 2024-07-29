@@ -11,7 +11,14 @@ We had to make dozens of smaller improvements to the framework to reach these ob
 
 Here is a detailed list.
 
-## Metalama.Patterns.Observability
+## Introduction of classes and constructors
+
+* It is now possible to introduce whole classes by using the <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceClass*?text=AdviserExtensions.IntroduceClass> method. This method returns an <xref:Metalama.Framework.Advising.IAdviser`1>`<INamedType>`, which you can then use to add members to the new type.
+* New advice method <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceConstructor*?text=AdviserExtensions.IntroduceConstructor> to introduce a constructor into an existing or new type.
+
+For details, see <xref:introducing-types>.
+
+## Metalama.Patterns.Observability is Generally Available
 
 The `Metalama.Patterns.Observability` package is now stable and fully supported.
 
@@ -27,26 +34,20 @@ Where competing solutions stop at automatic properties, our implementation suppo
 
 For details, see <xref:observability>.
 
-## Metalama.Patterns.Wpf
+## Metalama.Patterns.Wpf  is Generally Available
 
-The `Metalama.Patterns.Wpf` package is now stable and fully supported.
+The `Metalama.Patterns.Wpf` package (formerly named `Metalama.Patterns.Xaml`) is now stable and fully supported.
 
 It contains two aspects: <xref:Metalama.Patterns.Wpf.CommandAttribute?text=[Command]> and <xref:Metalama.Patterns.Wpf.DependencyPropertyAttribute?text=[DependencyAttribute]> to reduce the WPF boilerplate code.
 
 For details, see <xref:wpf>.
 
-## Metalama.Patterns.Immutability
+## New package: Metalama.Patterns.Immutability 
 
 This new package defines a concept of immutable type. Types can be marked as immutable using the <xref:Metalama.Patterns.Immutability.ImmutableAttribute?text=[Immutable]> aspect or the <xref:Metalama.Patterns.Immutability.Configuration.ImmutabilityConfigurationExtensions.ConfigureImmutability*> fabric method. This information is used by the `Metalama.Patterns.Observability` package to infer the mutability of properties.
 
 For details, see <xref:immutability>.
 
-## Introduction of classes and constructors
-
-* It is now possible to introduce whole classes by using the <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceClass*?text=AdviserExtensions.IntroduceClass> method. This method returns an <xref:Metalama.Framework.Advising.IAdviser`1>`<INamedType>`, which you can then use to add members to the new type.
-* New advice method <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceConstructor*?text=AdviserExtensions.IntroduceConstructor> to introduce a constructor into an existing or new type.
-
-For details, see <xref:introducing-types>.
 
 ## Improvements in fabrics and IAspectReceiver
 
@@ -63,13 +64,15 @@ For details, see <xref:introducing-types>.
 
 ## Improvements in Metalama.Extensions.Architecture
 
-The reference validator feature now has a concept of _validator granularity_ (<xref:Metalama.Framework.Validation.ReferenceGranularity>), which accepts the values `Compilation`, `Namespace`, `Type`, `Member`, or `ParameterOrAttribute`. The idea is that when a validator is invariant within some level of granularity, then its predicate should only be evaluated once within the declaration at this level of granularity. For instance, if a validator granularity is set to `Namespace`, then _all_ references within that namespace will be either valid or invalid at the same time.
+* The reference validator feature now has a concept of _validator granularity_ (<xref:Metalama.Framework.Validation.ReferenceGranularity>), which accepts the values `Compilation`, `Namespace`, `Type`, `Member`, or `ParameterOrAttribute`. The idea is that when a validator is invariant within some level of granularity, then its predicate should only be evaluated once within the declaration at this level of granularity. For instance, if a validator granularity is set to `Namespace`, then _all_ references within that namespace will be either valid or invalid at the same time.
 
-The _validator granularity_ concept is essential to improve the performance of validators, as references can be validated collectively instead of one by one.
+    The _validator granularity_ concept is essential to improve the performance of validators, as references can be validated collectively instead of one by one.
+    
+    Code written against the previous API will get obsolescence warnings. We suggest porting your validators to the new API and choosing the coarsest possible granularity.
+    
+    Additionally, the new class <xref:Metalama.Extensions.Architecture.Predicates.ReferenceEndPredicate> serves as a base for predicates that depend on a single end of the reference to validate. This class is a preparation for some future feature, allowing the validation of inbound references instead of just outbound references.
 
-Code written against the previous API will get obsolescence warnings. We suggest porting your validators to the new API and choosing the coarsest possible granularity.
-
-Additionally, the new class <xref:Metalama.Extensions.Architecture.Predicates.ReferenceEndPredicate> serves as a base for predicates that depend on a single end of the reference to validate. This class is a preparation for some future feature, allowing the validation of inbound references instead of just outbound references.
+* The API has been improved with fluent <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.And*>, <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.Or*> and <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.Not*> methods.
 
 ## Improvements in diagnostic suppressions
 
@@ -106,12 +109,13 @@ The following changes improve your ability to generate code with Metalama:
 * An error will be reported when attempting to use some template-only methods from a method that is not a template.
 
 ### Changes in interface implementation
+
 * The <xref:Metalama.Framework.Advising.AdviserExtensions.ImplementInterface*> advice no longer verifies if all interface members are present. Errors will appear during compilation. Interface members can be introduced using `[InterfaceMember]` as before, but also using `[Introduce]`, or programmatically using `AdviserExtensions.IntroduceMethod`.
 * The <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult> interface now has a <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult.ExplicitMembers> property of type `IAdviser<INamedType>`, which allows introducing explicit (private) members.
 
 ### Improvements in Metalama.Patterns.Contracts
 
-We are finally addressing the problem that the <xref:Metalama.Patterns.Contracts.PositiveAttribute?text=[Positive]>, <xref:Metalama.Patterns.Contracts.NegativeAttribute?text=[Negative]>, <xref:Metalama.Patterns.Contracts.LessThanAttribute?text=[LessThan]> and <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThan]> aspects had a non-standard behavior because they behave as if the inequality were _unstrict_ while the standard interpretation is _strict_. This mistake was performed in PostSharp back in 2013 and dragged until now for backward compatibility reasons, but we eventually decided to address it.
+We are finally addressing the problem where the <xref:Metalama.Patterns.Contracts.PositiveAttribute?text=[Positive]>, <xref:Metalama.Patterns.Contracts.NegativeAttribute?text=[Negative]>, <xref:Metalama.Patterns.Contracts.LessThanAttribute?text=[LessThan]> and <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThan]> aspects had a non-standard behavior because they behave as if the inequality were _unstrict_ while the standard interpretation is _strict_. This mistake was performed in PostSharp back in 2013 and dragged until now for backward compatibility reasons, but we eventually decided to address it.
 
 Starting from Metalama 2024.2, using any of the <xref:Metalama.Patterns.Contracts.PositiveAttribute?text=[Positive]>, <xref:Metalama.Patterns.Contracts.NegativeAttribute?text=[Negative]>, <xref:Metalama.Patterns.Contracts.LessThanAttribute?text=[LessThan]> or <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThan]> attributes will report a warning saying that the strictness of the inequality is ambiguous. You have two options to resolve the warning:
 
@@ -131,6 +135,14 @@ We will change the default behavior and the warning in a future release.
 
 * The cache key prefix now always includes the version of the serialization protocol.
 
+* `CancellationToken` parameters are automatically ignored.
+
+* With the Redis back-end:
+    * By default, Metalama Caching will use the `CommandFlags.PreferReplica` for read operations and `CommandFlags.PreferMaster` for write operations. These default values can be modified thanks to the `ReadCommandFlags` and `WriteCommandFlags` properties of the `RedisCachingBackendConfiguration` class.
+    * `StackExchange.Redis` was updated to 2.8.
+    * The <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.Redis*> mehtod now consumes `IConnectionMultiplexer` from the `IServiceProvider` by default.
+
+
 ### Improvements in supportability
 
 When troubleshooting Metalama, it is now possible to enable tracing and direct it to the standard output just using an environment variable.
@@ -145,3 +157,7 @@ For details, see <xref:creating-logs>.
 * Relationships specified with <xref:Metalama.Framework.Aspects.AspectOrderAttribute> are now applied to derived aspect classes by default. To revert to the previous behavior, set the <xref:Metalama.Framework.Aspects.AspectOrderAttribute.ApplyToDerivedTypes> property to `false`.
 * An error will be reported when attempting to use some compile-time methods (for instance, `meta.CompileTime`) from a method that is not a template. In prior versions, these methods had no effect and were only confusing.
 * `Metalama.Patterns.Contracts`: Some virtual methods of the <xref:Metalama.Patterns.Contracts.RangeAttribute> and <xref:Metalama.Patterns.Contracts.ContractTemplates> classes have changed; overrides must be adapted.
+* `Metalama.Patterns.Caching`:
+    * `CachingBackend.Clear()` no longer raises the `ItemRemoved` event.
+    * The `CacheValue` class has been replaced by the existing `CacheItem` class.
+    * The `ICachingSerializer`interface has been refactored to work with `BinaryReader` and `BinaryWriter`.
