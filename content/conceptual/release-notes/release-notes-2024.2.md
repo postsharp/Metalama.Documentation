@@ -11,12 +11,18 @@ We had to make dozens of smaller improvements to the framework to reach these ob
 
 Here is a detailed list.
 
-## Introduction of classes and constructors
+## Generation of classes 
 
-* It is now possible to introduce whole classes by using the <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceClass*?text=AdviserExtensions.IntroduceClass> method. This method returns an <xref:Metalama.Framework.Advising.IAdviser`1>`<INamedType>`, which you can then use to add members to the new type.
-* New advice method <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceConstructor*?text=AdviserExtensions.IntroduceConstructor> to introduce a constructor into an existing or new type.
+It is now possible to introduce (i.e. generate) whole classes by using the <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceClass*?text=AdviserExtensions.IntroduceClass> method. This method returns an <xref:Metalama.Framework.Advising.IAdviser`1>`<INamedType>`, which you can then use to add members to the new type.
 
 For details, see <xref:introducing-types>.
+
+## Generation and overriding of constructors
+
+You can now introduce a constructor into an existing or new type thanks to the <xref:Metalama.Framework.Advising.AdviserExtensions.IntroduceConstructor*?text=AdviserExtensions.IntroduceConstructor> method. 
+
+You can also override any constructor using a new overload of the <xref:Metalama.Framework.Advising.AdviserExtensions.Override*> method.
+
 
 ## Metalama.Patterns.Observability is Generally Available
 
@@ -108,12 +114,12 @@ The following changes improve your ability to generate code with Metalama:
 * New concept of <xref:Metalama.Framework.Utilities.Promise`1> (with its interface <xref:Metalama.Framework.Utilities.IPromise`1>) to represent results that are not available yet. This mechanism allows resolving chicken-or-egg issues when introducing members when a template must receive a reference to a declaration that has not been introduced yet. A `Promise<T>` can be passed as an argument to a template, which receives it on a parameter of type `T`.
 * An error will be reported when attempting to use some template-only methods from a method that is not a template.
 
-### Changes in interface implementation
+## Changes in interface implementation
 
 * The <xref:Metalama.Framework.Advising.AdviserExtensions.ImplementInterface*> advice no longer verifies if all interface members are present. Errors will appear during compilation. Interface members can be introduced using `[InterfaceMember]` as before, but also using `[Introduce]`, or programmatically using `AdviserExtensions.IntroduceMethod`.
 * The <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult> interface now has a <xref:Metalama.Framework.Advising.IImplementInterfaceAdviceResult.ExplicitMembers> property of type `IAdviser<INamedType>`, which allows introducing explicit (private) members.
 
-### Improvements in Metalama.Patterns.Contracts
+## Improvements in Metalama.Patterns.Contracts
 
 We are finally addressing the problem where the <xref:Metalama.Patterns.Contracts.PositiveAttribute?text=[Positive]>, <xref:Metalama.Patterns.Contracts.NegativeAttribute?text=[Negative]>, <xref:Metalama.Patterns.Contracts.LessThanAttribute?text=[LessThan]> and <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThan]> aspects had a non-standard behavior because they behave as if the inequality were _unstrict_ while the standard interpretation is _strict_. This mistake was performed in PostSharp back in 2013 and dragged until now for backward compatibility reasons, but we eventually decided to address it.
 
@@ -121,7 +127,7 @@ Starting from Metalama 2024.2, using any of the <xref:Metalama.Patterns.Contract
 
 * Use one of the variants where the strictness is made explicit:
    * Strict: <xref:Metalama.Patterns.Contracts.StrictlyPositiveAttribute?text=[StrictlyPositive]>, <xref:Metalama.Patterns.Contracts.StrictlyNegativeAttribute?text=[StrictlyNegative]>, <xref:Metalama.Patterns.Contracts.StrictlyLessThanAttribute?text=[StrictlyLessThan]> and <xref:Metalama.Patterns.Contracts.StrictlyGreaterThanAttribute?text=[StrictlyGreaterThan]>
-    * Non-strict: <xref:Metalama.Patterns.Contracts.NonNegativeAttribute?text=[NonNegative]>, <xref:Metalama.Patterns.Contracts.NonPositiveAttribute?text=[NonPositive]>, <xref:Metalama.Patterns.Contracts.LessThanOrEqualAttribute?text=[LessThanOrEqual]> and <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThanOrEqual].
+   * Non-strict: <xref:Metalama.Patterns.Contracts.NonNegativeAttribute?text=[NonNegative]>, <xref:Metalama.Patterns.Contracts.NonPositiveAttribute?text=[NonPositive]>, <xref:Metalama.Patterns.Contracts.LessThanOrEqualAttribute?text=[LessThanOrEqual]> and <xref:Metalama.Patterns.Contracts.GreaterThanAttribute?text=[GreaterThanOrEqual]>.
 * Or set the <xref:Metalama.Patterns.Contracts.ContractOptions.DefaultInequalityStrictness> contract option using the <xref:Metalama.Patterns.Contracts.ContractConfigurationExtensions.ConfigureContracts*> fabric extension method.
 
 If you don't address the warning, the behavior of the ambiguous contracts will remain backward-compatible, i.e., non-standard.
@@ -129,7 +135,7 @@ If you don't address the warning, the behavior of the ambiguous contracts will r
 We will change the default behavior and the warning in a future release.
 
 
-### Improvements in Metalama.Patterns.Caching
+## Improvements in Metalama.Patterns.Caching
 
 * The Redis backend now consumes the `IConnectionMultiplexer` from the `IServiceProvider` by default, which makes it easier to use with .NET Aspire.
 
@@ -143,7 +149,7 @@ We will change the default behavior and the warning in a future release.
     * The <xref:Metalama.Patterns.Caching.Backends.Redis.RedisCachingFactory.Redis*> mehtod now consumes `IConnectionMultiplexer` from the `IServiceProvider` by default.
 
 
-### Improvements in supportability
+## Improvements in supportability
 
 When troubleshooting Metalama, it is now possible to enable tracing and direct it to the standard output just using an environment variable.
 
