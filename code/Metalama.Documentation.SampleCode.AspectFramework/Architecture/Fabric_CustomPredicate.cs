@@ -20,7 +20,7 @@ internal class MethodNamePredicate : ReferenceEndPredicate
         this._suffix = suffix;
     }
 
-    public override ReferenceGranularity Granularity => ReferenceGranularity.Member;
+    protected override ReferenceGranularity GetGranularity() => ReferenceGranularity.Member;
 
     public override bool IsMatch( ReferenceEnd referenceEnd )
         => referenceEnd.Member is IMethod method && method.Name.EndsWith(
