@@ -6,6 +6,8 @@ using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System;
 
+#pragma warning disable CS8618
+
 namespace Doc.ChildAspect;
 
 public class AuditedMemberAttribute : Attribute, IAspect<IMethod>, IAspect<IProperty>

@@ -10,5 +10,5 @@ public class Invoice
     [AuditedMember( false )]
     public void SomeNonAuditedOperation() { }
 
-    public string SomeAuditedProperty { get; set; }
+    public string? SomeAuditedProperty { get; set; }
 }
