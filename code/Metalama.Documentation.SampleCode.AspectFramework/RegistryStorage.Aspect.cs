@@ -40,7 +40,7 @@ internal class RegistryStorageAttribute : TypeAspect
             }
             else
             {
-                return meta.Target.FieldOrProperty.Type.DefaultValue();
+                return default;
             }
         }
 
