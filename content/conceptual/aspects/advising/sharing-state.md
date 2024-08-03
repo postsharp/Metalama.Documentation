@@ -59,7 +59,7 @@ When you want to share state not from templates inside the current aspect instan
 
 This property is opaque to the Metalama framework. You can use it for any purpose but at your own risk. You are responsible for thread safety if you choose to have any mutable state in your aspect state.
 
-Objects assigned to <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState> must implement the <xref:Metalama.Framework.Aspects.IAspectState> interface, which makes them automatically serializable. This mechanism ensures that the aspect state is available in cross-project scenarios.
+Objects assigned to <xref:Metalama.Framework.Aspects.IAspectBuilder.AspectState> must implement the <xref:Metalama.Framework.Aspects.IAspectState> interface, which makes them automatically serializable. This mechanism ensures that the aspect state is available in cross-project scenarios. For details, see <xref:aspect-serialization>.
 
 ## Sharing state with annotations
 
