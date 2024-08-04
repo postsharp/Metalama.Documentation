@@ -2,14 +2,13 @@
 
 <head>
   <meta charset="utf-8">
-  <!-- Modified for PostSharp documentation. -->
   <meta name="postsharp:uid" content="{{uid}}">
   <meta name="postsharp:level" content="{{level}}">
   <meta name="postsharp:product" content="{{product}}">
   <meta name="postsharp:categories" content="{{categories}}">
   <meta name="description" content="{{summary}}">
+  <meta name="keywords" content="{{keywords}}">
 
-  <!-- Modified for PostSharp documentation. -->
   {{#redirect_url}}
     <meta http-equiv="refresh" content="0;URL='{{redirect_url}}'">
   {{/redirect_url}}
@@ -18,7 +17,6 @@
     <title>{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}} {{#_appTitle}}| {{_appTitle}} {{/_appTitle}}</title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}} {{#_appTitle}}| {{_appTitle}} {{/_appTitle}}">
-    {{#_description}}<meta name="description" content="{{_description}}">{{/_description}}
     <link rel="shortcut icon" href="{{_rel}}{{{_appFaviconPath}}}{{^_appFaviconPath}}favicon.ico{{/_appFaviconPath}}">
     <link rel="stylesheet" href="{{_rel}}styles/docfx.vendor.css">
     <link rel="stylesheet" href="{{_rel}}styles/docfx.css">
