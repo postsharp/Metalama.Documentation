@@ -34,11 +34,7 @@ internal class LogAspect : IAspect<IMethod>, IAspect<IProperty>
         var attribute = this._attribute.GetTarget();
 
         var category =
-            (string?)
-            attribute.NamedArguments
-                .SingleOrDefault( n => n.Key == "Category" )
-                .Value
-                .Value ?? "default";
+            attribute.GetArgumentValue( nameof(LogAttribute.Category), "default" )!;
 
         Console.WriteLine( $"[{category}] Executing {meta.Target.Method}" );
 
