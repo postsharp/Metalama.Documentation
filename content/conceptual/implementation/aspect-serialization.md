@@ -39,21 +39,21 @@ The following types are serializable by default:
 
 * Primitive types: `bool`, `byte`, `char`, `short`, `int`, `long`, `ushort`, `sbyte`, `uint`, `ulong`, `float`, `double`, `decimal`, `double`.
 * All `enum` types.
-* Arrays of any supported type.
+* Arrays of any supported type (including `object[]` arrays, as long as items are of a supported type).
 * Common system types: <xref:System.DateTime>, <xref:System.TimeSpan>, <xref:System.Guid>, <xref:System.Globalization.CultureInfo>.
 * Collection types: <xref:System.Collections.Generic.List`1>, <xref:System.Collections.Generic.Dictionary`2>.
 * Immutable collection types: <xref:System.Collections.Immutable.ImmutableDictionary`2>, <xref:System.Collections.Immutable.ImmutableArray`1>, <xref:System.Collections.Immutable.ImmutableHashSet`1>.
-* Metalama types: <xref:Metalama.Framework.Code.IRef`1>, <xref:Metalama.Framework.Code.SerializableDeclarationId>, <xref:Metalama.Framework.Code.SerializableTypeId>, <xref:Metalama.Framework.Options.IncrementalKeyedCollection`2>, <xref:Metalama.Framework.Options.IncrementalHashSet`1>.
+* Metalama types: <xref:Metalama.Framework.Code.IRef`1>, <xref:Metalama.Framework.Code.SerializableDeclarationId>, <xref:Metalama.Framework.Code.SerializableTypeId>, <xref:Metalama.Framework.Code.TypedConstant>, <xref:Metalama.Framework.Options.IncrementalKeyedCollection`2>, <xref:Metalama.Framework.Options.IncrementalHashSet`1>.
 
 > [!WARNING]
-> Code model declarations (<xref:Metalama.Framework.Code.IDeclaration>) are, by design, _NOT_ directly serializable. If you want to serialize a declaration, you must serialize a _reference_ to it, obtained through the <xref:Metalama.Framework.Code.IDeclaration.ToRef*> method.
+> Code model declarations (<xref:Metalama.Framework.Code.IDeclaration>) and types (<xref:Metalama.Framework.Code.IType>) are, by design, _NOT_ serializable. If you want to serialize a declaration, you must serialize a _reference_ to it, obtained through the <xref:Metalama.Framework.Code.IDeclaration.ToRef*> method. The deserialized reference must then be resolved in its new context using the <xref:Metalama.Framework.Code.IRef`1.GetTarget*?text=IRef.GetTarget> method.
 
 
 ## Custom serializable types
 
-Metalama automatically generates serializers for any type deriving from the <xref:Metalama.Framework.Serialization.ICompileTimeSerializable> interface. This means, implicitly, any aspect, fabric, or class implementing <xref:Metalama.Framework.Aspects.IAspectState>, <xref:Metalama.Framework.Code.IAnnotation>, <xref:Metalama.Framework.Options.IHierarchicalOptions>, <xref:Metalama.Framework.Validation.BaseReferenceValidator>,  <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicate>, ...
+Metalama automatically generates serializers for any type deriving from the <xref:Metalama.Framework.Serialization.ICompileTimeSerializable> interface. This includes any aspect, fabric, or class implementing <xref:Metalama.Framework.Aspects.IAspectState>, <xref:Metalama.Framework.Code.IAnnotation>, <xref:Metalama.Framework.Options.IHierarchicalOptions>, <xref:Metalama.Framework.Validation.BaseReferenceValidator>,  <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicate>, ...
 
-You normally don't need to worry about the serialization process since it should work transparently most of the time. However, here are a few tricks to cope with corner cases:
+You normally don't need to worry about the serialization process since it should usually work transparently. However, here are a few tricks to cope with corner cases:
 
 ### Skipping a field or property
 
