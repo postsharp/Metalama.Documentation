@@ -2,6 +2,7 @@
 uid: pipeline
 level: 400
 summary: "The document outlines the steps involved in a compilation pipeline: initialization, applying aspects, and transforming the compilation. It differentiates between compile time and design time processes."
+keywords: "compilation pipeline, compile-time processes, design time processes, observable transformations, non-observable transformations, code model version"
 ---
 
 # Compilation pipeline
@@ -52,6 +53,7 @@ The subsequent actions depend on whether the pipeline runs at design time or at 
 
 At design time, ignore non-observable transformations, and create partial files for observable transformations.
 Templates are never executed at design time.
+
 
 
 

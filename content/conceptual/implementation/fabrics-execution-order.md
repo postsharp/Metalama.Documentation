@@ -2,6 +2,7 @@
 uid: fabrics-execution-order
 level: 400
 summary: "The document explains the execution order of fabrics in a project, including project fabrics, transitive project fabrics, namespace fabrics, type fabrics, and aspects, with criteria for each category."
+keywords: "execution order, dependency graph, project configuration"
 ---
 
 # Execution order of fabrics
@@ -28,6 +29,7 @@ Fabrics are executed in the following order:
 5. **Type fabrics**. It's important to note that type fabrics can provide advice, which is executed before any aspect.
 
 6. **Aspects**. For information regarding the execution order of explicitly ordered and unordered aspects, please refer to <xref:ordering-aspects>.
+
 
 
 

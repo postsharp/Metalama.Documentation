@@ -2,6 +2,7 @@
 uid: validation-extending
 level: 300
 summary: "The document provides a guide on how to create custom validation rules in Metalama, including extending usage verification with custom predicates and creating new verification rules."
+keywords: "custom validation rules, Metalama, usage verification, custom predicates, Metalama.Extensions.Architecture, ReferencePredicate, validation rules, codebase validation"
 ---
 
 # Creating your own validation rules
@@ -88,4 +89,5 @@ To learn more, it's best to study the [source code](https://github.com/postsharp
 
 > [!div class="see-also"]
 > <xref:video-custom-architecture-rules>
+
 

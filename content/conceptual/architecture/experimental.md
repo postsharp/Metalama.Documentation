@@ -2,6 +2,7 @@
 uid: experimental
 level: 200
 summary: "The document explains how to mark APIs as experimental using Metalama's ExperimentalAttribute attribute and Experimental compile-time method, offering step-by-step guides and examples."
+keywords: "experimental API, Metalama, ExperimentalAttribute, Obsolete attribute, warnings, Metalama.Extensions.Architecture"
 ---
 
 # Marking experimental APIs
@@ -45,4 +46,5 @@ If you wish to mark several APIs as experimental using a programmatic rule inste
 In the following example, all public members of `ExperimentalNamespace` are programmatically marked as experimental.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Experimental_Fabric.cs tabs="target"]
+
 

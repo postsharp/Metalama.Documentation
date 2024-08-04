@@ -2,6 +2,7 @@
 uid: fabrics
 level: 200
 summary: "The document discusses fabrics in the Metalama framework, which are unique classes that execute at compile time. They can add aspects, configure libraries, and implement architecture rules."
+keywords: "fabrics, Metalama framework, configure libraries, architecture rules, ProjectFabric, Namespace Fabric, Type Fabric, Transitive Project Fabrics"
 ---
 
 # Fabrics
@@ -28,4 +29,5 @@ In addition to <xref:Metalama.Framework.Fabrics.ProjectFabric>, there are three 
 | Type Fabric | <xref:Metalama.Framework.Fabrics.TypeFabric> | Add aspects to different members of the type that contains the nested fabric type. |
 
 Let's now explore the second use case of fabrics: configuration.
+
 

@@ -2,6 +2,7 @@
 uid: reflection
 level: 300
 summary: "The document explains how to generate System.Reflection objects using the Metalama.Framework.Code namespace, and provides a conversion table and a code example."
+keywords: "System.Reflection objects, Metalama.Framework.Code namespace, run-time reflection, eliminating reflection, compile-time code, conversion methods, IType.ToType, IMethod.ToMethodInfo, programming in .NET, obfuscation warning"
 ---
 
 # Generating System.Reflection objects
@@ -29,6 +30,7 @@ To accommodate these situations, the `Metalama.Framework.Code` namespace provide
 The following example demonstrates a method that returns a list of all methods represented as <xref:System.Reflection.MethodInfo> objects in the target type.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/EnumerateMethodInfos.cs name="Enumerate MethodInfos"]
+
 
 
 

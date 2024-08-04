@@ -2,6 +2,7 @@
 uid: using-metalama
 level: 100
 summary: "The document is a guide on using Metalama, particularly for individuals who want to use aspects without creating new ones. It includes articles on obtaining, applying, and debugging aspects."
+keywords: "Metalama, obtaining aspects, applying aspects, debugging aspects, Code Lens, Code Diff, live templates"
 ---
 
 # Using Metalama
@@ -29,5 +30,6 @@ This chapter is recommended for those who:
 |<xref:debugging-aspect-oriented-code> | This article provides guidance on how to debug transformed code using Visual Studio. |
 |<xref:applying-live-templates> | Live templates are unique types of aspects that modify your source code directly in the editor. This article guides you on how to use them. |
 |<xref:fabrics-adding-aspects>| Manually adding aspects or using the refactoring menu may not always be feasible or practical. Sometimes, a programmatic method is required to apply aspects to different targets. This article demonstrates how to use `Fabrics` programmatically to add aspects to various targets. |
+
 
 

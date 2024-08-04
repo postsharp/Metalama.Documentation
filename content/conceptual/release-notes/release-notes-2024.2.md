@@ -1,6 +1,7 @@
 ---
 uid: release-notes-2024.2
 summary: ""
+keywords: "Metalama 2024.2, release notes"
 ---
 
 # Metalama 2024.2

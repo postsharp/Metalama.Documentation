@@ -2,6 +2,7 @@
 uid: aspect-configuration
 summary: "The document discusses the benefits of implementing a configuration for aspects in a project, such as centralized aspect options and improved run-time performance. It also mentions two mechanisms for configuration: the configuration API and MSBuild properties."
 level: 200
+keywords: "aspect configuration, centralized aspect options, configuration API, MSBuild properties,compile-time options, custom attribute"
 ---
 
 # Making aspects configurable
@@ -24,6 +25,7 @@ There are two complementary mechanisms for configuration: the configuration API 
 | <xref:exposing-options> | This article explains how to build a programmatic configuration API that can be called from fabrics. |
 | <xref:reading-msbuild-properties> | This article describes how your aspect can consume an MSBuild property. |
 | <xref:configuration-custom-merge> | This article explains in detail the options merging process, and how to customize it. |
+
 
 
 

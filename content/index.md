@@ -1,6 +1,7 @@
 ---
 uid: index
 summary: "The document provides guidance on how to navigate the Metalama documentation, a framework for enhancing C# code quality and productivity. It offers resources for help and contribution. "
+keywords: "C# code quality, productivity, code generation, analysis framework, Metalama documentation, aspects, develop aspects, getting started, API documentation, tutorial videos"
 ---
 
 # Metalama Documentation
@@ -40,6 +41,7 @@ The source code for this documentation (excluding the API documentation) is open
 
 * [Open an issue](https://github.com/postsharp/Metalama.Documentation/issues/new) or
 * Submit a PR with your proposed improvements.
+
 
 
 

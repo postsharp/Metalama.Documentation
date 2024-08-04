@@ -2,6 +2,7 @@
 uid: aspect-design
 level: 300
 summary: "The document provides an in-depth understanding of the Metalama aspect framework design, including its class diagram, abilities, and examples of aspects targeting methods, fields, and properties. It also explains how to customize aspect appearance in the IDE."
+keywords: "Metalama aspect framework, aspect design, class diagram, IAspect interface, IAspectBuilder, code transformation, diagnostics reporting, advanced code validations, adding aspects, IDE customization"
 ---
 
 # Understanding the aspect framework design
@@ -127,3 +128,4 @@ By default, an aspect class is represented in the IDE by the class name trimmed 
 The following example demonstrates an aspect that targets methods, fields, and properties with a single implementation class.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/LogMethodAndProperty.cs name="Aspect Targeting Methods, Fields and Properties"]
+

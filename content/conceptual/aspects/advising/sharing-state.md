@@ -2,6 +2,7 @@
 uid: sharing-state-with-advice
 level: 400
 summary: "The document provides strategies for sharing compile-time state between different pieces of advice or the BuildAspect method and the advice. It discusses sharing state with compile-time template parameters, the Tags property, and the AspectState property."
+keywords: "compile-time state, BuildAspect method, template parameters, Tags property, AspectState property, sharing state, advice methods, .NET, annotations, IAspectBuilder"
 ---
 
 # Sharing state with advice
@@ -68,3 +69,4 @@ A last way to share state with successor aspects is to use annotations. Annotati
 You can add annotations from the `BuildAspect` method using the <xref:Metalama.Framework.Advising.AdviserExtensions.AddAnnotation*> advice method.
 
 You can read annotations using `declaration.Enhancements().GetAnnotations<T>` where `T` is the type of your annotation (see <xref:Metalama.Framework.Code.DeclarationEnhancements`1.GetAnnotations*>).
+

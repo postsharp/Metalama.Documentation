@@ -1,6 +1,7 @@
 ---
 uid: release-notes-2024.1
 summary: "Metalama 2024.1 improves the user interface, especially through a Visual Studio extension that has been unified with PostSharp. The version also improves performance and the advising of constructors."
+keywords: "Metalama 2024.1, release notes"
 ---
 
 # Metalama 2024.1
@@ -58,3 +59,4 @@ For details, see <xref:overriding-constructors>.
 * Contracts are now ineligible on unimplemented partial methods.
 * In <xref:Metalama.Framework.Code.TypeFactory>, the generic methods `public static T ToNullableType<T>( this T type ) where T : IType` and `public static T ToNonNullableType<T>( this T type ) where T : IType` have been replaced by a set of non-generic overloads (see <xref:Metalama.Framework.Code.TypeFactory.ToNullableType*> and <xref:Metalama.Framework.Code.TypeFactory.ToNonNullableType*>), taking into account the fact that the nullable type of an <xref:Metalama.Framework.Code.ITypeParameter> is not an <xref:Metalama.Framework.Code.ITypeParameter> if the type parameter has a `struct` constraint.
 * The <xref:Metalama.Framework.Code.INamedType.UnderlyingType> property, when the <xref:Metalama.Framework.Code.INamedType> represents a `Nullable<T>` (i.e., a nullable value type), no longer returns `T` but `Nullable<T>`. This behavior is now consistent with other generic types but no longer consistent with nullable reference types.
+

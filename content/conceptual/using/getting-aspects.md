@@ -2,6 +2,7 @@
 uid: getting-aspects
 level: 100
 summary: "The document provides information about using pre-built aspects in projects, including demo aspects and those from the Metalama community, without altering source code."
+keywords: "pre-built aspects, source code, NuGet package, Metalama.Documentation.QuickStart, Metalama Marketplace, open-source aspects"
 ---
 # Getting aspects
 
@@ -27,6 +28,7 @@ When applied, these aspects change the behavior of your source code without alte
 ## Metalama Marketplace
 
 Don't use the demo aspects in real projects. Instead, [Metalama Marketplace](https://www.postsharp.net/metalama/marketplace) and find dozens of open-source aspects and extensions.
+
 
 
 

@@ -1,6 +1,7 @@
 ---
 uid: migration-feature-status
 summary: "The document provides an update on the migration of PostSharp features to Metalama, detailing what has been completed and what is still in progress."
+keywords: "migration of PostSharp features, Metalama vs PostSharp, PostSharp vs Metalama, comparison"
 ---
 
 # Status of the migration of PostSharp features to Metalama
@@ -36,4 +37,5 @@ See <xref:validation> for details.
 | Multi-threading        | Not started      |                          |                                                                    |
 | Aggregatable           | Not started      |                          |                                                                    |
 | Weak event             | Not started      |                          |                                                                    |
+
 

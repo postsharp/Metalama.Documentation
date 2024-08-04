@@ -1,6 +1,7 @@
 ---
 uid: troubleshooting-unattended-build
 summary: "The document provides instructions on how to enable logging and process dumps for an unattended build on a build server without installing the 'metalama' tool."
+keywords: "unattended build, build server, logging, process dumps, diagnostics.json, environment variable, METALAMA_DIAGNOSTICS, METALAMA_CONSOLE_TRACE, dotnet build, msbuild"
 ---
 
 # Troubleshooting an unattended build
@@ -99,3 +100,4 @@ jobs:
             - run: dotnet build --configuration Debug --no-restore -v:detailed --disable-build-servers
             - run: dotnet test --configuration Release --no-restore -v:detailed --disable-build-servers 
 ```
+

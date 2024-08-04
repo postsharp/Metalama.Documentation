@@ -2,6 +2,7 @@
 uid: exposing-options
 level: 300
 summary: "The document provides a detailed guide on how to expose a configuration API using the Metalama.Framework.Options namespace. It explains how to create an options class, read options, configure options from a fabric, expose options directly on your aspect, and create a configuration custom attribute."
+keywords: "Metalama.Framework.Options, configuration API, options class, read options, configure options, IHierarchicalOptions, IIncrementalObject, ApplyChanges method, IHierarchicalOptionsProvider, custom attribute"
 ---
 
 # Exposing a configuration API
@@ -90,4 +91,5 @@ To create a configuration custom attribute, follow these steps:
 1. Create a class derived from <xref:System.Attribute?text=System.Attribute>.
 2. Add the <xref:System.Attribute?text=[AttributeUsage]> attribute as required. Typically, you will want to allow users to apply this attribute to the assembly and the enclosing type.
 3. Implement the <xref:Metalama.Framework.Options.IHierarchicalOptionsProvider> interface as described above.
+
 

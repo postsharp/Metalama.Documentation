@@ -2,6 +2,7 @@
 uid: configuring-contracts
 summary: "The document provides guidance on configuring contracts in Metalama, covering both compile-time and run-time settings. It explains how to change validation logic, enable/disable contracts, customize inheritance or contract direction, and customize exception types or messages."
 level: 200
+keywords: "contracts configuration, contract options, enable/disable contracts, Metalama, ContractHelpers class, ContractOptions class, exception customization, .NET"
 ---
 
 # Configuring contracts
@@ -65,5 +66,6 @@ To customize the type of exceptions thrown or the exception messages (for instan
 The following example demonstrates how to translate the exception messages into French.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Contracts/Localize.cs]
+
 
 

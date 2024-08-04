@@ -2,6 +2,7 @@
 uid: template-parameters
 level: 300
 summary: "The document describes how to use compile-time parameters and type parameters in the BuildAspect method in Metalama. It provides examples and alternatives for using these parameters."
+keywords: "compile-time parameters, type parameters, BuildAspect method, Metalama, template method, compile-time-only, tags,"
 ---
 
 # Template parameters and type parameters
@@ -51,3 +52,4 @@ The `Reset` template method accepts two compile-time parameters:
 * A type parameter `T` that contains the type of the field or property. This type parameter is used to generate the `default(T)` syntax, where `T` is replaced by the actual field or property when the template is expanded.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/GenerateResetMethods.cs name="Generate Reset Methods"]
+

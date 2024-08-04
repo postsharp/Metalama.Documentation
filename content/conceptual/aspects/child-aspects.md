@@ -2,6 +2,7 @@
 uid: child-aspects
 level: 300
 summary: "The document explains how to add child aspects in Metalama Framework, the conditions they must follow, and how to access the parent aspect."
+keywords: "child aspects, parent aspect, Metalama Framework, IAspectBuilder, AddAspect method, aspect order, IAspectReceiver, RequireAspect method, aspect precedence, auditing aspects"
 ---
 
 # Adding child aspects

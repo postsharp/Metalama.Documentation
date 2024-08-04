@@ -1,6 +1,7 @@
 ---
 uid: observability
 level: 100
+keywords: "Observable pattern, INotifyPropertyChanged, MVVM, INotifyPropertyChanged interface, Metalama.Patterns.Observability, ObservableAttribute, ConfigureObservability, ConstantAttribute, ObservabilityExtensions"
 ---
 
 # Metalama.Patterns.Observability
@@ -126,3 +127,4 @@ protected virtual void OnPropertyChanged( PropertyChangedEventArgs args );
 ```
 
 This method can also be named `NotifyOfPropertyChange` or `RaisePropertyChanged` instead of `OnPropertyChanged`.
+

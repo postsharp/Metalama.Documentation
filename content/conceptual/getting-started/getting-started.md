@@ -1,5 +1,6 @@
 ---
 uid: main-getting-started
+keywords: "Metalama, getting started"
 ---
 
 # Getting started with Metalama
@@ -101,3 +102,4 @@ There are three paths you can take from here according to your learning style:
 * <xref:videos>
 * <xref:conceptual>
 * <xref:samples>
+

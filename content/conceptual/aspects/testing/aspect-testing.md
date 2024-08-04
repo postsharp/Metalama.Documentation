@@ -2,6 +2,7 @@
 uid: aspect-testing
 level: 300
 summary: "The document provides a comprehensive guide on how to test aspects using the Metalama.Testing.AspectTesting package. It details the steps to create a test project, add a test case, run the test case, and copy the test output to the expected output. It also includes advanced features and customizations."
+keywords: "compile-time testing, Metalama.Testing.AspectTesting, aspect testing, .NET, create test project, run test case, verify transformed code, expected output, xUnit test project, Metalama framework"
 ---
 
 # Testing the Aspects
@@ -284,3 +285,4 @@ The `[CurrentDirectory]` attribute will automatically provide test data for all 
 
 > [!div class="see-also"]
 > <xref:video-testing>
+

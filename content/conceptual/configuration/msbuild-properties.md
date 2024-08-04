@@ -2,6 +2,7 @@
 uid: msbuild-properties
 level: 300
 summary: "The document provides details on MSBuild properties and environment variables, including their types, descriptions and default values, related to the Metalama compiler."
+keywords: "MSBuild properties, Metalama, environment variables, temporary directory, execution order, transformers, debug transformed code, transformed code files, output path."
 ---
 
 # MSBuild properties and environment variables
@@ -55,6 +56,7 @@ The `LamaDebug` configuration assigns the following properties:
         <MetalamaDebugTransformedCode>True</MetalamaDebugTransformedCode>
     </PropertyGroup>
 ```
+
 
 
 

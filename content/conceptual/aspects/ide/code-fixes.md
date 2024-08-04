@@ -2,6 +2,7 @@
 uid: code-fixes
 level: 300
 summary: "The document provides detailed instructions on how to offer code fixes and refactorings using the Metalama Framework, including attaching code fixes to diagnostics, suggesting refactorings without diagnostics, and building multi-step code fixes. It also discusses performance considerations."
+keywords: "code fixes, refactorings, Metalama Framework, diagnostics, code fix suggestions, multi-step code fixes, CodeFixFactory, ScopedDiagnosticSink, ICodeActionBuilder, performance considerations"
 ---
 
 # Offering code fixes and refactorings
@@ -67,3 +68,4 @@ The custom code fix performs the following actions:
 > [!div class="see-also"]
 > <xref:video-code-fixes>
 > <xref:live-template>
+

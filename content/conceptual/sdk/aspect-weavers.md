@@ -2,6 +2,7 @@
 uid: aspect-weavers
 level: 400
 summary: "The document provides a detailed guide on creating weaver-based aspects using the Metalama SDK. It covers referencing the SDK, defining the aspect's public interface, creating the weaver, binding the aspect to the weaver, defining eligibility, implementing the TransformAsync method, and writing unit tests."
+keywords: "weaver-based aspects, Metalama SDK, TransformAsync method, Roslyn API, C# code transformations, IAspectWeaver interface, aspect weaver"
 ---
 
 # Aspect weavers
@@ -12,10 +13,10 @@ In contrast, aspect weavers enable you to perform entirely arbitrary transformat
 
 When you assign an aspect weaver to an aspect class, Metalama bypasses the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method to implement the aspect and instead calls the aspect weaver.
 
-Unlike normal aspects, weaver-based aspects:
-
-* Are significantly more complex to implement;
-* May significantly impact compilation performance, particularly when many are in use.
+> [!WARNING]
+> The use of weaver-based aspects is generally discouraged:
+> * They are significantly more complex to implement, are worse integrated with the IDEs
+> * They have a significant performance impact, particularly when many are in use.
 
 ## Creating a weaver-based aspect
 
@@ -123,4 +124,5 @@ Available examples of Metalama.Framework.Sdk weavers are:
 * [Metalama.Community.Virtuosity](https://github.com/postsharp/Metalama.Community/tree/master/src/Metalama.Community.Virtuosity): Makes all possible methods in a type `virtual`.
 * [Metalama.Community.AutoCancellationToken](https://github.com/postsharp/Metalama.Community/tree/master/src/Metalama.Community.AutoCancellationToken): Automatically propagates `CancellationToken` parameter.
 * [Metalama.Community.Costura](https://github.com/postsharp/Metalama.Community/tree/master/src/Metalama.Community.Costura): Bundles .NET Framework applications into a single executable file.
+
 

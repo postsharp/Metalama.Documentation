@@ -2,6 +2,7 @@
 uid: roslyn-api
 level: 400
 summary: "The document provides a guide on how to access the syntax tree in the Roslyn API from aspects using the Metalama SDK. It includes steps to reference the SDK and use the Roslyn API."
+keywords: "Roslyn API, syntax tree, Metalama SDK, Metalama.Framework.Sdk, Metalama.Framework, ISymbol.DeclaringSyntaxReferences, Metalama.Framework.Engine.CodeModel.SymbolExtensions, IDeclaration, GetSymbol, GetDocumentationCommentId"
 ---
 
 # Using the Roslyn API from aspects
@@ -35,3 +36,4 @@ static string? GetDocumentationCommentId(this IDeclaration metalamaDeclaration)
     return roslynSymbol.GetDocumentationCommentId();
 }
 ```
+

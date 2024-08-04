@@ -2,6 +2,7 @@
 uid: quickstart-adding-aspects
 level: 100
 summary: "This document provides a guide on how to add aspects to source code using custom attributes. It covers the process of adding aspects as custom attributes, adding multiple attributes, and using the refactoring menu."
+keywords: "Metalama, getting started"
 ---
 
 # Adding aspects to your code
@@ -62,4 +63,5 @@ The refactoring menu is smart enough to recognize which aspect has already been 
 
 > [!div class="see-also"]
 > <xref:video-first-aspect>
+
 

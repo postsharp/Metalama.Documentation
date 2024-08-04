@@ -1,5 +1,6 @@
 ---
 uid: migrating-inpc
+keywords: "PostSharp Metalama migration, NotifyPropertyChanged, INotifyPropertyChanged, NotifyPropertyChangedAttribute, "
 ---
 
 # Migrating the [NotifyPropertyChanged] aspects

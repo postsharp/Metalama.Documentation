@@ -2,6 +2,7 @@
 uid: testing
 level: 300
 summary: "The document outlines three strategies for testing aspects: compile-time tests, run-time tests, and traditional unit tests, each serving different purposes and scenarios."
+keywords: "aspect testing, compile-time tests, run-time tests, unit tests, code transformation tests, error reporting tests, Xunit, testing framework, Metalama"
 ---
 
 # Testing aspects
@@ -41,6 +42,7 @@ There are three complementary strategies to test your aspects. The first strateg
 
 > [!div class="see-also"]
 > <xref:video-testing>
+
 
 
 

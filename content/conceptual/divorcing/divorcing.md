@@ -2,6 +2,7 @@
 uid: divorcing
 level: 200
 summary: "The document explains the process of separating from the Metalama software framework, using the 'metalama divorce' command. It outlines the potential drawbacks and a seven-step procedure to ensure a smooth transition."
+keywords: "metalama divorce, separating from Metalama, inject generated code, manual maintenance, boilerplate code, .NET, remove references"
 ---
 
 # Divorcing from Metalama
@@ -120,5 +121,6 @@ metalama divorce
 ## Format
 dotnet format
 ```
+
 
 

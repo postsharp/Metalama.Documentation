@@ -2,6 +2,7 @@
 uid: aspect-composition
 level: 400
 summary: "Aspect composition refers to applying multiple aspects to the same class. Metalama addresses this complex issue through strong ordering of aspects and advice, code model versioning, and ensuring safe composition of advice."
+keywords: "aspect composition, multiple aspects, strong ordering, code model versioning, safe composition, Metalama, .NET, advice, aspect layer, depth level"
 ---
 
 # Aspect composition
@@ -43,6 +44,7 @@ When several aspects, unaware of each other, add advice to the same declaration,
 For instance, if two aspects override the same method, both aspects are guaranteed to compose correctly. This is a complex problem, but Metalama resolves it, eliminating the need for you to worry about it.
 
 [comment]: # (TODO: example log and cache)
+
 
 
 

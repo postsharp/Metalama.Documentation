@@ -1,6 +1,7 @@
 ---
 uid: introducing-types
 level: 300
+keywords: "IntroduceClass, Metalama, nested class, non-nested class, IAdviser, INamespace, BuildAspect, introduce members, Builder pattern, introduce types"
 ---
 
 # Introducing types
@@ -85,3 +86,4 @@ A key element of design in the aspect is the `PropertyMapping` record, which map
 We use the `aspectBuilder.Tags` property to share this list with the template implementations, which can then read it from `meta.Tags.Source`.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Builder.cs name="The Builder pattern"]
+

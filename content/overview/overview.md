@@ -1,6 +1,7 @@
 ---
 uid: overview
 summary: "Metalama is a tool that offers features such as Aspect-Oriented Programming, Code Generation, and Code Validation to improve code readability, generate repetitive code, and ensure code compliance with team rules."
+keywords: "Metalama, Aspect-Oriented Programming, Code Generation, Code Validation, code readability, repetitive code, team rules, .NET, encapsulate repetitive patterns, generate repetitive code, verify code compliance"
 ---
 
 # Metalama Overview
@@ -29,5 +30,6 @@ CodeFixes -- transform<br>at design time --> SourceCode[Source Code]
 Aspects -- transform<br>at compile time --> TransformedCode[Compiled Code]
 
 ```
+
 
 

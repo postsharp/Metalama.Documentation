@@ -1,6 +1,7 @@
 ---
 uid: wpf-dependency-property
 level: 100
+keywords: "dependency property, WPF, Metalama, boilerplate code, automatic property, DependencyPropertyAttribute, validation, PropertyChanged callback, default values, .NET"
 ---
 
 # WPF Dependency Property
@@ -154,3 +155,4 @@ The default naming convention is evaluated last and cannot be modified.
 Here is an illustration of a coding convention for the Czech language.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Wpf/DependencyProperties/NamingConvention.cs]
+

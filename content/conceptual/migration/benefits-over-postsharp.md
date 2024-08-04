@@ -1,6 +1,7 @@
 ---
 uid: benefits-over-postsharp
 summary: "Metalama offers benefits over PostSharp including higher runtime performance, broader platform support, visibility of declarations introduced by aspects from the source code, and real-time feedback while editing code."
+keywords: "Metalama vs PostSharp, PostSharp vs Metalama, comparison, benefits"
 ---
 
 # Benefits of Metalama over PostSharp
@@ -36,4 +37,5 @@ In PostSharp, declarations introduced by aspects could not be used in your sourc
 With PostSharp, you had to build your projects to receive the warnings and errors provided by the aspects or to update the data shown by PostSharp Tools in Visual Studio.
 
 With Metalama, you receive feedback within seconds because your projects are always verified in real-time by the IDE—and Metalama integrates with the IDE.
+
 

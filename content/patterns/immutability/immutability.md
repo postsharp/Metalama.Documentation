@@ -1,6 +1,7 @@
 ---
 uid: immutability
 level: 200
+keywords: "immutability, immutable type, C#, Metalama.Patterns.Immutability, ImmutableAttribute, ConfigureImmutability, shallow immutability, deep immutability, Metalama"
 ---
 
 # Metalama.Patterns.Immutability
@@ -66,4 +67,5 @@ To assign an <xref:Metalama.Patterns.Immutability.ImmutabilityKind> to types to 
 The following example marks the `Uri` class as deeply immutable. Thanks to this, a `Uri` property can legally be used in the deeply immutable type `Person`, and no warning is reported.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Immutability/Fabric.cs  diff-side="source"]
+
 

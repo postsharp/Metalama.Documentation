@@ -1,6 +1,7 @@
 ---
 uid: release-notes-2023.4
 summary: "Metalama 2023.4 introduces a new configuration framework, the first stable release of Metalama Contracts, and the stabilization of Metalama Caching. It also includes updates for Visual Studio 17.8 readiness and various enhancements and bug fixes."
+keywords: "Metalama 2023.4, release notes"
 ---
 
 # Metalama 2023.4
@@ -86,3 +87,4 @@ We fixed 39 bugs before the GA of this version. For details, see the pre-release
 * [2023.4.3-preview](https://github.com/orgs/postsharp/discussions/227)
 * [2023.4.2-preview](https://github.com/orgs/postsharp/discussions/224)
 * [2024.4.1-preview](https://github.com/orgs/postsharp/discussions/219)
+
