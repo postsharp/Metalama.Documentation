@@ -173,9 +173,13 @@ items:
             topicUid: compile-time-testing
         - name: Advising a single type with a fabric
           topicUid: fabrics-advising
+
+        - name: Decoupling attributes from their implementation
+          topicUid: decoupling-aspects-from-attributes
+
         - name: Distributing projects that use aspects
           topicUid: distributing
-
+          
         - name: Extending Metalama
           topicUid: sdk
           items:

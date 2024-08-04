@@ -20,25 +20,4 @@
         <PackageReference Include="Metalama.Extensions.Architecture" />
         <PackageReference Include="Metalama.Testing.AspectTesting" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="IntroduceTopLevelClass.Aspect.cs">
-        <DependentUpon>IntroduceTopLevelClass.cs</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="IntroduceNestedClass_BaseClass.Aspect.cs">
-        <DependentUpon>IntroduceNestedClass_BaseClass.cs</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="IntroduceNestedClass_Members.Aspect.cs">
-        <DependentUpon>IntroduceNestedClass_Members.cs</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="Builder.Aspect.cs">
-        <DependentUpon>Builder.cs</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-    </ItemGroup>
-    
-
 </Project>
