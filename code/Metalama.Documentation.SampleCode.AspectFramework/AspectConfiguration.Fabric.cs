@@ -1,5 +1,7 @@
+// This is public domain Metalama sample code.
 
 using Metalama.Framework.Fabrics;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Doc.AspectConfiguration
@@ -9,7 +11,12 @@ namespace Doc.AspectConfiguration
     {
         public override void AmendProject( IProjectAmender amender )
         {
-            amender.Project.LoggingOptions().DefaultCategory = "MyCategory";
+            amender.Outbound
+                .SetOptions( new LoggingOptions { Category = "GeneralCategory", Level = TraceLevel.Info } );
+
+            amender.Outbound
+                .Select( x => x.GlobalNamespace.GetDescendant( "Doc.AspectConfiguration.ChildNamespace" )! )
+                .SetOptions( new LoggingOptions() { Category = "ChildCategory" } );
 
             // Adds the aspect to all members.
             amender.Outbound
@@ -17,5 +24,4 @@ namespace Doc.AspectConfiguration
                 .AddAspectIfEligible<LogAttribute>();
         }
     }
-
 }

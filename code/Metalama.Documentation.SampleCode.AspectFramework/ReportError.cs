@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 namespace Doc.ReportError
 {
     internal class Program

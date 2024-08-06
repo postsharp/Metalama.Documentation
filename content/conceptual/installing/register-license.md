@@ -1,42 +1,50 @@
 ---
 uid: register-license
 level: 200
+summary: "Metalama automatically activates a 45-day trial upon first use. Users can switch to Metalama Free or register a license key to continue usage beyond the trial period."
 ---
 
 # Registering a license
 
-When you use Metalama for the first time, it will automatically activate the trial mode, which will work for 45 days. To use Metalama beyond this period, switch to Metalama Free or register a license key.
+When you use Metalama for the first time, the license registration UI will open, where you can choose between the 45-day evaluation mode, the Metalama Free, or registering a license key.
 
-You can use all features of any preview of Metalama for up to 45 days after its release without registering a license.
+To change your license after the activation UI has closed, you can choose one of the following approaches.
 
-## Switching to Metalama Free
+## With the Visual Studio tooling
 
-To switch to the Metalama Free license:
+You can manage your Metalama licenses using Visual Studio Tools for Metalama and PostSharp. For instructions on how to install it, see <xref:install-vsx>.
 
-1. Install Metalama Command Line Tools as described in <xref:dotnet-tool>.
-2. Execute the following command:
+To access these options:
 
-   ```powershell
-   metalama license free
-   ```
+1. In the top-level menu, choose _Extensions_ > _Metalama + PostSharp_ > _Options_.
+2. Go to the _License_ tab.
 
-## Registering a license key
 
-To register a license key for the current user:
+![License Options in the Metalama+PostSharp VSX](vsx-license.png)
 
-1. Install Metalama Command Line Tools as described in <xref:dotnet-tool>.
-2. Execute the following command:
 
-   ```powershell
-   metalama license register <LICENSE KEY>
-   ```
+## With the command-line tool
 
-## Registering a license key manually
+You can manage licensing options using the `metalama` CLI tool.
 
-To register a license manually for the current user:
+First, install the Metalama Command Line Tools as detailed in <xref:dotnet-tool>.
 
-1. Open the Metalama licensing JSON configuration file `licensing.json`. It is located in the `%appdata%\\.metalama` directory on Windows and in the `~/.metalama` directory on Linux and Mac.
-2. Set the license key as the `license` value. If the file doesn't exist, it should contain the following content. (`123-ABCDEFGHIJKLMNOPQRSTUVXYZ` is a placeholder for the actual license key.)
+The following commands are available:
+
+| Command | Description |
+|-------------|-----------------|
+| `metalama license list` | Shows the current license options. |
+| `metalama license try` | Activate the 45-day evaluation period of Metalama Ultimate. |
+| `metalama license free` | Activate Metalama Free, a free but limited edition of Metalama. |
+| `metalama license register <LICENSE KEY>` | Register a license key.
+
+
+## By editing the configuration file
+
+To manually register a license for the current user, do the following:
+
+1. Open the Metalama licensing JSON configuration file `licensing.json`. This file is located in the `%appdata%\\.metalama` directory on Windows, and in the `~/.metalama` directory on Linux and Mac.
+2. Set the license key as the `license` value. If the file doesn't exist, it should contain the following content (where `123-ABCDEFGHIJKLMNOPQRSTUVXYZ` is a placeholder for the actual license key):
 
    ```json
    {
@@ -44,11 +52,12 @@ To register a license manually for the current user:
    }
    ```
 
-## Registering a license key using an environment variable or MSBuild
+## With an environment variable or MSBuild property
 
 The license key can be stored as the value of the `MetalamaLicense` MSBuild property. This allows for the following:
 
-- Configuring the license as a value of the `MetalamaLicense` environment variable.
-- Configuring the license in the source code repository using [Directory.Build.props](https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2022#directorybuildprops-and-directorybuildtargets) file.
-- Configuring the license in the `.csproj` project file.
+- Storing the license as a value of the `MetalamaLicense` environment variable.
+- Storing the license in the source code repository using the [Directory.Build.props](https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2022#directorybuildprops-and-directorybuildtargets) file.
+- Storing the license in the `.csproj` project file.
+
 

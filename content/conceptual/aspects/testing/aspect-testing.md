@@ -1,28 +1,28 @@
 ---
 uid: aspect-testing
 level: 300
+summary: "The document provides a comprehensive guide on how to test aspects using the Metalama.Testing.AspectTesting package. It details the steps to create a test project, add a test case, run the test case, and copy the test output to the expected output. It also includes advanced features and customizations."
 ---
 
 # Testing the Aspects
 
-The idea of compile-time testing is to create both _input_ test files annotated with aspects and _output_ test files, which contain the transformed code (possibly with comments for errors and warnings), and to rely on the compile-time testing framework to automatically execute inputs and verify that the outputs match the expectations.
+The concept of compile-time testing involves creating _input_ test files annotated with aspects and _output_ test files, which contain the transformed code (possibly with comments for errors and warnings). The compile-time testing framework automatically executes inputs and verifies that the outputs match the expectations.
 
-Concretely, you can follow these steps (detailed below):
+Practically, you can follow these steps (detailed below):
 
 1. Create a test project.
 2. For each test case:
-   1. Create an input file, say `MyTest.cs`, and write some code annotated with the aspect custom attribute.
+   1. Create an input file, for example, `MyTest.cs`, and write some code annotated with the aspect custom attribute.
    2. Run the test and inspect the test output window.
    3. Verify the transformed code visually. Fix bugs until the transformed code is as expected.
-   4. Copy the test output to a file named with the extension `.t.cs`, say `MyTest.t.cs`.
-
+   4. Copy the test output to a file named with the extension `.t.cs`, for example, `MyTest.t.cs`.
 
 > [!NOTE]
 > For a real-world example, see [the Metalama.Samples repo on GitHub](https://github.com/postsharp/Metalama.Samples). Sample aspects are tested using the approach described here.
 
 ## Step 1. Create an aspect test project with Metalama.Testing.AspectTesting
 
-1. Create a Xunit test project.
+1. Create an Xunit test project.
 2. Add the `Metalama.Testing.AspectTesting` package (see <xref:packages> for details).
 
 > [!WARNING]
@@ -67,7 +67,7 @@ graph BT
     Metalama.Framework -- references --> Metalama.Framework.Redist
     Metalama.Testing.AspectTesting -- references --> xUnit
     Metalama.Testing.AspectTesting -- references --> Metalama.Framework
-    
+
     classDef your fill:yellow;
     classDef yourTest fill:lightyellow;
     class YourApp your;
@@ -79,24 +79,24 @@ graph BT
 
 ### Customizations performed by Metalama.Testing.AspectTesting
 
-When you import the `Metalama.Testing.AspectTesting` package in a project, the following happens:
+When you import the `Metalama.Testing.AspectTesting` package into a project, the following occurs:
 
-1. The `MetalamaEnabled` project property is set to `False,` which completely disables Metalama for the project. Therefore, the `METALAMA` compilation symbol (usable in a directive like `#if METALAMA`) is no longer defined.
-  
+1. The `MetalamaEnabled` project property is set to `False`, which completely disables Metalama for the project. Therefore, the `METALAMA` compilation symbol (usable in a directive like `#if METALAMA`) is no longer defined.
+
 2. Expected test results (`*.t.cs`) are excluded from the compilation.
 
 3. The Xunit test framework is customized to execute tests from standalone _files_ instead of from methods annotated with `[Fact]` or `[Theory].`
-   
+
 
 ## Step 2. Add a test case
 
-Every source file in the project is a standalone test case. It typically contains some source code to which your aspect is applied, but it can also contain an aspect. You can consider that every file constitutes a project in itself, and this small project receives the project references of the parent compile-time project.
+Every source file in the project is a standalone test case. It usually contains some source code to which your aspect is applied, but it can also contain an aspect. You can consider that every file constitutes a project in itself, and this small project receives the project references of the parent compile-time project.
 
 Every test includes:
 
-- A main test file, named say `BlueSky.cs`.
-- A file containing the _expected transformed code_ of the main test file, named with the `.t.cs` extension, e.g., `BlueSky.t.cs`. We recommend you do not create this file manually but copy the actual output of the test after you are satisfied with it (see below).
-- Optionally, one or more auxiliary test files whose name starts with the main test file, e.g., `BlueSky.*.cs`. Auxiliary files are included in the test compilation, but their transformed code is not appended to the `.t.cs` file.
+- A main test file, named for instance `BlueSky.cs`.
+- A file containing the _expected transformed code_ of the main test file, named with the `.t.cs` extension, for example, `BlueSky.t.cs`. We recommend you do not create this file manually but copy the actual output of the test after you are satisfied with it (see below).
+- Optionally, one or more auxiliary test files whose name starts with the main test file, for example, `BlueSky.*.cs`. Auxiliary files are included in the test compilation, but their transformed code is not appended to the `.t.cs` file.
 
 > [!NOTE]
 > The name of the main file of your test case cannot include a `.` except for the `.cs` extension.
@@ -139,7 +139,11 @@ For details about member introductions, see <xref:introducing-members>.
 
 ## Step 3. Run the test case
 
-When you create a new test file, your IDE does not discover it automatically. To make the new test appear in the Test Explorer, you first need to run all tests in the project. After the first run, the test will appear in the Test Explorer, and it will be possible to execute tests individually.
+When you create a new test file, your IDE does not automatically discover it. To make the new test appear in the Test Explorer, you first need to run all tests in the project. After the first run, the test will appear in the Test Explorer, and it will be possible to execute tests individually.
+
+> [!NOTE]
+> If you are using Rider, you must first configure the xUnit adapter. To achieve this, open settings, go to _Build, Execution, Deployment_ > _Unit Testing_ > _xUnit.net_ and select **Test Runner** instead of metadata for test discovery.
+
 
 You can also run the tests using `dotnet test`.
 
@@ -156,7 +160,7 @@ Verify that the output code matches your expectations. If necessary, fix your as
 
 ## Step 4. Copy the test output to the expected output
 
-Once he `.t.cs` file. For instance, if your test file is named `MyTest.cs`, copy the test output to the file named `MyTest.t.cs`.
+Once the `.t.cs` file is satisfactory, copy the test output to this file. For instance, if your test file is named `MyTest.cs`, copy the test output to the file named `MyTest.t.cs`.
 
 > [!WARNING]
 > The _Paste_ command of Visual Studio can reformat the code and break the test.
@@ -256,3 +260,7 @@ If the above is not an option for you, you can alternatively create, in each dir
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/_Runner.cs name="Test Runner"]
 
 The `[CurrentDirectory]` attribute will automatically provide test data for all files under the directory containing the `_Runner.cs` file and any child directory.
+
+> [!div class="see-also"]
+> <xref:video-testing>
+

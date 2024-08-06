@@ -1,31 +1,33 @@
 ---
 uid: using-metalama
 level: 100
+summary: "The document is a guide on using Metalama, particularly for individuals who want to use aspects without creating new ones. It includes articles on obtaining, applying, and debugging aspects."
 ---
 
 # Using Metalama
 
-If you want to learn how to _use_ aspects, but do not need to learn how to _create_ new ones, this chapter is for you, and you may stop reading after this one. If you want to learn how to create aspects, starting with this chapter is still a good idea because it introduces the core principles and techniques.
+This chapter is designed for individuals seeking to understand how to _use_ aspects without the necessity to _create_ new ones. If your goal aligns with this, you may stop reading after this chapter. However, should you aim to create aspects, beginning with this chapter remains advantageous as it introduces the core principles and techniques.
 
-After finishing this guide you should be comfortable using aspects in your codebase.
+By the end of this guide, you should feel confident in using aspects within your codebase.
 
 ## Who should read this chapter?
 
-Read this chapter if:
+This chapter is recommended for those who:
 
-* you have  just joined a team that is already using Metalama;
-* you are planning to use ready-made aspects but don't plan to build your own;
-* you plan to create your own aspects in the future, but don't want to put the cart before the horse.
+* Have recently joined a team that is already utilizing Metalama.
+* Plan to use ready-made aspects but do not intend to create their own.
+* Intend to create their own aspects in the future, but prefer to take a gradual approach.
 
 
 ## In this chapter
 
-|Article | Description
-|--------|-------------
-|<xref:getting-aspects> | This article describes where to get aspects, and lists the sample aspects that will be used for demonstrations across this guide.
-|<xref:quickstart-adding-aspects> | This article explains how to use an aspect on a target by adding attributes manually or by using the refactoring menu.
-|<xref:understanding-your-code-with-aspects>| This article explains how to use Code Lens and Code Diff to understand your code.
-|<xref:debugging-aspect-oriented-code> | This article explains how you can debug this transformed code as you would otherwise do with Visual Studio.
-|<xref:applying-live-templates> | Live templates are special kinds of aspects that directly modify your source code in the editor. This article explains how to use them.
-|<xref:fabrics-adding-aspects>| Adding aspects by hand or using the refactoring menu is not always possible or viable. Sometimes a programmatic way is needed to add aspects to different targets. This article shows how you can programmatically use `Fabrics` to add aspects to different targets.
+|Article | Description |
+|--------|-------------|
+|<xref:getting-aspects> | This article outlines where to obtain aspects and provides a list of sample aspects used for demonstrations throughout this guide. |
+|<xref:quickstart-adding-aspects> | This article details the process of applying an aspect to a target either manually by adding attributes or through the refactoring menu. |
+|<xref:understanding-your-code-with-aspects>| This article explains how to utilize Code Lens and Code Diff to better understand your code. |
+|<xref:debugging-aspect-oriented-code> | This article provides guidance on how to debug transformed code using Visual Studio. |
+|<xref:applying-live-templates> | Live templates are unique types of aspects that modify your source code directly in the editor. This article guides you on how to use them. |
+|<xref:fabrics-adding-aspects>| Manually adding aspects or using the refactoring menu may not always be feasible or practical. Sometimes, a programmatic method is required to apply aspects to different targets. This article demonstrates how to use `Fabrics` programmatically to add aspects to various targets. |
+
 

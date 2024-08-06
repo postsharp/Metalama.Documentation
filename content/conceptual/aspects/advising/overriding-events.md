@@ -1,11 +1,14 @@
 ---
 uid: overriding-events
 level: 300
+summary: "The document discusses how to override events in a similar manner to overriding properties, but notes that overriding event invocation is not implemented."
 ---
 
 # Overriding events
 
-The way to override events is similar to [overriding properties](overriding-properties.md). You must create an aspect from the <xref:Metalama.Framework.Aspects.OverrideEventAspect> class and override the `add` and `remove` accessors. However, overriding the invocation of an event is not yet implemented.
+Overriding events follows a similar process to [overriding properties](overriding-properties.md). You need to create an aspect from the <xref:Metalama.Framework.Aspects.OverrideEventAspect> class and override the `add` and `remove` accessors. However, please note that overriding the invocation of an event is currently not implemented.
 
-Since overridden `add` and `remove` accessors without overriding `raise` have limited applications, we skip the example for now.
+Given that overridden `add` and `remove` accessors have limited applications without an overridden `raise`, we will forego providing an example at this time.
+
+
 

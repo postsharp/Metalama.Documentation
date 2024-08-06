@@ -1,4 +1,6 @@
-﻿using Metalama.Framework.Aspects;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Framework.Aspects;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -17,7 +19,6 @@ namespace Doc.EnumerateMethodInfos
             }
 
             return methods;
-
         }
     }
 }

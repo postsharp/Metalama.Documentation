@@ -8,14 +8,12 @@ namespace Doc.CompileTimeIf
     {
       Console.WriteLine($"Invoking Foo.InstanceMethod() on instance {this.ToString()}.");
       Console.WriteLine("InstanceMethod");
-      return;
     }
     [CompileTimeIf]
     public static void StaticMethod()
     {
       Console.WriteLine("Invoking Foo.StaticMethod()");
       Console.WriteLine("StaticMethod");
-      return;
     }
   }
 }

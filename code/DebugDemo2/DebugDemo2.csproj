@@ -7,8 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\Metalama.Documentation.QuickStart\Metalama.Documentation.QuickStart.csproj" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Metalama.Documentation.QuickStart" />
+  </ItemGroup>
 
 </Project>

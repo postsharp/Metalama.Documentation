@@ -1,5 +1,6 @@
 ---
 uid: extensions-api
+summary: "The source code for the Extensions API is available on GitHub under the MIT license."
 ---
 
 # Extensions API

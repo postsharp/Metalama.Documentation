@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Threading;
+#pragma warning disable CA1001 // Types that own disposable fields should be disposable
 namespace Doc.Disposable
 {
   [Disposable]

@@ -1,0 +1,776 @@
+{
+    "redirections": [
+        {
+            "source_path": "content/api/advanced-api.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/api/api.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/api/aspect-api.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/api/extensions-api.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/api/flashtrace-api.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/api/introspection-api.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/api/migration-api.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/api/patterns-api.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/architecture/architecture.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/architecture/experimental.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/architecture/extending.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/architecture/internal-only-implement.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/architecture/naming-conventions.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/architecture/usage.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/advising/advising-concepts.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/advising/advising.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/advising/attributes.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/advising/contracts.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/advising/implementing-interfaces.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/advising/initializers.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/advising/introducing-constructor-parameters.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/advising/introducing-members.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/advising/overriding-events.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/advising/overriding-methods.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/advising/overriding-properties.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/advising/sharing-state.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/architecture/architecture.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/aspect-design.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/aspect-inheritance.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/aspects.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/child-aspects.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/configuration/before-2023-4.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/configuration/configuration.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/configuration/customizing-merge.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/configuration/exposing-options.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/configuration/msbuild-properties.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/dependency-injection.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/diagnostics.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/distributing.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/eligibility.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/fabrics-advising.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/ide/code-fixes.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/ide/ide.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/ide/live-template.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/ordering.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/release-notes/release-notes-2023.0.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/release-notes/release-notes-2023.1.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/release-notes/release-notes-2023.2.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/release-notes/release-notes-2023.3.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/release-notes/release-notes-2023.4.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/release-notes/release-notes.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/simple-aspects/contracts.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/simple-aspects/overriding-methods.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/simple-aspects/overriding-properties.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/simple-aspects/simple-aspects.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/templates/auxilliary-templates.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/templates/reflection.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/templates/template-compile-time.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/templates/template-dynamic-code.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/templates/template-overview.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/templates/template-parameters.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/templates/templates.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/testing/aspect-testing.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/testing/compile-time-testing.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/testing/debugging-aspects.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/testing/run-time-testing.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/testing/testing.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/aspects/validating.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/conceptual.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/configuration/configuration.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/configuration/creating-logs.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/configuration/msbuild-properties.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/configuration/packages.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/configuration/process-dump.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/configuration/profiling.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/configuration/telemetry.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/configuration/troubleshooting-unattended-build.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/divorcing/divorcing.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/implementation/aspect-composition.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/implementation/fabrics-execution-order.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/implementation/implementation.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/implementation/pipeline.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/installing/dotnet-tool.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/installing/install-vsx.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/installing/installing.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/installing/register-license.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/introspection/linqpad.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/migration/benefits-over-postsharp.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/migration/differences-from-postsharp.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/migration/feature-status.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/migration/migrating-aspects.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/migration/migrating-configuration.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/migration/migrating-multicasting.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/migration/migration.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/migration/when-migrate.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/requirements.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/sdk/aspect-weavers.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/sdk/custom-metrics.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/sdk/roslyn-api.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/sdk/sdk.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/using/adding-aspects-with-fabrics.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/using/adding-aspects.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/using/amending-many-projects.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/using/configuring.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/using/debugging-aspect-oriented-code.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/using/fabrics.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/using/getting-aspects.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/using/live-templates.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/using/preview-metalama-diff.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/using/understanding-your-code-with-aspects.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/conceptual/using/using.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/index.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/overview/overview.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/caching/caching-keys.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/caching/caching.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/caching/configuring.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/caching/dependencies.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/caching/exclude-parameters.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/caching/getting-started.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/caching/invalidation.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/caching/locking.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/caching/pubsub.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/caching/redis.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/caching/troubleshooting.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/caching/value-adapters.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/contracts/adding-contracts.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/contracts/configuring-contracts.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/contracts/contract-types.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/contracts/contracts.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/contracts/enforcing-non-nullability.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/contracts/invariants.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/dependency-injection/dependency-injection.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/memoization/memoization.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/patterns/patterns.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/reviewing/reviewing.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/videos/architecture-verification.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/videos/code-fixes.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/videos/custom-architecture-rules.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/videos/debugging.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/videos/fabrics-and-inheritance.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/videos/first-aspect.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/videos/more-aspect-types.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/videos/reporting-errors-and-warnings.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/videos/short-introduction.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/videos/testing.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "content/videos/videos.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/caching/caching-1/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/caching/caching-2/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/caching/caching-3/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/caching/caching-4/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/caching/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/change-tracking/change-tracking-1/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/change-tracking/change-tracking-2/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/change-tracking/change-tracking-3/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/change-tracking/change-tracking-4/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/change-tracking/limitations.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/change-tracking/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/clone/clone-1/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/clone/clone-2/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/clone/clone-3/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/clone/clone-4/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/clone/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/contributing.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/enum-viewmodel/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/exception-handling/enrich-exception/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/exception-handling/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/exception-handling/report-and-swallow/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/exception-handling/retry/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/exception-handling/retry/retry-1/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/exception-handling/retry/retry-2/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/exception-handling/retry/retry-3/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/exception-handling/retry/retry-4/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/exception-handling/retry/retry-5/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/fabrics/shared/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/ignore-values/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/log/log-1/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/log/log-2/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/log/log-3/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/log/log-4/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/log/log-5/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/log/log-6/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/log/log-7/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/log/log-8/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/log/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/Metalama.Samples.LogAndCache/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/notifypropertychanged/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/optional-value/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/sdk/notifypropertychanged-sdk-1/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/sdk/notifypropertychanged-sdk-2/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/tostring/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/tostring/tostring-101/README.md",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "source-dependencies/Metalama.Samples/examples/tostring/tostring-102/README.md",
+            "redirect_document_id": false
+        }
+    ]
+}

@@ -1,17 +1,18 @@
 ---
 uid: aspect-design
 level: 300
+summary: "The document provides an in-depth understanding of the Metalama aspect framework design, including its class diagram, abilities, and examples of aspects targeting methods, fields, and properties. It also explains how to customize aspect appearance in the IDE."
 ---
 
 # Understanding the aspect framework design
 
-Up to now, you have seen how to create simple aspects using the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> and <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect>. These classes can be considered _API sugar_ designed to ease the creation of your first aspects. To go further, you must understand the design of the Metalama aspect framework.
+Until now, you have learned how to create simple aspects using the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> and <xref:Metalama.Framework.Aspects.OverrideFieldOrPropertyAspect>. These classes can be viewed as _API sugar_, designed to simplify the creation of your first aspects. Before going deeper, it is essential to understand the design of the Metalama aspect framework.
 
 ## Class diagram
 
-An aspect is, by definition, a class that implements the <xref:Metalama.Framework.Aspects.IAspect`1> generic interface. The generic parameter of this interface is the type of declarations to which the aspect can be applied. For instance, an aspect that can be applied to a method must implement the `IAspect<IMethod>` interface, and an aspect that can be applied to a named type must implement `IAspect<INamedType>`.
+By definition, an aspect is a class that implements the <xref:Metalama.Framework.Aspects.IAspect`1> generic interface. The generic parameter of this interface represents the type of declarations to which the aspect can be applied. For instance, an aspect applicable to a method must implement the `IAspect<IMethod>` interface, while an aspect applicable to a named type must implement `IAspect<INamedType>`.
 
-The aspect author can use the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, inherited from the <xref:Metalama.Framework.Aspects.IAspect`1> interface, to build the aspect _instance_ applied on a specific _target declaration_, thanks to an <xref:Metalama.Framework.Aspects.IAspectBuilder`1>.
+The aspect author can utilize the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method, inherited from the <xref:Metalama.Framework.Aspects.IAspect`1> interface, to construct the aspect _instance_ applied to a specific _target declaration_, using an <xref:Metalama.Framework.Aspects.IAspectBuilder`1>.
 
 ```mermaid
 classDiagram
@@ -32,7 +33,7 @@ classDiagram
         AddInitializer*(...)
     }
 
-    class IDiagnosticSink {
+    class ScopedDiagnosticSink {
         Report(...)
         Suppress(...)
         Suggest(...)
@@ -40,7 +41,7 @@ classDiagram
 
     IAspect --> IAspectBuilder : BuildAspect() receives
     IAspectBuilder --> IAdviceFactory : exposes
-    IAspectBuilder --> IDiagnosticSink : exposes
+    IAspectBuilder --> ScopedDiagnosticSink : exposes
 
 ```
 
@@ -54,35 +55,35 @@ Aspects can perform the following transformations to code:
 * Introduce a newly generated member to an existing type.
 * Implement an interface into a type.
 
-For details, see <xref:advising-code>.
+For more details, refer to <xref:advising-code>.
 
 ### 2. Reporting and suppressing diagnostics
 
-Aspects can report diagnostics (a single word for errors, warnings, and information messages) and suppress diagnostics reported by the C# compiler, analyzers, or other aspects.
+Aspects can report diagnostics (a term encompassing errors, warnings, and information messages) and suppress diagnostics reported by the C# compiler, analyzers, or other aspects.
 
-For details about this feature, see <xref:diagnostics>.
+For more information about this feature, refer to <xref:diagnostics>.
 
 ### 3. Suggesting code fixes
 
-Aspects can suggest code fixes to any diagnostic they report or suggest code refactorings.
+Aspects can suggest code fixes for any diagnostic they report or propose code refactorings.
 
 ### 4. Validating the code that references the target declaration
 
 Aspects can validate not only the target code but also any _reference_ to the target declaration.
 
-See <xref:aspect-validating>.
+Refer to <xref:aspect-validating>.
 
 ### 5. Defining its eligibility
 
 Aspects can define which declarations they can be legally applied to.
 
-See <xref:eligibility>.
+Refer to <xref:eligibility>.
 
 ### 6. Adding other aspects to be applied
 
 Aspects can add other aspects to the target code.
 
-See <xref:child-aspects>.
+Refer to <xref:child-aspects>.
 
 ### 7. Disabling itself
 
@@ -98,6 +99,9 @@ By default, an aspect class is represented in the IDE by the class name trimmed 
 
 ### Example: an aspect targeting methods, fields, and properties
 
-The following example shows an aspect that targets methods, fields, and properties with a single implementation class.
+The following example demonstrates an aspect that targets methods, fields, and properties with a single implementation class.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/LogMethodAndProperty.cs name="Aspect Targeting Methods, Fields and Properties"]
+
+
+

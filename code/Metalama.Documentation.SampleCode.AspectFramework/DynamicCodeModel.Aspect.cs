@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using System.IO;
@@ -13,7 +14,7 @@ namespace Doc.DynamicCodeModel
             var loggerField = meta.Target.Type.FieldsAndProperties.Where( x => x.Type.Is( typeof(TextWriter) ) )
                 .Single();
 
-            loggerField.Value!.WriteLine( $"Executing {meta.Target.Method}." );
+            ((TextWriter) loggerField.Value!).WriteLine( $"Executing {meta.Target.Method}." );
 
             return meta.Proceed();
         }

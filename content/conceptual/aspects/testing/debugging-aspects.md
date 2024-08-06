@@ -1,27 +1,28 @@
 ---
 uid: debugging-aspects
 level: 300
+summary: "The document provides step-by-step instructions on how to debug compile-time and design-time logic in aspect-oriented programming, emphasizing the importance of inserting breakpoints directly into the source code."
 ---
 
 # Debugging aspects
 
-Debugging the compile-time logic of an aspect is currently difficult because the compiler does not execute your source code.  Instead, the transformed code is produced from your source code and stored under an unpredictable path.
+Debugging the compile-time logic of an aspect can be challenging due to the compiler not executing your source code. Instead, the transformed code, derived from your source code, is stored under an unpredictable path.
 
 ## Debugging compile-time logic
 
-To debug compile-time logic:
+To debug compile-time logic, follow the steps below:
 
-1. Inject breakpoints straight into your source code:
+1. Insert breakpoints directly into your source code:
 
-    - In a build-time method such as `BuildAspect`, call <xref:System.Diagnostics.Debugger.Break?text=Debugger.Break()>.
-    - In a template method, call <xref:Metalama.Framework.Aspects.meta.DebugBreak?text=meta.DebugBreak()>.
+    - In a build-time method such as `BuildAspect`, invoke <xref:System.Diagnostics.Debugger.Break?text=Debugger.Break()>.
+    - In a template method, invoke <xref:Metalama.Framework.Aspects.meta.DebugBreak?text=meta.DebugBreak()>.
 
     > [!WARNING]
-    > Normal debugger breakpoints will not work. You must have a breakpoint directly in your source code.
+    > Regular debugger breakpoints will not function. It is crucial to have a breakpoint embedded in your source code.
 
 2. Attach the debugger to the process:
 
-    - In an aspect test, run the test with the debugger.
+    - In an aspect test, execute the test with the debugger.
     - To debug the compiler, set the `MetalamaDebugCompiler` property to `True` during the build:
 
     ```powershell
@@ -30,16 +31,16 @@ To debug compile-time logic:
 
 ## Debugging design-time logic
 
-To attach a debugger to the design-time compiler process:
+To attach a debugger to the design-time compiler process, follow these steps:
 
-1. Install the Metalama Command Line Tool as described in <xref:dotnet-tool>.
-2. Execute the following commands:
+1. Install the Metalama Command Line Tool as instructed in <xref:dotnet-tool>.
+2. Execute the command below:
 
    ```powershell
    metalama config edit diagnostics
    ```
 
-3. In the `diagnostics.json` file, edit the `debugging/processes` section and enable debugging for the proper process. If you use Visual Studio, this process is named `RoslynCodeAnalysisService`.
+3. In the `diagnostics.json` file, modify the `debugging/processes` section and enable debugging for the appropriate process. If you're using Visual Studio, this process is named `RoslynCodeAnalysisService`.
 
     ```json
      {
@@ -70,5 +71,7 @@ To attach a debugger to the design-time compiler process:
 
 > [!div class="see-also"]
 > <xref:debugging-aspect-oriented-code>
+> <xref:video-debugging>
+
 
 

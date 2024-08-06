@@ -2,12 +2,32 @@ items:
 - name: Conceptual documentation
   topicUid: conceptual
   items:
+
     - name: Requirements
       topicUid: requirements
+   
+    - name: Release notes
+      topicUid: release-notes
+      items:
+        - name: Metalama 2024.1
+          topicUid: release-notes-2024.1      
+        - name: Metalama 2024.0
+          topicUid: release-notes-2024.0      
+        - name: Metalama 2023.4
+          topicUid: release-notes-2023.4
+        - name: Metalama 2023.3
+          topicUid: release-notes-2023.3
+        - name: Metalama 2023.2
+          topicUid: release-notes-2023.2
+        - name: Metalama 2023.1
+          topicUid: release-notes-2023.1
+        - name: Metalama 2023.0
+          topicUid: release-notes-2023.0
+
     - name: Installing Metalama
       topicUid: installing
       items:
-        - name: Installing Metalama Tools for Visual Studio
+        - name: Installing the Visual Studio tooling
           topicUid:  install-vsx
         - name: Installing Metalama command line tool
           topicUid: dotnet-tool
@@ -26,13 +46,64 @@ items:
           topicUid: debugging-aspect-oriented-code
         - name: Applying live templates
           topicUid:  applying-live-templates
-        - name: Using fabrics
+        - name: Adding many aspects at once
+          topicUid: fabrics-adding-aspects
+        - name: More about fabrics
           topicUid: fabrics
+        - name: Configuring aspect libraries
+          topicUid: fabrics-configuration
+        - name: Amending many projects at once
+          topicUid: fabrics-many-projects
+    - name: Using Metalama Patterns
+      topicUid: patterns
+      items:
+        - name: Contracts
+          topicUid: contract-patterns
           items:
-          - name: Adding aspects
-            topicUid: fabrics-adding-aspects
-          - name: Configuring many projects at once
-            topicUid: fabrics-many-projects
+            - name: Validating field, property and parameter values
+              topicUid: value-contracts
+              items:
+              - name: Contract types
+                topicUid: contract-types
+              - name: Checking all non-nullable references
+                topicUid: enforcing-non-nullability
+            - name: Enforcing type invariants
+              topicUid: invariants
+            - name: Configuring contracts
+              topicUid: configuring-contracts
+
+        - name: Caching
+          topicUid: caching
+          items:
+            - name: Getting started
+              topicUid: caching-getting-started
+            - name: Customizing cache keys
+              topicUid: caching-keys
+            - name: Excluding parameters
+              topicUid: caching-exclude-parameters
+            - name: Configuring the caching behavior
+              topicUid: caching-configuration
+            - name: Invalidating the cache
+              topicUid: caching-invalidation
+            - name: Working with cache dependencies
+              topicUid: caching-dependencies
+            - name: Distributed caching with Redis
+              topicUid: caching-redis
+            - name: Synchronizing local in-memory caches for multiple nodes
+              topicUid: caching-pubsub
+            - name: Caching special types with value adapters
+              topicUid: caching-value-adapters
+            - name: Preventing concurrent execution
+              topicUid: cache-locking
+            - name: Troubleshooting
+              topicUid: caching-troubleshooting
+            
+        - name: Memoization
+          topicUid: memoization
+        - name: Dependency injection
+          topicUid: dependency-injection-aspect
+
+
     - name: Creating aspects
       topicUid: aspects
       items:
@@ -57,6 +128,8 @@ items:
               topicUid: template-dynamic-code
             - name: Template parameters and type parameters
               topicUid: template-parameters
+            - name: Calling auxiliary templates
+              topicUid: auxiliary-templates
             - name: Generating System.Reflection objects
               topicUid: reflection
         - name: Understanding the framework design
@@ -82,6 +155,10 @@ items:
             topicUid: initializers
           - name: Introducing constructor parameters
             topicUid: introducing-constructor-parameters
+          - name: Overriding constructors
+            topicUid: overriding-constructors
+          - name: Adding and removing attributes
+            topicUid: adding-attributes
           - name: Sharing state with advice
             topicUid: sharing-state-with-advice
         - name: Reporting and suppressing diagnostics
@@ -105,8 +182,18 @@ items:
           topicUid: aspect-validating
         - name: Ordering aspects
           topicUid: ordering-aspects
-        - name: Exposing configuration
-          topicUid: exposing-configuration
+        - name: Making aspects configurable
+          topicUid: aspect-configuration
+          items:
+            - name: Exposing a configuration API
+              topicUid: exposing-options
+            - name: Reading MSBuild properties
+              topicUid: reading-msbuild-properties
+            - name: Customizing the option merge process
+              topicUid: configuration-custom-merge
+            - name: Configuration before v2023.4
+              topicUid: exposing-configuration-before-2023-4
+
         - name: Testing and debugging aspects
           topicUid: testing
           items:
@@ -142,8 +229,10 @@ items:
           topicUid: msbuild-properties
         - name: Enabling logging
           topicUid: creating-logs
-        - name: Capturing process dumps
+        - name: Capturing crash reports
           topicUid: process-dump
+        - name: Capturing performance data
+          topicUid: profiling
         - name: Troubleshooting a build server
           topicUid: troubleshooting-unattended-build
         - name: Telemetry
@@ -153,10 +242,12 @@ items:
     - name: Extending Metalama
       topicUid: sdk
       items:
-        - name: Creating the project structure
-          topicUid: sdk-scaffolding
         - name: Aspect weavers
           topicUid: aspect-weavers
+        - name: Using the Roslyn API from aspects
+          topicUid: roslyn-api
+        - name: Custom metrics
+          topicUid: custom-metrics
     - name: Migrating from PostSharp
       topicUid: migration
       items:

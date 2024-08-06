@@ -1,4 +1,6 @@
-﻿using Microsoft.DocAsCode.MarkdownLite;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using Microsoft.DocAsCode.MarkdownLite;
 using System.Text.RegularExpressions;
 
 namespace Metalama.Documentation.DfmExtensions;

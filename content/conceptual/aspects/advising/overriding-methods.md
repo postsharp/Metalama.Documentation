@@ -1,30 +1,30 @@
 ---
 uid: overriding-methods
 level: 300
+summary: "The document provides advanced techniques for overriding methods using the Metalama.Framework.Aspects library, including accessing method details, invoking methods with different arguments, overriding async and iterator methods, and overriding multiple methods with the same aspect."
 ---
 
 # Overriding methods
 
-In <xref: simple-override-method>, you have learned the basic technique to replace the implementation of a method with some code defined by the aspect. You have achieved this thanks to the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class, aspect-oriented implementation of the [decorator design pattern](https://en.wikipedia.org/wiki/Decorator_pattern) for methods.
+In <xref:simple-override-method>, you learned the basic technique to replace a method's implementation with code defined by the aspect. This was achieved using the <xref:Metalama.Framework.Aspects.OverrideMethodAspect> abstract class, an aspect-oriented implementation of the [decorator design pattern](https://en.wikipedia.org/wiki/Decorator_pattern) for methods.
 
-In this article, we will assume that you have read  <xref: simple-override-method> and will expose more techniques related to overriding methods.
+This article assumes you have read <xref:simple-override-method> and will expose additional techniques related to overriding methods.
 
 ## Accessing the method details
 
-The details of the method being overridden are available from the template method on the <xref:Metalama.Framework.Aspects.IMetaTarget.Method?text=meta.Target.Method> property. This property gives you all information about the method's name, type, parameters, and custom attributes. For instance, the metadata of method parameters is exposed on `meta.Target.Method.Parameters`. 
+The details of the method being overridden are accessible from the template method on the <xref:Metalama.Framework.Aspects.IMetaTarget.Method?text=meta.Target.Method> property. This property provides information about the method's name, type, parameters, and custom attributes. For instance, the metadata of method parameters is exposed on `meta.Target.Method.Parameters`.
 
 To access the parameter _values_, you must access <xref:Metalama.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters>. For instance:
 
-- `meta.Target.Parameters[0].Value` gives you the value of the first parameter,
+- `meta.Target.Parameters[0].Value` gives you the value of the first parameter.
 - `meta.Target.Parameters["a"].Value = 5` sets the `a` parameter to `5`.
-- `meta.Target.Parameters.ToValueArray()` creates an `object[]` array with all parameter values,
-
+- `meta.Target.Parameters.ToValueArray()` creates an `object[]` array with all parameter values.
 
 ## Invoking the method with different arguments
 
-When you call `meta.Proceed`, the aspect framework generates a call to the overridden method and passes the exact parameters it received. If the parameter value has been changed thanks to a statement like `meta.Target.Parameters["a"].Value = 5`, the modified value will be passed.
+When you call `meta.Proceed`, the aspect framework generates a call to the overridden method and passes the exact parameters it received. If the parameter value has been changed with a statement like `meta.Target.Parameters["a"].Value = 5`, the modified value will be passed.
 
-If you want to invoke the method with different arguments, you can do it using <xref:Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke*?text=meta.Target.Method.Invoke>.
+If you want to invoke the method with different arguments, you can do so using <xref:Metalama.Framework.Code.Invokers.IMethodInvoker.Invoke*?text=meta.Target.Method.Invoke>.
 
 > [!NOTE]
 > Invoking a method with `ref` or `out` parameters is not yet supported.
@@ -33,12 +33,12 @@ If you want to invoke the method with different arguments, you can do it using <
 
 > [!div id="async-iterator-default-template" class="anchor"]
 
-By default, the <xref:Metalama.Framework.Aspects.OverrideMethodAspect.OverrideMethod> method is selected as a template for all methods, including async and iterator methods. 
+By default, the <xref:Metalama.Framework.Aspects.OverrideMethodAspect.OverrideMethod> method is selected as a template for all methods, including async and iterator methods.
 
-To make the default template work naturally even for async and iterator methods, calls to `meta.Proceed()` and `return` statements are interpreted differently in each situation t respect the intent of ordinary (non-async, non-iterator) code. The default behavior tries to respect the _decorator_ pattern.
+To make the default template work naturally even for async and iterator methods, calls to `meta.Proceed()` and `return` statements are interpreted differently in each situation to respect the intent of ordinary (non-async, non-iterator) code. The default behavior aims to respect the _decorator_ pattern.
 
 > [!WARNING]
-> Applying the default <xref:Metalama.Framework.Aspects.OverrideMethodAspect.OverrideMethod> template to an iterator makes the stream to be _buffered_ into a `List<T>`. In the case of long-running streams, this buffering may be undesirable. In this case, specific iterator templates must be specified (see below).
+> Applying the default <xref:Metalama.Framework.Aspects.OverrideMethodAspect.OverrideMethod> template to an iterator results in the stream being _buffered_ into a `List<T>`. In the case of long-running streams, this buffering may be undesirable. In such cases, specific iterator templates must be specified (see below).
 
 The following table lists the transformations applied to the `meta.Proceed()` expression and the `return` statement when a default template is applied to an async or iterator method:
 
@@ -131,10 +131,9 @@ yield break;</pre>
 
 As you can see, the buffering of iterators is performed by the <xref:Metalama.Framework.RunTime.RunTimeAspectHelper.Buffer*> and <xref:Metalama.Framework.RunTime.RunTimeAspectHelper.BufferAsync*> methods.
 
-
 ### Example: the default template applied to all kinds of methods
 
-The following example demonstrates the behavior of the default template when applied to different kinds of methods. Note that the output of iterators methods is buffered. This is visible in the program output.
+The following example demonstrates the behavior of the default template when applied to different kinds of methods. Note that the output of iterator methods is buffered. This is visible in the program output.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/OverrideMethodDefaultTemplateAllKinds.cs name="Default template applied to all kinds of methods"]
 
@@ -142,7 +141,7 @@ The following example demonstrates the behavior of the default template when app
 
 > [!div id="async-iterator-specific-template" class="anchor"]
 
-The default template works very well most of the time, even on async methods and iterators, but it has a few limitations:
+The default template works well most of the time, even on async methods and iterators, but it has a few limitations:
 
 * You cannot use `await` or `yield` in the default template.
 * When you call `meta.Proceed()` in the default template, it causes the complete evaluation of the async method or iterator.
@@ -207,3 +206,4 @@ The following aspect wraps all instance methods with a `lock( this )` statement.
 Instead of providing a single template method, you can give several of them and let the framework choose the most suitable one. The principle of this feature is described above. Instead of passing a string to the second argument of `OverrideMethod`, you can pass a <xref:Metalama.Framework.Advising.MethodTemplateSelector> and initialize it with many templates. See the reference documentation of <xref:Metalama.Framework.Advising.IAdviceFactory.Override*?displayProperty=nameWithType> and <xref:Metalama.Framework.Advising.MethodTemplateSelector> for details.
 
 [comment]: # (TODO: example)
+

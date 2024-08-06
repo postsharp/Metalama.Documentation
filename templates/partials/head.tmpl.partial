@@ -7,6 +7,8 @@
   <meta name="postsharp:level" content="{{level}}">
   <meta name="postsharp:product" content="{{product}}">
   <meta name="postsharp:categories" content="{{categories}}">
+  <meta name="description" content="{{summary}}">
+
   <!-- Modified for PostSharp documentation. -->
   {{#redirect_url}}
     <meta http-equiv="refresh" content="0;URL='{{redirect_url}}'">

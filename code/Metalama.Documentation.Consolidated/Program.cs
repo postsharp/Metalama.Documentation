@@ -16,6 +16,6 @@ _ = new[]
     typeof(AspectWeaverContext),
     typeof(Workspace),
     typeof(IIntrospectionAspectClass),
-    typeof(MetalamaPlugInAttribute),
+    typeof(ISourceTransformer),
     typeof(MetalamaDriver)
 };

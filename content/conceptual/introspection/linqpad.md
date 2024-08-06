@@ -1,21 +1,22 @@
 ---
 uid: linqpad
+summary: "This document provides a comprehensive guide on using the Metalama driver for LINQPad to inspect and test code queries, list target declarations, inspect the outcome of aspects, and query the resulting code mode. It includes installation instructions, usage examples, and troubleshooting tips."
 ---
 
 # Inspecting a project using LINQPad
 
-LINQPad is a popular tool for interactively querying databases using Language Integrated Query (LINQ) syntax. It allows you to write and execute LINQ queries against various data sources, including SQL databases, XML documents, and .NET objects. Thanks to the Metalama driver for LINQPad, you can also query your source code as if it were a database.
+LINQPad is a widely used tool for interactively querying databases using Language Integrated Query (LINQ) syntax. It enables you to write and execute LINQ queries against various data sources, including SQL databases, XML documents, and .NET objects. With the Metalama driver for LINQPad, you can also query your source code as though it were a database.
 
 ## Benefits
 
-We built the Metalama driver for LINQPad to support developers and architects in building and testing their Metalama aspects and fabrics. However, you can use this driver even if you are not using Metalama.
+We developed the Metalama driver for LINQPad to assist developers and architects in building and testing their Metalama aspects and fabrics. However, this driver can be utilized even if you are not using Metalama.
 
-Thanks to this driver, you can:
+With this driver, you can:
 
-* test code queries using the same <xref:Metalama.Framework.Code> API as the one used in aspects and fabrics,
-* list the target declarations of aspects,
-* inspect the outcome of aspects, i.e., the output code transformations, diagnostics, or child aspects,
-* query the resulting code mode.
+* Test code queries using the same <xref:Metalama.Framework.Code> API as the one used in aspects and fabrics,
+* List the target declarations of aspects,
+* Inspect the outcome of aspects, i.e., the output code transformations, diagnostics, or child aspects,
+* Query the resulting code mode.
 
 > [!NOTE]
 > The Metalama.LinqPad driver is [open-source](https://github.com/postsharp/Metalama.LinqPad).
@@ -30,7 +31,7 @@ To install the Metalama driver for LINQPad, follow these steps:
     ![Install step 1](install-1.svg)
 
 2. Click on _View more drivers_.
- 
+
      ![Install step 2](install-2.svg)
 
 3. In the NuGet LINQPad Manager dialog:
@@ -61,16 +62,16 @@ To install the Metalama driver for LINQPad, follow these steps:
 
 ## Data structure
 
-Now that you added a C# project or solution to LINQPad, you should see the following structure:
+Upon adding a C# project or solution to LINQPad, you should see the following structure:
 
    ![Structure 1](explorer-1.svg)
 
-The _Workspace_ folder allows you to query the whole workspace in a single query, i.e., _all_ projects for _all_ target frameworks. Conversely, under the _Projects_ folder, you see subfolders for individual projects, and queries will be limited to the selected combination of project and target framework.
+The _Workspace_ folder allows you to query the entire workspace in a single query, i.e., _all_ projects for _all_ target frameworks. Conversely, under the _Projects_ folder, you see subfolders for individual projects, and queries will be limited to the selected combination of project and target framework.
 
 Under the level of workspaces and projects, you see three subfolders:
 
 * _Source code_ allows you to query the code _before_ any transformation, i.e., literally, your source code.
-* _Transformed code_ exposes the code _after_ all transformations
+* _Transformed code_ exposes the code _after_ all transformations.
 * _Aspects_ lists aspect classes, aspect instances, advice, and transformations.
 
 For instance, the following query has been created from the _Workspace_ folder. It lists all types in the workspace:
@@ -89,7 +90,7 @@ The `workspace` object is of type <xref:Metalama.Framework.Workspaces.Workspace>
 
 For details, see the <xref:Metalama.Framework.Workspaces> namespace.
 
-## Querying Metalama projects without the driver
+## Querying Metalama Projects Without the Driver
 
 Instead of using the driver and a connection, you can use the `Metalama.LinqPad` package from any query.
 
@@ -107,7 +108,7 @@ To benefit from optimal rendering, add the following code to `My Extensions`:
 public static class MyExtensions
 {
 	// Write custom extension methods here. They will be available to all queries.
- 	public static object? ToDump(object obj) => Metalama.LinqPad.MetalamaDumper.ToDump(obj);	
+ 	public static object? ToDump(object obj) => Metalama.LinqPad.MetalamaDumper.ToDump(obj);
 }
 ```
 
@@ -128,4 +129,6 @@ If you want to run a Metalama query from a different application, add a referenc
 > [!div class="see-also"]
 > <xref:Metalama.Framework.Workspaces>
 > <xref:Metalama.Framework.Introspection>
+
+
 

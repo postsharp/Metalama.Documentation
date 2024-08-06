@@ -1,4 +1,6 @@
-﻿using System;
+﻿// This is public domain Metalama sample code.
+
+using System;
 
 namespace Doc.Trimmed
 {
@@ -6,20 +8,15 @@ namespace Doc.Trimmed
     {
         [Trim]
         public string? Code { get; set; }
-       
     }
-    
+
     public class Program
     {
         public static void Main()
         {
-            Details detail1 = new()
-            {
-                Code = "   GW12345  "
-            };
-            
-            Console.WriteLine($"Code='{detail1.Code}'");
-            
+            Details detail1 = new() { Code = "   GW12345  " };
+
+            Console.WriteLine( $"Code='{detail1.Code}'" );
         }
     }
 }

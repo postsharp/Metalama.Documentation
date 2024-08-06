@@ -1,33 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" InitialTargets="CheckConfiguration">
 
-	<!-- The role of this project is to gather all libraries to be documented into the output directory
-		 so they can be used by docfx. -->
-	
+  <!-- The role of this project is to gather all libraries to be documented into the output directory
+     so they can be used by docfx. -->
+  
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Metalama.Testing.AspectTesting" Version="$(MetalamaVersion)" />
-		<PackageReference Include="Metalama.Testing.UnitTesting" Version="$(MetalamaVersion)" />
-		<PackageReference Include="Metalama.Framework.Introspection" Version="$(MetalamaVersion)" />
-		<PackageReference Include="Metalama.Framework.Workspaces" Version="$(MetalamaVersion)" />
-		<PackageReference Include="Metalama.Framework.Sdk" Version="$(MetalamaVersion)" />
-		<PackageReference Include="Metalama.LinqPad" Version="$(MetalamaLinqPadVersion)" />
-		<PackageReference Include="Metalama.Extensions.Multicast" Version="$(MetalamaExtensionsVersion)" />
-		<PackageReference Include="Metalama.Extensions.DependencyInjection" Version="$(MetalamaExtensionsVersion)" />
-		<PackageReference Include="Metalama.Extensions.DependencyInjection.ServiceLocator" Version="$(MetalamaExtensionsVersion)" />
-		<PackageReference Include="Metalama.Extensions.Metrics" Version="$(MetalamaExtensionsVersion)" />
-		<PackageReference Include="Metalama.Extensions.Architecture" Version="$(MetalamaExtensionsVersion)" />
-		<PackageReference Include="Metalama.Compiler" Version="$(MetalamaCompilerVersion)" />
-		<PackageReference Include="Metalama.Migration" Version="$(MetalamaMigrationVersion)" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Metalama.Testing.AspectTesting" />
+    <PackageReference Include="Metalama.Testing.UnitTesting" />
+    <PackageReference Include="Metalama.Framework.Introspection" />
+    <PackageReference Include="Metalama.Framework.Workspaces" />
+    <PackageReference Include="Metalama.Framework.Sdk" />
+    <PackageReference Include="Metalama.LinqPad" />
+    <PackageReference Include="Metalama.Extensions.Multicast" />
+    <PackageReference Include="Metalama.Extensions.DependencyInjection" />
+    <PackageReference Include="Metalama.Extensions.DependencyInjection.ServiceLocator" />
+    <PackageReference Include="Metalama.Extensions.Metrics" />
+    <PackageReference Include="Metalama.Extensions.Architecture" />
+    <PackageReference Include="Metalama.Compiler" />
+    <PackageReference Include="Metalama.Migration" />
+    <PackageReference Include="Metalama.Patterns.Contracts" />
+    <PackageReference Include="Metalama.Patterns.Memoization" />
+    <PackageReference Include="Metalama.Patterns.Observability" />
+    <PackageReference Include="Metalama.Patterns.Caching" />
+    <PackageReference Include="Metalama.Patterns.Caching.Backend" />
+    <PackageReference Include="Metalama.Patterns.Caching.Aspects" />
+    <PackageReference Include="Metalama.Patterns.Caching.Backends.Azure" />
+    <PackageReference Include="Metalama.Patterns.Caching.Backends.Redis" />
+  </ItemGroup>
 
-	<Target Name="CheckConfiguration">
-		<Error Text="This project can only be built in Debug configuration because its Debug output directory is specificially references. Check the sln file." Condition="'$(Configuration)'!='Debug'"/>
-	</Target>
+  <Target Name="CheckConfiguration">
+    <Error Text="This project can only be built in Debug configuration because its Debug output directory is specificially references. Check the sln file." Condition="'$(Configuration)'!='Debug'"/>
+  </Target>
 
 </Project>

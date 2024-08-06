@@ -1,4 +1,6 @@
-﻿using Doc.Architecture.Experimental_Fabric.ExperimentalNamespace;
+﻿// This is public domain Metalama sample code.
+
+using Doc.Architecture.Experimental_Fabric.ExperimentalNamespace;
 using Metalama.Extensions.Architecture.Fabrics;
 using Metalama.Framework.Code;
 using Metalama.Framework.Fabrics;
@@ -22,16 +24,12 @@ namespace Doc.Architecture.Experimental_Fabric
         }
     }
 
-    
-
     internal static class ProductionCode
     {
         public static void Dummy()
         {
             // This call is reported.
             ExperimentalApi.Foo();
-
         }
-
     }
 }

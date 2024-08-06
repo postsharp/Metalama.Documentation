@@ -1,4 +1,4 @@
-// Warning LAMA0903 on `IFactory`: `The type 'ThingCreator' does not respect the naming convention set on the base class or interface 'IFactory'. The type name should match the "^.*Factory$" pattern.`
+// Warning LAMA0903 on `ThingCreator`: `The type 'ThingCreator' does not respect the naming convention set on the base class or interface 'IFactory'. The type name should match the "*Factory" pattern.`
 using Metalama.Extensions.Architecture.Aspects;
 namespace Doc.Architecture.NamingConvention
 {

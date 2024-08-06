@@ -12,11 +12,16 @@ internal abstract class TabGroup
     private string TabGroupId { get; }
 
     public List<BaseTab> Tabs { get; } = new();
-    
+
     public abstract string GetGitUrl();
 
     protected TabGroup( string tabGroupId )
     {
+        if ( tabGroupId.Contains( ' ' ) || tabGroupId.Contains( '.' ) )
+        {
+            throw new ArgumentOutOfRangeException( nameof(tabGroupId), $"The id '{tabGroupId}' contains an invalid character." );
+        }
+        
         this.TabGroupId = tabGroupId;
     }
 
@@ -32,7 +37,7 @@ internal abstract class TabGroup
 
         // Define the wrapping div.
         var divId = $"code-{this.TabGroupId}";
-        stringBuilder.AppendLine( $"<div id={divId} class=\"anchor\">" );
+        stringBuilder.AppendLine( $"<div id=\"{divId}\" class=\"anchor\">" );
 
         if ( token.AddLinks )
         {
@@ -44,17 +49,25 @@ internal abstract class TabGroup
 
             if ( sandboxPayload != null )
             {
-                stringBuilder.AppendLine( $@"  <a class=""try"" onclick=""openSandbox('{sandboxPayload}');"" role=""button"">Open in sandbox</a> |" );
+                stringBuilder.AppendLine( $@"  <a class=""try"" onclick=""openSandbox('{sandboxPayload}');"" role=""button"">Open in sandbox</a>" );
+                stringBuilder.AppendLine( "<span class='separator'>|</span>" );
             }
 
-            // Finish the links.
+            // Git.
             var gitUrl = this.GetGitUrl();
 
             stringBuilder.AppendLine(
                 @$"
-    <a class=""github"" href=""{gitUrl}"" target=""github"">See on GitHub</a>
-</div>" );
+    <a class=""github"" href=""{gitUrl}"" target=""github"">See on GitHub</a>" );
+            
+            stringBuilder.AppendLine( "<span class='separator'>|</span>" );
 
+            // Full screen.
+            stringBuilder.AppendLine(
+                @$"
+    <a class=""fullscreen"" onclick=""toggleFullScreen('{divId}');"" role=""button"" target=""github"">Full screen</a>" );
+
+            // Close.
             stringBuilder.AppendLine( "</div>" );
         }
 
@@ -122,7 +135,8 @@ internal abstract class TabGroup
                     {
                         fileName += ".cs";
                     }
-                    sandboxFiles.Add( new( fileName, codeTab.GetSandboxCode(), codeTab.SandboxFileKind ) );
+
+                    sandboxFiles.Add( new SandboxFile( fileName, codeTab.GetSandboxCode(), codeTab.SandboxFileKind ) );
                 }
             }
             else if ( tab is CompareTab compareTab )
@@ -130,7 +144,7 @@ internal abstract class TabGroup
                 // Try currently requires that the code that is executed is in Program.cs.
                 var fileName = "Program.cs";
 
-                sandboxFiles.Add( new( fileName, compareTab.GetSandboxCode(), SandboxFileKind.TargetCode ) );
+                sandboxFiles.Add( new SandboxFile( fileName, compareTab.GetSandboxCode(), SandboxFileKind.TargetCode ) );
             }
         }
 

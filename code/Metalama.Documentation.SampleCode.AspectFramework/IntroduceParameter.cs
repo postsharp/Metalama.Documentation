@@ -1,18 +1,12 @@
-﻿namespace Doc.IntroduceParameter
+﻿// This is public domain Metalama sample code.
+
+namespace Doc.IntroduceParameter
 {
     internal class Foo
     {
         [RegisterInstance]
-        public Foo()
-        {
-
-        }
-
+        public Foo() { }
     }
 
-    internal class Bar : Foo
-    {
-
-    }
-
+    internal class Bar : Foo { }
 }

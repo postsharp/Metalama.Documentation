@@ -1,0 +1,6 @@
+Executing constructor SomeClass.SomeClass(string): started
+Within constructor B.
+Executing constructor SomeClass.SomeClass(string): completed
+Executing constructor SomeClass.SomeClass(): started
+Within constructor A.
+Executing constructor SomeClass.SomeClass(): completed

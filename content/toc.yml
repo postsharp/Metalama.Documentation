@@ -1,17 +1,26 @@
 items:
 # - name: Overview
 #   href: overview/toc.yml
+
+- name: Getting started
+  topicUid: main-getting-started
+- name: Video tutorials
+  href: videos/toc.yml
 - name: Conceptual documentation
   href: conceptual/toc.yml
 - name: Commented examples
   href: ../source-dependencies/Metalama.Samples/toc.yml
-- name: API Documentation          
+- name: API documentation          
   topicUid: api
   items:
     - name: Aspect API
       topicUid: aspect-api
     - name: Extensions API
       topicUid: extensions-api      
+    - name: Patterns API
+      topicUid: patterns-api      
+    - name: Flashtrace API
+      topicUid: flashtrace-api      
     - name: Introspection API
       topicUid: introspection-api      
     - name: Advanced API

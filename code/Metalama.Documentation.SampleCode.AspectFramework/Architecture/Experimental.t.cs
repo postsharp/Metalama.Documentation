@@ -1,14 +1,9 @@
 // Warning LAMA0900 on `ExperimentalApi.Foo`: `The 'ExperimentalApi' type is experimental.`
 using Metalama.Extensions.Architecture.Aspects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 namespace Doc.Architecture.Experimental
 {
   [Experimental]
-  internal static class ExperimentalApi
+  public static class ExperimentalApi
   {
     public static void Foo()
     {

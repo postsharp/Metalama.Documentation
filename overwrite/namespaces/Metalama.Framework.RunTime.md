@@ -2,5 +2,5 @@
 uid: Metalama.Framework.RunTime
 summary: *content
 ---
-This namespace contains the types that can be used in normal, run-time code. Other namespaces contain types that can only be
-used in build-time code.
+
+This namespace contains the types that can be utilized in standard, run-time code. Other namespaces encompass types that are exclusively usable in build-time code.

@@ -1,4 +1,6 @@
-﻿using Doc.Architecture.Type_CurrentNamespace.A;
+﻿// This is public domain Metalama sample code.
+
+using Doc.Architecture.Type_CurrentNamespace.A;
 using Metalama.Extensions.Architecture.Aspects;
 
 namespace Doc.Architecture.Type_CurrentNamespace
@@ -6,9 +8,10 @@ namespace Doc.Architecture.Type_CurrentNamespace
     namespace A
     {
         [InternalsCanOnlyBeUsedFrom( CurrentNamespace = true )]
-        public class Foo 
+        public class Foo
         {
             public void PublicMethod() { }
+
             internal void InternalMethod() { }
         }
 
@@ -25,7 +28,6 @@ namespace Doc.Architecture.Type_CurrentNamespace
                 foo.InternalMethod();
             }
         }
-
     }
 
     namespace B

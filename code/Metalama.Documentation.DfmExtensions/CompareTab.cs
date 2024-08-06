@@ -18,7 +18,9 @@ internal class CompareTab : BaseTab
         var sourceTab = this.GetSourceTab();
         var transformedTab = new TransformedSingleFileCodeTab( this.FullPath );
 
-        if ( !transformedTab.Exists() )
+        string NormalizeCode( string s ) => s.Replace( " ", "" );
+
+        if ( !transformedTab.Exists() || NormalizeCode( sourceTab.GetCodeForComparison() ) == NormalizeCode( transformedTab.GetCodeForComparison() ) )
         {
             return sourceTab.GetTabContent( fallbackToSource );
         }

@@ -1,6 +1,6 @@
-﻿namespace Doc
+﻿// This is public domain Metalama sample code.
+
+namespace Doc
 {
-    internal class ValidityAttribute
-    {
-    }
+    internal class ValidityAttribute { }
 }

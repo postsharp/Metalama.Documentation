@@ -1,18 +1,15 @@
-﻿using Metalama.Extensions.Architecture.Aspects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// This is public domain Metalama sample code.
+
+using Metalama.Extensions.Architecture.Aspects;
 
 namespace Doc.Architecture.Experimental
 {
     [Experimental]
-    internal static class ExperimentalApi
+    public static class ExperimentalApi
     {
         public static void Foo() { }
 
-        public static void Bar() 
+        public static void Bar()
         {
             // This call is allowed because we are within the experimental class.
             Foo();
@@ -25,8 +22,6 @@ namespace Doc.Architecture.Experimental
         {
             // This call is reported.
             ExperimentalApi.Foo();
-
         }
-
     }
 }

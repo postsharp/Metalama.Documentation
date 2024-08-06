@@ -1,24 +1,25 @@
 ---
 uid: process-dump
 level: 200
+summary: "The document provides a step-by-step guide on how to create and share a process dump for troubleshooting issues with Metalama, including warnings about potential confidentiality of information."
 ---
 
 # Creating a process dump
 
-If you are experiencing issues with Metalama, our support team may ask you to provide a process dump of the compiler or IDE process.
+If you are encountering issues with Metalama, our support team might request a process dump of the compiler or IDE process.
 
 > [!WARNING]
-> **Process dumps contain possibly confidential information**
+> **Process dumps may contain potentially confidential information**
 >
-> Process dumps may contain a copy of your source code. Although we will handle process dumps as confidential material, your company may not allow you to send us a process dump.
+> Process dumps could include a copy of your source code. While we treat process dumps as confidential material, your company might not permit you to send us a process dump without management approval.
 
 ## Step 1. Install the PostSharp Command-Line Tool
 
-Install the `metalama` command-line tool as described in <xref:dotnet-tool>.
+Install the `metalama` command-line tool following the instructions in <xref:dotnet-tool>.
 
 ## Step 2. Install the `dotnet dump` tool
 
-Execute the following command:
+Run the command below:
 
 ```powershell
 dotnet tool install --global dotnet-dump
@@ -26,22 +27,22 @@ dotnet tool install --global dotnet-dump
 
 ## Step 3. Edit diagnostics.json
 
-Execute the command:
+Run the command:
 
 ```powershell
 metalama config edit diagnostics
 ```
 
-This should open a `diagnostics.json` file in your default editor.
+This command should open a `diagnostics.json` file in your default editor.
 
-The `miniDump/processes` section lists processes for which process dumps must be collected. The values are `false` by default. Set the values to `true` if you want to collect the process dumps of the following processes if they crash:
+The `miniDump/processes` section lists processes for which process dumps need to be collected. The values are `false` by default. Set the values to `true` if you wish to collect the process dumps of the following processes if they crash:
 
 * `Compiler`: the compile-time process.
 * `Rider`: the design-time Roslyn process running under Rider.
 * `DevEnv`: the UI process of Visual Studio (note that there is no aspect code running in this process).
 * `RoslynCodeAnalysisService`: the design-time Roslyn process running under Visual Studio (this is where the aspect code runs).
 
-In the following example, Metalama is configured to capture a process dump for the compiler process.
+In the example below, Metalama is set up to capture a process dump for the compiler process.
 
 ```json
 {
@@ -62,7 +63,6 @@ In the following example, Metalama is configured to capture a process dump for t
     }
 //...
 }
-
 ```
 
 ## Step 4. Execute Metalama
@@ -72,14 +72,14 @@ Restart the logged processes:
 * If you enabled dumps for the `Compiler` process, restart the Roslyn compiler processes using `metalama kill`.
 * If you enabled dumps for any design-time processes, restart your IDE.
 
-Execute the actions that trigger the issue.
+Perform the actions that cause the issue.
 
 > [!WARNING]
-> Do not forget to disable the diagnostic setting after you are done.
+> Remember to disable the diagnostic setting once you have finished.
 
 ## Step 5. Upload the process dump to an online drive
 
-You will find process dumps under the `%TEMP%\Metalama\CrashReports` directory with extension `*.dmp.gz`.
+You will find process dumps in the `%TEMP%\Metalama\CrashReports` directory with the extension `*.dmp.gz`.
 Upload this file to an online storage service like OneDrive.
 
 ## Step 6. Send us the URL through a private channel
@@ -87,4 +87,5 @@ Upload this file to an online storage service like OneDrive.
 > [!WARNING]
 > **NEVER** share the process dump URL publicly on a service like GitHub Issues.
 
-Instead, please send us the hyperlink by [email](mailto:hello@postsharp.net) or by private message on [Slack](https://www.postsharp.net/slack).
+Instead, kindly send us the link via [email](mailto:hello@postsharp.net) or private message on [Slack](https://www.postsharp.net/slack).
+

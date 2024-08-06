@@ -1,37 +1,45 @@
 ---
 uid: index
+summary: "The document provides guidance on how to navigate the Metalama documentation, a framework for enhancing C# code quality and productivity. It offers resources for help and contribution. "
 ---
 
 # Metalama Documentation
 
-Welcome to the documentation of Metalama, a code quality and productivity improvement framework for C#.
+Welcome to the documentation of Metalama, a code generation and analysis framework for C#.
+
+## How to navigate this documentation?
+
+There are typically two types of Metalama users:
+
+* If you intend to _utilize aspects written by others_, begin with <xref:using-metalama> and likely conclude there.
+* If you aspire to _develop your own aspects_, start with <xref:main-getting-started> to get a quick overview, then jump to <xref:using-metalama> and continue to <xref:simple-aspects>.
+
+Each article is assigned a _complexity level_, such as 100, 200, 300, following the U.S. school system. Before advancing to a level 200 article, ensure you have a solid understanding of level 100. We strive to avoid incorporating complex details into basic level articles. Occasionally, you may need to study several articles to gather comprehensive information on a specific topic.
 
 
 ## Documentation structure
 
 | Book | Description |
 |------|-------------|
-| <xref:conceptual> | This is the exhaustive and precise reference documentation. |
-| <xref:samples> | This book contains several examples of different degrees of complexity. |
-| <xref:api> | This book contains the API documentation generated from the source code. |
+| <xref:main-getting-started> | A quick _Hello, world_ walkthrough that shows you how to create a logging aspect and apply a simple architecture validation rule. |
+| <xref:videos> | A collection of tutorial videos. |
+| <xref:conceptual> | Comprehensive and precise reference documentation. |
+| <xref:samples> | Commented examples with varying degrees of complexity. |
+| <xref:api> | API documentation generated from the source code. |
 
-## How to read this documentation?
 
-There are typically two kinds of people using Metalama:
+## Getting help
 
-* if you plan to _use aspects written by others_, you start with <xref:using-metalama> and probably stop there.
-* if you want to _create your own aspects_, start with  <xref:using-metalama> and then continue with <xref:simple-aspects>.
+If you have any questions, don't hesitate to reach out:
 
-We assigned a _complexity level_ to each article, for instance, 100, 200, 300, as in the U.S. school system. Before you start an article of level 200, you should have a good understanding of level 100. We try not to add complex details to an article of a basic level. Sometimes, you will need to read several articles to read information about a given topic.
+* Engage with us on [Slack](https://www.postsharp.net/slack).
+* [Initiate a discussion](https://github.com/postsharp/Metalama/discussions/new) on GitHub.
 
-## Give us your feedback
 
-If you have any feedback, suggestions or questions regarding Metalama, don't hesitate to get in touch:
+The source code for this documentation (excluding the API documentation) is open-source and hosted at https://github.com/postsharp/Metalama.Documentation. You can:
 
-* [open an issue](https://github.com/postsharp/Metalama/issues/new), 
-* [start a discussion](https://github.com/postsharp/Metalama/discussions/new), 
-* chat with us on [Slack](https://www.postsharp.net/slack),
-* email us at hello@postsharp.net.
+* [Open an issue](https://github.com/postsharp/Metalama.Documentation/issues/new) or
+* Submit a PR with your proposed improvements.
 
-The source code of this documentation (except the API documentation) is hosted at https://github.com/postsharp/Metalama.Documentation. You can suggest improvements and corrections using the discussions board, and even submit a pull request.
+
 

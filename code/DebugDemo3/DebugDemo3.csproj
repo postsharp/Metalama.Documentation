@@ -7,14 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Metalama.Framework" Version="$(MetalamaVersion)" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Reference Include="Metalama.Documentation.QuickStart">
-	    <HintPath>..\Metalama.Documentation.QuickStart\bin\Debug\net6.0\Metalama.Documentation.QuickStart.dll</HintPath>
-	  </Reference>
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Metalama.Documentation.QuickStart" />
+    <PackageReference Include="Metalama.Framework" />
+  </ItemGroup>
 
 </Project>

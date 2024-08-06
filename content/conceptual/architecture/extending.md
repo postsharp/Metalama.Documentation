@@ -1,19 +1,20 @@
 ---
 uid: validation-extending
 level: 300
+summary: "The document provides a guide on how to create custom validation rules in Metalama, including extending usage verification with custom predicates and creating new verification rules."
 ---
 
 # Creating your own validation rules
 
 Metalama's true strength lies not in its pre-made features but in its ability to let you create custom rules for validating the codebase against your architecture.
 
-In this article, we will show how to extend the [Metalama.Extensions.Architecture](https://www.nuget.org/packages/Metalama.Extensions.Architecture) package. This package is open source. To better understand the indications given in this article, you can study its [source code](https://github.com/postsharp/Metalama.Extensions/tree/master/src/Metalama.Extensions.Architecture).
+In this article, we will demonstrate how to extend the [Metalama.Extensions.Architecture](https://www.nuget.org/packages/Metalama.Extensions.Architecture) package. This package is open source. For a better understanding of the instructions provided in this article, you can study its [source code](https://github.com/postsharp/Metalama.Extensions/tree/master/src/Metalama.Extensions.Architecture).
 
 ## Extending usage verification with custom predicates
 
-Before we create rules from scratch, it's good to know that some of the existing rules can be extended. In <xref:validating-usage>, you have learned how to use methods like <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.CanOnlyBeUsedFrom*> or <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.CannotBeUsedFrom*>. These methods require a predicate parameter, which determine from which scope the declaration can or cannot be referenced. Examples of predicates are <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.CurrentNamespace*>, <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.NamespaceOf*> of the <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions> class. The role of predicates is to determine whether a given code reference should report a warning.
+Before creating rules from scratch, it's worth noting that some of the existing rules can be extended. In <xref:validating-usage>, you learned how to use methods like <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.CanOnlyBeUsedFrom*> or <xref:Metalama.Extensions.Architecture.Fabrics.VerifierExtensions.CannotBeUsedFrom*>. These methods require a predicate parameter, which determines from which scope the declaration can or cannot be referenced. Examples of predicates are <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.CurrentNamespace*>, <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions.NamespaceOf*> of the <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateExtensions> class. The role of predicates is to determine whether a given code reference should report a warning.
 
-To implement a new predicate, follow the following steps:
+To implement a new predicate, follow these steps:
 
 1. Create a new class and derive it from <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicate>. We recommend making this class `internal`.
 2. Add fields for all predicate parameters, and initialize these fields from the constructor.
@@ -22,12 +23,11 @@ To implement a new predicate, follow the following steps:
     > Predicate objects are serialized. Therefore, all fields must be serializable. Notably, objects of <xref:Metalama.Framework.Code.IDeclaration> type are not serializable. To serialize a declaration, call the <xref:Metalama.Framework.Code.IDeclaration.ToRef*> method and store the returned <xref:Metalama.Framework.Code.IRef`1>.
 
 3. Implement the <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicate.IsMatch*> method. This method receives a <xref:Metalama.Framework.Validation.ReferenceValidationContext>. It must return `true` if the predicate matches the given context (i.e., the code reference); otherwise `false`.
-
 4. Create an extension method for the <xref:Metalama.Extensions.Architecture.Predicates.ReferencePredicateBuilder> type and return a new instance of your predicate class.
 
 ### Example: restricting usage based on calling method name
 
-In the following example, we create a custom predicate, `MethodNameEndsWith`, which verifies that the code reference occurs within a method whose name ends with a given prefix.
+In the following example, we create a custom predicate, `MethodNameEndsWith`, which verifies that the code reference occurs within a method whose name ends with a given suffix.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/Fabric_CustomPredicate.cs tabs="target"]
 
@@ -72,30 +72,21 @@ Follow these steps.
 
 ### Creating a programmatic rule
 
-Follow this procedure
+Follow this procedure:
 
 1. Create a `static` class containing your extension methods. Name it, for instance, `ArchitectureExtensions`.
-
 2. Add the [<xref:Metalama.Framework.Aspects.CompileTimeAttribute?text=CompileTime>] custom attribute to the class.
-
 3. For each error or warning you plan to report, add a static field of type <xref:Metalama.Framework.Diagnostics.DiagnosticDefinition> to your fabric class, as described in <xref:diagnostics>.
-
 4. Create a `public static` extension method with a `this` parameter and name it `verifier`.
 
-   If you need to validate <xref:Metalama.Framework.Code.ICompilation>, <xref:Metalama.Framework.Code.INamespace> or <xref:Metalama.Framework.Code.INamedType>, this parameter type should be `ITypeSetVerifier<IDeclaration>`.  Most of the time, you will want to validate the types contained type set of the `receiver` parameter. To access these types, use the <xref:Metalama.Extensions.Architecture.Fabrics.ITypeSetVerifier`1.TypeReceiver?text=verifier.TypeReceiver> property.
+   If you need to validate <xref:Metalama.Framework.Code.ICompilation>, <xref:Metalama.Framework.Code.INamespace> or <xref:Metalama.Framework.Code.INamedType>, this parameter type should be `ITypeSetVerifier<IDeclaration>`.  Most of the time, you will want to validate the types contained in the type set of the `receiver` parameter. To access these types, use the <xref:Metalama.Extensions.Architecture.Fabrics.ITypeSetVerifier`1.TypeReceiver?text=verifier.TypeReceiver> property.
 
    If, however, you need to validate declarations that are not types or type sets the type of the `verifier` should be `ITypeSetVerifier`, where `T` is the base interface that you want to validate. The receiver that allows you to add validators or report diagnostics is available on the <xref:Metalama.Extensions.Architecture.Fabrics.IVerifier`1.Receiver?text=verifier.TypeReceiver> property.
 
-5. You can filter the receiver (i.e. either `verifier.TypeReceiver` or `verifier.Receiver`), as in `System.Linq`:
-
-    * Filter the set using the <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Where*> method. Typically, you will want to filter _out_ declarations that do _not_ break the rule.
-    * Use <xref:Metalama.Framework.Aspects.IAspectReceiver`1.Select*> or <xref:Metalama.Framework.Aspects.IAspectReceiver`1.SelectMany*>.
-
-6. When the receiver contains the proper set of declarations, you can take action:
-
-    * Report a diagnostic using <xref: Metalama.Framework.Validation.IValidatorReceiver`1.ReportDiagnostic*>.
-    * Register a reference validator using the <xref: Metalama.Framework.Validation.IValidatorReceiver`1.ValidateReferences*> method. Validating from fabrics is very similar to validating from aspects. See <xref:aspect-validating> for details.
+5. You can filter the receiver (i.e. either `verifier.TypeReceiver` or `ver
 
 
-[!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/RequireDefaultConstructorFabric.cs tabs="target"]
-  
+
+> [!div class="see-also"]
+> <xref:video-custom-architecture-rules>
+

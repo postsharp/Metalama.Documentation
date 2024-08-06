@@ -1,29 +1,29 @@
-﻿
-using Amazon;
+﻿using Amazon;
 using BuildMetalamaDocumentation;
-using Microsoft.Extensions.FileSystemGlobbing;
-using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
 using PostSharp.Engineering.BuildTools;
+using PostSharp.Engineering.BuildTools.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build.Solutions;
-using PostSharp.Engineering.BuildTools.AWS.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
-using PostSharp.Engineering.BuildTools.Dependencies.Model;
+using PostSharp.Engineering.BuildTools.Build.Publishers;
+using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
+using PostSharp.Engineering.BuildTools.Search;
 using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
 using System.IO;
 using System.Diagnostics;
-using PostSharp.Engineering.BuildTools.Search;
+using System.IO.Compression;
+using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2024_1;
 
-const string docPackageFileName = "Metalama.Doc.zip";
+var docPackageFileName = $"Metalama.Doc.{MetalamaDependencies.Metalama.ProductFamily.Version}.zip";
 
-var product = new Product( Dependencies.MetalamaDocumentation )
+var product = new Product( MetalamaDependencies.MetalamaDocumentation )
 {
     // Note that we don't build Metalama.Samples ourselves. We expect it to be built from the repo itself.
     // HTML artifacts should be restored from artifacts.
-    
-    Solutions = new Solution[]
-    {
+
+    Solutions =
+    [
         new DotNetSolution( "code\\Metalama.Documentation.Prerequisites.sln" ) { CanFormatCode = true },
         new DotNetSolution( "code\\Metalama.Documentation.Snippets.TestBased.sln" )
         {
@@ -33,50 +33,41 @@ var product = new Product( Dependencies.MetalamaDocumentation )
         {
             CanFormatCode = true, BuildMethod = BuildMethod.Build,
         },
-        new DocFxSolution( "docfx.json" )
-    },
-
+        new DocFxSolution( "docfx.json", docPackageFileName )
+    ],
     PublicArtifacts = Pattern.Create(
         docPackageFileName ),
-    
-    Dependencies = new[] { 
-         Dependencies.PostSharpEngineering,
-         Dependencies.MetalamaMigration,
-         Dependencies.MetalamaLinqPad,
-         Dependencies.MetalamaSamples
-    },
-
-    SourceDependencies = new[]
-    {
-        Dependencies.MetalamaSamples,
-        Dependencies.MetalamaCommunity
-    },
-
+    Dependencies =
+    [
+        DevelopmentDependencies.PostSharpEngineering,
+            MetalamaDependencies.MetalamaMigration,
+            MetalamaDependencies.MetalamaPatterns,
+            MetalamaDependencies.MetalamaLinqPad,
+            MetalamaDependencies.MetalamaSamples
+    ],
+    SourceDependencies = new[] { MetalamaDependencies.MetalamaSamples, MetalamaDependencies.MetalamaCommunity },
     AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
-
-    // Disable automatic build triggers.
     Configurations = Product.DefaultConfigurations
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
-        .WithValue( BuildConfiguration.Public, new BuildConfigurationInfo(
-            MSBuildName: "Release",
-            ExportsToTeamCityDeployWithoutDependencies: true,
-            PublicPublishers: new Publisher[]
+
+        .WithValue( BuildConfiguration.Public, c => c with
+        {
+            ExportsToTeamCityDeployWithoutDependencies = true,
+            PublicPublishers = new Publisher[]
             {
-                // MergePublisher disabled for 2023.1.
-                //new MergePublisher(),
-                new DocumentationPublisher( new S3PublisherConfiguration[]
+                new MergePublisher(), new DocumentationPublisher( new S3PublisherConfiguration[]
                 {
-                    //TODO
                     new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
-                } )
-            } ) ),
-    
+                }, "https://postsharp-helpbrowser.azurewebsites.net/" )
+            }
+        } ),
     Extensions = new ProductExtension[]
     {
-        new UpdateSearchProductExtension(
+        // Run `b generate-scripts` after changing these parameters.
+        new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
             "https://0fpg9nu41dat6boep.a1.typesense.net",
             "metalamadoc",
-            "https://doc-production.metalama.net/sitemap.xml",
+            "https://doc-production.postsharp.net/metalama/sitemap.xml",
             true )
     }
 };
@@ -101,31 +92,15 @@ static void OnPrepareCompleted( PrepareCompletedEventArgs args )
     {
         args.IsFailed = true;
     }
-    
-    // Copy HTML artefact dependencies to the source dependency directory.
-    var htmlSourceDirectory = Path.Combine( args.Context.RepoDirectory, "dependencies", "Metalama.Samples", "html" );
+
+    // Extract HTML artefact dependencies to the source dependency directory.
+    var htmlSourceZipFile = Path.Combine( args.Context.RepoDirectory, "dependencies", "Metalama.Samples", "html-examples.zip" );
     var htmlTargetDirectory = Path.Combine( args.Context.RepoDirectory, "source-dependencies", "Metalama.Samples", "examples" );
-    
-    if ( Directory.Exists( htmlSourceDirectory ) )
+
+    if ( File.Exists( htmlSourceZipFile ) )
     {
-        args.Context.Console.WriteMessage( $"Restoring HTML files from '{htmlSourceDirectory}'." );
-        var matcher = new Matcher();
-        matcher.AddInclude("**/*.html");
-        var matches = matcher.Execute(new DirectoryInfoWrapper( new DirectoryInfo( htmlSourceDirectory ) ));
-
-        var count = 0;
-        foreach (var match in matches.Files)
-        {
-            var sourceFile = Path.Combine( htmlSourceDirectory, match.Path );
-            var targetFile = Path.Combine( htmlTargetDirectory, match.Path );
-            var targetSubdirectory = Path.GetDirectoryName( targetFile )!;
-            Directory.CreateDirectory( targetSubdirectory );
-            File.Copy(sourceFile, targetFile, true);
-
-            count++;
-        }
-        
-        args.Context.Console.WriteMessage( $"{count} files copied." );
-        
+        args.Context.Console.WriteMessage( $"Restoring HTML files from '{htmlSourceZipFile}'." );
+        Directory.CreateDirectory( htmlTargetDirectory );
+        ZipFile.ExtractToDirectory( htmlSourceZipFile, htmlTargetDirectory, true );
     }
 }

@@ -8,7 +8,6 @@ namespace Doc.SimpleLog
     {
       Console.WriteLine($"Simply logging a method...");
       Console.WriteLine($"Hello {name}");
-      return;
     }
     public static void Main()
     {

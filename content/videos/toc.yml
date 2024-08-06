@@ -1,0 +1,24 @@
+items:
+- name: Video tutorials
+  topicUid: videos
+  items:
+    - name: 0. A short introduction
+      topicUid: video-short-introduction
+    - name: 1. Your first aspect
+      topicUid: video-first-aspect
+    - name: 2. More aspect types
+      topicUid: video-other-aspect-types
+    - name: 3. Adding many aspects - inheritance and fabrics
+      topicUid: video-fabrics-and-inheritance
+    - name: 4. Testing aspects
+      topicUid: video-testing
+    - name: 5. Debugging enhanced code and aspects
+      topicUid: video-debugging      
+    - name: 6. Reporting errors and warnings
+      topicUid: video-reporting-errors-and-warnings
+    - name: 7. Offering code fixes and live templates
+      topicUid: video-code-fixes
+    - name: 8. Verifying architecture
+      topicUid: video-architecture-verification
+    - name: 9. Building custom architecture rules
+      topicUid: video-custom-architecture-rules

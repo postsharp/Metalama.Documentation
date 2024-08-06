@@ -1,4 +1,6 @@
-﻿namespace Doc.Architecture.InternalOnlyImplement
+﻿// This is public domain Metalama sample code.
+
+namespace Doc.Architecture.InternalOnlyImplement
 {
-    class TheImplementation : IMyInterface { }
+    internal class TheImplementation : IMyInterface { }
 }

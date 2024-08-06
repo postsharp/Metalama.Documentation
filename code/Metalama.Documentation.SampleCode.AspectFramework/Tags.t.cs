@@ -8,7 +8,6 @@ namespace Doc.Tags
     {
       Console.WriteLine("This method has 2 parameters.");
       Console.WriteLine($"Method({a}, {b})");
-      return;
     }
   }
 }

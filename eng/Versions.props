@@ -1,4 +1,4 @@
-﻿
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
 
     <!-- Set the default version -->
@@ -9,17 +9,8 @@
         <MetalamaDocumentationAssemblyVersion>$(MainVersion)</MetalamaDocumentationAssemblyVersion>
     </PropertyGroup>
 
-    <!-- Versions of dependencies -->
-    <PropertyGroup>
-        <PostSharpEngineeringVersion>2023.1.13-preview</PostSharpEngineeringVersion>
-        <MetalamaVersion>2023.1.0-preview</MetalamaVersion>
-        <MetalamaCompilerVersion>2023.1.0-preview</MetalamaCompilerVersion>
-        <MetalamaMigrationVersion>2023.1.0-preview</MetalamaMigrationVersion>
-        <MetalamaExtensionsVersion>2023.1.0-preview</MetalamaExtensionsVersion>
-        <MetalamaLinqPadVersion>2023.1.0-preview</MetalamaLinqPadVersion>
-        <MetalamaSamplesVersion></MetalamaSamplesVersion>
-        <NuGetCommandLineVersion>6.4.0</NuGetCommandLineVersion>
-    </PropertyGroup>
+    <!-- Set the deafult versions of auto-updated dependencies -->
+    <Import Project="AutoUpdatedVersions.props" />
 
     <!-- Import overrides for the local build -->
     <Import Project="Versions.g.props" Condition="Exists('Versions.g.props')" />
@@ -29,5 +20,8 @@
         <AssemblyVersion>$(MetalamaDocumentationAssemblyVersion)</AssemblyVersion>
         <Version>$(MetalamaDocumentationVersion)</Version>
     </PropertyGroup>
+
+    <!-- Versions of other dependencies are set in Directory.Packages.props. -->
+    <!-- See https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management. -->
 
 </Project>

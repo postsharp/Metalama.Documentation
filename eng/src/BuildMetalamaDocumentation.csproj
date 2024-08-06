@@ -2,23 +2,23 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <AssemblyName>Build</AssemblyName>
-        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
         <NoWarn>SA0001;CS8002</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
-		<PackageReference Include="NuGet.CommandLine" Version="$(NuGetCommandLineVersion)" GeneratePathProperty="True">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="PostSharp.Engineering.BuildTools" Version="$(PostSharpEngineeringVersion)" />
-        <Content Include="$(PkgNuGet_CommandLine)\tools\nuget.exe">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
+      <PackageReference Include="NuGet.CommandLine" GeneratePathProperty="True">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="PostSharp.Engineering.BuildTools" />
+      <Content Include="$(PkgNuGet_CommandLine)\tools\nuget.exe">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

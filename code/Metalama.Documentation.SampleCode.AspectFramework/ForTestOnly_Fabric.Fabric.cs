@@ -1,4 +1,5 @@
-﻿
+﻿// This is public domain Metalama sample code.
+
 using Metalama.Framework.Code;
 using Metalama.Framework.Diagnostics;
 using Metalama.Framework.Fabrics;

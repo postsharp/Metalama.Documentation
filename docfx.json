@@ -5,6 +5,7 @@
         {
           "files": [
               "Metalama.Framework.dll",
+              "Metalama.Framework.RunTime.dll",
               "Metalama.Testing.AspectTesting.dll",
               "Metalama.Testing.UnitTesting.dll",
               "Metalama.Framework.Sdk.dll",
@@ -17,9 +18,19 @@
               "Metalama.Extensions.DependencyInjection.ServiceLocator.dll",
               "Metalama.Extensions.Multicast.dll",
               "Metalama.Extensions.Metrics.dll",
-              "Metalama.Extensions.Architecture.dll"
+              "Metalama.Extensions.Architecture.dll",
+              "Metalama.Patterns.Contracts.dll",
+              "Metalama.Patterns.Memoization.dll",
+              "Metalama.Patterns.Observability.dll",
+              "Metalama.Patterns.Caching.dll",
+              "Metalama.Patterns.Caching.Backend.dll",
+              "Metalama.Patterns.Caching.Aspects.dll",
+              "Metalama.Patterns.Caching.Backends.Azure.dll",
+              "Metalama.Patterns.Caching.Backends.Redis.dll",
+              "Flashtrace.dll",
+              "Flashtrace.Formatters.dll"
               ],
-          "src": "code/Metalama.Documentation.Consolidated/bin/Debug/net6.0-windows"
+          "src": "code/Metalama.Documentation.Consolidated/bin/Debug/net7.0-windows"
         }
       ],
       "dest": "obj/api",
@@ -76,9 +87,13 @@
         ]
       }
     ],
-    "xrefService": [
-      "https://xref.docs.microsoft.com/query?uid={uid}"
-    ],
+      "xref": [
+        "https://learn.microsoft.com/en-us/dotnet/.xrefmap.json"
+//        "C:\\Users\\GaelFraiteur.AzureAD\\Downloads\\xrefmap.json"
+      ],
+/*    "xrefService": [
+      "https://learn.microsoft.com/api/xref/query?uid={uid}"
+    ], */
     "dest": "docfx/_site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],

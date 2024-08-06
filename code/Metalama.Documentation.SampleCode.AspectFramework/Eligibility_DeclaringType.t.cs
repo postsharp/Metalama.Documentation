@@ -1,0 +1,1 @@
+// Error LAMA0037 on `StaticLog`: `The aspect 'StaticLog' cannot be applied to the method 'SomeClass.SomeMethod()' because the declaring type 'SomeClass' must be static.`

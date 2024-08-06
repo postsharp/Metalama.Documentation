@@ -1,3 +1,4 @@
+// This is public domain Metalama sample code.
 
 using System;
 

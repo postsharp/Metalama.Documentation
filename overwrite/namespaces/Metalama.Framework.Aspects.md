@@ -3,18 +3,17 @@ uid: Metalama.Framework.Aspects
 summary: *content
 ---
 
-This is namespace allows you to build aspects. Aspects are an algorithmic representation of a code transformation or validation.
+This namespace enables you to build aspects. Aspects represent an algorithmic approach to code transformation or validation.
 
-For instance, adding logging to a method, or implementing `INotifyPropertyChanged`, can to a great extent be expressed as
-an algorithm and therefore implemented as an aspect.
+For instance, tasks such as adding logging to a method or implementing `INotifyPropertyChanged` can largely be expressed as an algorithm and, therefore, implemented as an aspect.
 
 ## Conceptual Documentation
 
-See <xref:aspects>.
+Refer to <xref:aspects> for more information.
 
 ## Overview
 
-To create an aspect, create a class that derives from <xref:System.Attribute> and implement the <xref:Metalama.Framework.Aspects.IAspect`1> interface. Alternatively, you can use one of the following classes, which already XX derive from <xref:System.Attribute>, have the proper  <xref:System.AttributeUsageAttribute>, and implement the <xref:Metalama.Framework.Aspects.IAspect`1> interface:
+To create an aspect, you need to create a class that derives from <xref:System.Attribute> and implement the <xref:Metalama.Framework.Aspects.IAspect`1> interface. Alternatively, you can use one of the following classes, which already derive from <xref:System.Attribute>, have the appropriate <xref:System.AttributeUsageAttribute>, and implement the <xref:Metalama.Framework.Aspects.IAspect`1> interface:
 
 * <xref:Metalama.Framework.Aspects.CompilationAspect>
 * <xref:Metalama.Framework.Aspects.ConstructorAspect>
@@ -27,15 +26,13 @@ To create an aspect, create a class that derives from <xref:System.Attribute> an
 * <xref:Metalama.Framework.Aspects.TypeAspect>
 * <xref:Metalama.Framework.Aspects.TypeParameterAspect>
 
-
 ## Class Diagrams
-
 
 ### Aspect builders
 
 ```mermaid
 classDiagram
-    
+
     class IAspect {
         BuildAspect(IAspectBuilder)
     }
@@ -52,14 +49,14 @@ classDiagram
         AddInitializer*(...)
     }
 
-    class IDiagnosticSink {
+    class ScopedDiagnosticSink {
         Report(...)
         Suppress(...)
     }
 
     IAspectBuilder <-- IAspect : BuildAspect() receives
     IAdviceFactory <-- IAspectBuilder : exposes
-    IDiagnosticSink <-- IAspectBuilder : exposes
+    ScopedDiagnosticSink <-- IAspectBuilder : exposes
 
 ```
 
@@ -86,7 +83,7 @@ class RunTimeOnlyAttribute
 classDiagram
 
     IAspectBuilder <-- IAspect : receives
-    
+
     class IAspectBuilder {
     }
 
@@ -125,7 +122,7 @@ classDiagram
     class IAspect {
         BuildAspect(IAspectBuilder)
     }
-    
+
     class IAspectBuilder {
         AspectInstance
     }
@@ -145,7 +142,7 @@ classDiagram
     IAspectInstance <-- IAspectBuilder : exposes
 
     IAspectBuilder <-- IAspect : receives
-    
+
     IAspectPredecessor <|-- IAttribute : derives from
 
     IAspectPredecessor <|-- IFabricInstance : derives from
@@ -183,7 +180,7 @@ classDiagram
 
    IAspectPredecessor <-- AspectPredecessor : exposes
    AspectPredecessorKind <-- AspectPredecessor : has
-   
+
 ```
 
 ## Namespace members

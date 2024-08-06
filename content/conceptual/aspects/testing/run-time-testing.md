@@ -1,20 +1,18 @@
 ---
 uid: run-time-testing
 level: 300
+summary: "The document discusses the approach of applying an aspect to a target code and creating unit tests to verify the resulting code's behavior, using a logging aspect as an example."
 ---
 
 # Unit testing aspects at run time
 
-(This article is just a sketch.)
+(TODO: This article is currently in draft form.)
 
-This approach aims to apply the aspect to some target code and create regular unit tests that verify that the resulting code has the desired behavior.
+The objective of this approach is to apply an aspect to a specific target code, then create standard unit tests to verify that the resulting code behaves as expected.
 
-For instance, if you want to test a logging aspect, you can make your logging aspect log to an in-memory `StringWriter` and use a standard unit test to verify that some logged method, when called from the test method, produces the expected result in the `StringWriter`. This idea is drafted in the following code snippet.
-
-
+For example, to test a logging aspect, you could configure your logging aspect to log to an in-memory `StringWriter`. Then, use a standard unit test to confirm that a logged method, when invoked from the test method, yields the expected result in the `StringWriter`. This concept is illustrated in the code snippet below.
 
 ```cs
-
 class MyTests
 {
     StringWriter _logger = new();
@@ -27,24 +25,21 @@ class MyTests
 Entering VoidMethod(5).
 Oops
 VoidMethod(5) succeeded.
-", 
-        _logger.ToString();
-
- )
-
+",
+        _logger.ToString());
     }
 
     [Log]
-    private void VoidMethod( int p ) 
-    { 
+    private void VoidMethod(int p)
+    {
         _logger.WriteLine("Oops");
     }
-
-
 }
-
-
 ```
 
-
 [comment]: # (TODO: cover dependency injection)
+
+
+> [!div class="see-also"]
+> <xref:video-testing>
+

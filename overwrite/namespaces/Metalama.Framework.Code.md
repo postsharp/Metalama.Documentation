@@ -2,7 +2,7 @@
 uid: Metalama.Framework.Code
 summary: *content
 ---
-This namespace contains the representation of the source code or the transformed code.
+This namespace encompasses the representation of both the source code and the transformed code.
 
 ## Simplified class diagram
 
@@ -22,7 +22,7 @@ classDiagram
       IDeclaration <|-- IAttribute
       IDeclaration <|-- INamespace
       IDeclaration <|-- ICompilation
-      
+
 
       IMethodBase o-- IParameter
       IProperty o-- IParameter
@@ -33,3 +33,4 @@ classDiagram
       ICompilation o-- INamespace
       INamespace o-- INamedType
 ```
+

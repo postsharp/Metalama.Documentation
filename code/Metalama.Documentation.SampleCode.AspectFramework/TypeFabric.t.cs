@@ -10,7 +10,6 @@ namespace Doc.TypeFabric_
     public void Method2()
     {
       Console.WriteLine("Executing MyClass.Method2().");
-      return;
     }
   }
 #pragma warning restore CS0067, CS8618, CS0162, CS0169, CS0414, CA1822, CA1823, IDE0051, IDE0052

@@ -1,28 +1,29 @@
-﻿---
+---
+
 uid: template-compile-time
 level: 200
+summary: "The document provides detailed information on writing compile-time code using the Metalama Framework. It explains compile-time expressions, statements, the 'meta' pseudo-keyword, and compile-time language constructs. It also covers aspect properties, compile-time types, methods, and how to call other packages from compile-time code. "
 ---
 
 # Writing compile-time code
 
-Compile-time expressions are expressions that either contain a call to a compile-time method or a reference to a compile-time local variable or a compile-time aspect member. Compile-time expressions are executed at compile time when the aspect is applied to a target.
+Compile-time expressions are expressions that contain a call to a compile-time method, a reference to a compile-time local variable, or a compile-time aspect member. These expressions are executed at compile time when the aspect is applied to a target.
 
-Compile-time statements are statements that are executed at compile time, such as `if`, `foreach`, or `meta.DebugBreak()`.
+Compile-time statements, such as `if`, `foreach`, or `meta.DebugBreak()`, are also executed at compile time.
 
 ## The meta pseudo-keyword
 
-The entry point of the compile-time API is the <xref:Metalama.Framework.Aspects.meta> static class, which you can consider as a pseudo-keyword that opens the door to the _meta_ side of meta-programming. The <xref:Metalama.Framework.Aspects.meta> class is the entry point to the meta-model and the members of this class can be invoked only in the context of a template.
+The <xref:Metalama.Framework.Aspects.meta> static class serves as the entry point for the compile-time API. It can be considered a pseudo-keyword that provides access to the _meta_ side of meta-programming. The <xref:Metalama.Framework.Aspects.meta> class is the entry point to the meta-model, and its members can only be invoked within the context of a template.
 
-The <xref:Metalama.Framework.Aspects.meta> static class exposes to the following members:
+The <xref:Metalama.Framework.Aspects.meta> static class exposes the following members:
 
-- The <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed> method invokes the target method or accessor being intercepted, which can be either the next aspect applied on the same target or the target source implementation itself.
-- The <xref:Metalama.Framework.Aspects.meta.Target?text=meta.Target> property gives access to the declaration to which the template is applied.
-- The <xref:Metalama.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> property gives access to the current method or accessor parameters.
-- The <xref:Metalama.Framework.Aspects.meta.This?text=meta.This> property represents the `this` instance. Together with <xref:Metalama.Framework.Aspects.meta.Base?text=meta.Base>, <xref:Metalama.Framework.Aspects.meta.ThisType?text=meta.ThisType>, and <xref:Metalama.Framework.Aspects.meta.BaseType?text=meta.BaseType> properties, `meta.This` allows your template to access members of the target class using dynamic code (see below).
-- The <xref:Metalama.Framework.Aspects.meta.Tags?text=meta.Tags> property gives access to an arbitrary dictionary that has been passed to the advice factory method, see <xref:sharing-state-with-advice#sharing-state-with-the-tags-property>.
-- The <xref:Metalama.Framework.Aspects.meta.CompileTime*?text=meta.CompileTime> method coerces a neutral expression into a compile-time expression.
-- The <xref:Metalama.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method converts the result of a compile-time expression into a run-time value (see below).
-
+- The <xref:Metalama.Framework.Aspects.meta.Proceed?text=meta.Proceed> method, which invokes the target method or accessor being intercepted. This can be either the next aspect applied on the same target or the target source implementation itself.
+- The <xref:Metalama.Framework.Aspects.meta.Target?text=meta.Target> property, which provides access to the declaration to which the template is applied.
+- The <xref:Metalama.Framework.Aspects.IMetaTarget.Parameters?text=meta.Target.Parameters> property, which provides access to the current method or accessor parameters.
+- The <xref:Metalama.Framework.Aspects.meta.This?text=meta.This> property, which represents the `this` instance. Used in conjunction with <xref:Metalama.Framework.Aspects.meta.Base?text=meta.Base>, <xref:Metalama.Framework.Aspects.meta.ThisType?text=meta.ThisType>, and <xref:Metalama.Framework.Aspects.meta.BaseType?text=meta.BaseType> properties, `meta.This` enables your template to access members of the target class using dynamic code.
+- The <xref:Metalama.Framework.Aspects.meta.Tags?text=meta.Tags> property, which provides access to an arbitrary dictionary passed to the advice factory method. See <xref:sharing-state-with-advice#sharing-state-with-the-tags-property> for more details.
+- The <xref:Metalama.Framework.Aspects.meta.CompileTime*?text=meta.CompileTime> method, which coerces a neutral expression into a compile-time expression.
+- The <xref:Metalama.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method, which converts the result of a compile-time expression into a run-time value.
 
 ### Example: simple logging
 
@@ -34,7 +35,7 @@ The following code writes a message to the system console before and after the m
 
 ### Compile-time local variables
 
-Local variables are run-time by default. To declare a compile-time local variable, you must initialize it to a compile-time value. If you need to initialize the compile-time variable to a literal value such as `0` or `"text"`, use the `meta.CompileTime` method to convert the literal into a compile-time value.
+Local variables are run-time by default. To declare a compile-time local variable, you must initialize it with a compile-time value. If you need to initialize the compile-time variable with a literal value such as `0` or `"text"`, use the `meta.CompileTime` method to convert the literal into a compile-time value.
 
 Examples:
 
@@ -43,18 +44,15 @@ Examples:
 - In `var parameters = meta.Target.Parameters;`, `parameters` is a compile-time variable.
 
 > [!NOTE]
-> You cannot assign a compile-time variable from a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, `switch`, `catch` or `finally`.
+> A compile-time variable cannot be assigned from a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, `switch`, `catch`, or `finally`.
 
 ### Compile-time if
 
 If the condition of an `if` statement is a compile-time expression, the `if` statement will be interpreted at compile-time.
 
-> [!NOTE]
-> You may not have a compile-time `if` inside a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, `switch`, `catch` or `finally`.
+#### Example: if
 
-#### Example
-
-In the following example, the aspect prints a different string for static methods than for instance ones.
+In the following example, the aspect prints a different string for static methods than for instance methods.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeIf.cs name="Compile-Time If"]
 
@@ -62,62 +60,53 @@ In the following example, the aspect prints a different string for static method
 
 If the expression of a `foreach` statement is a compile-time expression, the `foreach` statement will be interpreted at compile-time.
 
-> [!NOTE]
-> It is not allowed to have a compile-time `foreach` inside a block whose execution depends on a run-time condition, including a run-time `if`, `else`, `for`, `foreach`, `while`, `switch`, `catch` or `finally`.
-
-#### Example
+#### Example: foreach
 
 The following aspect uses a `foreach` loop to print the value of each parameter of the method to which it is applied.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/CompileTimeForEach.cs name="Compile-Time If"]
 
-### No compile-time for, while and goto
+### No compile-time for and goto
 
-It is not possible to create compile-time `for` or `while` loops. `goto` statements are forbidden in templates. If you need a compile-time `for`, you can use the following construct:
+Compile-time `for` loops are not supported. `goto` statements are also not allowed in templates. If you need a compile-time `for`, you can use the following construct:
 
 ```cs
 foreach ( int i in meta.CompileTime( Enumerable.Range( 0, n ) ) )
 ```
 
-If the approach above is not possible, you can try to move your logic to a compile-time aspect function (not a template method), have this function return an enumerable, and use the return value in a `foreach` loop in the template method.
+If the above approach is not feasible, you can move your logic to a compile-time aspect function (not a template method), have this function return an enumerable, and use the return value in a `foreach` loop in the template method.
 
 ### nameof expressions
 
-`nameof` expressions in compile-time code are always pre-compiled into compile-time expressions, which makes it possible for compile-time code to reference run-time types.
+`nameof` expressions in compile-time code are always pre-compiled into compile-time expressions, enabling compile-time code to reference run-time types.
 
 ### typeof expressions
 
-When `typeof(Foo)` is used with a run-time-only type `Foo`, a mock `System.Type` object is returned. This object can be used in run-time expressions or as an argument of Metalama compile-time methods. However, most members of this fake `System.Type` _cannot_ be evaluated at compile time and will throw an exception. You may sometimes need to call the <xref:Metalama.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method to tip the T# compiler that you want a run-time expression instead of a compile-time one.
+When `typeof(Foo)` is used with a run-time-only type `Foo`, a mock `System.Type` object is returned. This object can be used in run-time expressions or as an argument of Metalama compile-time methods. However, most members of this fake `System.Type` _cannot_ be evaluated at compile time and will throw an exception. In some cases, you may need to call the <xref:Metalama.Framework.Aspects.meta.RunTime*?text=meta.RunTime> method to indicate to the T# compiler that you want a run-time expression instead of a compile-time one.
 
-## Accessing aspect members
+## Aspect properties
 
-Aspect members are compile-time and can be accessed from templates. For instance, an aspect custom attribute can define a property that can be set when the custom attribute is applied to a target declaration and then read from the aspect compile-time code.
+Many aspects have properties that can be set when the aspect is instantiated -- for instance as a custom attribute. The scope of these properties is generally run-time-or-compile-time. When you read these properties from a template, they will be replaced by their compile-time value.
 
-There are a few exceptions to this rule:
+### Example: aspect property
 
-- aspect members whose signature contains a run-time-only type cannot be accessed from a template.
-- aspect members annotated with the `[Template]` attribute (or overriding members that are, such as `OverrideMethod`) cannot be invoked from a template.
-- aspect members annotated with the `[Introduce]` or `[InterfaceMember]` attribute are considered run-time (see <xref:introducing-members> and <xref:implementing-interfaces>).
-
-#### Example
-
-The following example shows a simple _Retry_ aspect. The maximum number of attempts can be configured by setting a property of the custom attribute. This property is compile-time.
+The following example shows a simple _Retry_ aspect. The maximum number of attempts can be configured by setting a property of the custom attribute. This property is compile-time. As you can see, when the template is expanded, the property reference is replaced by its value.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/Retry.cs name="Retry"]
 
-## Custom compile-time types and methods
+## Compile-time types and methods
 
 If you want to share compile-time code between aspects or aspect methods, you can create your own types and methods that execute at compile time.
 
-- Compile-time code must be annotated with the [<xref:Metalama.Framework.Aspects.CompileTimeAttribute?text=CompileTime>] custom attribute. You would typically use this attribute on:
-  - a method or field of an aspect;
-  - a type (`class`, `struct`, `record`, ...);
-  - an assembly, using `[assembly: CompileTime]`.
-- Code that can either execute at compile or run time must be annotated with the [<xref:Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute?text=RunTimeOrCompileTime>] custom attribute.
+- Compile-time code must be annotated with the [<xref:Metalama.Framework.Aspects.CompileTimeAttribute?text=CompileTime>] custom attribute. This attribute is typically used on:
+  - A method or field of an aspect;
+  - A type (`class`, `struct`, `record`, ...);
+  - The whole project, using `[assembly: CompileTime]`.
+- Code that can execute at either compile or run time must be annotated with the [<xref:Metalama.Framework.Aspects.RunTimeOrCompileTimeAttribute?text=RunTimeOrCompileTime>] custom attribute.
 
 ## Calling other packages from compile-time code
 
-By default, compile-time code can call only the following APIs:
+By default, compile-time code can only call the following APIs:
 
 - .NET Standard 2.0 (all libraries)
 - Metalama.Framework
@@ -130,7 +119,7 @@ For advanced scenarios, the following packages are also included by default:
 To make another package available in compile-time code:
 
 1. Make sure that this package targets .NET Standard 2.0.
-2. Make sure that the package is included in the project.
+2. Ensure that the package is included in the project.
 3. Edit your `.csproj` or `Directory.Build.props` file and add the following:
 
 ```xml
@@ -139,7 +128,8 @@ To make another package available in compile-time code:
 </ItemGroup>
 ```
 
-When this configuration is done, `MyPackage` can be used both in run-time and compile-time code.
+Once this configuration is done, `MyPackage` can be used both in run-time and compile-time code.
 
 > [!WARNING]
 > You must also specify `MetalamaCompileTimePackage` in each project that _uses_ the aspects.
+

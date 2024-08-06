@@ -1,0 +1,7 @@
+Without lock
+Doing some very hard work.
+Doing some very hard work.
+Returned same array: False
+With locks
+Doing some very hard work.
+Returned same array: True

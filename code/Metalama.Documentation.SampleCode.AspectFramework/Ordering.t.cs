@@ -10,7 +10,6 @@ namespace Doc.Ordering
       Console.WriteLine("Executing Aspect1 on SourceMethod. Methods present before applying Aspect1: SourceMethod, IntroducedMethod2");
       Console.WriteLine("Executing Aspect2 on SourceMethod. Methods present before applying Aspect2: SourceMethod");
       Console.WriteLine("Method defined in source code.");
-      return;
     }
     public static void IntroducedMethod1()
     {
@@ -20,7 +19,6 @@ namespace Doc.Ordering
     {
       Console.WriteLine("Executing Aspect1 on IntroducedMethod2. Methods present before applying Aspect1: SourceMethod, IntroducedMethod2");
       Console.WriteLine("Method introduced by Aspect2.");
-      return;
     }
   }
   public static class Program

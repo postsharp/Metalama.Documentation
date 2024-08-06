@@ -1,29 +1,26 @@
-using Microsoft.Extensions.Hosting;
+using Metalama.Documentation.Helpers.ConsoleApp;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 namespace Doc.LogCustomFramework
 {
   // The class using the Log aspect. This class is instantiated by the host builder and dependencies are automatically passed.
-  public class Worker : BackgroundService
+  public class ConsoleMain : IConsoleMain
   {
     [Log]
-    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+    public void Execute()
     {
       try
       {
-        LoggerExtensions.LogWarning(this._logger, "Worker.ExecuteAsync(CancellationToken) started.");
-        Console.WriteLine("Hello, world.");
-        return Task.CompletedTask;
+        LoggerExtensions.LogWarning(this._logger, "ConsoleMain.Execute() started.");
+        _logger.LogInformation("Hello, world.");
+        return;
       }
       finally
       {
-        LoggerExtensions.LogWarning(this._logger, "Worker.ExecuteAsync(CancellationToken) completed.");
+        LoggerExtensions.LogWarning(this._logger, "ConsoleMain.Execute() completed.");
       }
     }
     private ILogger _logger;
-    public Worker(ILogger<Worker> logger = default)
+    public ConsoleMain(ILogger<ConsoleMain> logger = default)
     {
       this._logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
     }

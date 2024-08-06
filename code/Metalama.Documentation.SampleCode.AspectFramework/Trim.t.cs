@@ -5,8 +5,8 @@ namespace Doc.Trim
   {
     public void Method1([Trim] string nonNullableString, [Trim] string? nullableString)
     {
-      nullableString = nullableString?.Trim();
       nonNullableString = nonNullableString.Trim();
+      nullableString = nullableString?.Trim();
       Console.WriteLine($"nonNullableString='{nonNullableString}', nullableString='{nullableString}'");
     }
     public string Property { get; set; }
