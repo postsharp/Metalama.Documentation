@@ -48,31 +48,7 @@ internal class DocFxSolution : Solution
                     match => $"{this.SolutionPath}: {match.Groups["severity"].Value.ToLowerInvariant()}: {match.Groups["message"]}" ) )
         };
 
-        const string docfxPackageName = "docfx.console";
-        var docfxPackagesDirectories = Directory.GetDirectories( Path.Combine( context.RepoDirectory, "docfx\\packages" ), $"{docfxPackageName}.*" );
-
-        if ( docfxPackagesDirectories.Length == 0 )
-        {
-            context.Console.WriteError( $"The {docfxPackageName} package has not been restored." );
-
-            return false;
-        }
-
-        if ( docfxPackagesDirectories.Length > 1 )
-        {
-            context.Console.WriteError( $"More than one version of the {docfxPackageName} package has been restored." );
-
-            return false;
-        }
-
-        var docfxPackageDirectory = docfxPackagesDirectories[0];
-
-        return ToolInvocationHelper.InvokeTool(
-            context.Console,
-            Path.Combine( docfxPackageDirectory, "tools\\docfx.exe" ),
-            Path.Combine( context.RepoDirectory, this.SolutionPath ),
-            context.RepoDirectory,
-            options );
+        return DotNetInvocationHelper.Run( context, "docfx", Path.Combine( context.RepoDirectory, this.SolutionPath ), options );
     }
 
     public override bool Pack( BuildContext context, BuildSettings settings )
@@ -90,7 +66,7 @@ internal class DocFxSolution : Solution
         }
 
         ZipFile.CreateFromDirectory(
-            Path.Combine( context.RepoDirectory, "docfx\\_site" ),
+            Path.Combine( context.RepoDirectory, "artifacts\\site" ),
             zipPath );
 
         return true;
@@ -103,6 +79,6 @@ internal class DocFxSolution : Solution
 
     public override bool Restore( BuildContext context, BuildSettings settings )
     {
-        return DotNetHelper.Run( context, settings, Path.Combine( context.RepoDirectory, "docfx\\DocFx.csproj" ), "restore" );
+        return DotNetInvocationHelper.Run( context, "tool", "install docfx" );
     }
 }

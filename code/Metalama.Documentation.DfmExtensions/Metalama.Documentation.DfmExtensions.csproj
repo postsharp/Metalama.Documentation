@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk" InitialTargets="CheckConfiguration">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <OutDir>bin\$(Configuration)\plugins</OutDir>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
