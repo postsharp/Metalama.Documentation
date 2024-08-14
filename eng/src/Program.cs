@@ -31,6 +31,7 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
         {
             CanFormatCode = true, BuildMethod = BuildMethod.Build,
         },
+        new DocFxApiSolution( "docfx.json" ),
         new DocFxSolution( "docfx.json", docPackageFileName )
     ],
     PublicArtifacts = Pattern.Create(
@@ -43,8 +44,8 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
             MetalamaDependencies.MetalamaLinqPad,
             MetalamaDependencies.MetalamaSamples
     ],
-    SourceDependencies = new[] { MetalamaDependencies.MetalamaSamples, MetalamaDependencies.MetalamaCommunity },
-    AdditionalDirectoriesToClean = new[] { "obj", "artifacts\\site" },
+    SourceDependencies = [MetalamaDependencies.MetalamaSamples, MetalamaDependencies.MetalamaCommunity],
+    AdditionalDirectoriesToClean = [Path.Combine( "artifacts", "api" ), Path.Combine( "artifacts", "site" )],
     Configurations = Product.DefaultConfigurations
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
 
@@ -59,15 +60,15 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
                 }, "https://postsharp-helpbrowser.azurewebsites.net/" )
             }
         } ),
-    Extensions = new ProductExtension[]
-    {
+    Extensions =
+    [
         // Run `b generate-scripts` after changing these parameters.
         new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
             "https://0fpg9nu41dat6boep.a1.typesense.net",
             "metalamadoc",
             "https://doc-production.postsharp.net/metalama/sitemap.xml",
             true )
-    }
+    ]
 };
 
 product.PrepareCompleted += OnPrepareCompleted;

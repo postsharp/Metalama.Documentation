@@ -33,7 +33,7 @@
           "src": "code/Metalama.Documentation.Consolidated/bin/Debug/net8.0-windows"
         }
       ],
-      "dest": "obj/api",
+      "dest": "artifacts/api",
       "disableGitFeatures": false,
       "disableDefaultFilter": false,
       "memberLayout": "separatePages"
@@ -43,10 +43,9 @@
     "content": [
       {
         "files": [
-          "api/**.yml",
-          "api/index.md"
+          "api/**.yml"
         ],
-        "src": "obj"
+        "src": "artifacts"
       },
       {
         "files": [
@@ -86,23 +85,18 @@
         ]
       }
     ],
-      "xref": [
-        "https://learn.microsoft.com/en-us/dotnet/.xrefmap.json"
-//        "C:\\Users\\GaelFraiteur.AzureAD\\Downloads\\xrefmap.json"
-      ],
-/*    "xrefService": [
-      "https://learn.microsoft.com/api/xref/query?uid={uid}"
-    ], */
+    "xref": [
+      "https://learn.microsoft.com/en-us/dotnet/.xrefmap.json"
+//    "C:\\Users\\GaelFraiteur.AzureAD\\Downloads\\xrefmap.json"
+    ],
     "dest": "artifacts/site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template":[ 
       "default", 
-      "code/Metalama.Documentation.DfmExtensions/bin/Debug",
       "templates"
     ],
     "postProcessors": [],
-    "markdownEngineName": "dfm",
     "noLangKeyword": false,
     "keepFileLink": false,
     "cleanupCacheHistory": false
