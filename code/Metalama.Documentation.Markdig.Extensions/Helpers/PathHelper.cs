@@ -1,11 +1,8 @@
 ﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
-using Microsoft.DocAsCode.MarkdownLite;
-using System;
-using System.IO;
-using System.Linq;
+using Docfx.MarkdigEngine.Extensions;
 
-namespace Metalama.Documentation.DfmExtensions;
+namespace Metalama.Documentation.Markdig.Extensions.Helpers;
 
 internal static class PathHelper
 {
@@ -37,19 +34,26 @@ internal static class PathHelper
         return null;
     }
 
-    public static string ResolveTokenPath( string path, IMarkdownContext context, SourceInfo sourceInfo )
+    public static string ResolvePath( string path )
     {
-        if ( context == null! )
+        var rootDirectory = Environment.CurrentDirectory;
+        var sourceFileRelativePath = InclusionContext.File.ToString()!;
+        
+        var sourceFilePath = Path.Combine( rootDirectory, sourceFileRelativePath );
+
+        if ( path.StartsWith( "~", StringComparison.Ordinal ) )
         {
-            // This happens in tests.
-            return path;
+            var baseDirectory = GitHelper.GetGitDirectory( sourceFilePath );
+            path = path.Replace( "~", baseDirectory, StringComparison.Ordinal ).Replace( "/", "\\", StringComparison.Ordinal );
+        }
+        else
+        {
+            var baseDirectory = Path.GetDirectoryName( sourceFilePath )!;
+            path = path.Replace( "/", "\\", StringComparison.Ordinal );
+            path = Path.Combine( baseDirectory, path );
         }
 
-        var baseDirectory = (string) context.Variables["BaseFolder"];
-        path = path.Replace( "~", baseDirectory, StringComparison.Ordinal ).Replace( "/", "\\", StringComparison.Ordinal );
-
-        var directory = Path.Combine( baseDirectory, Path.GetDirectoryName( sourceInfo.File )! );
-        path = Path.GetFullPath( Path.Combine( directory, path ) );
+        path = Path.GetFullPath( path );
 
         return path;
     }

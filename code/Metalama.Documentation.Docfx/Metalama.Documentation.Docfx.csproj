@@ -16,4 +16,8 @@
       <PackageReference Include="Spectre.Console.Cli" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Metalama.Documentation.Markdig.Extensions\Metalama.Documentation.Markdig.Extensions.csproj" />
+    </ItemGroup>
+
 </Project>

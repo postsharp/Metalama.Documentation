@@ -1,12 +1,8 @@
 ﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
-using System;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
+using Markdig.Renderers;
 
-namespace Metalama.Documentation.DfmExtensions;
+namespace Metalama.Documentation.Markdig.Extensions.Tabs;
 
 internal abstract class BaseTab
 {
@@ -14,7 +10,6 @@ internal abstract class BaseTab
 
     public string FullPath { get; }
 
-    // ReSharper disable once VirtualMemberNeverOverridden.Global
     public virtual bool IsEmpty() => !File.Exists( this.FullPath ) || this.IsContentEmpty( File.ReadAllLines( this.FullPath ) );
 
     protected virtual bool IsContentEmpty( string[] lines ) => lines.All( string.IsNullOrWhiteSpace );
@@ -42,14 +37,14 @@ internal abstract class BaseTab
 
     protected abstract string TabHeader { get; }
 
-    public void AppendTabHeader( StringBuilder tabHeaders, string tabGroupId )
+    public void AppendTabHeader( HtmlRenderer renderer, string tabGroupId )
     {
-        tabHeaders.Append( CultureInfo.InvariantCulture, $"<li><a href=\"#tabpanel_{tabGroupId}_{this.TabId}\">{this.TabHeader}</a></li>" );
+        renderer.Write( $"<li><a href=\"#tabpanel_{tabGroupId}_{this.TabId}\">{this.TabHeader}</a></li>" );
     }
 
-    public void AppendTabBody( StringBuilder tabBodies, string tabGroupId )
+    public void AppendTabBody( HtmlRenderer renderer, string tabGroupId )
     {
         var content = this.GetTabContent();
-        tabBodies.Append( CultureInfo.InvariantCulture, $"<div id=\"tabpanel_{tabGroupId}_{this.TabId}\">{content}</div>" );
+        renderer.Write( $"<div id=\"tabpanel_{tabGroupId}_{this.TabId}\">{content}</div>" );
     }
 }

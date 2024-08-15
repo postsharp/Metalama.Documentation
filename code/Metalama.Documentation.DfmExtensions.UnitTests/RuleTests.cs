@@ -18,7 +18,7 @@ public class RuleTests
         "c:\\src\\Foo\\some\\path\\to\\somewhere.cs",
         "the name",
         "the title" )]
-    public void AspectTest( string text, bool isMatch, string path = "", string name = "", string title = "" )
+    public void AspectTest( string text, bool isMatch, string? path = "", string? name = "", string? title = "" )
     {
         var rule = new AspectTestTokenRule();
         var context = new MarkdownParsingContext( SourceInfo.Create( text, "file.md", 0, 1 ) );

@@ -20,16 +20,15 @@ internal class ProjectButtonsRenderer : BaseRenderer<ProjectButtonsToken>
         {
             var lines = File.ReadAllLines( file );
 
-            var kind = lines.Any( l => l.StartsWith( "using Metalama.Framework" ) ) ? SandboxFileKind.AspectCode : SandboxFileKind.None;
+            var kind = lines.Any( l => l.StartsWith( "using Metalama.Framework", StringComparison.Ordinal ) ) ? SandboxFileKind.AspectCode : SandboxFileKind.None;
 
             if ( kind == SandboxFileKind.None )
             {
                 // We need to try harder to find the good category.
 
-
                 var outHtmlPath = PathHelper.GetObjPath( token.Directory, file, ".t.cs.html" ); 
                     
-                if ( outHtmlPath == null || !File.ReadAllText( outHtmlPath ).Contains( "cr-GeneratedCode" ) )
+                if ( outHtmlPath == null || !File.ReadAllText( outHtmlPath ).Contains( "cr-GeneratedCode", StringComparison.Ordinal ) )
                 {
                     kind = SandboxFileKind.ExtraCode;
                 }

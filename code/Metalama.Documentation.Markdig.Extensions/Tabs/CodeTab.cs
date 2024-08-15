@@ -1,13 +1,11 @@
 ﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
 using HtmlAgilityPack;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using Metalama.Documentation.Markdig.Extensions.Helpers;
+using Metalama.Documentation.Markdig.Extensions.Sandbox;
 using System.Text.RegularExpressions;
 
-namespace Metalama.Documentation.DfmExtensions;
+namespace Metalama.Documentation.Markdig.Extensions.Tabs;
 
 internal class CodeTab : BaseTab
 {
@@ -182,7 +180,7 @@ internal class CodeTab : BaseTab
             lines.RemoveAt( 0 );
         }
 
-        while ( lines.Count > 0 && string.IsNullOrWhiteSpace( lines[lines.Count - 1] ) )
+        while ( lines.Count > 0 && string.IsNullOrWhiteSpace( lines[^1] ) )
         {
             lines.RemoveAt( lines.Count - 1 );
         }

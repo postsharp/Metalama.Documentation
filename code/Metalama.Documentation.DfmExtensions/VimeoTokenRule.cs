@@ -17,11 +17,7 @@ public sealed class VimeoTokenRule : IMarkdownRule
 
             var id = match.Groups["id"].Value;
 
-            var attributes = AttributeMatcher.ParseAttributes( match.Groups["attributes"].Value );
-
-            attributes.TryGetValue( "name", out var name );
-            attributes.TryGetValue( "title", out var title );
-            attributes.TryGetValue( "tabs", out var tabs );
+            _ = AttributeMatcher.ParseAttributes( match.Groups["attributes"].Value );
 
             return new VimeoToken(
                 this,

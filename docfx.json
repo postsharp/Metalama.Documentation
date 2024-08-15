@@ -96,6 +96,8 @@
       "default", 
       "templates"
     ],
+    // Used for debugging
+    // "maxParallelism": 1,
     "postProcessors": [],
     "noLangKeyword": false,
     "keepFileLink": false,

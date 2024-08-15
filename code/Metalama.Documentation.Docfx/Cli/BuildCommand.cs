@@ -1,8 +1,8 @@
 ﻿using Docfx;
 using JetBrains.Annotations;
-using Markdig;
 using Markdig.Parsers;
 using Markdig.Parsers.Inlines;
+using Metalama.Documentation.Markdig.Extensions.AspectTests;
 using Spectre.Console.Cli;
 
 namespace Metalama.Documentation.Docfx.Cli;
@@ -29,6 +29,8 @@ public class BuildCommand : AsyncCommand<DocfxSettings>
                 // (This has nothing to do with autolink parsing, but the AutoplinkInlineParser provides this feature.)
                 var autolinkInlineParser = pipeline.InlineParsers.Find<AutolinkInlineParser>()!;
                 autolinkInlineParser.EnableHtmlParsing = true;
+                
+                pipeline.Extensions.AddIfNotAlready<AspectTestInlineExtension>();
 
                 return pipeline;
             }

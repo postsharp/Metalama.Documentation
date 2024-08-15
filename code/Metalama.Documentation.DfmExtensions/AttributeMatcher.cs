@@ -17,6 +17,8 @@ internal static class AttributeMatcher
         foreach ( Match attributeMatch in _oneAttributeRegex.Matches( attributes ) )
         {
             var attributeName = attributeMatch.Groups["name"].Value;
+            
+            // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
             var attributeValue = (attributeMatch.Groups["quoted_value"] ?? attributeMatch.Groups["unquoted_value"]).Value;
             dictionary[attributeName] = attributeValue;
         }

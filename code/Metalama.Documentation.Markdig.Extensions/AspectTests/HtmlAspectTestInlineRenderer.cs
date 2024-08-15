@@ -1,15 +1,12 @@
-﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
-
-using Microsoft.DocAsCode.MarkdownLite;
-using System;
+﻿using Markdig.Renderers;
+using Markdig.Renderers.Html;
+using Metalama.Documentation.Markdig.Extensions.Sandbox;
+using Metalama.Documentation.Markdig.Extensions.Tabs;
 using System.Collections.Immutable;
-using System.IO;
-using System.Linq;
-using System.Text;
 
-namespace Metalama.Documentation.DfmExtensions;
+namespace Metalama.Documentation.Markdig.Extensions.AspectTests;
 
-internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
+public class HtmlAspectTestInlineRenderer : HtmlObjectRenderer<AspectTestInline>
 {
     private static readonly ImmutableHashSet<string> _compileTimeNamespaces = ImmutableHashSet.Create<string>(
         StringComparer.Ordinal,
@@ -28,25 +25,21 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
         "using Metalama.Framework.Serialization",
         "using Metalama.Framework.CodeFixes" );
 
-    public override string Name => nameof(AspectTestRenderer);
-
-    protected override StringBuffer RenderCore(
-        AspectTestToken token,
-        MarkdownBlockContext context )
+    protected override void Write( HtmlRenderer renderer, AspectTestInline obj )
     {
-        if ( !File.Exists( token.Src ) )
+        if ( !File.Exists( obj.Src ) )
         {
-            throw new FileNotFoundException( $"The file '{token.Src}' does not exist." );
+            throw new FileNotFoundException( $"The file '{obj.Src}' does not exist." );
         }
 
-        var id = Path.GetFileNameWithoutExtension( token.Src ).ToLowerInvariant().Replace( '.', '_' );
-        var directory = Path.GetDirectoryName( token.Src )!;
+        var id = Path.GetFileNameWithoutExtension( obj.Src ).ToLowerInvariant().Replace( '.', '_' );
+        var directory = Path.GetDirectoryName( obj.Src )!;
 
         var tabGroup = new AspectTestTabGroup( id );
 
         void AddCodeTab( string tabId, string suffix, SandboxFileKind kind )
         {
-            var tabPath = suffix == "" ? token.Src : Path.ChangeExtension( token.Src, suffix + ".cs" );
+            var tabPath = suffix == "" ? obj.Src : Path.ChangeExtension( obj.Src, suffix + ".cs" );
 
             if ( File.Exists( tabPath ) )
             {
@@ -63,7 +56,7 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
 
         void AddOtherTab( string extension, Func<string, BaseTab> createTab )
         {
-            var tabPath = Path.ChangeExtension( token.Src, extension );
+            var tabPath = Path.ChangeExtension( obj.Src, extension );
 
             if ( File.Exists( tabPath ) )
             {
@@ -100,9 +93,6 @@ internal class AspectTestRenderer : BaseRenderer<AspectTestToken>
 
         AddOtherTab( ".t.txt", p => new ProgramOutputTab( p ) );
 
-        var stringBuilder = new StringBuilder();
-        tabGroup.Render( stringBuilder, token );
-
-        return stringBuilder.ToString();
+        tabGroup.Render( renderer, obj );
     }
 }

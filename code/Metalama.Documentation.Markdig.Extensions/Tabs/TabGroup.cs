@@ -1,12 +1,9 @@
 ﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
+using Markdig.Renderers;
+using Metalama.Documentation.Markdig.Extensions.Sandbox;
 
-namespace Metalama.Documentation.DfmExtensions;
+namespace Metalama.Documentation.Markdig.Extensions.Tabs;
 
 internal abstract class TabGroup
 {
@@ -22,100 +19,96 @@ internal abstract class TabGroup
         {
             throw new ArgumentOutOfRangeException( nameof(tabGroupId), $"The id '{tabGroupId}' contains an invalid character." );
         }
-        
+
         this.TabGroupId = tabGroupId;
     }
 
-    public void Render( StringBuilder stringBuilder, TabGroupBaseToken token )
+    public void Render( HtmlRenderer renderer, TabGroupBaseInline obj )
     {
         // Select tabs to render.
-        var tabs = this.GetEnabledTabs( token );
+        var tabs = this.GetEnabledTabs( obj );
 
         if ( tabs.Count == 0 )
         {
-            throw new InvalidOperationException( $"The tab group '{token}' has no tab." );
+            throw new InvalidOperationException( $"The tab group '{obj}' has no tab." );
         }
 
         // Define the wrapping div.
         var divId = $"code-{this.TabGroupId}";
-        stringBuilder.AppendLine( CultureInfo.InvariantCulture, $"<div id=\"{divId}\" class=\"anchor\">" );
 
-        if ( token.AddLinks )
+        renderer.WriteLine( $"<div id=\"{divId}\" class=\"anchor\">" );
+
+        if ( obj.AddLinks )
         {
             // Start the links.
-            stringBuilder.AppendLine( CultureInfo.InvariantCulture, $@"<div class=""sample-links {(tabs.Count == 1 ? "" : "tabbed")}"">" );
+            renderer.WriteLine( $@"<div class=""sample-links {(tabs.Count == 1 ? "" : "tabbed")}"">" );
 
             // Create the sandbox link.
             var sandboxPayload = this.GetSandboxPayload( tabs );
 
             if ( sandboxPayload != null )
             {
-                stringBuilder.AppendLine(
-                    CultureInfo.InvariantCulture,
-                    $@"  <a class=""try"" onclick=""openSandbox('{sandboxPayload}');"" role=""button"">Open in sandbox</a>" );
-                
-                stringBuilder.AppendLine( "<span class='separator'>|</span>" );
+                renderer.WriteLine( $@"  <a class=""try"" onclick=""openSandbox('{sandboxPayload}');"" role=""button"">Open in sandbox</a>" );
+                renderer.WriteLine( "<span class='separator'>|</span>" );
             }
 
             // Git.
             var gitUrl = this.GetGitUrl();
 
-            stringBuilder.AppendLine(
-                CultureInfo.InvariantCulture,
+            renderer.WriteLine(
                 @$"
     <a class=""github"" href=""{gitUrl}"" target=""github"">See on GitHub</a>" );
-            
-            stringBuilder.AppendLine( "<span class='separator'>|</span>" );
+
+            renderer.WriteLine( "<span class='separator'>|</span>" );
 
             // Full screen.
-            stringBuilder.AppendLine(
-                CultureInfo.InvariantCulture,
+            renderer.WriteLine(
                 @$"
     <a class=""fullscreen"" onclick=""toggleFullScreen('{divId}');"" role=""button"" target=""github"">Full screen</a>" );
 
             // Close.
-            stringBuilder.AppendLine( "</div>" );
+            renderer.WriteLine( "</div>" );
         }
 
         // Write the tabs.
         if ( tabs.Count == 1 )
         {
             // If there is a single file, we do not create a tab group.
-            stringBuilder.AppendLine( tabs[0].GetTabContent() );
+            renderer.WriteLine( tabs[0].GetTabContent() );
         }
         else
         {
-            stringBuilder.AppendLine( @"<div class=""tabGroup""><ul>" );
+            renderer.WriteLine( @"<div class=""tabGroup""><ul>" );
 
             foreach ( var tab in tabs )
             {
-                tab.AppendTabHeader( stringBuilder, this.TabGroupId );
+                tab.AppendTabHeader( renderer, this.TabGroupId );
             }
 
-            stringBuilder.AppendLine( "</ul>" );
+            renderer.WriteLine( "</ul>" );
 
             foreach ( var tab in tabs )
             {
-                tab.AppendTabBody( stringBuilder, this.TabGroupId );
+                tab.AppendTabBody( renderer, this.TabGroupId );
             }
 
-            stringBuilder.AppendLine( "</div>" );
+            renderer.WriteLine( "</div>" );
         }
 
         // Close the wrapping div.
-        stringBuilder.AppendLine( "</div>" );
+        renderer.WriteLine( "</div>" );
     }
 
-    private List<BaseTab> GetEnabledTabs( TabGroupBaseToken token )
+    private List<BaseTab> GetEnabledTabs( TabGroupBaseInline obj )
     {
-        bool IsTabEnabled( BaseTab tab ) => (token.Tabs.Length == 0 || token.Tabs.Contains( tab.TabId )) && !tab.IsEmpty();
+        bool IsTabEnabled( BaseTab tab ) => (obj.Tabs.Length == 0 || obj.Tabs.Contains( tab.TabId )) && !tab.IsEmpty();
 
         var tabs = this.Tabs.Where( IsTabEnabled ).ToList();
 
         return tabs;
     }
 
-    public string? GetSandboxPayload( TabGroupBaseToken token ) => this.GetSandboxPayload( this.GetEnabledTabs( token ) );
+    public string? GetSandboxPayload( TabGroupBaseInline obj ) => this.GetSandboxPayload( this.GetEnabledTabs( obj ) );
 
     private string? GetSandboxPayload( List<BaseTab> tabs )
     {

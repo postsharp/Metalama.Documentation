@@ -6,7 +6,6 @@ using System.Composition;
 using System.Linq;
 using Microsoft.DocAsCode.Dfm;
 using Microsoft.DocAsCode.MarkdownLite;
-using System.Diagnostics;
 
 namespace Metalama.Documentation.DfmExtensions;
 
