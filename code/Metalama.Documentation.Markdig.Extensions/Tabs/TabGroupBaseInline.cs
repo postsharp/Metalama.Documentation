@@ -6,9 +6,9 @@ namespace Metalama.Documentation.Markdig.Extensions.Tabs;
 
 public abstract class TabGroupBaseInline : LeafInline
 {
-    public string? Name { get; set; }
-    
-    public string? Title { get; set; }
+    public string Name { get; set; } = "";
+
+    public string Title { get; set; } = "";
 
     public string[] Tabs { get; set; } = [];
 

@@ -4,6 +4,7 @@ using Markdig.Parsers;
 using Markdig.Parsers.Inlines;
 using Metalama.Documentation.Markdig.Extensions.AspectTests;
 using Metalama.Documentation.Markdig.Extensions.CompareFile;
+using Metalama.Documentation.Markdig.Extensions.ProjectButtons;
 using Metalama.Documentation.Markdig.Extensions.SingleFiles;
 using Spectre.Console.Cli;
 
@@ -35,6 +36,7 @@ public class BuildCommand : AsyncCommand<DocfxSettings>
                 pipeline.Extensions.AddIfNotAlready<AspectTestInlineExtension>();
                 pipeline.Extensions.AddIfNotAlready<SingleFileInlineExtension>();
                 pipeline.Extensions.AddIfNotAlready<CompareFileInlineExtension>();
+                pipeline.Extensions.AddIfNotAlready<ProjectButtonsInlineExtension>();
 
                 return pipeline;
             }
