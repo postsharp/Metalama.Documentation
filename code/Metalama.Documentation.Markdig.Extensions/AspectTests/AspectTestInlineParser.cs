@@ -4,7 +4,6 @@ using Markdig.Parsers;
 using Markdig.Syntax;
 using Metalama.Documentation.Markdig.Extensions.Helpers;
 using Metalama.Documentation.Markdig.Extensions.Tabs;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Metalama.Documentation.Markdig.Extensions.AspectTests;
 
@@ -26,61 +25,46 @@ public class AspectTestInlineParser : InlineParser
             return false;
         }
 
-        slice.SkipWhitespaces();
-
-        if ( !slice.ReadUntilCharOrWhitespace( ']', out var path ) )
+        if ( !slice.MatchArgument( out var path ) )
         {
-            return false;
+            throw new InvalidOperationException( $"Path is missing for '{_startString}'" );
         }
 
         var resolvedPath = PathHelper.ResolvePath( path );
 
         var test = new AspectTestInline { Src = resolvedPath };
 
-        while ( true )
+        while ( slice.MatchArgument( out var name, out var value ) )
         {
-            slice.SkipWhitespaces();
-            var c = slice.CurrentChar;
-
-            if ( c == ']' )
+            if ( string.IsNullOrEmpty( name ) )
             {
-                break;
-            }
-
-            if ( c == '\0' )
-            {
-                return false;
-            }
-
-            if ( !slice.MatchArgument( out var argument ) )
-            {
-                return false;
+                throw new InvalidOperationException( $"Unexpected unnamed argument '{value}'." );
             }
             
-            if ( string.IsNullOrEmpty( argument.Value.Value ) )
+            if ( string.IsNullOrEmpty( value ) )
             {
-                throw new InvalidOperationException( $"Argument '{argument.Value.Key}' is missing a value." );
+                throw new InvalidOperationException( $"Argument '{name}' is missing a value." );
             }
 
-            switch ( argument.Value.Key )
+            switch ( name )
             {
                 case "name":
-                    test.Name = argument.Value.Value;
+                    test.Name = value;
 
                     break;
 
                 case "title":
-                    test.Title = argument.Value.Value;
+                    test.Title = value;
 
                     break;
 
                 case "tabs":
-                    test.Tabs = TabsHelper.SplitTabs( argument.Value.Value );
+                    test.Tabs = TabsHelper.SplitTabs( value );
 
                     break;
 
                 default:
-                    throw new InvalidOperationException( $"Unknown argument '{argument.Value.Key}'." );
+                    throw new InvalidOperationException( $"Unknown argument '{name}'." );
             }
         }
 

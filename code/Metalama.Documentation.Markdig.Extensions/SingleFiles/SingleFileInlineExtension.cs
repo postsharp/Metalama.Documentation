@@ -1,6 +1,5 @@
 ﻿using Markdig;
 using Markdig.Renderers;
-using Metalama.Documentation.Markdig.Extensions.AspectTests;
 
 namespace Metalama.Documentation.Markdig.Extensions.SingleFiles;
 

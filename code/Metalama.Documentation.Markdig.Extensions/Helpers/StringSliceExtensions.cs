@@ -13,56 +13,43 @@ public static class StringSliceExtensions
         }
     }
 
-    public static bool ReadUntilCharOrWhitespace( this ref StringSlice slice, char endChar, [NotNullWhen( true )] out string? value )
-        => slice.ReadUntil( c => c == endChar || c.IsWhitespace(), out value );
+    public static string ReadUntilCharOrWhitespace( this ref StringSlice slice, char endChar ) => slice.ReadUntil( c => c == endChar || c.IsWhitespace() );
 
-    public static bool ReadUntilChar( this ref StringSlice slice, char endChar, [NotNullWhen( true )] out string? value )
-        => slice.ReadUntil( c => c == endChar, out value );
+    public static string ReadUntilChar( this ref StringSlice slice, char endChar ) => slice.ReadUntil( c => c == endChar );
 
-    public static bool ReadUntil(
+    public static string ReadUntil(
         this ref StringSlice slice,
-        Func<char, bool> predicate,
-        [NotNullWhen( true )] out string? value )
+        Func<char, bool> predicate )
     {
-        var pathBuilder = StringBuilderCache.Local();
+        var builder = StringBuilderCache.Local();
 
         var c = slice.CurrentChar;
 
         while ( !predicate( c ) && c != '\0' )
         {
-            pathBuilder.Append( c );
+            builder.Append( c );
             c = slice.NextChar();
         }
 
-        if ( c == '\0' )
-        {
-            value = null;
-
-            return false;
-        }
-
-        value = pathBuilder.ToString();
-
-        return true;
+        return builder.ToString();
     }
-    
-    public static bool MatchArgument( this ref StringSlice slice, [NotNullWhen( true )] out KeyValuePair<string, string?>? argument )
+
+    public static bool MatchArgument( this ref StringSlice slice, out string? name, out string? value )
     {
-        argument = null;
-
-        if ( !slice.ReadUntil( c => c == '=' || c == ']' || c.IsWhitespace(), out var name ) )
-        {
-            return false;
-        }
-
-        string? value = null;
-        
         slice.SkipWhitespaces();
 
-        if ( slice.CurrentChar != '=' && slice.CurrentChar != ']' )
+        name = slice.ReadUntil( c => c == '=' || c == ']' || c.IsWhitespace() );
+
+        value = null;
+
+        if ( name.Length == 0 )
         {
+            name = null;
+
             return false;
         }
+
+        slice.SkipWhitespaces();
 
         if ( slice.CurrentChar == '=' )
         {
@@ -72,25 +59,52 @@ public static class StringSliceExtensions
 
             if ( isQuoted )
             {
-                slice.SkipChar();
+                slice.SkipChar(); // Opening quote.
 
-                if ( !slice.ReadUntilChar( '"', out value ) )
+                value = slice.ReadUntilChar( '"' );
+
+                if ( slice.CurrentChar != '"' )
                 {
-                    return false;
+                    throw new InvalidOperationException( "Quoted value is missing closing quote." );
                 }
 
                 slice.SkipChar(); // End quote.
             }
             else
             {
-                if ( !slice.ReadUntilCharOrWhitespace( ']', out value ) )
-                {
-                    return false;
-                }
+                value = slice.ReadUntilCharOrWhitespace( ']' );
             }
         }
+        else
+        {
+            value = name;
+            name = null;
+        }
 
-        argument = new( name, value );
+        if ( string.IsNullOrEmpty( name ) && string.IsNullOrEmpty( value ) )
+        {
+            throw new InvalidOperationException( "Argument has no name and value." );
+        }
+
+        return true;
+    }
+
+    public static bool MatchArgument( this ref StringSlice slice, [NotNullWhen( true )] out string? value )
+    {
+        if ( !slice.MatchArgument( out var name, out value ) )
+        {
+            return false;
+        }
+
+        if ( !string.IsNullOrEmpty( name ) )
+        {
+            throw new InvalidOperationException( $"Unexpected named argument '{name}'." );
+        }
+
+        if ( string.IsNullOrEmpty( value ) )
+        {
+            throw new InvalidOperationException( $"Unnamed argument has no value." );
+        }
 
         return true;
     }

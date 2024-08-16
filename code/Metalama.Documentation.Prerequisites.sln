@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.Docf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.Markdig.Extensions", "Metalama.Documentation.Markdig.Extensions\Metalama.Documentation.Markdig.Extensions.csproj", "{3CB7B2AE-90BA-4CF0-8FB4-D41DCF3EC77C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metalama.Documentation.Markdig.Extensions.UnitTests", "Metalama.Documentation.Markdig.Extensions.UnitTests\Metalama.Documentation.Markdig.Extensions.UnitTests.csproj", "{8B8322BB-BC5E-4513-B4E2-A45FE96E39E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3CB7B2AE-90BA-4CF0-8FB4-D41DCF3EC77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CB7B2AE-90BA-4CF0-8FB4-D41DCF3EC77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CB7B2AE-90BA-4CF0-8FB4-D41DCF3EC77C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B8322BB-BC5E-4513-B4E2-A45FE96E39E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B8322BB-BC5E-4513-B4E2-A45FE96E39E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B8322BB-BC5E-4513-B4E2-A45FE96E39E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B8322BB-BC5E-4513-B4E2-A45FE96E39E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

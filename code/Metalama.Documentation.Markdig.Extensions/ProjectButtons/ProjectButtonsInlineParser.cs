@@ -24,56 +24,41 @@ public class ProjectButtonsInlineParser : InlineParser
             return false;
         }
 
-        slice.SkipWhitespaces();
-
-        if ( !slice.ReadUntilCharOrWhitespace( ']', out var path ) )
+        if ( !slice.MatchArgument( out var path ) )
         {
-            return false;
+            throw new InvalidOperationException( $"Path is missing for '{_startString}'" );
         }
         
         var resolvedPath = PathHelper.ResolvePath( path );
 
         var buttons = new ProjectButtonsInline() { Directory = resolvedPath };
 
-        while ( true )
+        while ( slice.MatchArgument( out var name, out var value ) )
         {
-            slice.SkipWhitespaces();
-            var c = slice.CurrentChar;
-
-            if ( c == ']' )
+            if ( string.IsNullOrEmpty( name ) )
             {
-                break;
-            }
-
-            if ( c == '\0' )
-            {
-                return false;
-            }
-
-            if ( !slice.MatchArgument( out var argument ) )
-            {
-                return false;
+                throw new InvalidOperationException( $"Unexpected unnamed argument '{value}'." );
             }
             
-            if ( string.IsNullOrEmpty( argument.Value.Value ) )
+            if ( string.IsNullOrEmpty( value ) )
             {
-                throw new InvalidOperationException( $"Argument '{argument.Value.Key}' is missing a value." );
+                throw new InvalidOperationException( $"Argument '{name}' is missing a value." );
             }
 
-            switch ( argument.Value.Key )
+            switch ( name )
             {
                 case "name":
-                    buttons.Name = argument.Value.Value;
+                    buttons.Name = value;
 
                     break;
 
                 case "title":
-                    buttons.Title = argument.Value.Value;
+                    buttons.Title = value;
 
                     break;
 
                 default:
-                    throw new InvalidOperationException( $"Unknown argument '{argument.Value.Key}'." );
+                    throw new InvalidOperationException( $"Unknown argument '{value}'." );
             }
         }
 

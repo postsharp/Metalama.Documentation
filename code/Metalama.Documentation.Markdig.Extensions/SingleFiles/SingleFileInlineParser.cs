@@ -25,73 +25,58 @@ public class SingleFileInlineParser : InlineParser
             return false;
         }
 
-        slice.SkipWhitespaces();
-
-        if ( !slice.ReadUntilCharOrWhitespace( ']', out var path ) )
+        if ( !slice.MatchArgument( out var path ) )
         {
-            return false;
+            throw new InvalidOperationException( $"Path is missing for '{_startString}'" );
         }
 
         var resolvedPath = PathHelper.ResolvePath( path );
 
         var file = new SingleFileInline { Src = resolvedPath };
 
-        while ( true )
+        while ( slice.MatchArgument( out var name, out var value ) )
         {
-            slice.SkipWhitespaces();
-            var c = slice.CurrentChar;
-
-            if ( c == ']' )
+            if ( string.IsNullOrEmpty( name ) )
             {
-                break;
+                if ( value == "transformed" )
+                {
+                    file.ShowTransformed = true;
+
+                    continue;
+                }
+
+                throw new InvalidOperationException( $"Unexpected unnamed argument '{value}'." );
             }
 
-            if ( c == '\0' )
+            if ( string.IsNullOrEmpty( value ) )
             {
-                return false;
+                throw new InvalidOperationException( $"Argument '{name}' is missing a value." );
             }
 
-            if ( !slice.MatchArgument( out var argument ) )
-            {
-                return false;
-            }
-
-            if ( argument.Value.Key == "transformed" )
-            {
-                file.ShowTransformed = true;
-
-                continue;
-            }
-
-            if ( string.IsNullOrEmpty( argument.Value.Value ) )
-            {
-                throw new InvalidOperationException( $"Argument '{argument.Value.Key}' is missing a value." );
-            }
-
-            switch ( argument.Value.Key )
+            switch ( name )
             {
                 case "name":
-                    file.Name = argument.Value.Value;
+                    file.Name = value;
 
                     break;
 
                 case "title":
-                    file.Title = argument.Value.Value;
+                    file.Title = value;
 
                     break;
 
                 case "tabs":
-                    file.Tabs = TabsHelper.SplitTabs( argument.Value.Value );
+                    file.Tabs = TabsHelper.SplitTabs( value );
 
                     break;
                 
                 case "marker":
-                    file.Marker = argument.Value.Value;
+                    file.Marker = value;
 
                     break;
                 
                 case "member":
-                    file.Member = argument.Value.Value;
+                    file.Member = value;
 
                     break;
                 
@@ -100,7 +85,7 @@ public class SingleFileInlineParser : InlineParser
                     break;
 
                 default:
-                    throw new InvalidOperationException( $"Unknown argument '{argument.Value.Key}'." );
+                    throw new InvalidOperationException( $"Unknown argument '{name}'." );
             }
         }
 

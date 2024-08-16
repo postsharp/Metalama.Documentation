@@ -24,11 +24,9 @@ public class CompareFileInlineParser : InlineParser
             return false;
         }
 
-        slice.SkipWhitespaces();
-
-        if ( !slice.ReadUntilCharOrWhitespace( ']', out var path ) )
+        if ( !slice.MatchArgument( out var path ) )
         {
-            return false;
+            throw new InvalidOperationException( $"Path is missing for '{_startString}'" );
         }
 
         var resolvedPath = PathHelper.ResolvePath( path );
