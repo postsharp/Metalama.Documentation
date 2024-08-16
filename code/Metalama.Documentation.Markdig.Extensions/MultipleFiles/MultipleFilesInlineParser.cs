@@ -28,8 +28,8 @@ public class MultipleFilesInlineParser : InlineParser
 
         var files = new MultipleFilesInline();
         var filesList = new List<string>();
-        string? name = null;
-        string? value = null;
+        string? name;
+        string? value;
 
         while ( slice.MatchArgument( out name, out value ) )
         {

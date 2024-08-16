@@ -7,6 +7,7 @@ using Metalama.Documentation.Markdig.Extensions.CompareFile;
 using Metalama.Documentation.Markdig.Extensions.MultipleFiles;
 using Metalama.Documentation.Markdig.Extensions.ProjectButtons;
 using Metalama.Documentation.Markdig.Extensions.SingleFiles;
+using Metalama.Documentation.Markdig.Extensions.Vimeo;
 using Spectre.Console.Cli;
 
 namespace Metalama.Documentation.Docfx.Cli;
@@ -39,6 +40,7 @@ public class BuildCommand : AsyncCommand<DocfxSettings>
                 pipeline.Extensions.AddIfNotAlready<CompareFileInlineExtension>();
                 pipeline.Extensions.AddIfNotAlready<ProjectButtonsInlineExtension>();
                 pipeline.Extensions.AddIfNotAlready<MultipleFilesInlineExtension>();
+                pipeline.Extensions.AddIfNotAlready<VimeoInlineExtension>();
 
                 return pipeline;
             }
