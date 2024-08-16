@@ -4,15 +4,14 @@ using Markdig.Parsers;
 using Markdig.Syntax;
 using Metalama.Documentation.Markdig.Extensions.Helpers;
 using Metalama.Documentation.Markdig.Extensions.Tabs;
-using System.Diagnostics.CodeAnalysis;
 
-namespace Metalama.Documentation.Markdig.Extensions.AspectTests;
+namespace Metalama.Documentation.Markdig.Extensions.SingleFiles;
 
-public class AspectTestInlineParser : InlineParser
+public class SingleFileInlineParser : InlineParser
 {
-    private const string _startString = "[!metalama-test";
+    private const string _startString = "[!metalama-file";
 
-    public AspectTestInlineParser()
+    public SingleFileInlineParser()
     {
         this.OpeningCharacters = ['['];
     }
@@ -35,7 +34,7 @@ public class AspectTestInlineParser : InlineParser
 
         var resolvedPath = PathHelper.ResolvePath( path );
 
-        var test = new AspectTestInline { Src = resolvedPath };
+        var file = new SingleFileInline { Src = resolvedPath };
 
         while ( true )
         {
@@ -56,7 +55,14 @@ public class AspectTestInlineParser : InlineParser
             {
                 return false;
             }
-            
+
+            if ( argument.Value.Key == "transformed" )
+            {
+                file.ShowTransformed = true;
+
+                continue;
+            }
+
             if ( string.IsNullOrEmpty( argument.Value.Value ) )
             {
                 throw new InvalidOperationException( $"Argument '{argument.Value.Key}' is missing a value." );
@@ -65,18 +71,32 @@ public class AspectTestInlineParser : InlineParser
             switch ( argument.Value.Key )
             {
                 case "name":
-                    test.Name = argument.Value.Value;
+                    file.Name = argument.Value.Value;
 
                     break;
 
                 case "title":
-                    test.Title = argument.Value.Value;
+                    file.Title = argument.Value.Value;
 
                     break;
 
                 case "tabs":
-                    test.Tabs = TabsHelper.SplitTabs( argument.Value.Value );
+                    file.Tabs = TabsHelper.SplitTabs( argument.Value.Value );
 
+                    break;
+                
+                case "marker":
+                    file.Marker = argument.Value.Value;
+
+                    break;
+                
+                case "member":
+                    file.Member = argument.Value.Value;
+
+                    break;
+                
+                // TODO
+                case "from":
                     break;
 
                 default:
@@ -84,14 +104,14 @@ public class AspectTestInlineParser : InlineParser
             }
         }
 
-        test.Span = new SourceSpan(
+        file.Span = new SourceSpan(
             processor.GetSourcePosition( saved.Start, out var line, out var column ),
             processor.GetSourcePosition( slice.Start - 1 ) );
 
-        test.Line = line;
-        test.Column = column;
+        file.Line = line;
+        file.Column = column;
 
-        processor.Inline = test;
+        processor.Inline = file;
 
         return true;
     }

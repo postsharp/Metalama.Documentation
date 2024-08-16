@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using Markdig.Parsers;
 using Markdig.Parsers.Inlines;
 using Metalama.Documentation.Markdig.Extensions.AspectTests;
+using Metalama.Documentation.Markdig.Extensions.SingleFiles;
 using Spectre.Console.Cli;
 
 namespace Metalama.Documentation.Docfx.Cli;
@@ -31,6 +32,7 @@ public class BuildCommand : AsyncCommand<DocfxSettings>
                 autolinkInlineParser.EnableHtmlParsing = true;
                 
                 pipeline.Extensions.AddIfNotAlready<AspectTestInlineExtension>();
+                pipeline.Extensions.AddIfNotAlready<SingleFileInlineExtension>();
 
                 return pipeline;
             }

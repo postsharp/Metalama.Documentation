@@ -45,4 +45,53 @@ public static class StringSliceExtensions
 
         return true;
     }
+    
+    public static bool MatchArgument( this ref StringSlice slice, [NotNullWhen( true )] out KeyValuePair<string, string?>? argument )
+    {
+        argument = null;
+
+        if ( !slice.ReadUntil( c => c == '=' || c == ']' || c.IsWhitespace(), out var name ) )
+        {
+            return false;
+        }
+
+        string? value = null;
+        
+        slice.SkipWhitespaces();
+
+        if ( slice.CurrentChar != '=' && slice.CurrentChar != ']' )
+        {
+            return false;
+        }
+
+        if ( slice.CurrentChar == '=' )
+        {
+            slice.SkipChar();
+
+            var isQuoted = slice.CurrentChar == '"';
+
+            if ( isQuoted )
+            {
+                slice.SkipChar();
+
+                if ( !slice.ReadUntilChar( '"', out value ) )
+                {
+                    return false;
+                }
+
+                slice.SkipChar(); // End quote.
+            }
+            else
+            {
+                if ( !slice.ReadUntilCharOrWhitespace( ']', out value ) )
+                {
+                    return false;
+                }
+            }
+        }
+
+        argument = new( name, value );
+
+        return true;
+    }
 }
