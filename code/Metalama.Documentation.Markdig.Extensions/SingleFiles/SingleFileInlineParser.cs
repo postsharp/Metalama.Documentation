@@ -80,6 +80,11 @@ public class SingleFileInlineParser : InlineParser
 
                     break;
                 
+                case "transformed":
+                    file.ShowTransformed = bool.Parse( value );
+
+                    break;
+                
                 // TODO
                 case "from":
                     break;

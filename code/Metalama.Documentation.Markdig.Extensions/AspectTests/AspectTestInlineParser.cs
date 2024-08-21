@@ -64,7 +64,9 @@ public class AspectTestInlineParser : InlineParser
                     break;
 
                 case "diff-side":
-                    test.DiffSide = Enum.Parse<DiffSide>( value );
+                    test.DiffSide = Enum.Parse<DiffSide>( value, true );
+
+                    break;
 
                 default:
                     throw new InvalidOperationException( $"Unknown argument '{name}'." );

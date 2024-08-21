@@ -11,9 +11,12 @@ public class HtmlSingeFileInlineRenderer : HtmlObjectRenderer<SingleFileInline>
     {
         var name = Path.GetFileNameWithoutExtension( obj.Src );
 
-        var tab = token.ShowTransformed
-            ? new TransformedSingleFileCodeTab( Path.GetFileNameWithoutExtension( token.Src ), token.Src, "" )
-            : new CodeTab( name, token.Src, SandboxFileKind.ExtraCode, token.Marker, token.Member );
+        var tab = obj.ShowTransformed
+            ? new TransformedSingleFileCodeTab(
+                Path.GetFileNameWithoutExtension( obj.Src ),
+                obj.Src,
+                "" )
+            : new CodeTab( name, obj.Src, SandboxFileKind.ExtraCode, obj.Marker, obj.Member );
 
         renderer.WriteLine( "<div class='single-file'>" );
         renderer.WriteLine( tab.GetTabContent( false ) );

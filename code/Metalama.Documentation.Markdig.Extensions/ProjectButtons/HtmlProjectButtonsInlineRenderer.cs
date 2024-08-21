@@ -32,7 +32,8 @@ public class HtmlProjectButtonsInlineRenderer : HtmlObjectRenderer<ProjectButton
             {
                 // We need to try harder to find the good category.
 
-                var outHtmlPath = PathHelper.GetObjPath( obj.Directory, file, ".t.cs.html" );
+                var outHtmlPath = PathHelper.GetObjPaths( obj.Directory, file, ".t.cs.html" )
+                    .FirstOrDefault( File.Exists );
 
                 if ( outHtmlPath == null || !File.ReadAllText( outHtmlPath ).Contains( "cr-GeneratedCode", StringComparison.Ordinal ) )
                 {

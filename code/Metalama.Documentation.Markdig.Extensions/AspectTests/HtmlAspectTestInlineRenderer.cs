@@ -25,6 +25,7 @@ public class HtmlAspectTestInlineRenderer : HtmlObjectRenderer<AspectTestInline>
         "using Metalama.Framework.Advising",
         "using Metalama.Framework.Serialization",
         "using Metalama.Framework.CodeFixes" );
+
     private enum TabOrder
     {
         Aspect,
@@ -34,6 +35,7 @@ public class HtmlAspectTestInlineRenderer : HtmlObjectRenderer<AspectTestInline>
         Auxiliary,
         ProgramOutput
     }
+
     protected override void Write( HtmlRenderer renderer, AspectTestInline obj )
     {
         if ( !File.Exists( obj.Src ) )
@@ -119,10 +121,8 @@ public class HtmlAspectTestInlineRenderer : HtmlObjectRenderer<AspectTestInline>
 
         AddOtherTab( ".t.txt", p => new ProgramOutputTab( p ), TabOrder.ProgramOutput );
 
-        var stringBuilder = new StringBuilder();
-
         var tabGroup = new AspectTestTabGroup( id );
         tabGroup.Tabs.AddRange( tabs.OrderBy( t => (int) t.Order ).ThenBy( t => t.Tab.TabId ).Select( t => t.Tab ) );
-        tabGroup.Render( stringBuilder, obj );
+        tabGroup.Render( renderer, obj );
     }
 }
