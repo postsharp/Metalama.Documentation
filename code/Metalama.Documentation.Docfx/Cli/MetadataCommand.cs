@@ -5,7 +5,7 @@ using Spectre.Console.Cli;
 namespace Metalama.Documentation.Docfx.Cli;
 
 [UsedImplicitly]
-public class GenerateManagedReferenceYamlFilesCommand : AsyncCommand<DocfxSettings>
+public class MetadataCommand : AsyncCommand<DocfxSettings>
 {
     public override async Task<int> ExecuteAsync( CommandContext context, DocfxSettings settings )
     {

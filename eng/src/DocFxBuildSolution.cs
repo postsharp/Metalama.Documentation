@@ -4,11 +4,11 @@ using System.IO.Compression;
 
 namespace BuildMetalamaDocumentation;
 
-internal class DocFxSolution : DocFxSolutionBase
+internal class DocFxBuildSolution : DocFxSolutionBase
 {
     private readonly string _archiveName;
 
-    public DocFxSolution( string solutionPath, string archiveName ) : base( solutionPath, "doc" )
+    public DocFxBuildSolution( string solutionPath, string archiveName ) : base( solutionPath, "build" )
     {
         // Packing is done by the publish command.
         this.BuildMethod = PostSharp.Engineering.BuildTools.Build.Model.BuildMethod.Pack;

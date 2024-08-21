@@ -7,8 +7,8 @@ app.Configure(
     config =>
     {
         config.PropagateExceptions();
-        config.AddCommand<GenerateManagedReferenceYamlFilesCommand>( "api" );
-        config.AddCommand<BuildCommand>( "doc" );
+        config.AddCommand<MetadataCommand>( "metadata" );
+        config.AddCommand<BuildCommand>( "build" );
     } );
     
 return app.Run( args );

@@ -1,8 +1,8 @@
 ﻿namespace BuildMetalamaDocumentation;
 
-internal class DocFxApiSolution : DocFxSolutionBase
+internal class DocFxMetadataSolution : DocFxSolutionBase
 {
-    public DocFxApiSolution( string solutionPath ) : base( solutionPath, "api" )
+    public DocFxMetadataSolution( string solutionPath ) : base( solutionPath, "metadata" )
     {
         this.BuildMethod = PostSharp.Engineering.BuildTools.Build.Model.BuildMethod.Build;
     }
