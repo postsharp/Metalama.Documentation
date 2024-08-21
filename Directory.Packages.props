@@ -16,6 +16,7 @@
     <PackageVersion Include="Docfx.MarkdigEngine.Extensions" Version="2.77.0" />
     <PackageVersion Include="HtmlAgilityPack" Version="1.11.63" />
     <PackageVersion Include="JetBrains.Annotations" Version="2024.2.0" />
+    <PackageVersion Include="LINQPad.Runtime" Version="8.3.7" />
     <PackageVersion Include="Metalama.Compiler" Version="$(MetalamaCompilerVersion)" />
     <PackageVersion Include="Metalama.Documentation.QuickStart" Version="$(MetalamaSamplesVersion)" />
     <PackageVersion Include="Metalama.Extensions.Architecture" Version="$(MetalamaExtensionsVersion)" />
@@ -39,9 +40,11 @@
     <PackageVersion Include="Metalama.Patterns.Observability" Version="$(MetalamaPatternsPreviewVersion)" />
     <PackageVersion Include="Metalama.Testing.AspectTesting" Version="$(MetalamaVersion)" />
     <PackageVersion Include="Metalama.Testing.UnitTesting" Version="$(MetalamaVersion)" />
+    <PackageVersion Include="Microsoft.Build" Version="17.11.4" />
     <PackageVersion Include="Microsoft.Composition" Version="1.0.31" />
     <PackageVersion Include="Microsoft.DocAsCode.Dfm" Version="2.63.1" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="8.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
@@ -49,10 +52,26 @@
     <PackageVersion Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="NuGet.CommandLine" Version="$(NuGetCommandLineVersion)" />
+    <PackageVersion Include="NuGet.Credentials" Version="6.11.0" />
+    <PackageVersion Include="NuGet.Frameworks" Version="6.11.0" />
+    <PackageVersion Include="NuGet.Packaging" Version="6.11.0" />
+    <PackageVersion Include="NuGet.Protocol" Version="6.11.0" />
+    <PackageVersion Include="NuGet.Resolver" Version="6.11.0" />
+    <PackageVersion Include="NuGet.Versioning" Version="6.11.0" />
     <PackageVersion Include="PKT.LZStringCSharp" Version="2.1.0" />
     <PackageVersion Include="PostSharp.Engineering.BuildTools" Version="$(PostSharpEngineeringVersion)" />
     <PackageVersion Include="Spectre.Console.Cli" Version="0.49.1" />
+    <PackageVersion Include="SQLitePCLRaw.bundle_green" Version="2.1.9" />
+    <PackageVersion Include="SQLitePCLRaw.core" Version="2.1.9" />
+    <PackageVersion Include="StreamJsonRpc" Version="2.19.27" />
+    <PackageVersion Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    <PackageVersion Include="System.Data.Odbc" Version="8.0.0" />
+    <PackageVersion Include="System.Data.OleDb" Version="8.0.0" />
+    <PackageVersion Include="System.Data.SqlClient" Version="4.8.6" />
     <PackageVersion Include="System.IO.Hashing" Version="8.0.0" />
+    <PackageVersion Include="System.IO.Ports" Version="8.0.0" />
+    <PackageVersion Include="System.ServiceModel.Syndication" Version="8.0.0" />
+    <PackageVersion Include="System.ServiceProcess.ServiceController" Version="8.0.0" />
     <PackageVersion Include="xunit" Version="2.9.0" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />
   </ItemGroup>
