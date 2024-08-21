@@ -60,7 +60,6 @@ The following table lists the transformations applied to the `meta.Proceed()` ex
       <td>
          `await meta.Proceed()`
       </td>
-
       <td>
          `return result;`
       </td>
