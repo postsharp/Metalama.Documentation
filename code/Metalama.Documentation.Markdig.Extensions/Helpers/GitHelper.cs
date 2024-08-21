@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Metalama.Documentation.Markdig.Extensions.Helpers;
 
-internal static class GitHelper
+public static class GitHelper
 {
     private static readonly Regex _gitSshRegex = new( "git@(?<server>[^:]+):" );
 

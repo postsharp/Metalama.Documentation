@@ -13,6 +13,7 @@
     <PackageVersion Include="Azure.Security.KeyVault.Secrets" Version="4.6.0" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
     <PackageVersion Include="Docfx.App" Version="2.77.0" />
+    <PackageVersion Include="Docfx.Common" Version="2.77.0" />
     <PackageVersion Include="Docfx.MarkdigEngine.Extensions" Version="2.77.0" />
     <PackageVersion Include="HtmlAgilityPack" Version="1.11.63" />
     <PackageVersion Include="JetBrains.Annotations" Version="2024.2.0" />
