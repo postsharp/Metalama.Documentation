@@ -111,7 +111,7 @@ A simplified version of `VirtuosityWeaver` could look like this:
 
 [!code-csharp[](~\code\Metalama.Documentation.SampleCode.Sdk\VirtuosityWeaver.cs)]
 
-The actual implementation is available [on the GitHub repo](https://github.com/postsharp/Metalama.Community/blob/master/src/Metalama.Community.Virtuosity/Metalama.Community.Virtuosity/VirtuosityWeaver.cs).
+The actual implementation is available [on the GitHub repo](https://github.com/postsharp/Metalama.Community/blob/master/src/Metalama.Community.Virtuosity/Metalama.Community.Virtuosity.Weaver/VirtuosityWeaver.cs).
 
 ### Step 6. Write unit tests
 

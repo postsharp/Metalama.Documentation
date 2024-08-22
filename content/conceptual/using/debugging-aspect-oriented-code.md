@@ -7,7 +7,7 @@ keywords: "debug aspect-oriented code, debugger, breakpoints, step-into, transfo
 
 # Debugging aspect-oriented code
 
-In this section, we illustrate how to debug aspect-oriented code using the Visual Studio debugger. This builds on our previous discussion about how aspects transform your code, which included a side-by-side comparison of the original and transformed code at <xref:preview-metalama-diff>.
+In this section, we illustrate how to debug aspect-oriented code using the Visual Studio debugger. This builds on our previous discussion about how aspects transform your code, which included a side-by-side comparison of the original and transformed code as described at <xref:understanding-your-code-with-aspects>.
 
 ## Steps to debug aspect-oriented code
 

@@ -24,7 +24,7 @@ Despite Metalama's best efforts to make the separation process smooth, it's esse
 The `metalama divorce` command will automatically inject a significant amount of boilerplate code into your source code. Consider the following potential inconveniences:
 
 * You will now have to maintain this boilerplate code manually.
-* Metalama does not always generate code that a human would write. Your codebase may look non-idiomatic after the divorce. You can preview what Metalama does with your code using the feature described in <xref:preview-metalama-diff>.
+* Metalama does not always generate code that a human would write. Your codebase may look non-idiomatic after the divorce. You can preview what Metalama does with your code using the feature described in <xref:understanding-your-code-with-aspects>.
 * The changes will result in a large commit that may be challenging to merge if your colleagues are concurrently working on other branches of the same repo.
 * Returning to Metalama after the divorce can be even more painful because you would need to remove the boilerplate manually, unless you can easily revert the divorce commit.
 

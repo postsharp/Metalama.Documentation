@@ -46,6 +46,6 @@ In the <xref:Metalama.Framework.Code.RefKind> enum, `In` and `RefReadOnly` are n
 We have been working on the following projects, but they are not yet stable:
 
 * [Metalama.Patterns.Observability](https://github.com/postsharp/Metalama.Patterns/tree/release/2024.0/src/Metalama.Patterns.Observability) is an aspect implementing the `INotifyPropertyChanged` interface. It supports computed properties and child objects.
-* [Metalama.Patterns.Wpf](https://github.com/postsharp/Metalama.Patterns/tree/release/2024.0/src/Metalama.Patterns.Wpf) are aspects implementing WPF commands and dependency properties.
+* [Metalama.Patterns.Xaml](https://github.com/postsharp/Metalama.Patterns/tree/release/2024.0/src/Metalama.Patterns.Xaml) are aspects implementing WPF commands and dependency properties. This package has been renamed to `Metalama.Patterns.Wpf` in Metalama 2024.2.
 
 
