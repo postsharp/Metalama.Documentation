@@ -78,7 +78,13 @@ public class ParserTests
             isMatch,
             false,
             path,
-            ( inline, expectedPath ) =>
+            ( 
+                
+                // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
+                inline,
+                
+                // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
+                expectedPath ) =>
             {
                 Assert.NotNull( expectedPath );
                 Assert.Equal( expectedPath, inline.Src );
@@ -96,7 +102,13 @@ public class ParserTests
             isMatch,
             false,
             path,
-            ( inline, expectedPath ) =>
+            ( 
+                
+                // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
+                inline,
+                
+                // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
+                expectedPath ) =>
             {
                 Assert.NotNull( expectedPath );
                 Assert.Equal( expectedPath, inline.Src );
@@ -117,6 +129,8 @@ public class ParserTests
             isMatch,
             throws,
             "",
+
+            // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
             ( inline, _ ) =>
             {
                 Assert.Equal( files, inline.Files.Length );
