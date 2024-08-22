@@ -7,7 +7,6 @@ using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
 using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
-using PostSharp.Engineering.BuildTools.Search;
 using Spectre.Console.Cli;
 using System.IO;
 using System.IO.Compression;
@@ -59,16 +58,7 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
                     new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
                 }, "https://postsharp-helpbrowser.azurewebsites.net/" )
             }
-        } ),
-    Extensions =
-    [
-        // Run `b generate-scripts` after changing these parameters.
-        new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
-            "https://0fpg9nu41dat6boep.a1.typesense.net",
-            "metalamadoc",
-            "https://doc-production.postsharp.net/metalama/sitemap.xml",
-            true )
-    ]
+        } )
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
