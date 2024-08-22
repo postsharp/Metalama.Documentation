@@ -33,12 +33,7 @@ public class CompareFileInlineParser : InlineParser
 
         var diff = new CompareFileInline { Src = resolvedPath };
 
-        slice.SkipWhitespaces();
-
-        if ( slice.CurrentChar != ']' )
-        {
-            return false;
-        }
+        slice.EnsureClosingBracket();
 
         diff.Span = new SourceSpan(
             processor.GetSourcePosition( saved.Start, out var line, out var column ),

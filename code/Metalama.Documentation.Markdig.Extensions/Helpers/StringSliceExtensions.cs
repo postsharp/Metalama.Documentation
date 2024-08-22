@@ -108,4 +108,16 @@ public static class StringSliceExtensions
 
         return true;
     }
+    
+    public static void EnsureClosingBracket( this ref StringSlice slice )
+    {
+        slice.SkipWhitespaces();
+        
+        if ( slice.CurrentChar != ']' )
+        {
+            throw new InvalidOperationException( "Expected closing bracket ']'." );
+        }
+
+        slice.SkipChar();
+    }
 }

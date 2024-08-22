@@ -61,6 +61,8 @@ public class ProjectButtonsInlineParser : InlineParser
                     throw new InvalidOperationException( $"Unknown argument '{value}'." );
             }
         }
+        
+        slice.EnsureClosingBracket();
 
         buttons.Span = new SourceSpan(
             processor.GetSourcePosition( saved.Start, out var line, out var column ),
