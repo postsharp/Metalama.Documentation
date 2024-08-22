@@ -93,6 +93,8 @@ public class SingleFileInlineParser : InlineParser
                     throw new InvalidOperationException( $"Unknown argument '{name}'." );
             }
         }
+        
+        slice.EnsureClosingBracket();
 
         file.Span = new SourceSpan(
             processor.GetSourcePosition( saved.Start, out var line, out var column ),

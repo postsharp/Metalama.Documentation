@@ -86,6 +86,8 @@ public class MultipleFilesInlineParser : InlineParser
             }
         }
         
+        slice.EnsureClosingBracket();
+        
         files.Files = filesList.ToArray();
 
         files.Span = new SourceSpan(

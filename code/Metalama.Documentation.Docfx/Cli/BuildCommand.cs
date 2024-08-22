@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using Markdig.Parsers;
 using Markdig.Parsers.Inlines;
 using Metalama.Documentation.Markdig.Extensions.AspectTests;
+using Metalama.Documentation.Markdig.Extensions.Comments;
 using Metalama.Documentation.Markdig.Extensions.CompareFile;
 using Metalama.Documentation.Markdig.Extensions.MultipleFiles;
 using Metalama.Documentation.Markdig.Extensions.ProjectButtons;
@@ -41,6 +42,7 @@ public class BuildCommand : AsyncCommand<DocfxSettings>
                 pipeline.Extensions.AddIfNotAlready<ProjectButtonsInlineExtension>();
                 pipeline.Extensions.AddIfNotAlready<MultipleFilesInlineExtension>();
                 pipeline.Extensions.AddIfNotAlready<VimeoInlineExtension>();
+                pipeline.Extensions.AddIfNotAlready<CommentBlockExtension>();
 
                 return pipeline;
             }

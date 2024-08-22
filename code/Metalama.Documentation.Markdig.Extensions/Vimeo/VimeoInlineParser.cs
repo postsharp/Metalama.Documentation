@@ -28,6 +28,8 @@ public class VimeoInlineParser : InlineParser
         {
             throw new InvalidOperationException( $"ID is missing for '{_startString}'" );
         }
+        
+        slice.EnsureClosingBracket();
 
         var vimeo = new VimeoInline
         {
