@@ -30,8 +30,8 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
         {
             CanFormatCode = true, BuildMethod = BuildMethod.Build,
         },
-        new DocFxMetadataSolution( "docfx.json" ),
-        new DocFxBuildSolution( "docfx.json", docPackageFileName )
+        new DocFxApiSolution( "docfx.json" ),
+        new DocFxSiteSolution( "docfx.json", docPackageFileName )
     ],
     PublicArtifacts = Pattern.Create(
         docPackageFileName ),
