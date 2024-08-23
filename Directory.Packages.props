@@ -5,7 +5,6 @@
   </PropertyGroup>
   <!-- Set versions of dependencies that need special treatment or consist of multiple packages of the same version. -->
   <PropertyGroup>
-    <NuGetCommandLineVersion Condition="'$(NuGetCommandLineVersion)'==''">6.9.1</NuGetCommandLineVersion>
     <PostSharpEngineeringVersion Condition="'$(PostSharpEngineeringVersion)'==''">2023.2.116</PostSharpEngineeringVersion>
   </PropertyGroup>
   <ItemGroup>
@@ -43,7 +42,6 @@
     <PackageVersion Include="Metalama.Testing.UnitTesting" Version="$(MetalamaVersion)" />
     <PackageVersion Include="Microsoft.Build" Version="17.11.4" />
     <PackageVersion Include="Microsoft.Composition" Version="1.0.31" />
-    <PackageVersion Include="Microsoft.DocAsCode.Dfm" Version="2.63.1" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="8.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
@@ -52,7 +50,6 @@
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
     <PackageVersion Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageVersion Include="NuGet.CommandLine" Version="$(NuGetCommandLineVersion)" />
     <PackageVersion Include="NuGet.Credentials" Version="6.11.0" />
     <PackageVersion Include="NuGet.Frameworks" Version="6.11.0" />
     <PackageVersion Include="NuGet.Packaging" Version="6.11.0" />
