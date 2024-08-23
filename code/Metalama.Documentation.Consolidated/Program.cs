@@ -8,7 +8,7 @@ using Metalama.Framework.Workspaces;
 using Metalama.LinqPad;
 using System.Reflection;
 
-// This code is execured during build of this project. It copies all assemblies in the current directory to a subdirectory named 'all'.
+// This code is executed during build of this project. It copies all assemblies in the current directory to a subdirectory named 'all'.
 
 // This is to make sure that all packages are properly referenced.
 _ = new[]
