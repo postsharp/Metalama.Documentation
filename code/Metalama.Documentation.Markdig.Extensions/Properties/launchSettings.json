@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Metalama.Docfx": {
-      "commandName": "Project",
-      "workingDirectory": "C:\\tmp\\metalama\\docfx"
-    }
-  }
-}

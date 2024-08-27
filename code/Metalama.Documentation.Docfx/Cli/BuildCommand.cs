@@ -2,13 +2,13 @@
 using JetBrains.Annotations;
 using Markdig.Parsers;
 using Markdig.Parsers.Inlines;
-using Metalama.Documentation.Markdig.Extensions.AspectTests;
-using Metalama.Documentation.Markdig.Extensions.Comments;
-using Metalama.Documentation.Markdig.Extensions.CompareFile;
-using Metalama.Documentation.Markdig.Extensions.MultipleFiles;
-using Metalama.Documentation.Markdig.Extensions.ProjectButtons;
-using Metalama.Documentation.Markdig.Extensions.SingleFiles;
-using Metalama.Documentation.Markdig.Extensions.Vimeo;
+using Metalama.Documentation.Docfx.Markdig.AspectTests;
+using Metalama.Documentation.Docfx.Markdig.Comments;
+using Metalama.Documentation.Docfx.Markdig.CompareFile;
+using Metalama.Documentation.Docfx.Markdig.MultipleFiles;
+using Metalama.Documentation.Docfx.Markdig.ProjectButtons;
+using Metalama.Documentation.Docfx.Markdig.SingleFiles;
+using Metalama.Documentation.Docfx.Markdig.Vimeo;
 using Spectre.Console.Cli;
 
 namespace Metalama.Documentation.Docfx.Cli;
@@ -20,31 +20,31 @@ public class BuildCommand : AsyncCommand<DocfxSettings>
     {
         var options = new BuildOptions
         {
-            ConfigureMarkdig = pipeline =>
+            ConfigureMarkdig = markdig =>
             {
                 // Disable HtmlBlockParser to let inline elemets in HTML blocks be parsed.
                 // E.g. Xref links. (<xref:...>)
-                var htmlBlockParser = pipeline.BlockParsers.Find<HtmlBlockParser>();
+                var htmlBlockParser = markdig.BlockParsers.Find<HtmlBlockParser>();
 
                 if ( htmlBlockParser != null )
                 {
-                    pipeline.BlockParsers.Remove( htmlBlockParser );
+                    markdig.BlockParsers.Remove( htmlBlockParser );
                 }
 
                 // Enable HTML parsing in AutolinkInlineParser to prevent escaping of HTML tags.
                 // (This has nothing to do with autolink parsing, but the AutoplinkInlineParser provides this feature.)
-                var autolinkInlineParser = pipeline.InlineParsers.Find<AutolinkInlineParser>()!;
+                var autolinkInlineParser = markdig.InlineParsers.Find<AutolinkInlineParser>()!;
                 autolinkInlineParser.EnableHtmlParsing = true;
                 
-                pipeline.Extensions.AddIfNotAlready<AspectTestInlineExtension>();
-                pipeline.Extensions.AddIfNotAlready<SingleFileInlineExtension>();
-                pipeline.Extensions.AddIfNotAlready<CompareFileInlineExtension>();
-                pipeline.Extensions.AddIfNotAlready<ProjectButtonsInlineExtension>();
-                pipeline.Extensions.AddIfNotAlready<MultipleFilesInlineExtension>();
-                pipeline.Extensions.AddIfNotAlready<VimeoInlineExtension>();
-                pipeline.Extensions.AddIfNotAlready<CommentBlockExtension>();
+                markdig.Extensions.AddIfNotAlready<AspectTestInlineExtension>();
+                markdig.Extensions.AddIfNotAlready<SingleFileInlineExtension>();
+                markdig.Extensions.AddIfNotAlready<CompareFileInlineExtension>();
+                markdig.Extensions.AddIfNotAlready<ProjectButtonsInlineExtension>();
+                markdig.Extensions.AddIfNotAlready<MultipleFilesInlineExtension>();
+                markdig.Extensions.AddIfNotAlready<VimeoInlineExtension>();
+                markdig.Extensions.AddIfNotAlready<CommentBlockExtension>();
 
-                return pipeline;
+                return markdig;
             }
         };
 

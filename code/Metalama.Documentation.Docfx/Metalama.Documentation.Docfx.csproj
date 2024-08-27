@@ -14,10 +14,13 @@
       <PackageReference Include="Docfx.App" />
       <PackageReference Include="JetBrains.Annotations" />
       <PackageReference Include="Spectre.Console.Cli" />
+        <PackageReference Include="Docfx.MarkdigEngine.Extensions" />
+        <PackageReference Include="HtmlAgilityPack" />
+        <PackageReference Include="PKT.LZStringCSharp" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Metalama.Documentation.Markdig.Extensions\Metalama.Documentation.Markdig.Extensions.csproj" />
+      <Folder Include="Markdig\" />
     </ItemGroup>
 
 </Project>
