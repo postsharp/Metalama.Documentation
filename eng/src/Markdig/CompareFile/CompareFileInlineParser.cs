@@ -1,4 +1,6 @@
-﻿using BuildMetalamaDocumentation.Markdig.Helpers;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using BuildMetalamaDocumentation.Markdig.Helpers;
 using Docfx.MarkdigEngine.Extensions;
 using Markdig.Helpers;
 using Markdig.Parsers;

@@ -76,7 +76,7 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
 
 product.PrepareCompleted += OnPrepareCompleted;
 
-var app = new EngineeringApp( product);
+var app = new EngineeringApp( product );
 
 app.AddDocFxCommands(
     new DocFxOptions

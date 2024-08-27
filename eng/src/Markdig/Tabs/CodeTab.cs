@@ -1,4 +1,4 @@
-﻿// This is public domain Metalama sample code.
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
 using BuildMetalamaDocumentation.Markdig.Helpers;
 using BuildMetalamaDocumentation.Markdig.Sandbox;
@@ -54,8 +54,7 @@ internal class CodeTab : BaseTab
 
     private IEnumerable<string> GetPossibleHtmlPaths()
         => this.HtmlExtensions
-            .SelectMany(
-                e => PathHelper.GetObjPaths( this.GetProjectDirectory(), this.FullPath, e ) );
+            .SelectMany( e => PathHelper.GetObjPaths( this.GetProjectDirectory(), this.FullPath, e ) );
 
     private string? GetExistingHtmlPath( bool throwIfMissing )
     {
@@ -138,20 +137,17 @@ internal class CodeTab : BaseTab
                 // Check that we found the markers.
                 if ( this.Marker != null && !foundStartMarker )
                 {
-                    throw new InvalidOperationException(
-                        $"The '/*<{this.Marker}>*/' marker was not found in '{htmlPath}'." );
+                    throw new InvalidOperationException( $"The '/*<{this.Marker}>*/' marker was not found in '{htmlPath}'." );
                 }
 
                 if ( this.Marker != null && !foundEndMarker )
                 {
-                    throw new InvalidOperationException(
-                        $"The '/*</{this.Marker}>*/' marker was not found in '{htmlPath}'." );
+                    throw new InvalidOperationException( $"The '/*</{this.Marker}>*/' marker was not found in '{htmlPath}'." );
                 }
 
                 if ( this.Member != null && !foundMember )
                 {
-                    throw new InvalidOperationException(
-                        $"The member '{this.Member}' was not found in '{htmlPath}'." );
+                    throw new InvalidOperationException( $"The member '{this.Member}' was not found in '{htmlPath}'." );
                 }
 
                 // Trim.

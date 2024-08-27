@@ -12,7 +12,10 @@
 
     <ItemGroup>
       <PackageReference Include="PostSharp.Engineering.BuildTools" />
-        <PackageReference Include="PostSharp.Engineering.DocFx" />
+      <PackageReference Include="PostSharp.Engineering.DocFx" />
+        
+      <!-- We must have an explicit reference to DocFx.App to get the templates content copied under our directory. -->
+      <PackageReference Include="DocFx.App" />
     </ItemGroup>
 
 </Project>

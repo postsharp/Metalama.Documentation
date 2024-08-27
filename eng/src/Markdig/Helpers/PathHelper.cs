@@ -1,4 +1,4 @@
-﻿// This is public domain Metalama sample code.
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
 using Docfx.MarkdigEngine.Extensions;
 using System;
@@ -36,7 +36,7 @@ internal static class PathHelper
     {
         var rootDirectory = Environment.CurrentDirectory;
         var sourceFileRelativePath = InclusionContext.File.ToString()!;
-        
+
         var sourceFilePath = Path.Combine( rootDirectory, sourceFileRelativePath );
 
         if ( path.StartsWith( "~", StringComparison.Ordinal ) )

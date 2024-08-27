@@ -1,4 +1,6 @@
-﻿using BuildMetalamaDocumentation.Markdig.Helpers;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using BuildMetalamaDocumentation.Markdig.Helpers;
 using BuildMetalamaDocumentation.Markdig.Tabs;
 using Docfx.MarkdigEngine.Extensions;
 using Markdig.Helpers;
@@ -41,7 +43,7 @@ public class AspectTestInlineParser : InlineParser
             {
                 throw new InvalidOperationException( $"Unexpected unnamed argument '{value}'." );
             }
-            
+
             if ( string.IsNullOrEmpty( value ) )
             {
                 throw new InvalidOperationException( $"Argument '{name}' is missing a value." );
@@ -73,7 +75,7 @@ public class AspectTestInlineParser : InlineParser
                     throw new InvalidOperationException( $"Unknown argument '{name}'." );
             }
         }
-        
+
         slice.EnsureClosingBracket();
 
         test.Span = new SourceSpan(

@@ -1,4 +1,4 @@
-﻿// This is public domain Metalama sample code.
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
 using Markdig.Renderers;
 using System;
@@ -13,8 +13,7 @@ internal abstract class BaseTab
 
     public string FullPath { get; }
 
-    public bool IsEmpty()
-        => !File.Exists( this.FullPath ) || this.IsContentEmpty( File.ReadAllLines( this.FullPath ) );
+    public bool IsEmpty() => !File.Exists( this.FullPath ) || this.IsContentEmpty( File.ReadAllLines( this.FullPath ) );
 
     protected virtual bool IsContentEmpty( string[] lines ) => lines.All( string.IsNullOrWhiteSpace );
 

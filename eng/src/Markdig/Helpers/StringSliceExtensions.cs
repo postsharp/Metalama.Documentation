@@ -1,4 +1,6 @@
-﻿using Markdig.Helpers;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using Markdig.Helpers;
 using System;
 using System.Diagnostics.CodeAnalysis;
 
@@ -109,11 +111,11 @@ public static class StringSliceExtensions
 
         return true;
     }
-    
+
     public static void EnsureClosingBracket( this ref StringSlice slice )
     {
         slice.SkipWhitespaces();
-        
+
         if ( slice.CurrentChar != ']' )
         {
             throw new InvalidOperationException( "Expected closing bracket ']'." );

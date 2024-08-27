@@ -23,7 +23,7 @@ internal class MetalamaDocCrawler : DocFxCrawler
             : NormalizeCategoryName( breadcrumbLinks.Skip( 4 ).First().GetText() );
 
         var breadcrumbTitlesCountToSkip = 4;
-        
+
         var relevantBreadCrumbTitles = breadcrumbLinks
             .Skip( breadcrumbTitlesCountToSkip )
             .Select( n => n.GetText() )
@@ -35,15 +35,15 @@ internal class MetalamaDocCrawler : DocFxCrawler
 
         var isExamplesKind = kind.Contains( "example", StringComparison.OrdinalIgnoreCase );
         var hasCategory = !isExamplesKind;
-        
+
         var category = !hasCategory || breadcrumbLinks.Length < 6
             ? null
             : NormalizeCategoryName( breadcrumbLinks.Skip( 5 ).First().GetText() );
-        
+
         int kindRank;
-        var isApiDoc = false; 
+        var isApiDoc = false;
         var isPageIgnored = false;
-        
+
         if ( isDefaultKind )
         {
             kindRank = (int) MetalamaDocFxRank.Common;
@@ -69,7 +69,7 @@ internal class MetalamaDocCrawler : DocFxCrawler
             kindRank = (int) MetalamaDocFxRank.Unknown;
         }
 
-        return new(
+        return new BreadcrumbInfo(
             breadcrumb,
             new[] { kind },
             kindRank,

@@ -1,4 +1,6 @@
-﻿using BuildMetalamaDocumentation.Markdig.Helpers;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using BuildMetalamaDocumentation.Markdig.Helpers;
 using BuildMetalamaDocumentation.Markdig.Tabs;
 using Docfx.MarkdigEngine.Extensions;
 using Markdig.Helpers;
@@ -70,22 +72,22 @@ public class SingleFileInlineParser : InlineParser
                     file.Tabs = TabsHelper.SplitTabs( value );
 
                     break;
-                
+
                 case "marker":
                     file.Marker = value;
 
                     break;
-                
+
                 case "member":
                     file.Member = value;
 
                     break;
-                
+
                 case "transformed":
                     file.ShowTransformed = bool.Parse( value );
 
                     break;
-                
+
                 // TODO
                 case "from":
                     break;
@@ -94,7 +96,7 @@ public class SingleFileInlineParser : InlineParser
                     throw new InvalidOperationException( $"Unknown argument '{name}'." );
             }
         }
-        
+
         slice.EnsureClosingBracket();
 
         file.Span = new SourceSpan(

@@ -1,4 +1,6 @@
-﻿using BuildMetalamaDocumentation.Markdig.Helpers;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using BuildMetalamaDocumentation.Markdig.Helpers;
 using BuildMetalamaDocumentation.Markdig.Tabs;
 using Docfx.MarkdigEngine.Extensions;
 using Markdig.Helpers;
@@ -39,12 +41,12 @@ public class MultipleFilesInlineParser : InlineParser
             {
                 break;
             }
-            
+
             if ( string.IsNullOrEmpty( value ) )
             {
                 throw new InvalidOperationException( "Unnamed argument has no value." );
             }
-            
+
             var resolvedPath = PathHelper.ResolvePath( value );
             filesList.Add( resolvedPath );
         }
@@ -55,24 +57,24 @@ public class MultipleFilesInlineParser : InlineParser
             {
                 throw new InvalidOperationException( $"Argument '{name}' is missing a value." );
             }
-            
+
             switch ( name )
             {
                 case "name":
                     files.Name = value;
 
                     break;
-                
+
                 case "mode":
                     files.Mode = Enum.Parse<TabMode>( value );
 
                     break;
-                
+
                 case "links":
                     files.AddLinks = XmlConvert.ToBoolean( value );
 
                     break;
-                    
+
                 default:
                     throw new InvalidOperationException( $"Unknown argument '{name}'." );
             }
@@ -81,15 +83,15 @@ public class MultipleFilesInlineParser : InlineParser
             {
                 break;
             }
-            
+
             if ( string.IsNullOrEmpty( name ) )
             {
                 throw new InvalidOperationException( $"Unexpected unnamed argument '{value}'." );
             }
         }
-        
+
         slice.EnsureClosingBracket();
-        
+
         files.Files = filesList.ToArray();
 
         files.Span = new SourceSpan(

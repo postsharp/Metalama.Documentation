@@ -1,4 +1,4 @@
-﻿// This is public domain Metalama sample code.
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
 using BuildMetalamaDocumentation.Markdig.Sandbox;
 using System;

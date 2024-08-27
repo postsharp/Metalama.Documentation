@@ -1,4 +1,6 @@
-﻿using BuildMetalamaDocumentation.Markdig.Helpers;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using BuildMetalamaDocumentation.Markdig.Helpers;
 using Docfx.MarkdigEngine.Extensions;
 using Markdig.Helpers;
 using Markdig.Parsers;
@@ -29,7 +31,7 @@ public class ProjectButtonsInlineParser : InlineParser
         {
             throw new InvalidOperationException( $"Path is missing for '{_startString}'" );
         }
-        
+
         var resolvedPath = PathHelper.ResolvePath( path );
 
         var buttons = new ProjectButtonsInline() { Directory = resolvedPath };
@@ -40,7 +42,7 @@ public class ProjectButtonsInlineParser : InlineParser
             {
                 throw new InvalidOperationException( $"Unexpected unnamed argument '{value}'." );
             }
-            
+
             if ( string.IsNullOrEmpty( value ) )
             {
                 throw new InvalidOperationException( $"Argument '{name}' is missing a value." );
@@ -62,7 +64,7 @@ public class ProjectButtonsInlineParser : InlineParser
                     throw new InvalidOperationException( $"Unknown argument '{value}'." );
             }
         }
-        
+
         slice.EnsureClosingBracket();
 
         buttons.Span = new SourceSpan(

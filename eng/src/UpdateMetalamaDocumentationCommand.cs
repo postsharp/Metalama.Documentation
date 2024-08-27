@@ -8,6 +8,5 @@ namespace BuildMetalamaDocumentation;
 
 internal class UpdateMetalamaDocumentationCommand : UpdateSearchCommandBase
 {
-    protected override CollectionUpdater CreateUpdater( SearchBackendBase backend ) =>
-        new DocumentationUpdater<MetalamaDocCrawler>( ["Metalama"], backend );
+    protected override CollectionUpdater CreateUpdater( SearchBackendBase backend ) => new DocumentationUpdater<MetalamaDocCrawler>( ["Metalama"], backend );
 }

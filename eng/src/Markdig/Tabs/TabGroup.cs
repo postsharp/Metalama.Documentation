@@ -1,4 +1,4 @@
-﻿// This is public domain Metalama sample code.
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
 
 using BuildMetalamaDocumentation.Markdig.Sandbox;
 using Markdig.Renderers;
@@ -150,8 +150,7 @@ internal abstract class TabGroup
                 // Try currently requires that the code that is executed is in Program.cs.
                 var fileName = "Program.cs";
 
-                sandboxFiles.Add(
-                    new SandboxFile( fileName, compareTab.GetSandboxCode(), SandboxFileKind.TargetCode ) );
+                sandboxFiles.Add( new SandboxFile( fileName, compareTab.GetSandboxCode(), SandboxFileKind.TargetCode ) );
             }
         }
 

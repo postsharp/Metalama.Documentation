@@ -1,4 +1,6 @@
-﻿using BuildMetalamaDocumentation.Markdig.Sandbox;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using BuildMetalamaDocumentation.Markdig.Sandbox;
 using BuildMetalamaDocumentation.Markdig.Tabs;
 using Markdig.Renderers;
 using Markdig.Renderers.Html;
