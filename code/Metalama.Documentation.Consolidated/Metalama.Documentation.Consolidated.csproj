@@ -5,12 +5,14 @@
   
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="LINQPad.Runtime" />
     <PackageReference Include="Metalama.Testing.AspectTesting" />
     <PackageReference Include="Metalama.Testing.UnitTesting" />
     <PackageReference Include="Metalama.Framework.Introspection" />
@@ -32,10 +34,32 @@
     <PackageReference Include="Metalama.Patterns.Caching.Aspects" />
     <PackageReference Include="Metalama.Patterns.Caching.Backends.Azure" />
     <PackageReference Include="Metalama.Patterns.Caching.Backends.Redis" />
+    <PackageReference Include="Microsoft.Build" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" />
+    <PackageReference Include="NuGet.Credentials" />
+    <PackageReference Include="NuGet.Frameworks" />
+    <PackageReference Include="NuGet.Packaging" />
+    <PackageReference Include="NuGet.Protocol" />
+    <PackageReference Include="NuGet.Resolver" />
+    <PackageReference Include="NuGet.Versioning" />
+    <PackageReference Include="SQLitePCLRaw.bundle_green" />
+    <PackageReference Include="SQLitePCLRaw.core" />
+    <PackageReference Include="StreamJsonRpc" />
+    <PackageReference Include="System.CommandLine" />
+    <PackageReference Include="System.Data.Odbc" />
+    <PackageReference Include="System.Data.OleDb" />
+    <PackageReference Include="System.Data.SqlClient" />
+    <PackageReference Include="System.IO.Ports" />
+    <PackageReference Include="System.ServiceModel.Syndication" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" />
   </ItemGroup>
 
   <Target Name="CheckConfiguration">
     <Error Text="This project can only be built in Debug configuration because its Debug output directory is specificially references. Check the sln file." Condition="'$(Configuration)'!='Debug'"/>
+  </Target>
+  
+  <Target Name="CopyAssemblies" AfterTargets="Build">
+    <Exec Command="dotnet $(OutDir)/$(TargetFileName)" WorkingDirectory="$(MSBuildProjectDirectory)" />
   </Target>
 
 </Project>

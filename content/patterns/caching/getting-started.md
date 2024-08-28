@@ -19,7 +19,7 @@ If your project is designed for the .NET Core dependency injection framework (`M
 1. Add the [Metalama.Patterns.Caching.Aspects](https://www.nuget.org/packages/Metalama.Patterns.Caching.Aspects/) package into your project.
 2. In your application setup logic, while adding services to the <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, include a call to the <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*> extension method. This action will add an instance of the <xref:Metalama.Patterns.Caching.ICachingService> interface, which is consumed by the <xref:Metalama.Patterns.Caching.Aspects.CacheAttribute?text=[Cache]> aspect.
 
-    [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/GettingStarted/GettingStarted.Program.cs mark="Registration"]
+    [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/GettingStarted/GettingStarted.Program.cs]
 
 The <xref:Metalama.Patterns.Caching.Aspects.CacheAttribute?text=[Cache]> aspect is now available to all objects instantiated by the dependency injection container.
 

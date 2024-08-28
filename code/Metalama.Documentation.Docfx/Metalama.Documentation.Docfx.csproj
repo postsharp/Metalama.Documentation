@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>docfx</AssemblyName>
+        <OutDir>$(MSBuildThisFileDirectory)/../../artifacts/docfx</OutDir>
+        <UseAppHost>false</UseAppHost>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Docfx.App" />
+      <PackageReference Include="JetBrains.Annotations" />
+      <PackageReference Include="Spectre.Console.Cli" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Metalama.Documentation.Markdig.Extensions\Metalama.Documentation.Markdig.Extensions.csproj" />
+    </ItemGroup>
+
+</Project>

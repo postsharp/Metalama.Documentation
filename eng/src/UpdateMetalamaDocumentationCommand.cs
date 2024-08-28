@@ -2,7 +2,6 @@
 
 using PostSharp.Engineering.BuildTools.Search;
 using PostSharp.Engineering.BuildTools.Search.Backends;
-using PostSharp.Engineering.BuildTools.Search.Crawlers;
 using PostSharp.Engineering.BuildTools.Search.Updaters;
 
 namespace BuildMetalamaDocumentation;
@@ -10,5 +9,5 @@ namespace BuildMetalamaDocumentation;
 internal class UpdateMetalamaDocumentationCommand : UpdateSearchCommandBase
 {
     protected override CollectionUpdater CreateUpdater( SearchBackendBase backend ) =>
-        new DocumentationUpdater<MetalamaDocCrawler>( new[] { "Metalama" }, backend );
+        new DocumentationUpdater<MetalamaDocCrawler>( ["Metalama"], backend );
 }

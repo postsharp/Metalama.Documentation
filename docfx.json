@@ -30,22 +30,22 @@
               "Flashtrace.dll",
               "Flashtrace.Formatters.dll"
               ],
-          "src": "code/Metalama.Documentation.Consolidated/bin/Debug/net7.0-windows"
+          "src": "code/Metalama.Documentation.Consolidated/bin/Debug/net8.0-windows/all"
         }
       ],
-      "dest": "obj/api",
+      "dest": "artifacts/api",
       "disableGitFeatures": false,
-      "disableDefaultFilter": false
+      "disableDefaultFilter": false,
+      "memberLayout": "separatePages"
     }
   ],
   "build": {
     "content": [
       {
         "files": [
-          "api/**.yml",
-          "api/index.md"
+          "api/**.yml"
         ],
-        "src": "obj"
+        "src": "artifacts"
       },
       {
         "files": [
@@ -56,7 +56,6 @@
       },
       {
         "files": [
-          "toc.yml",
           "examples/**.md"
         ],
         "src": "source-dependencies/Metalama.Samples"
@@ -86,24 +85,20 @@
         ]
       }
     ],
-      "xref": [
-        "https://learn.microsoft.com/en-us/dotnet/.xrefmap.json"
-//        "C:\\Users\\GaelFraiteur.AzureAD\\Downloads\\xrefmap.json"
-      ],
-/*    "xrefService": [
-      "https://learn.microsoft.com/api/xref/query?uid={uid}"
-    ], */
-    "dest": "docfx/_site",
+    "xref": [
+      "https://learn.microsoft.com/en-us/dotnet/.xrefmap.json"
+//    "C:\\Users\\GaelFraiteur.AzureAD\\Downloads\\xrefmap.json"
+    ],
+    "dest": "artifacts/site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template":[ 
       "default", 
-      "docfx/packages/memberpage.2.59.0/content",
-      "code/Metalama.Documentation.DfmExtensions/bin/Debug",
       "templates"
     ],
+    // Used for debugging
+    // "maxParallelism": 1,
     "postProcessors": [],
-    "markdownEngineName": "dfm",
     "noLangKeyword": false,
     "keepFileLink": false,
     "cleanupCacheHistory": false

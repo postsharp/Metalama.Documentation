@@ -7,11 +7,8 @@ using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
 using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
-using PostSharp.Engineering.BuildTools.Search;
-using PostSharp.Engineering.BuildTools.Utilities;
 using Spectre.Console.Cli;
 using System.IO;
-using System.Diagnostics;
 using System.IO.Compression;
 using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2024_1;
 
@@ -33,7 +30,8 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
         {
             CanFormatCode = true, BuildMethod = BuildMethod.Build,
         },
-        new DocFxSolution( "docfx.json", docPackageFileName )
+        new DocFxApiSolution( "docfx.json" ),
+        new DocFxSiteSolution( "docfx.json", docPackageFileName )
     ],
     PublicArtifacts = Pattern.Create(
         docPackageFileName ),
@@ -45,8 +43,8 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
             MetalamaDependencies.MetalamaLinqPad,
             MetalamaDependencies.MetalamaSamples
     ],
-    SourceDependencies = new[] { MetalamaDependencies.MetalamaSamples, MetalamaDependencies.MetalamaCommunity },
-    AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
+    SourceDependencies = [MetalamaDependencies.MetalamaSamples, MetalamaDependencies.MetalamaCommunity],
+    AdditionalDirectoriesToClean = [Path.Combine( "artifacts", "api" ), Path.Combine( "artifacts", "site" )],
     Configurations = Product.DefaultConfigurations
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
 
@@ -60,16 +58,7 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
                     new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
                 }, "https://postsharp-helpbrowser.azurewebsites.net/" )
             }
-        } ),
-    Extensions = new ProductExtension[]
-    {
-        // Run `b generate-scripts` after changing these parameters.
-        new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
-            "https://0fpg9nu41dat6boep.a1.typesense.net",
-            "metalamadoc",
-            "https://doc-production.postsharp.net/metalama/sitemap.xml",
-            true )
-    }
+        } )
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
@@ -84,15 +73,6 @@ return commandApp.Run( args );
 
 static void OnPrepareCompleted( PrepareCompletedEventArgs args )
 {
-    // Restore DocFx.
-    var nuget = Path.Combine( Path.GetDirectoryName( Process.GetCurrentProcess().MainModule!.FileName )!, "nuget.exe " );
-
-    if ( !ToolInvocationHelper.InvokeTool( args.Context.Console, nuget,
-        "restore \"docfx\\packages.config\" -OutputDirectory \"docfx\\packages\"", args.Context.RepoDirectory ) )
-    {
-        args.IsFailed = true;
-    }
-
     // Extract HTML artefact dependencies to the source dependency directory.
     var htmlSourceZipFile = Path.Combine( args.Context.RepoDirectory, "dependencies", "Metalama.Samples", "html-examples.zip" );
     var htmlTargetDirectory = Path.Combine( args.Context.RepoDirectory, "source-dependencies", "Metalama.Samples", "examples" );
