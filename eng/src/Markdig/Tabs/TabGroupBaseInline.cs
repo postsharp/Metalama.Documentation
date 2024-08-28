@@ -14,5 +14,5 @@ public abstract class TabGroupBaseInline : LeafInline
 
     public bool AddLinks { get; set; } = true;
 
-    public DiffSide DiffSide { get; set; } = default;
+    public DiffSide DiffSide { get; set; }
 }

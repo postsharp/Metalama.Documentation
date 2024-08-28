@@ -97,7 +97,7 @@
     "fileMetadataFiles": [],
     "template":[ 
       "default", 
-      "templates"
+      "overrides"
     ],
     // Used for debugging
     // "maxParallelism": 1,
