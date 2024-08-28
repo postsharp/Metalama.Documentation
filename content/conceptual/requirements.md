@@ -8,7 +8,7 @@ keywords: "Metalama, .NET SDK, Roslyn-based IDEs, Visual Studio, version synchro
 
 ## Build environment
 
-* The [.NET SDK](https://dotnet.microsoft.com/download) 6.0 must be installed.
+* The [.NET SDK](https://dotnet.microsoft.com/download) 6.0 or newer must be installed.
 * Metalama has been tested on Windows (x64), Ubuntu (x64), and MacOS (ARM).
 
 ## IDEs

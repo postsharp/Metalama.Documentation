@@ -12,4 +12,4 @@ summary: "The document is a video tutorial about creating your first aspect, wit
 > [!div class="see-also"]
 > <xref:simple-override-method>
 > <xref:quickstart-adding-aspects>
-> <xref:preview-metalama-diff>
+> <xref:understanding-your-code-with-aspects>

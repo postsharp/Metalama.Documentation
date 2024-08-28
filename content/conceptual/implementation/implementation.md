@@ -6,9 +6,12 @@ summary: "The document discusses the implementation, pipeline, fabrics execution
 
 # Under the hood
 
-<xref:pipeline> 
+<xref:packages>
 
-<xref:fabrics-execution-order>
+<xref:aspect-serialization>
+
+<xref:pipeline>
 
 <xref:aspect-composition>
 
+<xref:fabrics-execution-order>

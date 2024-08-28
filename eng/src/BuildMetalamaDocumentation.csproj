@@ -7,17 +7,15 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Nullable>enable</Nullable>
         <NoWarn>SA0001;CS8002</NoWarn>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="NuGet.CommandLine" GeneratePathProperty="True">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
       <PackageReference Include="PostSharp.Engineering.BuildTools" />
-      <Content Include="$(PkgNuGet_CommandLine)\tools\nuget.exe">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
+      <PackageReference Include="PostSharp.Engineering.DocFx" />
+        
+      <!-- We must have an explicit reference to DocFx.App to get the templates content copied under our directory. -->
+      <PackageReference Include="DocFx.App" />
     </ItemGroup>
 
 </Project>

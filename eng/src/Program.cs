@@ -1,5 +1,13 @@
-﻿using Amazon;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using Amazon;
 using BuildMetalamaDocumentation;
+using BuildMetalamaDocumentation.Markdig.AspectTests;
+using BuildMetalamaDocumentation.Markdig.CompareFile;
+using BuildMetalamaDocumentation.Markdig.MultipleFiles;
+using BuildMetalamaDocumentation.Markdig.ProjectButtons;
+using BuildMetalamaDocumentation.Markdig.SingleFiles;
+using BuildMetalamaDocumentation.Markdig.Vimeo;
 using PostSharp.Engineering.BuildTools;
 using PostSharp.Engineering.BuildTools.S3.Publishers;
 using PostSharp.Engineering.BuildTools.Build.Solutions;
@@ -8,10 +16,9 @@ using PostSharp.Engineering.BuildTools.Build.Model;
 using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
 using PostSharp.Engineering.BuildTools.Search;
-using PostSharp.Engineering.BuildTools.Utilities;
+using PostSharp.Engineering.DocFx;
 using Spectre.Console.Cli;
 using System.IO;
-using System.Diagnostics;
 using System.IO.Compression;
 using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2024_2;
 
@@ -25,79 +32,76 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
     Solutions =
     [
         new DotNetSolution( "code\\Metalama.Documentation.Prerequisites.sln" ) { CanFormatCode = true },
-        new DotNetSolution( "code\\Metalama.Documentation.Snippets.TestBased.sln" )
-        {
-            CanFormatCode = true, BuildMethod = BuildMethod.Test,
-        },
-        new DotNetSolution( "code\\Metalama.Documentation.Snippets.ProjectBased.sln" )
-        {
-            CanFormatCode = true, BuildMethod = BuildMethod.Build,
-        },
-        new DocFxSolution( "docfx.json", docPackageFileName )
+        new DotNetSolution( "code\\Metalama.Documentation.Snippets.TestBased.sln" ) { CanFormatCode = true, BuildMethod = BuildMethod.Test },
+        new DotNetSolution( "code\\Metalama.Documentation.Snippets.ProjectBased.sln" ) { CanFormatCode = true, BuildMethod = BuildMethod.Build },
+        new DocFxApiSolution( "docfx.json" ),
+        new DocFxSiteSolution( "docfx.json", docPackageFileName )
     ],
-    PublicArtifacts = Pattern.Create(
-        docPackageFileName ),
+    PublicArtifacts = Pattern.Create( docPackageFileName ),
     Dependencies =
     [
         DevelopmentDependencies.PostSharpEngineering,
-            MetalamaDependencies.MetalamaMigration,
-            MetalamaDependencies.MetalamaPatterns,
-            MetalamaDependencies.MetalamaLinqPad,
-            MetalamaDependencies.MetalamaSamples
+        MetalamaDependencies.MetalamaMigration,
+        MetalamaDependencies.MetalamaPatterns,
+        MetalamaDependencies.MetalamaLinqPad,
+        MetalamaDependencies.MetalamaSamples
     ],
-    SourceDependencies = new[] { MetalamaDependencies.MetalamaSamples, MetalamaDependencies.MetalamaCommunity },
-    AdditionalDirectoriesToClean = new[] { "obj", "docfx\\_site" },
+    SourceDependencies = [MetalamaDependencies.MetalamaSamples, MetalamaDependencies.MetalamaCommunity],
+    AdditionalDirectoriesToClean = [Path.Combine( "artifacts", "api" ), Path.Combine( "artifacts", "site" )],
     Configurations = Product.DefaultConfigurations
         .WithValue( BuildConfiguration.Debug, c => c with { BuildTriggers = default } )
-
-        .WithValue( BuildConfiguration.Public, c => c with
-        {
-            ExportsToTeamCityDeployWithoutDependencies = true,
-            PublicPublishers = new Publisher[]
+        .WithValue(
+            BuildConfiguration.Public,
+            c => c with
             {
-                new MergePublisher(), new DocumentationPublisher( new S3PublisherConfiguration[]
-                {
-                    new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
-                }, "https://postsharp-helpbrowser.azurewebsites.net/" )
-            }
-        } )
-        
-    // Metalama 2024.2 is not stable yet and we don't provide search for prerelease versions.    
-    // Extensions = new ProductExtension[]
-    // {
-    //     // Run `b generate-scripts` after changing these parameters.
-    //     new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
-    //         "https://0fpg9nu41dat6boep.a1.typesense.net",
-    //         "metalamadoc",
-    //         "https://doc-production.postsharp.net/metalama/sitemap.xml",
-    //         true )
-    // }
+                ExportsToTeamCityDeployWithoutDependencies = true,
+                PublicPublishers =
+                [
+                    new MergePublisher(),
+                    new DocumentationPublisher(
+                        new S3PublisherConfiguration[] { new( docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName ) },
+                        "https://postsharp-helpbrowser.azurewebsites.net/" )
+                ]
+            } ),
+    Extensions =
+    [
+        // Run `b generate-scripts` after changing these parameters.
+        new UpdateSearchProductExtension<UpdateMetalamaDocumentationCommand>(
+            "https://0fpg9nu41dat6boep.a1.typesense.net",
+            "metalamadoc",
+            "https://doc-production.postsharp.net/metalama/sitemap.xml",
+            true )
+    ]
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
 
+var app = new EngineeringApp( product );
 
-var commandApp = new CommandApp();
+app.AddDocFxCommands(
+    new DocFxOptions
+    {
+        ConfigureMarkdig = markdig =>
+        {
+            markdig.Extensions.AddIfNotAlready<AspectTestInlineExtension>();
+            markdig.Extensions.AddIfNotAlready<SingleFileInlineExtension>();
+            markdig.Extensions.AddIfNotAlready<CompareFileInlineExtension>();
+            markdig.Extensions.AddIfNotAlready<ProjectButtonsInlineExtension>();
+            markdig.Extensions.AddIfNotAlready<MultipleFilesInlineExtension>();
+            markdig.Extensions.AddIfNotAlready<VimeoInlineExtension>();
+        }
+    } );
 
-commandApp.AddProductCommands( product );
-
-return commandApp.Run( args );
-
+return app.Run( args );
 
 static void OnPrepareCompleted( PrepareCompletedEventArgs args )
 {
-    // Restore DocFx.
-    var nuget = Path.Combine( Path.GetDirectoryName( Process.GetCurrentProcess().MainModule!.FileName )!, "nuget.exe " );
-
-    if ( !ToolInvocationHelper.InvokeTool( args.Context.Console, nuget,
-        "restore \"docfx\\packages.config\" -OutputDirectory \"docfx\\packages\"", args.Context.RepoDirectory ) )
-    {
-        args.IsFailed = true;
-    }
-
     // Extract HTML artefact dependencies to the source dependency directory.
-    var htmlSourceZipFile = Path.Combine( args.Context.RepoDirectory, "dependencies", "Metalama.Samples", "html-examples.zip" );
-    var htmlTargetDirectory = Path.Combine( args.Context.RepoDirectory, "source-dependencies", "Metalama.Samples", "examples" );
+    var htmlSourceZipFile =
+        Path.Combine( args.Context.RepoDirectory, "dependencies", "Metalama.Samples", "html-examples.zip" );
+
+    var htmlTargetDirectory =
+        Path.Combine( args.Context.RepoDirectory, "source-dependencies", "Metalama.Samples", "examples" );
 
     if ( File.Exists( htmlSourceZipFile ) )
     {

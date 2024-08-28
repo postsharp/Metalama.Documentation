@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildMetalamaDocumentation", "BuildMetalamaDocumentation.csproj", "{3E78E273-9DE6-4FC9-B6AD-95647B09B038}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildMetalamaDocumentation.UnitTests", "..\tests\BuildMetalamaDocumentation.UnitTests.csproj", "{5B7F54EE-F21E-45B8-920F-A2A1767AB038}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3E78E273-9DE6-4FC9-B6AD-95647B09B038}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E78E273-9DE6-4FC9-B6AD-95647B09B038}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E78E273-9DE6-4FC9-B6AD-95647B09B038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B7F54EE-F21E-45B8-920F-A2A1767AB038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B7F54EE-F21E-45B8-920F-A2A1767AB038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B7F54EE-F21E-45B8-920F-A2A1767AB038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B7F54EE-F21E-45B8-920F-A2A1767AB038}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

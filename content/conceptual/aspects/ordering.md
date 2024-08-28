@@ -143,6 +143,5 @@ The primary aspect instance is the instance that has been applied closest to the
     4. Aspects added by a fabric.
 
 Within these individual categories, the ordering is currently undefined, meaning the build may be nondeterministic if the aspect implementation relies on that ordering.
+
 [comment]: # (TODO: Example of handling secondary instances)
-
-

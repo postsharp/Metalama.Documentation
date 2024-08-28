@@ -100,7 +100,7 @@ To override the default <xref:Metalama.Patterns.Caching.Formatters.ICacheKeyBuil
 2. Register your implementation while calling  <xref:Metalama.Patterns.Caching.Building.CachingServiceFactory.AddMetalamaCaching*?text=serviceCollection.AddMetalamaCaching>  or <xref:Metalama.Patterns.Caching.CachingService.Create*?text=CachingService.Create> as shown in the following snippet:
 
 
-    [!metalama-test ~/code/Metalama.Documentation.SampleCode.Caching/HashingKeyBuilder/HashingKeyBuilder.Program.cs marker="Registration"]
+[!metalama-test ~/code/Metalama.Documentation.SampleCode.Caching/HashingKeyBuilder/HashingKeyBuilder.Program.cs]
 
 
 ### Example: implementing a hashing cache key builder
