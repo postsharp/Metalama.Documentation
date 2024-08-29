@@ -7,30 +7,40 @@ keywords: "debug compile-time logic, design-time logic, aspect-oriented programm
 
 # Debugging aspects
 
-Debugging the compile-time logic of an aspect can be challenging due to the compiler not executing your source code. Instead, the transformed code, derived from your source code, is stored under an unpredictable path.
+## Adding breakpoints to templates and compile-time code
 
-## Debugging compile-time logic
+Debugging the compile-time logic of an aspect can be challenging due to the compiler not executing your _source_ code, but a heavily transformed version of your code where T# templates have been compiled into plain C# code. This transformed code is stored under an unpredictable path.
+
+Therefore, regular debugger breakpoints will not work. You must add break statements directly in your source code and remember to remove it after the debugging session is over.
+
+- In a _non-template_ compile-time method such as `BuildAspect`, invoke <xref:System.Diagnostics.Debugger.Break?text=Debugger.Break()>.
+- In a _template_ compile-time method, invoke <xref:Metalama.Framework.Aspects.meta.DebugBreak?text=meta.DebugBreak()>.
+
+## Debugging aspect tests
+
+The most convenient way to debug an aspect is to create an _aspect test_ as described in @aspect-testing. This allows you to perfectly isolate the scenario that you want to debug.
+
+To debug an aspect test:
+
+1. Insert breakpoints directly into your source code as described above.
+2. Use the _Debug_ command of the unit test runner.
+
+## Debugging the compiler process
 
 To debug compile-time logic, follow the steps below:
 
-1. Insert breakpoints directly into your source code:
+1. Insert breakpoints directly into your source code as described above.
 
-    - In a build-time method such as `BuildAspect`, invoke <xref:System.Diagnostics.Debugger.Break?text=Debugger.Break()>.
-    - In a template method, invoke <xref:Metalama.Framework.Aspects.meta.DebugBreak?text=meta.DebugBreak()>.
+2. Execute the compiler with the following properties:
 
-    > [!WARNING]
-    > Regular debugger breakpoints will not function. It is crucial to have a breakpoint embedded in your source code.
-
-2. Attach the debugger to the process:
-
-    - In an aspect test, execute the test with the debugger.
-    - To debug the compiler, set the `MetalamaDebugCompiler` property to `True` during the build:
+    * `MetalamaDebugCompiler=True` to cause the compiler to display the JIT debugger dialog, allowing you to attach a debugger to the compiler process.
+    * `MetalamaConcurrentBuildEnabled=False` to force Metalama to run in a single thread, saving you from the chaos of multi-threade debugging.
 
     ```powershell
-    dotnet build -p:MetalamaDebugCompiler=True
+    dotnet build -p:MetalamaDebugCompiler=True -p:MetalamaConcurrentBuildEnabled=False
     ```
 
-## Debugging design-time logic
+## Debugging the IDE process
 
 To attach a debugger to the design-time compiler process, follow these steps:
 
@@ -51,15 +61,7 @@ To attach a debugger to the design-time compiler process, follow these steps:
         "debugger": {
             "processes": {
                  "Rider": false,
-                  "RoslynCodeAnalysisService": true,
-                  "CodeLensService": false,
-                  "Other": false,
-                  "TestHost": false,
-                  "DevEnv": false,
-                  "OmniSharp": false,
-                  "BackstageWorker": false,
-                  "DotNetTool": false,
-                  "Compiler": false
+                  "RoslynCodeAnalysisService": true
             }
         }
 
@@ -68,7 +70,8 @@ To attach a debugger to the design-time compiler process, follow these steps:
     }
     ```
 
-4. Restart your IDE.
+4. Insert breakpoints directly into your source code as described above.
+5. Restart your IDE.
 
 > [!div class="see-also"]
 > <xref:debugging-aspect-oriented-code>

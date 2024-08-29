@@ -5,9 +5,9 @@ summary: "The document provides a guide on testing compile-time code using unit 
 keywords: "compile-time code testing, unit tests compile-time code, .NET 6.0, Metalama.Testing.UnitTesting, compile-time logic, unit-testing compile-time classes, Xunit test project, MetalamaRemoveCompileTimeOnlyCode, disable Metalama, test methods"
 ---
 
-# Testing compile-time code
+# Testing compile-time helper code
 
-When building complex aspects, it's advisable to shift the intricate compile-time logic, for instance, code that queries the code model, to compile-time classes that are not aspects. Unlike aspects, these compile-time classes can be subjected to unit tests.
+When building complex aspects, it's advisable to shift the intricate compile-time logic, for instance, code that queries the code model, to compile-time helper classes that are not aspects. Unlike aspects, these compile-time classes can be subjected to unit tests.
 
 ## Benefits
 
@@ -34,7 +34,7 @@ Failing to follow this step will result in an exception whenever any compile-tim
 
 Proceed to create an Xunit test project as you usually would.
 
-It's strongly recommended to target .NET 6.0 as temporary files cannot be automatically cleaned up with lower .NET versions.
+It's strongly recommended to target .NET 6.0 or later as temporary files cannot be automatically cleaned up with lower .NET versions.
 
 Disable Metalama for the test project by defining the following property:
 
@@ -67,6 +67,9 @@ Each test method _must_ call the <xref:Metalama.Testing.UnitTesting.UnitTestClas
 
 Your test would typically call the <xref:Metalama.Testing.UnitTesting.TestContext.CreateCompilation*?text=context.CreateCompilation> method to obtain an <xref:Metalama.Framework.Code.ICompilation>.
 
+> [!NOTE]
+> Some APIs (such as <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory>) require the execution context to be set and assigned to your compilation. To set the execution context in a test, use the <xref:Metalama.Testing.UnitTesting.TestContext.WithExecutionContext*?text=testContext.WithExecutionContext> method.
+
 ```cs
 
 public class MyTests : UnitTestClass
@@ -78,34 +81,39 @@ public class MyTests : UnitTestClass
         using var testContext = this.CreateTestContext();
 
         // Create a compilation
-        var code = @"
-class C
-{
-    void M1 () {}
-
-    void M2()
-    {
-        var x = 0;
-        x++;
-    }
-}
-
-";
+        var code = 
+            """
+            class C
+            {
+                void M1 () {}
+            
+                void M2()
+                {
+                    var x = 0;
+                    x++;
+                }
+            }                    
+            """;
 
         var compilation = testContext.CreateCompilation( code );
 
-        var type = compilation.Types.OfName( "C" ).Single();
+        // Switch the execution context to this compilation.
+        using ( testContext.WithExecutionContext( compilation ) )
+        {
 
-        var m1 = type.Methods.OfName( "M1" ).Single();
+            // Query the code model.
+            var type = compilation.Types.OfName( "C" ).Single();
+            var m1 = type.Methods.OfName( "M1" ).Single();
 
-        // Perform any assertion. Typically, your compile-time code would be called here.
-        Assert.Equal( 0, m1.Parameters.Count );
+            // Here you can also call your helper classes.
+    
+            // Perform any assertion. Typically, your compile-time code would be called here.
+            Assert.Equal( 0, m1.Parameters.Count );
+
+            Assert.True( m1.ReturnType.Is( typeof(void) ) );
+        }
     }
 }
 ```
-
-> [!NOTE]
-> Some APIs require the execution context to be set and assigned to your compilation. Currently, there's no public API to modify the execution context.
-
 
 

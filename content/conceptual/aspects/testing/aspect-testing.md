@@ -5,7 +5,7 @@ summary: "The document provides a comprehensive guide on how to test aspects usi
 keywords: "compile-time testing, Metalama.Testing.AspectTesting, aspect testing, .NET, create test project, run test case, verify transformed code, expected output, xUnit test project, Metalama framework"
 ---
 
-# Testing the Aspects
+# Testing the aspect's code generation and error reporting
 
 The concept of compile-time testing involves creating _input_ test files annotated with aspects and _output_ test files, which contain the transformed code (possibly with comments for errors and warnings). The compile-time testing framework automatically executes inputs and verifies that the outputs match the expectations.
 

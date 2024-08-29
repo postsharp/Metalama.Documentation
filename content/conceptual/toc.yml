@@ -163,14 +163,15 @@ items:
         - name: Testing and debugging aspects
           topicUid: testing
           items:
-          - name: Testing aspects
+          - name: Unit-testing code generation and error reporting
             topicUid: aspect-testing        
-          - name: Testing run-time behavior
+          - name: Unit-testing run-time behavior
             topicUid: run-time-testing
-          - name: Debugging aspects
-            topicUid: debugging-aspects            
           - name: Unit-testing compile-time code
             topicUid: compile-time-testing
+          - name: Debugging aspects
+            topicUid: debugging-aspects            
+
         - name: Advising a single type with a fabric
           topicUid: fabrics-advising
 

@@ -19,7 +19,7 @@ There are three complementary strategies to test your aspects. The first strateg
             <xref:aspect-testing>
         </td>
         <td>
-             These tests verify that the aspect transforms code or reports errors and warnings as expected. In compile-time tests, the transformed code is not executed.
+             These tests verify that the aspect transforms code or reports errors and warnings as expected. In aspect tests, the transformed code is not executed.
         </td>
     </tr>
     <tr>
@@ -27,7 +27,7 @@ There are three complementary strategies to test your aspects. The first strateg
             <xref:run-time-testing>
         </td>
         <td>
-        These tests confirm the run-time behavior of the aspect. In this approach, you apply your aspect to some test target code and evaluate the _behavior_ of the combination of the aspect and the target code by executing the transformed code in a unit test and assessing its run-time behavior. For this approach, you can use a conventional Xunit project or any other testing framework, as there is nothing specific to Metalama.
+        These tests confirm the run-time behavior of the aspect. In this approach, you apply your aspect to some test target code and evaluate the _behavior_ of the combination of the aspect and the target code by executing the transformed code in a unit test and assessing its run-time behavior. For this approach, you can use a conventional Xunit project or any other testing framework, as there is nothing specific to Metalama.    
         </td>
     </tr>
     <tr>
@@ -38,6 +38,14 @@ There are three complementary strategies to test your aspects. The first strateg
             These tests are traditional unit tests of the compile-time logic used by the aspects, without executing the aspects themselves.
         </td>
     </tr>
+<tr>
+    <td>   
+        <xref:debugging-aspects>
+    </td>
+    <td>
+        This article describes how to debug the compile-time logic of aspects and templates.
+    </td>
+</tr>
 </table>
 
 > [!div class="see-also"]

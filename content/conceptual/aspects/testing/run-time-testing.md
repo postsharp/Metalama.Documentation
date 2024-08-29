@@ -5,9 +5,7 @@ summary: "The document discusses the approach of applying an aspect to a target 
 keywords: "unit tests"
 ---
 
-# Unit testing aspects at run time
-
-(TODO: This article is currently in draft form.)
+# Testing the aspect's run-time behavior
 
 The objective of this approach is to apply an aspect to a specific target code, then create standard unit tests to verify that the resulting code behaves as expected.
 
@@ -22,11 +20,11 @@ class MyTests
     {
         this.VoidMethod(5);
 
-        Assert.Equal( @"
-Entering VoidMethod(5).
-Oops
-VoidMethod(5) succeeded.
-",
+        Assert.Equal( """
+                    Entering VoidMethod(5).
+                    Oops
+                    VoidMethod(5) succeeded.
+                    """,
         _logger.ToString());
     }
 
@@ -38,7 +36,11 @@ VoidMethod(5) succeeded.
 }
 ```
 
-[comment]: # (TODO: cover dependency injection)
+> [!TIP]
+> To make your aspects testable, you might benefit from using dependency injection in your aspects. This approach allows you to supply different implementations of your services in test scenarios than in productions scenarios. For details, see @dependency-injection.
+
+> [!WARNING]
+> Run-time unit tests should not replace, but complement, aspect tests (see <xref:aspect-testing>). The problem with run-time unit tests is that the whole project is compiled at once, so it is difficult to debug a specific instance of an aspect in isolation from the other instances. The most convenient way to debug aspects during development is to create aspect tests. When a run-time unit test project fails to build because of an aspect, we suggest to create an aspect test to isolate, diagnose and fix the issue. For more information, see <xref:debugging-aspects>.
 
 
 > [!div class="see-also"]

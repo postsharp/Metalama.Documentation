@@ -11,8 +11,7 @@
               "Metalama.Framework.Sdk.dll",
               "Metalama.Framework.Introspection.dll",
               "Metalama.Framework.Workspaces.dll",
-              // Intentionally ignoring Metalama.LinqPad because it has an extension method for `object`.
-              // "Metalama.LinqPad.dll",
+              "Metalama.LinqPad.dll",
               "Metalama.Compiler.Interface.dll",
               "Metalama.Migration.dll",
               "Metalama.Extensions.DependencyInjection.dll",
