@@ -193,7 +193,6 @@ The text between the parenthesis is the skip reason.
 ## Advanced features
 
 ### Excluding a directory
-
 All files in a compile-time test project are turned into test input files by default. To disable this behavior for a directory, create a file named `metalamaTests.json` and add the following content:
 
 ```json
@@ -285,4 +284,3 @@ The `[CurrentDirectory]` attribute will automatically provide test data for all 
 
 > [!div class="see-also"]
 > <xref:video-testing>
-

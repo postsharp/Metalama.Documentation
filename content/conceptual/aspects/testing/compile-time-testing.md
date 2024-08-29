@@ -13,7 +13,7 @@ When building complex aspects, it's advisable to shift the intricate compile-tim
 
 Unit-testing compile-time classes offers the following advantages:
 
-* It's generally simpler to achieve comprehensive test coverage with unit tests than with aspect tests (see <xref:aspect-testing>),
+* It's generally simpler to achieve comprehensive test coverage with unit tests than with aspect tests (see <xref:aspect-testing>).
 * Debugging unit tests is easier than debugging aspect tests.
 
 ## Creating unit tests for your compile-time code
@@ -57,8 +57,7 @@ Disable Metalama for the test project by defining the following property:
 Create a new test class that derives from <xref:Metalama.Testing.UnitTesting.UnitTestClass>.
 
 ```cs
- public class MyTests : UnitTestClass { }
-
+public class MyTests : UnitTestClass { }
 ```
 
 ### Step 5. Create test methods
@@ -71,7 +70,6 @@ Your test would typically call the <xref:Metalama.Testing.UnitTesting.TestContex
 > Some APIs (such as <xref:Metalama.Framework.Code.SyntaxBuilders.ExpressionFactory>) require the execution context to be set and assigned to your compilation. To set the execution context in a test, use the <xref:Metalama.Testing.UnitTesting.TestContext.WithExecutionContext*?text=testContext.WithExecutionContext> method.
 
 ```cs
-
 public class MyTests : UnitTestClass
 {
     [Fact]
@@ -80,19 +78,19 @@ public class MyTests : UnitTestClass
         // Create a test context and dispose of it at the end of the test.
         using var testContext = this.CreateTestContext();
 
-        // Create a compilation
-        var code = 
+        // Create a compilation.
+        var code =
             """
             class C
             {
                 void M1 () {}
-            
+
                 void M2()
                 {
                     var x = 0;
                     x++;
                 }
-            }                    
+            }
             """;
 
         var compilation = testContext.CreateCompilation( code );
@@ -100,13 +98,12 @@ public class MyTests : UnitTestClass
         // Switch the execution context to this compilation.
         using ( testContext.WithExecutionContext( compilation ) )
         {
-
             // Query the code model.
             var type = compilation.Types.OfName( "C" ).Single();
             var m1 = type.Methods.OfName( "M1" ).Single();
 
             // Here you can also call your helper classes.
-    
+
             // Perform any assertion. Typically, your compile-time code would be called here.
             Assert.Equal( 0, m1.Parameters.Count );
 
@@ -115,5 +112,3 @@ public class MyTests : UnitTestClass
     }
 }
 ```
-
-
