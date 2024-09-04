@@ -40,7 +40,7 @@ The <xref:Metalama.Extensions.Multicast.MulticastAspect> class already implement
 
 ### Step 2. Implement the BuildAspect methods
 
-Your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method should _only_ call the <xref:Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect*?text=this.Implementation.BuildAspect> method. The arguments you need to pass depend on the kind of declaration of the implemented <xref:Metalama.Framework.Aspects.IAspect`1> interface:
+Your implementation of the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method should _only_ call the <xref:Metalama.Extensions.Multicast.MulticastImplementation.BuildAspect*?text=this.Implementation.BuildAspect*> method. The arguments you need to pass depend on the kind of declaration of the implemented <xref:Metalama.Framework.Aspects.IAspect`1> interface:
 
 * For _intermediate_ declarations, pass a single argument: the <xref:Metalama.Framework.Aspects.IAspectBuilder`1>.
 * For _final_ declarations, pass the <xref:Metalama.Framework.Aspects.IAspectBuilder`1> _and_ a delegate that performs the actual work. This delegate will be called _unless_ the aspect is skipped due to <xref:Metalama.Extensions.Multicast.MulticastAspect.AttributeExclude>.
