@@ -79,13 +79,13 @@ public class VirtualizeAttribute : TypeAspect { }
 
 While the <xref:Metalama.Framework.Aspects.IAspect`1.BuildAspect*> method is ignored for weaver aspects, the <xref:Metalama.Framework.Eligibility.IEligible`1.BuildEligibility*> method still gets called. This means you can define eligibility in the aspect class as usual, see <xref:eligibility>. For example:
 
-[!code-csharp[](~\source-dependencies\Metalama.Community\src\Metalama.Community.Virtuosity\Metalama.Community.Virtuosity\VirtualizeAttribute.cs#L3-L100)]
+[!code-csharp[](~/source-dependencies/Metalama.Community/src/Metalama.Community.Virtuosity/Metalama.Community.Virtuosity/VirtualizeAttribute.cs)]
 
 ### Step 6. Implement the TransformAsync method
 
 <xref:Metalama.Framework.Engine.AspectWeavers.IAspectWeaver.TransformAsync*> has a parameter of type <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext>. This type contains methods for convenient manipulation of the input compilation, namely <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync*> and <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync*>.
 
-Both methods apply a <xref:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter> on the input compilation. The difference is that <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync*> only calls <xref:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter.Visit*> on declarations that have the aspect attribute, whereas <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync*> allows you to modify anything in the entire compilation, but requires more work to identify the relevant declarations.
+Both methods apply a <xref:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter> on the input compilation. The difference is that <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteAspectTargetsAsync*> only calls the `Visit` method on declarations that have the aspect attribute, whereas <xref:Metalama.Framework.Engine.AspectWeavers.AspectWeaverContext.RewriteSyntaxTreesAsync*> allows you to modify anything in the entire compilation, but requires more work to identify the relevant declarations.
 
 Note that all methods that apply a <xref:Microsoft.CodeAnalysis.CSharp.CSharpSyntaxRewriter> operate in parallel, which means that your implementation needs to be thread-safe.
 
@@ -109,7 +109,7 @@ However, your weaver is responsible for annotating the syntax nodes with the ann
 
 A simplified version of `VirtuosityWeaver` could look like this:
 
-[!code-csharp[](~\code\Metalama.Documentation.SampleCode.Sdk\VirtuosityWeaver.cs)]
+[!code-csharp[](~/code/Metalama.Documentation.SampleCode.Sdk/VirtuosityWeaver.cs)]
 
 The actual implementation is available [on the GitHub repo](https://github.com/postsharp/Metalama.Community/blob/master/src/Metalama.Community.Virtuosity/Metalama.Community.Virtuosity.Weaver/VirtuosityWeaver.cs).
 
