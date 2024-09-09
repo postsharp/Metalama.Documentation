@@ -7,7 +7,6 @@ using PostSharp.Engineering.BuildTools.Build;
 using PostSharp.Engineering.BuildTools.Build.Model;
 using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
-using Spectre.Console.Cli;
 using System.IO;
 using System.IO.Compression;
 using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2024_1;
@@ -51,24 +50,20 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
         .WithValue( BuildConfiguration.Public, c => c with
         {
             ExportsToTeamCityDeployWithoutDependencies = true,
-            PublicPublishers = new Publisher[]
-            {
-                new MergePublisher(), new DocumentationPublisher( new S3PublisherConfiguration[]
+            PublicPublishers =
+            [
+                new DocumentationPublisher( new S3PublisherConfiguration[]
                 {
                     new(docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName),
                 }, "https://postsharp-helpbrowser.azurewebsites.net/" )
-            }
+            ]
         } )
 };
 
 product.PrepareCompleted += OnPrepareCompleted;
 
 
-var commandApp = new CommandApp();
-
-commandApp.AddProductCommands( product );
-
-return commandApp.Run( args );
+return new EngineeringApp( product ).Run( args );
 
 
 static void OnPrepareCompleted( PrepareCompletedEventArgs args )
