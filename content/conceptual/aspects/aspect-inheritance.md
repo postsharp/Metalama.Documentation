@@ -3,6 +3,8 @@ uid: aspect-inheritance
 level: 300
 summary: "The document explains aspect inheritance in the context of programming. It details how aspects can be inherited from base to derived classes, and how to implement conditional inheritance. It also discusses cross-project inheritance, eligibility of inherited aspects, and provides examples. "
 keywords: "aspect inheritance, derived classes, conditional inheritance, cross-project inheritance, eligibility of inherited aspects, inheritable attribute, Metalama, IConditionallyInheritableAspect, BuildAspect method, serialization"
+created-date: 2023-02-20
+modified-date: 2024-08-04
 ---
 
 # Applying aspects to derived types
@@ -67,5 +69,6 @@ public override void BuildEligibility( IEligibilityBuilder<IMethod> builder )
 
 > [!div class="see-also"]
 > <xref:video-fabrics-and-inheritance>
+
 
 

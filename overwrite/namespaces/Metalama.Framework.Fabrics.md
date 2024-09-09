@@ -1,6 +1,8 @@
 ---
 uid: Metalama.Framework.Fabrics
 summary: *content
+created-date: 2023-01-26
+modified-date: 2023-07-11
 ---
 
 This namespace enables the addition of fabrics to your code. Similar to aspects, fabrics are executed at compile time. However, unlike aspects, fabrics do not require a custom attribute for integration into your code. The mere existence of the fabric in your code applies it to your code.
@@ -99,3 +101,4 @@ classDiagram
 ```
 
 ## Namespace member
+

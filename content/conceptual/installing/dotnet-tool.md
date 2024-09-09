@@ -3,6 +3,8 @@ uid: dotnet-tool
 level: 200
 summary: "This document provides instructions on how to install the Metalama Command Line Tool, which offers several features for managing the Metalama software."
 keywords: "Metalama Command Line Tool, install Metalama, managing Metalama software, configuring settings, terminating processes, cleaning temporary files, inspecting license usage, .NET, dotnet tool install, Metalama.Tool package."
+created-date: 2023-02-17
+modified-date: 2024-08-04
 ---
 
 # Installing the Metalama Command Line Tool
@@ -25,4 +27,5 @@ To install the Metalama Command Line Tool, follow these steps:
     ```
 
 The Metalama Command Line Tool is now accessible through the `metalama` command.
+
 

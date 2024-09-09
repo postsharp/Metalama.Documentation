@@ -1,6 +1,8 @@
 ---
 uid: Metalama.Framework.Workspaces
 summary: *content
+created-date: 2023-07-11
+modified-date: 2023-07-11
 ---
 
 ## Overview
@@ -54,4 +56,5 @@ classDiagram
 
     IProjectSet --* Project : Projects
 ```
+
 

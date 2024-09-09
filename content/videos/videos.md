@@ -1,6 +1,8 @@
 ---
 uid: videos
 summary: "The document is a list of video tutorials covering topics like introduction, aspects, fabrics, testing, debugging, error reporting, code fixes, and architecture rules."
+created-date: 2023-12-11
+modified-date: 2023-12-11
 ---
 
 # Video tutorials
@@ -15,3 +17,4 @@ summary: "The document is a list of video tutorials covering topics like introdu
 7. <xref:video-code-fixes> 
 8. <xref:video-architecture-verification>
 9. <xref:video-custom-architecture-rules>
+

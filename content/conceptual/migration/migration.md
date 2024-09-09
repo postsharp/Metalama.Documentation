@@ -2,6 +2,8 @@
 uid: migration
 summary: "The document provides guidance on migrating projects from PostSharp to its successor, Metalama, including rewriting aspects, maintaining business code, and various articles to assist the migration process."
 keywords: "migration, PostSharp, Metalama, rewrite aspects"
+created-date: 2023-01-26
+modified-date: 2024-08-04
 ---
 
 # Migrating from PostSharp
@@ -30,5 +32,6 @@ Article | Description
 <xref:differences-from-postsharp> | This article discusses the significant architectural differences between PostSharp and Metalama from a theoretical perspective.
 <xref:migrating-multicasting> | This article guides you on how to migrate PostSharp attribute multicasting to Metalama.
 <xref:migrating-configuration> | This article instructs you on how to migrate PostSharp configuration files like `postsharp.config` to Metalama.
+
 
 

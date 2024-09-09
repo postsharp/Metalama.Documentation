@@ -3,6 +3,8 @@ uid: validating-usage
 level: 200
 summary: "The document provides a detailed guide on how to verify the usage of a class, member or namespace in C# using Metalama, a tool that allows for fine-tuning accessibility. It covers both attribute-based and programmatically validation methods."
 keywords: "dependencies, Metalama, custom attributes, C# validation, namespace, internal members, programmatic validation, Metalama.Extensions.Architecture"
+created-date: 2023-03-22
+modified-date: 2024-08-04
 ---
 
 # Verifying usage of a class, member, or namespace
@@ -127,4 +129,5 @@ Using floating-point arithmetic in operations involving currencies is a common p
 > [!div class="see-also"]
 > <xref:video-architecture-verification>
   
+
 

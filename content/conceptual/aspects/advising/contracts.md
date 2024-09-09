@@ -3,6 +3,8 @@ uid: contracts
 level: 300
 summary: "The document provides advanced information on validating parameter, field, and property values with contracts in Metalama Framework. It covers accessing metadata, contract directions, and adding contract advice programmatically."
 keywords: "validating parameter values, Metalama Framework, contract directions, adding contract advice, .NET, ContractAspect class, input parameters, output parameters, precondition checks"
+created-date: 2023-02-16
+modified-date: 2024-08-04
 ---
 
 # Validating parameter, field, and property values with contracts
@@ -60,4 +62,5 @@ The [fabric](xref:fabrics) adds a method-level aspect to all exposed methods. Th
 
 > [!NOTE]
 > For a production-ready version of this use case, see <xref:enforcing-non-nullability>.
+
 

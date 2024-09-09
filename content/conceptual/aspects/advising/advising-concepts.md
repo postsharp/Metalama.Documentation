@@ -2,6 +2,8 @@
 uid: advising-concepts
 summary: "The document explains the concept of transforming code using advice in aspect-oriented programming. It discusses two methods of adding advice: declaratively and imperatively. It also covers the use of templates."
 keywords: "aspect-oriented programming, transforming code, advice, declarative advising, imperative advising, IntroduceAttribute, IAspect.BuildAspect, AdviserExtensions, template methods, compile-time"
+created-date: 2023-02-20
+modified-date: 2024-08-04
 ---
 
 # Transforming code: concepts
@@ -45,4 +47,5 @@ With most types of advice, you must provide a _template_ of the member you want 
 Templates are written in standard C# code but combine two kinds of code: _compile-time_ and _run-time_. When some target code is advised, the compile-time part of the corresponding template is _executed_. The output of this execution is the run-time code, which is then injected into the source code to form the _transformed code_.
 
 For details, refer to <xref:templates>.
+
 

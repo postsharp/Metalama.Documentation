@@ -3,6 +3,8 @@ uid: template-overview
 level: 200
 summary: "This document provides an overview of T#, a template language used by Metalama, which is fully compatible with C#. It details how T# integrates compile-time and run-time expressions and statements, and outlines the different scopes of code: run-time, compile-time, and scope-neutral. The document also compares T# to Razor and explains the compilation process."
 keywords: "T#, Metalama, template language, compile-time expressions, run-time expressions, compile-time code, run-time code, scope-neutral code, compilation process"
+created-date: 2023-02-17
+modified-date: 2024-08-04
 ---
 
 # T# templates: Overview
@@ -74,5 +76,6 @@ During compilation, Metalama compiles the [T# templates](xref:templates) into st
 
 > [!WARNING]
 > *Intellectual property alert.* The _source_ of your compile-time code is embedded in clear text, without any obfuscation, in the run-time binary assemblies as a managed resource.
+
 
 

@@ -3,6 +3,8 @@ uid: contract-patterns
 summary: "Metalama Contracts facilitate contract-based programming, enhancing software reliability and clarity. They enforce preconditions, postconditions, and type invariants, aiding in error detection and promoting modular design. They are more readable, inheritable, and customizable than hand-written precondition checks. "
 level: 100
 keywords: "contract-based programming, preconditions, postconditions, type invariants, error detection,  Metalama Contracts"
+created-date: 2024-06-11
+modified-date: 2024-08-04
 ---
 
 # Metalama.Patterns.Contracts
@@ -33,6 +35,7 @@ This chapter includes the following articles:
 | <xref:value-contracts> | This article describes how to add preconditions and postconditions to your fields, properties, and parameters. |
 |  <xref:invariants> | This article describes how to add type invariants and execute verification logic after the completion of all public methods. |
 | <xref:configuring-contracts> | This article describes how to configure Metalama Contracts. |
+
 
 
 

@@ -1,6 +1,8 @@
 ---
 uid: Metalama.Framework.Aspects
 summary: *content
+created-date: 2023-01-26
+modified-date: 2024-06-26
 ---
 
 This namespace enables you to build aspects. Aspects represent an algorithmic approach to code transformation or validation.
@@ -191,3 +193,4 @@ classDiagram
 ```
 
 ## Namespace members
+

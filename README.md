@@ -1,3 +1,7 @@
+---
+created-date: 2023-02-02
+modified-date: 2024-04-10
+---
 <p align="center">
 <img width="450" src="https://github.com/postsharp/Metalama/raw/master/images/metalama-by-postsharp.svg" alt="Metalama logo" />
 </p>
@@ -100,3 +104,4 @@ This markup embeds a Vimeo video.
 where:
 
 * `<id>` represents the video ID.
+

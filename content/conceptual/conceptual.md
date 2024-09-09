@@ -1,6 +1,8 @@
 ---
 uid: conceptual
 summary: "The document outlines the different chapters in a manual about Metalama, covering topics like requirements, installation, usage, aspect creation, validation, configuration, migration, and removal."
+created-date: 2023-01-26
+modified-date: 2024-06-11
 ---
 # Conceptual documentation
 
@@ -18,4 +20,5 @@ summary: "The document outlines the different chapters in a manual about Metalam
 | <xref:migration> | This chapter sheds light on why, when, and how to migrate your projects from PostSharp to Metalama.
 | <xref:implementation> | This chapter covers a few implementation details.
 | <xref:divorcing> | This chapter provides a guide on how to remove Metalama from your codebase.
+
 

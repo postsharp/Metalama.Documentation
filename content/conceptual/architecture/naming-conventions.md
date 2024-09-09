@@ -3,6 +3,8 @@ uid: naming-conventions
 level: 200
 summary: "The document explains how to enforce naming conventions in codebases using Metalama, either through custom attributes for source-owned classes or interfaces, or fabrics for other scenarios."
 keywords: "naming conventions, Metalama, custom attributes, enforce naming conventions, .NET, Metalama.Extensions.Architecture"
+created-date: 2023-03-22
+modified-date: 2024-08-04
 ---
 
 # Enforcing naming conventions
@@ -56,4 +58,5 @@ Many teams require UI pages to be suffixed with `Page`, controls with `Control`,
 > [!div class="see-also"]
 > <xref:video-architecture-verification>
   
+
 

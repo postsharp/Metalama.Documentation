@@ -3,6 +3,8 @@ uid: enforcing-non-nullability
 summary: "The document instructs on using Metalama's VerifyNotNullableDeclarations method to automatically check and enforce non-nullability in C# 8.0, simplifying the process of ensuring clean code."
 level: 100
 keywords: "non-nullability, C# 8.0, null-checks, Metalama, VerifyNotNullableDeclarations"
+created-date: 2024-03-13
+modified-date: 2024-08-04
 ---
 
 # Checking all non-nullable fields, properties and parameters
@@ -21,6 +23,7 @@ Rejoice, solving this problem is a one-liner with Metalama! Simply call the <xre
 In the following example, we use the <xref:Metalama.Patterns.Contracts.ContractExtensions.VerifyNotNullableDeclarations*> method to inject null-checks for our complete public API. Yes, in just one line.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.Contracts/NotNullFabric.cs]
+
 
 
 

@@ -3,6 +3,8 @@ uid: dependency-injection
 level: 300
 summary: "The document provides a detailed guide on injecting dependencies into aspects using the Metalama.Extensions.DependencyInjection project. It covers consuming dependencies, selecting a dependency injection framework, and implementing an adaptor for a new dependency injection framework."
 keywords: "dependency injection, Metalama.Extensions.DependencyInjection, .NET Core, constructor parameter, custom attribute, IDependencyInjectionFramework, introduce dependency, ServiceLocator, dependency injection framework, ILogger"
+created-date: 2023-02-20
+modified-date: 2024-08-04
 ---
 
 # Injecting dependencies into aspects
@@ -83,5 +85,6 @@ The following example shows how to implement the correct code generation pattern
 Our implementation of <xref:Metalama.Extensions.DependencyInjection.Implementation.IDependencyInjectionFramework> implements the <xref:Metalama.Extensions.DependencyInjection.Implementation.DefaultDependencyInjectionFramework.CanHandleDependency*> method and returns `true` only when the dependency is of type `ILogger`. The only difference in the default implementation strategy is the parameter type.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.DependencyInjection/LogCustomFramework.cs name="Custom Adapter"]
+
 
 

@@ -1,6 +1,8 @@
 ---
 uid: Metalama.Framework.Diagnostics
 summary: *content
+created-date: 2023-01-26
+modified-date: 2023-07-28
 ---
 
 This namespace allows you to report or suppress diagnostics from your aspect code.
@@ -123,3 +125,4 @@ For more information, refer to <xref:diagnostics>.
 Refer to <xref:Metalama.Framework.CodeFixes>.
 
 ## Namespace members
+

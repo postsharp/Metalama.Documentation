@@ -3,6 +3,8 @@ uid: process-dump
 level: 200
 summary: "The document provides a step-by-step guide on how to create and share a process dump for troubleshooting issues with Metalama, including warnings about potential confidentiality of information."
 keywords: "Metalama issues, troubleshooting, process dump, confidentiality, Metalama command-line tool, dotnet dump tool, diagnostics.json, process crash, process dump collection, upload process dump."
+created-date: 2023-01-11
+modified-date: 2024-08-04
 ---
 
 # Creating a process dump
@@ -89,5 +91,6 @@ Upload this file to an online storage service like OneDrive.
 > **NEVER** share the process dump URL publicly on a service like GitHub Issues.
 
 Instead, kindly send us the link via [email](mailto:hello@postsharp.net) or private message on [Slack](https://www.postsharp.net/slack).
+
 
 

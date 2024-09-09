@@ -3,6 +3,8 @@ uid: reading-msbuild-properties
 level: 200
 summary: "The document provides a guide on how to read MSBuild properties using the IProject.TryGetProperty method in Metalama. It explains how to expose, set, and read MSBuild properties, and how to combine them with the options API."
 keywords: "MSBuild properties, IProject.TryGetProperty, Metalama, configuration, command line, Directory.Build.props, compiler, NuGet package, csproj file, options API"
+created-date: 2024-08-04
+modified-date: 2024-08-04
 ---
 
 # Reading MSBuild properties
@@ -116,6 +118,7 @@ Instead, properties should be read from the <xref:Metalama.Framework.Options.IHi
 In the following example, the options class implements the <xref:Metalama.Framework.Options.IHierarchicalOptions.GetDefaultOptions*> to read default values from the MSBuild properties. It reports a diagnostic if their value is incorrect.
 
 [!metalama-file ~/code/Metalama.Documentation.SampleCode.AspectFramework/AspectConfiguration_ProjectDefault.Options.cs]
+
 
 
 

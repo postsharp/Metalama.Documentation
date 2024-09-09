@@ -1,6 +1,8 @@
 ---
 uid: Metalama.Framework.Validation
 summary: *content
+created-date: 2023-01-26
+modified-date: 2024-09-04
 ---
 This namespace enables validation of your code, the code that utilizes your aspects, or the code that references the code that uses your aspects.
 
@@ -112,3 +114,4 @@ class InboundReferenceValidator {
 ```
 
 ## Namespace Members
+

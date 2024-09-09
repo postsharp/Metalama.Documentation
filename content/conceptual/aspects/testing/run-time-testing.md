@@ -3,6 +3,8 @@ uid: run-time-testing
 level: 300
 summary: "The document discusses the approach of applying an aspect to a target code and creating unit tests to verify the resulting code's behavior, using a logging aspect as an example."
 keywords: "unit tests"
+created-date: 2023-02-21
+modified-date: 2024-08-29
 ---
 
 # Testing the aspect's run-time behavior
@@ -44,3 +46,4 @@ class MyTests
 
 > [!div class="see-also"]
 > <xref:video-testing>
+

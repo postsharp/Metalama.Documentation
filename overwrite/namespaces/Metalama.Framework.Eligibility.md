@@ -1,6 +1,8 @@
 ---
 uid: Metalama.Framework.Eligibility
 summary: *content
+created-date: 2023-01-26
+modified-date: 2023-07-11
 ---
 This namespace allows you to define how your aspects can be utilized.
 
@@ -59,3 +61,4 @@ classDiagram
 ```
 
 ## Namespace members
+

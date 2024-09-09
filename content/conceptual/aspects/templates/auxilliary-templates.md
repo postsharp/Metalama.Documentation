@@ -3,6 +3,8 @@ uid: auxiliary-templates
 level: 300
 summary: "The document provides a detailed guide on using auxiliary templates in Metalama, including their creation, invocation, and usage in different scenarios like code reuse, abstraction, return statements, dynamic invocation of generic templates, and delegate-like invocation."
 keywords: "Auxiliary templates, abstraction, Metalama, template invocation, generic templates, delegate-like invocation, statement factory"
+created-date: 2023-12-11
+modified-date: 2024-08-04
 ---
 
 # Calling auxiliary templates
@@ -105,4 +107,5 @@ You can call <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.Unwra
 The following example generates an `Execute` method which has two arguments: a message name and an opaque argument. The aspect must be used on a class with one or many `ProcessFoo` methods, where `Foo` is the message name. The aspect generates a `switch` statement that dispatches the message to the proper method. We use the <xref:Metalama.Framework.Code.SyntaxBuilders.StatementFactory.FromTemplate*?text=StatementFactory.FromTemplate> method to pass templates to the <xref:Metalama.Framework.Code.SyntaxBuilders.SwitchStatementBuilder>.
 
 [!metalama-test  ~/code/Metalama.Documentation.SampleCode.AspectFramework/SwitchStatementBuilder_FullTemplate.cs]
+
 

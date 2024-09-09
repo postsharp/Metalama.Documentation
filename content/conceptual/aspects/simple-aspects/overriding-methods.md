@@ -3,6 +3,8 @@ uid: simple-override-method
 level: 200
 summary: "The document provides a guide on how to override methods using the Metalama.Framework, with examples including logging, retrying upon exception, authorizing users, including method names in logs, and profiling methods."
 keywords: "overriding methods, Metalama.Framework, logging, retry upon exception, authorizing users, method names in logs, profiling methods, OverrideMethodAspect, meta.Proceed, meta.Target.Method"
+created-date: 2023-02-28
+modified-date: 2024-08-04
 ---
 
 # Getting started: overriding a method
@@ -93,6 +95,7 @@ If you want to go deeper into method overrides, consider reading the following a
 > [!div class="see-also"]
 > <xref:simple-override-method>
 > <xref:video-first-aspect>
+
 
 
 

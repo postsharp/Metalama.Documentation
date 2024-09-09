@@ -2,6 +2,8 @@
 uid: video-testing
 level: 104
 summary: "The document is a video tutorial on various aspects of testing, with a reference link for additional information on the topic."
+created-date: 2023-12-11
+modified-date: 2023-12-11
 ---
 
 # Video tutorial: testing aspects
@@ -10,3 +12,4 @@ summary: "The document is a video tutorial on various aspects of testing, with a
 
 > [!div class="see-also"]
 > <xref:testing>
+

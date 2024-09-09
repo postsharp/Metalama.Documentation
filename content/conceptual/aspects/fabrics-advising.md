@@ -3,6 +3,8 @@ uid: fabrics-advising
 summary: "The document provides a guide on how to advise a type using a type fabric, a compile-time nested class, in the Metalama Framework. It includes a step-by-step process and an example."
 level: 300
 keywords: "type fabric, Metalama Framework, compile-time nested class, type-level aspect, AmendType method, IAspectBuilder.Advice, advanced aspects, member introductions, helper aspect, target type"
+created-date: 2023-01-26
+modified-date: 2024-08-04
 ---
 
 # Advising a single type with a fabric
@@ -30,6 +32,7 @@ To advise a type using a type fabric, follow these steps:
 The following example demonstrates how to create a type fabric that introduces ten methods to the target type.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/AdvisingTypeFabric.cs name="Type Fabric Adding Advice"]
+
 
 
 

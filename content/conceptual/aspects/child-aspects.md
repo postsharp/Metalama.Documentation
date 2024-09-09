@@ -3,6 +3,8 @@ uid: child-aspects
 level: 300
 summary: "The document explains how to add child aspects in Metalama Framework, the conditions they must follow, and how to access the parent aspect."
 keywords: "child aspects, parent aspect, Metalama Framework, IAspectBuilder, AddAspect method, aspect order, IAspectReceiver, RequireAspect method, aspect precedence, auditing aspects"
+created-date: 2023-02-17
+modified-date: 2024-08-04
 ---
 
 # Adding child aspects
@@ -38,3 +40,4 @@ Parent aspects are enumerated in the <xref:Metalama.Framework.Aspects.IAspectPre
 Instead of calling <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*>, you can use <xref:Metalama.Framework.Aspects.IAspectReceiver`1.RequireAspect*>. This method is generic, and its type parameter must be set to an aspect type with a default constructor. It checks if the target declaration already contains an aspect of the required type, and if not, it adds a new aspect instance. 
 
 If you were using <xref:Metalama.Framework.Aspects.IAspectReceiver`1.AddAspect*> and the aspect was already present, a new aspect instance would be created, a primary aspect instance would be chosen, and the other instances would be made available as secondary instances. With <xref:Metalama.Framework.Aspects.IAspectReceiver`1.RequireAspect*>, there would be no secondary instance, but the parent aspect would be exposed as a _predecessor_ in the <xref:Metalama.Framework.Aspects.IAspectPredecessor.Predecessors> collection.
+

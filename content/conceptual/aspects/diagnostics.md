@@ -3,6 +3,8 @@ uid: diagnostics
 level: 300
 summary: "The document provides a guide on how to report or suppress diagnostics, including errors, warnings, or info messages, from an aspect in C# programming. It also outlines the benefits and provides examples."
 keywords: "diagnostics, errors, warnings, suppress, C# compiler, report diagnostics, suppress diagnostics, Metalama.Framework.Diagnostics, DiagnosticDefinition, SuppressionDefinition"
+created-date: 2023-01-26
+modified-date: 2024-08-04
 ---
 
 # Reporting and suppressing diagnostics
@@ -74,6 +76,7 @@ The following aspect can be added to a field or property. It overrides the gette
 When your aspect's `BuildAspect` method is executed, it views the code model as it was _before_ the aspect was applied.
 
 If you need to validate the code after all aspects have been applied, see <xref:aspect-validating>.
+
 
 
 

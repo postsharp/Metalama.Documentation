@@ -1,6 +1,8 @@
 ---
 uid: main-getting-started
 keywords: "Metalama, getting started"
+created-date: 2024-03-19
+modified-date: 2024-08-22
 ---
 
 # Getting started with Metalama
@@ -102,4 +104,5 @@ There are three paths you can take from here according to your learning style:
 * <xref:videos>
 * <xref:conceptual>
 * <xref:samples>
+
 

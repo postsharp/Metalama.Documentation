@@ -1,6 +1,8 @@
 ---
 uid: Metalama.Framework.Project
 summary: *content
+created-date: 2023-01-26
+modified-date: 2023-10-03
 ---
 
 This namespace serves the following purposes:
@@ -71,4 +73,5 @@ classDiagram
 ```
 
 ## Namespace members
+
 

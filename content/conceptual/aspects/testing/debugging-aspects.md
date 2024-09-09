@@ -3,6 +3,8 @@ uid: debugging-aspects
 level: 300
 summary: "The document provides step-by-step instructions on how to debug compile-time and design-time logic in aspect-oriented programming, emphasizing the importance of inserting breakpoints directly into the source code."
 keywords: "debug compile-time logic, design-time logic, aspect-oriented programming, breakpoints, Debugger.Break(), meta.DebugBreak(), attach debugger, Metalama Command Line Tool, RoslynCodeAnalysisService, MetalamaDebugCompiler"
+created-date: 2023-02-17
+modified-date: 2024-08-29
 ---
 
 # Debugging aspects
@@ -76,3 +78,4 @@ To attach a debugger to the design-time compiler process, follow these steps:
 > [!div class="see-also"]
 > <xref:debugging-aspect-oriented-code>
 > <xref:video-debugging>
+

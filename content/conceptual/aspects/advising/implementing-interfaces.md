@@ -3,6 +3,8 @@ uid: implementing-interfaces
 level: 300
 summary: "The document provides a guide on how to implement interfaces using the programmatic advising API in the Metalama Framework, with examples for IDisposable and Deep cloning."
 keywords: "Metalama Framework, implementing interfaces, programmatic advising API, AdviserExtensions.ImplementInterface, OverrideStrategy, InterfaceMemberAttribute"
+created-date: 2023-02-17
+modified-date: 2024-08-04
 ---
 # Implementing interfaces
 
@@ -89,4 +91,5 @@ The following strategies can be employed to access explicit implementations:
     ```
 
 - Introduce a private method with the concrete method implementation, and call this private member both from the interface member and the templates.
+
 

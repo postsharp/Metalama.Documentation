@@ -3,6 +3,8 @@ uid: understanding-your-code-with-aspects
 level: 100
 summary: "This document explains how to understand aspect-oriented code using Metalama's tools like CodeLens, Diff Preview, and Debug Transformed Code. It also discusses explicit and implicit aspect applications."
 keywords: "aspect-oriented code, Metalama tools, CodeLens, Metalama Diff, Debug Transformed Code, understand code functionality, aspect explorer"
+created-date: 2023-02-16
+modified-date: 2024-08-22
 ---
 
 # Understanding your aspect-oriented code

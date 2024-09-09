@@ -3,6 +3,8 @@ uid: internal-only-implement
 level: 200
 summary: "The document explains how to use Metalama's `InternalOnlyImplementAttribute` to restrict the implementation of an interface to prevent others from implementing it."
 keywords: "restrict interface implementation, prevent others from implementing, Metalama, InternalOnlyImplementAttribute, interface protection, .NET, add Metalama.Extensions.Architecture, attribute, prevent other assemblies, warning"
+created-date: 2023-03-22
+modified-date: 2024-08-04
 ---
 
 # Restricting who can implement an interface
@@ -24,6 +26,7 @@ In the parent project, let's assume we have the following interface protected by
 If we attempt to implement this interface in a child project, a warning is reported:
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Architecture/InternalOnlyImplement.cs tabs="target"]
+
 
 
 

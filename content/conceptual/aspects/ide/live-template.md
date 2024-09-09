@@ -3,6 +3,8 @@ uid: live-template
 level: 200
 summary: "The document explains how to create a live template using the Metalama Aspect Framework, which appears in the code editor menu alongside other code suggestions or refactoring actions."
 keywords: "live template, Metalama Aspect Framework, code editor menu, code suggestions, refactoring actions, EditorExperience, aspect eligibility"
+created-date: 2023-02-17
+modified-date: 2024-08-04
 ---
 
 # Exposing an aspect as a live template
@@ -28,4 +30,5 @@ Live templates are created using the Metalama Aspect Framework. Unlike tradition
 > [!div class="see-also"]
 > <xref:video-code-fixes>
 > <xref:code-fixes>
+
 

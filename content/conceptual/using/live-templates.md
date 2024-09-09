@@ -3,6 +3,8 @@ uid: applying-live-templates
 level: 100
 summary: "Live templates modify source code within an editor and can be accessed from the refactoring menu. They are a one-time operation and can be added to a project or package reference. "
 keywords: "live templates, refactoring menu"
+created-date: 2023-02-16
+modified-date: 2024-08-04
 ---
 
 # Using live templates
@@ -30,5 +32,6 @@ The first step involves adding the aspect library to your project using a `<Proj
 
 > [!NOTE]
 > The author of the live template has the ability to customize the appearance of the live template in the refactoring menu. Consequently, it may be found under a different menu item than _Apply live template_.
+
 
 

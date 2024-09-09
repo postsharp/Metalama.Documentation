@@ -3,6 +3,8 @@ uid: building-ide-interactions
 level: 200
 summary: "The document provides guidance on how to add custom actions to IDE menus using Metalama, highlighting the benefits such as fewer keystrokes, less documentation lookups, improved team alignment, and enhanced developer productivity."
 keywords: "developer productivity, code fixes, refactorings, improve productivity"
+created-date: 2023-02-17
+modified-date: 2024-08-04
 ---
 
 # Building IDE interactions
@@ -28,6 +30,7 @@ This chapter includes the following articles:
 |---------|-------------|
 | <xref:live-template> | This article demonstrates how to expose an aspect as a code refactoring that can be applied directly to _source_ code, instead of the executable code in the background. |
 | <xref:code-fixes> | This article explains how aspects and validators can suggest code fixes and refactorings. |
+
 
 
 

@@ -3,6 +3,8 @@ uid: simple-override-property
 level: 200
 summary: "The document provides a guide on how to override fields and properties using the Metalama.Framework package in C#, including examples of trimming strings and normalizing values to uppercase."
 keywords: "override fields, override properties, Metalama.Framework, OverrideFieldOrPropertyAspect, field transformation, property template, trim strings, normalize uppercase"
+created-date: 2023-03-01
+modified-date: 2024-08-04
 ---
 
 # Getting started: overriding fields and properties
@@ -76,6 +78,7 @@ If you want to go deeper into field/property overrides, consider exploring the f
 
 > [!div class="see-also"]
 > <xref:video-other-aspect-types>
+
 
 
 

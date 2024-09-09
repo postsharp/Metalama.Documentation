@@ -3,6 +3,8 @@ uid: validation
 level: 200
 summary: "The document discusses verifying source code against architecture, design patterns, and team conventions, emphasizing the benefits of immediate feedback, smoother code reviews, team alignment, reduced complexity, and architecture erosion prevention."
 keywords: "code verification, architecture validation, design patterns, team conventions, immediate feedback, smoother code reviews, team alignment, reduced complexity, architecture erosion prevention, Metalama"
+created-date: 2023-01-26
+modified-date: 2024-08-04
 ---
 
 # Verifying architecture
@@ -37,4 +39,5 @@ This chapter includes the following articles:
 > [!div class="see-also"]
 > <xref:video-architecture-verification>
   
+
 

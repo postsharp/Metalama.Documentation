@@ -1,6 +1,8 @@
 ---
 uid: Metalama.Framework.Metrics
 summary: *content
+created-date: 2023-01-26
+modified-date: 2023-07-11
 ---
 
 This namespace enables you to consume and implement metrics.
@@ -64,4 +66,5 @@ classDiagram
 ```
 
 ## Namespace members
+
 

@@ -2,6 +2,8 @@
 uid: when-migrate
 summary: "The document provides guidance on when to migrate from PostSharp to Metalama, highlighting potential issues, the option of concurrent use, and specific circumstances for considering migration."
 keywords: "migration, PostSharp, Metalama"
+created-date: 2023-01-26
+modified-date: 2024-08-04
 ---
 
 # When to migrate from PostSharp to Metalama
@@ -40,6 +42,7 @@ DO NOT migrate to Metalama at this time if:
 
 * Your project depends on PostSharp features that have not yet been ported to Metalama. For more details, refer to <xref:migration-feature-status>.
 * Your company has a large team working on a business-critical project with a tight deadline and prefers the tried-and-tested PostSharp (2008) over the relatively new Metalama (2023).
+
 
 
 

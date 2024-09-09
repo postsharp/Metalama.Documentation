@@ -2,6 +2,8 @@
 uid: caching-redis
 summary: "The document provides a guide on how to use Redis as a distributed server for caching in a Metalama application, including configuration, enabling local in-memory cache, and handling dependencies."
 keywords: "Redis caching, distributed caching, in-memory L1 cache, Metalama, StackExchange.Redis, Azure Redis Cache, Redis Pub/Sub, caching backend configuration"
+created-date: 2024-04-25
+modified-date: 2024-08-04
 ---
 
 # Using Redis as a distributed cache
@@ -120,5 +122,6 @@ In case of an outage of the service running the GC process, execute the <xref:Me
 The following program demonstrates this:
 
 [!metalama-file ~/code/Metalama.Documentation.SampleCode.Caching/RedisGC/RedisGC.cs]
+
 
 

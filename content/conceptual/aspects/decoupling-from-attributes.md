@@ -1,5 +1,7 @@
 ---
 uid: decoupling-aspects-from-attributes
+created-date: 2024-09-05
+modified-date: 2024-09-05
 ---
 
 # Decoupling Aspects From Attributes
@@ -97,3 +99,4 @@ The last step is again to add an aspect for each instance of the custom attribut
 We revise the previous example and remove any references to `Metalama.Framework` from the contract attribute. Therefore, the attribute must be handled as an `IRef<IAttribute>`. As you can see in the aspect implementation, the logic to retrieve the `Category` is more complex.
 
 [!metalama-test ~/code/Metalama.Documentation.SampleCode.AspectFramework/Decoupled_Ref.cs name="Decoupled with reference"]
+
