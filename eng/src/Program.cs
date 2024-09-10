@@ -17,7 +17,6 @@ using PostSharp.Engineering.BuildTools.Build.Publishers;
 using PostSharp.Engineering.BuildTools.Dependencies.Definitions;
 using PostSharp.Engineering.BuildTools.Search;
 using PostSharp.Engineering.DocFx;
-using Spectre.Console.Cli;
 using System.IO;
 using System.IO.Compression;
 using MetalamaDependencies = PostSharp.Engineering.BuildTools.Dependencies.Definitions.MetalamaDependencies.V2024_2;
@@ -57,7 +56,6 @@ var product = new Product( MetalamaDependencies.MetalamaDocumentation )
                 ExportsToTeamCityDeployWithoutDependencies = true,
                 PublicPublishers =
                 [
-                    new MergePublisher(),
                     new DocumentationPublisher(
                         new S3PublisherConfiguration[] { new( docPackageFileName, RegionEndpoint.EUWest1, "doc.postsharp.net", docPackageFileName ) },
                         "https://postsharp-helpbrowser.azurewebsites.net/" )
