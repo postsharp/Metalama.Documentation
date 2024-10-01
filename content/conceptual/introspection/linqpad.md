@@ -83,10 +83,10 @@ For instance, the following query has been created from the _Workspace_ folder. 
 workspace.SourceCode.Types
 ```
 
-This query, however, is limited to the `Metalama.Samples.Cache1` project for the target framework `net6.0`.
+This query, however, is limited to the `Metalama.Samples.Cache1` project for the target framework `net8.0`.
 
 ```cs
-workspace.GetProject("Metalama.Samples.Cache1", "net6.0").SourceCode.Types
+workspace.GetProject("Metalama.Samples.Cache1", "net8.0").SourceCode.Types
 ```
 
 The `workspace` object is of type <xref:Metalama.Framework.Workspaces.Workspace>, which implements the <xref:Metalama.Framework.Workspaces.IProjectSet> interface. The <xref:Metalama.Framework.Workspaces.Project> class represents a combination of project and target framework.
@@ -119,10 +119,10 @@ public static class MyExtensions
 
 When you use the Metalama LinqPad driver or the <xref:Metalama.LinqPad.MetalamaDumper> class, objects that represent a code declaration have a virtual property called _Permalink_. The permalink is a C# expression that you can use to retrieve the declaration from a new query window.
 
-Here is an example of a permalink that represents the `_logger` field of the `LogAttribute` class in the `Metalama.Samples.Log4` project for the target framework `net6.0`.
+Here is an example of a permalink that represents the `_logger` field of the `LogAttribute` class in the `Metalama.Samples.Log4` project for the target framework `net8.0`.
 
 ```cs
-workspace.GetDeclaration("Metalama.Samples.Log4", "net6.0", "F:LogAttribute._logger", false)
+workspace.GetDeclaration("Metalama.Samples.Log4", "net8.0", "F:LogAttribute._logger", false)
 ```
 
 ## Querying Metalama projects without LinqPad
