@@ -11,27 +11,28 @@ using System.Text.RegularExpressions;
 
 namespace BuildMetalamaDocumentation.Markdig.Tabs;
 
-internal class CodeTab : BaseTab
+public class CodeTab : BaseTab
 {
+    private readonly string? _htmlPath;
+
     private static readonly Regex _htmlStartMarkerRegex =
-        new( """<span class="[^\"]*">\/\*&lt;([\w+]+)&gt;\*\/<\/span>""" );
+        new("""<span class="[^\"]*">\/\*\s*&lt;([\w+]+)&gt;\s*\*\/<\/span>""", RegexOptions.Compiled);
 
     private static readonly Regex _htmlEndMarkerRegex =
-        new( """<span class="[^\"]*">\/\*&lt;\/([\w+]+)&gt;\*\/<\/span>""" );
+        new("""<span class="[^\"]*">\/\*\s*&lt;\/([\w+]+)&gt;\s*\*\/<\/span>""", RegexOptions.Compiled);
 
-    private static readonly Regex _anyMarkerRegex = new( """\/\*\<\/?([\w+]+)\>\*\/""" );
+    private static readonly Regex _anyMarkerRegex = new("""\/\*\\s*<\/?([\w+]+)\>\s*\*\/""", RegexOptions.Compiled);
 
     private static readonly Regex _memberRegex =
-        new( """<span class='line-number' data-member='([^']*)'>""" );
+        new("""<span class='line-number' data-member='([^']*)'>""", RegexOptions.Compiled);
 
     private static readonly Regex _emptyLineRegex =
-        new( """<span class='line-number'[^>]*>\d+<\/span>\s*$""" );
+        new(
+            """^\s*<span class='line-number'[^>]*>\d+<\/span>(<span class="cr-NeutralTrivia">\s*</span>?(<span class="cr-NeutralTrivia cs-comment">\/\*&lt;\w*&gt;\*\/<\/span>)?)\s*$""", RegexOptions.Compiled);
 
-    public SandboxFileKind SandboxFileKind { get; }
-
-    public string? Member { get; }
-
-    public string? Marker { get; }
+    private static readonly Regex _captureIndentRegex =
+        new(
+            """^\s*<span class='line-number'[^>]*>\d+<\/span><span class="cr-NeutralTrivia">(?<indent>\s*)<\/span>""", RegexOptions.Compiled);
 
     public CodeTab(
         string tabId,
@@ -39,22 +40,43 @@ internal class CodeTab : BaseTab
         SandboxFileKind sandboxFileKind,
         string? marker = null,
         string? member = null,
-        string? tabHeader = null ) : base(
+        string? tabHeader = null,
+        string? htmlPath = null ) : base(
         tabId,
         fullPath )
     {
+        this._htmlPath = htmlPath;
         this.SandboxFileKind = sandboxFileKind;
         this.Member = member;
         this.TabHeader = tabHeader ?? tabId + " Code";
         this.Marker = marker;
     }
 
+    public SandboxFileKind SandboxFileKind { get; }
+
+    public string? Member { get; }
+
+    public string? Marker { get; }
+
+    protected virtual IEnumerable<string> HtmlExtensions => [".cs.html"];
+
+    protected override string TabHeader { get; }
+
     protected override bool IsContentEmpty( string[] lines )
         => base.IsContentEmpty( lines ) || lines.All( l => l.TrimStart().StartsWith( "//", StringComparison.Ordinal ) );
 
     private IEnumerable<string> GetPossibleHtmlPaths()
-        => this.HtmlExtensions
-            .SelectMany( e => PathHelper.GetObjPaths( this.GetProjectDirectory(), this.FullPath, e ) );
+    {
+        if ( this._htmlPath != null )
+        {
+            return [this._htmlPath];
+        }
+        else
+        {
+            return this.HtmlExtensions
+                .SelectMany( e => PathHelper.GetObjPaths( this.GetProjectDirectory(), this.FullPath, e ) );
+        }
+    }
 
     private string? GetExistingHtmlPath( bool throwIfMissing )
     {
@@ -71,8 +93,6 @@ internal class CodeTab : BaseTab
 
         return htmlPath;
     }
-
-    protected virtual IEnumerable<string> HtmlExtensions => [".cs.html"];
 
     public bool Exists() => this.GetPossibleHtmlPaths().Any( File.Exists );
 
@@ -137,12 +157,14 @@ internal class CodeTab : BaseTab
                 // Check that we found the markers.
                 if ( this.Marker != null && !foundStartMarker )
                 {
-                    throw new InvalidOperationException( $"The '/*<{this.Marker}>*/' marker was not found in '{htmlPath}'." );
+                    throw new InvalidOperationException(
+                        $"The '/*<{this.Marker}>*/' marker was not found in '{htmlPath}'." );
                 }
 
                 if ( this.Marker != null && !foundEndMarker )
                 {
-                    throw new InvalidOperationException( $"The '/*</{this.Marker}>*/' marker was not found in '{htmlPath}'." );
+                    throw new InvalidOperationException(
+                        $"The '/*</{this.Marker}>*/' marker was not found in '{htmlPath}'." );
                 }
 
                 if ( this.Member != null && !foundMember )
@@ -150,43 +172,74 @@ internal class CodeTab : BaseTab
                     throw new InvalidOperationException( $"The member '{this.Member}' was not found in '{htmlPath}'." );
                 }
 
-                // Trim.
+                // Trim lines.
                 while ( outputLines.Count > 0 && _emptyLineRegex.IsMatch( outputLines[0] ) )
                 {
                     outputLines.RemoveAt( 0 );
                 }
 
                 while ( outputLines.Count > 0
-                        && _emptyLineRegex.IsMatch( outputLines[outputLines.Count - 1] ) )
+                        && _emptyLineRegex.IsMatch( outputLines[^1] ) )
                 {
                     outputLines.RemoveAt( outputLines.Count - 1 );
                 }
 
-                // Return the final html.
+                // Reduce indentation
+                var minIndentation = outputLines.Select( l =>
+                    {
+                        var match = _captureIndentRegex.Match( l );
+                        if ( match.Success && match.Groups["indent"].Success )
+                        {
+                            return match.Groups["indent"].Length; // Minimum must be 1.
+                        }
+                        else
+                        {
+                            // We have a blank line.
+                            return int.MaxValue;
+                        }
+                    } )
+                    .Min();
 
+                if ( minIndentation > 1 && minIndentation != int.MaxValue )
+                {
+                    outputLines = outputLines.Select( l =>
+                        {
+                            var match = _captureIndentRegex.Match( l );
+                            if ( match.Success && match.Groups["indent"].Success )
+                            {
+                                var indentation = match.Groups["indent"];
+                                return l.Substring( 0, indentation.Index )
+                                       + new string( ' ', indentation.Length - minIndentation)
+                                       + l.Substring( indentation.Index + indentation.Length );
+                            }
+                            else
+                            {
+                                // Blank line.
+                                return l;
+                            }
+                        }
+                    ).ToList();
+                }
+
+
+                // Return the final html.
                 return "<pre><code class=\"nohighlight\">" + string.Join( "\n", outputLines )
                                                            + "</code></pre>";
             }
-            else
-            {
-                var html = File.ReadAllText( htmlPath );
 
-                var cleanHtml = _htmlStartMarkerRegex.Replace(
-                    _htmlEndMarkerRegex.Replace( html, "" ),
-                    "" );
+            var html = File.ReadAllText( htmlPath );
 
-                return cleanHtml;
-            }
+            var cleanHtml = _htmlStartMarkerRegex.Replace(
+                _htmlEndMarkerRegex.Replace( html, "" ),
+                "" );
+
+            return cleanHtml;
         }
-        else
-        {
-            // When the HTML file does not exist, we will rely on run-time formatting.
-            return "<pre><code class=\"lang-csharp\">" + File.ReadAllText( this.FullPath )
-                                                       + "<code></pre>";
-        }
+
+        // When the HTML file does not exist, we will rely on run-time formatting.
+        return "<pre><code class=\"lang-csharp\">" + File.ReadAllText( this.FullPath )
+                                                   + "<code></pre>";
     }
-
-    protected override string TabHeader { get; }
 
     public string GetCodeForComparison()
     {

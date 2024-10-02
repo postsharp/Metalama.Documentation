@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace BuildMetalamaDocumentation.Markdig.Tabs;
 
-internal abstract class BaseTab
+public abstract class BaseTab
 {
     public string TabId { get; }
 
