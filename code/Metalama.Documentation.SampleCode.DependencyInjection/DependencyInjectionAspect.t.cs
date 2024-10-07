@@ -38,8 +38,8 @@ public class DependencyInjectionAspect
   private Func<IHostApplicationLifetime> _lifetimeFunc;
   public DependencyInjectionAspect(ILogger<DependencyInjectionAspect> logger = default, IHostEnvironment? environment = default, Func<IHostApplicationLifetime>? lifetime = default)
   {
-    this._logger = logger;
-    this._environment = environment ?? throw new System.ArgumentNullException(nameof(environment));
     this._lifetimeFunc = lifetime ?? throw new System.ArgumentNullException(nameof(lifetime));
+    this._environment = environment ?? throw new System.ArgumentNullException(nameof(environment));
+    this._logger = logger;
   }
 }
