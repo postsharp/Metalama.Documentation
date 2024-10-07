@@ -15,11 +15,11 @@ public class CodeTab : BaseTab
 {
     private readonly string? _htmlPath;
 
-    private static readonly Regex _htmlStartMarkerRegex =
-        new("""<span class="[^\"]*">\/\*\s*&lt;([\w+]+)&gt;\s*\*\/<\/span>""", RegexOptions.Compiled);
+    private static readonly Regex _startSnippetRegex =
+        new("""\[snippet\s+(?<name>\w+)\s*\]""", RegexOptions.Compiled);
 
-    private static readonly Regex _htmlEndMarkerRegex =
-        new("""<span class="[^\"]*">\/\*\s*&lt;\/([\w+]+)&gt;\s*\*\/<\/span>""", RegexOptions.Compiled);
+    private static readonly Regex _endSnippetRegex =
+        new("""\[endsnippet\s+(?<name>\w+)\s*\]""", RegexOptions.Compiled);
 
     private static readonly Regex _anyMarkerRegex = new("""\/\*\\s*<\/?([\w+]+)\>\s*\*\/""", RegexOptions.Compiled);
 
@@ -106,7 +106,7 @@ public class CodeTab : BaseTab
             {
                 var outputLines = new List<string>();
 
-                var isWithinMarker = false;
+                var captureLine = false;
                 var foundStartMarker = false;
                 var foundEndMarker = false;
                 var foundMember = false;
@@ -114,43 +114,53 @@ public class CodeTab : BaseTab
                 // Read and filter lines.
                 foreach ( var htmlLine in File.ReadAllLines( htmlPath ) )
                 {
-                    var matchStartMarker = _htmlStartMarkerRegex.Match( htmlLine );
+                    // Process the [snippet x] marker.
+                    var matchStartMarker = _startSnippetRegex.Match( htmlLine );
 
-                    if ( matchStartMarker.Success
-                         && matchStartMarker.Groups[1].Value == this.Marker )
+                    if ( matchStartMarker.Success )
                     {
-                        isWithinMarker = true;
-                        foundStartMarker = true;
+                        if ( matchStartMarker.Groups["name"].Value == this.Marker )
+                        {
+                            captureLine = true;
+                            foundStartMarker = true;
+                        }
+                        
+                        // Skip the whole line.
+                        continue;
                     }
-                    else if ( !string.IsNullOrEmpty( this.Member ) )
+                    
+                    // Process the [endsnippet x] marker.
+                    var matchEndMarker = _endSnippetRegex.Match( htmlLine );
+
+                    if ( matchEndMarker.Success )
+                    {
+                        if ( matchEndMarker.Groups["name"].Value == this.Marker )
+                        {
+                            captureLine = false;
+                            foundEndMarker = true;
+                        }
+                        
+                        // Skip the whole line.
+                        continue;
+                    }
+                    
+                    // Capture the line if the member matches.
+                    if ( !string.IsNullOrEmpty( this.Member ) )
                     {
                         var matchMember = _memberRegex.Match( htmlLine );
 
-                        isWithinMarker = matchMember.Success
+                        captureLine = matchMember.Success
                                          && this.Member == matchMember.Groups[1].Value;
 
-                        if ( isWithinMarker )
+                        if ( captureLine )
                         {
                             foundMember = true;
                         }
                     }
 
-                    if ( isWithinMarker )
+                    if ( captureLine )
                     {
-                        var cleanedLine = _htmlStartMarkerRegex.Replace(
-                            _htmlEndMarkerRegex.Replace( htmlLine, "" ),
-                            "" );
-
-                        outputLines.Add( cleanedLine );
-
-                        var matchEndMarker = _htmlEndMarkerRegex.Match( htmlLine );
-
-                        if ( matchEndMarker.Success
-                             && matchEndMarker.Groups[1].Value == this.Marker )
-                        {
-                            isWithinMarker = false;
-                            foundEndMarker = true;
-                        }
+                        outputLines.Add( htmlLine );
                     }
                 }
 
@@ -158,13 +168,13 @@ public class CodeTab : BaseTab
                 if ( this.Marker != null && !foundStartMarker )
                 {
                     throw new InvalidOperationException(
-                        $"The '/*<{this.Marker}>*/' marker was not found in '{htmlPath}'." );
+                        $"The '[snippet {this.Marker}]' marker was not found in '{htmlPath}'." );
                 }
 
                 if ( this.Marker != null && !foundEndMarker )
                 {
                     throw new InvalidOperationException(
-                        $"The '/*</{this.Marker}>*/' marker was not found in '{htmlPath}'." );
+                        $"The '[snippet {this.Marker}]' marker was not found in '{htmlPath}'." );
                 }
 
                 if ( this.Member != null && !foundMember )
@@ -229,8 +239,8 @@ public class CodeTab : BaseTab
 
             var html = File.ReadAllText( htmlPath );
 
-            var cleanHtml = _htmlStartMarkerRegex.Replace(
-                _htmlEndMarkerRegex.Replace( html, "" ),
+            var cleanHtml = _startSnippetRegex.Replace(
+                _endSnippetRegex.Replace( html, "" ),
                 "" );
 
             return cleanHtml;
