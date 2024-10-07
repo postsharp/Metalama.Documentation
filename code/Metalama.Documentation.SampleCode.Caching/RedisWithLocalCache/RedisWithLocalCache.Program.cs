@@ -21,7 +21,7 @@ internal static class Program
         using var redis = builder.Services.AddLocalRedisServer();
         var endpoint = redis.Endpoint;
 
-        // [snippet AddRedis]
+        // [<snippet AddRedis>]
         // Add Redis.                                                           
         builder.Services.AddSingleton<IConnectionMultiplexer>(
             _ =>
@@ -32,15 +32,15 @@ internal static class Program
 
                 return ConnectionMultiplexer.Connect( redisConnectionOptions );
             } ); 
-        // [endsnippet AddRedis]
+        // [<endsnippet AddRedis>]
 
 
-        // [snippet AddMetalamaCaching]
+        // [<snippet AddMetalamaCaching>]
         // Add the caching service.                         
         builder.Services.AddMetalamaCaching( 
             caching => caching.WithBackend(
                 backend => backend.Redis().WithL1() ) ); 
-        // [endsnippet AddMetalamaCaching]
+        // [<endsnippet AddMetalamaCaching>]
 
         // Add other components as usual.
         builder.Services.AddAsyncConsoleMain<ConsoleMain>();
@@ -49,10 +49,10 @@ internal static class Program
         // Build the host.
         await using var app = builder.Build();
 
-        // [snippet Initialize]
+        // [<snippet Initialize>]
         // Initialize caching.
         await app.Services.GetRequiredService<ICachingService>().InitializeAsync(); 
-        // [endsnippet Initialize]
+        // [<endsnippet Initialize>]
 
         // Run the host.
         await app.RunAsync();

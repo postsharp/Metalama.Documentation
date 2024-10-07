@@ -15,7 +15,7 @@ public static class Program
         var builder = ConsoleApp.CreateBuilder();
 
 
-        // [snippet Registration]
+        // [<snippet Registration>]
         // Add the caching service.
         builder.Services.AddMetalamaCaching( 
             caching => caching
@@ -26,7 +26,7 @@ public static class Program
                     {
                         AbsoluteExpiration = TimeSpan.FromMilliseconds( 100 )
                     } ) ); 
-        // [endsnippet Registration]
+        // [<endsnippet Registration>]
 
         // Add other components as usual.
         builder.Services.AddConsoleMain<ConsoleMain>();

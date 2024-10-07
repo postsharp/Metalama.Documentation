@@ -13,19 +13,19 @@ public sealed partial class ProductCatalogue
     ["corn"] = 100
   };
   public int DbOperationCount { get; private set; }
-  // [snippet Cache]
+  // [<snippet Cache>]
   [Cache]
   public decimal GetPrice(string productId)
-  // [endsnippet Cache]
+  // [<endsnippet Cache>]
   {
-    // [endsnippet Cache]
+    // [<endsnippet Cache>]
     static object? Invoke(object? instance, object? [] args)
     {
       return ((ProductCatalogue)instance).GetPrice_Source((string)args[0]);
     }
     return _cachingService!.GetFromCacheOrExecute<decimal>(_cacheRegistration_GetPrice!, this, new object[] { productId }, Invoke);
   }
-  private decimal GetPrice_Source(string productId) // [endsnippet Cache]
+  private decimal GetPrice_Source(string productId) // [<endsnippet Cache>]
   {
     Console.WriteLine($"Getting the price of {productId} from database.");
     this.DbOperationCount++;
@@ -62,9 +62,9 @@ public sealed partial class ProductCatalogue
     Console.WriteLine($"Updating the price of {productId}.");
     this.DbOperationCount++;
     this._dbSimulator[productId] = price;
-    // [snippet InvalidateCache]
+    // [<snippet InvalidateCache>]
     this._cachingService.Invalidate(this.GetPrice, productId);
-  // [endsnippet InvalidateCache]
+  // [<endsnippet InvalidateCache>]
   }
   private static readonly CachedMethodMetadata _cacheRegistration_GetPrice;
   private static readonly CachedMethodMetadata _cacheRegistration_GetProducts;

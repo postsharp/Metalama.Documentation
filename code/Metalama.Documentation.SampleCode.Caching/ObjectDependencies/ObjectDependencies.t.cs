@@ -43,10 +43,10 @@ public sealed class ProductCatalogue
     Console.WriteLine($"Getting the price of {productId} from database.");
     this.DbOperationCount++;
     var product = this._dbSimulator[productId];
-    // [snippet AddDependency]
+    // [<snippet AddDependency>]
     this._cachingService.AddDependency(product); 
     
-    // [endsnippet AddDependency]
+    // [<endsnippet AddDependency>]
     return product;
   }
   [Cache]
@@ -97,10 +97,10 @@ public sealed class ProductCatalogue
     Console.WriteLine($"Updating the price of {product.Name}.");
     this.DbOperationCount++;
     this._dbSimulator[product.Name] = product;
-    // [snippet Invalidate]
+    // [<snippet Invalidate>]
     this._cachingService.Invalidate(product); 
   
-  // [endsnippet Invalidate]
+  // [<endsnippet Invalidate>]
   }
   private static readonly CachedMethodMetadata _cacheRegistration_GetPriceList;
   private static readonly CachedMethodMetadata _cacheRegistration_GetProduct;
