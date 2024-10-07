@@ -17,8 +17,10 @@ public sealed partial class ProductCatalogue
 
     public int DbOperationCount { get; private set; }
 
-    [Cache]                                     /*<Cache>*/
-    public decimal GetPrice( string productId ) /*</Cache>*/
+    // [snippet Cache]
+    [Cache]                                     
+    public decimal GetPrice( string productId ) 
+    // [endsnippet Cache]
     {
         Console.WriteLine( $"Getting the price of {productId} from database." );
         this.DbOperationCount++;
@@ -62,8 +64,10 @@ public sealed partial class ProductCatalogue
         this._dbSimulator[productId] = price;
 
 #if METALAMA
-            this._cachingService.Invalidate( this.GetPrice, productId ); /*<InvalidateCache>*/
-                                                                         /*</InvalidateCache>*/
+            // [snippet InvalidateCache]
+            this._cachingService.Invalidate( this.GetPrice, productId ); 
+                                                                         
+                                                                         // [endsnippet InvalidateCache]
 #endif
     }
 }
