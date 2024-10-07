@@ -33,13 +33,17 @@ To debug compile-time logic, follow the steps below:
 
 1. Insert breakpoints directly into your source code as described above.
 
-2. Execute the compiler with the following properties:
+2. Execute the compiler with the following options:
 
-    * `MetalamaDebugCompiler=True` to cause the compiler to display the JIT debugger dialog, allowing you to attach a debugger to the compiler process.
-    * `MetalamaConcurrentBuildEnabled=False` to force Metalama to run in a single thread, saving you from the chaos of multi-threaded debugging.
+    * `-p:MetalamaDebugCompiler=True` to cause the compiler to display the JIT debugger dialog, allowing you to attach a debugger to the compiler process.
+    * `-p:MetalamaConcurrentBuildEnabled=False` to force Metalama to run in a single thread, saving you from the chaos of multi-threaded debugging.
+    * Optionally, `--disable-build-servers` to disable the use of reusable server MSBuild and `Metalama.Compiler` processes.
+    * Optionally, `--no-dependencies` to avoid rebuilding referenced projects.
+    
+Example:
 
     ```powershell
-    dotnet build -p:MetalamaDebugCompiler=True -p:MetalamaConcurrentBuildEnabled=False
+    dotnet build MyProject.csproj -p:MetalamaDebugCompiler=True -p:MetalamaConcurrentBuildEnabled=False
     ```
 
 ## Debugging the IDE process

@@ -25,4 +25,11 @@
         <Using Include="Xunit" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="GenerateBuilderAttribute.cs.html" />
+      <Content Include="GenerateBuilderAttribute.cs.html">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

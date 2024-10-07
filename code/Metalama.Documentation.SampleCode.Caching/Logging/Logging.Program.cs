@@ -14,10 +14,12 @@ internal static class Program
     {
         var builder = ConsoleApp.CreateBuilder();
 
+        // [snippet AddLogging]
         // Add logging.
-        builder.ConfigureLogging( /*<AddLogging>*/
+        builder.ConfigureLogging( 
             logging =>
-                logging.SetMinimumLevel( LogLevel.Debug ) ); /*</AddLogging>*/
+                logging.SetMinimumLevel( LogLevel.Debug ) ); 
+        // [endsnippet AddLogging]
 
         // Add the caching service.
         builder.Services.AddMetalamaCaching();
