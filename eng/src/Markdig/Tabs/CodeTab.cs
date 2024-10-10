@@ -16,13 +16,11 @@ public class CodeTab : BaseTab
     private readonly string? _htmlPath;
 
     private static readonly Regex _startSnippetRegex =
-        new("""\[\<snippet\s+(?<name>\w+)\s*\>\]""", RegexOptions.Compiled);
+        new("""\[\&lt;snippet\s+(?<name>\w+)\s*\&gt;\]""", RegexOptions.Compiled);
 
     private static readonly Regex _endSnippetRegex =
-        new("""\[\<endsnippet\s+(?<name>\w+)\s*\>\]""", RegexOptions.Compiled);
-
-    private static readonly Regex _anyMarkerRegex = new("""\/\*\\s*<\/?([\w+]+)\>\s*\*\/""", RegexOptions.Compiled);
-
+        new("""\[\&lt;endsnippet\s+(?<name>\w+)\s*\&gt;\]""", RegexOptions.Compiled);
+    
     private static readonly Regex _memberRegex =
         new("""<span class='line-number' data-member='([^']*)'>""", RegexOptions.Compiled);
 
@@ -274,7 +272,6 @@ public class CodeTab : BaseTab
     {
         var lines = File.ReadAllLines( this.FullPath )
             .SkipWhile( l => l.TrimStart().StartsWith( "//", StringComparison.Ordinal ) )
-            .Select( x => _anyMarkerRegex.Replace( x, "" ) )
             .ToList();
 
         // Trim.
