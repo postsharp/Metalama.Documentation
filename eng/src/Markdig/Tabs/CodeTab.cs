@@ -16,13 +16,11 @@ public class CodeTab : BaseTab
     private readonly string? _htmlPath;
 
     private static readonly Regex _startSnippetRegex =
-        new("""\[snippet\s+(?<name>\w+)\s*\]""", RegexOptions.Compiled);
+        new("""\[\&lt;snippet\s+(?<name>\w+)\s*\&gt;\]""", RegexOptions.Compiled);
 
     private static readonly Regex _endSnippetRegex =
-        new("""\[endsnippet\s+(?<name>\w+)\s*\]""", RegexOptions.Compiled);
-
-    private static readonly Regex _anyMarkerRegex = new("""\/\*\\s*<\/?([\w+]+)\>\s*\*\/""", RegexOptions.Compiled);
-
+        new("""\[\&lt;endsnippet\s+(?<name>\w+)\s*\&gt;\]""", RegexOptions.Compiled);
+    
     private static readonly Regex _memberRegex =
         new("""<span class='line-number' data-member='([^']*)'>""", RegexOptions.Compiled);
 
@@ -114,7 +112,7 @@ public class CodeTab : BaseTab
                 // Read and filter lines.
                 foreach ( var htmlLine in File.ReadAllLines( htmlPath ) )
                 {
-                    // Process the [snippet x] marker.
+                    // Process the [<snippet x>] marker.
                     var matchStartMarker = _startSnippetRegex.Match( htmlLine );
 
                     if ( matchStartMarker.Success )
@@ -129,7 +127,7 @@ public class CodeTab : BaseTab
                         continue;
                     }
                     
-                    // Process the [endsnippet x] marker.
+                    // Process the [<endsnippet x>] marker.
                     var matchEndMarker = _endSnippetRegex.Match( htmlLine );
 
                     if ( matchEndMarker.Success )
@@ -168,13 +166,13 @@ public class CodeTab : BaseTab
                 if ( this.Marker != null && !foundStartMarker )
                 {
                     throw new InvalidOperationException(
-                        $"The '[snippet {this.Marker}]' marker was not found in '{htmlPath}'." );
+                        $"The '[<snippet {this.Marker}>]' marker was not found in '{htmlPath}'." );
                 }
 
                 if ( this.Marker != null && !foundEndMarker )
                 {
                     throw new InvalidOperationException(
-                        $"The '[snippet {this.Marker}]' marker was not found in '{htmlPath}'." );
+                        $"The '[<endsnippet {this.Marker}>]' marker was not found in '{htmlPath}'." );
                 }
 
                 if ( this.Member != null && !foundMember )
@@ -274,7 +272,6 @@ public class CodeTab : BaseTab
     {
         var lines = File.ReadAllLines( this.FullPath )
             .SkipWhile( l => l.TrimStart().StartsWith( "//", StringComparison.Ordinal ) )
-            .Select( x => _anyMarkerRegex.Replace( x, "" ) )
             .ToList();
 
         // Trim.

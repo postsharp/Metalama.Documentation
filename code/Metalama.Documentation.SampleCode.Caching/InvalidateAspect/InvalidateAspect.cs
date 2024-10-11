@@ -23,10 +23,10 @@ public sealed class ProductCatalogue
         return this._dbSimulator.Keys.ToArray();
     }
 
-    // [snippet Cache]
+    // [<snippet Cache>]
     [Cache]                                     
     public decimal GetPrice( string productId ) 
-    // [endsnippet Cache]
+    // [<endsnippet Cache>]
     {
         Console.WriteLine( $"Getting the price of {productId} from database." );
         this.DbOperationCount++;
@@ -43,10 +43,10 @@ public sealed class ProductCatalogue
         this._dbSimulator.Add( productId, price );
     }
 
-    // [snippet InvalidateCache]
+    // [<snippet InvalidateCache>]
     [InvalidateCache( nameof(GetPrice) )]                      
     public void UpdatePrice( string productId, decimal price ) 
-    // [endsnippet InvalidateCache]
+    // [<endsnippet InvalidateCache>]
     {
         if ( !this._dbSimulator.ContainsKey( productId ) )
         {
