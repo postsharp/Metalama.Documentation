@@ -14,7 +14,7 @@ internal static class Program
     {
         var builder = ConsoleApp.CreateBuilder();
 
-        // [snippet AddMetalamaCaching]
+        // [<snippet AddMetalamaCaching>]
         // Add the caching service.
         builder.Services.AddMetalamaCaching( 
             caching =>
@@ -23,7 +23,7 @@ internal static class Program
                     {
                         LockingStrategy = new LocalLockingStrategy()
                     } ) ); 
-        // [endsnippet AddMetalamaCaching]
+        // [<endsnippet AddMetalamaCaching>]
 
         // Add other components as usual, then run the application.
         builder.Services.AddConsoleMain<ConsoleMain>();

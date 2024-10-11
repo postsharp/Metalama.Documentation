@@ -28,19 +28,19 @@ public sealed class ProductCatalogue
     this.DbOperationCount++;
     return this._dbSimulator.Keys.ToArray();
   }
-  // [snippet Cache]
+  // [<snippet Cache>]
   [Cache]
   public decimal GetPrice(string productId)
-  // [endsnippet Cache]
+  // [<endsnippet Cache>]
   {
-    // [endsnippet Cache]
+    // [<endsnippet Cache>]
     static object? Invoke(object? instance, object? [] args)
     {
       return ((ProductCatalogue)instance).GetPrice_Source((string)args[0]);
     }
     return _cachingService!.GetFromCacheOrExecute<decimal>(_cacheRegistration_GetPrice!, this, new object[] { productId }, Invoke);
   }
-  private decimal GetPrice_Source(string productId) // [endsnippet Cache]
+  private decimal GetPrice_Source(string productId) // [<endsnippet Cache>]
   {
     Console.WriteLine($"Getting the price of {productId} from database.");
     this.DbOperationCount++;
@@ -55,12 +55,12 @@ public sealed class ProductCatalogue
     object result = null;
     _cachingService!.Invalidate(_methodsInvalidatedBy_AddProduct_976614B12F3F447F4082EAE1C88C1EE0![0], this, new object[] { });
   }
-  // [snippet InvalidateCache]
+  // [<snippet InvalidateCache>]
   [InvalidateCache(nameof(GetPrice))]
   public void UpdatePrice(string productId, decimal price)
-  // [endsnippet InvalidateCache]
+  // [<endsnippet InvalidateCache>]
   {
-    // [endsnippet InvalidateCache]
+    // [<endsnippet InvalidateCache>]
     if (!this._dbSimulator.ContainsKey(productId))
     {
       throw new KeyNotFoundException();
