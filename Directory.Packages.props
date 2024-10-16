@@ -10,7 +10,7 @@
   <ItemGroup>
     <!-- Must match the version defined in PostSharp.Engineering.
          We cannot use $(DocFxVersion) because we reference the repo using a nuget feed dependency, which does not define these properties. -->
-    <PackageVersion Include="Docfx.App" Version="2.77.0" /> 
+    <PackageVersion Include="Docfx.App" Version="2.77.0" />
     <PackageVersion Include="Metalama.Compiler" Version="$(MetalamaCompilerVersion)" />
     <PackageVersion Include="Metalama.Documentation.QuickStart" Version="$(MetalamaSamplesVersion)" />
     <PackageVersion Include="Metalama.Extensions.Architecture" Version="$(MetalamaExtensionsVersion)" />
@@ -36,10 +36,10 @@
     <PackageVersion Include="Metalama.Patterns.Wpf" Version="$(MetalamaPatternsVersion)" />
     <PackageVersion Include="Metalama.Testing.AspectTesting" Version="$(MetalamaVersion)" />
     <PackageVersion Include="Metalama.Testing.UnitTesting" Version="$(MetalamaVersion)" />
-    <PackageVersion Include="Azure.Identity" Version="1.11.4" />
-    <PackageVersion Include="Azure.Security.KeyVault.Secrets" Version="4.6.0" />
+    <PackageVersion Include="Azure.Identity" Version="1.13.0" />
+    <PackageVersion Include="Azure.Security.KeyVault.Secrets" Version="4.7.0" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-    <PackageVersion Include="HtmlAgilityPack" Version="1.11.63" />
+    <PackageVersion Include="HtmlAgilityPack" Version="1.11.67" />
     <PackageVersion Include="JetBrains.Annotations" Version="2024.2.0" />
     <PackageVersion Include="LINQPad.Runtime" Version="8.3.7" />
     <PackageVersion Include="Microsoft.Build" Version="17.11.4" />
@@ -49,7 +49,7 @@
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageVersion Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="NuGet.Credentials" Version="6.11.1" />
