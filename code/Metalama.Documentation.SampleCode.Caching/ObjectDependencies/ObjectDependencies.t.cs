@@ -44,8 +44,7 @@ public sealed class ProductCatalogue
     this.DbOperationCount++;
     var product = this._dbSimulator[productId];
     // [<snippet AddDependency>]
-    this._cachingService.AddDependency(product); 
-    
+    this._cachingService.AddDependency(product);
     // [<endsnippet AddDependency>]
     return product;
   }
@@ -98,8 +97,7 @@ public sealed class ProductCatalogue
     this.DbOperationCount++;
     this._dbSimulator[product.Name] = product;
     // [<snippet Invalidate>]
-    this._cachingService.Invalidate(product); 
-  
+    this._cachingService.Invalidate(product);
   // [<endsnippet Invalidate>]
   }
   private static readonly CachedMethodMetadata _cacheRegistration_GetPriceList;
@@ -112,7 +110,7 @@ public sealed class ProductCatalogue
     _cacheRegistration_GetProducts = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetProducts()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
     _cacheRegistration_GetPriceList = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetPriceList", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetPriceList()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
   }
-  public ProductCatalogue(ICachingService? cachingService = default)
+  public ProductCatalogue(ICachingService? cachingService = null)
   {
     this._cachingService = cachingService ?? throw new System.ArgumentNullException(nameof(cachingService));
   }

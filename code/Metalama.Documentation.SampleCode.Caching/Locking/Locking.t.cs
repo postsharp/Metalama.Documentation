@@ -49,7 +49,7 @@ public sealed class CloudService : IDisposable
     _cacheRegistration_ReadFileWithLock = CachedMethodMetadata.Register(typeof(CloudService).GetMethod("ReadFileWithLock", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!.ThrowIfMissing("CloudService.ReadFileWithLock(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = "Locking", SlidingExpiration = null }, true);
     _cacheRegistration_ReadFileWithoutLock = CachedMethodMetadata.Register(typeof(CloudService).GetMethod("ReadFileWithoutLock", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!.ThrowIfMissing("CloudService.ReadFileWithoutLock(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
   }
-  public CloudService(ICachingService? cachingService = default)
+  public CloudService(ICachingService? cachingService = null)
   {
     this._cachingService = cachingService ?? throw new System.ArgumentNullException(nameof(cachingService));
   }

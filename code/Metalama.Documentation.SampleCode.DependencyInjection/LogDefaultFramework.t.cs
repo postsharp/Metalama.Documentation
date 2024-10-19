@@ -21,7 +21,7 @@ public class Worker : IConsoleMain
     }
   }
   private IMessageWriter _messageWriter;
-  public Worker(IMessageWriter? messageWriter = default)
+  public Worker(IMessageWriter? messageWriter = null)
   {
     this._messageWriter = messageWriter ?? throw new System.ArgumentNullException(nameof(messageWriter));
   }

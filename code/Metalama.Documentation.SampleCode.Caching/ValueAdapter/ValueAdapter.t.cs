@@ -45,7 +45,7 @@ public sealed class ProductCatalogue
   {
     _cacheRegistration_GetProductsAsStringBuilder = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProductsAsStringBuilder", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetProductsAsStringBuilder()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
   }
-  public ProductCatalogue(ICachingService? cachingService = default)
+  public ProductCatalogue(ICachingService? cachingService = null)
   {
     this._cachingService = cachingService ?? throw new System.ArgumentNullException(nameof(cachingService));
   }

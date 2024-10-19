@@ -29,7 +29,7 @@ public sealed class FileSystem
   {
     _cacheRegistration_ReadAll = CachedMethodMetadata.Register(typeof(FileSystem).GetMethod("ReadAll", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(FileInfo) }, null)!.ThrowIfMissing("FileSystem.ReadAll(FileInfo)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
   }
-  public FileSystem(ICachingService? cachingService = default)
+  public FileSystem(ICachingService? cachingService = null)
   {
     this._cachingService = cachingService ?? throw new System.ArgumentNullException(nameof(cachingService));
   }

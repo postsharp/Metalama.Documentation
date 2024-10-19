@@ -24,7 +24,7 @@ public class Invoice
     }
   }
   private IAuditSink _auditSink;
-  public Invoice(IAuditSink? auditSink = default)
+  public Invoice(IAuditSink? auditSink = null)
   {
     this._auditSink = auditSink ?? throw new System.ArgumentNullException(nameof(auditSink));
   }
