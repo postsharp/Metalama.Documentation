@@ -12,10 +12,12 @@ internal static class Program
     {
         var builder = ConsoleApp.CreateBuilder();
 
+        // [<snippet Registration>]
         // Add the caching service.
-        builder.Services.AddMetalamaCaching( /*<Registration>*/
+        builder.Services.AddMetalamaCaching( 
             caching => caching.WithKeyBuilder(
-                ( formatters, _ ) => new HashingKeyBuilder( formatters ) ) ); /*</Registration>*/
+                ( formatters, _ ) => new HashingKeyBuilder( formatters ) ) ); 
+        // [<endsnippet Registration>]
 
         // Add other components as usual.
         builder.Services.AddConsoleMain<ConsoleMain>();

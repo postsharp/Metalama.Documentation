@@ -25,8 +25,9 @@ public sealed class ProductCatalogue
         this.DbOperationCount++;
 
 #if METALAMA
-            this._cachingService.AddDependency( $"ProductPrice:{productId}" );  /*<AddDependency>*/
-                                                                                /*</AddDependency>*/
+         // [<snippet AddDependency>]
+        this._cachingService.AddDependency( $"ProductPrice:{productId}" );  
+        // [<endsnippet AddDependency>]
 #endif
         return this._dbSimulator[productId];
     }
@@ -82,8 +83,9 @@ public sealed class ProductCatalogue
         this._dbSimulator[productId] = price;
 
 #if METALAMA
-            this._cachingService.Invalidate( $"ProductPrice:{productId}", "PriceList"  ); /*<Invalidate>*/
-                                                                                            /*</Invalidate>*/
+            // [<snippet Invalidate>]
+            this._cachingService.Invalidate( $"ProductPrice:{productId}", "PriceList"  ); 
+            // [<endsnippet Invalidate>]
 #endif
     }
 }

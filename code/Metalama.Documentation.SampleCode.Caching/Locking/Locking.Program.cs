@@ -14,14 +14,16 @@ internal static class Program
     {
         var builder = ConsoleApp.CreateBuilder();
 
+        // [<snippet AddMetalamaCaching>]
         // Add the caching service.
-        builder.Services.AddMetalamaCaching( /*<AddMetalamaCaching>*/
+        builder.Services.AddMetalamaCaching( 
             caching =>
                 caching.AddProfile(
                     new CachingProfile( "Locking" )
                     {
                         LockingStrategy = new LocalLockingStrategy()
-                    } ) ); /*</AddMetalamaCaching>*/
+                    } ) ); 
+        // [<endsnippet AddMetalamaCaching>]
 
         // Add other components as usual, then run the application.
         builder.Services.AddConsoleMain<ConsoleMain>();

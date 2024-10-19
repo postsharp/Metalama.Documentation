@@ -28,14 +28,16 @@ internal static class Program
         // Get the connection string.
         var connectionString = Secrets.Get( "CacheInvalidationTestServiceBusConnectionString" );
 
+        // [<snippet AddMetalamaCaching>]
         // Add the caching service.
-        builder.Services.AddMetalamaCaching( /*<AddMetalamaCaching>*/
+        builder.Services.AddMetalamaCaching( 
             caching =>
                 caching.WithBackend(
                     backend =>
                         backend.Memory()
                             .WithAzureSynchronization(
-                                connectionString ) ) ); /*</AddMetalamaCaching>*/
+                                connectionString ) ) ); 
+        // [<endsnippet AddMetalamaCaching>]
 
         // Add other components as usual.
         builder.Services.AddAsyncConsoleMain<ConsoleMain>();
@@ -44,8 +46,9 @@ internal static class Program
         // Build the application.
         await using var app = builder.Build( new[] { name } );
 
-        await app.Services.GetRequiredService<ICachingService>().InitializeAsync(); /*<Initialize>*/
-        /*</Initialize>*/
+        // [<snippet Initialize>]
+        await app.Services.GetRequiredService<ICachingService>().InitializeAsync(); 
+        // [<endsnippet Initialize>]
 
         // Run the application.
         await app.RunAsync();

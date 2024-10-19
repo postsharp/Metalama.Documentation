@@ -46,8 +46,9 @@ public sealed class ProductCatalogue
         var product = this._dbSimulator[productId];
 
 #if METALAMA
-            this._cachingService.AddDependency( product );  /*<AddDependency>*/
-                                                                                /*</AddDependency>*/
+        // [<snippet AddDependency>]
+        this._cachingService.AddDependency( product );  
+        // [<endsnippet AddDependency>]
 #endif
         return product;
     }
@@ -105,8 +106,10 @@ public sealed class ProductCatalogue
         this._dbSimulator[product.Name] = product;
 
 #if METALAMA
-            this._cachingService.Invalidate( product  ); /*<Invalidate>*/
-                                                                                            /*</Invalidate>*/
+            // [<snippet Invalidate>]
+            this._cachingService.Invalidate( product  ); 
+                                                                                            
+                                                                                            // [<endsnippet Invalidate>]
 #endif
     }
 }
