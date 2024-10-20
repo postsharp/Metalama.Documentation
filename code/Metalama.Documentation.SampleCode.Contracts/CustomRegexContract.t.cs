@@ -13,8 +13,8 @@ public class Customer
     }
     set
     {
-      var regex = ContractHelpers.GetRegex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&#])[A-Za-z\\d@$!%*?&#]{8,20}$\n", 0)!;
-      if (value != null && !regex.IsMatch(value!))
+      var regex = ContractHelpers.GetRegex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&#])[A-Za-z\\d@$!%*?&#]{8,20}$\n", 0);
+      if (value != null && !regex.IsMatch(value))
       {
         var regex_1 = regex;
         throw new ArgumentException($"The 'Password' property must match the regular expression '{regex_1}'.", "value");

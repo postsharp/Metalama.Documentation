@@ -15,7 +15,7 @@ public sealed class FileSystem
     {
       return ((FileSystem)instance).ReadAll_Source((FileInfo)args[0]);
     }
-    return _cachingService!.GetFromCacheOrExecute<byte[]>(_cacheRegistration_ReadAll!, this, new object[] { file }, Invoke);
+    return _cachingService.GetFromCacheOrExecute<byte[]>(_cacheRegistration_ReadAll, this, new object[] { file }, Invoke);
   }
   private byte[] ReadAll_Source(FileInfo file)
   {
@@ -27,7 +27,7 @@ public sealed class FileSystem
   private ICachingService _cachingService;
   static FileSystem()
   {
-    _cacheRegistration_ReadAll = CachedMethodMetadata.Register(typeof(FileSystem).GetMethod("ReadAll", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(FileInfo) }, null)!.ThrowIfMissing("FileSystem.ReadAll(FileInfo)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+    _cacheRegistration_ReadAll = CachedMethodMetadata.Register(typeof(FileSystem).GetMethod("ReadAll", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(FileInfo) }, null).ThrowIfMissing("FileSystem.ReadAll(FileInfo)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
   }
   public FileSystem(ICachingService? cachingService = null)
   {

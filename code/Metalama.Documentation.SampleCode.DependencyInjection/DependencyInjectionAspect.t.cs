@@ -19,7 +19,7 @@ public class DependencyInjectionAspect
   {
     get
     {
-      return _lifetimeCache ??= _lifetimeFunc!.Invoke();
+      return _lifetimeCache ??= _lifetimeFunc.Invoke();
     }
     set
     {

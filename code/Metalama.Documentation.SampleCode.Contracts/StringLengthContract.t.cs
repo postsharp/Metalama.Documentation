@@ -13,7 +13,7 @@ public class Customer
     }
     set
     {
-      if (value != null && (value!.Length < 12 || value.Length > 64))
+      if (value != null && (value.Length < 12 || value.Length > 64))
       {
         throw new ArgumentException($"The  'Password' property must be a string with length between {12} and {64}.", "value");
       }

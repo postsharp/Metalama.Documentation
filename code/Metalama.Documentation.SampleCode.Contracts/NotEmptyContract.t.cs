@@ -37,7 +37,7 @@ public class Instrument
     }
     set
     {
-      if (value != null && value!.Length <= 0)
+      if (value != null && value.Length <= 0)
       {
         throw new ArgumentException("The 'Description' property must not be null or empty.", "value");
       }

@@ -13,8 +13,8 @@ public class Client
     }
     set
     {
-      var regex = ContractHelpers.PhoneRegex!;
-      if (value != null && !regex.IsMatch(value!))
+      var regex = ContractHelpers.PhoneRegex;
+      if (value != null && !regex.IsMatch(value))
       {
         var regex_1 = regex;
         throw new ArgumentException("La valeur doit être un numéro de téléphone correct.", "value");

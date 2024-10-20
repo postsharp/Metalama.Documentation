@@ -21,7 +21,7 @@ public class CustomerService : ICustomerService
       name = null;
       returnValue = false;
     }
-    if (name != null && name!.Length <= 0)
+    if (name != null && name.Length <= 0)
     {
       throw new PostconditionViolationException("The 'name' parameter must not be null or empty.");
     }

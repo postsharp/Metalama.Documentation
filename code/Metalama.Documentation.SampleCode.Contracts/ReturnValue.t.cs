@@ -20,7 +20,7 @@ public class CustomerService : ICustomerService
     {
       returnValue = null;
     }
-    if (returnValue != null && returnValue!.Length <= 0)
+    if (returnValue != null && returnValue.Length <= 0)
     {
       throw new PostconditionViolationException("The return value must not be null or empty.");
     }
