@@ -36,7 +36,7 @@ public sealed class ProductCatalogue
     {
       return ((ProductCatalogue)instance).GetProduct_Source((string)args[0]);
     }
-    return _cachingService!.GetFromCacheOrExecute<Product>(_cacheRegistration_GetProduct!, this, new object[] { productId }, Invoke);
+    return _cachingService.GetFromCacheOrExecute<Product>(_cacheRegistration_GetProduct, this, new object[] { productId }, Invoke);
   }
   private Product GetProduct_Source(string productId)
   {
@@ -55,7 +55,7 @@ public sealed class ProductCatalogue
     {
       return ((ProductCatalogue)instance).GetProducts_Source();
     }
-    return _cachingService!.GetFromCacheOrExecute<string[]>(_cacheRegistration_GetProducts!, this, new object[] { }, Invoke);
+    return _cachingService.GetFromCacheOrExecute<string[]>(_cacheRegistration_GetProducts, this, new object[] { }, Invoke);
   }
   private string[] GetProducts_Source()
   {
@@ -71,7 +71,7 @@ public sealed class ProductCatalogue
     {
       return ((ProductCatalogue)instance).GetPriceList_Source();
     }
-    return _cachingService!.GetFromCacheOrExecute<IReadOnlyCollection<Product>>(_cacheRegistration_GetPriceList!, this, new object[] { }, Invoke);
+    return _cachingService.GetFromCacheOrExecute<IReadOnlyCollection<Product>>(_cacheRegistration_GetPriceList, this, new object[] { }, Invoke);
   }
   private IReadOnlyCollection<Product> GetPriceList_Source()
   {
@@ -106,9 +106,9 @@ public sealed class ProductCatalogue
   private ICachingService _cachingService;
   static ProductCatalogue()
   {
-    _cacheRegistration_GetProduct = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProduct", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!.ThrowIfMissing("ProductCatalogue.GetProduct(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
-    _cacheRegistration_GetProducts = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetProducts()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
-    _cacheRegistration_GetPriceList = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetPriceList", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetPriceList()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+    _cacheRegistration_GetProduct = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProduct", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null).ThrowIfMissing("ProductCatalogue.GetProduct(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+    _cacheRegistration_GetProducts = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null).ThrowIfMissing("ProductCatalogue.GetProducts()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+    _cacheRegistration_GetPriceList = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetPriceList", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null).ThrowIfMissing("ProductCatalogue.GetPriceList()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
   }
   public ProductCatalogue(ICachingService? cachingService = null)
   {
