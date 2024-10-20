@@ -9,15 +9,15 @@ internal class WineBottle
   public WineProducer Vigneron { get; init; }
   public override bool Equals(object? other)
   {
-    if (!EqualityComparer<string>.Default.Equals(Cepage, ((WineBottle)other!).Cepage))
+    if (!EqualityComparer<string>.Default.Equals(Cepage, ((WineBottle)other).Cepage))
     {
       return false;
     }
-    if (!EqualityComparer<int>.Default.Equals(Millesime, ((WineBottle)other!).Millesime))
+    if (!EqualityComparer<int>.Default.Equals(Millesime, ((WineBottle)other).Millesime))
     {
       return false;
     }
-    if (!EqualityComparer<WineProducer>.Default.Equals(Vigneron, ((WineBottle)other!).Vigneron))
+    if (!EqualityComparer<WineProducer>.Default.Equals(Vigneron, ((WineBottle)other).Vigneron))
     {
       return false;
     }
@@ -39,11 +39,11 @@ internal class WineProducer
   public string Address { get; init; }
   public override bool Equals(object? other)
   {
-    if (!EqualityComparer<string>.Default.Equals(Name, ((WineProducer)other!).Name))
+    if (!EqualityComparer<string>.Default.Equals(Name, ((WineProducer)other).Name))
     {
       return false;
     }
-    if (!EqualityComparer<string>.Default.Equals(Address, ((WineProducer)other!).Address))
+    if (!EqualityComparer<string>.Default.Equals(Address, ((WineProducer)other).Address))
     {
       return false;
     }

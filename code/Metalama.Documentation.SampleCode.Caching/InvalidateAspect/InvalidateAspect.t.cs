@@ -20,7 +20,7 @@ public sealed class ProductCatalogue
     {
       return ((ProductCatalogue)instance).GetProducts_Source();
     }
-    return _cachingService!.GetFromCacheOrExecute<string[]>(_cacheRegistration_GetProducts!, this, new object[] { }, Invoke);
+    return _cachingService.GetFromCacheOrExecute<string[]>(_cacheRegistration_GetProducts, this, new object[] { }, Invoke);
   }
   private string[] GetProducts_Source()
   {
@@ -38,7 +38,7 @@ public sealed class ProductCatalogue
     {
       return ((ProductCatalogue)instance).GetPrice_Source((string)args[0]);
     }
-    return _cachingService!.GetFromCacheOrExecute<decimal>(_cacheRegistration_GetPrice!, this, new object[] { productId }, Invoke);
+    return _cachingService.GetFromCacheOrExecute<decimal>(_cacheRegistration_GetPrice, this, new object[] { productId }, Invoke);
   }
   private decimal GetPrice_Source(string productId) // [<endsnippet Cache>]
   {
@@ -53,7 +53,7 @@ public sealed class ProductCatalogue
     this.DbOperationCount++;
     this._dbSimulator.Add(productId, price);
     object result = null;
-    _cachingService!.Invalidate(_methodsInvalidatedBy_AddProduct_976614B12F3F447F4082EAE1C88C1EE0![0], this, new object[] { });
+    _cachingService.Invalidate(_methodsInvalidatedBy_AddProduct_976614B12F3F447F4082EAE1C88C1EE0[0], this, new object[] { });
   }
   // [<snippet InvalidateCache>]
   [InvalidateCache(nameof(GetPrice))]
@@ -69,7 +69,7 @@ public sealed class ProductCatalogue
     this.DbOperationCount++;
     this._dbSimulator[productId] = price;
     object result = null;
-    _cachingService!.Invalidate(_methodsInvalidatedBy_UpdatePrice_DA3C5EB2E8FE3C0C2B256E589481CF14![0], this, new object[] { productId });
+    _cachingService.Invalidate(_methodsInvalidatedBy_UpdatePrice_DA3C5EB2E8FE3C0C2B256E589481CF14[0], this, new object[] { productId });
   }
   private static readonly CachedMethodMetadata _cacheRegistration_GetPrice;
   private static readonly CachedMethodMetadata _cacheRegistration_GetProducts;
@@ -78,15 +78,15 @@ public sealed class ProductCatalogue
   private static MethodInfo[] _methodsInvalidatedBy_UpdatePrice_DA3C5EB2E8FE3C0C2B256E589481CF14;
   static ProductCatalogue()
   {
-    _cacheRegistration_GetProducts = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetProducts()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
-    _cacheRegistration_GetPrice = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetPrice", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!.ThrowIfMissing("ProductCatalogue.GetPrice(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, false);
+    _cacheRegistration_GetProducts = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null).ThrowIfMissing("ProductCatalogue.GetProducts()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+    _cacheRegistration_GetPrice = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetPrice", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null).ThrowIfMissing("ProductCatalogue.GetPrice(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, false);
     _methodsInvalidatedBy_AddProduct_976614B12F3F447F4082EAE1C88C1EE0 = new MethodInfo[]
     {
-      typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetProducts()")
+      typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null).ThrowIfMissing("ProductCatalogue.GetProducts()")
     };
     _methodsInvalidatedBy_UpdatePrice_DA3C5EB2E8FE3C0C2B256E589481CF14 = new MethodInfo[]
     {
-      typeof(ProductCatalogue).GetMethod("GetPrice", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!.ThrowIfMissing("ProductCatalogue.GetPrice(string)")
+      typeof(ProductCatalogue).GetMethod("GetPrice", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null).ThrowIfMissing("ProductCatalogue.GetPrice(string)")
     };
   }
   public ProductCatalogue(ICachingService? cachingService = default)

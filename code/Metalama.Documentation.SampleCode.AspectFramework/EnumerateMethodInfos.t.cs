@@ -14,8 +14,8 @@ internal class Foo
   public IReadOnlyList<MethodInfo> GetMethods()
   {
     var methods = new List<MethodInfo>();
-    methods.Add(typeof(Foo).GetMethod("Method1", BindingFlags.NonPublic | BindingFlags.Instance, null, Type.EmptyTypes, null)!);
-    methods.Add(typeof(Foo).GetMethod("Method2", BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { typeof(int), typeof(string) }, null)!);
+    methods.Add(typeof(Foo).GetMethod("Method1", BindingFlags.NonPublic | BindingFlags.Instance, null, Type.EmptyTypes, null));
+    methods.Add(typeof(Foo).GetMethod("Method2", BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { typeof(int), typeof(string) }, null));
     return methods;
   }
 }

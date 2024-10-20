@@ -25,8 +25,8 @@ public class Customer : ICustomer
     }
     set
     {
-      var regex = ContractHelpers.PhoneRegex!;
-      if (value != null && !regex.IsMatch(value!))
+      var regex = ContractHelpers.PhoneRegex;
+      if (value != null && !regex.IsMatch(value))
       {
         var regex_1 = regex;
         throw new ArgumentException("The 'Phone' property must be a valid phone number.", "value");
@@ -43,8 +43,8 @@ public class Customer : ICustomer
     }
     set
     {
-      var regex = ContractHelpers.UrlRegex!;
-      if (value != null && !regex.IsMatch(value!))
+      var regex = ContractHelpers.UrlRegex;
+      if (value != null && !regex.IsMatch(value))
       {
         var regex_1 = regex;
         throw new ArgumentException("The 'Url' property must be a valid URL.", "value");

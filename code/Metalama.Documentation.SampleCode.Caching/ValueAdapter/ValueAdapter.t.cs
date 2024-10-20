@@ -22,7 +22,7 @@ public sealed class ProductCatalogue
     {
       return ((ProductCatalogue)instance).GetProductsAsStringBuilder_Source();
     }
-    return _cachingService!.GetFromCacheOrExecute<StringBuilder>(_cacheRegistration_GetProductsAsStringBuilder!, this, new object[] { }, Invoke);
+    return _cachingService.GetFromCacheOrExecute<StringBuilder>(_cacheRegistration_GetProductsAsStringBuilder, this, new object[] { }, Invoke);
   }
   private StringBuilder GetProductsAsStringBuilder_Source()
   {
@@ -43,7 +43,7 @@ public sealed class ProductCatalogue
   private ICachingService _cachingService;
   static ProductCatalogue()
   {
-    _cacheRegistration_GetProductsAsStringBuilder = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProductsAsStringBuilder", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetProductsAsStringBuilder()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+    _cacheRegistration_GetProductsAsStringBuilder = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProductsAsStringBuilder", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null).ThrowIfMissing("ProductCatalogue.GetProductsAsStringBuilder()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
   }
   public ProductCatalogue(ICachingService? cachingService = default)
   {
