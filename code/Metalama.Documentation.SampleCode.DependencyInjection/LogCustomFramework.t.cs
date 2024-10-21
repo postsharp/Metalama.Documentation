@@ -19,7 +19,7 @@ public class ConsoleMain : IConsoleMain
     }
   }
   private ILogger _logger;
-  public ConsoleMain(ILogger<ConsoleMain> logger = default)
+  public ConsoleMain(ILogger<ConsoleMain> logger = null)
   {
     this._logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
   }

@@ -9,7 +9,7 @@ internal class Foo
 }
 internal class Bar : Foo
 {
-  public Bar(IInstanceRegistry instanceRegistry = default) : base(instanceRegistry)
+  public Bar(IInstanceRegistry instanceRegistry = null) : base(instanceRegistry)
   {
   }
 }

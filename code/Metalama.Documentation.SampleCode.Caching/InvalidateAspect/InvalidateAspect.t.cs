@@ -89,7 +89,7 @@ public sealed class ProductCatalogue
       typeof(ProductCatalogue).GetMethod("GetPrice", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!.ThrowIfMissing("ProductCatalogue.GetPrice(string)")
     };
   }
-  public ProductCatalogue(ICachingService? cachingService = default)
+  public ProductCatalogue(ICachingService? cachingService = null)
   {
     this._cachingService = cachingService ?? throw new System.ArgumentNullException(nameof(cachingService));
   }

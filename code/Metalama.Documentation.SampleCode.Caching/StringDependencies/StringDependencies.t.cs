@@ -28,8 +28,7 @@ public sealed class ProductCatalogue
     Console.WriteLine($"Getting the price of {productId} from database.");
     this.DbOperationCount++;
     // [<snippet AddDependency>]
-    this._cachingService.AddDependency($"ProductPrice:{productId}"); 
-    
+    this._cachingService.AddDependency($"ProductPrice:{productId}");
     // [<endsnippet AddDependency>]
     return this._dbSimulator[productId];
   }
@@ -81,8 +80,7 @@ public sealed class ProductCatalogue
     this.DbOperationCount++;
     this._dbSimulator[productId] = price;
     // [<snippet Invalidate>]
-    this._cachingService.Invalidate($"ProductPrice:{productId}", "PriceList"); 
-  
+    this._cachingService.Invalidate($"ProductPrice:{productId}", "PriceList");
   // [<endsnippet Invalidate>]
   }
   private static readonly CachedMethodMetadata _cacheRegistration_GetPrice;
@@ -95,7 +93,7 @@ public sealed class ProductCatalogue
     _cacheRegistration_GetProducts = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetProducts()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
     _cacheRegistration_GetPriceList = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetPriceList", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetPriceList()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
   }
-  public ProductCatalogue(ICachingService? cachingService = default)
+  public ProductCatalogue(ICachingService? cachingService = null)
   {
     this._cachingService = cachingService ?? throw new System.ArgumentNullException(nameof(cachingService));
   }
