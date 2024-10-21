@@ -20,7 +20,7 @@ public class HashedBuffer
         var value = new StrongBox<ReadOnlyMemory<byte>>(Hash_Source);
         global::System.Threading.Interlocked.CompareExchange(ref this._Hash, value, null);
       }
-      return _Hash!.Value;
+      return _Hash.Value;
     }
   }
   private ReadOnlyMemory<byte> Hash_Source => XxHash64.Hash(this.Buffer.Span);

@@ -23,7 +23,7 @@ public sealed partial class ProductCatalogue
     {
       return ((ProductCatalogue)instance).GetPrice_Source((string)args[0]);
     }
-    return _cachingService!.GetFromCacheOrExecute<decimal>(_cacheRegistration_GetPrice!, this, new object[] { productId }, Invoke);
+    return _cachingService.GetFromCacheOrExecute<decimal>(_cacheRegistration_GetPrice, this, new object[] { productId }, Invoke);
   }
   private decimal GetPrice_Source(string productId) // [<endsnippet Cache>]
   {
@@ -38,7 +38,7 @@ public sealed partial class ProductCatalogue
     {
       return ((ProductCatalogue)instance).GetProducts_Source();
     }
-    return _cachingService!.GetFromCacheOrExecute<string[]>(_cacheRegistration_GetProducts!, this, new object[] { }, Invoke);
+    return _cachingService.GetFromCacheOrExecute<string[]>(_cacheRegistration_GetProducts, this, new object[] { }, Invoke);
   }
   private string[] GetProducts_Source()
   {
@@ -71,8 +71,8 @@ public sealed partial class ProductCatalogue
   private ICachingService _cachingService;
   static ProductCatalogue()
   {
-    _cacheRegistration_GetPrice = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetPrice", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null)!.ThrowIfMissing("ProductCatalogue.GetPrice(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, false);
-    _cacheRegistration_GetProducts = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)!.ThrowIfMissing("ProductCatalogue.GetProducts()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
+    _cacheRegistration_GetPrice = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetPrice", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(string) }, null).ThrowIfMissing("ProductCatalogue.GetPrice(string)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, false);
+    _cacheRegistration_GetProducts = CachedMethodMetadata.Register(typeof(ProductCatalogue).GetMethod("GetProducts", BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null).ThrowIfMissing("ProductCatalogue.GetProducts()"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, true);
   }
   public ProductCatalogue(ICachingService? cachingService = default)
   {

@@ -14,7 +14,7 @@ public sealed class CloudCalculator
     {
       return ((CloudCalculator)instance).Add_Source((int)args[0], (int)args[1]);
     }
-    return _cachingService!.GetFromCacheOrExecute<int>(_cacheRegistration_Add!, this, new object[] { a, b }, Invoke);
+    return _cachingService.GetFromCacheOrExecute<int>(_cacheRegistration_Add, this, new object[] { a, b }, Invoke);
   }
   private int Add_Source(int a, int b)
   {
@@ -26,7 +26,7 @@ public sealed class CloudCalculator
   private ICachingService _cachingService;
   static CloudCalculator()
   {
-    _cacheRegistration_Add = CachedMethodMetadata.Register(typeof(CloudCalculator).GetMethod("Add", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(int), typeof(int) }, null)!.ThrowIfMissing("CloudCalculator.Add(int, int)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, false);
+    _cacheRegistration_Add = CachedMethodMetadata.Register(typeof(CloudCalculator).GetMethod("Add", BindingFlags.Public | BindingFlags.Instance, null, new[] { typeof(int), typeof(int) }, null).ThrowIfMissing("CloudCalculator.Add(int, int)"), new CachedMethodConfiguration() { AbsoluteExpiration = null, AutoReload = null, IgnoreThisParameter = null, Priority = null, ProfileName = (string? )null, SlidingExpiration = null }, false);
   }
   public CloudCalculator(ICachingService? cachingService = default)
   {

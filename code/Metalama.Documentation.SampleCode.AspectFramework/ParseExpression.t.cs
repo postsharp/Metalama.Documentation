@@ -7,7 +7,7 @@ internal class Program
   [Log]
   private void Foo()
   {
-    this._logger?.WriteLine("Executing Program.Foo().");
+    _logger?.WriteLine("Executing Program.Foo().");
   }
   private static void Main()
   {
