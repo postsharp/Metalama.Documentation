@@ -43,7 +43,7 @@ internal class Material
     }
     public Material Build(string Name, double Density)
     {
-      return new Material(this.Name, this.Density)!;
+      return new Material(this.Name, this.Density);
     }
   }
 }
