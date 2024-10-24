@@ -3,6 +3,7 @@
 using Metalama.Framework.Advising;
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using Metalama.Framework.Code.SyntaxBuilders;
 using System;
 using System.Linq;
 
@@ -45,7 +46,7 @@ public class DeepCloneAttribute : TypeAspect
         }
 
         // Define a local variable of the same type as the target type.
-        var clone = meta.Cast( meta.Target.Type, baseCall );
+        var cloneVariable = meta.DefineLocalVariable( "clone", baseCall.CastTo( meta.Target.Type ) );
 
         // Select clonable fields.
         var clonableFields =
@@ -73,20 +74,20 @@ public class DeepCloneAttribute : TypeAspect
             else
             {
                 // If no, explicitly cast to the interface.
-                callClone = (IExpression) ((ICloneable?) field.Value)?.Clone()!;
+                callClone = ExpressionFactory.Capture( ((ICloneable?) field.Value)?.Clone()! );
             }
 
             if ( cloneMethod == null || !cloneMethod.ReturnType.ToNullable().Is( fieldType ) )
             {
                 // If necessary, cast the return value of Clone to the field type.
-                callClone = (IExpression) meta.Cast( fieldType, callClone.Value );
+                callClone = callClone.CastTo( fieldType );
             }
 
             // Finally, set the field value.
-            field.With( (IExpression) clone ).Value = callClone.Value;
+            field.With( cloneVariable ).Value = callClone.Value;
         }
 
-        return clone;
+        return cloneVariable.Value!;
     }
 
     [InterfaceMember( IsExplicit = true )]

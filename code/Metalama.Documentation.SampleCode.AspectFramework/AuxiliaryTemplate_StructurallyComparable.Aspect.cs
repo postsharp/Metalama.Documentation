@@ -2,6 +2,7 @@
 
 using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
+using Metalama.Framework.Code.SyntaxBuilders;
 using System.Collections.Generic;
 using System;
 using System.Linq;
@@ -22,7 +23,7 @@ public class StructuralEquatableAttribute : TypeAspect
                 {
                     TFieldOrProperty = fieldOrProperty.Type,
                     fieldOrProperty,
-                    other = (IExpression) other!
+                    other = ExpressionFactory.Capture( other! )
                 } );
         }
 
